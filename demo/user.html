@@ -1,0 +1,63 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>LDflex querying for Solid</title>
+  <script src="../node_modules/solid-auth-client/dist-lib/solid-auth-client.bundle.js"></script>
+  <script src="../dist/solid-query-ldflex.bundle.js"></script>
+</head>
+<body>
+  <h1>Your profile</h1>
+  <button id="session">Loading…</button>
+  <dl>
+    <dt>Name</dt>
+    <dd id="name"></dd>
+    <dt>First</dt>
+    <dd id="firstName"></dd>
+    <dt>Last</dt>
+    <dd id="lastName"></dd>
+  </dl>
+  <h2>Friends</h2>
+  <div id="friends"></div>
+
+  <!-- Showing user info -->
+  <script>
+    document.addEventListener('DOMContentLoaded', async () => {
+      const user = solid.data.user;
+
+      show('name', await user.label);
+      show('firstName', await user.firstName);
+      show('lastName', await user.lastName);
+
+      for await (const name of user.friends.firstName)
+        show('friends', name);
+    });
+
+    function show(id, text) {
+      const element = document.getElementById(id);
+      element.innerText += text + '\n';
+    }
+  </script>
+
+  <!-- Logging in and out -->
+  <script>
+    const button = document.getElementById('session');
+    let loggedIn = false;
+
+    solid.auth.trackSession(session =>
+      button.innerText = (loggedIn = !!session) ? 'Log out' : 'Log in');
+
+    button.addEventListener('click', () => {
+      if (loggedIn)
+        solid.auth.logout()
+      else {
+        const idp = window.prompt(
+          'Please enter the URL of your Solid identity provider.',
+          'https://solid.community/');
+        if (idp)
+          solid.auth.login(idp);
+      }
+    });
+  </script>
+</body>
+</html>
