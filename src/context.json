@@ -7,9 +7,28 @@
     "label": "rdfs:label",
 
     "foaf": "http://xmlns.com/foaf/0.1/",
-    "knows": "foaf:knows",
-    "friends": "foaf:knows",
+    "account":   "foaf:account",
+    "age":       "foaf:age",
+    "birthday":  "foaf:birthday",
+    "blog":      "foaf:weblog",
     "firstName": "foaf:givenName",
-    "lastName": "foaf:familyName"
+    "friends":   "foaf:knows",
+    "gender":    "foaf:gender",
+    "homepage":  "foaf:homepage",
+    "interest":  "foaf:interest",
+    "knows":     "foaf:knows",
+    "lastName":  "foaf:familyName",
+
+    "solid": "http://www.w3.org/ns/solid/terms#",
+    "oidcIssuer":       "solid:oidcIssuer",
+    "publicTypeIndex":  "solid:publicTypeIndex",
+    "privateTypeIndex": "solid:privateTypeIndex",
+
+    "ldp": "http://www.w3.org/ns/ldp#",
+    "inbox": "ldp:inbox",
+
+    "pim": "http://www.w3.org/ns/pim/space#",
+    "storage":     "pim:storage",
+    "preferences": "pim:preferencesFile"
   }
 }
