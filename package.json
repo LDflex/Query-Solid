@@ -29,7 +29,7 @@
   "scripts": {
     "build": "babel src --out-dir lib --copy-files",
     "jest": "jest",
-    "lint": "eslint src test",
+    "lint": "eslint src test demo",
     "precommit": "npm test",
     "prepublishOnly": "npm run build && npm run webpack",
     "test": "npm run lint && npm run jest",
