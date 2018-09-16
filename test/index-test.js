@@ -1,7 +1,7 @@
-import SolidQueryLDFlex from '../src';
+import * as SolidQueryLDFlex from '../src';
 
 describe('The SolidQueryLDFlex module', () => {
-  it('is an object', () => {
-    expect(SolidQueryLDFlex).toBeInstanceOf(Object);
+  it('exports the node function', () => {
+    expect(SolidQueryLDFlex.node).toBeInstanceOf(Function);
   });
 });

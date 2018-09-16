@@ -5,6 +5,8 @@
   "license": "MIT",
   "main": "lib/index.js",
   "dependencies": {
+    "ldflex": "^0.1.0",
+    "ldflex-comunica": "^0.1.0"
   },
   "devDependencies": {
     "@babel/cli": "^7.0.0",
@@ -17,7 +19,7 @@
     "jest": "^23.6.0"
   },
   "scripts": {
-    "build": "babel src --out-dir lib",
+    "build": "babel src --out-dir lib --copy-files",
     "jest": "jest",
     "lint": "eslint src test",
     "precommit": "npm test",
