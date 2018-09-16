@@ -1,4 +1,4 @@
-import * as SolidQueryLDFlex from '../src';
+import SolidQueryLDFlex from '../src';
 
 describe('The SolidQueryLDFlex module', () => {
   it('exports the node function', () => {

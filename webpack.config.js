@@ -6,6 +6,7 @@ module.exports = {
   output: {
     filename: '[name].bundle.js',
     library: ['solid', 'data'],
+    libraryExport: 'default',
     libraryTarget: 'umd'
   },
   module: {
