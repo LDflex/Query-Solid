@@ -1,5 +1,6 @@
 import { QueryPathFactory } from 'ldflex';
 import ComunicaEngine from 'ldflex-comunica';
+import auth from 'solid-auth-client';
 import context from './context';
 
 const factory = new QueryPathFactory({ context });
@@ -18,8 +19,7 @@ function node(subject) {
 function user() {
   const webid = {
     then: (resolve, reject) => {
-      /* global solid */
-      solid.auth.currentSession().then(session => {
+      auth.currentSession().then(session => {
         if (!session)
           throw new Error('Querying failed: no active user');
         return session.webId;

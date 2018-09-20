@@ -7,7 +7,6 @@ module.exports = {
     filename: '[name].bundle.js',
     library: ['solid', 'data'],
     libraryExport: 'default',
-    libraryTarget: 'umd'
   },
   module: {
     rules: [
@@ -19,10 +18,7 @@ module.exports = {
     ]
   },
   externals: {
-    'node-fetch': 'fetch',
-    'text-encoding': 'TextEncoder',
-    'whatwg-url': 'window',
-    '@trust/webcrypto': 'crypto'
+    'solid-auth-client': ['solid', 'auth'],
   },
   devtool: 'source-map',
 };
