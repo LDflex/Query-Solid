@@ -1,7 +1,11 @@
-import SolidQueryLDFlex from '../src';
+import { node, user } from '../src';
 
 describe('The SolidQueryLDFlex module', () => {
   it('exports the node function', () => {
-    expect(SolidQueryLDFlex.node).toBeInstanceOf(Function);
+    expect(node).toBeInstanceOf(Function);
+  });
+
+  it('exports the user path', () => {
+    expect(user).toBeTruthy();
   });
 });

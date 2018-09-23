@@ -1,4 +1,4 @@
-const { node } = require('../lib').default;
+const { node } = require('../lib');
 
 const ruben = node('https://ruben.verborgh.org/profile/#me');
 showProfile(ruben);

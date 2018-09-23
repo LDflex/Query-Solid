@@ -1,4 +1,4 @@
-import { QueryPathFactory } from 'ldflex';
+import { QueryPath, QueryPathFactory } from 'ldflex';
 import ComunicaEngine from 'ldflex-comunica';
 import auth from 'solid-auth-client';
 import context from './context';
@@ -8,7 +8,7 @@ const factory = new QueryPathFactory({ context });
 /**
  * Starts a query path from the given subject
  */
-function node(subject) {
+export function node(subject) {
   const queryEngine = new ComunicaEngine(subject);
   return factory.create({ queryEngine }, { subject });
 }
@@ -16,22 +16,18 @@ function node(subject) {
 /**
  * Starts a query path from the currently logged in user
  */
-function user() {
-  const webid = {
-    then: (resolve, reject) => {
-      auth.currentSession().then(session => {
+export const user = new QueryPath({
+  resolvers: [{
+    supports() { return true; },
+    resolve(path, property) {
+      // Obtain the user's WebID
+      const webId = auth.currentSession().then(session => {
         if (!session)
-          throw new Error('Querying failed: no active user');
+          throw new Error('Path expression with "user" failed: no active user');
         return session.webId;
-      }).then(resolve, reject);
+      });
+      // Start a new path from the user
+      return node(webId)[property];
     },
-  };
-  return node(webid);
-}
-
-const exports = {
-  node,
-  get user() { return user(); },
-};
-
-export default exports;
+  }],
+});

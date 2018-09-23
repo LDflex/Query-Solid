@@ -10,8 +10,7 @@ npm install @solid/query-ldflex
 ## Usage
 ### Node.js
 ```javascript
-const { default: ldflex } = require('@solid/query-ldflex');
-const { node } = ldflex;
+const { node } = require('@solid/query-ldflex');
 
 const ruben = node('https://ruben.verborgh.org/profile/#me');
 showProfile(ruben);

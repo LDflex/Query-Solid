@@ -10,7 +10,6 @@ module.exports = ({ outputDir }) => ({
     path: resolve(outputDir),
     filename: '[name].bundle.js',
     library: ['solid', 'data'],
-    libraryExport: 'default',
   },
   module: {
     rules: [
