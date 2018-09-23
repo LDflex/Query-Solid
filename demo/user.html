@@ -48,7 +48,7 @@
     document.addEventListener('DOMContentLoaded', async () => {
       const user = solid.data.user;
 
-      show('name',       await user.label);
+      show('name',       await user.name);
       show('firstName',  await user.firstName);
       show('lastName',   await user.lastName);
       show('birthday',   await user.birthday);

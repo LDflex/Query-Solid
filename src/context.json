@@ -18,6 +18,7 @@
     "interest":  "foaf:interest",
     "knows":     "foaf:knows",
     "lastName":  "foaf:familyName",
+    "name":      "foaf:name",
 
     "solid": "http://www.w3.org/ns/solid/terms#",
     "oidcIssuer":       "solid:oidcIssuer",
