@@ -34,7 +34,7 @@
   "scripts": {
     "build": "npm run build:lib && npm run build:dist && npm run build:demo",
     "build:demo": "webpack --config=./webpack/webpack.demo.config.js",
-    "build:dist": "webpack --config=./webpack/webpack.lib.config.js",
+    "build:dist": "webpack --mode=production --config=./webpack/webpack.lib.config.js",
     "build:lib": "babel src --out-dir lib --copy-files",
     "jest": "jest",
     "lint": "eslint src test demo webpack",

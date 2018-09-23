@@ -1,7 +1,7 @@
 const { resolve } = require('path');
 
 module.exports = ({ outputDir }) => ({
-  mode: 'none',
+  mode: 'development',
   context: resolve(__dirname, '..'),
   entry: {
     'solid-query-ldflex': './src/index.js',
