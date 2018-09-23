@@ -3,8 +3,8 @@
 <head>
   <meta charset="utf-8">
   <title>LDflex querying for Solid</title>
-  <script src="../node_modules/solid-auth-client/dist-lib/solid-auth-client.bundle.js"></script>
-  <script src="../dist/solid-query-ldflex.bundle.js"></script>
+  <script src="solid-auth-client.bundle.js"></script>
+  <script src="solid-query-ldflex.bundle.js"></script>
 </head>
 <body>
   <h1>Your profile</h1>
@@ -78,15 +78,13 @@
     solid.auth.trackSession(session =>
       button.innerText = (loggedIn = !!session) ? 'Log out' : 'Log in');
 
-    button.addEventListener('click', () => {
+    button.addEventListener('click', async () => {
       if (loggedIn)
         solid.auth.logout()
       else {
-        const idp = window.prompt(
-          'Please enter the URL of your Solid identity provider.',
-          'https://solid.community/');
-        if (idp)
-          solid.auth.login(idp);
+        const session = await solid.auth.popupLogin({ popupUri: 'popup.html' });
+        if (session)
+          window.location.reload();
       }
     });
   </script>

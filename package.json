@@ -7,7 +7,8 @@
   "files": [
     "src",
     "lib",
-    "dist"
+    "dist",
+    "!dist/demo"
   ],
   "dependencies": {
     "ldflex": "^0.1.0",
@@ -19,22 +20,29 @@
     "@babel/preset-env": "^7.0.0",
     "babel-core": "^7.0.0-bridge.0",
     "babel-loader": "^8.0.2",
+    "clean-webpack-plugin": "^0.1.19",
+    "copy-webpack-plugin": "^4.5.2",
     "eslint": "^5.6.0",
     "eslint-plugin-jest": "^21.22.0",
     "husky": "^0.14.3",
     "jest": "^23.6.0",
     "solid-auth-client": "^2.2.3",
     "webpack": "^4.19.1",
-    "webpack-cli": "^3.1.0"
+    "webpack-cli": "^3.1.0",
+    "webpack-dev-server": "^3.1.8"
   },
   "scripts": {
-    "build": "babel src --out-dir lib --copy-files",
+    "build": "npm run build:lib && npm run build:dist && npm run build:demo",
+    "build:demo": "webpack --config=./webpack/webpack.demo.config.js",
+    "build:dist": "webpack --config=./webpack/webpack.lib.config.js",
+    "build:lib": "babel src --out-dir lib --copy-files",
     "jest": "jest",
-    "lint": "eslint src test demo",
+    "lint": "eslint src test demo webpack",
     "precommit": "npm test",
-    "prepublishOnly": "npm run build && npm run webpack",
+    "prepublishOnly": "npm run build",
+    "start": "npm run start:demo",
+    "start:demo": "webpack-dev-server --config=./webpack/webpack.demo.config.js",
     "test": "npm run lint && npm run jest",
-    "test:dev": "npm run jest -- --watch",
-    "webpack": "webpack"
+    "test:dev": "npm run jest -- --watch"
   }
 }

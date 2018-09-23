@@ -13,7 +13,6 @@ addons:
 
 before_script:
   - npm run build
-  - npm run webpack
 
 cache:
   apt: true
