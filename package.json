@@ -11,8 +11,8 @@
     "!dist/demo"
   ],
   "dependencies": {
-    "ldflex": "^0.1.1",
-    "ldflex-comunica": "^0.1.0"
+    "ldflex": "^1.0.0",
+    "ldflex-comunica": "^1.0.0"
   },
   "devDependencies": {
     "@babel/cli": "^7.0.0",
