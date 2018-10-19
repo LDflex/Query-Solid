@@ -2,6 +2,11 @@
 This library brings the [LDflex](https://github.com/RubenVerborgh/LDflex) language
 to [Solid](https://solid.mit.edu/).
 
+[![npm version](https://img.shields.io/npm/v/@solid/query-ldflex.svg)](https://www.npmjs.com/package/@solid/query-ldflex)
+[![Build Status](https://travis-ci.org/solid/query-ldflex.svg?branch=master)](https://travis-ci.org/solid/query-ldflex)
+[![Coverage Status](https://coveralls.io/repos/github/solid/query-ldflex/badge.svg?branch=master)](https://coveralls.io/github/solid/query-ldflex?branch=master)
+[![Dependency Status](https://david-dm.org/solid/query-ldflex.svg)](https://david-dm.org/solid/query-ldflex)
+
 ## Installation
 ```bash
 npm install @solid/query-ldflex
@@ -46,4 +51,4 @@ document.addEventListener('DOMContentLoaded', async () => {
 
 ## License
 ©2018–present [Ruben Verborgh](https://ruben.verborgh.org/),
-[MIT License](https://github.com/RubenVerborgh/LDflex/blob/master/LICENSE.md).
+[MIT License](https://github.com/solid/query-ldflex/blob/master/LICENSE.md).
