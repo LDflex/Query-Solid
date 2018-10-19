@@ -1,8 +1,13 @@
 {
   "name": "@solid/query-ldflex",
   "version": "0.1.2",
+  "description": "Access Solid data pods using the LDflex language",
   "author": "Ruben Verborgh <ruben@verborgh.org> (https://ruben.verborgh.org/)",
   "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/solid/query-ldflex/"
+  },
   "main": "lib/index.js",
   "files": [
     "src",
