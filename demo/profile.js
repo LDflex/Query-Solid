@@ -1,6 +1,7 @@
-const { node } = require('../lib');
+#!/usr/bin/env node
+const { default: data } = require('../lib');
 
-const ruben = node('https://ruben.verborgh.org/profile/#me');
+const ruben = data['https://ruben.verborgh.org/profile/#me'];
 showProfile(ruben);
 
 async function showProfile(person) {

@@ -1,11 +1,11 @@
-import { node, user } from '../src';
+import data from '../src';
 
 describe('The SolidQueryLDFlex module', () => {
-  it('exports the node function', () => {
-    expect(node).toBeInstanceOf(Function);
+  it('exports the user path', () => {
+    expect(data.user).toBeTruthy();
   });
 
-  it('exports the user path', () => {
-    expect(user).toBeTruthy();
+  it('exports URL paths', () => {
+    expect(data['https://example.org/']).toBeTruthy();
   });
 });

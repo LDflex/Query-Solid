@@ -3,34 +3,28 @@ import ComunicaEngine from 'ldflex-comunica';
 import auth from 'solid-auth-client';
 import context from './context';
 
-const nodePaths = new PathFactory({ context });
+const paths = new PathFactory({ context });
 
-const userPaths = new PathFactory({
+const rootPaths = new PathFactory({
   resolvers: [{
     supports: () => true,
-    resolve: property => node(getWebId())[property],
+    resolve: subject => pathFor(subject === 'user' ? getWebId() : subject),
   }],
 });
 
-/**
- * Starts a query path from the given subject
- */
-export function node(subject) {
+/** Exports a `user` path and paths for every URL */
+export default rootPaths.create();
+
+/** Creates a query path for the given subject */
+function pathFor(subject) {
   const queryEngine = new ComunicaEngine(subject);
-  return nodePaths.create({ queryEngine }, { subject });
+  return paths.create({ queryEngine }, { subject });
 }
 
-/**
- * Starts a query path from the currently logged in user
- */
-export const user = userPaths.create();
-
-/**
- * Gets the WebID of the logged in user.
- */
+/** Gets the WebID of the logged in user */
 async function getWebId() {
   const session = await auth.currentSession();
   if (!session)
-    throw new Error('Path expression with "user" failed: no active user');
+    throw new Error('LDflex "user" expression failed: not logged in');
   return session.webId;
 }
