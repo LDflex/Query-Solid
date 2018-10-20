@@ -1,5 +1,6 @@
 {
   extends: plugin:jest/recommended,
   rules: {
+    no-use-before-define: off,
   },
 }
