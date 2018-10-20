@@ -1,6 +1,7 @@
 {
   extends: plugin:jest/recommended,
   rules: {
+    global-require: off,
     no-use-before-define: off,
   },
 }

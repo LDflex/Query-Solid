@@ -3,6 +3,14 @@ import auth from 'solid-auth-client';
 import ComunicaEngine from 'ldflex-comunica';
 
 describe('The @solid/ldflex module', () => {
+  it('is an ES6 module with a default export', () => {
+    expect(require('../src').default).toBe(data);
+  });
+
+  it('the default export itself does not identify as an ES6 module', () => {
+    expect(data.__esModule).toBeUndefined();
+  });
+
   describe('an URL path', () => {
     const url = 'https://ex.org/#this';
     beforeEach(async () => {
