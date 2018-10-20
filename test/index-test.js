@@ -42,6 +42,52 @@ describe('The @solid/ldflex module', () => {
       });
     });
   });
+
+  describe('the resolve path', () => {
+    const baz = {};
+    const bar = { baz };
+    const foo = { bar };
+    const root = { foo };
+    global.globalVar = 'foo';
+
+    it('resolves dot-based property access without dot', () => {
+      expect(data.resolve('foo.bar.baz', root)).toBe(baz);
+    });
+
+    it('resolves dot-based property access with dot', () => {
+      expect(data.resolve('.foo.bar.baz', root)).toBe(baz);
+    });
+
+    it('resolves brace-based property access with double quotes', () => {
+      expect(data.resolve('["foo"].bar.baz', root)).toBe(baz);
+    });
+
+    it('resolves brace-based property access with single quotes', () => {
+      expect(data.resolve("['foo'].bar.baz", root)).toBe(baz);
+    });
+
+    it('resolves brace-based property access with backticks', () => {
+      expect(data.resolve('[`foo`].bar.baz', root)).toBe(baz);
+    });
+
+    it('resolves brace-based property access without quotes', () => {
+      expect(data.resolve('[foo].bar.baz', root)).toBe(baz);
+    });
+
+    it('resolves multiple brace-based property accesses without quotes', () => {
+      expect(data.resolve('[foo][bar][baz]', root)).toBe(baz);
+    });
+
+    it('resolves parentheses in brace-based property access', () => {
+      expect(data.resolve('[("foo")].bar.baz', root)).toBe(baz);
+      expect(data.resolve('[(globalVar)].bar.baz', root)).toBe(baz);
+    });
+
+    it('errors on invalid expressions', () => {
+      expect(() => data.resolve('..foo.bar'))
+        .toThrow('Expression "..foo.bar" is invalid: Unexpected token .');
+    });
+  });
 });
 
 const urlQuery = `SELECT ?firstName WHERE {
