@@ -17,7 +17,8 @@
   ],
   "dependencies": {
     "ldflex": "^1.0.0",
-    "ldflex-comunica": "^1.0.0"
+    "ldflex-comunica": "^1.0.0",
+    "solid-auth-client": "^2.2.9"
   },
   "devDependencies": {
     "@babel/cli": "^7.0.0",
@@ -31,7 +32,6 @@
     "eslint-plugin-jest": "^21.22.0",
     "husky": "^1.1.2",
     "jest": "^23.6.0",
-    "solid-auth-client": "^2.2.8",
     "webpack": "^4.19.1",
     "webpack-cli": "^3.1.0",
     "webpack-dev-server": "^3.1.8"
