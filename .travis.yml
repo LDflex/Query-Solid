@@ -20,6 +20,7 @@ after_success:
       npm install coveralls;
       node_modules/.bin/jest --coverage --coverageReporters=text-lcov |
         node_modules/.bin/coveralls;
+      ./.travis_build_pages;
     fi
 
 cache:
