@@ -1,0 +1,93 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>LDflex querying for Solid</title>
+  <!-- View this demo with `npm start:demo` -->
+  <script src="solid-auth-client.bundle.js"></script>
+  <script src="solid-query-ldflex.bundle.js"></script>
+</head>
+<body>
+  <h1>Your profile</h1>
+  <button id="session">Loading…</button>
+
+  <h2>Personal details</h2>
+  <dl>
+    <dt>Name</dt>
+    <dd id="name"></dd>
+    <dt>First</dt>
+    <dd id="firstName"></dd>
+    <dt>Last</dt>
+    <dd id="lastName"></dd>
+    <dt>Birthday</dt>
+    <dd id="birthday"></dd>
+    <dt>Homepage</dt>
+    <dd id="homepage"></dd>
+  </dl>
+
+  <h2>Solid</h2>
+  <dl>
+    <dt>OIDC issuer</dt>
+    <dd id="oidcIssuer"></dd>
+    <dt>Storage</dt>
+    <dd id="storage"></dd>
+    <dt>Inbox</dt>
+    <dd id="inbox"></dd>
+    <dt>Preferences</dt>
+    <dd id="prefs"></dd>
+    <dt>Public type index</dt>
+    <dd id="public"></dd>
+    <dt>Private type index</dt>
+    <dd id="private"></dd>
+  </dl>
+
+  <h2>Friends</h2>
+  <div id="friends"></div>
+
+  <!-- Showing user info -->
+  <script>
+    document.addEventListener('DOMContentLoaded', async () => {
+      const user = solid.data.user;
+
+      show('name',       await user.name);
+      show('firstName',  await user.firstName);
+      show('lastName',   await user.lastName);
+      show('birthday',   await user.birthday);
+      show('homepage',   await user.homepage);
+      show('oidcIssuer', await user.oidcIssuer);
+      show('storage',    await user.storage);
+      show('inbox',      await user.inbox);
+      show('prefs',      await user.preferences);
+      show('public',     await user.publicTypeIndex);
+      show('private',    await user.privateTypeIndex);
+
+      for await (const name of user.friends.firstName)
+        show('friends', name);
+    });
+
+    function show(id, text) {
+      const element = document.getElementById(id);
+      element.innerText += text + '\n';
+    }
+  </script>
+
+  <!-- Logging in and out -->
+  <script>
+    const button = document.getElementById('session');
+    let loggedIn = false;
+
+    solid.auth.trackSession(session =>
+      button.innerText = (loggedIn = !!session) ? 'Log out' : 'Log in');
+
+    button.addEventListener('click', async () => {
+      if (loggedIn)
+        solid.auth.logout()
+      else {
+        const session = await solid.auth.popupLogin({ popupUri: 'popup.html' });
+        if (session)
+          window.location.reload();
+      }
+    });
+  </script>
+</body>
+</html>

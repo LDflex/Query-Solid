@@ -1,0 +1,37 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>LDflex querying for Solid</title>
+  <script src="../dist/solid-query-ldflex.bundle.js"></script>
+</head>
+<body>
+  <h1>Profile</h1>
+  <h2>Name</h2>
+  <div id="name"></div>
+  <h2>Types</h2>
+  <div id="types"></div>
+  <h2>Friends</h2>
+  <div id="friends"></div>
+
+  <script>
+    const ruben = solid.data['https://ruben.verborgh.org/profile/#me'];
+    showProfile(ruben);
+
+    async function showProfile(person) {
+      show('name', await person.label);
+
+      for await (const type of person.type)
+        show('types', type);
+
+      for await (const name of person.friends.firstName)
+        show('friends', name);
+    }
+
+    function show(id, text) {
+      const element = document.getElementById(id);
+      element.innerText += text + '\n';
+    }
+  </script>
+</body>
+</html>
