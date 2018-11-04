@@ -1,5 +1,5 @@
 # LDflex for Solid
-Simple access to [Solid](https://solid.mit.edu/) data pods
+Simple access to data in [Solid](https://solid.mit.edu/) pods
 through [LDflex](https://github.com/RubenVerborgh/LDflex) expressions
 
 [![npm version](https://img.shields.io/npm/v/@solid/query-ldflex.svg)](https://www.npmjs.com/package/@solid/query-ldflex)
@@ -12,23 +12,28 @@ to Solid by:
 
 1. providing a [JSON-LD context for Solid](https://github.com/solid/query-ldflex/blob/master/src/context.json)
 2. binding a query engine ([Comunica](https://github.com/RubenVerborgh/LDflex-Comunica))
-3. exposing useful data paths
+3. exposing useful [data paths](#data-paths)
 
-## Data paths
+LDflex expressions occur for example
+on [Solid React components](https://github.com/solid/react-components),
+where they make it easy for developers
+to specify what data they want to show.
+They can also be used as an expression language
+in any other Solid project or framework.
+
+## Creating data paths
 Once you [obtain the `solid.data` object](#usage),
-you have access to the following data paths.
+start writing data paths from the following entry points.
 
-### User
+### The `user` entry point
 The `solid.data.user` path can query data about the currently logged in user,
 such as:
-- `solid.data.user.firstName`
-- `solid.data.user.email`
-- `solid.data.user.friends`
-- `solid.data.user.friends.firstName`
+- `solid.data.user.firstName` yields the user's first name(s)
+- `solid.data.user.email` yields the user's email address(es)
+- `solid.data.user.friends` yields the user's friend(s)
+- `solid.data.user.friends.firstName` yields the user's friends' first name(s)
 
-More inspiration for properties can be found in the [JSON-LD context](https://github.com/solid/query-ldflex/blob/master/src/context.json)
-
-### URL
+### The _any URL_ entry point
 The `solid.data[url]` path can query data about any subject by URL,
 such as:
 - `solid.data['https://ruben.verborgh.org/profile/#me'].firstName`
@@ -36,13 +41,52 @@ such as:
 - `solid.data['https://ruben.verborgh.org/profile/#me'].friends`
 - `solid.data['https://ruben.verborgh.org/profile/#me'].friends.firstName`
 
+### Specifying properties
+As you can see in the above examples,
+an LDflex path starts with an entry point
+and is followed by property names,
+which can be:
+
+- **abbreviations**
+  such as `firstName`
+  (which expands to `http://xmlns.com/foaf/0.1/givenName`)
+- **prefixed names**
+  such as `foaf:givenName`
+  (which expands to `http://xmlns.com/foaf/0.1/givenName`)
+- **full URLs**
+  such as `http://xmlns.com/foaf/0.1/givenName`
+
+The abbreviations and prefixed names are expanded
+using the [JSON-LD context](https://github.com/solid/query-ldflex/blob/master/src/context.json).
+You can find some inspiration about what to ask for in this context.
+
+You can access data using any vocabulary you want
+and, when included in the JSON-LD context, in multiple ways.
+For example:
+- FOAF:
+  - `solid.data.user.name`
+  - `solid.data.user.foaf_name`
+  - `solid.data.user['foaf:name']`
+  - `solid.data.user['http://xmlns.com/foaf/0.1/name']`
+- vCard:
+  - `solid.data.user.vcard_fn`
+  - `solid.data.user['vcard:fn']`
+  - `solid.data.user['http://www.w3.org/2006/vcard/ns#fn']`
+- Schema.org:
+  - `solid.data.user.schema_name`
+  - `solid.data.user['schema:name']`
+  - `solid.data.user['http://www.schema.org/name']`
+- Custom:
+  - `solid.data.user['http://example.org/my-ontology/name']`
+
+
 ## Installation
 ```bash
 npm install @solid/query-ldflex
 ```
 
 ## Usage
-### Node.js
+### With Node.js
 ```javascript
 const { default: data } = require('@solid/query-ldflex');
 
@@ -64,7 +108,7 @@ async function showProfile(person) {
 
 ```
 
-### Browser
+### In the browser
 ```html
 <script src="solid-auth-client.bundle.js"></script>
 <script src="solid-query-ldflex.bundle.js"></script>
