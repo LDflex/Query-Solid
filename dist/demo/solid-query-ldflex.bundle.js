@@ -108781,8 +108781,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var ldflex_comunica__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(ldflex_comunica__WEBPACK_IMPORTED_MODULE_1__);
 /* harmony import */ var solid_auth_client__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! solid-auth-client */ "solid-auth-client");
 /* harmony import */ var solid_auth_client__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(solid_auth_client__WEBPACK_IMPORTED_MODULE_2__);
-/* harmony import */ var _context__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./context */ "./src/context.json");
-var _context__WEBPACK_IMPORTED_MODULE_3___namespace = /*#__PURE__*/__webpack_require__.t(/*! ./context */ "./src/context.json", 1);
+/* harmony import */ var _context_json__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./context.json */ "./src/context.json");
+var _context_json__WEBPACK_IMPORTED_MODULE_3___namespace = /*#__PURE__*/__webpack_require__.t(/*! ./context.json */ "./src/context.json", 1);
 
 
 
@@ -108812,7 +108812,7 @@ const rootPath = new ldflex__WEBPACK_IMPORTED_MODULE_0__["PathFactory"]({
 /* harmony default export */ __webpack_exports__["default"] = (rootPath); // Resolve properties against the Solid JSON-LD context
 
 const subjectPaths = new ldflex__WEBPACK_IMPORTED_MODULE_0__["PathFactory"]({
-  context: _context__WEBPACK_IMPORTED_MODULE_3__
+  context: _context_json__WEBPACK_IMPORTED_MODULE_3__
 });
 /** Starts an LDflex path from the given subject */
 
