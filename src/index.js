@@ -1,7 +1,7 @@
 import { PathFactory } from 'ldflex';
 import ComunicaEngine from 'ldflex-comunica';
 import auth from 'solid-auth-client';
-import context from './context';
+import context from './context.json';
 
 // Export the root path that resolves the first property
 const rootPath = new PathFactory({
