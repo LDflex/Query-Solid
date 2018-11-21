@@ -16,7 +16,7 @@
     "!dist/demo"
   ],
   "dependencies": {
-    "ldflex": "^1.0.0",
+    "ldflex": "^1.2.0",
     "ldflex-comunica": "^1.0.0",
     "solid-auth-client": "^2.2.9"
   },

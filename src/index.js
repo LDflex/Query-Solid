@@ -7,15 +7,15 @@ import context from './context.json';
 const rootPath = new PathFactory({
   handlers: {
     // Creates a path with the current user as subject
-    user: { execute: () => createSubjectPath(getWebId()) },
+    user: () => createSubjectPath(getWebId()),
     // Resolves a string expression into an LDflex path
-    resolve: { execute: () => resolve },
+    resolve: () => resolve,
     // Don't get mistaken for an ES6 module by loaders
-    __esModule: { execute: () => undefined },
+    __esModule: () => undefined,
   },
   resolvers: [
-    // Creates a subject path for all other properties
-    { supports: () => true, resolve: createSubjectPath },
+    // Create a subject path for all other properties
+    createSubjectPath,
   ],
 }).create();
 export default rootPath;
