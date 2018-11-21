@@ -73490,6 +73490,10 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.default = void 0;
 
+var _toSingularHandler = _interopRequireDefault(__webpack_require__(/*! ./toSingularHandler */ "./node_modules/ldflex/lib/toSingularHandler.js"));
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
 /**
  * Executes the query represented by a path.
  *
@@ -73501,7 +73505,10 @@ class ExecuteQueryHandler {
   constructor({
     single
   } = {}) {
-    this._single = single;
+    if (single) {
+      console.warn('The single option is deprecated in favor of toSingularHandler');
+      return (0, _toSingularHandler.default)(this);
+    }
   }
 
   execute(path, pathProxy) {
@@ -73530,12 +73537,11 @@ class ExecuteQueryHandler {
       } : {
         value: this.extractTerm(value)
       };
-    }; // Return either an asynchronous iterator, or a promise to a single value
+    };
 
-
-    return !this._single ? () => ({
+    return () => ({
       next
-    }) : (resolve, reject) => next().then(v => resolve(v.value), reject);
+    });
   }
   /**
    * Extracts the first term from a query result binding.
@@ -73562,6 +73568,44 @@ class Term {
   }
 
 }
+
+/***/ }),
+
+/***/ "./node_modules/ldflex/lib/FallbackHandler.js":
+/*!****************************************************!*\
+  !*** ./node_modules/ldflex/lib/FallbackHandler.js ***!
+  \****************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+
+/**
+ * Converts a handler that returns an asynchronous iterator into a single-value handler.
+ */
+class FallbackHandler {
+  constructor(handlers = []) {
+    this._handlers = handlers;
+  }
+
+  execute(path, proxy) {
+    for (const handler of this._handlers) {
+      const value = handler.execute(path, proxy);
+      if (typeof value !== 'undefined') return value;
+    }
+
+    return undefined;
+  }
+
+}
+
+exports.default = FallbackHandler;
 
 /***/ }),
 
@@ -73633,7 +73677,7 @@ class JSONLDResolver {
     }; // Expand the document to obtain the full IRI
 
     const expanded = await (0, _jsonld.expand)(document);
-    if (expanded.length === 0) throw new Error(`Property '${property}' could not be expanded from the context`);
+    if (expanded.length === 0) throw new Error(`The JSON-LD context cannot expand the '${property}' property`);
 
     _assert.default.equal(expanded.length, 1);
 
@@ -73712,41 +73756,67 @@ exports.default = PathExpressionHandler;
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.default = void 0;
+exports.toHandler = toHandler;
+exports.toResolver = toResolver;
+exports.default = exports.defaultHandlers = void 0;
 
-var _PathProxy = _interopRequireDefault(__webpack_require__(/*! ./PathProxy.js */ "./node_modules/ldflex/lib/PathProxy.js"));
+var _PathProxy = _interopRequireDefault(__webpack_require__(/*! ./PathProxy */ "./node_modules/ldflex/lib/PathProxy.js"));
 
-var _PathExpressionHandler = _interopRequireDefault(__webpack_require__(/*! ./PathExpressionHandler.js */ "./node_modules/ldflex/lib/PathExpressionHandler.js"));
+var _PathExpressionHandler = _interopRequireDefault(__webpack_require__(/*! ./PathExpressionHandler */ "./node_modules/ldflex/lib/PathExpressionHandler.js"));
 
-var _ExecuteQueryHandler = _interopRequireDefault(__webpack_require__(/*! ./ExecuteQueryHandler.js */ "./node_modules/ldflex/lib/ExecuteQueryHandler.js"));
+var _ExecuteQueryHandler = _interopRequireDefault(__webpack_require__(/*! ./ExecuteQueryHandler */ "./node_modules/ldflex/lib/ExecuteQueryHandler.js"));
 
-var _SparqlHandler = _interopRequireDefault(__webpack_require__(/*! ./SparqlHandler.js */ "./node_modules/ldflex/lib/SparqlHandler.js"));
+var _SparqlHandler = _interopRequireDefault(__webpack_require__(/*! ./SparqlHandler */ "./node_modules/ldflex/lib/SparqlHandler.js"));
 
-var _JSONLDResolver = _interopRequireDefault(__webpack_require__(/*! ./JSONLDResolver.js */ "./node_modules/ldflex/lib/JSONLDResolver.js"));
+var _JSONLDResolver = _interopRequireDefault(__webpack_require__(/*! ./JSONLDResolver */ "./node_modules/ldflex/lib/JSONLDResolver.js"));
+
+var _FallbackHandler = _interopRequireDefault(__webpack_require__(/*! ./FallbackHandler */ "./node_modules/ldflex/lib/FallbackHandler.js"));
+
+var _SubjectHandler = _interopRequireDefault(__webpack_require__(/*! ./SubjectHandler */ "./node_modules/ldflex/lib/SubjectHandler.js"));
+
+var _toSingularHandler = _interopRequireDefault(__webpack_require__(/*! ./toSingularHandler */ "./node_modules/ldflex/lib/toSingularHandler.js"));
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-const DEFAULT_HANDLERS = {
+// Default iterator behavior:
+// - first try returning the subject (single-segment path)
+// - then execute a path query (multi-segment path)
+const iteratorHandler = new _FallbackHandler.default([new _SubjectHandler.default(), new _ExecuteQueryHandler.default()]);
+/**
+ * Collection of default property handlers.
+ */
+
+const defaultHandlers = {
+  // Flag to loaders that exported paths are not ES6 modules
+  __esModule: () => undefined,
+  // Add iterable and thenable behavior
+  [Symbol.asyncIterator]: iteratorHandler,
+  then: (0, _toSingularHandler.default)(iteratorHandler),
+  // Add path handling
   pathExpression: new _PathExpressionHandler.default(),
-  sparql: new _SparqlHandler.default(),
-  then: new _ExecuteQueryHandler.default({
-    single: true
-  }),
-  [Symbol.asyncIterator]: new _ExecuteQueryHandler.default()
+  sparql: new _SparqlHandler.default()
 };
 /**
  * A PathFactory creates paths with default settings.
  */
 
+exports.defaultHandlers = defaultHandlers;
+
 class PathFactory {
   constructor(settings, data) {
+    // Store settings and data
     settings = Object.assign(Object.create(null), settings);
     this._settings = settings;
-    this._data = data; // Instantiate PathProxy that will create the paths
+    this._data = data; // Prepare the handlers
 
-    const handlers = settings.handlers || DEFAULT_HANDLERS;
-    const resolvers = settings.resolvers || [];
-    if (settings.context) resolvers.push(new _JSONLDResolver.default(settings.context));
+    const handlers = settings.handlers || defaultHandlers;
+
+    for (var key in handlers) handlers[key] = toHandler(handlers[key]); // Prepare the resolvers
+
+
+    const resolvers = (settings.resolvers || []).map(toResolver);
+    if (settings.context) resolvers.push(new _JSONLDResolver.default(settings.context)); // Instantiate PathProxy that will create the paths
+
     this._pathProxy = new _PathProxy.default({
       handlers,
       resolvers
@@ -73757,7 +73827,7 @@ class PathFactory {
     delete settings.context;
   }
   /**
-   * Creates a PathProxy with the given (optional) settings and data.
+   * Creates a path with the given (optional) settings and data.
    */
 
 
@@ -73769,8 +73839,34 @@ class PathFactory {
   }
 
 }
+/**
+ * Converts a handler function into a handler object.
+ */
+
 
 exports.default = PathFactory;
+
+function toHandler(execute) {
+  return typeof execute.execute === 'function' ? execute : {
+    execute
+  };
+}
+/**
+ * Converts a resolver function into a catch-all resolver object.
+ */
+
+
+function toResolver(resolve) {
+  return typeof resolve.resolve === 'function' ? resolve : {
+    supports,
+    resolve
+  };
+} // Catch-all resolvers support everything
+
+
+function supports() {
+  return true;
+}
 
 /***/ }),
 
@@ -73924,6 +74020,52 @@ exports.default = SparqlHandler;
 
 /***/ }),
 
+/***/ "./node_modules/ldflex/lib/SubjectHandler.js":
+/*!***************************************************!*\
+  !*** ./node_modules/ldflex/lib/SubjectHandler.js ***!
+  \***************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+
+/**
+ * Returns an asynchronous iterator to the subject of a path segment.
+ *
+ * Requires:
+ * - a subject property on the path proxy
+ */
+class PathExpressionHandler {
+  execute({
+    subject
+  }) {
+    // Return the subject if not set
+    if (!subject) return subject; // Return a function that yields an asynchronous iterator to the subject
+
+    return () => ({
+      next: async () => {
+        const value = subject;
+        subject = null;
+        return {
+          value,
+          done: !value
+        };
+      }
+    });
+  }
+
+}
+
+exports.default = PathExpressionHandler;
+
+/***/ }),
+
 /***/ "./node_modules/ldflex/lib/index.js":
 /*!******************************************!*\
   !*** ./node_modules/ldflex/lib/index.js ***!
@@ -73941,6 +74083,12 @@ Object.defineProperty(exports, "ExecuteQueryHandler", {
   enumerable: true,
   get: function () {
     return _ExecuteQueryHandler.default;
+  }
+});
+Object.defineProperty(exports, "FallbackHandler", {
+  enumerable: true,
+  get: function () {
+    return _FallbackHandler.default;
   }
 });
 Object.defineProperty(exports, "JSONLDResolver", {
@@ -73973,20 +74121,73 @@ Object.defineProperty(exports, "SparqlHandler", {
     return _SparqlHandler.default;
   }
 });
+Object.defineProperty(exports, "SubjectHandler", {
+  enumerable: true,
+  get: function () {
+    return _SubjectHandler.default;
+  }
+});
+Object.defineProperty(exports, "toSingularHandler", {
+  enumerable: true,
+  get: function () {
+    return _toSingularHandler.default;
+  }
+});
 
-var _ExecuteQueryHandler = _interopRequireDefault(__webpack_require__(/*! ./ExecuteQueryHandler.js */ "./node_modules/ldflex/lib/ExecuteQueryHandler.js"));
+var _ExecuteQueryHandler = _interopRequireDefault(__webpack_require__(/*! ./ExecuteQueryHandler */ "./node_modules/ldflex/lib/ExecuteQueryHandler.js"));
 
-var _JSONLDResolver = _interopRequireDefault(__webpack_require__(/*! ./JSONLDResolver.js */ "./node_modules/ldflex/lib/JSONLDResolver.js"));
+var _FallbackHandler = _interopRequireDefault(__webpack_require__(/*! ./FallbackHandler */ "./node_modules/ldflex/lib/FallbackHandler.js"));
 
-var _PathExpressionHandler = _interopRequireDefault(__webpack_require__(/*! ./PathExpressionHandler.js */ "./node_modules/ldflex/lib/PathExpressionHandler.js"));
+var _JSONLDResolver = _interopRequireDefault(__webpack_require__(/*! ./JSONLDResolver */ "./node_modules/ldflex/lib/JSONLDResolver.js"));
 
-var _PathProxy = _interopRequireDefault(__webpack_require__(/*! ./PathProxy.js */ "./node_modules/ldflex/lib/PathProxy.js"));
+var _PathExpressionHandler = _interopRequireDefault(__webpack_require__(/*! ./PathExpressionHandler */ "./node_modules/ldflex/lib/PathExpressionHandler.js"));
 
-var _PathFactory = _interopRequireDefault(__webpack_require__(/*! ./PathFactory.js */ "./node_modules/ldflex/lib/PathFactory.js"));
+var _PathProxy = _interopRequireDefault(__webpack_require__(/*! ./PathProxy */ "./node_modules/ldflex/lib/PathProxy.js"));
 
-var _SparqlHandler = _interopRequireDefault(__webpack_require__(/*! ./SparqlHandler.js */ "./node_modules/ldflex/lib/SparqlHandler.js"));
+var _PathFactory = _interopRequireDefault(__webpack_require__(/*! ./PathFactory */ "./node_modules/ldflex/lib/PathFactory.js"));
+
+var _SparqlHandler = _interopRequireDefault(__webpack_require__(/*! ./SparqlHandler */ "./node_modules/ldflex/lib/SparqlHandler.js"));
+
+var _SubjectHandler = _interopRequireDefault(__webpack_require__(/*! ./SubjectHandler */ "./node_modules/ldflex/lib/SubjectHandler.js"));
+
+var _toSingularHandler = _interopRequireDefault(__webpack_require__(/*! ./toSingularHandler */ "./node_modules/ldflex/lib/toSingularHandler.js"));
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+/***/ }),
+
+/***/ "./node_modules/ldflex/lib/toSingularHandler.js":
+/*!******************************************************!*\
+  !*** ./node_modules/ldflex/lib/toSingularHandler.js ***!
+  \******************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = toSingularHandler;
+
+/**
+ * Converts a handler that yields an asynchronous iterator
+ * into a single-value promise handler.
+ */
+function toSingularHandler(handler) {
+  return {
+    execute(path, proxy) {
+      // It the value does not lead to an asynchronous iterator, return as-is
+      const value = handler.execute(path, proxy);
+      if (typeof value !== 'function') return value; // Return a then function to the first item's value
+
+      const iterator = value();
+      return (resolve, reject) => iterator.next().then(item => resolve(item.value), reject);
+    }
+
+  };
+}
 
 /***/ }),
 
@@ -118037,23 +118238,14 @@ var _context_json__WEBPACK_IMPORTED_MODULE_3___namespace = /*#__PURE__*/__webpac
 const rootPath = new ldflex__WEBPACK_IMPORTED_MODULE_0__["PathFactory"]({
   handlers: {
     // Creates a path with the current user as subject
-    user: {
-      execute: () => createSubjectPath(getWebId())
-    },
+    user: () => createSubjectPath(getWebId()),
     // Resolves a string expression into an LDflex path
-    resolve: {
-      execute: () => resolve
-    },
+    resolve: () => _resolve,
     // Don't get mistaken for an ES6 module by loaders
-    __esModule: {
-      execute: () => undefined
-    }
+    __esModule: () => undefined
   },
-  resolvers: [// Creates a subject path for all other properties
-  {
-    supports: () => true,
-    resolve: createSubjectPath
-  }]
+  resolvers: [// Create a subject path for all other properties
+  createSubjectPath]
 }).create();
 /* harmony default export */ __webpack_exports__["default"] = (rootPath); // Resolve properties against the Solid JSON-LD context
 
@@ -118073,7 +118265,7 @@ function createSubjectPath(subject) {
 /* Resolves the string expression to its corresponding LDflex path */
 
 
-function resolve(expression, data = rootPath) {
+function _resolve(expression, data = rootPath) {
   // An expression starts with a property access in dot or bracket notation
   const propertyPath = expression // Add the starting dot if omitted
   .replace(/^(?=[a-z$_])/i, '.') // Add quotes inside of brackets if omitted
