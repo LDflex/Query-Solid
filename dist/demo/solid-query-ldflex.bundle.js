@@ -118202,6 +118202,139 @@ function Node (value, prev, next, list) {
 
 /***/ }),
 
+/***/ "./src/StringToExpressionHandler.js":
+/*!******************************************!*\
+  !*** ./src/StringToExpressionHandler.js ***!
+  \******************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return StringToExpressionHandler; });
+/**
+ * Handler that interprets a string expression as an LDflex path.
+ */
+class StringToExpressionHandler {
+  execute(path, proxy) {
+    // Resolves the given string expression against the LDflex path
+    return (expression = '', ldflex = proxy) => {
+      // An expression starts with a property access in dot or bracket notation
+      const propertyPath = expression // Add the starting dot if omitted
+      .replace(/^(?=[a-z$_])/i, '.') // Add quotes inside of brackets if omitted
+      .replace(/\[([^'"`\](]*)\]/g, '["$1"]'); // Create a function to evaluate the expression
+
+      const body = `"use strict";return ldflex${propertyPath}`;
+      let evaluator;
+
+      try {
+        /* eslint no-new-func: off */
+        evaluator = Function('ldflex', body);
+      } catch (_ref) {
+        let message = _ref.message;
+        throw new Error(`Expression "${expression}" is invalid: ${message}`);
+      } // Evaluate the function
+
+
+      return evaluator(ldflex);
+    };
+  }
+
+}
+
+/***/ }),
+
+/***/ "./src/SubjectPathResolver.js":
+/*!************************************!*\
+  !*** ./src/SubjectPathResolver.js ***!
+  \************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return SubjectPathResolver; });
+/* harmony import */ var _context_json__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./context.json */ "./src/context.json");
+var _context_json__WEBPACK_IMPORTED_MODULE_0___namespace = /*#__PURE__*/__webpack_require__.t(/*! ./context.json */ "./src/context.json", 1);
+/* harmony import */ var ldflex__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ldflex */ "./node_modules/ldflex/lib/index.js");
+/* harmony import */ var ldflex__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(ldflex__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var ldflex_comunica__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ldflex-comunica */ "./node_modules/ldflex-comunica/lib/index.js");
+/* harmony import */ var ldflex_comunica__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(ldflex_comunica__WEBPACK_IMPORTED_MODULE_2__);
+
+
+
+/**
+ * LDflex property resolver that returns a new path
+ * starting from the property name as a subject.
+ *
+ * For example, when triggered as
+ *     data['http://person.example/#me'].friends.firstName
+ * it will create a path with `http://person.example/#me` as subject
+ * and then resolve `friends` and `firstName` against the JSON-LD context.
+ */
+
+class SubjectPathResolver {
+  constructor() {
+    this._subjectPaths = new ldflex__WEBPACK_IMPORTED_MODULE_1__["PathFactory"]({
+      context: _context_json__WEBPACK_IMPORTED_MODULE_0__
+    });
+  }
+
+  resolve(subject) {
+    const queryEngine = new ldflex_comunica__WEBPACK_IMPORTED_MODULE_2___default.a(subject);
+    return this._subjectPaths.create({
+      queryEngine
+    }, {
+      subject
+    });
+  }
+  /** Resolve all string properties (not Symbols) */
+
+
+  supports(property) {
+    return typeof property === 'string';
+  }
+
+}
+
+/***/ }),
+
+/***/ "./src/UserPathHandler.js":
+/*!********************************!*\
+  !*** ./src/UserPathHandler.js ***!
+  \********************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return UserPathHandler; });
+/* harmony import */ var solid_auth_client__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! solid-auth-client */ "solid-auth-client");
+/* harmony import */ var solid_auth_client__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(solid_auth_client__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _SubjectPathResolver__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./SubjectPathResolver */ "./src/SubjectPathResolver.js");
+
+
+/**
+ * Creates a path with the current user as a subject.
+ */
+
+class UserPathHandler extends _SubjectPathResolver__WEBPACK_IMPORTED_MODULE_1__["default"] {
+  execute() {
+    return this.resolve(this.getWebId());
+  }
+  /** Gets the WebID of the logged in user */
+
+
+  async getWebId() {
+    const session = await solid_auth_client__WEBPACK_IMPORTED_MODULE_0___default.a.currentSession();
+    if (!session) throw new Error('Cannot resolve user path: no user logged in');
+    return session.webId;
+  }
+
+}
+
+/***/ }),
+
 /***/ "./src/context.json":
 /*!**************************!*\
   !*** ./src/context.json ***!
@@ -118224,77 +118357,28 @@ module.exports = {"@context":{"acl":"http://www.w3.org/ns/auth/acl#","app":"http
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var ldflex__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ldflex */ "./node_modules/ldflex/lib/index.js");
 /* harmony import */ var ldflex__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(ldflex__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var ldflex_comunica__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ldflex-comunica */ "./node_modules/ldflex-comunica/lib/index.js");
-/* harmony import */ var ldflex_comunica__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(ldflex_comunica__WEBPACK_IMPORTED_MODULE_1__);
-/* harmony import */ var solid_auth_client__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! solid-auth-client */ "solid-auth-client");
-/* harmony import */ var solid_auth_client__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(solid_auth_client__WEBPACK_IMPORTED_MODULE_2__);
-/* harmony import */ var _context_json__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./context.json */ "./src/context.json");
-var _context_json__WEBPACK_IMPORTED_MODULE_3___namespace = /*#__PURE__*/__webpack_require__.t(/*! ./context.json */ "./src/context.json", 1);
+/* harmony import */ var _UserPathHandler__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./UserPathHandler */ "./src/UserPathHandler.js");
+/* harmony import */ var _StringToExpressionHandler__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./StringToExpressionHandler */ "./src/StringToExpressionHandler.js");
+/* harmony import */ var _SubjectPathResolver__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./SubjectPathResolver */ "./src/SubjectPathResolver.js");
 
 
 
- // Export the root path that resolves the first property
+ // Export the root path that resolves the first property access
 
-const rootPath = new ldflex__WEBPACK_IMPORTED_MODULE_0__["PathFactory"]({
+/* harmony default export */ __webpack_exports__["default"] = (new ldflex__WEBPACK_IMPORTED_MODULE_0__["PathFactory"]({
+  // Handlers of specific named properties
   handlers: {
-    // Creates a path with the current user as subject
-    user: () => createSubjectPath(getWebId()),
-    // Resolves a string expression into an LDflex path
-    resolve: () => _resolve,
     // Don't get mistaken for an ES6 module by loaders
-    __esModule: () => undefined
+    __esModule: () => undefined,
+    // The `user` property starts a path with the current user as subject
+    user: new _UserPathHandler__WEBPACK_IMPORTED_MODULE_1__["default"](),
+    // The `resolve` method interprets a string expression as an LDflex path
+    resolve: new _StringToExpressionHandler__WEBPACK_IMPORTED_MODULE_2__["default"]()
   },
-  resolvers: [// Create a subject path for all other properties
-  createSubjectPath]
-}).create();
-/* harmony default export */ __webpack_exports__["default"] = (rootPath); // Resolve properties against the Solid JSON-LD context
-
-const subjectPaths = new ldflex__WEBPACK_IMPORTED_MODULE_0__["PathFactory"]({
-  context: _context_json__WEBPACK_IMPORTED_MODULE_3__
-});
-/** Starts an LDflex path from the given subject */
-
-function createSubjectPath(subject) {
-  const queryEngine = new ldflex_comunica__WEBPACK_IMPORTED_MODULE_1___default.a(subject);
-  return subjectPaths.create({
-    queryEngine
-  }, {
-    subject
-  });
-}
-/* Resolves the string expression to its corresponding LDflex path */
-
-
-function _resolve(expression, data = rootPath) {
-  // An expression starts with a property access in dot or bracket notation
-  const propertyPath = expression // Add the starting dot if omitted
-  .replace(/^(?=[a-z$_])/i, '.') // Add quotes inside of brackets if omitted
-  .replace(/\[([^'"`\](]*)\]/g, '["$1"]'); // Create a function to evaluate the expression
-
-  const body = `"use strict";return solid.data${propertyPath}`;
-  let evaluator;
-
-  try {
-    /* eslint no-new-func: off */
-    evaluator = Function('solid', body);
-  } catch (_ref) {
-    let message = _ref.message;
-    throw new Error(`Expression "${expression}" is invalid: ${message}`);
-  } // Evaluate the function
-
-
-  return evaluator({
-    data
-  });
-}
-/** Gets the WebID of the logged in user */
-
-
-async function getWebId() {
-  const session = await solid_auth_client__WEBPACK_IMPORTED_MODULE_2___default.a.currentSession();
-  if (!session) throw new Error('LDflex "user" expression failed: not logged in');
-  return session.webId;
-}
+  // Handlers of all remaining properties
+  resolvers: [// `data[url]` starts a subject path with the property as subject
+  new _SubjectPathResolver__WEBPACK_IMPORTED_MODULE_3__["default"]()]
+}).create());
 
 /***/ }),
 
