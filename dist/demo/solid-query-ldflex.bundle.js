@@ -118254,14 +118254,8 @@ class StringToExpressionHandler {
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return SubjectPathResolver; });
-/* harmony import */ var _context_json__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./context.json */ "./src/context.json");
-var _context_json__WEBPACK_IMPORTED_MODULE_0___namespace = /*#__PURE__*/__webpack_require__.t(/*! ./context.json */ "./src/context.json", 1);
-/* harmony import */ var ldflex__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ldflex */ "./node_modules/ldflex/lib/index.js");
-/* harmony import */ var ldflex__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(ldflex__WEBPACK_IMPORTED_MODULE_1__);
-/* harmony import */ var ldflex_comunica__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ldflex-comunica */ "./node_modules/ldflex-comunica/lib/index.js");
-/* harmony import */ var ldflex_comunica__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(ldflex_comunica__WEBPACK_IMPORTED_MODULE_2__);
-
-
+/* harmony import */ var ldflex_comunica__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ldflex-comunica */ "./node_modules/ldflex-comunica/lib/index.js");
+/* harmony import */ var ldflex_comunica__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(ldflex_comunica__WEBPACK_IMPORTED_MODULE_0__);
 
 /**
  * LDflex property resolver that returns a new path
@@ -118274,15 +118268,13 @@ var _context_json__WEBPACK_IMPORTED_MODULE_0___namespace = /*#__PURE__*/__webpac
  */
 
 class SubjectPathResolver {
-  constructor() {
-    this._subjectPaths = new ldflex__WEBPACK_IMPORTED_MODULE_1__["PathFactory"]({
-      context: _context_json__WEBPACK_IMPORTED_MODULE_0__
-    });
+  constructor(pathFactory) {
+    this._paths = pathFactory;
   }
 
   resolve(subject) {
-    const queryEngine = new ldflex_comunica__WEBPACK_IMPORTED_MODULE_2___default.a(subject);
-    return this._subjectPaths.create({
+    const queryEngine = new ldflex_comunica__WEBPACK_IMPORTED_MODULE_0___default.a(subject);
+    return this._paths.create({
       queryEngine
     }, {
       subject
@@ -118319,6 +118311,10 @@ __webpack_require__.r(__webpack_exports__);
  */
 
 class UserPathHandler extends _SubjectPathResolver__WEBPACK_IMPORTED_MODULE_1__["default"] {
+  constructor(pathFactory) {
+    super(pathFactory);
+  }
+
   execute() {
     return this.resolve(this.getWebId());
   }
@@ -118357,13 +118353,20 @@ module.exports = {"@context":{"acl":"http://www.w3.org/ns/auth/acl#","app":"http
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var ldflex__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ldflex */ "./node_modules/ldflex/lib/index.js");
 /* harmony import */ var ldflex__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(ldflex__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _UserPathHandler__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./UserPathHandler */ "./src/UserPathHandler.js");
-/* harmony import */ var _StringToExpressionHandler__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./StringToExpressionHandler */ "./src/StringToExpressionHandler.js");
-/* harmony import */ var _SubjectPathResolver__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./SubjectPathResolver */ "./src/SubjectPathResolver.js");
+/* harmony import */ var _context_json__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./context.json */ "./src/context.json");
+var _context_json__WEBPACK_IMPORTED_MODULE_1___namespace = /*#__PURE__*/__webpack_require__.t(/*! ./context.json */ "./src/context.json", 1);
+/* harmony import */ var _UserPathHandler__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./UserPathHandler */ "./src/UserPathHandler.js");
+/* harmony import */ var _StringToExpressionHandler__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./StringToExpressionHandler */ "./src/StringToExpressionHandler.js");
+/* harmony import */ var _SubjectPathResolver__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./SubjectPathResolver */ "./src/SubjectPathResolver.js");
 
 
 
- // Export the root path that resolves the first property access
+
+ // Creates data paths that start from a given subject
+
+const subjectPathFactory = new ldflex__WEBPACK_IMPORTED_MODULE_0__["PathFactory"]({
+  context: _context_json__WEBPACK_IMPORTED_MODULE_1__
+}); // Export the root path that resolves the first property access
 
 /* harmony default export */ __webpack_exports__["default"] = (new ldflex__WEBPACK_IMPORTED_MODULE_0__["PathFactory"]({
   // Handlers of specific named properties
@@ -118371,13 +118374,13 @@ __webpack_require__.r(__webpack_exports__);
     // Don't get mistaken for an ES6 module by loaders
     __esModule: () => undefined,
     // The `user` property starts a path with the current user as subject
-    user: new _UserPathHandler__WEBPACK_IMPORTED_MODULE_1__["default"](),
+    user: new _UserPathHandler__WEBPACK_IMPORTED_MODULE_2__["default"](subjectPathFactory),
     // The `resolve` method interprets a string expression as an LDflex path
-    resolve: new _StringToExpressionHandler__WEBPACK_IMPORTED_MODULE_2__["default"]()
+    resolve: new _StringToExpressionHandler__WEBPACK_IMPORTED_MODULE_3__["default"]()
   },
   // Handlers of all remaining properties
-  resolvers: [// `data[url]` starts a subject path with the property as subject
-  new _SubjectPathResolver__WEBPACK_IMPORTED_MODULE_3__["default"]()]
+  resolvers: [// `data[url]` starts a path with the property as subject
+  new _SubjectPathResolver__WEBPACK_IMPORTED_MODULE_4__["default"](subjectPathFactory)]
 }).create());
 
 /***/ }),
