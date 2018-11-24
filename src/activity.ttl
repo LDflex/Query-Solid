@@ -1,0 +1,4 @@
+_:activity a _:type;
+    <https://www.w3.org/ns/activitystreams#actor> _:actor;
+    <https://www.w3.org/ns/activitystreams#object> _:object;
+    <https://www.w3.org/ns/activitystreams#published> _:published.

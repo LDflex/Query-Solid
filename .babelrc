@@ -1,5 +1,12 @@
 {
   presets: [
     ["@babel/env"],
-  ]
+  ],
+  plugins: [
+    ["babel-plugin-inline-import", {
+      extensions: [
+        ".ttl",
+      ],
+    }],
+  ],
 }

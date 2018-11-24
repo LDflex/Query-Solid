@@ -56,6 +56,12 @@ describe('The @solid/ldflex module', () => {
       expect(data.resolve()).toBe(data);
     });
   });
+
+  describe('the root path', () => {
+    it('resolves to the root', () => {
+      expect(data.user.root.root.user.root).toBe(data);
+    });
+  });
 });
 
 const urlQuery = `SELECT ?firstName WHERE {
