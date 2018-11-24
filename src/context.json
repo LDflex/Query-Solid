@@ -2,7 +2,7 @@
   "@context": {
     "acl":    "http://www.w3.org/ns/auth/acl#",
     "app":    "http://www.w3.org/ns/solid/app#",
-    "as":     "http://www.w3.org/ns/activitystreams#",
+    "as":     "https://www.w3.org/ns/activitystreams#",
     "cert":   "http://www.w3.org/ns/auth/cert#",
     "dc":     "http://purl.org/dc/elements/1.1/",
     "dct":    "http://purl.org/dc/terms/",
