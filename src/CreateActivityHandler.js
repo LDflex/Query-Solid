@@ -24,7 +24,7 @@ export default class CreateActivityHandler {
     const user = root.user;
 
     // Return an iterator over the new activity URLs
-    return () => iterablePromise((async function* () {
+    return () => iterablePromise(async function* () {
       // Create an activity for each object on the path
       const activities = [];
       const inserts = [];
@@ -47,7 +47,7 @@ export default class CreateActivityHandler {
       // Return the URLs of the new activities
       for (const id of activities)
         yield root[new URL(id, location)];
-    })());
+    });
   }
 
   // Creates a Turtle snippet representing the activity
