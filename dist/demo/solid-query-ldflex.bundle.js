@@ -109627,11 +109627,14 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 
 
 const as = _context_json__WEBPACK_IMPORTED_MODULE_1__['@context'].as;
+const defaultHandlers = ldflex__WEBPACK_IMPORTED_MODULE_0__["PathFactory"].defaultHandlers;
 let rootPath; // Creates data paths that start from a given subject
 
 const subjectPathFactory = new ldflex__WEBPACK_IMPORTED_MODULE_0__["PathFactory"]({
   context: _context_json__WEBPACK_IMPORTED_MODULE_1__,
-  handlers: _objectSpread({}, ldflex__WEBPACK_IMPORTED_MODULE_0__["PathFactory"].defaultHandlers, {
+  handlers: _objectSpread({}, defaultHandlers, {
+    // The `root` property restarts the path from the root
+    root: () => rootPath,
     // Activities on paths
     like: new _CreateActivityHandler__WEBPACK_IMPORTED_MODULE_4__["default"]({
       type: `${as}Like`
@@ -109641,22 +109644,18 @@ const subjectPathFactory = new ldflex__WEBPACK_IMPORTED_MODULE_0__["PathFactory"
     }),
     follow: new _CreateActivityHandler__WEBPACK_IMPORTED_MODULE_4__["default"]({
       type: `${as}Follow`
-    }),
-    // The `root` property restarts the path from the root
-    root: () => rootPath
+    })
   })
 }); // Export the root path that resolves the first property access
 
 /* harmony default export */ __webpack_exports__["default"] = (rootPath = new ldflex__WEBPACK_IMPORTED_MODULE_0__["PathFactory"]({
   // Handlers of specific named properties
-  handlers: {
-    // Don't get mistaken for an ES6 module by loaders
-    __esModule: () => undefined,
+  handlers: _objectSpread({}, defaultHandlers, {
+    // The `root` property restarts the path from the root
+    root: () => rootPath,
     // The `user` property starts a path with the current user as subject
-    user: new _UserPathHandler__WEBPACK_IMPORTED_MODULE_2__["default"](subjectPathFactory),
-    // The `resolve` method interprets a string expression as an LDflex path
-    resolve: new ldflex__WEBPACK_IMPORTED_MODULE_0__["StringToLDflexHandler"]()
-  },
+    user: new _UserPathHandler__WEBPACK_IMPORTED_MODULE_2__["default"](subjectPathFactory)
+  }),
   // Handlers of all remaining properties
   resolvers: [// `data[url]` starts a path with the property as subject
   new _SubjectPathResolver__WEBPACK_IMPORTED_MODULE_3__["default"](subjectPathFactory)]
