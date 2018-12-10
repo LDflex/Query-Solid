@@ -1,10 +1,11 @@
-import { PathFactory, StringToLDflexHandler } from 'ldflex';
+import { PathFactory } from 'ldflex';
 import context from './context.json';
 import UserPathHandler from './UserPathHandler';
 import SubjectPathResolver from './SubjectPathResolver';
 import CreateActivityHandler from './CreateActivityHandler';
 
 const { as } = context['@context'];
+const { defaultHandlers } = PathFactory;
 
 let rootPath;
 
@@ -12,7 +13,7 @@ let rootPath;
 const subjectPathFactory = new PathFactory({
   context,
   handlers: {
-    ...PathFactory.defaultHandlers,
+    ...defaultHandlers,
     // Activities on paths
     like: new CreateActivityHandler({ type: `${as}Like` }),
     dislike: new CreateActivityHandler({ type: `${as}Dislike` }),
@@ -26,12 +27,9 @@ const subjectPathFactory = new PathFactory({
 export default rootPath = new PathFactory({
   // Handlers of specific named properties
   handlers: {
-    // Don't get mistaken for an ES6 module by loaders
-    __esModule: () => undefined,
+    ...defaultHandlers,
     // The `user` property starts a path with the current user as subject
     user: new UserPathHandler(subjectPathFactory),
-    // The `resolve` method interprets a string expression as an LDflex path
-    resolve: new StringToLDflexHandler(),
   },
   // Handlers of all remaining properties
   resolvers: [
