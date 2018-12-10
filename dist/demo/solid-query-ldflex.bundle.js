@@ -109633,8 +109633,6 @@ let rootPath; // Creates data paths that start from a given subject
 const subjectPathFactory = new ldflex__WEBPACK_IMPORTED_MODULE_0__["PathFactory"]({
   context: _context_json__WEBPACK_IMPORTED_MODULE_1__,
   handlers: _objectSpread({}, defaultHandlers, {
-    // The `root` property restarts the path from the root
-    root: () => rootPath,
     // Activities on paths
     like: new _CreateActivityHandler__WEBPACK_IMPORTED_MODULE_4__["default"]({
       type: `${as}Like`
@@ -109644,15 +109642,15 @@ const subjectPathFactory = new ldflex__WEBPACK_IMPORTED_MODULE_0__["PathFactory"
     }),
     follow: new _CreateActivityHandler__WEBPACK_IMPORTED_MODULE_4__["default"]({
       type: `${as}Follow`
-    })
+    }),
+    // The `root` property restarts the path from the root
+    root: () => rootPath
   })
 }); // Export the root path that resolves the first property access
 
 /* harmony default export */ __webpack_exports__["default"] = (rootPath = new ldflex__WEBPACK_IMPORTED_MODULE_0__["PathFactory"]({
   // Handlers of specific named properties
   handlers: _objectSpread({}, defaultHandlers, {
-    // The `root` property restarts the path from the root
-    root: () => rootPath,
     // The `user` property starts a path with the current user as subject
     user: new _UserPathHandler__WEBPACK_IMPORTED_MODULE_2__["default"](subjectPathFactory)
   }),
