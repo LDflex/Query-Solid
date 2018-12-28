@@ -136,7 +136,7 @@ For example:
 - `solid.data.resolve('["https://example.org/"].label')` becomes the path `solid.data["https://example.org/"].label`
 
 For convenience, the starting dot
-and quotes inside of braces can be omitted.
+and quotes inside of brackets can be omitted.
 The following strings will all resolve:
 - `'.user.firstName'`
 - `'user.firstName'`
