@@ -66,18 +66,29 @@ For example:
 - FOAF:
   - `solid.data.user.name`
   - `solid.data.user.foaf_name`
+  - `solid.data.user.foaf$name`
   - `solid.data.user['foaf:name']`
   - `solid.data.user['http://xmlns.com/foaf/0.1/name']`
 - vCard:
   - `solid.data.user.vcard_fn`
+  - `solid.data.user.vcard$fn`
   - `solid.data.user['vcard:fn']`
   - `solid.data.user['http://www.w3.org/2006/vcard/ns#fn']`
 - Schema.org:
   - `solid.data.user.schema_name`
+  - `solid.data.user.schema$name`
   - `solid.data.user['schema:name']`
   - `solid.data.user['http://www.schema.org/name']`
 - Custom:
   - `solid.data.user['http://example.org/my-ontology/name']`
+
+The traditional colon syntax for prefixes (`schema:name`) 
+can be substituted with an underscore (`schema_name`)
+or dollar sign (`schema$name`).
+This is because JavaScript keys with a colon
+require quotes (`user['schema:name']`)
+whereas underscores and dollar signs
+can be used freely (`user.schema_name`, `user.schema$name`).
 
 
 ## Installation
