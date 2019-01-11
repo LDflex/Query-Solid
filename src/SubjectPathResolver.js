@@ -1,4 +1,4 @@
-import ComunicaEngine from 'ldflex-comunica';
+import ComunicaUpdateEngine from './ComunicaUpdateEngine';
 
 /**
  * LDflex property resolver that returns a new path
@@ -15,7 +15,7 @@ export default class SubjectPathResolver {
   }
 
   resolve(subject) {
-    const queryEngine = new ComunicaEngine(subject);
+    const queryEngine = new ComunicaUpdateEngine(subject);
     return this._paths.create({ queryEngine }, { subject });
   }
 
