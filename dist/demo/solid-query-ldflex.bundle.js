@@ -15052,7 +15052,7 @@ function fromByteArray (uint8) {
 
   var Buffer;
   try {
-    Buffer = __webpack_require__(/*! buffer */ 5).Buffer;
+    Buffer = __webpack_require__(/*! buffer */ 8).Buffer;
   } catch (e) {
   }
 
@@ -18494,7 +18494,7 @@ if (typeof self === 'object') {
 } else {
   // Node.js or Web worker with no crypto support
   try {
-    var crypto = __webpack_require__(/*! crypto */ 6);
+    var crypto = __webpack_require__(/*! crypto */ 9);
     if (typeof crypto.randomBytes !== 'function')
       throw new Error('Not supported');
 
@@ -55853,18 +55853,6 @@ module.exports = function (value, replacer, space) {
 
 /***/ }),
 
-/***/ "./node_modules/jsonld/browser/ignore.js":
-/*!***********************************************!*\
-  !*** ./node_modules/jsonld/browser/ignore.js ***!
-  \***********************************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-// Ignore module for browserify (see package.json)
-
-
-/***/ }),
-
 /***/ "./node_modules/jsonld/lib/ActiveContextCache.js":
 /*!*******************************************************!*\
   !*** ./node_modules/jsonld/lib/ActiveContextCache.js ***!
@@ -56183,7 +56171,7 @@ module.exports = class Rdfa {
 
 function getXMLSerializerClass() {
   if(typeof XMLSerializer === 'undefined') {
-    return __webpack_require__(/*! xmldom */ "./node_modules/jsonld/browser/ignore.js").XMLSerializer;
+    return __webpack_require__(/*! xmldom */ 1).XMLSerializer;
   }
   return XMLSerializer;
 }
@@ -56401,7 +56389,10 @@ api.compact = ({
     // apply any context defined on an alias of @type
     // if key is @type and any compacted value is a term having a local
     // context, overlay that context
-    const types = element['@type'] || [];
+    let types = element['@type'] || [];
+    if(types.length > 1) {
+      types = Array.from(types).sort();
+    }
     for(const type of types) {
       const compactedType = api.compactIri(
         {activeCtx, iri: type, relativeTo: {vocab: true}});
@@ -58541,8 +58532,8 @@ module.exports = ({
 } = {strictSSL: true, maxRedirects: -1, headers: {}}) => {
   headers = buildHeaders(headers);
   // TODO: use `r2`
-  request = request || __webpack_require__(/*! request */ "./node_modules/jsonld/browser/ignore.js");
-  const http = __webpack_require__(/*! http */ "./node_modules/jsonld/browser/ignore.js");
+  request = request || __webpack_require__(/*! request */ 2);
+  const http = __webpack_require__(/*! http */ 3);
   // TODO: disable cache until HTTP caching implemented
   //const cache = new DocumentCache();
 
@@ -58959,7 +58950,7 @@ api.expand = ({
     const expandedProperty = _expandIri(activeCtx, key, {vocab: true});
     if(expandedProperty === '@type') {
       // set scopped contexts from @type
-      const types = [].concat(element[key]);
+      const types = [].concat(element[key]).sort();
       for(const type of types) {
         const ctx = _getContextValue(activeCtx, type, '@context');
         if(ctx) {
@@ -59462,11 +59453,10 @@ function _expandObject({
     // and value is not, itself, a graph
     // index cases handled above
     if(container.includes('@graph') &&
-      !container.some(key => key === '@id' || key === '@index') &&
-      !_isGraph(expandedValue)) {
-      // ensure expanded value is an array
-      expandedValue = [].concat(expandedValue);
-      expandedValue = {'@graph': expandedValue};
+      !container.some(key => key === '@id' || key === '@index')) {
+      // ensure expanded values are arrays
+      expandedValue = [].concat(expandedValue)
+        .map(v => _isGraph(v) ? v : {'@graph': [].concat(v)});
     }
 
     // FIXME: can this be merged with code above to simplify?
@@ -60881,7 +60871,7 @@ api.isBlankNode = v => {
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-/* WEBPACK VAR INJECTION */(function(process, global) {var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/**
+/* WEBPACK VAR INJECTION */(function(process, global) {/**
  * A JavaScript implementation of the JSON-LD API.
  *
  * @author Dave Longley
@@ -60916,8 +60906,6 @@ api.isBlankNode = v => {
  * NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
-(function() {
-
 const canonize = __webpack_require__(/*! rdf-canonize */ "./node_modules/rdf-canonize/lib/index.js");
 const util = __webpack_require__(/*! ./util */ "./node_modules/jsonld/lib/util.js");
 const IdentifierIssuer = util.IdentifierIssuer;
@@ -61952,36 +61940,10 @@ const factory = function() {
   });
 };
 
-if(!_nodejs && ( true && __webpack_require__(/*! !webpack amd options */ "./node_modules/webpack/buildin/amd-options.js"))) {
-  // export AMD API
-  !(__WEBPACK_AMD_DEFINE_ARRAY__ = [], __WEBPACK_AMD_DEFINE_RESULT__ = (function() {
-    // now that module is defined, wrap main jsonld API instance
-    wrapper(factory);
-    return factory;
-  }).apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__),
-				__WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));
-} else {
-  // wrap the main jsonld API instance
-  wrapper(factory);
-
-  if( true && module.exports) {
-    // export CommonJS/nodejs API
-    module.exports = factory;
-  }
-
-  if(_browser) {
-    // export simple browser API
-    if(typeof jsonld === 'undefined') {
-      jsonld = jsonldjs = factory;
-    } else {
-      jsonldjs = factory;
-    }
-  }
-}
-
-return factory;
-
-})();
+// wrap the main jsonld API instance
+wrapper(factory);
+// export API
+module.exports = factory;
 
 /* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./../../process/browser.js */ "./node_modules/process/browser.js"), __webpack_require__(/*! ./../../webpack/buildin/global.js */ "./node_modules/webpack/buildin/global.js")))
 
@@ -91414,8 +91376,6 @@ module.exports = class MessageDigest {
  */
 
 
-const util = __webpack_require__(/*! util */ "./node_modules/util/util.js");
-
 const TERMS = ['subject', 'predicate', 'object', 'graph'];
 const RDF = 'http://www.w3.org/1999/02/22-rdf-syntax-ns#';
 const RDF_LANGSTRING = RDF + 'langString';
@@ -91514,7 +91474,7 @@ module.exports = class NQuads {
       const quad = {};
 
       // get subject
-      if(!util.isUndefined(match[1])) {
+      if(match[1] !== undefined) {
         quad.subject = {termType: 'NamedNode', value: match[1]};
       } else {
         quad.subject = {termType: 'BlankNode', value: match[2]};
@@ -91524,9 +91484,9 @@ module.exports = class NQuads {
       quad.predicate = {termType: 'NamedNode', value: match[3]};
 
       // get object
-      if(!util.isUndefined(match[4])) {
+      if(match[4] !== undefined) {
         quad.object = {termType: 'NamedNode', value: match[4]};
-      } else if(!util.isUndefined(match[5])) {
+      } else if(match[5] !== undefined) {
         quad.object = {termType: 'BlankNode', value: match[5]};
       } else {
         quad.object = {
@@ -91536,30 +91496,24 @@ module.exports = class NQuads {
             termType: 'NamedNode'
           }
         };
-        if(!util.isUndefined(match[7])) {
+        if(match[7] !== undefined) {
           quad.object.datatype.value = match[7];
-        } else if(!util.isUndefined(match[8])) {
+        } else if(match[8] !== undefined) {
           quad.object.datatype.value = RDF_LANGSTRING;
           quad.object.language = match[8];
         } else {
           quad.object.datatype.value = XSD_STRING;
         }
-        const unescaped = match[6]
-          .replace(/\\"/g, '"')
-          .replace(/\\t/g, '\t')
-          .replace(/\\n/g, '\n')
-          .replace(/\\r/g, '\r')
-          .replace(/\\\\/g, '\\');
-        quad.object.value = unescaped;
+        quad.object.value = _unescape(match[6]);
       }
 
       // get graph
-      if(!util.isUndefined(match[9])) {
+      if(match[9] !== undefined) {
         quad.graph = {
           termType: 'NamedNode',
           value: match[9]
         };
-      } else if(!util.isUndefined(match[10])) {
+      } else if(match[10] !== undefined) {
         quad.graph = {
           termType: 'BlankNode',
           value: match[10]
@@ -91643,13 +91597,7 @@ module.exports = class NQuads {
     } else if(o.termType === 'BlankNode') {
       nquad += o.value;
     } else {
-      const escaped = o.value
-        .replace(/\\/g, '\\\\')
-        .replace(/\t/g, '\\t')
-        .replace(/\n/g, '\\n')
-        .replace(/\r/g, '\\r')
-        .replace(/\"/g, '\\"');
-      nquad += '"' + escaped + '"';
+      nquad += '"' + _escape(o.value) + '"';
       if(o.datatype.value === RDF_LANGSTRING) {
         if(o.language) {
           nquad += '@' + o.language;
@@ -91688,11 +91636,11 @@ module.exports = class NQuads {
       'literal': 'Literal'
     };
 
-    for(let graphName in dataset) {
+    for(const graphName in dataset) {
       const triples = dataset[graphName];
       triples.forEach(triple => {
         const quad = {};
-        for(let componentName in triple) {
+        for(const componentName in triple) {
           const oldComponent = triple[componentName];
           const newComponent = {
             termType: termTypeMap[oldComponent.type],
@@ -91723,7 +91671,7 @@ module.exports = class NQuads {
           };
         } else {
           quad.graph = {
-            termType: graphName.startsWith('_:') ? 'BlankNode': 'NamedNode',
+            termType: graphName.startsWith('_:') ? 'BlankNode' : 'NamedNode',
             value: graphName
           };
         }
@@ -91744,7 +91692,7 @@ module.exports = class NQuads {
  * @return true if the triples are the same, false if not.
  */
 function _compareTriples(t1, t2) {
-  for(let k in t1) {
+  for(const k in t1) {
     if(t1[k].termType !== t2[k].termType || t1[k].value !== t2[k].value) {
       return false;
     }
@@ -91757,6 +91705,50 @@ function _compareTriples(t1, t2) {
     (t1.object.datatype.value === t2.object.datatype.value) &&
     (t1.object.language === t2.object.language)
   );
+}
+
+const _escapeRegex = /["\\\n\r]/g;
+/**
+ * Escape string to N-Quads literal
+ */
+function _escape(s) {
+  return s.replace(_escapeRegex, function(match) {
+    switch(match) {
+      case '"': return '\\"';
+      case '\\': return '\\\\';
+      case '\n': return '\\n';
+      case '\r': return '\\r';
+    }
+  });
+}
+
+const _unescapeRegex =
+  /(?:\\([tbnrf"'\\]))|(?:\\u([0-9A-Fa-f]{4}))|(?:\\U([0-9A-Fa-f]{8}))/g;
+/**
+ * Unescape N-Quads literal to string
+ */
+function _unescape(s) {
+  return s.replace(_unescapeRegex, function(match, code, u, U) {
+    if(code) {
+      switch(code) {
+        case 't': return '\t';
+        case 'b': return '\b';
+        case 'n': return '\n';
+        case 'r': return '\r';
+        case 'f': return '\f';
+        case '"': return '"';
+        case '\'': return '\'';
+        case '\\': return '\\';
+      }
+    }
+    if(u) {
+      return String.fromCharCode(parseInt(u, 16));
+    }
+    if(U) {
+      // FIXME: support larger values
+      throw new Error('Unsupported U escape');
+    }
+  });
 }
 
 
@@ -93156,7 +93148,7 @@ module.exports = class URDNA2012Sync extends URDNA2015Sync {
  * Redistributions in binary form must reproduce the above copyright
  * notice, this list of conditions and the following disclaimer in the
  * documentation and/or other materials provided with the distribution.
- *.now
+ *
  * Neither the name of the Digital Bazaar, Inc. nor the names of its
  * contributors may be used to endorse or promote products derived from
  * this software without specific prior written permission.
@@ -93181,9 +93173,10 @@ const URGNA2012 = __webpack_require__(/*! ./URGNA2012 */ "./node_modules/rdf-can
 const URDNA2015Sync = __webpack_require__(/*! ./URDNA2015Sync */ "./node_modules/rdf-canonize/lib/URDNA2015Sync.js");
 const URGNA2012Sync = __webpack_require__(/*! ./URGNA2012Sync */ "./node_modules/rdf-canonize/lib/URGNA2012Sync.js");
 
-let URDNA2015Native;
+// optional native support
+let rdfCanonizeNative;
 try {
-  URDNA2015Native = __webpack_require__(/*! bindings */ 0)('urdna2015');
+  rdfCanonizeNative = __webpack_require__(/*! rdf-canonize-native */ 0);
 } catch(e) {}
 
 const api = {};
@@ -93194,15 +93187,28 @@ api.NQuads = __webpack_require__(/*! ./NQuads */ "./node_modules/rdf-canonize/li
 api.IdentifierIssuer = __webpack_require__(/*! ./IdentifierIssuer */ "./node_modules/rdf-canonize/lib/IdentifierIssuer.js");
 
 /**
+ * Get or set native API.
+ *
+ * @param api the native API.
+ *
+ * @return the currently set native API.
+ */
+api._rdfCanonizeNative = function(api) {
+  if(api) {
+    rdfCanonizeNative = api;
+  }
+  return rdfCanonizeNative;
+}
+
+/**
  * Asynchronously canonizes an RDF dataset.
  *
  * @param dataset the dataset to canonize.
- * @param [options] the options to use:
- *          [algorithm] the canonicalization algorithm to use, `URDNA2015` or
- *            `URGNA2012` (default: `URGNA2012`).
- *          [usePureJavaScript] only use JavaScript implementation
- *            (default: false).
- * @param callback(err, canonical) called once the operation completes.
+ * @param options the options to use:
+ *          algorithm the canonicalization algorithm to use, `URDNA2015` or
+ *            `URGNA2012`.
+ *          [useNative] use native implementation (default: false).
+ * @param [callback(err, canonical)] called once the operation completes.
  *
  * @return a Promise that resolves to the canonicalized RDF Dataset.
  */
@@ -93214,7 +93220,7 @@ api.canonize = util.callbackify(async function(dataset, options) {
         return reject(err);
       }
 
-      /*if(options.format === 'application/nquads') {
+      /*if(options.format === 'application/n-quads') {
         canonical = canonical.join('');
       }
       canonical = _parseNQuads(canonical.join(''));*/
@@ -93229,17 +93235,23 @@ api.canonize = util.callbackify(async function(dataset, options) {
   }
 
   // TODO: convert algorithms to Promise-based async
-  if(options.algorithm === 'URDNA2015') {
-    if(URDNA2015Native && !options.usePureJavaScript) {
-      URDNA2015Native.main({dataset}, callback);
+  if(options.useNative) {
+    if(rdfCanonizeNative) {
+      rdfCanonizeNative.canonize(dataset, options, callback);
     } else {
-      new URDNA2015(options).main(dataset, callback);
+      throw new Error('rdf-canonize-native not available');
     }
-  } else if(options.algorithm === 'URGNA2012') {
-    new URGNA2012(options).main(dataset, callback);
   } else {
-    throw new Error(
-      'Invalid RDF Dataset Canonicalization algorithm: ' + options.algorithm);
+    if(options.algorithm === 'URDNA2015') {
+      new URDNA2015(options).main(dataset, callback);
+    } else if(options.algorithm === 'URGNA2012') {
+      new URGNA2012(options).main(dataset, callback);
+    } else if(!('algorithm' in options)) {
+      throw new Error('No RDF Dataset Canonicalization algorithm specified.');
+    } else {
+      throw new Error(
+        'Invalid RDF Dataset Canonicalization algorithm: ' + options.algorithm);
+    }
   }
 
   return promise;
@@ -93249,9 +93261,10 @@ api.canonize = util.callbackify(async function(dataset, options) {
  * Synchronously canonizes an RDF dataset.
  *
  * @param dataset the dataset to canonize.
- * @param [options] the options to use:
- *          [algorithm] the canonicalization algorithm to use, `URDNA2015` or
- *            `URGNA2012` (default: `URGNA2012`).
+ * @param options the options to use:
+ *          algorithm the canonicalization algorithm to use, `URDNA2015` or
+ *            `URGNA2012`.
+ *          [useNative] use native implementation (default: false).
  *
  * @return the RDF dataset in canonical form.
  */
@@ -93261,14 +93274,19 @@ api.canonizeSync = function(dataset, options) {
     dataset = api.NQuads.legacyDatasetToQuads(dataset);
   }
 
-  if(options.algorithm === 'URDNA2015') {
-    if(URDNA2015Native && !options.usePureJavaScript) {
-      return URDNA2015Native.mainSync({dataset});
+  if(options.useNative) {
+    if(rdfCanonizeNative) {
+      return rdfCanonizeNative.canonizeSync(dataset, options);
     }
-    return new URDNA2015Sync(options).main(dataset);
+    throw new Error('rdf-canonize-native not available');
   }
-  if(options.algorithm === 'URGNA2012') {
+  if(options.algorithm === 'URDNA2015') {
+    return new URDNA2015Sync(options).main(dataset);
+  } else if(options.algorithm === 'URGNA2012') {
     return new URGNA2012Sync(options).main(dataset);
+  }
+  if(!('algorithm' in options)) {
+    throw new Error('No RDF Dataset Canonicalization algorithm specified.');
   }
   throw new Error(
     'Invalid RDF Dataset Canonicalization algorithm: ' + options.algorithm);
@@ -94820,7 +94838,7 @@ util.inherits = __webpack_require__(/*! inherits */ "./node_modules/inherits/inh
 /*</replacement>*/
 
 /*<replacement>*/
-var debugUtil = __webpack_require__(/*! util */ 3);
+var debugUtil = __webpack_require__(/*! util */ 6);
 var debug = void 0;
 if (debugUtil && debugUtil.debuglog) {
   debug = debugUtil.debuglog('stream');
@@ -96709,7 +96727,7 @@ Writable.prototype._destroy = function (err, cb) {
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
 var Buffer = __webpack_require__(/*! safe-buffer */ "./node_modules/safe-buffer/index.js").Buffer;
-var util = __webpack_require__(/*! util */ 4);
+var util = __webpack_require__(/*! util */ 7);
 
 function copyBuffer(src, target, offset) {
   src.copy(target, offset);
@@ -104164,7 +104182,7 @@ exports.main = function commonjsMain (args) {
         console.log('Usage: '+args[0]+' FILE');
         process.exit(1);
     }
-    var source = __webpack_require__(/*! fs */ 1).readFileSync(__webpack_require__(/*! path */ 2).normalize(args[1]), "utf8");
+    var source = __webpack_require__(/*! fs */ 4).readFileSync(__webpack_require__(/*! path */ 5).normalize(args[1]), "utf8");
     return exports.parser.parse(source);
 };
 if ( true && __webpack_require__.c[__webpack_require__.s] === module) {
@@ -108005,20 +108023,6 @@ exports.createContext = Script.createContext = function (context) {
 
 /***/ }),
 
-/***/ "./node_modules/webpack/buildin/amd-options.js":
-/*!****************************************!*\
-  !*** (webpack)/buildin/amd-options.js ***!
-  \****************************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-/* WEBPACK VAR INJECTION */(function(__webpack_amd_options__) {/* globals __webpack_amd_options__ */
-module.exports = __webpack_amd_options__;
-
-/* WEBPACK VAR INJECTION */}.call(this, {}))
-
-/***/ }),
-
 /***/ "./node_modules/webpack/buildin/global.js":
 /*!***********************************!*\
   !*** (webpack)/buildin/global.js ***!
@@ -109662,9 +109666,9 @@ const subjectPathFactory = new ldflex__WEBPACK_IMPORTED_MODULE_0__["PathFactory"
 /***/ }),
 
 /***/ 0:
-/*!**************************!*\
-  !*** bindings (ignored) ***!
-  \**************************/
+/*!*************************************!*\
+  !*** rdf-canonize-native (ignored) ***!
+  \*************************************/
 /*! no static exports found */
 /***/ (function(module, exports) {
 
@@ -109673,6 +109677,39 @@ const subjectPathFactory = new ldflex__WEBPACK_IMPORTED_MODULE_0__["PathFactory"
 /***/ }),
 
 /***/ 1:
+/*!************************!*\
+  !*** xmldom (ignored) ***!
+  \************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+/* (ignored) */
+
+/***/ }),
+
+/***/ 2:
+/*!*************************!*\
+  !*** request (ignored) ***!
+  \*************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+/* (ignored) */
+
+/***/ }),
+
+/***/ 3:
+/*!**********************!*\
+  !*** http (ignored) ***!
+  \**********************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+/* (ignored) */
+
+/***/ }),
+
+/***/ 4:
 /*!********************!*\
   !*** fs (ignored) ***!
   \********************/
@@ -109683,7 +109720,7 @@ const subjectPathFactory = new ldflex__WEBPACK_IMPORTED_MODULE_0__["PathFactory"
 
 /***/ }),
 
-/***/ 2:
+/***/ 5:
 /*!**********************!*\
   !*** path (ignored) ***!
   \**********************/
@@ -109694,7 +109731,7 @@ const subjectPathFactory = new ldflex__WEBPACK_IMPORTED_MODULE_0__["PathFactory"
 
 /***/ }),
 
-/***/ 3:
+/***/ 6:
 /*!**********************!*\
   !*** util (ignored) ***!
   \**********************/
@@ -109705,7 +109742,7 @@ const subjectPathFactory = new ldflex__WEBPACK_IMPORTED_MODULE_0__["PathFactory"
 
 /***/ }),
 
-/***/ 4:
+/***/ 7:
 /*!**********************!*\
   !*** util (ignored) ***!
   \**********************/
@@ -109716,7 +109753,7 @@ const subjectPathFactory = new ldflex__WEBPACK_IMPORTED_MODULE_0__["PathFactory"
 
 /***/ }),
 
-/***/ 5:
+/***/ 8:
 /*!************************!*\
   !*** buffer (ignored) ***!
   \************************/
@@ -109727,7 +109764,7 @@ const subjectPathFactory = new ldflex__WEBPACK_IMPORTED_MODULE_0__["PathFactory"
 
 /***/ }),
 
-/***/ 6:
+/***/ 9:
 /*!************************!*\
   !*** crypto (ignored) ***!
   \************************/
