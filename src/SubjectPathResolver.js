@@ -1,3 +1,4 @@
+import { namedNode } from '@rdfjs/data-model';
 import ComunicaUpdateEngine from './ComunicaUpdateEngine';
 
 /**
@@ -14,13 +15,17 @@ export default class SubjectPathResolver {
     this._paths = pathFactory;
   }
 
-  resolve(subject) {
-    const queryEngine = new ComunicaUpdateEngine(subject);
-    return this._paths.create({ queryEngine }, { subject });
-  }
-
   /** Resolve all string properties (not Symbols) */
   supports(property) {
     return typeof property === 'string';
+  }
+
+  resolve(property) {
+    return this._createSubjectPath(namedNode(property));
+  }
+
+  _createSubjectPath(subject) {
+    const queryEngine = new ComunicaUpdateEngine(subject);
+    return this._paths.create({ queryEngine }, { subject });
   }
 }

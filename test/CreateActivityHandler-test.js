@@ -7,7 +7,7 @@ describe('a CreateActivityHandler instance', () => {
 
   describe('creating a like', () => {
     beforeEach(async () => {
-      const like = handler.execute(null, createProxy());
+      const like = handler.handle(null, createProxy());
       expect(like).toBeInstanceOf(Function);
       await like();
     });

@@ -1,6 +1,7 @@
 import data from '../src';
 import auth from 'solid-auth-client';
 import ComunicaEngine from 'ldflex-comunica';
+import { namedNode } from '@rdfjs/data-model';
 
 describe('The @solid/ldflex module', () => {
   it('is an ES6 module with a default export', () => {
@@ -17,10 +18,10 @@ describe('The @solid/ldflex module', () => {
       await data[url].firstName;
     });
 
-    it('executes the query', async () => {
+    it('executes the query', () => {
       const { constructor, execute } = ComunicaEngine.prototype;
       expect(constructor).toHaveBeenCalledTimes(1);
-      expect(constructor).toHaveBeenCalledWith(url);
+      expect(constructor.mock.calls[0][0]).toEqual(namedNode(url));
       expect(execute).toHaveBeenCalledTimes(1);
       expect(execute).toHaveBeenCalledWith(urlQuery);
     });
@@ -44,7 +45,7 @@ describe('The @solid/ldflex module', () => {
       it('executes the query', async () => {
         const { constructor, execute } = ComunicaEngine.prototype;
         expect(constructor).toHaveBeenCalledTimes(1);
-        await expect(constructor.mock.calls[0][0]).resolves.toBe(webId);
+        await expect(constructor.mock.calls[0][0]).resolves.toEqual(namedNode(webId));
         expect(execute).toHaveBeenCalledTimes(1);
         expect(execute).toHaveBeenCalledWith(userQuery);
       });

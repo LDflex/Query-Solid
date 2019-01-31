@@ -1,11 +1,10 @@
-import { PathFactory } from 'ldflex';
+import { PathFactory, defaultHandlers } from 'ldflex';
 import context from './context.json';
 import UserPathHandler from './UserPathHandler';
 import SubjectPathResolver from './SubjectPathResolver';
 import CreateActivityHandler from './CreateActivityHandler';
 
 const { as } = context['@context'];
-const { defaultHandlers } = PathFactory;
 
 let rootPath;
 

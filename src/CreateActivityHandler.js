@@ -1,7 +1,7 @@
 import auth from 'solid-auth-client';
 import uuid from 'uuid/v4';
 import context from './context.json';
-import { iterablePromise } from 'ldflex';
+import { toIterablePromise } from 'ldflex';
 import activityTemplate from './activity.ttl';
 
 const { as, xsd } = context['@context'];
@@ -18,13 +18,13 @@ export default class CreateActivityHandler {
     this._path = path;
   }
 
-  execute(path, proxy) {
+  handle(path, proxy) {
     const self = this;
     const root = proxy.root;
     const user = root.user;
 
     // Return an iterator over the new activity URLs
-    return () => iterablePromise(async function* () {
+    return () => toIterablePromise(async function* () {
       // Create an activity for each object on the path
       const activities = [];
       const inserts = [];
