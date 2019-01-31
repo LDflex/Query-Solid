@@ -87,6 +87,271 @@ var solid = typeof solid === "object" ? solid : {}; solid["data"] =
 /************************************************************************/
 /******/ ({
 
+/***/ "./node_modules/@babel/runtime/helpers/AsyncGenerator.js":
+/*!***************************************************************!*\
+  !*** ./node_modules/@babel/runtime/helpers/AsyncGenerator.js ***!
+  \***************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+var AwaitValue = __webpack_require__(/*! ./AwaitValue */ "./node_modules/@babel/runtime/helpers/AwaitValue.js");
+
+function AsyncGenerator(gen) {
+  var front, back;
+
+  function send(key, arg) {
+    return new Promise(function (resolve, reject) {
+      var request = {
+        key: key,
+        arg: arg,
+        resolve: resolve,
+        reject: reject,
+        next: null
+      };
+
+      if (back) {
+        back = back.next = request;
+      } else {
+        front = back = request;
+        resume(key, arg);
+      }
+    });
+  }
+
+  function resume(key, arg) {
+    try {
+      var result = gen[key](arg);
+      var value = result.value;
+      var wrappedAwait = value instanceof AwaitValue;
+      Promise.resolve(wrappedAwait ? value.wrapped : value).then(function (arg) {
+        if (wrappedAwait) {
+          resume("next", arg);
+          return;
+        }
+
+        settle(result.done ? "return" : "normal", arg);
+      }, function (err) {
+        resume("throw", err);
+      });
+    } catch (err) {
+      settle("throw", err);
+    }
+  }
+
+  function settle(type, value) {
+    switch (type) {
+      case "return":
+        front.resolve({
+          value: value,
+          done: true
+        });
+        break;
+
+      case "throw":
+        front.reject(value);
+        break;
+
+      default:
+        front.resolve({
+          value: value,
+          done: false
+        });
+        break;
+    }
+
+    front = front.next;
+
+    if (front) {
+      resume(front.key, front.arg);
+    } else {
+      back = null;
+    }
+  }
+
+  this._invoke = send;
+
+  if (typeof gen.return !== "function") {
+    this.return = undefined;
+  }
+}
+
+if (typeof Symbol === "function" && Symbol.asyncIterator) {
+  AsyncGenerator.prototype[Symbol.asyncIterator] = function () {
+    return this;
+  };
+}
+
+AsyncGenerator.prototype.next = function (arg) {
+  return this._invoke("next", arg);
+};
+
+AsyncGenerator.prototype.throw = function (arg) {
+  return this._invoke("throw", arg);
+};
+
+AsyncGenerator.prototype.return = function (arg) {
+  return this._invoke("return", arg);
+};
+
+module.exports = AsyncGenerator;
+
+/***/ }),
+
+/***/ "./node_modules/@babel/runtime/helpers/AwaitValue.js":
+/*!***********************************************************!*\
+  !*** ./node_modules/@babel/runtime/helpers/AwaitValue.js ***!
+  \***********************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+function _AwaitValue(value) {
+  this.wrapped = value;
+}
+
+module.exports = _AwaitValue;
+
+/***/ }),
+
+/***/ "./node_modules/@babel/runtime/helpers/asyncIterator.js":
+/*!**************************************************************!*\
+  !*** ./node_modules/@babel/runtime/helpers/asyncIterator.js ***!
+  \**************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+function _asyncIterator(iterable) {
+  var method;
+
+  if (typeof Symbol === "function") {
+    if (Symbol.asyncIterator) {
+      method = iterable[Symbol.asyncIterator];
+      if (method != null) return method.call(iterable);
+    }
+
+    if (Symbol.iterator) {
+      method = iterable[Symbol.iterator];
+      if (method != null) return method.call(iterable);
+    }
+  }
+
+  throw new TypeError("Object is not async iterable");
+}
+
+module.exports = _asyncIterator;
+
+/***/ }),
+
+/***/ "./node_modules/@babel/runtime/helpers/awaitAsyncGenerator.js":
+/*!********************************************************************!*\
+  !*** ./node_modules/@babel/runtime/helpers/awaitAsyncGenerator.js ***!
+  \********************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+var AwaitValue = __webpack_require__(/*! ./AwaitValue */ "./node_modules/@babel/runtime/helpers/AwaitValue.js");
+
+function _awaitAsyncGenerator(value) {
+  return new AwaitValue(value);
+}
+
+module.exports = _awaitAsyncGenerator;
+
+/***/ }),
+
+/***/ "./node_modules/@babel/runtime/helpers/defineProperty.js":
+/*!***************************************************************!*\
+  !*** ./node_modules/@babel/runtime/helpers/defineProperty.js ***!
+  \***************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+function _defineProperty(obj, key, value) {
+  if (key in obj) {
+    Object.defineProperty(obj, key, {
+      value: value,
+      enumerable: true,
+      configurable: true,
+      writable: true
+    });
+  } else {
+    obj[key] = value;
+  }
+
+  return obj;
+}
+
+module.exports = _defineProperty;
+
+/***/ }),
+
+/***/ "./node_modules/@babel/runtime/helpers/interopRequireDefault.js":
+/*!**********************************************************************!*\
+  !*** ./node_modules/@babel/runtime/helpers/interopRequireDefault.js ***!
+  \**********************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+function _interopRequireDefault(obj) {
+  return obj && obj.__esModule ? obj : {
+    default: obj
+  };
+}
+
+module.exports = _interopRequireDefault;
+
+/***/ }),
+
+/***/ "./node_modules/@babel/runtime/helpers/objectSpread.js":
+/*!*************************************************************!*\
+  !*** ./node_modules/@babel/runtime/helpers/objectSpread.js ***!
+  \*************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+var defineProperty = __webpack_require__(/*! ./defineProperty */ "./node_modules/@babel/runtime/helpers/defineProperty.js");
+
+function _objectSpread(target) {
+  for (var i = 1; i < arguments.length; i++) {
+    var source = arguments[i] != null ? arguments[i] : {};
+    var ownKeys = Object.keys(source);
+
+    if (typeof Object.getOwnPropertySymbols === 'function') {
+      ownKeys = ownKeys.concat(Object.getOwnPropertySymbols(source).filter(function (sym) {
+        return Object.getOwnPropertyDescriptor(source, sym).enumerable;
+      }));
+    }
+
+    ownKeys.forEach(function (key) {
+      defineProperty(target, key, source[key]);
+    });
+  }
+
+  return target;
+}
+
+module.exports = _objectSpread;
+
+/***/ }),
+
+/***/ "./node_modules/@babel/runtime/helpers/wrapAsyncGenerator.js":
+/*!*******************************************************************!*\
+  !*** ./node_modules/@babel/runtime/helpers/wrapAsyncGenerator.js ***!
+  \*******************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+var AsyncGenerator = __webpack_require__(/*! ./AsyncGenerator */ "./node_modules/@babel/runtime/helpers/AsyncGenerator.js");
+
+function _wrapAsyncGenerator(fn) {
+  return function () {
+    return new AsyncGenerator(fn.apply(this, arguments));
+  };
+}
+
+module.exports = _wrapAsyncGenerator;
+
+/***/ }),
+
 /***/ "./node_modules/@comunica/actor-abstract-bindings-hash/index.js":
 /*!**********************************************************************!*\
   !*** ./node_modules/@comunica/actor-abstract-bindings-hash/index.js ***!
@@ -66321,7 +66586,7 @@ class ComunicaEngine {
   }
 
   getDocument(subject) {
-    return subject.replace(/#.*/, '');
+    return subject.value.replace(/#.*/, '');
   }
   /**
    * Creates an asynchronous iterable
@@ -66422,6 +66687,125 @@ exports.default = _default;
 
 /***/ }),
 
+/***/ "./node_modules/ldflex/lib/DataHandler.js":
+/*!************************************************!*\
+  !*** ./node_modules/ldflex/lib/DataHandler.js ***!
+  \************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+
+/**
+ * Resolves to the given item in the path data.
+ * For example, new DataHandler({}, 'foo', 'bar')
+ * will return pathData.foo.bar.
+ *
+ * Resolution can optionally be async,
+ * and/or be behind a function call.
+ */
+class DataHandler {
+  constructor(options, ...dataProperties) {
+    this._isAsync = options.async;
+    this._isFunction = options.function;
+    this._dataProperties = dataProperties;
+  }
+
+  static sync(...dataProperties) {
+    return new DataHandler({
+      async: false
+    }, ...dataProperties);
+  }
+
+  static syncFunction(...dataProperties) {
+    return new DataHandler({
+      async: false,
+      function: true
+    }, ...dataProperties);
+  }
+
+  static async(...dataProperties) {
+    return new DataHandler({
+      async: true
+    }, ...dataProperties);
+  }
+
+  static asyncFunction(...dataProperties) {
+    return new DataHandler({
+      async: true,
+      function: true
+    }, ...dataProperties);
+  }
+  /**
+   * Resolve the data path.
+   */
+
+
+  handle(pathData) {
+    return !this._isFunction ? this._resolveDataPath(pathData) : () => this._resolveDataPath(pathData);
+  }
+
+  _resolveDataPath(data) {
+    // Resolve synchronous property access
+    if (!this._isAsync) {
+      for (const property of this._dataProperties) data = data && data[property];
+
+      return data;
+    } // Resolve asynchronous property access
+
+
+    return new Promise(async resolve => {
+      for (const property of this._dataProperties) data = data && (await data[property]);
+
+      resolve(data);
+    });
+  }
+
+}
+
+exports.default = DataHandler;
+
+/***/ }),
+
+/***/ "./node_modules/ldflex/lib/DeleteFunctionHandler.js":
+/*!**********************************************************!*\
+  !*** ./node_modules/ldflex/lib/DeleteFunctionHandler.js ***!
+  \**********************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+var _interopRequireDefault = __webpack_require__(/*! @babel/runtime/helpers/interopRequireDefault */ "./node_modules/@babel/runtime/helpers/interopRequireDefault.js");
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+
+var _MutationFunctionHandler = _interopRequireDefault(__webpack_require__(/*! ./MutationFunctionHandler */ "./node_modules/ldflex/lib/MutationFunctionHandler.js"));
+
+/**
+ * A MutationFunctionHandler for deletions.
+ */
+class DeleteFunctionHandler extends _MutationFunctionHandler.default {
+  constructor() {
+    super('DELETE', true);
+  }
+
+}
+
+exports.default = DeleteFunctionHandler;
+
+/***/ }),
+
 /***/ "./node_modules/ldflex/lib/ExecuteQueryHandler.js":
 /*!********************************************************!*\
   !*** ./node_modules/ldflex/lib/ExecuteQueryHandler.js ***!
@@ -66432,18 +66816,18 @@ exports.default = _default;
 "use strict";
 
 
-var _interopRequireDefault = __webpack_require__(/*! @babel/runtime/helpers/interopRequireDefault */ "./node_modules/ldflex/node_modules/@babel/runtime/helpers/interopRequireDefault.js");
+var _interopRequireDefault = __webpack_require__(/*! @babel/runtime/helpers/interopRequireDefault */ "./node_modules/@babel/runtime/helpers/interopRequireDefault.js");
 
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
 exports.default = void 0;
 
-var _awaitAsyncGenerator2 = _interopRequireDefault(__webpack_require__(/*! @babel/runtime/helpers/awaitAsyncGenerator */ "./node_modules/ldflex/node_modules/@babel/runtime/helpers/awaitAsyncGenerator.js"));
+var _awaitAsyncGenerator2 = _interopRequireDefault(__webpack_require__(/*! @babel/runtime/helpers/awaitAsyncGenerator */ "./node_modules/@babel/runtime/helpers/awaitAsyncGenerator.js"));
 
-var _wrapAsyncGenerator2 = _interopRequireDefault(__webpack_require__(/*! @babel/runtime/helpers/wrapAsyncGenerator */ "./node_modules/ldflex/node_modules/@babel/runtime/helpers/wrapAsyncGenerator.js"));
+var _wrapAsyncGenerator2 = _interopRequireDefault(__webpack_require__(/*! @babel/runtime/helpers/wrapAsyncGenerator */ "./node_modules/@babel/runtime/helpers/wrapAsyncGenerator.js"));
 
-var _asyncIterator2 = _interopRequireDefault(__webpack_require__(/*! @babel/runtime/helpers/asyncIterator */ "./node_modules/ldflex/node_modules/@babel/runtime/helpers/asyncIterator.js"));
+var _asyncIterator2 = _interopRequireDefault(__webpack_require__(/*! @babel/runtime/helpers/asyncIterator */ "./node_modules/@babel/runtime/helpers/asyncIterator.js"));
 
 /**
  * Executes the query represented by a path.
@@ -66453,17 +66837,17 @@ var _asyncIterator2 = _interopRequireDefault(__webpack_require__(/*! @babel/runt
  * - a sparql property on the path proxy
  */
 class ExecuteQueryHandler {
-  execute(path, pathProxy) {
+  handle(pathData, path) {
     var _this = this;
 
     return (0, _wrapAsyncGenerator2.default)(function* () {
       // Retrieve the query engine and query
       const {
         queryEngine
-      } = path.settings;
-      if (!queryEngine) throw new Error(`${path} has no queryEngine setting`);
-      const query = yield (0, _awaitAsyncGenerator2.default)(pathProxy.sparql);
-      if (!query) throw new Error(`${path} has no sparql property`); // Extract the term from every query result
+      } = pathData.settings;
+      if (!queryEngine) throw new Error(`${pathData} has no queryEngine setting`);
+      const query = yield (0, _awaitAsyncGenerator2.default)(path.sparql);
+      if (!query) throw new Error(`${pathData} has no sparql property`); // Extract the term from every query result
 
       var _iteratorNormalCompletion = true;
       var _didIteratorError = false;
@@ -66473,7 +66857,7 @@ class ExecuteQueryHandler {
       try {
         for (var _iterator = (0, _asyncIterator2.default)(queryEngine.execute(query)), _step, _value; _step = yield (0, _awaitAsyncGenerator2.default)(_iterator.next()), _iteratorNormalCompletion = _step.done, _value = yield (0, _awaitAsyncGenerator2.default)(_step.value), !_iteratorNormalCompletion; _iteratorNormalCompletion = true) {
           const bindings = _value;
-          yield _this.extractTerm(bindings);
+          yield _this.extractTerm(bindings, pathData);
         }
       } catch (err) {
         _didIteratorError = true;
@@ -66492,68 +66876,56 @@ class ExecuteQueryHandler {
     })();
   }
   /**
-   * Extracts the first term from a query result binding.
+   * Extracts the first term from a query result binding as a new path.
    */
 
 
-  extractTerm(binding) {
+  extractTerm(binding, pathData) {
     // Extract the first term from the binding map
     if (binding.size !== 1) throw new Error('Only single-variable queries are supported');
-    const term = binding.values().next().value; // Simplify string conversion of the term
+    const term = binding.values().next().value; // Each result is a new path that starts from the given term as subject
 
-    term.toString = Term.prototype.getValue;
-    term.toPrimitive = Term.prototype.getValue;
-    return term;
+    return pathData.extendPath({
+      subject: term
+    }, null);
   }
 
 }
 
 exports.default = ExecuteQueryHandler;
 
-class Term {
-  getValue() {
-    return this.value;
-  }
-
-}
-
 /***/ }),
 
-/***/ "./node_modules/ldflex/lib/FallbackHandler.js":
-/*!****************************************************!*\
-  !*** ./node_modules/ldflex/lib/FallbackHandler.js ***!
-  \****************************************************/
+/***/ "./node_modules/ldflex/lib/InsertFunctionHandler.js":
+/*!**********************************************************!*\
+  !*** ./node_modules/ldflex/lib/InsertFunctionHandler.js ***!
+  \**********************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
+var _interopRequireDefault = __webpack_require__(/*! @babel/runtime/helpers/interopRequireDefault */ "./node_modules/@babel/runtime/helpers/interopRequireDefault.js");
+
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
 exports.default = void 0;
 
+var _MutationFunctionHandler = _interopRequireDefault(__webpack_require__(/*! ./MutationFunctionHandler */ "./node_modules/ldflex/lib/MutationFunctionHandler.js"));
+
 /**
- * Converts a handler that returns an asynchronous iterator into a single-value handler.
+ * A MutationFunctionHandler for insertions.
  */
-class FallbackHandler {
-  constructor(handlers = []) {
-    this._handlers = handlers;
-  }
-
-  execute(path, proxy) {
-    for (const handler of this._handlers) {
-      const value = handler.execute(path, proxy);
-      if (typeof value !== 'undefined') return value;
-    }
-
-    return undefined;
+class InsertFunctionHandler extends _MutationFunctionHandler.default {
+  constructor() {
+    super('INSERT', false);
   }
 
 }
 
-exports.default = FallbackHandler;
+exports.default = InsertFunctionHandler;
 
 /***/ }),
 
@@ -66567,7 +66939,7 @@ exports.default = FallbackHandler;
 "use strict";
 
 
-var _interopRequireDefault = __webpack_require__(/*! @babel/runtime/helpers/interopRequireDefault */ "./node_modules/ldflex/node_modules/@babel/runtime/helpers/interopRequireDefault.js");
+var _interopRequireDefault = __webpack_require__(/*! @babel/runtime/helpers/interopRequireDefault */ "./node_modules/@babel/runtime/helpers/interopRequireDefault.js");
 
 Object.defineProperty(exports, "__esModule", {
   value: true
@@ -66577,6 +66949,10 @@ exports.default = void 0;
 var _assert = _interopRequireDefault(__webpack_require__(/*! assert */ "./node_modules/assert/assert.js"));
 
 var _jsonld = __webpack_require__(/*! jsonld */ "./node_modules/jsonld/lib/jsonld.js");
+
+var _dataModel = __webpack_require__(/*! @rdfjs/data-model */ "./node_modules/@rdfjs/data-model/index.js");
+
+var _promiseUtils = __webpack_require__(/*! ./promiseUtils */ "./node_modules/ldflex/lib/promiseUtils.js");
 
 /**
  * Resolves property names of a path
@@ -66599,11 +66975,11 @@ class JSONLDResolver {
    */
 
 
-  resolve(property, path) {
+  resolve(property, pathData) {
     const predicate = {
-      then: (resolve, reject) => this.expandProperty(property).then(resolve, reject)
+      then: (0, _promiseUtils.getThen)(() => this.expandProperty(property))
     };
-    return path.extend({
+    return pathData.extendPath({
       property,
       predicate
     });
@@ -66616,8 +66992,8 @@ class JSONLDResolver {
   async expandProperty(property) {
     // JavaScript requires keys containing colons to be quoted,
     // so prefixed names would need to written as path['foaf:knows'].
-    // Allowing underscores lets us write path.foaf_knows.
-    property = property.replace('_', ':'); // Create a JSON-LD document with the given property
+    // We thus allow writing path.foaf_knows or path.foaf$knows instead.
+    property = property.replace(/[_$]/, ':'); // Create a JSON-LD document with the given property
 
     const document = {
       '@context': this._context,
@@ -66633,12 +67009,160 @@ class JSONLDResolver {
 
     _assert.default.equal(propertyIRIs.length, 1);
 
-    return propertyIRIs[0];
+    return (0, _dataModel.namedNode)(propertyIRIs[0]);
   }
 
 }
 
 exports.default = JSONLDResolver;
+
+/***/ }),
+
+/***/ "./node_modules/ldflex/lib/MutationExpressionsHandler.js":
+/*!***************************************************************!*\
+  !*** ./node_modules/ldflex/lib/MutationExpressionsHandler.js ***!
+  \***************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+
+/**
+ * Traverses a path to collect mutationExpressions into an expression.
+ * This is needed because mutations can be chained.
+ *
+ * Requires:
+ * - a mutationExpressions property on the path proxy
+ */
+class MutationExpressionsHandler {
+  async handle(pathData) {
+    const mutationExpressions = []; // Add all mutationExpressions to the path
+
+    let current = pathData;
+
+    while (current) {
+      // Obtain and store mutationExpressions
+      if (current.mutationExpressions) mutationExpressions.unshift(...(await current.mutationExpressions)); // Move to parent link
+
+      current = current.parent;
+    }
+
+    return mutationExpressions;
+  }
+
+}
+
+exports.default = MutationExpressionsHandler;
+
+/***/ }),
+
+/***/ "./node_modules/ldflex/lib/MutationFunctionHandler.js":
+/*!************************************************************!*\
+  !*** ./node_modules/ldflex/lib/MutationFunctionHandler.js ***!
+  \************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+
+var _dataModel = __webpack_require__(/*! @rdfjs/data-model */ "./node_modules/@rdfjs/data-model/index.js");
+
+var _promiseUtils = __webpack_require__(/*! ./promiseUtils */ "./node_modules/ldflex/lib/promiseUtils.js");
+
+/**
+ * Returns a function that, when called with arguments,
+ * extends the path with mutationExpressions.
+ *
+ * It uses the current path expression as domain expression
+ * and the given arguments as range expression.
+ * These arguments can either be raw, or other path expressions.
+ *
+ * Requires:
+ * - a pathExpression property on the path proxy and all non-raw arguments.
+ */
+class MutationFunctionHandler {
+  constructor(mutationType, allowZeroArgs) {
+    this._mutationType = mutationType;
+    this._allowZeroArgs = allowZeroArgs;
+  }
+
+  handle(pathData, path) {
+    return (...args) => {
+      // Check if the given arguments are valid
+      if (!this._allowZeroArgs && !args.length) throw new Error(`Mutation on ${pathData} can not be invoked without arguments`); // Create a lazy Promise to the mutation expressions
+
+      const then = (0, _promiseUtils.getThen)(() => this.createMutationExpressions(pathData, path, args));
+      return pathData.extendPath({
+        mutationExpressions: {
+          then
+        }
+      });
+    };
+  }
+
+  async createMutationExpressions(pathData, path, args) {
+    // Check if we have a valid path
+    const domainExpression = await path.pathExpression;
+    if (!Array.isArray(domainExpression)) throw new Error(`${pathData} has no pathExpression property`); // Require at least a subject and a link
+
+    if (domainExpression.length < 2) throw new Error(`${pathData} should at least contain a subject and a predicate`); // If we have args, each arg defines a mutation expression with a certain range expression.
+
+    if (args.length) {
+      // The last path segment represents the predicate of the triple to insert
+      const {
+        predicate
+      } = domainExpression.pop();
+      if (!predicate) throw new Error(`Expected predicate in ${pathData}`); // Determine right variables and patterns
+
+      const mutationExpressions = [];
+
+      for (let argument of args) {
+        // If an argument does not expose a pathExpression, we consider it a raw value.
+        let rangeExpression = await argument.pathExpression;
+
+        if (!Array.isArray(rangeExpression)) {
+          // If the argument is not an RDFJS term, assume it is a literal
+          if (!argument.termType) argument = (0, _dataModel.literal)(argument);
+          rangeExpression = [{
+            subject: argument
+          }];
+        } // Store the domain, predicate and range in the insert expression.
+
+
+        mutationExpressions.push({
+          mutationType: this._mutationType,
+          domainExpression,
+          predicate,
+          rangeExpression
+        });
+      }
+
+      return mutationExpressions;
+    } // If we don't have args, the range simply corresponds to the domain,
+    // so we don't store the range and predicate explicitly.
+
+
+    return [{
+      mutationType: this._mutationType,
+      domainExpression
+    }];
+  }
+
+}
+
+exports.default = MutationFunctionHandler;
 
 /***/ }),
 
@@ -66661,17 +67185,19 @@ exports.default = void 0;
  * Traverses a path to collect links and nodes into an expression.
  */
 class PathExpressionHandler {
-  async execute(path) {
+  async handle(pathData) {
     const segments = [];
-    let current = path; // Add all predicates to the path
+    let current = pathData; // Add all predicates to the path
 
     while (current.parent) {
       // Obtain and store predicate
-      if (!current.predicate) throw new Error(`Expected predicate in ${current}`);
-      const predicate = await current.predicate;
-      segments.unshift({
-        predicate
-      }); // Move to parent link
+      if (current.predicate) {
+        const predicate = await current.predicate;
+        segments.unshift({
+          predicate
+        });
+      } // Move to parent link
+
 
       current = current.parent;
     } // Add the root subject to the path
@@ -66701,69 +67227,37 @@ exports.default = PathExpressionHandler;
 "use strict";
 
 
-var _interopRequireDefault = __webpack_require__(/*! @babel/runtime/helpers/interopRequireDefault */ "./node_modules/ldflex/node_modules/@babel/runtime/helpers/interopRequireDefault.js");
+var _interopRequireDefault = __webpack_require__(/*! @babel/runtime/helpers/interopRequireDefault */ "./node_modules/@babel/runtime/helpers/interopRequireDefault.js");
 
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
 exports.toHandler = toHandler;
 exports.toResolver = toResolver;
-exports.default = exports.defaultHandlers = void 0;
+exports.default = void 0;
+
+var _objectSpread2 = _interopRequireDefault(__webpack_require__(/*! @babel/runtime/helpers/objectSpread */ "./node_modules/@babel/runtime/helpers/objectSpread.js"));
 
 var _PathProxy = _interopRequireDefault(__webpack_require__(/*! ./PathProxy */ "./node_modules/ldflex/lib/PathProxy.js"));
 
-var _PathExpressionHandler = _interopRequireDefault(__webpack_require__(/*! ./PathExpressionHandler */ "./node_modules/ldflex/lib/PathExpressionHandler.js"));
-
-var _ExecuteQueryHandler = _interopRequireDefault(__webpack_require__(/*! ./ExecuteQueryHandler */ "./node_modules/ldflex/lib/ExecuteQueryHandler.js"));
-
-var _SparqlHandler = _interopRequireDefault(__webpack_require__(/*! ./SparqlHandler */ "./node_modules/ldflex/lib/SparqlHandler.js"));
-
 var _JSONLDResolver = _interopRequireDefault(__webpack_require__(/*! ./JSONLDResolver */ "./node_modules/ldflex/lib/JSONLDResolver.js"));
 
-var _FallbackHandler = _interopRequireDefault(__webpack_require__(/*! ./FallbackHandler */ "./node_modules/ldflex/lib/FallbackHandler.js"));
+var _defaultHandlers = _interopRequireDefault(__webpack_require__(/*! ./defaultHandlers */ "./node_modules/ldflex/lib/defaultHandlers.js"));
 
-var _StringToLDflexHandler = _interopRequireDefault(__webpack_require__(/*! ./StringToLDflexHandler */ "./node_modules/ldflex/lib/StringToLDflexHandler.js"));
-
-var _SubjectHandler = _interopRequireDefault(__webpack_require__(/*! ./SubjectHandler */ "./node_modules/ldflex/lib/SubjectHandler.js"));
-
-var _iterableUtils = __webpack_require__(/*! ./iterableUtils */ "./node_modules/ldflex/lib/iterableUtils.js");
-
-// Default iterator behavior:
-// - first try returning the subject (single-segment path)
-// - then execute a path query (multi-segment path)
-const iteratorHandler = new _FallbackHandler.default([(0, _iterableUtils.promiseToIterable)(new _SubjectHandler.default()), new _ExecuteQueryHandler.default()]);
-/**
- * Collection of default property handlers.
- */
-
-const defaultHandlers = {
-  // Flag to loaders that exported paths are not ES6 modules
-  __esModule: () => undefined,
-  // Add iterable and thenable behavior
-  [Symbol.asyncIterator]: (0, _iterableUtils.getIterator)(iteratorHandler),
-  then: (0, _iterableUtils.iterableToThen)(iteratorHandler),
-  // Add path handling
-  pathExpression: new _PathExpressionHandler.default(),
-  sparql: new _SparqlHandler.default(),
-  // Parse a string into an LDflex object
-  resolve: new _StringToLDflexHandler.default()
-};
 /**
  * A PathFactory creates paths with default settings.
  */
-
-exports.defaultHandlers = defaultHandlers;
-
 class PathFactory {
   constructor(settings, data) {
     // Store settings and data
-    settings = Object.assign(Object.create(null), settings);
-    this._settings = settings;
-    this._data = data; // Prepare the handlers
+    this._settings = settings = (0, _objectSpread2.default)({}, settings);
+    this._data = data = (0, _objectSpread2.default)({}, data); // Prepare the handlers
 
-    const handlers = settings.handlers || PathFactory.defaultHandlers;
+    const handlers = settings.handlers || _defaultHandlers.default;
 
-    for (var key in handlers) handlers[key] = toHandler(handlers[key]); // Prepare the resolvers
+    for (const key in handlers) handlers[key] = toHandler(handlers[key]);
+
+    for (const key of Object.getOwnPropertySymbols(handlers)) handlers[key] = toHandler(handlers[key]); // Prepare the resolvers
 
 
     const resolvers = (settings.resolvers || []).map(toResolver);
@@ -66793,14 +67287,14 @@ class PathFactory {
 }
 
 exports.default = PathFactory;
-PathFactory.defaultHandlers = defaultHandlers;
+PathFactory.defaultHandlers = _defaultHandlers.default;
 /**
  * Converts a handler function into a handler object.
  */
 
-function toHandler(execute) {
-  return typeof execute.execute === 'function' ? execute : {
-    execute
+function toHandler(handle) {
+  return typeof handle.handle === 'function' ? handle : {
+    handle
   };
 }
 /**
@@ -66832,14 +67326,14 @@ function supports() {
 "use strict";
 
 
-var _interopRequireDefault = __webpack_require__(/*! @babel/runtime/helpers/interopRequireDefault */ "./node_modules/ldflex/node_modules/@babel/runtime/helpers/interopRequireDefault.js");
+var _interopRequireDefault = __webpack_require__(/*! @babel/runtime/helpers/interopRequireDefault */ "./node_modules/@babel/runtime/helpers/interopRequireDefault.js");
 
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
 exports.default = void 0;
 
-var _objectSpread2 = _interopRequireDefault(__webpack_require__(/*! @babel/runtime/helpers/objectSpread */ "./node_modules/ldflex/node_modules/@babel/runtime/helpers/objectSpread.js"));
+var _objectSpread2 = _interopRequireDefault(__webpack_require__(/*! @babel/runtime/helpers/objectSpread */ "./node_modules/@babel/runtime/helpers/objectSpread.js"));
 
 const EMPTY = Object.create(null);
 /**
@@ -66857,10 +67351,10 @@ const EMPTY = Object.create(null);
  * Only handlers and resolvers see the internal data.
  *
  * A path can have arbitrary internal data fields, but these are reserved:
- * - proxy, a reference to the proxied object the user sees
- * - extend, a method to create a child path with this path as parent
  * - settings, an object that is passed on as-is to child paths
+ * - proxy, a reference to the proxied object the user sees
  * - parent, a reference to the parent path
+ * - extendPath, a method to create a child path with this path as parent
  */
 
 class PathProxy {
@@ -66878,32 +67372,41 @@ class PathProxy {
 
   createPath(settings = {}, data) {
     // The settings parameter is optional
-    if (data === undefined) [data, settings] = [settings, {}];
+    if (data === undefined) [data, settings] = [settings, {}]; // Create the path's internal data object and the proxy that wraps it
+
     const path = (0, _objectSpread2.default)({
       settings
     }, data);
-    path.proxy = new Proxy(path, this);
+    const proxy = path.proxy = new Proxy(path, this); // Add an extendPath method to create child paths
 
-    path.extend = newData => this.createPath(settings, (0, _objectSpread2.default)({
-      parent: path
-    }, newData));
+    if (!path.extendPath) {
+      const pathProxy = this;
 
-    return path.proxy;
+      path.extendPath = function extendPath(newData, parent = this) {
+        return pathProxy.createPath(settings, (0, _objectSpread2.default)({
+          parent,
+          extendPath
+        }, newData));
+      };
+    } // Return the proxied path
+
+
+    return proxy;
   }
   /**
    * Handles access to a property
    */
 
 
-  get(path, property) {
+  get(pathData, property) {
     // Handlers provide functionality for a specific property,
     // so check if we find a handler first
     const handler = this._handlers[property];
-    if (handler && typeof handler.execute === 'function') return handler.execute(path, path.proxy); // Resolvers provide functionality for arbitrary properties,
+    if (handler && typeof handler.handle === 'function') return handler.handle(pathData, pathData.proxy); // Resolvers provide functionality for arbitrary properties,
     // so find a resolver that can handle this property
 
     for (const resolver of this._resolvers) {
-      if (resolver.supports(property)) return resolver.resolve(property, path, path.proxy);
+      if (resolver.supports(property)) return resolver.resolve(property, pathData, pathData.proxy);
     } // Otherwise, the property does not exist
 
 
@@ -66913,6 +67416,77 @@ class PathProxy {
 }
 
 exports.default = PathProxy;
+
+/***/ }),
+
+/***/ "./node_modules/ldflex/lib/ReplaceFunctionHandler.js":
+/*!***********************************************************!*\
+  !*** ./node_modules/ldflex/lib/ReplaceFunctionHandler.js ***!
+  \***********************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+
+/**
+ * Returns a function that deletes the given value
+ * for the path, and then adds the given values to the path.
+ *
+ * Requires:
+ * - a delete function on the path proxy.
+ * - an add function on the path proxy.
+ */
+class ReplaceFunctionHandler {
+  handle(pathData, path) {
+    return function (oldValue, ...newValues) {
+      if (!oldValue || !newValues.length) throw new Error('Replacing values requires at least two arguments, old value followed by all new values');
+      return path.delete(oldValue).add(...newValues);
+    };
+  }
+
+}
+
+exports.default = ReplaceFunctionHandler;
+
+/***/ }),
+
+/***/ "./node_modules/ldflex/lib/SetFunctionHandler.js":
+/*!*******************************************************!*\
+  !*** ./node_modules/ldflex/lib/SetFunctionHandler.js ***!
+  \*******************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+
+/**
+ * Returns a function that deletes all existing values
+ * for the path, and then adds the given values to the path.
+ *
+ * Requires:
+ * - a delete function on the path proxy.
+ * - an add function on the path proxy.
+ */
+class SetFunctionHandler {
+  handle(pathData, path) {
+    return (...args) => path.delete().add(...args);
+  }
+
+}
+
+exports.default = SetFunctionHandler;
 
 /***/ }),
 
@@ -66932,36 +67506,135 @@ Object.defineProperty(exports, "__esModule", {
 exports.default = void 0;
 
 /**
- * Expresses a path as a SPARQL query.
+ * Expresses a path or mutation as a SPARQL query.
  *
  * Requires:
- * - a pathExpression property on the path proxy
+ * - a mutationExpressions or pathExpression property on the path proxy
  */
 class SparqlHandler {
-  async execute(path, proxy) {
-    const pathExpression = await proxy.pathExpression;
-    if (!Array.isArray(pathExpression)) throw new Error(`${path} has no pathExpression property`); // Require at least a subject and a link
+  async handle(pathData, path) {
+    // First check if we have a mutation expression
+    const mutationExpressions = await path.mutationExpressions;
+    if (Array.isArray(mutationExpressions) && mutationExpressions.length) return this.evaluateMutationExpression(pathData, path, mutationExpressions); // Otherwise, fall back to checking for a path expression
 
-    if (pathExpression.length < 2) throw new Error(`${path} should at least contain a subject and a predicate`);
-    const root = pathExpression.shift(); // Determine the query variable name
+    const pathExpression = await path.pathExpression;
+    if (!Array.isArray(pathExpression)) throw new Error(`${pathData} has no pathExpression property`);
+    return this.evaluatePathExpression(pathData, path, pathExpression);
+  }
 
-    const queryVar = path.property.match(/[a-z0-9]*$/i)[0] || 'result'; // Build basic graph pattern
+  evaluatePathExpression(pathData, path, pathExpression) {
+    // Require at least a subject and a link
+    if (pathExpression.length < 2) throw new Error(`${pathData} should at least contain a subject and a predicate`); // Determine the query variable name
 
+    const queryVar = pathData.property.match(/[a-z0-9]*$/i)[0] || 'result'; // Build basic graph pattern
+
+    const clauses = this.expressionToTriplePatterns(pathExpression, queryVar); // Embed the basic graph pattern into a SPARQL query
+
+    const joinedClauses = clauses.join('\n  ');
+    return `SELECT ?${queryVar} WHERE {\n  ${joinedClauses}\n}`;
+  }
+
+  evaluateMutationExpression(pathData, path, mutationExpressions) {
+    return mutationExpressions.map(mutationExpression => this.mutationExpressionToQuery(mutationExpression)).join('\n;\n');
+  }
+
+  expressionToTriplePatterns([root, ...pathExpression], queryVar, variableScope = {}) {
     const last = pathExpression.length - 1;
-    let object = `<${root.subject}>`;
-    const clauses = pathExpression.map((segment, index) => {
+    let object = this.termToQueryString(root.subject);
+    return pathExpression.map((segment, index) => {
       // Obtain triple pattern components
       const subject = object;
       const {
         predicate
       } = segment;
-      object = index !== last ? `?v${index}` : `?${queryVar}`; // Generate triple pattern
+      object = index !== last ? `?${this.getQueryVar(`v${index}`, variableScope)}` : `?${queryVar}`; // Generate triple pattern
 
-      return `${subject} <${predicate}> ${object}.`;
-    }); // Embed the basic graph pattern into a SPARQL query
+      return `${subject} ${this.termToQueryString(predicate)} ${object}.`;
+    });
+  }
 
-    const joinedClauses = clauses.join('\n  ');
-    return `SELECT ?${queryVar} WHERE {\n  ${joinedClauses}\n}`;
+  mutationExpressionToQuery({
+    mutationType,
+    domainExpression,
+    predicate,
+    rangeExpression
+  }) {
+    // Determine the patterns that should appear in the WHERE clause
+    const variableScope = {};
+    let clauses = [];
+    let insertPattern;
+    const {
+      queryVar: domainQueryVar,
+      clauses: domainClauses
+    } = this.getQueryVarAndClauses(domainExpression, variableScope);
+    if (domainClauses.length) clauses = domainClauses;
+
+    if (rangeExpression) {
+      const {
+        queryVar: rangeQueryVar,
+        clauses: rangeClauses
+      } = this.getQueryVarAndClauses(rangeExpression, variableScope);
+
+      if (rangeClauses.length) {
+        if (clauses.length) clauses = clauses.concat(rangeClauses);else clauses = rangeClauses;
+      } // If we have a range, the mutation is on <domainVar> <predicate> <rangeVar>
+
+
+      insertPattern = `${domainQueryVar} ${this.termToQueryString(predicate)} ${rangeQueryVar}`;
+    } else {
+      // If we don't have a range, assume that the mutation is on the last segment of the domain
+      insertPattern = domainClauses[domainClauses.length - 1].slice(0, -1);
+    } // If we don't have any WHERE clauses, we just insert raw data
+
+
+    if (!clauses.length) return `${mutationType} DATA {\n  ${insertPattern}\n}`; // Otherwise, return an INSERT ... WHERE ... query
+
+    return `${mutationType} {\n  ${insertPattern}\n} WHERE {\n  ${clauses.join('\n  ')}\n}`;
+  }
+
+  getQueryVarAndClauses(expression, variableScope) {
+    const lastSegment = expression[expression.length - 1];
+
+    if (expression.length === 1) {
+      return {
+        queryVar: this.termToQueryString(lastSegment.subject),
+        clauses: []
+      };
+    }
+
+    const queryVar = this.getQueryVar(lastSegment.predicate.value.match(/[a-z0-9]*$/i)[0] || 'result', variableScope);
+    return {
+      queryVar: `?${queryVar}`,
+      clauses: this.expressionToTriplePatterns(expression, queryVar, variableScope)
+    };
+  } // Creates a unique query variable label within the given scope based on the given suggestion
+
+
+  getQueryVar(labelSuggestion, variableScope) {
+    let label = labelSuggestion;
+    let counter = 0;
+
+    while (variableScope[label]) label = `${labelSuggestion}_${counter++}`;
+
+    variableScope[label] = true;
+    return label;
+  } // Converts an RDFJS term to a string that we can use in a query
+
+
+  termToQueryString(term) {
+    switch (term.termType) {
+      case 'NamedNode':
+        return `<${term.value}>`;
+
+      case 'BlankNode':
+        return `_:${term.value}`;
+
+      case 'Literal':
+        return `"${term.value.replace(/"/g, '\\"')}"`;
+
+      default:
+        throw new Error(`Could not convert a term of type ${term.termType}`);
+    }
   }
 
 }
@@ -66989,9 +67662,9 @@ exports.default = void 0;
  * Yields a function that interprets a string expression as an LDflex path.
  */
 class StringToLDflexHandler {
-  execute(path, proxy) {
+  handle(pathData, path) {
     // Resolves the given string expression against the LDflex object
-    return (expression = '', ldflex = proxy) => {
+    return (expression = '', ldflex = path) => {
       // An expression starts with a property access in dot or bracket notation
       const propertyPath = expression // Add the starting dot if omitted
       .replace(/^(?=[a-z$_])/i, '.') // Add quotes inside of brackets if omitted
@@ -67036,21 +67709,128 @@ Object.defineProperty(exports, "__esModule", {
 exports.default = void 0;
 
 /**
- * Returns the subject of a path segment.
+ * Returns a new path starting from the subject of the current path.
  *
  * Requires:
- * - a subject property on the path proxy
+ * - (optional) a subject property on the path proxy
+ * - (optional) a parent property on the path proxy
  */
-class PathExpressionHandler {
-  execute({
-    subject
-  }) {
-    return subject && Promise.resolve(subject);
+class SubjectHandler {
+  handle(pathData) {
+    // Traverse parents until we find a subject
+    let {
+      subject,
+      parent
+    } = pathData;
+
+    while (!subject && parent) ({
+      subject,
+      parent
+    } = parent); // Resolve the subject if it exists,
+    // and return a path starting from that subject
+
+
+    return !subject ? undefined : Promise.resolve(subject).then(value => pathData.extendPath({
+      subject: value
+    }, null));
   }
 
 }
 
-exports.default = PathExpressionHandler;
+exports.default = SubjectHandler;
+
+/***/ }),
+
+/***/ "./node_modules/ldflex/lib/defaultHandlers.js":
+/*!****************************************************!*\
+  !*** ./node_modules/ldflex/lib/defaultHandlers.js ***!
+  \****************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+var _interopRequireDefault = __webpack_require__(/*! @babel/runtime/helpers/interopRequireDefault */ "./node_modules/@babel/runtime/helpers/interopRequireDefault.js");
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+
+var _DataHandler = _interopRequireDefault(__webpack_require__(/*! ./DataHandler */ "./node_modules/ldflex/lib/DataHandler.js"));
+
+var _SubjectHandler = _interopRequireDefault(__webpack_require__(/*! ./SubjectHandler */ "./node_modules/ldflex/lib/SubjectHandler.js"));
+
+var _PathExpressionHandler = _interopRequireDefault(__webpack_require__(/*! ./PathExpressionHandler */ "./node_modules/ldflex/lib/PathExpressionHandler.js"));
+
+var _SparqlHandler = _interopRequireDefault(__webpack_require__(/*! ./SparqlHandler */ "./node_modules/ldflex/lib/SparqlHandler.js"));
+
+var _ExecuteQueryHandler = _interopRequireDefault(__webpack_require__(/*! ./ExecuteQueryHandler */ "./node_modules/ldflex/lib/ExecuteQueryHandler.js"));
+
+var _MutationExpressionsHandler = _interopRequireDefault(__webpack_require__(/*! ./MutationExpressionsHandler */ "./node_modules/ldflex/lib/MutationExpressionsHandler.js"));
+
+var _InsertFunctionHandler = _interopRequireDefault(__webpack_require__(/*! ./InsertFunctionHandler */ "./node_modules/ldflex/lib/InsertFunctionHandler.js"));
+
+var _SetFunctionHandler = _interopRequireDefault(__webpack_require__(/*! ./SetFunctionHandler */ "./node_modules/ldflex/lib/SetFunctionHandler.js"));
+
+var _ReplaceFunctionHandler = _interopRequireDefault(__webpack_require__(/*! ./ReplaceFunctionHandler */ "./node_modules/ldflex/lib/ReplaceFunctionHandler.js"));
+
+var _DeleteFunctionHandler = _interopRequireDefault(__webpack_require__(/*! ./DeleteFunctionHandler */ "./node_modules/ldflex/lib/DeleteFunctionHandler.js"));
+
+var _StringToLDflexHandler = _interopRequireDefault(__webpack_require__(/*! ./StringToLDflexHandler */ "./node_modules/ldflex/lib/StringToLDflexHandler.js"));
+
+var _iterableUtils = __webpack_require__(/*! ./iterableUtils */ "./node_modules/ldflex/lib/iterableUtils.js");
+
+var _promiseUtils = __webpack_require__(/*! ./promiseUtils */ "./node_modules/ldflex/lib/promiseUtils.js");
+
+/**
+ * A map with default property handlers.
+ */
+var _default = {
+  // Flag to loaders that exported paths are not ES6 modules
+  __esModule: () => undefined,
+  // Add Promise behavior
+  then: ({
+    subject
+  }, pathProxy) => {
+    // If a direct subject is set (zero-length path), resolve it
+    if (subject) // If the subject is not a promise, it has already been resolved;
+      // consumers should not await it, but access its properties directly.
+      // This avoids infinite `then` chains when awaiting this path.
+      return subject.then && (0, _promiseUtils.getThen)(() => pathProxy.subject); // Otherwise, return the first result of this path
+
+    return (0, _promiseUtils.getThen)(() => (0, _iterableUtils.getFirstItem)(pathProxy.results));
+  },
+  // Add async iterable behavior
+  [Symbol.asyncIterator]: ({
+    subject
+  }, pathProxy) => // Return a one-item iterator of the subject or,
+  // if no subject is present, all results of this path
+  () => subject ? (0, _iterableUtils.iteratorFor)(pathProxy.subject) : pathProxy.results[Symbol.asyncIterator](),
+  // Add read and query functionality
+  subject: new _SubjectHandler.default(),
+  pathExpression: new _PathExpressionHandler.default(),
+  sparql: new _SparqlHandler.default(),
+  results: new _ExecuteQueryHandler.default(),
+  // Add write functionality
+  mutationExpressions: new _MutationExpressionsHandler.default(),
+  add: new _InsertFunctionHandler.default(),
+  set: new _SetFunctionHandler.default(),
+  replace: new _ReplaceFunctionHandler.default(),
+  delete: new _DeleteFunctionHandler.default(),
+  // Add RDFJS term handling
+  termType: _DataHandler.default.sync('subject', 'termType'),
+  value: _DataHandler.default.sync('subject', 'value'),
+  equals: _DataHandler.default.sync('subject', 'equals'),
+  language: _DataHandler.default.sync('subject', 'language'),
+  datatype: _DataHandler.default.sync('subject', 'datatype'),
+  toString: _DataHandler.default.syncFunction('subject', 'value'),
+  toPrimitive: _DataHandler.default.syncFunction('subject', 'value'),
+  // Parse a string into an LDflex object
+  resolve: new _StringToLDflexHandler.default()
+};
+exports.default = _default;
 
 /***/ }),
 
@@ -67064,10 +67844,22 @@ exports.default = PathExpressionHandler;
 "use strict";
 
 
-var _interopRequireDefault = __webpack_require__(/*! @babel/runtime/helpers/interopRequireDefault */ "./node_modules/ldflex/node_modules/@babel/runtime/helpers/interopRequireDefault.js");
+var _interopRequireDefault = __webpack_require__(/*! @babel/runtime/helpers/interopRequireDefault */ "./node_modules/@babel/runtime/helpers/interopRequireDefault.js");
 
 Object.defineProperty(exports, "__esModule", {
   value: true
+});
+Object.defineProperty(exports, "DataHandler", {
+  enumerable: true,
+  get: function () {
+    return _DataHandler.default;
+  }
+});
+Object.defineProperty(exports, "DeleteFunctionHandler", {
+  enumerable: true,
+  get: function () {
+    return _DeleteFunctionHandler.default;
+  }
 });
 Object.defineProperty(exports, "ExecuteQueryHandler", {
   enumerable: true,
@@ -67075,16 +67867,28 @@ Object.defineProperty(exports, "ExecuteQueryHandler", {
     return _ExecuteQueryHandler.default;
   }
 });
-Object.defineProperty(exports, "FallbackHandler", {
+Object.defineProperty(exports, "InsertFunctionHandler", {
   enumerable: true,
   get: function () {
-    return _FallbackHandler.default;
+    return _InsertFunctionHandler.default;
   }
 });
 Object.defineProperty(exports, "JSONLDResolver", {
   enumerable: true,
   get: function () {
     return _JSONLDResolver.default;
+  }
+});
+Object.defineProperty(exports, "MutationExpressionsHandler", {
+  enumerable: true,
+  get: function () {
+    return _MutationExpressionsHandler.default;
+  }
+});
+Object.defineProperty(exports, "MutationFunctionHandler", {
+  enumerable: true,
+  get: function () {
+    return _MutationFunctionHandler.default;
   }
 });
 Object.defineProperty(exports, "PathExpressionHandler", {
@@ -67105,16 +67909,22 @@ Object.defineProperty(exports, "PathFactory", {
     return _PathFactory.default;
   }
 });
+Object.defineProperty(exports, "ReplaceFunctionHandler", {
+  enumerable: true,
+  get: function () {
+    return _ReplaceFunctionHandler.default;
+  }
+});
+Object.defineProperty(exports, "SetFunctionHandler", {
+  enumerable: true,
+  get: function () {
+    return _SetFunctionHandler.default;
+  }
+});
 Object.defineProperty(exports, "SparqlHandler", {
   enumerable: true,
   get: function () {
     return _SparqlHandler.default;
-  }
-});
-Object.defineProperty(exports, "StringToLDflexHandler", {
-  enumerable: true,
-  get: function () {
-    return _StringToLDflexHandler.default;
   }
 });
 Object.defineProperty(exports, "SubjectHandler", {
@@ -67123,36 +67933,56 @@ Object.defineProperty(exports, "SubjectHandler", {
     return _SubjectHandler.default;
   }
 });
-Object.defineProperty(exports, "getIterator", {
+Object.defineProperty(exports, "StringToLDflexHandler", {
   enumerable: true,
   get: function () {
-    return _iterableUtils.getIterator;
+    return _StringToLDflexHandler.default;
   }
 });
-Object.defineProperty(exports, "iterablePromise", {
+Object.defineProperty(exports, "defaultHandlers", {
   enumerable: true,
   get: function () {
-    return _iterableUtils.iterablePromise;
+    return _defaultHandlers.default;
   }
 });
-Object.defineProperty(exports, "iterableToThen", {
+Object.defineProperty(exports, "getFirstItem", {
   enumerable: true,
   get: function () {
-    return _iterableUtils.iterableToThen;
+    return _iterableUtils.getFirstItem;
   }
 });
-Object.defineProperty(exports, "promiseToIterable", {
+Object.defineProperty(exports, "iteratorFor", {
   enumerable: true,
   get: function () {
-    return _iterableUtils.promiseToIterable;
+    return _iterableUtils.iteratorFor;
   }
 });
+Object.defineProperty(exports, "getThen", {
+  enumerable: true,
+  get: function () {
+    return _promiseUtils.getThen;
+  }
+});
+Object.defineProperty(exports, "toIterablePromise", {
+  enumerable: true,
+  get: function () {
+    return _promiseUtils.toIterablePromise;
+  }
+});
+
+var _DataHandler = _interopRequireDefault(__webpack_require__(/*! ./DataHandler */ "./node_modules/ldflex/lib/DataHandler.js"));
+
+var _DeleteFunctionHandler = _interopRequireDefault(__webpack_require__(/*! ./DeleteFunctionHandler */ "./node_modules/ldflex/lib/DeleteFunctionHandler.js"));
 
 var _ExecuteQueryHandler = _interopRequireDefault(__webpack_require__(/*! ./ExecuteQueryHandler */ "./node_modules/ldflex/lib/ExecuteQueryHandler.js"));
 
-var _FallbackHandler = _interopRequireDefault(__webpack_require__(/*! ./FallbackHandler */ "./node_modules/ldflex/lib/FallbackHandler.js"));
+var _InsertFunctionHandler = _interopRequireDefault(__webpack_require__(/*! ./InsertFunctionHandler */ "./node_modules/ldflex/lib/InsertFunctionHandler.js"));
 
 var _JSONLDResolver = _interopRequireDefault(__webpack_require__(/*! ./JSONLDResolver */ "./node_modules/ldflex/lib/JSONLDResolver.js"));
+
+var _MutationExpressionsHandler = _interopRequireDefault(__webpack_require__(/*! ./MutationExpressionsHandler */ "./node_modules/ldflex/lib/MutationExpressionsHandler.js"));
+
+var _MutationFunctionHandler = _interopRequireDefault(__webpack_require__(/*! ./MutationFunctionHandler */ "./node_modules/ldflex/lib/MutationFunctionHandler.js"));
 
 var _PathExpressionHandler = _interopRequireDefault(__webpack_require__(/*! ./PathExpressionHandler */ "./node_modules/ldflex/lib/PathExpressionHandler.js"));
 
@@ -67160,13 +67990,21 @@ var _PathProxy = _interopRequireDefault(__webpack_require__(/*! ./PathProxy */ "
 
 var _PathFactory = _interopRequireDefault(__webpack_require__(/*! ./PathFactory */ "./node_modules/ldflex/lib/PathFactory.js"));
 
-var _SparqlHandler = _interopRequireDefault(__webpack_require__(/*! ./SparqlHandler */ "./node_modules/ldflex/lib/SparqlHandler.js"));
+var _ReplaceFunctionHandler = _interopRequireDefault(__webpack_require__(/*! ./ReplaceFunctionHandler */ "./node_modules/ldflex/lib/ReplaceFunctionHandler.js"));
 
-var _StringToLDflexHandler = _interopRequireDefault(__webpack_require__(/*! ./StringToLDflexHandler */ "./node_modules/ldflex/lib/StringToLDflexHandler.js"));
+var _SetFunctionHandler = _interopRequireDefault(__webpack_require__(/*! ./SetFunctionHandler */ "./node_modules/ldflex/lib/SetFunctionHandler.js"));
+
+var _SparqlHandler = _interopRequireDefault(__webpack_require__(/*! ./SparqlHandler */ "./node_modules/ldflex/lib/SparqlHandler.js"));
 
 var _SubjectHandler = _interopRequireDefault(__webpack_require__(/*! ./SubjectHandler */ "./node_modules/ldflex/lib/SubjectHandler.js"));
 
+var _StringToLDflexHandler = _interopRequireDefault(__webpack_require__(/*! ./StringToLDflexHandler */ "./node_modules/ldflex/lib/StringToLDflexHandler.js"));
+
+var _defaultHandlers = _interopRequireDefault(__webpack_require__(/*! ./defaultHandlers */ "./node_modules/ldflex/lib/defaultHandlers.js"));
+
 var _iterableUtils = __webpack_require__(/*! ./iterableUtils */ "./node_modules/ldflex/lib/iterableUtils.js");
+
+var _promiseUtils = __webpack_require__(/*! ./promiseUtils */ "./node_modules/ldflex/lib/promiseUtils.js");
 
 /***/ }),
 
@@ -67180,93 +68018,88 @@ var _iterableUtils = __webpack_require__(/*! ./iterableUtils */ "./node_modules/
 "use strict";
 
 
-var _interopRequireDefault = __webpack_require__(/*! @babel/runtime/helpers/interopRequireDefault */ "./node_modules/ldflex/node_modules/@babel/runtime/helpers/interopRequireDefault.js");
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.getFirstItem = getFirstItem;
+exports.iteratorFor = iteratorFor;
+const done = {};
+/**
+ * Gets the first element of the iterable.
+ */
+
+function getFirstItem(iterable) {
+  const iterator = iterable[Symbol.asyncIterator]();
+  return iterator.next().then(item => item.value);
+}
+/**
+ * Creates an async iterator with the item as only element.
+ */
+
+
+function iteratorFor(item) {
+  return {
+    async next() {
+      if (item !== done) {
+        const value = await item;
+        item = done;
+        return {
+          value
+        };
+      }
+
+      return {
+        done: true
+      };
+    }
+
+  };
+}
+
+/***/ }),
+
+/***/ "./node_modules/ldflex/lib/promiseUtils.js":
+/*!*************************************************!*\
+  !*** ./node_modules/ldflex/lib/promiseUtils.js ***!
+  \*************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
 
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.getIterator = getIterator;
-exports.iterableToThen = iterableToThen;
-exports.promiseToIterable = promiseToIterable;
-exports.iterablePromise = iterablePromise;
+exports.getThen = getThen;
+exports.toIterablePromise = toIterablePromise;
+exports.memoizeIterable = memoizeIterable;
 
-var _awaitAsyncGenerator2 = _interopRequireDefault(__webpack_require__(/*! @babel/runtime/helpers/awaitAsyncGenerator */ "./node_modules/ldflex/node_modules/@babel/runtime/helpers/awaitAsyncGenerator.js"));
-
-var _wrapAsyncGenerator2 = _interopRequireDefault(__webpack_require__(/*! @babel/runtime/helpers/wrapAsyncGenerator */ "./node_modules/ldflex/node_modules/@babel/runtime/helpers/wrapAsyncGenerator.js"));
+var _iterableUtils = __webpack_require__(/*! ./iterableUtils */ "./node_modules/ldflex/lib/iterableUtils.js");
 
 /**
- * Gets the iterator function
- * from an iterable returned by a handler.
+ * Lazily returns the `then` function of the created promise.
  */
-function getIterator(handler) {
-  return {
-    execute(path, proxy) {
-      // Get the iterable from the handler
-      const iterable = handler.execute(path, proxy);
-      if (!iterable) return undefined; // Return a function that returns the iterator
-
-      const iterator = iterable[Symbol.asyncIterator]();
-      return () => iterator;
-    }
-
-  };
-}
-/**
- * Creates a then function to the first element
- * of an iterable returned by a handler.
- */
-
-
-function iterableToThen(handler) {
-  return {
-    execute(path, proxy) {
-      // Get the iterable from the handler
-      const iterable = handler.execute(path, proxy);
-      if (!iterable) return undefined; // Return a then function to the first element
-
-      const iterator = iterable[Symbol.asyncIterator]();
-      return createThenToFirstItem(iterator);
-    }
-
-  };
-}
-/**
- * Creates an async iterable from a promise returned by a handler.
- */
-
-
-function promiseToIterable(handler) {
-  return {
-    execute(path, proxy) {
-      // Obtain the promise
-      const promise = handler.execute(path, proxy);
-      if (!promise) return undefined; // Return an async iterable with the promise as only element
-
-      return (0, _wrapAsyncGenerator2.default)(function* () {
-        yield promise;
-      })();
-    }
-
-  };
+function getThen(createPromise) {
+  return (onResolved, onRejected) => createPromise().then(onResolved, onRejected);
 }
 /**
  * Returns an iterable that is also a promise to the first element.
  */
 
 
-function iterablePromise(iterable) {
-  // If called with a generator function, execute it
-  if (typeof iterable === 'function') iterable = iterable(); // Obtain the iterator
-
-  const iterator = iterable[Symbol.asyncIterator](); // Return an object that is iterable and a promise
+function toIterablePromise(iterable) {
+  // If called with a generator function,
+  // memoize it to enable multiple iterations
+  if (typeof iterable === 'function') iterable = memoizeIterable(iterable()); // Return an object that is iterable and a promise
 
   return {
     [Symbol.asyncIterator]() {
-      return iterator;
+      return iterable[Symbol.asyncIterator]();
     },
 
     get then() {
-      return createThenToFirstItem(iterator);
+      return getThen(() => (0, _iterableUtils.getFirstItem)(this));
     },
 
     catch(onRejected) {
@@ -67280,278 +68113,36 @@ function iterablePromise(iterable) {
   };
 }
 /**
- * Creates a then function to the first element of the iterator.
+ * Returns a memoized version of the iterable
+ * that can be iterated over as many times as needed.
  */
 
 
-function createThenToFirstItem(iterator) {
-  return (onResolved, onRejected) => iterator.next().then(item => item.value).then(onResolved, onRejected);
-}
+function memoizeIterable(iterable) {
+  const cache = [];
+  let iterator = iterable[Symbol.asyncIterator]();
+  return {
+    [Symbol.asyncIterator]() {
+      let i = 0;
+      return {
+        async next() {
+          // Return the item if it has been read already
+          if (i < cache.length) return cache[i++]; // Stop if there are no more items
 
-/***/ }),
+          if (!iterator) return {
+            done: true
+          }; // Read and cache an item from the iterable otherwise
 
-/***/ "./node_modules/ldflex/node_modules/@babel/runtime/helpers/AsyncGenerator.js":
-/*!***********************************************************************************!*\
-  !*** ./node_modules/ldflex/node_modules/@babel/runtime/helpers/AsyncGenerator.js ***!
-  \***********************************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-var AwaitValue = __webpack_require__(/*! ./AwaitValue */ "./node_modules/ldflex/node_modules/@babel/runtime/helpers/AwaitValue.js");
-
-function AsyncGenerator(gen) {
-  var front, back;
-
-  function send(key, arg) {
-    return new Promise(function (resolve, reject) {
-      var request = {
-        key: key,
-        arg: arg,
-        resolve: resolve,
-        reject: reject,
-        next: null
-      };
-
-      if (back) {
-        back = back.next = request;
-      } else {
-        front = back = request;
-        resume(key, arg);
-      }
-    });
-  }
-
-  function resume(key, arg) {
-    try {
-      var result = gen[key](arg);
-      var value = result.value;
-      var wrappedAwait = value instanceof AwaitValue;
-      Promise.resolve(wrappedAwait ? value.wrapped : value).then(function (arg) {
-        if (wrappedAwait) {
-          resume("next", arg);
-          return;
+          const item = cache[i++] = iterator.next();
+          if ((await item).done) iterator = null;
+          return item;
         }
 
-        settle(result.done ? "return" : "normal", arg);
-      }, function (err) {
-        resume("throw", err);
-      });
-    } catch (err) {
-      settle("throw", err);
-    }
-  }
-
-  function settle(type, value) {
-    switch (type) {
-      case "return":
-        front.resolve({
-          value: value,
-          done: true
-        });
-        break;
-
-      case "throw":
-        front.reject(value);
-        break;
-
-      default:
-        front.resolve({
-          value: value,
-          done: false
-        });
-        break;
+      };
     }
 
-    front = front.next;
-
-    if (front) {
-      resume(front.key, front.arg);
-    } else {
-      back = null;
-    }
-  }
-
-  this._invoke = send;
-
-  if (typeof gen.return !== "function") {
-    this.return = undefined;
-  }
-}
-
-if (typeof Symbol === "function" && Symbol.asyncIterator) {
-  AsyncGenerator.prototype[Symbol.asyncIterator] = function () {
-    return this;
   };
 }
-
-AsyncGenerator.prototype.next = function (arg) {
-  return this._invoke("next", arg);
-};
-
-AsyncGenerator.prototype.throw = function (arg) {
-  return this._invoke("throw", arg);
-};
-
-AsyncGenerator.prototype.return = function (arg) {
-  return this._invoke("return", arg);
-};
-
-module.exports = AsyncGenerator;
-
-/***/ }),
-
-/***/ "./node_modules/ldflex/node_modules/@babel/runtime/helpers/AwaitValue.js":
-/*!*******************************************************************************!*\
-  !*** ./node_modules/ldflex/node_modules/@babel/runtime/helpers/AwaitValue.js ***!
-  \*******************************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-function _AwaitValue(value) {
-  this.wrapped = value;
-}
-
-module.exports = _AwaitValue;
-
-/***/ }),
-
-/***/ "./node_modules/ldflex/node_modules/@babel/runtime/helpers/asyncIterator.js":
-/*!**********************************************************************************!*\
-  !*** ./node_modules/ldflex/node_modules/@babel/runtime/helpers/asyncIterator.js ***!
-  \**********************************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-function _asyncIterator(iterable) {
-  var method;
-
-  if (typeof Symbol === "function") {
-    if (Symbol.asyncIterator) {
-      method = iterable[Symbol.asyncIterator];
-      if (method != null) return method.call(iterable);
-    }
-
-    if (Symbol.iterator) {
-      method = iterable[Symbol.iterator];
-      if (method != null) return method.call(iterable);
-    }
-  }
-
-  throw new TypeError("Object is not async iterable");
-}
-
-module.exports = _asyncIterator;
-
-/***/ }),
-
-/***/ "./node_modules/ldflex/node_modules/@babel/runtime/helpers/awaitAsyncGenerator.js":
-/*!****************************************************************************************!*\
-  !*** ./node_modules/ldflex/node_modules/@babel/runtime/helpers/awaitAsyncGenerator.js ***!
-  \****************************************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-var AwaitValue = __webpack_require__(/*! ./AwaitValue */ "./node_modules/ldflex/node_modules/@babel/runtime/helpers/AwaitValue.js");
-
-function _awaitAsyncGenerator(value) {
-  return new AwaitValue(value);
-}
-
-module.exports = _awaitAsyncGenerator;
-
-/***/ }),
-
-/***/ "./node_modules/ldflex/node_modules/@babel/runtime/helpers/defineProperty.js":
-/*!***********************************************************************************!*\
-  !*** ./node_modules/ldflex/node_modules/@babel/runtime/helpers/defineProperty.js ***!
-  \***********************************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-function _defineProperty(obj, key, value) {
-  if (key in obj) {
-    Object.defineProperty(obj, key, {
-      value: value,
-      enumerable: true,
-      configurable: true,
-      writable: true
-    });
-  } else {
-    obj[key] = value;
-  }
-
-  return obj;
-}
-
-module.exports = _defineProperty;
-
-/***/ }),
-
-/***/ "./node_modules/ldflex/node_modules/@babel/runtime/helpers/interopRequireDefault.js":
-/*!******************************************************************************************!*\
-  !*** ./node_modules/ldflex/node_modules/@babel/runtime/helpers/interopRequireDefault.js ***!
-  \******************************************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-function _interopRequireDefault(obj) {
-  return obj && obj.__esModule ? obj : {
-    default: obj
-  };
-}
-
-module.exports = _interopRequireDefault;
-
-/***/ }),
-
-/***/ "./node_modules/ldflex/node_modules/@babel/runtime/helpers/objectSpread.js":
-/*!*********************************************************************************!*\
-  !*** ./node_modules/ldflex/node_modules/@babel/runtime/helpers/objectSpread.js ***!
-  \*********************************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-var defineProperty = __webpack_require__(/*! ./defineProperty */ "./node_modules/ldflex/node_modules/@babel/runtime/helpers/defineProperty.js");
-
-function _objectSpread(target) {
-  for (var i = 1; i < arguments.length; i++) {
-    var source = arguments[i] != null ? arguments[i] : {};
-    var ownKeys = Object.keys(source);
-
-    if (typeof Object.getOwnPropertySymbols === 'function') {
-      ownKeys = ownKeys.concat(Object.getOwnPropertySymbols(source).filter(function (sym) {
-        return Object.getOwnPropertyDescriptor(source, sym).enumerable;
-      }));
-    }
-
-    ownKeys.forEach(function (key) {
-      defineProperty(target, key, source[key]);
-    });
-  }
-
-  return target;
-}
-
-module.exports = _objectSpread;
-
-/***/ }),
-
-/***/ "./node_modules/ldflex/node_modules/@babel/runtime/helpers/wrapAsyncGenerator.js":
-/*!***************************************************************************************!*\
-  !*** ./node_modules/ldflex/node_modules/@babel/runtime/helpers/wrapAsyncGenerator.js ***!
-  \***************************************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-var AsyncGenerator = __webpack_require__(/*! ./AsyncGenerator */ "./node_modules/ldflex/node_modules/@babel/runtime/helpers/AsyncGenerator.js");
-
-function _wrapAsyncGenerator(fn) {
-  return function () {
-    return new AsyncGenerator(fn.apply(this, arguments));
-  };
-}
-
-module.exports = _wrapAsyncGenerator;
 
 /***/ }),
 
@@ -113804,12 +114395,12 @@ class CreateActivityHandler {
     this._path = path;
   }
 
-  execute(path, proxy) {
+  handle(path, proxy) {
     const self = this;
     const root = proxy.root;
     const user = root.user; // Return an iterator over the new activity URLs
 
-    return () => Object(ldflex__WEBPACK_IMPORTED_MODULE_3__["iterablePromise"])(
+    return () => Object(ldflex__WEBPACK_IMPORTED_MODULE_3__["toIterablePromise"])(
     /*#__PURE__*/
     _wrapAsyncGenerator(function* () {
       // Create an activity for each object on the path
@@ -113904,7 +114495,10 @@ class CreateActivityHandler {
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return SubjectPathResolver; });
-/* harmony import */ var _ComunicaUpdateEngine__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./ComunicaUpdateEngine */ "./src/ComunicaUpdateEngine.js");
+/* harmony import */ var _rdfjs_data_model__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @rdfjs/data-model */ "./node_modules/@rdfjs/data-model/index.js");
+/* harmony import */ var _rdfjs_data_model__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_rdfjs_data_model__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _ComunicaUpdateEngine__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./ComunicaUpdateEngine */ "./src/ComunicaUpdateEngine.js");
+
 
 /**
  * LDflex property resolver that returns a new path
@@ -113920,20 +114514,24 @@ class SubjectPathResolver {
   constructor(pathFactory) {
     this._paths = pathFactory;
   }
-
-  resolve(subject) {
-    const queryEngine = new _ComunicaUpdateEngine__WEBPACK_IMPORTED_MODULE_0__["default"](subject);
-    return this._paths.create({
-      queryEngine
-    }, {
-      subject
-    });
-  }
   /** Resolve all string properties (not Symbols) */
 
 
   supports(property) {
     return typeof property === 'string';
+  }
+
+  resolve(property) {
+    return this._createSubjectPath(Object(_rdfjs_data_model__WEBPACK_IMPORTED_MODULE_0__["namedNode"])(property));
+  }
+
+  _createSubjectPath(subject) {
+    const queryEngine = new _ComunicaUpdateEngine__WEBPACK_IMPORTED_MODULE_1__["default"](subject);
+    return this._paths.create({
+      queryEngine
+    }, {
+      subject
+    });
   }
 
 }
@@ -113950,28 +114548,32 @@ class SubjectPathResolver {
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return UserPathHandler; });
-/* harmony import */ var solid_auth_client__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! solid-auth-client */ "solid-auth-client");
-/* harmony import */ var solid_auth_client__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(solid_auth_client__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _SubjectPathResolver__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./SubjectPathResolver */ "./src/SubjectPathResolver.js");
+/* harmony import */ var _SubjectPathResolver__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./SubjectPathResolver */ "./src/SubjectPathResolver.js");
+/* harmony import */ var solid_auth_client__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! solid-auth-client */ "solid-auth-client");
+/* harmony import */ var solid_auth_client__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(solid_auth_client__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var _rdfjs_data_model__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @rdfjs/data-model */ "./node_modules/@rdfjs/data-model/index.js");
+/* harmony import */ var _rdfjs_data_model__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_rdfjs_data_model__WEBPACK_IMPORTED_MODULE_2__);
+
 
 
 /**
  * Creates a path with the current user as a subject.
  */
 
-class UserPathHandler extends _SubjectPathResolver__WEBPACK_IMPORTED_MODULE_1__["default"] {
+class UserPathHandler extends _SubjectPathResolver__WEBPACK_IMPORTED_MODULE_0__["default"] {
   constructor(pathFactory) {
     super(pathFactory);
   }
 
-  execute() {
-    return this.resolve(this.getWebId());
+  handle() {
+    const subject = this.getWebId().then(_rdfjs_data_model__WEBPACK_IMPORTED_MODULE_2__["namedNode"]);
+    return this._createSubjectPath(subject);
   }
   /** Gets the WebID of the logged in user */
 
 
   async getWebId() {
-    const session = await solid_auth_client__WEBPACK_IMPORTED_MODULE_0___default.a.currentSession();
+    const session = await solid_auth_client__WEBPACK_IMPORTED_MODULE_1___default.a.currentSession();
     if (!session) throw new Error('Cannot resolve user path: no user logged in');
     return session.webId;
   }
@@ -114017,12 +114619,11 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 
 
 const as = _context_json__WEBPACK_IMPORTED_MODULE_1__['@context'].as;
-const defaultHandlers = ldflex__WEBPACK_IMPORTED_MODULE_0__["PathFactory"].defaultHandlers;
 let rootPath; // Creates data paths that start from a given subject
 
 const subjectPathFactory = new ldflex__WEBPACK_IMPORTED_MODULE_0__["PathFactory"]({
   context: _context_json__WEBPACK_IMPORTED_MODULE_1__,
-  handlers: _objectSpread({}, defaultHandlers, {
+  handlers: _objectSpread({}, ldflex__WEBPACK_IMPORTED_MODULE_0__["defaultHandlers"], {
     // Activities on paths
     like: new _CreateActivityHandler__WEBPACK_IMPORTED_MODULE_4__["default"]({
       type: `${as}Like`
@@ -114040,7 +114641,7 @@ const subjectPathFactory = new ldflex__WEBPACK_IMPORTED_MODULE_0__["PathFactory"
 
 /* harmony default export */ __webpack_exports__["default"] = (rootPath = new ldflex__WEBPACK_IMPORTED_MODULE_0__["PathFactory"]({
   // Handlers of specific named properties
-  handlers: _objectSpread({}, defaultHandlers, {
+  handlers: _objectSpread({}, ldflex__WEBPACK_IMPORTED_MODULE_0__["defaultHandlers"], {
     // The `user` property starts a path with the current user as subject
     user: new _UserPathHandler__WEBPACK_IMPORTED_MODULE_2__["default"](subjectPathFactory)
   }),
