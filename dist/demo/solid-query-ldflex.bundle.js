@@ -835,7 +835,7 @@ exports.default = Requester;
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-const __b13bnode100 = new (__webpack_require__(/*! @comunica/logger-void */ "./node_modules/@comunica/logger-void/index.js").LoggerVoid)({});
+const __b14bnode108 = new (__webpack_require__(/*! @comunica/logger-void */ "./node_modules/@comunica/logger-void/index.js").LoggerVoid)({});
 const https___linkedsoftwaredependencies_org_bundles_npm__comunica_bus_init_Bus_Init = new (__webpack_require__(/*! @comunica/core */ "./node_modules/@comunica/core/index.js").Bus)({
   'name': 'https://linkedsoftwaredependencies.org/bundles/npm/@comunica/bus-init/Bus/Init'
 });
@@ -863,6 +863,9 @@ const https___linkedsoftwaredependencies_org_bundles_npm__comunica_bus_context_p
 const https___linkedsoftwaredependencies_org_bundles_npm__comunica_bus_rdf_resolve_quad_pattern_Bus_RdfResolveQuadPattern = new (__webpack_require__(/*! @comunica/core */ "./node_modules/@comunica/core/index.js").Bus)({
   'name': 'https://linkedsoftwaredependencies.org/bundles/npm/@comunica/bus-rdf-resolve-quad-pattern/Bus/RdfResolveQuadPattern'
 });
+const https___linkedsoftwaredependencies_org_bundles_npm__comunica_bus_rdf_resolve_hypermedia_Bus_RdfResolveHypermedia = new (__webpack_require__(/*! @comunica/core */ "./node_modules/@comunica/core/index.js").Bus)({
+  'name': 'https://linkedsoftwaredependencies.org/bundles/npm/@comunica/bus-rdf-resolve-hypermedia/Bus/RdfResolveHypermedia'
+});
 const https___linkedsoftwaredependencies_org_bundles_npm__comunica_bus_rdf_dereference_paged_Bus_RdfDereferencePaged = new (__webpack_require__(/*! @comunica/core */ "./node_modules/@comunica/core/index.js").Bus)({
   'name': 'https://linkedsoftwaredependencies.org/bundles/npm/@comunica/bus-rdf-dereference-paged/Bus/RdfDereferencePaged'
 });
@@ -874,6 +877,9 @@ const https___linkedsoftwaredependencies_org_bundles_npm__comunica_bus_rdf_metad
 });
 const https___linkedsoftwaredependencies_org_bundles_npm__comunica_bus_query_operation_Bus_QueryOperation = new (__webpack_require__(/*! @comunica/core */ "./node_modules/@comunica/core/index.js").Bus)({
   'name': 'https://linkedsoftwaredependencies.org/bundles/npm/@comunica/bus-query-operation/Bus/QueryOperation'
+});
+const https___linkedsoftwaredependencies_org_bundles_npm__comunica_bus_optimize_query_operation_Bus_OptimizeQueryOperation = new (__webpack_require__(/*! @comunica/core */ "./node_modules/@comunica/core/index.js").Bus)({
+  'name': 'https://linkedsoftwaredependencies.org/bundles/npm/@comunica/bus-optimize-query-operation/Bus/OptimizeQueryOperation'
 });
 const https___linkedsoftwaredependencies_org_bundles_npm__comunica_bus_sparql_parse_Bus_SparqlParse = new (__webpack_require__(/*! @comunica/core */ "./node_modules/@comunica/core/index.js").Bus)({
   'name': 'https://linkedsoftwaredependencies.org/bundles/npm/@comunica/bus-sparql-parse/Bus/SparqlParse'
@@ -962,9 +968,9 @@ const https___linkedsoftwaredependencies_org_bundles_npm__comunica_actor_init_sp
   'name': 'https://linkedsoftwaredependencies.org/bundles/npm/@comunica/actor-init-sparql/^1.0.0/config/sets/sparql-serializers.json#mediatorRdfSerialize',
   'bus': https___linkedsoftwaredependencies_org_bundles_npm__comunica_bus_rdf_serialize_Bus_RdfSerialize
 });
-const __b0bnode250 = new (__webpack_require__(/*! @comunica/mediator-combine-union */ "./node_modules/@comunica/mediator-combine-union/index.js").MediatorCombineUnion)({
+const __b0bnode269 = new (__webpack_require__(/*! @comunica/mediator-combine-union */ "./node_modules/@comunica/mediator-combine-union/index.js").MediatorCombineUnion)({
   'field': 'mediaTypes',
-  'name': '_:b0bnode250',
+  'name': '_:b0bnode269',
   'bus': https___linkedsoftwaredependencies_org_bundles_npm__comunica_bus_rdf_serialize_Bus_RdfSerialize
 });
 const https___linkedsoftwaredependencies_org_bundles_npm__comunica_actor_init_sparql__1_0_0_config_sets_context_preprocess_rdf_source_identifiers_json_mediatorRdfSourceIdentifier = new (__webpack_require__(/*! @comunica/mediator-number */ "./node_modules/@comunica/mediator-number/index.js").MediatorNumber)({
@@ -981,6 +987,18 @@ const https___linkedsoftwaredependencies_org_bundles_npm__comunica_actor_init_sp
 const https___linkedsoftwaredependencies_org_bundles_npm__comunica_actor_init_sparql__1_0_0_config_sets_sparql_queryoperators_json_mediatorResolveQuadPattern = new (__webpack_require__(/*! @comunica/mediator-race */ "./node_modules/@comunica/mediator-race/index.js").MediatorRace)({
   'name': 'https://linkedsoftwaredependencies.org/bundles/npm/@comunica/actor-init-sparql/^1.0.0/config/sets/sparql-queryoperators.json#mediatorResolveQuadPattern',
   'bus': https___linkedsoftwaredependencies_org_bundles_npm__comunica_bus_rdf_resolve_quad_pattern_Bus_RdfResolveQuadPattern
+});
+const https___linkedsoftwaredependencies_org_bundles_npm__comunica_actor_init_sparql__1_0_0_config_sets_resolve_hypermedia_json_myHypermediaQpfResolver = new (__webpack_require__(/*! @comunica/actor-rdf-resolve-hypermedia-qpf */ "./node_modules/@comunica/actor-rdf-resolve-hypermedia-qpf/index.js").ActorRdfResolveHypermediaQpf)({
+  'subjectUri': 'http://www.w3.org/1999/02/22-rdf-syntax-ns#subject',
+  'predicateUri': 'http://www.w3.org/1999/02/22-rdf-syntax-ns#predicate',
+  'objectUri': 'http://www.w3.org/1999/02/22-rdf-syntax-ns#object',
+  'graphUri': 'http://www.w3.org/ns/sparql-service-description#graph',
+  'name': 'https://linkedsoftwaredependencies.org/bundles/npm/@comunica/actor-init-sparql/^1.0.0/config/sets/resolve-hypermedia.json#myHypermediaQpfResolver',
+  'bus': https___linkedsoftwaredependencies_org_bundles_npm__comunica_bus_rdf_resolve_hypermedia_Bus_RdfResolveHypermedia
+});
+const https___linkedsoftwaredependencies_org_bundles_npm__comunica_actor_init_sparql__1_0_0_config_sets_resolve_hypermedia_json_mediatorRdfResolveHypermedia = new (__webpack_require__(/*! @comunica/mediator-race */ "./node_modules/@comunica/mediator-race/index.js").MediatorRace)({
+  'name': 'https://linkedsoftwaredependencies.org/bundles/npm/@comunica/actor-init-sparql/^1.0.0/config/sets/resolve-hypermedia.json#mediatorRdfResolveHypermedia',
+  'bus': https___linkedsoftwaredependencies_org_bundles_npm__comunica_bus_rdf_resolve_hypermedia_Bus_RdfResolveHypermedia
 });
 const https___linkedsoftwaredependencies_org_bundles_npm__comunica_actor_init_sparql__1_0_0_config_sets_resolve_hypermedia_json_mediatorRdfDereferencePaged = new (__webpack_require__(/*! @comunica/mediator-race */ "./node_modules/@comunica/mediator-race/index.js").MediatorRace)({
   'name': 'https://linkedsoftwaredependencies.org/bundles/npm/@comunica/actor-init-sparql/^1.0.0/config/sets/resolve-hypermedia.json#mediatorRdfDereferencePaged',
@@ -1033,6 +1051,14 @@ const https___linkedsoftwaredependencies_org_bundles_npm__comunica_actor_init_sp
   'name': 'https://linkedsoftwaredependencies.org/bundles/npm/@comunica/actor-init-sparql/^1.0.0/config/sets/sparql-queryoperators.json#myValuesQueryOperator',
   'bus': https___linkedsoftwaredependencies_org_bundles_npm__comunica_bus_query_operation_Bus_QueryOperation
 });
+const https___linkedsoftwaredependencies_org_bundles_npm__comunica_actor_init_sparql__1_0_0_config_sets_sparql_init_json_mediatorOptimizeQueryOperation = new (__webpack_require__(/*! @comunica/mediator-combine-pipeline */ "./node_modules/@comunica/mediator-combine-pipeline/index.js").MediatorCombinePipeline)({
+  'name': 'https://linkedsoftwaredependencies.org/bundles/npm/@comunica/actor-init-sparql/^1.0.0/config/sets/sparql-init.json#mediatorOptimizeQueryOperation',
+  'bus': https___linkedsoftwaredependencies_org_bundles_npm__comunica_bus_optimize_query_operation_Bus_OptimizeQueryOperation
+});
+const https___linkedsoftwaredependencies_org_bundles_npm__comunica_actor_init_sparql__1_0_0_config_sets_sparql_optimize_json_myJoinBgpOptimizer = new (__webpack_require__(/*! @comunica/actor-optimize-query-operation-join-bgp */ "./node_modules/@comunica/actor-optimize-query-operation-join-bgp/index.js").ActorOptimizeQueryOperationJoinBgp)({
+  'name': 'https://linkedsoftwaredependencies.org/bundles/npm/@comunica/actor-init-sparql/^1.0.0/config/sets/sparql-optimize.json#myJoinBgpOptimizer',
+  'bus': https___linkedsoftwaredependencies_org_bundles_npm__comunica_bus_optimize_query_operation_Bus_OptimizeQueryOperation
+});
 const https___linkedsoftwaredependencies_org_bundles_npm__comunica_actor_init_sparql__1_0_0_config_sets_sparql_init_json_mediatorSparqlParse = new (__webpack_require__(/*! @comunica/mediator-race */ "./node_modules/@comunica/mediator-race/index.js").MediatorRace)({
   'name': 'https://linkedsoftwaredependencies.org/bundles/npm/@comunica/actor-init-sparql/^1.0.0/config/sets/sparql-init.json#mediatorSparqlParse',
   'bus': https___linkedsoftwaredependencies_org_bundles_npm__comunica_bus_sparql_parse_Bus_SparqlParse
@@ -1055,8 +1081,8 @@ const https___linkedsoftwaredependencies_org_bundles_npm__comunica_actor_init_sp
     'dbpedia': 'http://dbpedia.org/resource/',
     'dbpedia-owl': 'http://dbpedia.org/ontology/',
     'dbpprop': 'http://dbpedia.org/property/',
-    'schema': 'http://www.w3.org/2002/07/owl#',
-    'skos': 'http://schema.org/'
+    'schema': 'http://schema.org/',
+    'skos': 'http://www.w3.org/2008/05/skos#'
   },
   'name': 'https://linkedsoftwaredependencies.org/bundles/npm/@comunica/actor-init-sparql/^1.0.0/config/sets/sparql-parsers.json#mySparqlParser',
   'bus': https___linkedsoftwaredependencies_org_bundles_npm__comunica_bus_sparql_parse_Bus_SparqlParse
@@ -1065,9 +1091,9 @@ const https___linkedsoftwaredependencies_org_bundles_npm__comunica_actor_init_sp
   'name': 'https://linkedsoftwaredependencies.org/bundles/npm/@comunica/actor-init-sparql/^1.0.0/config/sets/sparql-init.json#mediatorSparqlSerialize',
   'bus': https___linkedsoftwaredependencies_org_bundles_npm__comunica_bus_sparql_serialize_Bus_SparqlSerialize
 });
-const __b0bnode245 = new (__webpack_require__(/*! @comunica/mediator-combine-union */ "./node_modules/@comunica/mediator-combine-union/index.js").MediatorCombineUnion)({
+const __b0bnode263 = new (__webpack_require__(/*! @comunica/mediator-combine-union */ "./node_modules/@comunica/mediator-combine-union/index.js").MediatorCombineUnion)({
   'field': 'mediaTypes',
-  'name': '_:b0bnode245',
+  'name': '_:b0bnode263',
   'bus': https___linkedsoftwaredependencies_org_bundles_npm__comunica_bus_sparql_serialize_Bus_SparqlSerialize
 });
 const https___linkedsoftwaredependencies_org_bundles_npm__comunica_actor_init_sparql__1_0_0_config_sets_sparql_serializers_json_myJsonSparqlSerializer = new (__webpack_require__(/*! @comunica/actor-sparql-serialize-json */ "./node_modules/@comunica/actor-sparql-serialize-json/index.js").ActorSparqlSerializeJson)({
@@ -1200,7 +1226,7 @@ const https___linkedsoftwaredependencies_org_bundles_npm__comunica_actor_init_sp
 });
 const https___linkedsoftwaredependencies_org_bundles_npm__comunica_actor_init_sparql__1_0_0_config_sets_sparql_serializers_json_myRdfSparqlSerializer = new (__webpack_require__(/*! @comunica/actor-sparql-serialize-rdf */ "./node_modules/@comunica/actor-sparql-serialize-rdf/index.js").ActorSparqlSerializeRdf)({
   'mediatorRdfSerialize': https___linkedsoftwaredependencies_org_bundles_npm__comunica_actor_init_sparql__1_0_0_config_sets_sparql_serializers_json_mediatorRdfSerialize,
-  'mediatorMediaTypeCombiner': __b0bnode250,
+  'mediatorMediaTypeCombiner': __b0bnode269,
   'name': 'https://linkedsoftwaredependencies.org/bundles/npm/@comunica/actor-init-sparql/^1.0.0/config/sets/sparql-serializers.json#myRdfSparqlSerializer',
   'bus': https___linkedsoftwaredependencies_org_bundles_npm__comunica_bus_sparql_serialize_Bus_SparqlSerialize
 });
@@ -1220,13 +1246,14 @@ const https___linkedsoftwaredependencies_org_bundles_npm__comunica_actor_init_sp
   'name': 'https://linkedsoftwaredependencies.org/bundles/npm/@comunica/actor-init-sparql/^1.0.0/config/sets/sparql-queryoperators.json#myQuadPatternQueryOperator',
   'bus': https___linkedsoftwaredependencies_org_bundles_npm__comunica_bus_query_operation_Bus_QueryOperation
 });
-const https___linkedsoftwaredependencies_org_bundles_npm__comunica_actor_init_sparql__1_0_0_config_sets_resolve_hypermedia_json_myQuadPatternResolver = new (__webpack_require__(/*! @comunica/actor-rdf-resolve-quad-pattern-qpf */ "./node_modules/@comunica/actor-rdf-resolve-quad-pattern-qpf/index.js").ActorRdfResolveQuadPatternQpf)({
+const https___linkedsoftwaredependencies_org_bundles_npm__comunica_actor_init_sparql__1_0_0_config_sets_resolve_hypermedia_json_myQuadPatternHypermediaResolver = new (__webpack_require__(/*! @comunica/actor-rdf-resolve-quad-pattern-hypermedia */ "./node_modules/@comunica/actor-rdf-resolve-quad-pattern-hypermedia/index.js").ActorRdfResolveQuadPatternHypermedia)({
   'mediatorRdfDereferencePaged': https___linkedsoftwaredependencies_org_bundles_npm__comunica_actor_init_sparql__1_0_0_config_sets_resolve_hypermedia_json_mediatorRdfDereferencePaged,
+  'mediatorRdfResolveHypermedia': https___linkedsoftwaredependencies_org_bundles_npm__comunica_actor_init_sparql__1_0_0_config_sets_resolve_hypermedia_json_mediatorRdfResolveHypermedia,
   'subjectUri': 'http://www.w3.org/1999/02/22-rdf-syntax-ns#subject',
   'predicateUri': 'http://www.w3.org/1999/02/22-rdf-syntax-ns#predicate',
   'objectUri': 'http://www.w3.org/1999/02/22-rdf-syntax-ns#object',
   'graphUri': 'http://www.w3.org/ns/sparql-service-description#graph',
-  'name': 'https://linkedsoftwaredependencies.org/bundles/npm/@comunica/actor-init-sparql/^1.0.0/config/sets/resolve-hypermedia.json#myQuadPatternResolver',
+  'name': 'https://linkedsoftwaredependencies.org/bundles/npm/@comunica/actor-init-sparql/^1.0.0/config/sets/resolve-hypermedia.json#myQuadPatternHypermediaResolver',
   'bus': https___linkedsoftwaredependencies_org_bundles_npm__comunica_bus_rdf_resolve_quad_pattern_Bus_RdfResolveQuadPattern
 });
 const https___linkedsoftwaredependencies_org_bundles_npm__comunica_actor_init_sparql__1_0_0_config_sets_resolve_hypermedia_json_myRdfPagedDereferencer = new (__webpack_require__(/*! @comunica/actor-rdf-dereference-paged-next */ "./node_modules/@comunica/actor-rdf-dereference-paged-next/index.js").ActorRdfDereferencePagedNext)({
@@ -1236,46 +1263,6 @@ const https___linkedsoftwaredependencies_org_bundles_npm__comunica_actor_init_sp
   'cacheSize': 100,
   'name': 'https://linkedsoftwaredependencies.org/bundles/npm/@comunica/actor-init-sparql/^1.0.0/config/sets/resolve-hypermedia.json#myRdfPagedDereferencer',
   'bus': https___linkedsoftwaredependencies_org_bundles_npm__comunica_bus_rdf_dereference_paged_Bus_RdfDereferencePaged
-});
-const https___linkedsoftwaredependencies_org_bundles_npm__comunica_actor_init_sparql__1_0_0_config_sets_sparql_queryoperator_path_json_myAltPathOperator = new (__webpack_require__(/*! @comunica/actor-query-operation-path-alt */ "./node_modules/@comunica/actor-query-operation-path-alt/index.js").ActorQueryOperationPathAlt)({
-  'mediatorQueryOperation': https___linkedsoftwaredependencies_org_bundles_npm__comunica_actor_init_sparql__1_0_0_config_sets_sparql_queryoperators_json_mediatorQueryOperation,
-  'name': 'https://linkedsoftwaredependencies.org/bundles/npm/@comunica/actor-init-sparql/^1.0.0/config/sets/sparql-queryoperator-path.json#myAltPathOperator',
-  'bus': https___linkedsoftwaredependencies_org_bundles_npm__comunica_bus_query_operation_Bus_QueryOperation
-});
-const https___linkedsoftwaredependencies_org_bundles_npm__comunica_actor_init_sparql__1_0_0_config_sets_sparql_queryoperator_path_json_myInvPathOperator = new (__webpack_require__(/*! @comunica/actor-query-operation-path-inv */ "./node_modules/@comunica/actor-query-operation-path-inv/index.js").ActorQueryOperationPathInv)({
-  'mediatorQueryOperation': https___linkedsoftwaredependencies_org_bundles_npm__comunica_actor_init_sparql__1_0_0_config_sets_sparql_queryoperators_json_mediatorQueryOperation,
-  'name': 'https://linkedsoftwaredependencies.org/bundles/npm/@comunica/actor-init-sparql/^1.0.0/config/sets/sparql-queryoperator-path.json#myInvPathOperator',
-  'bus': https___linkedsoftwaredependencies_org_bundles_npm__comunica_bus_query_operation_Bus_QueryOperation
-});
-const https___linkedsoftwaredependencies_org_bundles_npm__comunica_actor_init_sparql__1_0_0_config_sets_sparql_queryoperator_path_json_myLinkPathOperator = new (__webpack_require__(/*! @comunica/actor-query-operation-path-link */ "./node_modules/@comunica/actor-query-operation-path-link/index.js").ActorQueryOperationPathLink)({
-  'mediatorQueryOperation': https___linkedsoftwaredependencies_org_bundles_npm__comunica_actor_init_sparql__1_0_0_config_sets_sparql_queryoperators_json_mediatorQueryOperation,
-  'name': 'https://linkedsoftwaredependencies.org/bundles/npm/@comunica/actor-init-sparql/^1.0.0/config/sets/sparql-queryoperator-path.json#myLinkPathOperator',
-  'bus': https___linkedsoftwaredependencies_org_bundles_npm__comunica_bus_query_operation_Bus_QueryOperation
-});
-const https___linkedsoftwaredependencies_org_bundles_npm__comunica_actor_init_sparql__1_0_0_config_sets_sparql_queryoperator_path_json_myNpsPathOperator = new (__webpack_require__(/*! @comunica/actor-query-operation-path-nps */ "./node_modules/@comunica/actor-query-operation-path-nps/index.js").ActorQueryOperationPathNps)({
-  'mediatorQueryOperation': https___linkedsoftwaredependencies_org_bundles_npm__comunica_actor_init_sparql__1_0_0_config_sets_sparql_queryoperators_json_mediatorQueryOperation,
-  'name': 'https://linkedsoftwaredependencies.org/bundles/npm/@comunica/actor-init-sparql/^1.0.0/config/sets/sparql-queryoperator-path.json#myNpsPathOperator',
-  'bus': https___linkedsoftwaredependencies_org_bundles_npm__comunica_bus_query_operation_Bus_QueryOperation
-});
-const https___linkedsoftwaredependencies_org_bundles_npm__comunica_actor_init_sparql__1_0_0_config_sets_sparql_queryoperator_path_json_myOneOrMorePathOperator = new (__webpack_require__(/*! @comunica/actor-query-operation-path-one-or-more */ "./node_modules/@comunica/actor-query-operation-path-one-or-more/index.js").ActorQueryOperationPathOneOrMore)({
-  'mediatorQueryOperation': https___linkedsoftwaredependencies_org_bundles_npm__comunica_actor_init_sparql__1_0_0_config_sets_sparql_queryoperators_json_mediatorQueryOperation,
-  'name': 'https://linkedsoftwaredependencies.org/bundles/npm/@comunica/actor-init-sparql/^1.0.0/config/sets/sparql-queryoperator-path.json#myOneOrMorePathOperator',
-  'bus': https___linkedsoftwaredependencies_org_bundles_npm__comunica_bus_query_operation_Bus_QueryOperation
-});
-const https___linkedsoftwaredependencies_org_bundles_npm__comunica_actor_init_sparql__1_0_0_config_sets_sparql_queryoperator_path_json_mySeqPathOperator = new (__webpack_require__(/*! @comunica/actor-query-operation-path-seq */ "./node_modules/@comunica/actor-query-operation-path-seq/index.js").ActorQueryOperationPathSeq)({
-  'mediatorQueryOperation': https___linkedsoftwaredependencies_org_bundles_npm__comunica_actor_init_sparql__1_0_0_config_sets_sparql_queryoperators_json_mediatorQueryOperation,
-  'name': 'https://linkedsoftwaredependencies.org/bundles/npm/@comunica/actor-init-sparql/^1.0.0/config/sets/sparql-queryoperator-path.json#mySeqPathOperator',
-  'bus': https___linkedsoftwaredependencies_org_bundles_npm__comunica_bus_query_operation_Bus_QueryOperation
-});
-const https___linkedsoftwaredependencies_org_bundles_npm__comunica_actor_init_sparql__1_0_0_config_sets_sparql_queryoperator_path_json_myZeroOrMorePathOperator = new (__webpack_require__(/*! @comunica/actor-query-operation-path-zero-or-more */ "./node_modules/@comunica/actor-query-operation-path-zero-or-more/index.js").ActorQueryOperationPathZeroOrMore)({
-  'mediatorQueryOperation': https___linkedsoftwaredependencies_org_bundles_npm__comunica_actor_init_sparql__1_0_0_config_sets_sparql_queryoperators_json_mediatorQueryOperation,
-  'name': 'https://linkedsoftwaredependencies.org/bundles/npm/@comunica/actor-init-sparql/^1.0.0/config/sets/sparql-queryoperator-path.json#myZeroOrMorePathOperator',
-  'bus': https___linkedsoftwaredependencies_org_bundles_npm__comunica_bus_query_operation_Bus_QueryOperation
-});
-const https___linkedsoftwaredependencies_org_bundles_npm__comunica_actor_init_sparql__1_0_0_config_sets_sparql_queryoperator_path_json_myZeroOrOnePathOperator = new (__webpack_require__(/*! @comunica/actor-query-operation-path-zero-or-one */ "./node_modules/@comunica/actor-query-operation-path-zero-or-one/index.js").ActorQueryOperationPathZeroOrOne)({
-  'mediatorQueryOperation': https___linkedsoftwaredependencies_org_bundles_npm__comunica_actor_init_sparql__1_0_0_config_sets_sparql_queryoperators_json_mediatorQueryOperation,
-  'name': 'https://linkedsoftwaredependencies.org/bundles/npm/@comunica/actor-init-sparql/^1.0.0/config/sets/sparql-queryoperator-path.json#myZeroOrOnePathOperator',
-  'bus': https___linkedsoftwaredependencies_org_bundles_npm__comunica_bus_query_operation_Bus_QueryOperation
 });
 const https___linkedsoftwaredependencies_org_bundles_npm__comunica_actor_init_sparql__1_0_0_config_sets_sparql_queryoperators_json_myAskQueryOperator = new (__webpack_require__(/*! @comunica/actor-query-operation-ask */ "./node_modules/@comunica/actor-query-operation-ask/index.js").ActorQueryOperationAsk)({
   'mediatorQueryOperation': https___linkedsoftwaredependencies_org_bundles_npm__comunica_actor_init_sparql__1_0_0_config_sets_sparql_queryoperators_json_mediatorQueryOperation,
@@ -1321,6 +1308,11 @@ const https___linkedsoftwaredependencies_org_bundles_npm__comunica_actor_init_sp
   'name': 'https://linkedsoftwaredependencies.org/bundles/npm/@comunica/actor-init-sparql/^1.0.0/config/sets/sparql-queryoperators.json#myDistinctQueryOperator',
   'bus': https___linkedsoftwaredependencies_org_bundles_npm__comunica_bus_query_operation_Bus_QueryOperation
 });
+const https___linkedsoftwaredependencies_org_bundles_npm__comunica_actor_init_sparql__1_0_0_config_sets_sparql_queryoperators_json_myExtendQueryOperator = new (__webpack_require__(/*! @comunica/actor-query-operation-extend */ "./node_modules/@comunica/actor-query-operation-extend/index.js").ActorQueryOperationExtend)({
+  'mediatorQueryOperation': https___linkedsoftwaredependencies_org_bundles_npm__comunica_actor_init_sparql__1_0_0_config_sets_sparql_queryoperators_json_mediatorQueryOperation,
+  'name': 'https://linkedsoftwaredependencies.org/bundles/npm/@comunica/actor-init-sparql/^1.0.0/config/sets/sparql-queryoperators.json#myExtendQueryOperator',
+  'bus': https___linkedsoftwaredependencies_org_bundles_npm__comunica_bus_query_operation_Bus_QueryOperation
+});
 const https___linkedsoftwaredependencies_org_bundles_npm__comunica_actor_init_sparql__1_0_0_config_sets_sparql_queryoperators_json_myReducedQueryOperator = new (__webpack_require__(/*! @comunica/actor-query-operation-reduced-hash */ "./node_modules/@comunica/actor-query-operation-reduced-hash/index.js").ActorQueryOperationReducedHash)({
   'hashAlgorithm': 'sha1',
   'digestAlgorithm': 'base64',
@@ -1331,7 +1323,7 @@ const https___linkedsoftwaredependencies_org_bundles_npm__comunica_actor_init_sp
   'name': 'https://linkedsoftwaredependencies.org/bundles/npm/@comunica/actor-init-sparql/^1.0.0/config/sets/sparql-queryoperators.json#myReducedQueryOperator',
   'bus': https___linkedsoftwaredependencies_org_bundles_npm__comunica_bus_query_operation_Bus_QueryOperation
 });
-const https___linkedsoftwaredependencies_org_bundles_npm__comunica_actor_init_sparql__1_0_0_config_sets_sparql_queryoperators_json_myFilterQueryOperator = new (__webpack_require__(/*! @comunica/actor-query-operation-filter-direct */ "./node_modules/@comunica/actor-query-operation-filter-direct/index.js").ActorQueryOperationFilterDirect)({
+const https___linkedsoftwaredependencies_org_bundles_npm__comunica_actor_init_sparql__1_0_0_config_sets_sparql_queryoperators_json_myFilterQueryOperator = new (__webpack_require__(/*! @comunica/actor-query-operation-filter-sparqlee */ "./node_modules/@comunica/actor-query-operation-filter-sparqlee/index.js").ActorQueryOperationFilterSparqlee)({
   'mediatorQueryOperation': https___linkedsoftwaredependencies_org_bundles_npm__comunica_actor_init_sparql__1_0_0_config_sets_sparql_queryoperators_json_mediatorQueryOperation,
   'name': 'https://linkedsoftwaredependencies.org/bundles/npm/@comunica/actor-init-sparql/^1.0.0/config/sets/sparql-queryoperators.json#myFilterQueryOperator',
   'bus': https___linkedsoftwaredependencies_org_bundles_npm__comunica_bus_query_operation_Bus_QueryOperation
@@ -1352,7 +1344,7 @@ const https___linkedsoftwaredependencies_org_bundles_npm__comunica_actor_init_sp
   'name': 'https://linkedsoftwaredependencies.org/bundles/npm/@comunica/actor-init-sparql/^1.0.0/config/sets/sparql-queryoperators.json#myLeftJoinQueryOperator',
   'bus': https___linkedsoftwaredependencies_org_bundles_npm__comunica_bus_query_operation_Bus_QueryOperation
 });
-const https___linkedsoftwaredependencies_org_bundles_npm__comunica_actor_init_sparql__1_0_0_config_sets_sparql_queryoperators_json_myOrderByQueryOperator = new (__webpack_require__(/*! @comunica/actor-query-operation-orderby-direct */ "./node_modules/@comunica/actor-query-operation-orderby-direct/index.js").ActorQueryOperationOrderByDirect)({
+const https___linkedsoftwaredependencies_org_bundles_npm__comunica_actor_init_sparql__1_0_0_config_sets_sparql_queryoperators_json_myOrderByQueryOperator = new (__webpack_require__(/*! @comunica/actor-query-operation-orderby-sparqlee */ "./node_modules/@comunica/actor-query-operation-orderby-sparqlee/index.js").ActorQueryOperationOrderBySparqlee)({
   'mediatorQueryOperation': https___linkedsoftwaredependencies_org_bundles_npm__comunica_actor_init_sparql__1_0_0_config_sets_sparql_queryoperators_json_mediatorQueryOperation,
   'name': 'https://linkedsoftwaredependencies.org/bundles/npm/@comunica/actor-init-sparql/^1.0.0/config/sets/sparql-queryoperators.json#myOrderByQueryOperator',
   'bus': https___linkedsoftwaredependencies_org_bundles_npm__comunica_bus_query_operation_Bus_QueryOperation
@@ -1374,13 +1366,54 @@ const https___linkedsoftwaredependencies_org_bundles_npm__comunica_actor_init_sp
   'name': 'https://linkedsoftwaredependencies.org/bundles/npm/@comunica/actor-init-sparql/^1.0.0/config/sets/sparql-queryoperators.json#myMinusQueryOperator',
   'bus': https___linkedsoftwaredependencies_org_bundles_npm__comunica_bus_query_operation_Bus_QueryOperation
 });
+const https___linkedsoftwaredependencies_org_bundles_npm__comunica_actor_init_sparql__1_0_0_config_sets_sparql_queryoperator_path_json_myAltPathOperator = new (__webpack_require__(/*! @comunica/actor-query-operation-path-alt */ "./node_modules/@comunica/actor-query-operation-path-alt/index.js").ActorQueryOperationPathAlt)({
+  'mediatorQueryOperation': https___linkedsoftwaredependencies_org_bundles_npm__comunica_actor_init_sparql__1_0_0_config_sets_sparql_queryoperators_json_mediatorQueryOperation,
+  'name': 'https://linkedsoftwaredependencies.org/bundles/npm/@comunica/actor-init-sparql/^1.0.0/config/sets/sparql-queryoperator-path.json#myAltPathOperator',
+  'bus': https___linkedsoftwaredependencies_org_bundles_npm__comunica_bus_query_operation_Bus_QueryOperation
+});
+const https___linkedsoftwaredependencies_org_bundles_npm__comunica_actor_init_sparql__1_0_0_config_sets_sparql_queryoperator_path_json_myInvPathOperator = new (__webpack_require__(/*! @comunica/actor-query-operation-path-inv */ "./node_modules/@comunica/actor-query-operation-path-inv/index.js").ActorQueryOperationPathInv)({
+  'mediatorQueryOperation': https___linkedsoftwaredependencies_org_bundles_npm__comunica_actor_init_sparql__1_0_0_config_sets_sparql_queryoperators_json_mediatorQueryOperation,
+  'name': 'https://linkedsoftwaredependencies.org/bundles/npm/@comunica/actor-init-sparql/^1.0.0/config/sets/sparql-queryoperator-path.json#myInvPathOperator',
+  'bus': https___linkedsoftwaredependencies_org_bundles_npm__comunica_bus_query_operation_Bus_QueryOperation
+});
+const https___linkedsoftwaredependencies_org_bundles_npm__comunica_actor_init_sparql__1_0_0_config_sets_sparql_queryoperator_path_json_myLinkPathOperator = new (__webpack_require__(/*! @comunica/actor-query-operation-path-link */ "./node_modules/@comunica/actor-query-operation-path-link/index.js").ActorQueryOperationPathLink)({
+  'mediatorQueryOperation': https___linkedsoftwaredependencies_org_bundles_npm__comunica_actor_init_sparql__1_0_0_config_sets_sparql_queryoperators_json_mediatorQueryOperation,
+  'name': 'https://linkedsoftwaredependencies.org/bundles/npm/@comunica/actor-init-sparql/^1.0.0/config/sets/sparql-queryoperator-path.json#myLinkPathOperator',
+  'bus': https___linkedsoftwaredependencies_org_bundles_npm__comunica_bus_query_operation_Bus_QueryOperation
+});
+const https___linkedsoftwaredependencies_org_bundles_npm__comunica_actor_init_sparql__1_0_0_config_sets_sparql_queryoperator_path_json_myNpsPathOperator = new (__webpack_require__(/*! @comunica/actor-query-operation-path-nps */ "./node_modules/@comunica/actor-query-operation-path-nps/index.js").ActorQueryOperationPathNps)({
+  'mediatorQueryOperation': https___linkedsoftwaredependencies_org_bundles_npm__comunica_actor_init_sparql__1_0_0_config_sets_sparql_queryoperators_json_mediatorQueryOperation,
+  'name': 'https://linkedsoftwaredependencies.org/bundles/npm/@comunica/actor-init-sparql/^1.0.0/config/sets/sparql-queryoperator-path.json#myNpsPathOperator',
+  'bus': https___linkedsoftwaredependencies_org_bundles_npm__comunica_bus_query_operation_Bus_QueryOperation
+});
+const https___linkedsoftwaredependencies_org_bundles_npm__comunica_actor_init_sparql__1_0_0_config_sets_sparql_queryoperator_path_json_myOneOrMorePathOperator = new (__webpack_require__(/*! @comunica/actor-query-operation-path-one-or-more */ "./node_modules/@comunica/actor-query-operation-path-one-or-more/index.js").ActorQueryOperationPathOneOrMore)({
+  'mediatorQueryOperation': https___linkedsoftwaredependencies_org_bundles_npm__comunica_actor_init_sparql__1_0_0_config_sets_sparql_queryoperators_json_mediatorQueryOperation,
+  'name': 'https://linkedsoftwaredependencies.org/bundles/npm/@comunica/actor-init-sparql/^1.0.0/config/sets/sparql-queryoperator-path.json#myOneOrMorePathOperator',
+  'bus': https___linkedsoftwaredependencies_org_bundles_npm__comunica_bus_query_operation_Bus_QueryOperation
+});
+const https___linkedsoftwaredependencies_org_bundles_npm__comunica_actor_init_sparql__1_0_0_config_sets_sparql_queryoperator_path_json_mySeqPathOperator = new (__webpack_require__(/*! @comunica/actor-query-operation-path-seq */ "./node_modules/@comunica/actor-query-operation-path-seq/index.js").ActorQueryOperationPathSeq)({
+  'mediatorQueryOperation': https___linkedsoftwaredependencies_org_bundles_npm__comunica_actor_init_sparql__1_0_0_config_sets_sparql_queryoperators_json_mediatorQueryOperation,
+  'name': 'https://linkedsoftwaredependencies.org/bundles/npm/@comunica/actor-init-sparql/^1.0.0/config/sets/sparql-queryoperator-path.json#mySeqPathOperator',
+  'bus': https___linkedsoftwaredependencies_org_bundles_npm__comunica_bus_query_operation_Bus_QueryOperation
+});
+const https___linkedsoftwaredependencies_org_bundles_npm__comunica_actor_init_sparql__1_0_0_config_sets_sparql_queryoperator_path_json_myZeroOrMorePathOperator = new (__webpack_require__(/*! @comunica/actor-query-operation-path-zero-or-more */ "./node_modules/@comunica/actor-query-operation-path-zero-or-more/index.js").ActorQueryOperationPathZeroOrMore)({
+  'mediatorQueryOperation': https___linkedsoftwaredependencies_org_bundles_npm__comunica_actor_init_sparql__1_0_0_config_sets_sparql_queryoperators_json_mediatorQueryOperation,
+  'name': 'https://linkedsoftwaredependencies.org/bundles/npm/@comunica/actor-init-sparql/^1.0.0/config/sets/sparql-queryoperator-path.json#myZeroOrMorePathOperator',
+  'bus': https___linkedsoftwaredependencies_org_bundles_npm__comunica_bus_query_operation_Bus_QueryOperation
+});
+const https___linkedsoftwaredependencies_org_bundles_npm__comunica_actor_init_sparql__1_0_0_config_sets_sparql_queryoperator_path_json_myZeroOrOnePathOperator = new (__webpack_require__(/*! @comunica/actor-query-operation-path-zero-or-one */ "./node_modules/@comunica/actor-query-operation-path-zero-or-one/index.js").ActorQueryOperationPathZeroOrOne)({
+  'mediatorQueryOperation': https___linkedsoftwaredependencies_org_bundles_npm__comunica_actor_init_sparql__1_0_0_config_sets_sparql_queryoperators_json_mediatorQueryOperation,
+  'name': 'https://linkedsoftwaredependencies.org/bundles/npm/@comunica/actor-init-sparql/^1.0.0/config/sets/sparql-queryoperator-path.json#myZeroOrOnePathOperator',
+  'bus': https___linkedsoftwaredependencies_org_bundles_npm__comunica_bus_query_operation_Bus_QueryOperation
+});
 const urn_comunica_sparqlinit = new (__webpack_require__(/*! ./index.js */ "./node_modules/@comunica/actor-init-sparql/index-browser.js").ActorInitSparql)({
+  'mediatorOptimizeQueryOperation': https___linkedsoftwaredependencies_org_bundles_npm__comunica_actor_init_sparql__1_0_0_config_sets_sparql_init_json_mediatorOptimizeQueryOperation,
   'mediatorQueryOperation': https___linkedsoftwaredependencies_org_bundles_npm__comunica_actor_init_sparql__1_0_0_config_sets_sparql_queryoperators_json_mediatorQueryOperation,
   'mediatorSparqlParse': https___linkedsoftwaredependencies_org_bundles_npm__comunica_actor_init_sparql__1_0_0_config_sets_sparql_init_json_mediatorSparqlParse,
   'mediatorSparqlSerialize': https___linkedsoftwaredependencies_org_bundles_npm__comunica_actor_init_sparql__1_0_0_config_sets_sparql_init_json_mediatorSparqlSerialize,
-  'mediatorSparqlSerializeMediaTypeCombiner': __b0bnode245,
+  'mediatorSparqlSerializeMediaTypeCombiner': __b0bnode263,
   'mediatorContextPreprocess': https___linkedsoftwaredependencies_org_bundles_npm__comunica_actor_init_sparql__1_0_0_config_sets_sparql_init_json_mediatorContextPreprocess,
-  'logger': __b13bnode100,
+  'logger': __b14bnode108,
   'contextKeyShortcuts': {
     'source': '@comunica/bus-rdf-resolve-quad-pattern:source',
     'sources': '@comunica/bus-rdf-resolve-quad-pattern:sources',
@@ -1410,7 +1443,8 @@ const urn_comunica_my = ({
     https___linkedsoftwaredependencies_org_bundles_npm__comunica_actor_init_sparql__1_0_0_config_sets_rdf_source_identifiers_json_myActorRdfSourceIdentifierFileContentType,
     https___linkedsoftwaredependencies_org_bundles_npm__comunica_actor_init_sparql__1_0_0_config_sets_resolve_federated_json_myFederatedQuadPatternResolver,
     https___linkedsoftwaredependencies_org_bundles_npm__comunica_actor_init_sparql__1_0_0_config_sets_resolve_file_json_myQuadPatternFileResolver,
-    https___linkedsoftwaredependencies_org_bundles_npm__comunica_actor_init_sparql__1_0_0_config_sets_resolve_hypermedia_json_myQuadPatternResolver,
+    https___linkedsoftwaredependencies_org_bundles_npm__comunica_actor_init_sparql__1_0_0_config_sets_resolve_hypermedia_json_myHypermediaQpfResolver,
+    https___linkedsoftwaredependencies_org_bundles_npm__comunica_actor_init_sparql__1_0_0_config_sets_resolve_hypermedia_json_myQuadPatternHypermediaResolver,
     https___linkedsoftwaredependencies_org_bundles_npm__comunica_actor_init_sparql__1_0_0_config_sets_resolve_hypermedia_json_myRdfPagedDereferencer,
     https___linkedsoftwaredependencies_org_bundles_npm__comunica_actor_init_sparql__1_0_0_config_sets_resolve_hypermedia_json_myRdfMetadataPrimaryTopic,
     https___linkedsoftwaredependencies_org_bundles_npm__comunica_actor_init_sparql__1_0_0_config_sets_resolve_hypermedia_json_myRdfMetadataTriplePredicate,
@@ -1420,15 +1454,8 @@ const urn_comunica_my = ({
     https___linkedsoftwaredependencies_org_bundles_npm__comunica_actor_init_sparql__1_0_0_config_sets_resolve_sparql_json_mySparqlEndpointResolver,
     urn_comunica_sparqlinit,
     https___linkedsoftwaredependencies_org_bundles_npm__comunica_actor_init_sparql__1_0_0_config_sets_graphql_parsers_json_myGraphqlParser,
+    https___linkedsoftwaredependencies_org_bundles_npm__comunica_actor_init_sparql__1_0_0_config_sets_sparql_optimize_json_myJoinBgpOptimizer,
     https___linkedsoftwaredependencies_org_bundles_npm__comunica_actor_init_sparql__1_0_0_config_sets_sparql_parsers_json_mySparqlParser,
-    https___linkedsoftwaredependencies_org_bundles_npm__comunica_actor_init_sparql__1_0_0_config_sets_sparql_queryoperator_path_json_myAltPathOperator,
-    https___linkedsoftwaredependencies_org_bundles_npm__comunica_actor_init_sparql__1_0_0_config_sets_sparql_queryoperator_path_json_myInvPathOperator,
-    https___linkedsoftwaredependencies_org_bundles_npm__comunica_actor_init_sparql__1_0_0_config_sets_sparql_queryoperator_path_json_myLinkPathOperator,
-    https___linkedsoftwaredependencies_org_bundles_npm__comunica_actor_init_sparql__1_0_0_config_sets_sparql_queryoperator_path_json_myNpsPathOperator,
-    https___linkedsoftwaredependencies_org_bundles_npm__comunica_actor_init_sparql__1_0_0_config_sets_sparql_queryoperator_path_json_myOneOrMorePathOperator,
-    https___linkedsoftwaredependencies_org_bundles_npm__comunica_actor_init_sparql__1_0_0_config_sets_sparql_queryoperator_path_json_mySeqPathOperator,
-    https___linkedsoftwaredependencies_org_bundles_npm__comunica_actor_init_sparql__1_0_0_config_sets_sparql_queryoperator_path_json_myZeroOrMorePathOperator,
-    https___linkedsoftwaredependencies_org_bundles_npm__comunica_actor_init_sparql__1_0_0_config_sets_sparql_queryoperator_path_json_myZeroOrOnePathOperator,
     https___linkedsoftwaredependencies_org_bundles_npm__comunica_actor_init_sparql__1_0_0_config_sets_sparql_queryoperators_json_myAskQueryOperator,
     https___linkedsoftwaredependencies_org_bundles_npm__comunica_actor_init_sparql__1_0_0_config_sets_sparql_queryoperators_json_myServiceQueryOperator,
     https___linkedsoftwaredependencies_org_bundles_npm__comunica_actor_init_sparql__1_0_0_config_sets_sparql_queryoperators_json_mySliceQueryOperator,
@@ -1438,6 +1465,7 @@ const urn_comunica_my = ({
     https___linkedsoftwaredependencies_org_bundles_npm__comunica_actor_init_sparql__1_0_0_config_sets_sparql_queryoperators_json_myConstructQueryOperator,
     https___linkedsoftwaredependencies_org_bundles_npm__comunica_actor_init_sparql__1_0_0_config_sets_sparql_queryoperators_json_myDescribeQueryOperator,
     https___linkedsoftwaredependencies_org_bundles_npm__comunica_actor_init_sparql__1_0_0_config_sets_sparql_queryoperators_json_myDistinctQueryOperator,
+    https___linkedsoftwaredependencies_org_bundles_npm__comunica_actor_init_sparql__1_0_0_config_sets_sparql_queryoperators_json_myExtendQueryOperator,
     https___linkedsoftwaredependencies_org_bundles_npm__comunica_actor_init_sparql__1_0_0_config_sets_sparql_queryoperators_json_myReducedQueryOperator,
     https___linkedsoftwaredependencies_org_bundles_npm__comunica_actor_init_sparql__1_0_0_config_sets_sparql_queryoperators_json_myFilterQueryOperator,
     https___linkedsoftwaredependencies_org_bundles_npm__comunica_actor_init_sparql__1_0_0_config_sets_sparql_queryoperators_json_myFromQueryOperator,
@@ -1449,6 +1477,14 @@ const urn_comunica_my = ({
     https___linkedsoftwaredependencies_org_bundles_npm__comunica_actor_init_sparql__1_0_0_config_sets_sparql_queryoperators_json_myMinusQueryOperator,
     https___linkedsoftwaredependencies_org_bundles_npm__comunica_actor_init_sparql__1_0_0_config_sets_sparql_queryoperators_json_myValuesQueryOperator,
     https___linkedsoftwaredependencies_org_bundles_npm__comunica_actor_init_sparql__1_0_0_config_sets_sparql_queryoperators_json_myQuadPatternQueryOperator,
+    https___linkedsoftwaredependencies_org_bundles_npm__comunica_actor_init_sparql__1_0_0_config_sets_sparql_queryoperator_path_json_myAltPathOperator,
+    https___linkedsoftwaredependencies_org_bundles_npm__comunica_actor_init_sparql__1_0_0_config_sets_sparql_queryoperator_path_json_myInvPathOperator,
+    https___linkedsoftwaredependencies_org_bundles_npm__comunica_actor_init_sparql__1_0_0_config_sets_sparql_queryoperator_path_json_myLinkPathOperator,
+    https___linkedsoftwaredependencies_org_bundles_npm__comunica_actor_init_sparql__1_0_0_config_sets_sparql_queryoperator_path_json_myNpsPathOperator,
+    https___linkedsoftwaredependencies_org_bundles_npm__comunica_actor_init_sparql__1_0_0_config_sets_sparql_queryoperator_path_json_myOneOrMorePathOperator,
+    https___linkedsoftwaredependencies_org_bundles_npm__comunica_actor_init_sparql__1_0_0_config_sets_sparql_queryoperator_path_json_mySeqPathOperator,
+    https___linkedsoftwaredependencies_org_bundles_npm__comunica_actor_init_sparql__1_0_0_config_sets_sparql_queryoperator_path_json_myZeroOrMorePathOperator,
+    https___linkedsoftwaredependencies_org_bundles_npm__comunica_actor_init_sparql__1_0_0_config_sets_sparql_queryoperator_path_json_myZeroOrOnePathOperator,
     https___linkedsoftwaredependencies_org_bundles_npm__comunica_actor_init_sparql__1_0_0_config_sets_sparql_serializers_json_myJsonSparqlSerializer,
     https___linkedsoftwaredependencies_org_bundles_npm__comunica_actor_init_sparql__1_0_0_config_sets_sparql_serializers_json_myRdfSparqlSerializer,
     https___linkedsoftwaredependencies_org_bundles_npm__comunica_actor_init_sparql__1_0_0_config_sets_sparql_serializers_json_mySimpleSparqlSerializer,
@@ -1605,6 +1641,8 @@ class ActorInitSparql extends bus_init_1.ActorInit {
         if (context.has(exports.KEY_CONTEXT_INITIALBINDINGS)) {
             operation = ActorInitSparql.applyInitialBindings(operation, context.get(exports.KEY_CONTEXT_INITIALBINDINGS));
         }
+        // Optimize the query operation
+        operation = (await this.mediatorOptimizeQueryOperation.mediate({ context, operation })).operation;
         // Execute query
         const resolve = { context, operation };
         return await this.mediatorQueryOperation.mediate(resolve);
@@ -1651,6 +1689,71 @@ exports.ActorInitSparql = ActorInitSparql;
 exports.KEY_CONTEXT_INITIALBINDINGS = '@comunica/actor-init-sparql:initialBindings';
 exports.KEY_CONTEXT_QUERYFORMAT = '@comunica/actor-init-sparql:queryFormat';
 //# sourceMappingURL=ActorInitSparql-browser.js.map
+
+/***/ }),
+
+/***/ "./node_modules/@comunica/actor-optimize-query-operation-join-bgp/index.js":
+/*!*********************************************************************************!*\
+  !*** ./node_modules/@comunica/actor-optimize-query-operation-join-bgp/index.js ***!
+  \*********************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+function __export(m) {
+    for (var p in m) if (!exports.hasOwnProperty(p)) exports[p] = m[p];
+}
+Object.defineProperty(exports, "__esModule", { value: true });
+__export(__webpack_require__(/*! ./lib/ActorOptimizeQueryOperationJoinBgp */ "./node_modules/@comunica/actor-optimize-query-operation-join-bgp/lib/ActorOptimizeQueryOperationJoinBgp.js"));
+//# sourceMappingURL=index.js.map
+
+/***/ }),
+
+/***/ "./node_modules/@comunica/actor-optimize-query-operation-join-bgp/lib/ActorOptimizeQueryOperationJoinBgp.js":
+/*!******************************************************************************************************************!*\
+  !*** ./node_modules/@comunica/actor-optimize-query-operation-join-bgp/lib/ActorOptimizeQueryOperationJoinBgp.js ***!
+  \******************************************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+Object.defineProperty(exports, "__esModule", { value: true });
+const bus_optimize_query_operation_1 = __webpack_require__(/*! @comunica/bus-optimize-query-operation */ "./node_modules/@comunica/bus-optimize-query-operation/index.js");
+const sparqlalgebrajs_1 = __webpack_require__(/*! sparqlalgebrajs */ "./node_modules/sparqlalgebrajs/index.js");
+/**
+ * A comunica Join BGP Optimize Query Operation Actor.
+ */
+class ActorOptimizeQueryOperationJoinBgp extends bus_optimize_query_operation_1.ActorOptimizeQueryOperation {
+    constructor(args) {
+        super(args);
+    }
+    async test(action) {
+        return true;
+    }
+    async run(action) {
+        const operation = sparqlalgebrajs_1.Util.mapOperation(action.operation, {
+            join: (op, factory) => {
+                if (op.left.type === 'bgp' && op.right.type === 'bgp') {
+                    return {
+                        recurse: false,
+                        result: factory.createBgp(op.left.patterns.concat(op.right.patterns)),
+                    };
+                }
+                else {
+                    return {
+                        recurse: false,
+                        result: op,
+                    };
+                }
+            },
+        });
+        return { operation };
+    }
+}
+exports.ActorOptimizeQueryOperationJoinBgp = ActorOptimizeQueryOperationJoinBgp;
+//# sourceMappingURL=ActorOptimizeQueryOperationJoinBgp.js.map
 
 /***/ }),
 
@@ -1912,7 +2015,7 @@ class ActorQueryOperationBgpLeftDeepSmallest extends bus_query_operation_1.Actor
      * @return {RDF.Term} The materialized term.
      */
     static materializeTerm(term, bindings) {
-        if (term.termType === 'Variable' || term.termType === 'BlankNode') {
+        if (term.termType === 'Variable') {
             const value = bindings.get(rdf_string_1.termToString(term));
             if (value) {
                 return value;
@@ -2404,10 +2507,10 @@ exports.ActorQueryOperationDistinctHash = ActorQueryOperationDistinctHash;
 
 /***/ }),
 
-/***/ "./node_modules/@comunica/actor-query-operation-filter-direct/index.js":
-/*!*****************************************************************************!*\
-  !*** ./node_modules/@comunica/actor-query-operation-filter-direct/index.js ***!
-  \*****************************************************************************/
+/***/ "./node_modules/@comunica/actor-query-operation-extend/index.js":
+/*!**********************************************************************!*\
+  !*** ./node_modules/@comunica/actor-query-operation-extend/index.js ***!
+  \**********************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -2417,63 +2520,15 @@ function __export(m) {
     for (var p in m) if (!exports.hasOwnProperty(p)) exports[p] = m[p];
 }
 Object.defineProperty(exports, "__esModule", { value: true });
-__export(__webpack_require__(/*! ./lib/ActorQueryOperationFilterDirect */ "./node_modules/@comunica/actor-query-operation-filter-direct/lib/ActorQueryOperationFilterDirect.js"));
-__export(__webpack_require__(/*! ./lib/SparqlExpressionEvaluator */ "./node_modules/@comunica/actor-query-operation-filter-direct/lib/SparqlExpressionEvaluator.js"));
+__export(__webpack_require__(/*! ./lib/ActorQueryOperationExtend */ "./node_modules/@comunica/actor-query-operation-extend/lib/ActorQueryOperationExtend.js"));
 //# sourceMappingURL=index.js.map
 
 /***/ }),
 
-/***/ "./node_modules/@comunica/actor-query-operation-filter-direct/lib/ActorQueryOperationFilterDirect.js":
-/*!***********************************************************************************************************!*\
-  !*** ./node_modules/@comunica/actor-query-operation-filter-direct/lib/ActorQueryOperationFilterDirect.js ***!
-  \***********************************************************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-Object.defineProperty(exports, "__esModule", { value: true });
-const bus_query_operation_1 = __webpack_require__(/*! @comunica/bus-query-operation */ "./node_modules/@comunica/bus-query-operation/index.js");
-const SparqlExpressionEvaluator_1 = __webpack_require__(/*! ./SparqlExpressionEvaluator */ "./node_modules/@comunica/actor-query-operation-filter-direct/lib/SparqlExpressionEvaluator.js");
-/**
- * A comunica Filter Direct Query Operation Actor.
- */
-class ActorQueryOperationFilterDirect extends bus_query_operation_1.ActorQueryOperationTypedMediated {
-    constructor(args) {
-        super(args, 'filter');
-    }
-    async testOperation(pattern, context) {
-        // will throw error for unsupported operators
-        SparqlExpressionEvaluator_1.SparqlExpressionEvaluator.createEvaluator(pattern.expression);
-        return true;
-    }
-    async runOperation(pattern, context) {
-        const output = bus_query_operation_1.ActorQueryOperation.getSafeBindings(await this.mediatorQueryOperation.mediate({ operation: pattern.input, context }));
-        bus_query_operation_1.ActorQueryOperation.validateQueryOutput(output, 'bindings');
-        const exprFunc = SparqlExpressionEvaluator_1.SparqlExpressionEvaluator.createEvaluator(pattern.expression);
-        const filter = (bindings) => {
-            try {
-                const term = exprFunc(bindings);
-                return term && term.value !== 'false' && term.value !== '0';
-            }
-            catch (e) {
-                bindingsStream.emit('error', e);
-                return false;
-            }
-        };
-        const bindingsStream = output.bindingsStream.filter(filter);
-        return { type: 'bindings', bindingsStream, metadata: output.metadata, variables: output.variables };
-    }
-}
-exports.ActorQueryOperationFilterDirect = ActorQueryOperationFilterDirect;
-//# sourceMappingURL=ActorQueryOperationFilterDirect.js.map
-
-/***/ }),
-
-/***/ "./node_modules/@comunica/actor-query-operation-filter-direct/lib/SparqlExpressionEvaluator.js":
-/*!*****************************************************************************************************!*\
-  !*** ./node_modules/@comunica/actor-query-operation-filter-direct/lib/SparqlExpressionEvaluator.js ***!
-  \*****************************************************************************************************/
+/***/ "./node_modules/@comunica/actor-query-operation-extend/lib/ActorQueryOperationExtend.js":
+/*!**********************************************************************************************!*\
+  !*** ./node_modules/@comunica/actor-query-operation-extend/lib/ActorQueryOperationExtend.js ***!
+  \**********************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -2481,225 +2536,129 @@ exports.ActorQueryOperationFilterDirect = ActorQueryOperationFilterDirect;
 
 Object.defineProperty(exports, "__esModule", { value: true });
 const rdf_string_1 = __webpack_require__(/*! rdf-string */ "./node_modules/rdf-string/index.js");
-const sparqlalgebrajs_1 = __webpack_require__(/*! sparqlalgebrajs */ "./node_modules/sparqlalgebrajs/index.js");
-class SparqlExpressionEvaluator {
-    /**
-     * Creates an evaluator function that executes the given Sxpression on the given Bindings.
-     * This implementation is copied from the original LDF Client implementation.
-     * THIS IMPLEMENTATION IS NOT FULLY SPEC COMPATIBLE!!!
-     * But covers most of the standard cases.
-     * @param {Expression} expr
-     * @returns {(bindings: Bindings) => Term}
-     */
-    static createEvaluator(expr) {
-        const func = SparqlExpressionEvaluator.handleExpression(expr);
-        // internally the expression evaluator uses primitives, so these have to be converted back
-        return (bindings) => {
-            const str = func(bindings);
-            if (!str) {
-                return undefined;
+const sparqlee_1 = __webpack_require__(/*! sparqlee */ "./node_modules/sparqlee/dist/index.js");
+const bus_query_operation_1 = __webpack_require__(/*! @comunica/bus-query-operation */ "./node_modules/@comunica/bus-query-operation/index.js");
+const core_1 = __webpack_require__(/*! @comunica/core */ "./node_modules/@comunica/core/index.js");
+/**
+ * A comunica Extend Query Operation Actor.
+ *
+ * See https://www.w3.org/TR/sparql11-query/#sparqlAlgebra;
+ */
+class ActorQueryOperationExtend extends bus_query_operation_1.ActorQueryOperationTypedMediated {
+    constructor(args) {
+        super(args, 'extend');
+    }
+    async testOperation(pattern, context) {
+        // Will throw error for unsupported opperations
+        return pattern.type === "extend" && !!new sparqlee_1.AsyncEvaluator(pattern.expression);
+    }
+    async runOperation(pattern, context) {
+        const { expression, input, variable } = pattern;
+        const output = bus_query_operation_1.ActorQueryOperation.getSafeBindings(await this.mediatorQueryOperation.mediate({ operation: input, context }));
+        const extendKey = rdf_string_1.termToString(variable);
+        const evaluator = new sparqlee_1.AsyncEvaluator(expression);
+        const logger = core_1.Actor.getContextLogger(context);
+        // Transform the stream by extending each Bindings with the expression result
+        const transform = async (bindings, next) => {
+            try {
+                const result = await evaluator.evaluate(bindings);
+                // Extend operation is undefined when the key already exists
+                // We just override it here.
+                const extended = bindings.set(extendKey, result);
+                bindingsStream._push(extended);
             }
-            return rdf_string_1.stringToTerm(str);
+            catch (err) {
+                if (sparqlee_1.isExpressionError(err)) {
+                    // Errors silently don't actually extend according to the spec
+                    bindingsStream._push(bindings);
+                    // But let's warn anyway
+                    this.logWarn(context, `Expression error for extend operation with bindings '${JSON.stringify(bindings)}'`);
+                }
+                else {
+                    bindingsStream.emit('error', err);
+                }
+            }
+            next();
         };
+        const variables = output.variables.concat([extendKey]);
+        const bindingsStream = output.bindingsStream.transform({ transform });
+        const metadata = output.metadata;
+        return { type: 'bindings', bindingsStream, metadata, variables };
     }
-    static handleExpression(expr) {
-        if (expr.expressionType === sparqlalgebrajs_1.Algebra.expressionTypes.TERM) {
-            return SparqlExpressionEvaluator.handleTermExpression(expr);
-        }
-        if (expr.expressionType === sparqlalgebrajs_1.Algebra.expressionTypes.NAMED) {
-            return SparqlExpressionEvaluator.handleNamedExpression(expr);
-        }
-        if (expr.expressionType === sparqlalgebrajs_1.Algebra.expressionTypes.OPERATOR) {
-            return SparqlExpressionEvaluator.handleOperatorExpression(expr);
-        }
-        throw new Error('Unsupported Expression type: ' + expr.expressionType);
+}
+exports.ActorQueryOperationExtend = ActorQueryOperationExtend;
+//# sourceMappingURL=ActorQueryOperationExtend.js.map
+
+/***/ }),
+
+/***/ "./node_modules/@comunica/actor-query-operation-filter-sparqlee/index.js":
+/*!*******************************************************************************!*\
+  !*** ./node_modules/@comunica/actor-query-operation-filter-sparqlee/index.js ***!
+  \*******************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+function __export(m) {
+    for (var p in m) if (!exports.hasOwnProperty(p)) exports[p] = m[p];
+}
+Object.defineProperty(exports, "__esModule", { value: true });
+__export(__webpack_require__(/*! ./lib/ActorQueryOperationFilterSparqlee */ "./node_modules/@comunica/actor-query-operation-filter-sparqlee/lib/ActorQueryOperationFilterSparqlee.js"));
+//# sourceMappingURL=index.js.map
+
+/***/ }),
+
+/***/ "./node_modules/@comunica/actor-query-operation-filter-sparqlee/lib/ActorQueryOperationFilterSparqlee.js":
+/*!***************************************************************************************************************!*\
+  !*** ./node_modules/@comunica/actor-query-operation-filter-sparqlee/lib/ActorQueryOperationFilterSparqlee.js ***!
+  \***************************************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+Object.defineProperty(exports, "__esModule", { value: true });
+const bus_query_operation_1 = __webpack_require__(/*! @comunica/bus-query-operation */ "./node_modules/@comunica/bus-query-operation/index.js");
+const sparqlee_1 = __webpack_require__(/*! sparqlee */ "./node_modules/sparqlee/dist/index.js");
+/**
+ * A comunica Filter Sparqlee Query Operation Actor.
+ */
+class ActorQueryOperationFilterSparqlee extends bus_query_operation_1.ActorQueryOperationTypedMediated {
+    constructor(args) {
+        super(args, 'filter');
     }
-    static handleTermExpression(expr) {
-        if (expr.term.termType === 'Variable') {
-            return (bindings) => {
-                const str = rdf_string_1.termToString(expr.term);
-                return bindings.has(str) ? rdf_string_1.termToString(bindings.get(str)) : undefined;
-            };
-        }
-        else {
-            const str = rdf_string_1.termToString(expr.term);
-            return () => str;
-        }
+    async testOperation(pattern, context) {
+        // Will throw error for unsupported operators
+        // Coerce to boolean to check for falsy values
+        return pattern.type === 'filter' && !!new sparqlee_1.AsyncEvaluator(pattern.expression);
     }
-    static handleNamedExpression(expr) {
-        return SparqlExpressionEvaluator.handleFunction(expr.name.value, expr.args);
-    }
-    static handleOperatorExpression(expr) {
-        return SparqlExpressionEvaluator.handleFunction(expr.operator, expr.args);
-    }
-    static handleFunction(operatorName, args) {
-        const op = operators[operatorName];
-        if (!op) {
-            throw new Error('Unsupported operator ' + operatorName);
-        }
-        // Special case: some operators accept expressions instead of evaluated expressions
-        if (op.acceptsExpressions) {
-            return ((operator, unparsedArgs) => {
-                return (bindings) => {
-                    return operator.apply(bindings, unparsedArgs);
-                };
-            })(op, args);
-        }
-        const funcArgs = args.map(SparqlExpressionEvaluator.handleExpression);
-        return ((operator, argumentExpressions) => {
-            return (bindings) => {
-                // Evaluate the arguments
-                const resolvedArgs = new Array(argumentExpressions.length);
-                const origArgs = new Array(argumentExpressions.length);
-                for (let i = 0; i < argumentExpressions.length; i++) {
-                    const arg = resolvedArgs[i] = origArgs[i] = argumentExpressions[i](bindings);
-                    // Convert the arguments if necessary
-                    switch (operator.type) {
-                        case 'numeric':
-                            resolvedArgs[i] = arg ? parseFloat(literalValue(arg)) : undefined;
-                            break;
-                        case 'boolean':
-                            resolvedArgs[i] = arg !== XSD_FALSE &&
-                                (!isLiteral(arg) || literalValue(arg) !== '0');
-                            break;
-                    }
+    async runOperation(pattern, context) {
+        const outputRaw = await this.mediatorQueryOperation.mediate({ operation: pattern.input, context });
+        const output = bus_query_operation_1.ActorQueryOperation.getSafeBindings(outputRaw);
+        bus_query_operation_1.ActorQueryOperation.validateQueryOutput(output, 'bindings');
+        const { variables, metadata } = output;
+        const evaluator = new sparqlee_1.AsyncEvaluator(pattern.expression);
+        const transform = async (item, next) => {
+            try {
+                const result = await evaluator.evaluateAsEBV(item);
+                if (result) {
+                    bindingsStream._push(item);
                 }
-                // Call the operator on the evaluated arguments
-                const result = operator.apply(null, resolvedArgs);
-                // Convert result if necessary
-                switch (operator.resultType) {
-                    case 'numeric':
-                        let type = origArgs[0] ? getLiteralType(origArgs[0]) : undefined;
-                        if (!type || type === XSD_STRING) {
-                            type = XSD_INTEGER;
-                        }
-                        return '"' + result + '"^^' + type;
-                    case 'boolean':
-                        return result ? XSD_TRUE : XSD_FALSE;
-                    default:
-                        return result;
+            }
+            catch (err) {
+                if (!sparqlee_1.isExpressionError(err)) {
+                    bindingsStream.emit('error', err);
                 }
-            };
-        })(op, funcArgs);
+            }
+            next();
+        };
+        const bindingsStream = output.bindingsStream.transform({ transform });
+        return { type: 'bindings', bindingsStream, metadata, variables };
     }
 }
-exports.SparqlExpressionEvaluator = SparqlExpressionEvaluator;
-function isLiteral(entity) {
-    return typeof entity === 'string' && entity[0] === '"';
-}
-function literalValue(literal) {
-    const match = /^"([^]*)"/.exec(literal);
-    return match[1];
-}
-function getLiteralType(literal) {
-    const match = /^"[^]*"(?:\^\^([^"]+)|(@)[^@"]+)?$/.exec(literal);
-    return match[1] || (match[2]
-        ? 'http://www.w3.org/1999/02/22-rdf-syntax-ns#langString' : 'http://www.w3.org/2001/XMLSchema#string');
-}
-function getLiteralLanguage(literal) {
-    const match = /^"[^]*"(?:@([^@"]+)|\^\^[^"]+)?$/.exec(literal);
-    return match[1] ? match[1].toLowerCase() : '';
-}
-const XSD = 'http://www.w3.org/2001/XMLSchema#';
-const XSD_INTEGER = XSD + 'integer';
-const XSD_DOUBLE = XSD + 'double';
-const XSD_BOOLEAN = XSD + 'boolean';
-const XSD_STRING = XSD + 'string';
-const XSD_TRUE = '"true"^^' + XSD_BOOLEAN;
-const XSD_FALSE = '"false"^^' + XSD_BOOLEAN;
-// Operators for each of the operator types
-const operators = {
-    '+'(a, b) { return a + b; },
-    '-'(a, b) { return a - b; },
-    '*'(a, b) { return a * b; },
-    '/'(a, b) { return a / b; },
-    '='(a, b) { return a === b; },
-    '!='(a, b) { return a !== b; },
-    '<'(a, b) { return a < b; },
-    '<='(a, b) { return a <= b; },
-    '>'(a, b) { return a > b; },
-    '>='(a, b) { return a >= b; },
-    '!'(a) { return !a; },
-    '&&'(a, b) { return a && b; },
-    '||'(a, b) { return a || b; },
-    'lang'(a) {
-        return isLiteral(a) ? '"' + getLiteralLanguage(a).toLowerCase() + '"' : undefined;
-    },
-    'langmatches'(langTag, langRange) {
-        // Implements https://tools.ietf.org/html/rfc4647#section-3.3.1
-        if (!langTag || !langRange) {
-            return false;
-        }
-        langTag = langTag.toLowerCase();
-        langRange = langRange.toLowerCase();
-        return langTag === langRange ||
-            ((langRange = literalValue(langRange)) === '*' && !!langTag) ||
-            langTag.substr(1, langRange.length + 1) === langRange + '-';
-    },
-    'contains'(str, substring) {
-        substring = literalValue(substring);
-        str = literalValue(str);
-        return str.indexOf(substring) >= 0;
-    },
-    'regex'(subject, pattern) {
-        if (isLiteral(subject)) {
-            subject = literalValue(subject);
-        }
-        return new RegExp(literalValue(pattern)).test(subject);
-    },
-    'str'(a) {
-        return isLiteral(a) ? a : '"' + a + '"';
-    },
-    'http://www.w3.org/2001/XMLSchema#integer'(a) {
-        return '"' + Math.floor(a) + '"^^http://www.w3.org/2001/XMLSchema#integer';
-    },
-    'http://www.w3.org/2001/XMLSchema#double'(a) {
-        let str = a.toString();
-        if (str.indexOf('.') < 0) {
-            str += '.0';
-        }
-        return '"' + str + '"^^http://www.w3.org/2001/XMLSchema#double';
-    },
-    'bound'(a) {
-        if (a.expressionType !== 'term') {
-            throw new Error('BOUND expects a TermExpression but got: ' + JSON.stringify(a));
-        }
-        const term = a.term;
-        if (term.termType !== 'Variable') {
-            throw new Error('BOUND expects a Variable but got: ' + JSON.stringify(term));
-        }
-        return this.has(rdf_string_1.termToString(term)) ? XSD_TRUE : XSD_FALSE;
-    },
-};
-// Tag all operators that expect their arguments to be numeric
-[
-    '+', '-', '*', '/', '<', '<=', '>', '>=',
-    XSD_INTEGER, XSD_DOUBLE,
-].forEach((operatorName) => {
-    operators[operatorName].type = 'numeric';
-});
-// Tag all operators that expect their arguments to be boolean
-[
-    '!', '&&', '||',
-].forEach((operatorName) => {
-    operators[operatorName].type = 'boolean';
-});
-// Tag all operators that have numeric results
-[
-    '+', '-', '*', '/',
-].forEach((operatorName) => {
-    operators[operatorName].resultType = 'numeric';
-});
-// Tag all operators that have boolean results
-[
-    '!', '&&', '||', '=', '!=', '<', '<=', '>', '>=',
-    'langmatches', 'contains', 'regex',
-].forEach((operatorName) => {
-    operators[operatorName].resultType = 'boolean';
-});
-// Tag all operators that take expressions instead of evaluated expressions
-operators.bound.acceptsExpressions = true;
-//# sourceMappingURL=SparqlExpressionEvaluator.js.map
+exports.ActorQueryOperationFilterSparqlee = ActorQueryOperationFilterSparqlee;
+//# sourceMappingURL=ActorQueryOperationFilterSparqlee.js.map
 
 /***/ }),
 
@@ -3017,6 +2976,7 @@ __export(__webpack_require__(/*! ./lib/ActorQueryOperationLeftJoinNestedLoop */ 
 Object.defineProperty(exports, "__esModule", { value: true });
 const bus_query_operation_1 = __webpack_require__(/*! @comunica/bus-query-operation */ "./node_modules/@comunica/bus-query-operation/index.js");
 const bus_rdf_join_1 = __webpack_require__(/*! @comunica/bus-rdf-join */ "./node_modules/@comunica/bus-rdf-join/index.js");
+const sparqlee_1 = __webpack_require__(/*! sparqlee */ "./node_modules/sparqlee/dist/index.js");
 /**
  * A comunica LeftJoin NestedLoop Query Operation Actor.
  */
@@ -3028,26 +2988,56 @@ class ActorQueryOperationLeftJoinNestedLoop extends bus_query_operation_1.ActorQ
         return !pattern.expression;
     }
     async runOperation(pattern, context) {
-        // uses nested loop join
-        const left = bus_query_operation_1.ActorQueryOperation.getSafeBindings(await this.mediatorQueryOperation.mediate({ operation: pattern.left, context }));
-        const right = bus_query_operation_1.ActorQueryOperation.getSafeBindings(await this.mediatorQueryOperation.mediate({ operation: pattern.right, context }));
-        const bindingsStream = left.bindingsStream.transform({
-            optional: true,
-            transform: (leftItem, next) => {
-                const rightStream = right.bindingsStream.clone();
-                rightStream.on('end', next);
-                rightStream.on('data', (rightItem) => {
-                    const join = bus_rdf_join_1.ActorRdfJoin.join(leftItem, rightItem);
-                    if (join) {
-                        // if (pattern.expression) {
-                        //   // TODO: do this once expressions are implemented
-                        //   // Values of both streams can be used for this expression
-                        // }
-                        bindingsStream._push(join);
+        const leftRaw = await this.mediatorQueryOperation.mediate({ operation: pattern.left, context });
+        const left = bus_query_operation_1.ActorQueryOperation.getSafeBindings(leftRaw);
+        const rightRaw = await this.mediatorQueryOperation.mediate({ operation: pattern.right, context });
+        const right = bus_query_operation_1.ActorQueryOperation.getSafeBindings(rightRaw);
+        const evaluator = (pattern.expression)
+            ? new sparqlee_1.AsyncEvaluator(pattern.expression)
+            : null;
+        const leftJoinInner = (outerItem, innerStream) => {
+            const joinedStream = innerStream
+                .transform({
+                transform: async (innerItem, nextInner) => {
+                    const joinedBindings = bus_rdf_join_1.ActorRdfJoin.join(outerItem, innerItem);
+                    if (!joinedBindings) {
+                        nextInner();
+                        return;
                     }
-                });
-            },
-        });
+                    if (!pattern.expression) {
+                        joinedStream._push({ joinedBindings, result: true });
+                        nextInner();
+                        return;
+                    }
+                    try {
+                        const result = await evaluator.evaluateAsEBV(joinedBindings);
+                        joinedStream._push({ joinedBindings, result });
+                    }
+                    catch (err) {
+                        if (!sparqlee_1.isExpressionError(err)) {
+                            bindingsStream.emit('error', err);
+                        }
+                    }
+                    nextInner();
+                },
+            });
+            return joinedStream;
+        };
+        const leftJoinOuter = (leftItem, nextLeft) => {
+            const innerStream = right.bindingsStream.clone();
+            const joinedStream = leftJoinInner(leftItem, innerStream);
+            // TODO: This will not work for larger streams.
+            // The full inner stream is kept in memory.
+            joinedStream.on('end', () => nextLeft());
+            joinedStream.on('data', async ({ joinedBindings, result }) => {
+                if (result) {
+                    bindingsStream._push(joinedBindings);
+                }
+            });
+        };
+        const transform = leftJoinOuter;
+        const bindingsStream = left.bindingsStream
+            .transform({ optional: true, transform });
         const variables = bus_rdf_join_1.ActorRdfJoin.joinVariables({ entries: [left, right] });
         const metadata = () => Promise.all([pattern.left, pattern.right].map((entry) => entry.metadata))
             .then((metadatas) => metadatas.reduce((acc, val) => acc * val.totalItems, 1))
@@ -3146,10 +3136,10 @@ exports.ActorQueryOperationMinus = ActorQueryOperationMinus;
 
 /***/ }),
 
-/***/ "./node_modules/@comunica/actor-query-operation-orderby-direct/index.js":
-/*!******************************************************************************!*\
-  !*** ./node_modules/@comunica/actor-query-operation-orderby-direct/index.js ***!
-  \******************************************************************************/
+/***/ "./node_modules/@comunica/actor-query-operation-orderby-sparqlee/index.js":
+/*!********************************************************************************!*\
+  !*** ./node_modules/@comunica/actor-query-operation-orderby-sparqlee/index.js ***!
+  \********************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -3159,83 +3149,108 @@ function __export(m) {
     for (var p in m) if (!exports.hasOwnProperty(p)) exports[p] = m[p];
 }
 Object.defineProperty(exports, "__esModule", { value: true });
-__export(__webpack_require__(/*! ./lib/ActorQueryOperationOrderByDirect */ "./node_modules/@comunica/actor-query-operation-orderby-direct/lib/ActorQueryOperationOrderByDirect.js"));
+__export(__webpack_require__(/*! ./lib/ActorQueryOperationOrderBySparqlee */ "./node_modules/@comunica/actor-query-operation-orderby-sparqlee/lib/ActorQueryOperationOrderBySparqlee.js"));
 //# sourceMappingURL=index.js.map
 
 /***/ }),
 
-/***/ "./node_modules/@comunica/actor-query-operation-orderby-direct/lib/ActorQueryOperationOrderByDirect.js":
-/*!*************************************************************************************************************!*\
-  !*** ./node_modules/@comunica/actor-query-operation-orderby-direct/lib/ActorQueryOperationOrderByDirect.js ***!
-  \*************************************************************************************************************/
+/***/ "./node_modules/@comunica/actor-query-operation-orderby-sparqlee/lib/ActorQueryOperationOrderBySparqlee.js":
+/*!*****************************************************************************************************************!*\
+  !*** ./node_modules/@comunica/actor-query-operation-orderby-sparqlee/lib/ActorQueryOperationOrderBySparqlee.js ***!
+  \*****************************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 Object.defineProperty(exports, "__esModule", { value: true });
-const actor_query_operation_filter_direct_1 = __webpack_require__(/*! @comunica/actor-query-operation-filter-direct */ "./node_modules/@comunica/actor-query-operation-filter-direct/index.js");
-const bus_query_operation_1 = __webpack_require__(/*! @comunica/bus-query-operation */ "./node_modules/@comunica/bus-query-operation/index.js");
 const rdf_string_1 = __webpack_require__(/*! rdf-string */ "./node_modules/rdf-string/index.js");
 const sparqlalgebrajs_1 = __webpack_require__(/*! sparqlalgebrajs */ "./node_modules/sparqlalgebrajs/index.js");
-const SortIterator_1 = __webpack_require__(/*! ./SortIterator */ "./node_modules/@comunica/actor-query-operation-orderby-direct/lib/SortIterator.js");
+const sparqlee_1 = __webpack_require__(/*! sparqlee */ "./node_modules/sparqlee/dist/index.js");
+const bus_query_operation_1 = __webpack_require__(/*! @comunica/bus-query-operation */ "./node_modules/@comunica/bus-query-operation/index.js");
+const SortIterator_1 = __webpack_require__(/*! ./SortIterator */ "./node_modules/@comunica/actor-query-operation-orderby-sparqlee/lib/SortIterator.js");
 /**
- * A comunica OrderBy Direct Query Operation Actor.
+ * A comunica OrderBy Sparqlee Query Operation Actor.
  */
-class ActorQueryOperationOrderByDirect extends bus_query_operation_1.ActorQueryOperationTypedMediated {
+class ActorQueryOperationOrderBySparqlee extends bus_query_operation_1.ActorQueryOperationTypedMediated {
     constructor(args) {
         super(args, 'orderby');
         this.window = args.window || Infinity;
     }
     async testOperation(pattern, context) {
-        // will throw error for unsupported operators
+        // Will throw error for unsupported operators
         for (let expr of pattern.expressions) {
-            // remove descending operator
-            if (expr.expressionType === sparqlalgebrajs_1.Algebra.expressionTypes.OPERATOR) {
-                const op = expr;
-                if (op.operator === 'desc') {
-                    expr = op.args[0];
-                }
-            }
-            actor_query_operation_filter_direct_1.SparqlExpressionEvaluator.createEvaluator(expr);
+            expr = this.extractSortExpression(expr);
+            const _ = new sparqlee_1.AsyncEvaluator(expr);
         }
         return true;
     }
     async runOperation(pattern, context) {
-        const output = bus_query_operation_1.ActorQueryOperation.getSafeBindings(await this.mediatorQueryOperation.mediate({ operation: pattern.input, context }));
+        const outputRaw = await this.mediatorQueryOperation.mediate({ operation: pattern.input, context });
+        const output = bus_query_operation_1.ActorQueryOperation.getSafeBindings(outputRaw);
         const options = { window: this.window };
         let bindingsStream = output.bindingsStream;
         for (let expr of pattern.expressions) {
-            let ascending = true;
-            if (expr.expressionType === sparqlalgebrajs_1.Algebra.expressionTypes.OPERATOR) {
-                const op = expr;
-                if (op.operator === 'desc') {
-                    ascending = false;
-                    expr = op.args[0];
+            const origin = output.bindingsStream;
+            const isAscending = this.isAscending(expr);
+            expr = this.extractSortExpression(expr);
+            // Transform the stream by annotating it with the expr result
+            const evaluator = new sparqlee_1.AsyncEvaluator(expr);
+            const transform = async (bindings, next) => {
+                try {
+                    const result = await evaluator.evaluate(bindings);
+                    transformedStream._push({ bindings, result });
                 }
-            }
-            const order = actor_query_operation_filter_direct_1.SparqlExpressionEvaluator.createEvaluator(expr);
-            bindingsStream = new SortIterator_1.SortIterator(bindingsStream, (a, b) => {
-                const orderA = rdf_string_1.termToString(order(a));
-                const orderB = rdf_string_1.termToString(order(b));
+                catch (err) {
+                    if (!sparqlee_1.isExpressionError(err)) {
+                        bindingsStream.emit('error', err);
+                    }
+                    transformedStream._push({ bindings, result: undefined });
+                }
+                next();
+            };
+            const transformedStream = origin.transform({ transform });
+            // Sort the annoted stream
+            const sortedStream = new SortIterator_1.SortIterator(transformedStream, (a, b) => {
+                const orderA = rdf_string_1.termToString(a.result);
+                const orderB = rdf_string_1.termToString(b.result);
                 if (!orderA || !orderB) {
                     return 0;
                 }
-                return orderA > orderB === ascending ? 1 : -1;
+                return orderA > orderB === isAscending ? 1 : -1;
             }, options);
+            // Remove the annotation
+            bindingsStream = sortedStream.map(({ bindings, result }) => bindings);
         }
         return { type: 'bindings', bindingsStream, metadata: output.metadata, variables: output.variables };
     }
+    // Remove descending operator if necessary
+    extractSortExpression(expr) {
+        const { expressionType, operator } = expr;
+        if (expressionType !== sparqlalgebrajs_1.Algebra.expressionTypes.OPERATOR) {
+            return expr;
+        }
+        return (operator === 'desc')
+            ? expr.args[0]
+            : expr;
+    }
+    isAscending(expr) {
+        const { expressionType, operator } = expr;
+        if (expressionType !== sparqlalgebrajs_1.Algebra.expressionTypes.OPERATOR) {
+            return true;
+        }
+        return operator !== 'desc';
+    }
 }
-exports.ActorQueryOperationOrderByDirect = ActorQueryOperationOrderByDirect;
-//# sourceMappingURL=ActorQueryOperationOrderByDirect.js.map
+exports.ActorQueryOperationOrderBySparqlee = ActorQueryOperationOrderBySparqlee;
+//# sourceMappingURL=ActorQueryOperationOrderBySparqlee.js.map
 
 /***/ }),
 
-/***/ "./node_modules/@comunica/actor-query-operation-orderby-direct/lib/SortIterator.js":
-/*!*****************************************************************************************!*\
-  !*** ./node_modules/@comunica/actor-query-operation-orderby-direct/lib/SortIterator.js ***!
-  \*****************************************************************************************/
+/***/ "./node_modules/@comunica/actor-query-operation-orderby-sparqlee/lib/SortIterator.js":
+/*!*******************************************************************************************!*\
+  !*** ./node_modules/@comunica/actor-query-operation-orderby-sparqlee/lib/SortIterator.js ***!
+  \*******************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -3568,8 +3583,8 @@ class ActorQueryOperationPathOneOrMore extends actor_abstract_path_1.ActorAbstra
     }
     async runOperation(path, context) {
         const predicate = path.predicate;
-        const sVar = path.subject.termType === 'Variable' || path.subject.termType === 'BlankNode';
-        const oVar = path.object.termType === 'Variable' || path.object.termType === 'BlankNode';
+        const sVar = path.subject.termType === 'Variable';
+        const oVar = path.object.termType === 'Variable';
         if (!sVar && oVar) {
             // get all the results of applying this once, then do zeroOrMore for those
             const single = actor_abstract_path_1.ActorAbstractPath.FACTORY.createPath(path.subject, predicate.path, path.object, path.graph);
@@ -3733,8 +3748,8 @@ class ActorQueryOperationPathZeroOrMore extends actor_abstract_path_1.ActorAbstr
     }
     async runOperation(path, context) {
         const predicate = path.predicate;
-        const sVar = path.subject.termType === 'Variable' || path.subject.termType === 'BlankNode';
-        const oVar = path.object.termType === 'Variable' || path.object.termType === 'BlankNode';
+        const sVar = path.subject.termType === 'Variable';
+        const oVar = path.object.termType === 'Variable';
         if (sVar && oVar) {
             throw new Error('ZeroOrMore path expressions with 2 variables not supported yet');
         }
@@ -3810,8 +3825,8 @@ class ActorQueryOperationPathZeroOrOne extends ActorAbstractPath_1.ActorAbstract
     }
     async runOperation(path, context) {
         const predicate = path.predicate;
-        const sVar = path.subject.termType === 'Variable' || path.subject.termType === 'BlankNode';
-        const oVar = path.object.termType === 'Variable' || path.object.termType === 'BlankNode';
+        const sVar = path.subject.termType === 'Variable';
+        const oVar = path.object.termType === 'Variable';
         const extra = [];
         // both subject and object non-variables
         if (!sVar && !oVar) {
@@ -3948,12 +3963,12 @@ class ActorQueryOperationQuadpattern extends bus_query_operation_1.ActorQueryOpe
         super(args, 'pattern');
     }
     /**
-     * Check if a term is a variable or a blank node.
+     * Check if a term is a variable.
      * @param {RDF.Term} term An RDF term.
      * @return {any} If the term is a variable or blank node.
      */
-    static isTermVariableOrBlank(term) {
-        return term.termType === 'Variable' || term.termType === 'BlankNode';
+    static isTermVariable(term) {
+        return term.termType === 'Variable';
     }
     /**
      * Get all variables in the given pattern.
@@ -3963,7 +3978,7 @@ class ActorQueryOperationQuadpattern extends bus_query_operation_1.ActorQueryOpe
      */
     getVariables(pattern) {
         return rdf_terms_1.uniqTerms(rdf_terms_1.getTerms(pattern)
-            .filter(ActorQueryOperationQuadpattern.isTermVariableOrBlank))
+            .filter(ActorQueryOperationQuadpattern.isTermVariable))
             .map(rdf_string_1.termToString);
     }
     async testOperation(operation, context) {
@@ -3976,7 +3991,7 @@ class ActorQueryOperationQuadpattern extends bus_query_operation_1.ActorQueryOpe
         const variables = this.getVariables(pattern);
         // Convenience datastructure for mapping quad elements to variables
         const elementVariables = rdf_terms_1.reduceTerms(pattern, (acc, term, key) => {
-            if (ActorQueryOperationQuadpattern.isTermVariableOrBlank(term)) {
+            if (ActorQueryOperationQuadpattern.isTermVariable(term)) {
                 acc[key] = rdf_string_1.termToString(term);
             }
             return acc;
@@ -4028,7 +4043,7 @@ __export(__webpack_require__(/*! ./lib/ActorQueryOperationReducedHash */ "./node
 
 Object.defineProperty(exports, "__esModule", { value: true });
 const actor_abstract_bindings_hash_1 = __webpack_require__(/*! @comunica/actor-abstract-bindings-hash */ "./node_modules/@comunica/actor-abstract-bindings-hash/index.js");
-const LRU = __webpack_require__(/*! lru-cache */ "./node_modules/lru-cache/index.js");
+const LRU = __webpack_require__(/*! lru-cache */ "./node_modules/@comunica/actor-query-operation-reduced-hash/node_modules/lru-cache/index.js");
 /**
  * A comunica Reduced Hash Query Operation Actor.
  */
@@ -4053,6 +4068,760 @@ class ActorQueryOperationReducedHash extends actor_abstract_bindings_hash_1.Abst
 }
 exports.ActorQueryOperationReducedHash = ActorQueryOperationReducedHash;
 //# sourceMappingURL=ActorQueryOperationReducedHash.js.map
+
+/***/ }),
+
+/***/ "./node_modules/@comunica/actor-query-operation-reduced-hash/node_modules/lru-cache/index.js":
+/*!***************************************************************************************************!*\
+  !*** ./node_modules/@comunica/actor-query-operation-reduced-hash/node_modules/lru-cache/index.js ***!
+  \***************************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+// A linked list to keep track of recently-used-ness
+const Yallist = __webpack_require__(/*! yallist */ "./node_modules/@comunica/actor-query-operation-reduced-hash/node_modules/yallist/yallist.js")
+
+const MAX = Symbol('max')
+const LENGTH = Symbol('length')
+const LENGTH_CALCULATOR = Symbol('lengthCalculator')
+const ALLOW_STALE = Symbol('allowStale')
+const MAX_AGE = Symbol('maxAge')
+const DISPOSE = Symbol('dispose')
+const NO_DISPOSE_ON_SET = Symbol('noDisposeOnSet')
+const LRU_LIST = Symbol('lruList')
+const CACHE = Symbol('cache')
+const UPDATE_AGE_ON_GET = Symbol('updateAgeOnGet')
+
+const naiveLength = () => 1
+
+// lruList is a yallist where the head is the youngest
+// item, and the tail is the oldest.  the list contains the Hit
+// objects as the entries.
+// Each Hit object has a reference to its Yallist.Node.  This
+// never changes.
+//
+// cache is a Map (or PseudoMap) that matches the keys to
+// the Yallist.Node object.
+class LRUCache {
+  constructor (options) {
+    if (typeof options === 'number')
+      options = { max: options }
+
+    if (!options)
+      options = {}
+
+    if (options.max && (typeof options.max !== 'number' || options.max < 0))
+      throw new TypeError('max must be a non-negative number')
+    // Kind of weird to have a default max of Infinity, but oh well.
+    const max = this[MAX] = options.max || Infinity
+
+    const lc = options.length || naiveLength
+    this[LENGTH_CALCULATOR] = (typeof lc !== 'function') ? naiveLength : lc
+    this[ALLOW_STALE] = options.stale || false
+    if (options.maxAge && typeof options.maxAge !== 'number')
+      throw new TypeError('maxAge must be a number')
+    this[MAX_AGE] = options.maxAge || 0
+    this[DISPOSE] = options.dispose
+    this[NO_DISPOSE_ON_SET] = options.noDisposeOnSet || false
+    this[UPDATE_AGE_ON_GET] = options.updateAgeOnGet || false
+    this.reset()
+  }
+
+  // resize the cache when the max changes.
+  set max (mL) {
+    if (typeof mL !== 'number' || mL < 0)
+      throw new TypeError('max must be a non-negative number')
+
+    this[MAX] = mL || Infinity
+    trim(this)
+  }
+  get max () {
+    return this[MAX]
+  }
+
+  set allowStale (allowStale) {
+    this[ALLOW_STALE] = !!allowStale
+  }
+  get allowStale () {
+    return this[ALLOW_STALE]
+  }
+
+  set maxAge (mA) {
+    if (typeof mA !== 'number')
+      throw new TypeError('maxAge must be a non-negative number')
+
+    this[MAX_AGE] = mA
+    trim(this)
+  }
+  get maxAge () {
+    return this[MAX_AGE]
+  }
+
+  // resize the cache when the lengthCalculator changes.
+  set lengthCalculator (lC) {
+    if (typeof lC !== 'function')
+      lC = naiveLength
+
+    if (lC !== this[LENGTH_CALCULATOR]) {
+      this[LENGTH_CALCULATOR] = lC
+      this[LENGTH] = 0
+      this[LRU_LIST].forEach(hit => {
+        hit.length = this[LENGTH_CALCULATOR](hit.value, hit.key)
+        this[LENGTH] += hit.length
+      })
+    }
+    trim(this)
+  }
+  get lengthCalculator () { return this[LENGTH_CALCULATOR] }
+
+  get length () { return this[LENGTH] }
+  get itemCount () { return this[LRU_LIST].length }
+
+  rforEach (fn, thisp) {
+    thisp = thisp || this
+    for (let walker = this[LRU_LIST].tail; walker !== null;) {
+      const prev = walker.prev
+      forEachStep(this, fn, walker, thisp)
+      walker = prev
+    }
+  }
+
+  forEach (fn, thisp) {
+    thisp = thisp || this
+    for (let walker = this[LRU_LIST].head; walker !== null;) {
+      const next = walker.next
+      forEachStep(this, fn, walker, thisp)
+      walker = next
+    }
+  }
+
+  keys () {
+    return this[LRU_LIST].toArray().map(k => k.key)
+  }
+
+  values () {
+    return this[LRU_LIST].toArray().map(k => k.value)
+  }
+
+  reset () {
+    if (this[DISPOSE] &&
+        this[LRU_LIST] &&
+        this[LRU_LIST].length) {
+      this[LRU_LIST].forEach(hit => this[DISPOSE](hit.key, hit.value))
+    }
+
+    this[CACHE] = new Map() // hash of items by key
+    this[LRU_LIST] = new Yallist() // list of items in order of use recency
+    this[LENGTH] = 0 // length of items in the list
+  }
+
+  dump () {
+    return this[LRU_LIST].map(hit =>
+      isStale(this, hit) ? false : {
+        k: hit.key,
+        v: hit.value,
+        e: hit.now + (hit.maxAge || 0)
+      }).toArray().filter(h => h)
+  }
+
+  dumpLru () {
+    return this[LRU_LIST]
+  }
+
+  set (key, value, maxAge) {
+    maxAge = maxAge || this[MAX_AGE]
+
+    if (maxAge && typeof maxAge !== 'number')
+      throw new TypeError('maxAge must be a number')
+
+    const now = maxAge ? Date.now() : 0
+    const len = this[LENGTH_CALCULATOR](value, key)
+
+    if (this[CACHE].has(key)) {
+      if (len > this[MAX]) {
+        del(this, this[CACHE].get(key))
+        return false
+      }
+
+      const node = this[CACHE].get(key)
+      const item = node.value
+
+      // dispose of the old one before overwriting
+      // split out into 2 ifs for better coverage tracking
+      if (this[DISPOSE]) {
+        if (!this[NO_DISPOSE_ON_SET])
+          this[DISPOSE](key, item.value)
+      }
+
+      item.now = now
+      item.maxAge = maxAge
+      item.value = value
+      this[LENGTH] += len - item.length
+      item.length = len
+      this.get(key)
+      trim(this)
+      return true
+    }
+
+    const hit = new Entry(key, value, len, now, maxAge)
+
+    // oversized objects fall out of cache automatically.
+    if (hit.length > this[MAX]) {
+      if (this[DISPOSE])
+        this[DISPOSE](key, value)
+
+      return false
+    }
+
+    this[LENGTH] += hit.length
+    this[LRU_LIST].unshift(hit)
+    this[CACHE].set(key, this[LRU_LIST].head)
+    trim(this)
+    return true
+  }
+
+  has (key) {
+    if (!this[CACHE].has(key)) return false
+    const hit = this[CACHE].get(key).value
+    return !isStale(this, hit)
+  }
+
+  get (key) {
+    return get(this, key, true)
+  }
+
+  peek (key) {
+    return get(this, key, false)
+  }
+
+  pop () {
+    const node = this[LRU_LIST].tail
+    if (!node)
+      return null
+
+    del(this, node)
+    return node.value
+  }
+
+  del (key) {
+    del(this, this[CACHE].get(key))
+  }
+
+  load (arr) {
+    // reset the cache
+    this.reset()
+
+    const now = Date.now()
+    // A previous serialized cache has the most recent items first
+    for (let l = arr.length - 1; l >= 0; l--) {
+      const hit = arr[l]
+      const expiresAt = hit.e || 0
+      if (expiresAt === 0)
+        // the item was created without expiration in a non aged cache
+        this.set(hit.k, hit.v)
+      else {
+        const maxAge = expiresAt - now
+        // dont add already expired items
+        if (maxAge > 0) {
+          this.set(hit.k, hit.v, maxAge)
+        }
+      }
+    }
+  }
+
+  prune () {
+    this[CACHE].forEach((value, key) => get(this, key, false))
+  }
+}
+
+const get = (self, key, doUse) => {
+  const node = self[CACHE].get(key)
+  if (node) {
+    const hit = node.value
+    if (isStale(self, hit)) {
+      del(self, node)
+      if (!self[ALLOW_STALE])
+        return undefined
+    } else {
+      if (doUse) {
+        if (self[UPDATE_AGE_ON_GET])
+          node.value.now = Date.now()
+        self[LRU_LIST].unshiftNode(node)
+      }
+    }
+    return hit.value
+  }
+}
+
+const isStale = (self, hit) => {
+  if (!hit || (!hit.maxAge && !self[MAX_AGE]))
+    return false
+
+  const diff = Date.now() - hit.now
+  return hit.maxAge ? diff > hit.maxAge
+    : self[MAX_AGE] && (diff > self[MAX_AGE])
+}
+
+const trim = self => {
+  if (self[LENGTH] > self[MAX]) {
+    for (let walker = self[LRU_LIST].tail;
+      self[LENGTH] > self[MAX] && walker !== null;) {
+      // We know that we're about to delete this one, and also
+      // what the next least recently used key will be, so just
+      // go ahead and set it now.
+      const prev = walker.prev
+      del(self, walker)
+      walker = prev
+    }
+  }
+}
+
+const del = (self, node) => {
+  if (node) {
+    const hit = node.value
+    if (self[DISPOSE])
+      self[DISPOSE](hit.key, hit.value)
+
+    self[LENGTH] -= hit.length
+    self[CACHE].delete(hit.key)
+    self[LRU_LIST].removeNode(node)
+  }
+}
+
+class Entry {
+  constructor (key, value, length, now, maxAge) {
+    this.key = key
+    this.value = value
+    this.length = length
+    this.now = now
+    this.maxAge = maxAge || 0
+  }
+}
+
+const forEachStep = (self, fn, node, thisp) => {
+  let hit = node.value
+  if (isStale(self, hit)) {
+    del(self, node)
+    if (!self[ALLOW_STALE])
+      hit = undefined
+  }
+  if (hit)
+    fn.call(thisp, hit.value, hit.key, self)
+}
+
+module.exports = LRUCache
+
+
+/***/ }),
+
+/***/ "./node_modules/@comunica/actor-query-operation-reduced-hash/node_modules/yallist/iterator.js":
+/*!****************************************************************************************************!*\
+  !*** ./node_modules/@comunica/actor-query-operation-reduced-hash/node_modules/yallist/iterator.js ***!
+  \****************************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+module.exports = function (Yallist) {
+  Yallist.prototype[Symbol.iterator] = function* () {
+    for (let walker = this.head; walker; walker = walker.next) {
+      yield walker.value
+    }
+  }
+}
+
+
+/***/ }),
+
+/***/ "./node_modules/@comunica/actor-query-operation-reduced-hash/node_modules/yallist/yallist.js":
+/*!***************************************************************************************************!*\
+  !*** ./node_modules/@comunica/actor-query-operation-reduced-hash/node_modules/yallist/yallist.js ***!
+  \***************************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+module.exports = Yallist
+
+Yallist.Node = Node
+Yallist.create = Yallist
+
+function Yallist (list) {
+  var self = this
+  if (!(self instanceof Yallist)) {
+    self = new Yallist()
+  }
+
+  self.tail = null
+  self.head = null
+  self.length = 0
+
+  if (list && typeof list.forEach === 'function') {
+    list.forEach(function (item) {
+      self.push(item)
+    })
+  } else if (arguments.length > 0) {
+    for (var i = 0, l = arguments.length; i < l; i++) {
+      self.push(arguments[i])
+    }
+  }
+
+  return self
+}
+
+Yallist.prototype.removeNode = function (node) {
+  if (node.list !== this) {
+    throw new Error('removing node which does not belong to this list')
+  }
+
+  var next = node.next
+  var prev = node.prev
+
+  if (next) {
+    next.prev = prev
+  }
+
+  if (prev) {
+    prev.next = next
+  }
+
+  if (node === this.head) {
+    this.head = next
+  }
+  if (node === this.tail) {
+    this.tail = prev
+  }
+
+  node.list.length--
+  node.next = null
+  node.prev = null
+  node.list = null
+}
+
+Yallist.prototype.unshiftNode = function (node) {
+  if (node === this.head) {
+    return
+  }
+
+  if (node.list) {
+    node.list.removeNode(node)
+  }
+
+  var head = this.head
+  node.list = this
+  node.next = head
+  if (head) {
+    head.prev = node
+  }
+
+  this.head = node
+  if (!this.tail) {
+    this.tail = node
+  }
+  this.length++
+}
+
+Yallist.prototype.pushNode = function (node) {
+  if (node === this.tail) {
+    return
+  }
+
+  if (node.list) {
+    node.list.removeNode(node)
+  }
+
+  var tail = this.tail
+  node.list = this
+  node.prev = tail
+  if (tail) {
+    tail.next = node
+  }
+
+  this.tail = node
+  if (!this.head) {
+    this.head = node
+  }
+  this.length++
+}
+
+Yallist.prototype.push = function () {
+  for (var i = 0, l = arguments.length; i < l; i++) {
+    push(this, arguments[i])
+  }
+  return this.length
+}
+
+Yallist.prototype.unshift = function () {
+  for (var i = 0, l = arguments.length; i < l; i++) {
+    unshift(this, arguments[i])
+  }
+  return this.length
+}
+
+Yallist.prototype.pop = function () {
+  if (!this.tail) {
+    return undefined
+  }
+
+  var res = this.tail.value
+  this.tail = this.tail.prev
+  if (this.tail) {
+    this.tail.next = null
+  } else {
+    this.head = null
+  }
+  this.length--
+  return res
+}
+
+Yallist.prototype.shift = function () {
+  if (!this.head) {
+    return undefined
+  }
+
+  var res = this.head.value
+  this.head = this.head.next
+  if (this.head) {
+    this.head.prev = null
+  } else {
+    this.tail = null
+  }
+  this.length--
+  return res
+}
+
+Yallist.prototype.forEach = function (fn, thisp) {
+  thisp = thisp || this
+  for (var walker = this.head, i = 0; walker !== null; i++) {
+    fn.call(thisp, walker.value, i, this)
+    walker = walker.next
+  }
+}
+
+Yallist.prototype.forEachReverse = function (fn, thisp) {
+  thisp = thisp || this
+  for (var walker = this.tail, i = this.length - 1; walker !== null; i--) {
+    fn.call(thisp, walker.value, i, this)
+    walker = walker.prev
+  }
+}
+
+Yallist.prototype.get = function (n) {
+  for (var i = 0, walker = this.head; walker !== null && i < n; i++) {
+    // abort out of the list early if we hit a cycle
+    walker = walker.next
+  }
+  if (i === n && walker !== null) {
+    return walker.value
+  }
+}
+
+Yallist.prototype.getReverse = function (n) {
+  for (var i = 0, walker = this.tail; walker !== null && i < n; i++) {
+    // abort out of the list early if we hit a cycle
+    walker = walker.prev
+  }
+  if (i === n && walker !== null) {
+    return walker.value
+  }
+}
+
+Yallist.prototype.map = function (fn, thisp) {
+  thisp = thisp || this
+  var res = new Yallist()
+  for (var walker = this.head; walker !== null;) {
+    res.push(fn.call(thisp, walker.value, this))
+    walker = walker.next
+  }
+  return res
+}
+
+Yallist.prototype.mapReverse = function (fn, thisp) {
+  thisp = thisp || this
+  var res = new Yallist()
+  for (var walker = this.tail; walker !== null;) {
+    res.push(fn.call(thisp, walker.value, this))
+    walker = walker.prev
+  }
+  return res
+}
+
+Yallist.prototype.reduce = function (fn, initial) {
+  var acc
+  var walker = this.head
+  if (arguments.length > 1) {
+    acc = initial
+  } else if (this.head) {
+    walker = this.head.next
+    acc = this.head.value
+  } else {
+    throw new TypeError('Reduce of empty list with no initial value')
+  }
+
+  for (var i = 0; walker !== null; i++) {
+    acc = fn(acc, walker.value, i)
+    walker = walker.next
+  }
+
+  return acc
+}
+
+Yallist.prototype.reduceReverse = function (fn, initial) {
+  var acc
+  var walker = this.tail
+  if (arguments.length > 1) {
+    acc = initial
+  } else if (this.tail) {
+    walker = this.tail.prev
+    acc = this.tail.value
+  } else {
+    throw new TypeError('Reduce of empty list with no initial value')
+  }
+
+  for (var i = this.length - 1; walker !== null; i--) {
+    acc = fn(acc, walker.value, i)
+    walker = walker.prev
+  }
+
+  return acc
+}
+
+Yallist.prototype.toArray = function () {
+  var arr = new Array(this.length)
+  for (var i = 0, walker = this.head; walker !== null; i++) {
+    arr[i] = walker.value
+    walker = walker.next
+  }
+  return arr
+}
+
+Yallist.prototype.toArrayReverse = function () {
+  var arr = new Array(this.length)
+  for (var i = 0, walker = this.tail; walker !== null; i++) {
+    arr[i] = walker.value
+    walker = walker.prev
+  }
+  return arr
+}
+
+Yallist.prototype.slice = function (from, to) {
+  to = to || this.length
+  if (to < 0) {
+    to += this.length
+  }
+  from = from || 0
+  if (from < 0) {
+    from += this.length
+  }
+  var ret = new Yallist()
+  if (to < from || to < 0) {
+    return ret
+  }
+  if (from < 0) {
+    from = 0
+  }
+  if (to > this.length) {
+    to = this.length
+  }
+  for (var i = 0, walker = this.head; walker !== null && i < from; i++) {
+    walker = walker.next
+  }
+  for (; walker !== null && i < to; i++, walker = walker.next) {
+    ret.push(walker.value)
+  }
+  return ret
+}
+
+Yallist.prototype.sliceReverse = function (from, to) {
+  to = to || this.length
+  if (to < 0) {
+    to += this.length
+  }
+  from = from || 0
+  if (from < 0) {
+    from += this.length
+  }
+  var ret = new Yallist()
+  if (to < from || to < 0) {
+    return ret
+  }
+  if (from < 0) {
+    from = 0
+  }
+  if (to > this.length) {
+    to = this.length
+  }
+  for (var i = this.length, walker = this.tail; walker !== null && i > to; i--) {
+    walker = walker.prev
+  }
+  for (; walker !== null && i > from; i--, walker = walker.prev) {
+    ret.push(walker.value)
+  }
+  return ret
+}
+
+Yallist.prototype.reverse = function () {
+  var head = this.head
+  var tail = this.tail
+  for (var walker = head; walker !== null; walker = walker.prev) {
+    var p = walker.prev
+    walker.prev = walker.next
+    walker.next = p
+  }
+  this.head = tail
+  this.tail = head
+  return this
+}
+
+function push (self, item) {
+  self.tail = new Node(item, self.tail, null, self)
+  if (!self.head) {
+    self.head = self.tail
+  }
+  self.length++
+}
+
+function unshift (self, item) {
+  self.head = new Node(item, null, self.head, self)
+  if (!self.tail) {
+    self.tail = self.head
+  }
+  self.length++
+}
+
+function Node (value, prev, next, list) {
+  if (!(this instanceof Node)) {
+    return new Node(value, prev, next, list)
+  }
+
+  this.list = list
+  this.value = value
+
+  if (prev) {
+    prev.next = this
+    this.prev = prev
+  } else {
+    this.prev = null
+  }
+
+  if (next) {
+    next.prev = this
+    this.next = next
+  } else {
+    this.next = null
+  }
+}
+
+try {
+  // add if support for Symbol.iterator is present
+  __webpack_require__(/*! ./iterator.js */ "./node_modules/@comunica/actor-query-operation-reduced-hash/node_modules/yallist/iterator.js")(Yallist)
+} catch (er) {}
+
 
 /***/ }),
 
@@ -4231,7 +5000,7 @@ __export(__webpack_require__(/*! ./lib/ActorQueryOperationSparqlEndpoint */ "./n
 
 Object.defineProperty(exports, "__esModule", { value: true });
 const bus_query_operation_1 = __webpack_require__(/*! @comunica/bus-query-operation */ "./node_modules/@comunica/bus-query-operation/index.js");
-const bus_rdf_resolve_quad_pattern_1 = __webpack_require__(/*! @comunica/bus-rdf-resolve-quad-pattern */ "./node_modules/@comunica/bus-rdf-resolve-quad-pattern/index.js");
+const utils_datasource_1 = __webpack_require__(/*! @comunica/utils-datasource */ "./node_modules/@comunica/utils-datasource/index.js");
 const asynciterator_1 = __webpack_require__(/*! asynciterator */ "./node_modules/asynciterator/asynciterator.js");
 const fetch_sparql_endpoint_1 = __webpack_require__(/*! fetch-sparql-endpoint */ "./node_modules/fetch-sparql-endpoint/index.js");
 const rdf_string_1 = __webpack_require__(/*! rdf-string */ "./node_modules/rdf-string/index.js");
@@ -4259,38 +5028,18 @@ class ActorQueryOperationSparqlEndpoint extends bus_query_operation_1.ActorQuery
         const variables = sparqlalgebrajs_1.Util.inScopeVariables(operation);
         return ActorQueryOperationSparqlEndpoint.FACTORY.createProject(operation, variables);
     }
-    /**
-     * Get the single source if the context contains just a single source.
-     * @param {ActionContext} context A context, can be null.
-     * @return {Promise<IDataSource>} A promise resolving to the single datasource or null.
-     */
-    static async getSingleSource(context) {
-        if (context && context.has(bus_rdf_resolve_quad_pattern_1.KEY_CONTEXT_SOURCE)) {
-            return context.get(bus_rdf_resolve_quad_pattern_1.KEY_CONTEXT_SOURCE);
-        }
-        else if (context && context.has(bus_rdf_resolve_quad_pattern_1.KEY_CONTEXT_SOURCES)) {
-            const datasources = context.get(bus_rdf_resolve_quad_pattern_1.KEY_CONTEXT_SOURCES);
-            if (datasources.isEnded()) {
-                const datasourcesArray = await __webpack_require__(/*! arrayify-stream */ "./node_modules/arrayify-stream/index.js")(datasources.iterator());
-                if (datasourcesArray.length === 1) {
-                    return datasourcesArray[0];
-                }
-            }
-        }
-        return null;
-    }
     async test(action) {
         if (!action.operation) {
             throw new Error('Missing field \'operation\' in the query operation action: ' + __webpack_require__(/*! util */ "./node_modules/util/util.js").inspect(action));
         }
-        const source = await ActorQueryOperationSparqlEndpoint.getSingleSource(action.context);
+        const source = await utils_datasource_1.DataSourceUtils.getSingleSource(action.context);
         if (source && source.type === 'sparql') {
             return { httpRequests: 1 };
         }
         throw new Error(this.name + ' requires a single source with a \'sparql\' endpoint to be present in the context.');
     }
     async run(action) {
-        const endpoint = (await ActorQueryOperationSparqlEndpoint.getSingleSource(action.context)).value;
+        const endpoint = (await utils_datasource_1.DataSourceUtils.getSingleSource(action.context)).value;
         const selectQuery = ActorQueryOperationSparqlEndpoint.patternToSelectQuery(action.operation);
         const query = sparqlalgebrajs_1.toSparql(selectQuery);
         const bindingsStream = new asynciterator_1.BufferedIterator({ autoStart: false, maxBufferSize: Infinity });
@@ -4490,6 +5239,7 @@ __export(__webpack_require__(/*! ./lib/ActorRdfDereferenceHttpParse */ "./node_m
 "use strict";
 
 Object.defineProperty(exports, "__esModule", { value: true });
+const bus_http_1 = __webpack_require__(/*! @comunica/bus-http */ "./node_modules/@comunica/bus-http/index.js");
 const bus_rdf_dereference_1 = __webpack_require__(/*! @comunica/bus-rdf-dereference */ "./node_modules/@comunica/bus-rdf-dereference/index.js");
 /**
  * An actor that listens on the 'rdf-dereference' bus.
@@ -4520,8 +5270,7 @@ class ActorRdfDereferenceHttpParse extends bus_rdf_dereference_1.ActorRdfDerefer
         const httpResponse = await this.mediatorHttp.mediate(httpAction);
         // Wrap WhatWG readable stream into a Node.js readable stream
         // If the body already is a Node.js stream (in the case of node-fetch), don't do explicit conversion.
-        const responseStream = __webpack_require__(/*! is-stream */ "./node_modules/is-stream/index.js")(httpResponse.body)
-            ? httpResponse.body : __webpack_require__(/*! node-web-streams */ "./node_modules/node-web-streams/index.js").toNodeReadable(httpResponse.body);
+        const responseStream = bus_http_1.ActorHttp.toNodeReadable(httpResponse.body);
         // Only parse if retrieval was successful
         if (httpResponse.status !== 200) {
             throw new Error('Could not retrieve ' + action.url + ' (' + httpResponse.status + ')');
@@ -4585,7 +5334,7 @@ __export(__webpack_require__(/*! ./lib/ActorRdfDereferencePagedNext */ "./node_m
 
 Object.defineProperty(exports, "__esModule", { value: true });
 const bus_rdf_dereference_paged_1 = __webpack_require__(/*! @comunica/bus-rdf-dereference-paged */ "./node_modules/@comunica/bus-rdf-dereference-paged/index.js");
-const LRU = __webpack_require__(/*! lru-cache */ "./node_modules/lru-cache/index.js");
+const LRU = __webpack_require__(/*! lru-cache */ "./node_modules/@comunica/actor-rdf-dereference-paged-next/node_modules/lru-cache/index.js");
 const MediatedPagedAsyncRdfIterator_1 = __webpack_require__(/*! ./MediatedPagedAsyncRdfIterator */ "./node_modules/@comunica/actor-rdf-dereference-paged-next/lib/MediatedPagedAsyncRdfIterator.js");
 /**
  * An RDF Dereference Paged Actor that will lazily follow 'next' links as defined from the extracted metadata.
@@ -4785,6 +5534,760 @@ class PagedAsyncRdfIterator extends asynciterator_1.BufferedIterator {
 }
 exports.PagedAsyncRdfIterator = PagedAsyncRdfIterator;
 //# sourceMappingURL=PagedAsyncRdfIterator.js.map
+
+/***/ }),
+
+/***/ "./node_modules/@comunica/actor-rdf-dereference-paged-next/node_modules/lru-cache/index.js":
+/*!*************************************************************************************************!*\
+  !*** ./node_modules/@comunica/actor-rdf-dereference-paged-next/node_modules/lru-cache/index.js ***!
+  \*************************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+// A linked list to keep track of recently-used-ness
+const Yallist = __webpack_require__(/*! yallist */ "./node_modules/@comunica/actor-rdf-dereference-paged-next/node_modules/yallist/yallist.js")
+
+const MAX = Symbol('max')
+const LENGTH = Symbol('length')
+const LENGTH_CALCULATOR = Symbol('lengthCalculator')
+const ALLOW_STALE = Symbol('allowStale')
+const MAX_AGE = Symbol('maxAge')
+const DISPOSE = Symbol('dispose')
+const NO_DISPOSE_ON_SET = Symbol('noDisposeOnSet')
+const LRU_LIST = Symbol('lruList')
+const CACHE = Symbol('cache')
+const UPDATE_AGE_ON_GET = Symbol('updateAgeOnGet')
+
+const naiveLength = () => 1
+
+// lruList is a yallist where the head is the youngest
+// item, and the tail is the oldest.  the list contains the Hit
+// objects as the entries.
+// Each Hit object has a reference to its Yallist.Node.  This
+// never changes.
+//
+// cache is a Map (or PseudoMap) that matches the keys to
+// the Yallist.Node object.
+class LRUCache {
+  constructor (options) {
+    if (typeof options === 'number')
+      options = { max: options }
+
+    if (!options)
+      options = {}
+
+    if (options.max && (typeof options.max !== 'number' || options.max < 0))
+      throw new TypeError('max must be a non-negative number')
+    // Kind of weird to have a default max of Infinity, but oh well.
+    const max = this[MAX] = options.max || Infinity
+
+    const lc = options.length || naiveLength
+    this[LENGTH_CALCULATOR] = (typeof lc !== 'function') ? naiveLength : lc
+    this[ALLOW_STALE] = options.stale || false
+    if (options.maxAge && typeof options.maxAge !== 'number')
+      throw new TypeError('maxAge must be a number')
+    this[MAX_AGE] = options.maxAge || 0
+    this[DISPOSE] = options.dispose
+    this[NO_DISPOSE_ON_SET] = options.noDisposeOnSet || false
+    this[UPDATE_AGE_ON_GET] = options.updateAgeOnGet || false
+    this.reset()
+  }
+
+  // resize the cache when the max changes.
+  set max (mL) {
+    if (typeof mL !== 'number' || mL < 0)
+      throw new TypeError('max must be a non-negative number')
+
+    this[MAX] = mL || Infinity
+    trim(this)
+  }
+  get max () {
+    return this[MAX]
+  }
+
+  set allowStale (allowStale) {
+    this[ALLOW_STALE] = !!allowStale
+  }
+  get allowStale () {
+    return this[ALLOW_STALE]
+  }
+
+  set maxAge (mA) {
+    if (typeof mA !== 'number')
+      throw new TypeError('maxAge must be a non-negative number')
+
+    this[MAX_AGE] = mA
+    trim(this)
+  }
+  get maxAge () {
+    return this[MAX_AGE]
+  }
+
+  // resize the cache when the lengthCalculator changes.
+  set lengthCalculator (lC) {
+    if (typeof lC !== 'function')
+      lC = naiveLength
+
+    if (lC !== this[LENGTH_CALCULATOR]) {
+      this[LENGTH_CALCULATOR] = lC
+      this[LENGTH] = 0
+      this[LRU_LIST].forEach(hit => {
+        hit.length = this[LENGTH_CALCULATOR](hit.value, hit.key)
+        this[LENGTH] += hit.length
+      })
+    }
+    trim(this)
+  }
+  get lengthCalculator () { return this[LENGTH_CALCULATOR] }
+
+  get length () { return this[LENGTH] }
+  get itemCount () { return this[LRU_LIST].length }
+
+  rforEach (fn, thisp) {
+    thisp = thisp || this
+    for (let walker = this[LRU_LIST].tail; walker !== null;) {
+      const prev = walker.prev
+      forEachStep(this, fn, walker, thisp)
+      walker = prev
+    }
+  }
+
+  forEach (fn, thisp) {
+    thisp = thisp || this
+    for (let walker = this[LRU_LIST].head; walker !== null;) {
+      const next = walker.next
+      forEachStep(this, fn, walker, thisp)
+      walker = next
+    }
+  }
+
+  keys () {
+    return this[LRU_LIST].toArray().map(k => k.key)
+  }
+
+  values () {
+    return this[LRU_LIST].toArray().map(k => k.value)
+  }
+
+  reset () {
+    if (this[DISPOSE] &&
+        this[LRU_LIST] &&
+        this[LRU_LIST].length) {
+      this[LRU_LIST].forEach(hit => this[DISPOSE](hit.key, hit.value))
+    }
+
+    this[CACHE] = new Map() // hash of items by key
+    this[LRU_LIST] = new Yallist() // list of items in order of use recency
+    this[LENGTH] = 0 // length of items in the list
+  }
+
+  dump () {
+    return this[LRU_LIST].map(hit =>
+      isStale(this, hit) ? false : {
+        k: hit.key,
+        v: hit.value,
+        e: hit.now + (hit.maxAge || 0)
+      }).toArray().filter(h => h)
+  }
+
+  dumpLru () {
+    return this[LRU_LIST]
+  }
+
+  set (key, value, maxAge) {
+    maxAge = maxAge || this[MAX_AGE]
+
+    if (maxAge && typeof maxAge !== 'number')
+      throw new TypeError('maxAge must be a number')
+
+    const now = maxAge ? Date.now() : 0
+    const len = this[LENGTH_CALCULATOR](value, key)
+
+    if (this[CACHE].has(key)) {
+      if (len > this[MAX]) {
+        del(this, this[CACHE].get(key))
+        return false
+      }
+
+      const node = this[CACHE].get(key)
+      const item = node.value
+
+      // dispose of the old one before overwriting
+      // split out into 2 ifs for better coverage tracking
+      if (this[DISPOSE]) {
+        if (!this[NO_DISPOSE_ON_SET])
+          this[DISPOSE](key, item.value)
+      }
+
+      item.now = now
+      item.maxAge = maxAge
+      item.value = value
+      this[LENGTH] += len - item.length
+      item.length = len
+      this.get(key)
+      trim(this)
+      return true
+    }
+
+    const hit = new Entry(key, value, len, now, maxAge)
+
+    // oversized objects fall out of cache automatically.
+    if (hit.length > this[MAX]) {
+      if (this[DISPOSE])
+        this[DISPOSE](key, value)
+
+      return false
+    }
+
+    this[LENGTH] += hit.length
+    this[LRU_LIST].unshift(hit)
+    this[CACHE].set(key, this[LRU_LIST].head)
+    trim(this)
+    return true
+  }
+
+  has (key) {
+    if (!this[CACHE].has(key)) return false
+    const hit = this[CACHE].get(key).value
+    return !isStale(this, hit)
+  }
+
+  get (key) {
+    return get(this, key, true)
+  }
+
+  peek (key) {
+    return get(this, key, false)
+  }
+
+  pop () {
+    const node = this[LRU_LIST].tail
+    if (!node)
+      return null
+
+    del(this, node)
+    return node.value
+  }
+
+  del (key) {
+    del(this, this[CACHE].get(key))
+  }
+
+  load (arr) {
+    // reset the cache
+    this.reset()
+
+    const now = Date.now()
+    // A previous serialized cache has the most recent items first
+    for (let l = arr.length - 1; l >= 0; l--) {
+      const hit = arr[l]
+      const expiresAt = hit.e || 0
+      if (expiresAt === 0)
+        // the item was created without expiration in a non aged cache
+        this.set(hit.k, hit.v)
+      else {
+        const maxAge = expiresAt - now
+        // dont add already expired items
+        if (maxAge > 0) {
+          this.set(hit.k, hit.v, maxAge)
+        }
+      }
+    }
+  }
+
+  prune () {
+    this[CACHE].forEach((value, key) => get(this, key, false))
+  }
+}
+
+const get = (self, key, doUse) => {
+  const node = self[CACHE].get(key)
+  if (node) {
+    const hit = node.value
+    if (isStale(self, hit)) {
+      del(self, node)
+      if (!self[ALLOW_STALE])
+        return undefined
+    } else {
+      if (doUse) {
+        if (self[UPDATE_AGE_ON_GET])
+          node.value.now = Date.now()
+        self[LRU_LIST].unshiftNode(node)
+      }
+    }
+    return hit.value
+  }
+}
+
+const isStale = (self, hit) => {
+  if (!hit || (!hit.maxAge && !self[MAX_AGE]))
+    return false
+
+  const diff = Date.now() - hit.now
+  return hit.maxAge ? diff > hit.maxAge
+    : self[MAX_AGE] && (diff > self[MAX_AGE])
+}
+
+const trim = self => {
+  if (self[LENGTH] > self[MAX]) {
+    for (let walker = self[LRU_LIST].tail;
+      self[LENGTH] > self[MAX] && walker !== null;) {
+      // We know that we're about to delete this one, and also
+      // what the next least recently used key will be, so just
+      // go ahead and set it now.
+      const prev = walker.prev
+      del(self, walker)
+      walker = prev
+    }
+  }
+}
+
+const del = (self, node) => {
+  if (node) {
+    const hit = node.value
+    if (self[DISPOSE])
+      self[DISPOSE](hit.key, hit.value)
+
+    self[LENGTH] -= hit.length
+    self[CACHE].delete(hit.key)
+    self[LRU_LIST].removeNode(node)
+  }
+}
+
+class Entry {
+  constructor (key, value, length, now, maxAge) {
+    this.key = key
+    this.value = value
+    this.length = length
+    this.now = now
+    this.maxAge = maxAge || 0
+  }
+}
+
+const forEachStep = (self, fn, node, thisp) => {
+  let hit = node.value
+  if (isStale(self, hit)) {
+    del(self, node)
+    if (!self[ALLOW_STALE])
+      hit = undefined
+  }
+  if (hit)
+    fn.call(thisp, hit.value, hit.key, self)
+}
+
+module.exports = LRUCache
+
+
+/***/ }),
+
+/***/ "./node_modules/@comunica/actor-rdf-dereference-paged-next/node_modules/yallist/iterator.js":
+/*!**************************************************************************************************!*\
+  !*** ./node_modules/@comunica/actor-rdf-dereference-paged-next/node_modules/yallist/iterator.js ***!
+  \**************************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+module.exports = function (Yallist) {
+  Yallist.prototype[Symbol.iterator] = function* () {
+    for (let walker = this.head; walker; walker = walker.next) {
+      yield walker.value
+    }
+  }
+}
+
+
+/***/ }),
+
+/***/ "./node_modules/@comunica/actor-rdf-dereference-paged-next/node_modules/yallist/yallist.js":
+/*!*************************************************************************************************!*\
+  !*** ./node_modules/@comunica/actor-rdf-dereference-paged-next/node_modules/yallist/yallist.js ***!
+  \*************************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+module.exports = Yallist
+
+Yallist.Node = Node
+Yallist.create = Yallist
+
+function Yallist (list) {
+  var self = this
+  if (!(self instanceof Yallist)) {
+    self = new Yallist()
+  }
+
+  self.tail = null
+  self.head = null
+  self.length = 0
+
+  if (list && typeof list.forEach === 'function') {
+    list.forEach(function (item) {
+      self.push(item)
+    })
+  } else if (arguments.length > 0) {
+    for (var i = 0, l = arguments.length; i < l; i++) {
+      self.push(arguments[i])
+    }
+  }
+
+  return self
+}
+
+Yallist.prototype.removeNode = function (node) {
+  if (node.list !== this) {
+    throw new Error('removing node which does not belong to this list')
+  }
+
+  var next = node.next
+  var prev = node.prev
+
+  if (next) {
+    next.prev = prev
+  }
+
+  if (prev) {
+    prev.next = next
+  }
+
+  if (node === this.head) {
+    this.head = next
+  }
+  if (node === this.tail) {
+    this.tail = prev
+  }
+
+  node.list.length--
+  node.next = null
+  node.prev = null
+  node.list = null
+}
+
+Yallist.prototype.unshiftNode = function (node) {
+  if (node === this.head) {
+    return
+  }
+
+  if (node.list) {
+    node.list.removeNode(node)
+  }
+
+  var head = this.head
+  node.list = this
+  node.next = head
+  if (head) {
+    head.prev = node
+  }
+
+  this.head = node
+  if (!this.tail) {
+    this.tail = node
+  }
+  this.length++
+}
+
+Yallist.prototype.pushNode = function (node) {
+  if (node === this.tail) {
+    return
+  }
+
+  if (node.list) {
+    node.list.removeNode(node)
+  }
+
+  var tail = this.tail
+  node.list = this
+  node.prev = tail
+  if (tail) {
+    tail.next = node
+  }
+
+  this.tail = node
+  if (!this.head) {
+    this.head = node
+  }
+  this.length++
+}
+
+Yallist.prototype.push = function () {
+  for (var i = 0, l = arguments.length; i < l; i++) {
+    push(this, arguments[i])
+  }
+  return this.length
+}
+
+Yallist.prototype.unshift = function () {
+  for (var i = 0, l = arguments.length; i < l; i++) {
+    unshift(this, arguments[i])
+  }
+  return this.length
+}
+
+Yallist.prototype.pop = function () {
+  if (!this.tail) {
+    return undefined
+  }
+
+  var res = this.tail.value
+  this.tail = this.tail.prev
+  if (this.tail) {
+    this.tail.next = null
+  } else {
+    this.head = null
+  }
+  this.length--
+  return res
+}
+
+Yallist.prototype.shift = function () {
+  if (!this.head) {
+    return undefined
+  }
+
+  var res = this.head.value
+  this.head = this.head.next
+  if (this.head) {
+    this.head.prev = null
+  } else {
+    this.tail = null
+  }
+  this.length--
+  return res
+}
+
+Yallist.prototype.forEach = function (fn, thisp) {
+  thisp = thisp || this
+  for (var walker = this.head, i = 0; walker !== null; i++) {
+    fn.call(thisp, walker.value, i, this)
+    walker = walker.next
+  }
+}
+
+Yallist.prototype.forEachReverse = function (fn, thisp) {
+  thisp = thisp || this
+  for (var walker = this.tail, i = this.length - 1; walker !== null; i--) {
+    fn.call(thisp, walker.value, i, this)
+    walker = walker.prev
+  }
+}
+
+Yallist.prototype.get = function (n) {
+  for (var i = 0, walker = this.head; walker !== null && i < n; i++) {
+    // abort out of the list early if we hit a cycle
+    walker = walker.next
+  }
+  if (i === n && walker !== null) {
+    return walker.value
+  }
+}
+
+Yallist.prototype.getReverse = function (n) {
+  for (var i = 0, walker = this.tail; walker !== null && i < n; i++) {
+    // abort out of the list early if we hit a cycle
+    walker = walker.prev
+  }
+  if (i === n && walker !== null) {
+    return walker.value
+  }
+}
+
+Yallist.prototype.map = function (fn, thisp) {
+  thisp = thisp || this
+  var res = new Yallist()
+  for (var walker = this.head; walker !== null;) {
+    res.push(fn.call(thisp, walker.value, this))
+    walker = walker.next
+  }
+  return res
+}
+
+Yallist.prototype.mapReverse = function (fn, thisp) {
+  thisp = thisp || this
+  var res = new Yallist()
+  for (var walker = this.tail; walker !== null;) {
+    res.push(fn.call(thisp, walker.value, this))
+    walker = walker.prev
+  }
+  return res
+}
+
+Yallist.prototype.reduce = function (fn, initial) {
+  var acc
+  var walker = this.head
+  if (arguments.length > 1) {
+    acc = initial
+  } else if (this.head) {
+    walker = this.head.next
+    acc = this.head.value
+  } else {
+    throw new TypeError('Reduce of empty list with no initial value')
+  }
+
+  for (var i = 0; walker !== null; i++) {
+    acc = fn(acc, walker.value, i)
+    walker = walker.next
+  }
+
+  return acc
+}
+
+Yallist.prototype.reduceReverse = function (fn, initial) {
+  var acc
+  var walker = this.tail
+  if (arguments.length > 1) {
+    acc = initial
+  } else if (this.tail) {
+    walker = this.tail.prev
+    acc = this.tail.value
+  } else {
+    throw new TypeError('Reduce of empty list with no initial value')
+  }
+
+  for (var i = this.length - 1; walker !== null; i--) {
+    acc = fn(acc, walker.value, i)
+    walker = walker.prev
+  }
+
+  return acc
+}
+
+Yallist.prototype.toArray = function () {
+  var arr = new Array(this.length)
+  for (var i = 0, walker = this.head; walker !== null; i++) {
+    arr[i] = walker.value
+    walker = walker.next
+  }
+  return arr
+}
+
+Yallist.prototype.toArrayReverse = function () {
+  var arr = new Array(this.length)
+  for (var i = 0, walker = this.tail; walker !== null; i++) {
+    arr[i] = walker.value
+    walker = walker.prev
+  }
+  return arr
+}
+
+Yallist.prototype.slice = function (from, to) {
+  to = to || this.length
+  if (to < 0) {
+    to += this.length
+  }
+  from = from || 0
+  if (from < 0) {
+    from += this.length
+  }
+  var ret = new Yallist()
+  if (to < from || to < 0) {
+    return ret
+  }
+  if (from < 0) {
+    from = 0
+  }
+  if (to > this.length) {
+    to = this.length
+  }
+  for (var i = 0, walker = this.head; walker !== null && i < from; i++) {
+    walker = walker.next
+  }
+  for (; walker !== null && i < to; i++, walker = walker.next) {
+    ret.push(walker.value)
+  }
+  return ret
+}
+
+Yallist.prototype.sliceReverse = function (from, to) {
+  to = to || this.length
+  if (to < 0) {
+    to += this.length
+  }
+  from = from || 0
+  if (from < 0) {
+    from += this.length
+  }
+  var ret = new Yallist()
+  if (to < from || to < 0) {
+    return ret
+  }
+  if (from < 0) {
+    from = 0
+  }
+  if (to > this.length) {
+    to = this.length
+  }
+  for (var i = this.length, walker = this.tail; walker !== null && i > to; i--) {
+    walker = walker.prev
+  }
+  for (; walker !== null && i > from; i--, walker = walker.prev) {
+    ret.push(walker.value)
+  }
+  return ret
+}
+
+Yallist.prototype.reverse = function () {
+  var head = this.head
+  var tail = this.tail
+  for (var walker = head; walker !== null; walker = walker.prev) {
+    var p = walker.prev
+    walker.prev = walker.next
+    walker.next = p
+  }
+  this.head = tail
+  this.tail = head
+  return this
+}
+
+function push (self, item) {
+  self.tail = new Node(item, self.tail, null, self)
+  if (!self.head) {
+    self.head = self.tail
+  }
+  self.length++
+}
+
+function unshift (self, item) {
+  self.head = new Node(item, null, self.head, self)
+  if (!self.tail) {
+    self.tail = self.head
+  }
+  self.length++
+}
+
+function Node (value, prev, next, list) {
+  if (!(this instanceof Node)) {
+    return new Node(value, prev, next, list)
+  }
+
+  this.list = list
+  this.value = value
+
+  if (prev) {
+    prev.next = this
+    this.prev = prev
+  } else {
+    this.prev = null
+  }
+
+  if (next) {
+    next.prev = this
+    this.next = next
+  } else {
+    this.next = null
+  }
+}
+
+try {
+  // add if support for Symbol.iterator is present
+  __webpack_require__(/*! ./iterator.js */ "./node_modules/@comunica/actor-rdf-dereference-paged-next/node_modules/yallist/iterator.js")(Yallist)
+} catch (er) {}
+
 
 /***/ }),
 
@@ -5279,7 +6782,7 @@ class ActorRdfParseJsonLd extends bus_rdf_parse_1.ActorRdfParseFixedMediaTypes {
             if (!initialized) {
                 initialized = true;
                 const jsonString = await __webpack_require__(/*! stream-to-string */ "./node_modules/stream-to-string/index.js")(action.input);
-                const quadsArray = await this.jsonLd.toRDF(JSON.parse(jsonString), { baseIRI: action.baseIRI });
+                const quadsArray = await this.jsonLd.toRDF(JSON.parse(jsonString), { base: action.baseIRI });
                 for (const quad of quadsArray) {
                     quads.push(rdf_terms_1.mapTerms(quad, ActorRdfParseJsonLd.mapTerm));
                 }
@@ -5400,6 +6903,86 @@ exports.ActorRdfParseRdfXml = ActorRdfParseRdfXml;
 
 /***/ }),
 
+/***/ "./node_modules/@comunica/actor-rdf-resolve-hypermedia-qpf/index.js":
+/*!**************************************************************************!*\
+  !*** ./node_modules/@comunica/actor-rdf-resolve-hypermedia-qpf/index.js ***!
+  \**************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+function __export(m) {
+    for (var p in m) if (!exports.hasOwnProperty(p)) exports[p] = m[p];
+}
+Object.defineProperty(exports, "__esModule", { value: true });
+__export(__webpack_require__(/*! ./lib/ActorRdfResolveHypermediaQpf */ "./node_modules/@comunica/actor-rdf-resolve-hypermedia-qpf/lib/ActorRdfResolveHypermediaQpf.js"));
+//# sourceMappingURL=index.js.map
+
+/***/ }),
+
+/***/ "./node_modules/@comunica/actor-rdf-resolve-hypermedia-qpf/lib/ActorRdfResolveHypermediaQpf.js":
+/*!*****************************************************************************************************!*\
+  !*** ./node_modules/@comunica/actor-rdf-resolve-hypermedia-qpf/lib/ActorRdfResolveHypermediaQpf.js ***!
+  \*****************************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+Object.defineProperty(exports, "__esModule", { value: true });
+const bus_rdf_resolve_hypermedia_1 = __webpack_require__(/*! @comunica/bus-rdf-resolve-hypermedia */ "./node_modules/@comunica/bus-rdf-resolve-hypermedia/index.js");
+const bus_rdf_resolve_quad_pattern_1 = __webpack_require__(/*! @comunica/bus-rdf-resolve-quad-pattern */ "./node_modules/@comunica/bus-rdf-resolve-quad-pattern/index.js");
+/**
+ * A comunica QPF RDF Resolve Quad Pattern Actor.
+ */
+class ActorRdfResolveHypermediaQpf extends bus_rdf_resolve_hypermedia_1.ActorRdfResolveHypermedia {
+    constructor(args) {
+        super(args);
+    }
+    async test(action) {
+        if (!(action.context.get(bus_rdf_resolve_quad_pattern_1.KEY_CONTEXT_SOURCE).type === "hypermedia")) {
+            throw new Error(this.name
+                + ' requires a single source with a Hypermedia \'hypermedia\' entrypoint to be present in the context.');
+        }
+        if (!action.metadata || !action.metadata.searchForms) {
+            throw new Error(`${this.name} requires metadata and searchForms to work on.`);
+        }
+        return true;
+    }
+    /**
+     * Look for the search form
+     * @param {IActionRdfResolveHypermedia} the metadata to look for the form.
+     * @return {Promise<IActorRdfResolveHypermediaOutput>} A promise resolving to a hypermedia form.
+     */
+    async run(action) {
+        // Find a quad pattern or triple pattern search form
+        const searchForms = action.metadata.searchForms;
+        // TODO: in the future, a query-based search form getter should be used.
+        for (const searchForm of searchForms.values) {
+            if (this.graphUri
+                && this.subjectUri in searchForm.mappings
+                && this.predicateUri in searchForm.mappings
+                && this.objectUri in searchForm.mappings
+                && this.graphUri in searchForm.mappings
+                && Object.keys(searchForm.mappings).length === 4) {
+                return { searchForm };
+            }
+            if (this.subjectUri in searchForm.mappings
+                && this.predicateUri in searchForm.mappings
+                && this.objectUri in searchForm.mappings
+                && Object.keys(searchForm.mappings).length === 3) {
+                return { searchForm };
+            }
+        }
+        throw new Error('No valid Hydra search form was found for quad pattern or triple pattern queries.');
+    }
+}
+exports.ActorRdfResolveHypermediaQpf = ActorRdfResolveHypermediaQpf;
+//# sourceMappingURL=ActorRdfResolveHypermediaQpf.js.map
+
+/***/ }),
+
 /***/ "./node_modules/@comunica/actor-rdf-resolve-quad-pattern-federated/index.js":
 /*!**********************************************************************************!*\
   !*** ./node_modules/@comunica/actor-rdf-resolve-quad-pattern-federated/index.js ***!
@@ -5478,6 +7061,7 @@ exports.ActorRdfResolveQuadPatternFederated = ActorRdfResolveQuadPatternFederate
 Object.defineProperty(exports, "__esModule", { value: true });
 const bus_rdf_resolve_quad_pattern_1 = __webpack_require__(/*! @comunica/bus-rdf-resolve-quad-pattern */ "./node_modules/@comunica/bus-rdf-resolve-quad-pattern/index.js");
 const data_model_1 = __webpack_require__(/*! @rdfjs/data-model */ "./node_modules/@rdfjs/data-model/index.js");
+const DataFactory = __webpack_require__(/*! @rdfjs/data-model */ "./node_modules/@rdfjs/data-model/index.js");
 const asynciterator_1 = __webpack_require__(/*! asynciterator */ "./node_modules/asynciterator/asynciterator.js");
 const asynciterator_promiseproxy_1 = __webpack_require__(/*! asynciterator-promiseproxy */ "./node_modules/asynciterator-promiseproxy/index.js");
 const asynciterator_union_1 = __webpack_require__(/*! asynciterator-union */ "./node_modules/asynciterator-union/index.js");
@@ -5503,12 +7087,12 @@ class FederatedQuadSource {
     }
     /**
      * Check if the given RDF term is not bound to an exact value.
-     * I.e., if it is not a Variable or a BlankNode.
+     * I.e., if it is not a Variable.
      * @param {RDF.Term} term An RDF term.
      * @return {boolean} If it is not bound.
      */
     static isTermBound(term) {
-        return term.termType !== 'Variable' && term.termType !== 'BlankNode';
+        return term.termType !== 'Variable';
     }
     /**
      * Checks if the given (child) pattern is a more bound version of the given (parent) pattern.
@@ -5522,6 +7106,18 @@ class FederatedQuadSource {
             && (!FederatedQuadSource.isTermBound(parent.predicate) || parent.predicate.equals(child.predicate))
             && (!FederatedQuadSource.isTermBound(parent.object) || parent.object.equals(child.object))
             && (!FederatedQuadSource.isTermBound(parent.graph) || parent.graph.equals(child.graph));
+    }
+    /**
+     * Converts falsy terms to variables.
+     * This is the reverse operation of {@link ActorRdfResolveQuadPatternSource#variableToNull}.
+     * @param {Term} term A term or null.
+     * @return {Term} A term.
+     */
+    static nullToVariable(term) {
+        if (!term) {
+            return DataFactory.variable('v');
+        }
+        return term;
     }
     /**
      * If the given source is guaranteed to produce an empty result for the given pattern.
@@ -5564,7 +7160,7 @@ class FederatedQuadSource {
             remainingSources++;
             // If we can predict that the given source will have no bindings for the given pattern,
             // return an empty iterator.
-            const pattern = data_model_1.quad(subject || data_model_1.blankNode(), predicate || data_model_1.blankNode(), object || data_model_1.blankNode(), graph || data_model_1.blankNode());
+            const pattern = data_model_1.quad(FederatedQuadSource.nullToVariable(subject), FederatedQuadSource.nullToVariable(predicate), FederatedQuadSource.nullToVariable(object), FederatedQuadSource.nullToVariable(graph));
             // Anonymous function to handle totalItems from metadata
             const checkEmitMetadata = (currentTotalItems) => {
                 if (this.skipEmptyPatterns && !currentTotalItems) {
@@ -5737,7 +7333,7 @@ class N3StoreIterator extends asynciterator_1.BufferedIterator {
         this.graph = N3StoreIterator.nullifyVariables(graph);
     }
     static nullifyVariables(term) {
-        return !term || term.termType === 'Variable' || term.termType === 'BlankNode' ? null : term;
+        return !term || term.termType === 'Variable' ? null : term;
     }
     _read(count, done) {
         this.store.forEach((quad) => this._push(quad), this.subject, this.predicate, this.object, this.graph);
@@ -5783,10 +7379,10 @@ exports.N3StoreQuadSource = N3StoreQuadSource;
 
 /***/ }),
 
-/***/ "./node_modules/@comunica/actor-rdf-resolve-quad-pattern-qpf/index.js":
-/*!****************************************************************************!*\
-  !*** ./node_modules/@comunica/actor-rdf-resolve-quad-pattern-qpf/index.js ***!
-  \****************************************************************************/
+/***/ "./node_modules/@comunica/actor-rdf-resolve-quad-pattern-hypermedia/index.js":
+/*!***********************************************************************************!*\
+  !*** ./node_modules/@comunica/actor-rdf-resolve-quad-pattern-hypermedia/index.js ***!
+  \***********************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -5796,16 +7392,16 @@ function __export(m) {
     for (var p in m) if (!exports.hasOwnProperty(p)) exports[p] = m[p];
 }
 Object.defineProperty(exports, "__esModule", { value: true });
-__export(__webpack_require__(/*! ./lib/ActorRdfResolveQuadPatternQpf */ "./node_modules/@comunica/actor-rdf-resolve-quad-pattern-qpf/lib/ActorRdfResolveQuadPatternQpf.js"));
-__export(__webpack_require__(/*! ./lib/MediatedQuadSource */ "./node_modules/@comunica/actor-rdf-resolve-quad-pattern-qpf/lib/MediatedQuadSource.js"));
+__export(__webpack_require__(/*! ./lib/ActorRdfResolveQuadPatternHypermedia */ "./node_modules/@comunica/actor-rdf-resolve-quad-pattern-hypermedia/lib/ActorRdfResolveQuadPatternHypermedia.js"));
+__export(__webpack_require__(/*! ./lib/MediatedQuadSource */ "./node_modules/@comunica/actor-rdf-resolve-quad-pattern-hypermedia/lib/MediatedQuadSource.js"));
 //# sourceMappingURL=index.js.map
 
 /***/ }),
 
-/***/ "./node_modules/@comunica/actor-rdf-resolve-quad-pattern-qpf/lib/ActorRdfResolveQuadPatternQpf.js":
-/*!********************************************************************************************************!*\
-  !*** ./node_modules/@comunica/actor-rdf-resolve-quad-pattern-qpf/lib/ActorRdfResolveQuadPatternQpf.js ***!
-  \********************************************************************************************************/
+/***/ "./node_modules/@comunica/actor-rdf-resolve-quad-pattern-hypermedia/lib/ActorRdfResolveQuadPatternHypermedia.js":
+/*!**********************************************************************************************************************!*\
+  !*** ./node_modules/@comunica/actor-rdf-resolve-quad-pattern-hypermedia/lib/ActorRdfResolveQuadPatternHypermedia.js ***!
+  \**********************************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -5813,60 +7409,44 @@ __export(__webpack_require__(/*! ./lib/MediatedQuadSource */ "./node_modules/@co
 
 Object.defineProperty(exports, "__esModule", { value: true });
 const bus_rdf_resolve_quad_pattern_1 = __webpack_require__(/*! @comunica/bus-rdf-resolve-quad-pattern */ "./node_modules/@comunica/bus-rdf-resolve-quad-pattern/index.js");
+const utils_datasource_1 = __webpack_require__(/*! @comunica/utils-datasource */ "./node_modules/@comunica/utils-datasource/index.js");
 const rdf_string_1 = __webpack_require__(/*! rdf-string */ "./node_modules/rdf-string/index.js");
-const MediatedQuadSource_1 = __webpack_require__(/*! ./MediatedQuadSource */ "./node_modules/@comunica/actor-rdf-resolve-quad-pattern-qpf/lib/MediatedQuadSource.js");
+const MediatedQuadSource_1 = __webpack_require__(/*! ./MediatedQuadSource */ "./node_modules/@comunica/actor-rdf-resolve-quad-pattern-hypermedia/lib/MediatedQuadSource.js");
 /**
- * A comunica QPF RDF Resolve Quad Pattern Actor.
+ * A comunica Hypermedia RDF Resolve Quad Pattern Actor.
  */
-class ActorRdfResolveQuadPatternQpf extends bus_rdf_resolve_quad_pattern_1.ActorRdfResolveQuadPatternSource {
+class ActorRdfResolveQuadPatternHypermedia extends bus_rdf_resolve_quad_pattern_1.ActorRdfResolveQuadPatternSource {
     constructor(args) {
         super(args);
         this.sources = {};
     }
     async test(action) {
-        if (!this.hasContextSingleSource('hypermedia', action.context)) {
-            throw new Error(this.name
-                + ' requires a single source with a QPF \'hypermedia\' entrypoint to be present in the context.');
+        if (!(await utils_datasource_1.DataSourceUtils.singleSourceHasType(action.context, 'hypermedia'))) {
+            throw new Error(`${this.name} requires a single source with a \'hypermedia\' entrypoint to be present in the context.`);
         }
         return true;
     }
     /**
-     * Choose a QPF hypermedia form.
+     * Choose a Hypermedia hypermedia form.
      * @param {string} hypermedia A hypermedia URL.
      * @param {ActionContext} context An optional context.
      * @return {Promise<ISearchForm>} A promise resolving to a hypermedia form.
      */
     async chooseForm(hypermedia, context) {
+        // Mediate the hypermedia url to get a paged stream
         const firstPageMetadata = (await this.mediatorRdfDereferencePaged
             .mediate({ context, url: hypermedia })).firstPageMetadata;
         if (!firstPageMetadata) {
-            throw new Error('No metadata was found at hypermedia entrypoint ' + hypermedia);
+            throw new Error(`No metadata was found at hypermedia entrypoint ${hypermedia}`);
         }
         const metadata = await firstPageMetadata();
-        // Find a quad pattern or triple pattern search form
-        const searchForms = metadata.searchForms;
-        if (!searchForms || !searchForms.values.length) {
-            throw new Error('No Hydra search forms were discovered in the metadata of ' + hypermedia
-                + '. You may be missing an actor that extracts this metadata');
+        if (!metadata.searchForms || !metadata.searchForms.values.length) {
+            throw new Error(`No Hydra search forms were discovered in the metadata of ${hypermedia}.` +
+                ` You may be missing an actor that extracts this metadata`);
         }
-        // TODO: in the future, a query-based search form getter should be used.
-        for (const searchForm of searchForms.values) {
-            if (this.graphUri
-                && this.subjectUri in searchForm.mappings
-                && this.predicateUri in searchForm.mappings
-                && this.objectUri in searchForm.mappings
-                && this.graphUri in searchForm.mappings
-                && Object.keys(searchForm.mappings).length === 4) {
-                return searchForm;
-            }
-            if (this.subjectUri in searchForm.mappings
-                && this.predicateUri in searchForm.mappings
-                && this.objectUri in searchForm.mappings
-                && Object.keys(searchForm.mappings).length === 3) {
-                return searchForm;
-            }
-        }
-        throw new Error('No valid Hydra search form was found for quad pattern or triple pattern queries.');
+        // Mediate the metadata to get the searchform
+        const searchForm = (await this.mediatorRdfResolveHypermedia.mediate({ metadata, context })).searchForm;
+        return searchForm;
     }
     async createSource(context) {
         // Determine form lazily when a URL is constructed.
@@ -5917,15 +7497,15 @@ class ActorRdfResolveQuadPatternQpf extends bus_rdf_resolve_quad_pattern_1.Actor
         return output;
     }
 }
-exports.ActorRdfResolveQuadPatternQpf = ActorRdfResolveQuadPatternQpf;
-//# sourceMappingURL=ActorRdfResolveQuadPatternQpf.js.map
+exports.ActorRdfResolveQuadPatternHypermedia = ActorRdfResolveQuadPatternHypermedia;
+//# sourceMappingURL=ActorRdfResolveQuadPatternHypermedia.js.map
 
 /***/ }),
 
-/***/ "./node_modules/@comunica/actor-rdf-resolve-quad-pattern-qpf/lib/MediatedQuadSource.js":
-/*!*********************************************************************************************!*\
-  !*** ./node_modules/@comunica/actor-rdf-resolve-quad-pattern-qpf/lib/MediatedQuadSource.js ***!
-  \*********************************************************************************************/
+/***/ "./node_modules/@comunica/actor-rdf-resolve-quad-pattern-hypermedia/lib/MediatedQuadSource.js":
+/*!****************************************************************************************************!*\
+  !*** ./node_modules/@comunica/actor-rdf-resolve-quad-pattern-hypermedia/lib/MediatedQuadSource.js ***!
+  \****************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -5958,7 +7538,7 @@ class MediatedQuadSource {
     static matchPattern(pattern, quad) {
         for (const termName of rdf_terms_1.QUAD_TERM_NAMES) {
             const patternTerm = pattern[termName];
-            if (patternTerm && patternTerm.termType !== 'BlankNode' && patternTerm.termType !== 'Variable') {
+            if (patternTerm && patternTerm.termType !== 'Variable') {
                 const quadTerm = quad[termName];
                 if (!patternTerm.equals(quadTerm)) {
                     return false;
@@ -5994,7 +7574,7 @@ class MediatedQuadSource {
         let duplicateVariables = false;
         const input = { subject, predicate, object, graph };
         for (const key of Object.keys(input)) {
-            if (input[key] && (input[key].termType === 'Variable' || input[key].termType === 'BlankNode')) {
+            if (input[key] && input[key].termType === 'Variable') {
                 const val = rdf_string_1.termToString(input[key]);
                 const length = (variableElements[val] || (variableElements[val] = [])).push(key);
                 duplicateVariables = duplicateVariables || length > 1;
@@ -6030,7 +7610,7 @@ class MediatedQuadSource {
             // The server is free to send any data in its response (such as metadata),
             // including quads that do not match the given matter.
             // Therefore, we have to filter away all non-matching quads here.
-            let filteredOutput = output.data.filter(MediatedQuadSource.matchPattern.bind(null, DataFactory.quad(subject, predicate, object, graph)));
+            let filteredOutput = output.data.filter(MediatedQuadSource.matchPattern.bind(null, DataFactory.quad(subject, predicate, object, graph || DataFactory.variable('v'))));
             // Detect duplicate variables in the pattern
             const duplicateElementLinks = this
                 .getDuplicateElementLinks(subject, predicate, object, graph);
@@ -6097,6 +7677,7 @@ __export(__webpack_require__(/*! ./lib/ActorRdfResolveQuadPatternSparqlJson */ "
 "use strict";
 /* WEBPACK VAR INJECTION */(function(setImmediate) {
 Object.defineProperty(exports, "__esModule", { value: true });
+const bus_http_1 = __webpack_require__(/*! @comunica/bus-http */ "./node_modules/@comunica/bus-http/index.js");
 const bus_query_operation_1 = __webpack_require__(/*! @comunica/bus-query-operation */ "./node_modules/@comunica/bus-query-operation/index.js");
 const bus_rdf_resolve_quad_pattern_1 = __webpack_require__(/*! @comunica/bus-rdf-resolve-quad-pattern */ "./node_modules/@comunica/bus-rdf-resolve-quad-pattern/index.js");
 const data_model_1 = __webpack_require__(/*! @rdfjs/data-model */ "./node_modules/@rdfjs/data-model/index.js");
@@ -6269,8 +7850,7 @@ class ActorRdfResolveQuadPatternSparqlJson extends bus_rdf_resolve_quad_pattern_
         const httpResponse = await this.mediatorHttp.mediate(httpAction);
         // Wrap WhatWG readable stream into a Node.js readable stream
         // If the body already is a Node.js stream (in the case of node-fetch), don't do explicit conversion.
-        const responseStream = __webpack_require__(/*! is-stream */ "./node_modules/is-stream/index.js")(httpResponse.body)
-            ? httpResponse.body : __webpack_require__(/*! node-web-streams */ "./node_modules/node-web-streams/index.js").toNodeReadable(httpResponse.body);
+        const responseStream = bus_http_1.ActorHttp.toNodeReadable(httpResponse.body);
         // Emit an error if the server returned an invalid response
         if (!httpResponse.ok) {
             setImmediate(() => responseStream.emit('error', new Error('Invalid SPARQL endpoint (' + endpoint + ') response: '
@@ -6327,7 +7907,7 @@ class ActorRdfSerializeJsonLd extends bus_rdf_serialize_1.ActorRdfSerializeFixed
         const quadsArray = await __webpack_require__(/*! arrayify-stream */ "./node_modules/arrayify-stream/index.js")(action.quads);
         const jsonLines = (await this.jsonLd.fromRDF(quadsArray, { useNativeTypes: true }))
             .map((jsonObject) => JSON.stringify(jsonObject, null, this.jsonStringifyIndentSpaces));
-        return { data: __webpack_require__(/*! streamify-array */ "./node_modules/streamify-array/index.js")(jsonLines) };
+        return { data: __webpack_require__(/*! streamify-string */ "./node_modules/streamify-string/index.js")(`[${jsonLines.join(',')}]`) };
     }
 }
 exports.ActorRdfSerializeJsonLd = ActorRdfSerializeJsonLd;
@@ -6483,6 +8063,7 @@ __export(__webpack_require__(/*! ./lib/ActorRdfSourceIdentifierHypermediaQpf */ 
 "use strict";
 
 Object.defineProperty(exports, "__esModule", { value: true });
+const bus_http_1 = __webpack_require__(/*! @comunica/bus-http */ "./node_modules/@comunica/bus-http/index.js");
 const bus_rdf_source_identifier_1 = __webpack_require__(/*! @comunica/bus-rdf-source-identifier */ "./node_modules/@comunica/bus-rdf-source-identifier/index.js");
 __webpack_require__(/*! isomorphic-fetch */ "./node_modules/isomorphic-fetch/fetch-npm-browserify.js");
 /**
@@ -6501,7 +8082,8 @@ class ActorRdfSourceIdentifierHypermediaQpf extends bus_rdf_source_identifier_1.
         const httpAction = { context: action.context, input: action.sourceValue, init: { headers } };
         const httpResponse = await this.mediatorHttp.mediate(httpAction);
         if (httpResponse.ok) {
-            const body = (await __webpack_require__(/*! stream-to-string */ "./node_modules/stream-to-string/index.js")(httpResponse.body));
+            const stream = bus_http_1.ActorHttp.toNodeReadable(httpResponse.body);
+            const body = (await __webpack_require__(/*! stream-to-string */ "./node_modules/stream-to-string/index.js")(stream));
             // Check if body contains all required things
             let valid = true;
             for (const line of this.toContain) {
@@ -6633,7 +8215,7 @@ class ActorSparqlParseAlgebra extends bus_sparql_parse_1.ActorSparqlParse {
         return true;
     }
     async run(action) {
-        return { operation: sparqlalgebrajs_1.translate(action.query, { quads: true, prefixes: this.prefixes }) };
+        return { operation: sparqlalgebrajs_1.translate(action.query, { quads: true, prefixes: this.prefixes, blankToVariable: true }) };
     }
 }
 exports.ActorSparqlParseAlgebra = ActorSparqlParseAlgebra;
@@ -7571,6 +9153,15 @@ class ActorHttp extends core_1.Actor {
     constructor(args) {
         super(args);
     }
+    /**
+     * Converts a WhatWG streams to Node streams if required.
+     * Returns the input in case the stream already is a Node stream.
+     * @param {ReadableStream} body
+     * @returns {NodeJS.ReadableStream}
+     */
+    static toNodeReadable(body) {
+        return __webpack_require__(/*! is-stream */ "./node_modules/is-stream/index.js")(body) ? body : __webpack_require__(/*! node-web-streams */ "./node_modules/node-web-streams/index.js").toNodeReadable(body);
+    }
 }
 exports.ActorHttp = ActorHttp;
 //# sourceMappingURL=ActorHttp.js.map
@@ -7625,6 +9216,56 @@ class ActorInit extends core_1.Actor {
 }
 exports.ActorInit = ActorInit;
 //# sourceMappingURL=ActorInit.js.map
+
+/***/ }),
+
+/***/ "./node_modules/@comunica/bus-optimize-query-operation/index.js":
+/*!**********************************************************************!*\
+  !*** ./node_modules/@comunica/bus-optimize-query-operation/index.js ***!
+  \**********************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+function __export(m) {
+    for (var p in m) if (!exports.hasOwnProperty(p)) exports[p] = m[p];
+}
+Object.defineProperty(exports, "__esModule", { value: true });
+__export(__webpack_require__(/*! ./lib/ActorOptimizeQueryOperation */ "./node_modules/@comunica/bus-optimize-query-operation/lib/ActorOptimizeQueryOperation.js"));
+//# sourceMappingURL=index.js.map
+
+/***/ }),
+
+/***/ "./node_modules/@comunica/bus-optimize-query-operation/lib/ActorOptimizeQueryOperation.js":
+/*!************************************************************************************************!*\
+  !*** ./node_modules/@comunica/bus-optimize-query-operation/lib/ActorOptimizeQueryOperation.js ***!
+  \************************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+Object.defineProperty(exports, "__esModule", { value: true });
+const core_1 = __webpack_require__(/*! @comunica/core */ "./node_modules/@comunica/core/index.js");
+/**
+ * A comunica actor for optimize-query-operation events.
+ *
+ * Actor types:
+ * * Input:  IActionOptimizeQueryOperation:      An incoming SPARQL operation.
+ * * Test:   <none>
+ * * Output: IActorOptimizeQueryOperationOutput: A (possibly optimized) outgoing SPARQL operation.
+ *
+ * @see IActionOptimizeQueryOperation
+ * @see IActorOptimizeQueryOperationOutput
+ */
+class ActorOptimizeQueryOperation extends core_1.Actor {
+    constructor(args) {
+        super(args);
+    }
+}
+exports.ActorOptimizeQueryOperation = ActorOptimizeQueryOperation;
+//# sourceMappingURL=ActorOptimizeQueryOperation.js.map
 
 /***/ }),
 
@@ -8381,6 +10022,56 @@ exports.ActorRdfParseFixedMediaTypes = ActorRdfParseFixedMediaTypes;
 
 /***/ }),
 
+/***/ "./node_modules/@comunica/bus-rdf-resolve-hypermedia/index.js":
+/*!********************************************************************!*\
+  !*** ./node_modules/@comunica/bus-rdf-resolve-hypermedia/index.js ***!
+  \********************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+function __export(m) {
+    for (var p in m) if (!exports.hasOwnProperty(p)) exports[p] = m[p];
+}
+Object.defineProperty(exports, "__esModule", { value: true });
+__export(__webpack_require__(/*! ./lib/ActorRdfResolveHypermedia */ "./node_modules/@comunica/bus-rdf-resolve-hypermedia/lib/ActorRdfResolveHypermedia.js"));
+//# sourceMappingURL=index.js.map
+
+/***/ }),
+
+/***/ "./node_modules/@comunica/bus-rdf-resolve-hypermedia/lib/ActorRdfResolveHypermedia.js":
+/*!********************************************************************************************!*\
+  !*** ./node_modules/@comunica/bus-rdf-resolve-hypermedia/lib/ActorRdfResolveHypermedia.js ***!
+  \********************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+Object.defineProperty(exports, "__esModule", { value: true });
+const core_1 = __webpack_require__(/*! @comunica/core */ "./node_modules/@comunica/core/index.js");
+/**
+ * A comunica actor for rdf-resolve-hypermedia bus.
+ *
+ * Actor types:
+ * * Input:  IActionRdfResolveHypermedia:      The metadata.
+ * * Test:   <none>
+ * * Output: IActorRdfResolveHypermediaOutput: The SearchForm resulting from the metadata.
+ *
+ * @see IActionRdfResolveQuadPattern
+ * @see IActorRdfResolveQuadPatternOutput
+ */
+class ActorRdfResolveHypermedia extends core_1.Actor {
+    constructor(args) {
+        super(args);
+    }
+}
+exports.ActorRdfResolveHypermedia = ActorRdfResolveHypermedia;
+//# sourceMappingURL=ActorRdfResolveHypermedia.js.map
+
+/***/ }),
+
 /***/ "./node_modules/@comunica/bus-rdf-resolve-quad-pattern/index.js":
 /*!**********************************************************************!*\
   !*** ./node_modules/@comunica/bus-rdf-resolve-quad-pattern/index.js ***!
@@ -8500,7 +10191,7 @@ class ActorRdfResolveQuadPatternSource extends ActorRdfResolveQuadPattern_1.Acto
         super(args);
     }
     static variableToNull(term) {
-        if (term && (term.termType === 'Variable' || term.termType === 'BlankNode')) {
+        if (term && term.termType === 'Variable') {
             return null;
         }
         return term;
@@ -9619,6 +11310,88 @@ class MediatorRace extends core_1.Mediator {
 }
 exports.MediatorRace = MediatorRace;
 //# sourceMappingURL=MediatorRace.js.map
+
+/***/ }),
+
+/***/ "./node_modules/@comunica/utils-datasource/index.js":
+/*!**********************************************************!*\
+  !*** ./node_modules/@comunica/utils-datasource/index.js ***!
+  \**********************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+function __export(m) {
+    for (var p in m) if (!exports.hasOwnProperty(p)) exports[p] = m[p];
+}
+Object.defineProperty(exports, "__esModule", { value: true });
+__export(__webpack_require__(/*! ./lib/DataSourceUtils */ "./node_modules/@comunica/utils-datasource/lib/DataSourceUtils.js"));
+//# sourceMappingURL=index.js.map
+
+/***/ }),
+
+/***/ "./node_modules/@comunica/utils-datasource/lib/DataSourceUtils.js":
+/*!************************************************************************!*\
+  !*** ./node_modules/@comunica/utils-datasource/lib/DataSourceUtils.js ***!
+  \************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+Object.defineProperty(exports, "__esModule", { value: true });
+const bus_rdf_resolve_quad_pattern_1 = __webpack_require__(/*! @comunica/bus-rdf-resolve-quad-pattern */ "./node_modules/@comunica/bus-rdf-resolve-quad-pattern/index.js");
+/**
+ * Comunica datasource utilities
+ */
+class DataSourceUtils {
+    /**
+     * Get the single source if the context contains just a single source.
+     * @param {ActionContext} context A context, can be null.
+     * @return {Promise<IDataSource>} A promise resolving to the single datasource or null.
+     */
+    static async getSingleSource(context) {
+        if (context && context.has(bus_rdf_resolve_quad_pattern_1.KEY_CONTEXT_SOURCE)) {
+            // If the single source is set
+            return context.get(bus_rdf_resolve_quad_pattern_1.KEY_CONTEXT_SOURCE);
+        }
+        else if (context && context.has(bus_rdf_resolve_quad_pattern_1.KEY_CONTEXT_SOURCES)) {
+            // If multiple sources are set
+            const datasources = context.get(bus_rdf_resolve_quad_pattern_1.KEY_CONTEXT_SOURCES);
+            if (datasources.isEnded()) {
+                // Now get the first source
+                const datasourcesArray = await __webpack_require__(/*! arrayify-stream */ "./node_modules/arrayify-stream/index.js")(datasources.iterator());
+                if (datasourcesArray.length === 1) {
+                    return datasourcesArray[0];
+                }
+            }
+        }
+        return null;
+    }
+    /**
+     * Get the type of a single source
+     * @param {ActionContext} context A context, can be null.
+     * @return {Promise<string>} A promise resolving to the type of the source, can be null if source is null.
+     */
+    static async getSingleSourceType(context) {
+        const source = await this.getSingleSource(context);
+        return source ? source.type : null;
+    }
+    /**
+     * Check if the given context has a single source of the given type.
+     * @param {ActionContext} context An optional context.
+     * @param {string} requiredType The required source type name.
+     * @return {boolean} If the given context has a single source of the given type.
+     */
+    static async singleSourceHasType(context, requiredType) {
+        const actualType = await this.getSingleSourceType(context);
+        const result = actualType ? actualType === requiredType : false;
+        return result;
+    }
+}
+exports.DataSourceUtils = DataSourceUtils;
+//# sourceMappingURL=DataSourceUtils.js.map
 
 /***/ }),
 
@@ -14763,7 +16536,7 @@ const asynciterator_1 = __webpack_require__(/*! asynciterator */ "./node_modules
  */
 class AsyncReiterableArray {
     constructor(array, terminate) {
-        this.array = array;
+        this.array = array.slice();
         this.iterators = [];
         if (terminate) {
             this.array.push(null);
@@ -28422,7 +30195,7 @@ class Converter {
             variablesDict: variablesDict || {},
             variablesMetaDict: {},
         };
-        return this.operationFactory.createProject(document.definitions.map(this.definitionToPattern.bind(this, queryParseContext)).reduce((prev, current) => {
+        const operation = this.operationFactory.createProject(document.definitions.map(this.definitionToPattern.bind(this, queryParseContext)).reduce((prev, current) => {
             if (!current) {
                 return prev;
             }
@@ -28431,6 +30204,8 @@ class Converter {
             }
             return this.operationFactory.createUnion(prev, current);
         }, null), queryParseContext.terminalVariables);
+        // Convert blank nodes to variables
+        return this.translateBlankNodesToVariables(operation);
     }
     /**
      * Create an index of all fragment definitions in the given document.
@@ -28966,6 +30741,46 @@ class Converter {
         }
         return true;
     }
+    /**
+     * Translates blank nodes inside the query to variables.
+     * @param {Project} operation The operation to translate.
+     * @return {Operation} The transformed operation.
+     */
+    translateBlankNodesToVariables(operation) {
+        const dataFactory = this.dataFactory;
+        const blankToVariableMapping = {};
+        const variablesRaw = Array.from(operation.variables)
+            .reduce((acc, variable) => {
+            acc[variable.value] = true;
+            return acc;
+        }, {});
+        return sparqlalgebrajs_1.Util.mapOperation(operation, {
+            path: (op, factory) => {
+                return {
+                    recurse: false,
+                    result: factory.createPath(blankToVariable(op.subject), op.predicate, blankToVariable(op.object), blankToVariable(op.graph)),
+                };
+            },
+            pattern: (op, factory) => {
+                return {
+                    recurse: false,
+                    result: factory.createPattern(blankToVariable(op.subject), blankToVariable(op.predicate), blankToVariable(op.object), blankToVariable(op.graph)),
+                };
+            },
+        });
+        function blankToVariable(term) {
+            if (term.termType === 'BlankNode') {
+                let variable = blankToVariableMapping[term.value];
+                if (!variable) {
+                    variable = sparqlalgebrajs_1.Util.createUniqueVariable(term.value, variablesRaw, dataFactory);
+                    variablesRaw[variable.value] = true;
+                    blankToVariableMapping[term.value] = variable;
+                }
+                return variable;
+            }
+            return term;
+        }
+    }
 }
 exports.Converter = Converter;
 //# sourceMappingURL=Converter.js.map
@@ -28990,7 +30805,7 @@ __webpack_require__.r(__webpack_exports__);
  * This source code is licensed under the MIT license found in the
  * LICENSE file in the root directory of this source tree.
  *
- *  strict
+ * 
  */
 
 
@@ -29140,7 +30955,7 @@ __webpack_require__.r(__webpack_exports__);
  * This source code is licensed under the MIT license found in the
  * LICENSE file in the root directory of this source tree.
  *
- *  strict
+ * 
  */
 
 
@@ -29198,7 +31013,7 @@ __webpack_require__.r(__webpack_exports__);
  * This source code is licensed under the MIT license found in the
  * LICENSE file in the root directory of this source tree.
  *
- *  strict
+ * 
  */
 
 
@@ -29225,7 +31040,7 @@ __webpack_require__.r(__webpack_exports__);
  * This source code is licensed under the MIT license found in the
  * LICENSE file in the root directory of this source tree.
  *
- *  strict
+ * 
  */
 
 
@@ -29263,7 +31078,7 @@ __webpack_require__.r(__webpack_exports__);
  * This source code is licensed under the MIT license found in the
  * LICENSE file in the root directory of this source tree.
  *
- *  strict
+ * 
  */
 
 
@@ -29414,7 +31229,7 @@ __webpack_require__.r(__webpack_exports__);
  * This source code is licensed under the MIT license found in the
  * LICENSE file in the root directory of this source tree.
  *
- *  strict
+ * 
  */
 
 /**
@@ -29474,7 +31289,7 @@ function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterat
  * This source code is licensed under the MIT license found in the
  * LICENSE file in the root directory of this source tree.
  *
- *  strict
+ * 
  */
 
 
@@ -30286,7 +32101,7 @@ __webpack_require__.r(__webpack_exports__);
  * This source code is licensed under the MIT license found in the
  * LICENSE file in the root directory of this source tree.
  *
- *  strict
+ * 
  */
 
 
@@ -30305,8 +32120,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "getVariableValues", function() { return getVariableValues; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "getArgumentValues", function() { return getArgumentValues; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "getDirectiveValues", function() { return getDirectiveValues; });
-/* harmony import */ var _error_GraphQLError__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../error/GraphQLError */ "./node_modules/graphql/error/GraphQLError.mjs");
-/* harmony import */ var _jsutils_find__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../jsutils/find */ "./node_modules/graphql/jsutils/find.mjs");
+/* harmony import */ var _polyfills_find__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../polyfills/find */ "./node_modules/graphql/polyfills/find.mjs");
+/* harmony import */ var _error_GraphQLError__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../error/GraphQLError */ "./node_modules/graphql/error/GraphQLError.mjs");
 /* harmony import */ var _jsutils_inspect__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../jsutils/inspect */ "./node_modules/graphql/jsutils/inspect.mjs");
 /* harmony import */ var _jsutils_invariant__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../jsutils/invariant */ "./node_modules/graphql/jsutils/invariant.mjs");
 /* harmony import */ var _jsutils_keyMap__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../jsutils/keyMap */ "./node_modules/graphql/jsutils/keyMap.mjs");
@@ -30322,7 +32137,7 @@ __webpack_require__.r(__webpack_exports__);
  * This source code is licensed under the MIT license found in the
  * LICENSE file in the root directory of this source tree.
  *
- *  strict
+ * 
  */
 
 
@@ -30357,7 +32172,7 @@ function getVariableValues(schema, varDefNodes, inputs) {
     if (!Object(_type_definition__WEBPACK_IMPORTED_MODULE_10__["isInputType"])(varType)) {
       // Must use input types for variables. This should be caught during
       // validation, however is checked again here for safety.
-      errors.push(new _error_GraphQLError__WEBPACK_IMPORTED_MODULE_0__["GraphQLError"]("Variable \"$".concat(varName, "\" expected value of type ") + "\"".concat(Object(_language_printer__WEBPACK_IMPORTED_MODULE_9__["print"])(varDefNode.type), "\" which cannot be used as an input type."), [varDefNode.type]));
+      errors.push(new _error_GraphQLError__WEBPACK_IMPORTED_MODULE_1__["GraphQLError"]("Variable \"$".concat(varName, "\" expected value of type ") + "\"".concat(Object(_language_printer__WEBPACK_IMPORTED_MODULE_9__["print"])(varDefNode.type), "\" which cannot be used as an input type."), [varDefNode.type]));
     } else {
       var hasValue = hasOwnProperty(inputs, varName);
       var value = hasValue ? inputs[varName] : undefined;
@@ -30369,7 +32184,7 @@ function getVariableValues(schema, varDefNodes, inputs) {
       } else if ((!hasValue || value === null) && Object(_type_definition__WEBPACK_IMPORTED_MODULE_10__["isNonNullType"])(varType)) {
         // If no value or a nullish value was provided to a variable with a
         // non-null type (required), produce an error.
-        errors.push(new _error_GraphQLError__WEBPACK_IMPORTED_MODULE_0__["GraphQLError"](hasValue ? "Variable \"$".concat(varName, "\" of non-null type ") + "\"".concat(Object(_jsutils_inspect__WEBPACK_IMPORTED_MODULE_2__["default"])(varType), "\" must not be null.") : "Variable \"$".concat(varName, "\" of required type ") + "\"".concat(Object(_jsutils_inspect__WEBPACK_IMPORTED_MODULE_2__["default"])(varType), "\" was not provided."), [varDefNode]));
+        errors.push(new _error_GraphQLError__WEBPACK_IMPORTED_MODULE_1__["GraphQLError"](hasValue ? "Variable \"$".concat(varName, "\" of non-null type ") + "\"".concat(Object(_jsutils_inspect__WEBPACK_IMPORTED_MODULE_2__["default"])(varType), "\" must not be null.") : "Variable \"$".concat(varName, "\" of required type ") + "\"".concat(Object(_jsutils_inspect__WEBPACK_IMPORTED_MODULE_2__["default"])(varType), "\" was not provided."), [varDefNode]));
       } else if (hasValue) {
         if (value === null) {
           // If the explicit value `null` was provided, an entry in the coerced
@@ -30470,12 +32285,12 @@ function getArgumentValues(def, node, variableValues) {
       // If no argument or a null value was provided to an argument with a
       // non-null type (required), produce a field error.
       if (isNull) {
-        throw new _error_GraphQLError__WEBPACK_IMPORTED_MODULE_0__["GraphQLError"]("Argument \"".concat(name, "\" of non-null type \"").concat(Object(_jsutils_inspect__WEBPACK_IMPORTED_MODULE_2__["default"])(argType), "\" ") + 'must not be null.', [argumentNode.value]);
+        throw new _error_GraphQLError__WEBPACK_IMPORTED_MODULE_1__["GraphQLError"]("Argument \"".concat(name, "\" of non-null type \"").concat(Object(_jsutils_inspect__WEBPACK_IMPORTED_MODULE_2__["default"])(argType), "\" ") + 'must not be null.', [argumentNode.value]);
       } else if (argumentNode && argumentNode.value.kind === _language_kinds__WEBPACK_IMPORTED_MODULE_8__["Kind"].VARIABLE) {
         var _variableName = argumentNode.value.name.value;
-        throw new _error_GraphQLError__WEBPACK_IMPORTED_MODULE_0__["GraphQLError"]("Argument \"".concat(name, "\" of required type \"").concat(Object(_jsutils_inspect__WEBPACK_IMPORTED_MODULE_2__["default"])(argType), "\" ") + "was provided the variable \"$".concat(_variableName, "\" ") + 'which was not provided a runtime value.', [argumentNode.value]);
+        throw new _error_GraphQLError__WEBPACK_IMPORTED_MODULE_1__["GraphQLError"]("Argument \"".concat(name, "\" of required type \"").concat(Object(_jsutils_inspect__WEBPACK_IMPORTED_MODULE_2__["default"])(argType), "\" ") + "was provided the variable \"$".concat(_variableName, "\" ") + 'which was not provided a runtime value.', [argumentNode.value]);
       } else {
-        throw new _error_GraphQLError__WEBPACK_IMPORTED_MODULE_0__["GraphQLError"]("Argument \"".concat(name, "\" of required type \"").concat(Object(_jsutils_inspect__WEBPACK_IMPORTED_MODULE_2__["default"])(argType), "\" ") + 'was not provided.', [node]);
+        throw new _error_GraphQLError__WEBPACK_IMPORTED_MODULE_1__["GraphQLError"]("Argument \"".concat(name, "\" of required type \"").concat(Object(_jsutils_inspect__WEBPACK_IMPORTED_MODULE_2__["default"])(argType), "\" ") + 'was not provided.', [node]);
       }
     } else if (hasValue) {
       if (argumentNode.value.kind === _language_kinds__WEBPACK_IMPORTED_MODULE_8__["Kind"].NULL) {
@@ -30497,7 +32312,7 @@ function getArgumentValues(def, node, variableValues) {
           // Note: ValuesOfCorrectType validation should catch this before
           // execution. This is a runtime check to ensure execution does not
           // continue with an invalid argument value.
-          throw new _error_GraphQLError__WEBPACK_IMPORTED_MODULE_0__["GraphQLError"]("Argument \"".concat(name, "\" has invalid value ").concat(Object(_language_printer__WEBPACK_IMPORTED_MODULE_9__["print"])(valueNode), "."), [argumentNode.value]);
+          throw new _error_GraphQLError__WEBPACK_IMPORTED_MODULE_1__["GraphQLError"]("Argument \"".concat(name, "\" has invalid value ").concat(Object(_language_printer__WEBPACK_IMPORTED_MODULE_9__["print"])(valueNode), "."), [argumentNode.value]);
         }
 
         coercedValues[name] = coercedValue;
@@ -30520,7 +32335,7 @@ function getArgumentValues(def, node, variableValues) {
  */
 
 function getDirectiveValues(directiveDef, node, variableValues) {
-  var directiveNode = node.directives && Object(_jsutils_find__WEBPACK_IMPORTED_MODULE_1__["default"])(node.directives, function (directive) {
+  var directiveNode = node.directives && Object(_polyfills_find__WEBPACK_IMPORTED_MODULE_0__["default"])(node.directives, function (directive) {
     return directive.name.value === directiveDef.name;
   });
 
@@ -30556,7 +32371,7 @@ __webpack_require__.r(__webpack_exports__);
  * This source code is licensed under the MIT license found in the
  * LICENSE file in the root directory of this source tree.
  *
- *  strict
+ * 
  */
 
 
@@ -30631,7 +32446,7 @@ function graphqlImpl(schema, source, rootValue, contextValue, variableValues, op
 /*!****************************************!*\
   !*** ./node_modules/graphql/index.mjs ***!
   \****************************************/
-/*! exports provided: graphql, graphqlSync, GraphQLSchema, GraphQLScalarType, GraphQLObjectType, GraphQLInterfaceType, GraphQLUnionType, GraphQLEnumType, GraphQLInputObjectType, GraphQLList, GraphQLNonNull, GraphQLDirective, TypeKind, specifiedScalarTypes, GraphQLInt, GraphQLFloat, GraphQLString, GraphQLBoolean, GraphQLID, specifiedDirectives, GraphQLIncludeDirective, GraphQLSkipDirective, GraphQLDeprecatedDirective, DEFAULT_DEPRECATION_REASON, SchemaMetaFieldDef, TypeMetaFieldDef, TypeNameMetaFieldDef, introspectionTypes, __Schema, __Directive, __DirectiveLocation, __Type, __Field, __InputValue, __EnumValue, __TypeKind, isSchema, isDirective, isType, isScalarType, isObjectType, isInterfaceType, isUnionType, isEnumType, isInputObjectType, isListType, isNonNullType, isInputType, isOutputType, isLeafType, isCompositeType, isAbstractType, isWrappingType, isNullableType, isNamedType, isRequiredArgument, isRequiredInputField, isSpecifiedScalarType, isIntrospectionType, isSpecifiedDirective, assertType, assertScalarType, assertObjectType, assertInterfaceType, assertUnionType, assertEnumType, assertInputObjectType, assertListType, assertNonNullType, assertInputType, assertOutputType, assertLeafType, assertCompositeType, assertAbstractType, assertWrappingType, assertNullableType, assertNamedType, getNullableType, getNamedType, validateSchema, assertValidSchema, Source, getLocation, parse, parseValue, parseType, print, visit, visitInParallel, visitWithTypeInfo, getVisitFn, Kind, TokenKind, DirectiveLocation, BREAK, isDefinitionNode, isExecutableDefinitionNode, isSelectionNode, isValueNode, isTypeNode, isTypeSystemDefinitionNode, isTypeDefinitionNode, isTypeSystemExtensionNode, isTypeExtensionNode, execute, defaultFieldResolver, responsePathAsArray, getDirectiveValues, subscribe, createSourceEventStream, validate, ValidationContext, specifiedRules, FieldsOnCorrectTypeRule, FragmentsOnCompositeTypesRule, KnownArgumentNamesRule, KnownDirectivesRule, KnownFragmentNamesRule, KnownTypeNamesRule, LoneAnonymousOperationRule, NoFragmentCyclesRule, NoUndefinedVariablesRule, NoUnusedFragmentsRule, NoUnusedVariablesRule, OverlappingFieldsCanBeMergedRule, PossibleFragmentSpreadsRule, ProvidedRequiredArgumentsRule, ScalarLeafsRule, SingleFieldSubscriptionsRule, UniqueArgumentNamesRule, UniqueDirectivesPerLocationRule, UniqueFragmentNamesRule, UniqueInputFieldNamesRule, UniqueOperationNamesRule, UniqueVariableNamesRule, ValuesOfCorrectTypeRule, VariablesAreInputTypesRule, VariablesInAllowedPositionRule, GraphQLError, formatError, printError, getIntrospectionQuery, introspectionQuery, getOperationAST, getOperationRootType, introspectionFromSchema, buildClientSchema, buildASTSchema, buildSchema, getDescription, extendSchema, lexicographicSortSchema, printSchema, printIntrospectionSchema, printType, typeFromAST, valueFromAST, valueFromASTUntyped, astFromValue, TypeInfo, coerceValue, isValidJSValue, isValidLiteralValue, concatAST, separateOperations, isEqualType, isTypeSubTypeOf, doTypesOverlap, assertValidName, isValidNameError, findBreakingChanges, findDangerousChanges, BreakingChangeType, DangerousChangeType, findDeprecatedUsages */
+/*! exports provided: graphql, graphqlSync, GraphQLSchema, GraphQLScalarType, GraphQLObjectType, GraphQLInterfaceType, GraphQLUnionType, GraphQLEnumType, GraphQLInputObjectType, GraphQLList, GraphQLNonNull, GraphQLDirective, TypeKind, specifiedScalarTypes, GraphQLInt, GraphQLFloat, GraphQLString, GraphQLBoolean, GraphQLID, specifiedDirectives, GraphQLIncludeDirective, GraphQLSkipDirective, GraphQLDeprecatedDirective, DEFAULT_DEPRECATION_REASON, SchemaMetaFieldDef, TypeMetaFieldDef, TypeNameMetaFieldDef, introspectionTypes, __Schema, __Directive, __DirectiveLocation, __Type, __Field, __InputValue, __EnumValue, __TypeKind, isSchema, isDirective, isType, isScalarType, isObjectType, isInterfaceType, isUnionType, isEnumType, isInputObjectType, isListType, isNonNullType, isInputType, isOutputType, isLeafType, isCompositeType, isAbstractType, isWrappingType, isNullableType, isNamedType, isRequiredArgument, isRequiredInputField, isSpecifiedScalarType, isIntrospectionType, isSpecifiedDirective, assertSchema, assertDirective, assertType, assertScalarType, assertObjectType, assertInterfaceType, assertUnionType, assertEnumType, assertInputObjectType, assertListType, assertNonNullType, assertInputType, assertOutputType, assertLeafType, assertCompositeType, assertAbstractType, assertWrappingType, assertNullableType, assertNamedType, getNullableType, getNamedType, validateSchema, assertValidSchema, Source, getLocation, parse, parseValue, parseType, print, visit, visitInParallel, visitWithTypeInfo, getVisitFn, Kind, TokenKind, DirectiveLocation, BREAK, isDefinitionNode, isExecutableDefinitionNode, isSelectionNode, isValueNode, isTypeNode, isTypeSystemDefinitionNode, isTypeDefinitionNode, isTypeSystemExtensionNode, isTypeExtensionNode, execute, defaultFieldResolver, responsePathAsArray, getDirectiveValues, subscribe, createSourceEventStream, validate, ValidationContext, specifiedRules, FieldsOnCorrectTypeRule, FragmentsOnCompositeTypesRule, KnownArgumentNamesRule, KnownDirectivesRule, KnownFragmentNamesRule, KnownTypeNamesRule, LoneAnonymousOperationRule, NoFragmentCyclesRule, NoUndefinedVariablesRule, NoUnusedFragmentsRule, NoUnusedVariablesRule, OverlappingFieldsCanBeMergedRule, PossibleFragmentSpreadsRule, ProvidedRequiredArgumentsRule, ScalarLeafsRule, SingleFieldSubscriptionsRule, UniqueArgumentNamesRule, UniqueDirectivesPerLocationRule, UniqueFragmentNamesRule, UniqueInputFieldNamesRule, UniqueOperationNamesRule, UniqueVariableNamesRule, ValuesOfCorrectTypeRule, VariablesAreInputTypesRule, VariablesInAllowedPositionRule, GraphQLError, formatError, printError, getIntrospectionQuery, introspectionQuery, getOperationAST, getOperationRootType, introspectionFromSchema, buildClientSchema, buildASTSchema, buildSchema, getDescription, extendSchema, lexicographicSortSchema, printSchema, printIntrospectionSchema, printType, typeFromAST, valueFromAST, valueFromASTUntyped, astFromValue, TypeInfo, coerceValue, isValidJSValue, isValidLiteralValue, concatAST, separateOperations, isEqualType, isTypeSubTypeOf, doTypesOverlap, assertValidName, isValidNameError, findBreakingChanges, findDangerousChanges, BreakingChangeType, DangerousChangeType, findDeprecatedUsages */
 /***/ (function(__webpack_module__, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -30757,6 +32572,10 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "isIntrospectionType", function() { return _type__WEBPACK_IMPORTED_MODULE_1__["isIntrospectionType"]; });
 
 /* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "isSpecifiedDirective", function() { return _type__WEBPACK_IMPORTED_MODULE_1__["isSpecifiedDirective"]; });
+
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "assertSchema", function() { return _type__WEBPACK_IMPORTED_MODULE_1__["assertSchema"]; });
+
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "assertDirective", function() { return _type__WEBPACK_IMPORTED_MODULE_1__["assertDirective"]; });
 
 /* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "assertType", function() { return _type__WEBPACK_IMPORTED_MODULE_1__["assertType"]; });
 
@@ -31000,7 +32819,7 @@ __webpack_require__.r(__webpack_exports__);
  * This source code is licensed under the MIT license found in the
  * LICENSE file in the root directory of this source tree.
  *
- *  strict
+ * 
  */
 
 /**
@@ -31053,22 +32872,31 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return applyToJSON; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return defineToJSON; });
+/* harmony import */ var _nodejsCustomInspectSymbol__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./nodejsCustomInspectSymbol */ "./node_modules/graphql/jsutils/nodejsCustomInspectSymbol.mjs");
 /**
  * Copyright (c) 2015-present, Facebook, Inc.
  *
  * This source code is licensed under the MIT license found in the
  * LICENSE file in the root directory of this source tree.
  *
- *  strict
+ * 
  */
 
 /**
- * The `applyToJSON()` function defines toJSON() and inspect() prototype
- * methods which are aliases for toString().
+ * The `defineToJSON()` function defines toJSON() and inspect() prototype
+ * methods, if no function provided they become aliases for toString().
  */
-function applyToJSON(classObject) {
-  classObject.prototype.toJSON = classObject.prototype.inspect = classObject.prototype.toString;
+
+function defineToJSON( // eslint-disable-next-line flowtype/no-weak-types
+classObject) {
+  var fn = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : classObject.prototype.toString;
+  classObject.prototype.toJSON = fn;
+  classObject.prototype.inspect = fn;
+
+  if (_nodejsCustomInspectSymbol__WEBPACK_IMPORTED_MODULE_0__["default"]) {
+    classObject.prototype[_nodejsCustomInspectSymbol__WEBPACK_IMPORTED_MODULE_0__["default"]] = fn;
+  }
 }
 
 /***/ }),
@@ -31082,64 +32910,36 @@ function applyToJSON(classObject) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return applyToStringTag; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return defineToStringTag; });
 /**
  * Copyright (c) 2015-present, Facebook, Inc.
  *
  * This source code is licensed under the MIT license found in the
  * LICENSE file in the root directory of this source tree.
  *
- *  strict
+ * 
  */
 
 /**
- * The `applyToStringTag()` function checks first to see if the runtime
+ * The `defineToStringTag()` function checks first to see if the runtime
  * supports the `Symbol` class and then if the `Symbol.toStringTag` constant
  * is defined as a `Symbol` instance. If both conditions are met, the
  * Symbol.toStringTag property is defined as a getter that returns the
  * supplied class constructor's name.
  *
- * @method applyToStringTag
+ * @method defineToStringTag
  *
  * @param {Class<any>} classObject a class such as Object, String, Number but
  * typically one of your own creation through the class keyword; `class A {}`,
  * for example.
  */
-function applyToStringTag(classObject) {
+function defineToStringTag(classObject) {
   if (typeof Symbol === 'function' && Symbol.toStringTag) {
     Object.defineProperty(classObject.prototype, Symbol.toStringTag, {
       get: function get() {
         return this.constructor.name;
       }
     });
-  }
-}
-
-/***/ }),
-
-/***/ "./node_modules/graphql/jsutils/find.mjs":
-/*!***********************************************!*\
-  !*** ./node_modules/graphql/jsutils/find.mjs ***!
-  \***********************************************/
-/*! exports provided: default */
-/***/ (function(__webpack_module__, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return find; });
-/**
- * Copyright (c) 2015-present, Facebook, Inc.
- *
- * This source code is licensed under the MIT license found in the
- * LICENSE file in the root directory of this source tree.
- *
- *  strict
- */
-function find(list, predicate) {
-  for (var i = 0; i < list.length; i++) {
-    if (predicate(list[i])) {
-      return list[i];
-    }
   }
 }
 
@@ -31155,6 +32955,7 @@ function find(list, predicate) {
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return inspect; });
+/* harmony import */ var _nodejsCustomInspectSymbol__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./nodejsCustomInspectSymbol */ "./node_modules/graphql/jsutils/nodejsCustomInspectSymbol.mjs");
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
 /**
@@ -31163,12 +32964,13 @@ function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterat
  * This source code is licensed under the MIT license found in the
  * LICENSE file in the root directory of this source tree.
  *
- *  strict
+ * 
  */
 
 /**
  * Used to print values in error messages.
  */
+
 function inspect(value) {
   switch (_typeof(value)) {
     case 'string':
@@ -31179,8 +32981,12 @@ function inspect(value) {
 
     case 'object':
       if (value) {
-        if (typeof value.inspect === 'function') {
-          return value.inspect();
+        var customInspectFn = getCustomFn(value);
+
+        if (customInspectFn) {
+          // $FlowFixMe(>=0.90.0)
+          var customValue = customInspectFn.call(value);
+          return typeof customValue === 'string' ? customValue : inspect(customValue);
         } else if (Array.isArray(value)) {
           return '[' + value.map(inspect).join(', ') + ']';
         }
@@ -31195,6 +33001,18 @@ function inspect(value) {
 
     default:
       return String(value);
+  }
+}
+
+function getCustomFn(object) {
+  var customInspectFn = object[String(_nodejsCustomInspectSymbol__WEBPACK_IMPORTED_MODULE_0__["default"])];
+
+  if (typeof customInspectFn === 'function') {
+    return customInspectFn;
+  }
+
+  if (typeof object.inspect === 'function') {
+    return object.inspect;
   }
 }
 
@@ -31215,7 +33033,7 @@ __webpack_require__.r(__webpack_exports__);
  * This source code is licensed under the MIT license found in the
  * LICENSE file in the root directory of this source tree.
  *
- *  strict
+ * 
  */
 
 /**
@@ -31261,7 +33079,7 @@ __webpack_require__.r(__webpack_exports__);
  * This source code is licensed under the MIT license found in the
  * LICENSE file in the root directory of this source tree.
  *
- *  strict
+ * 
  */
 function invariant(condition, message) {
   /* istanbul ignore else */
@@ -31269,62 +33087,6 @@ function invariant(condition, message) {
     throw new Error(message);
   }
 }
-
-/***/ }),
-
-/***/ "./node_modules/graphql/jsutils/isFinite.mjs":
-/*!***************************************************!*\
-  !*** ./node_modules/graphql/jsutils/isFinite.mjs ***!
-  \***************************************************/
-/*! exports provided: default */
-/***/ (function(__webpack_module__, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/**
- * Copyright (c) 2018-present, Facebook, Inc.
- *
- * This source code is licensed under the MIT license found in the
- * LICENSE file in the root directory of this source tree.
- *
- *  strict
- */
-
-/* eslint-disable no-redeclare */
-// $FlowFixMe workaround for: https://github.com/facebook/flow/issues/4441
-var isFinite = Number.isFinite || function (value) {
-  return typeof value === 'number' && isFinite(value);
-};
-
-/* harmony default export */ __webpack_exports__["default"] = (isFinite);
-
-/***/ }),
-
-/***/ "./node_modules/graphql/jsutils/isInteger.mjs":
-/*!****************************************************!*\
-  !*** ./node_modules/graphql/jsutils/isInteger.mjs ***!
-  \****************************************************/
-/*! exports provided: default */
-/***/ (function(__webpack_module__, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/**
- * Copyright (c) 2018-present, Facebook, Inc.
- *
- * This source code is licensed under the MIT license found in the
- * LICENSE file in the root directory of this source tree.
- *
- *  strict
- */
-
-/* eslint-disable no-redeclare */
-// $FlowFixMe workaround for: https://github.com/facebook/flow/issues/4441
-var isInteger = Number.isInteger || function (value) {
-  return typeof value === 'number' && isFinite(value) && Math.floor(value) === value;
-};
-
-/* harmony default export */ __webpack_exports__["default"] = (isInteger);
 
 /***/ }),
 
@@ -31344,7 +33106,7 @@ __webpack_require__.r(__webpack_exports__);
  * This source code is licensed under the MIT license found in the
  * LICENSE file in the root directory of this source tree.
  *
- *  strict
+ * 
  */
 
 /**
@@ -31372,7 +33134,7 @@ __webpack_require__.r(__webpack_exports__);
  * This source code is licensed under the MIT license found in the
  * LICENSE file in the root directory of this source tree.
  *
- *  strict
+ * 
  */
 
 /**
@@ -31400,7 +33162,7 @@ __webpack_require__.r(__webpack_exports__);
  * This source code is licensed under the MIT license found in the
  * LICENSE file in the root directory of this source tree.
  *
- *  strict
+ * 
  */
 
 /**
@@ -31430,7 +33192,7 @@ __webpack_require__.r(__webpack_exports__);
  * This source code is licensed under the MIT license found in the
  * LICENSE file in the root directory of this source tree.
  *
- *  strict
+ * 
  */
 
 /**
@@ -31480,7 +33242,7 @@ __webpack_require__.r(__webpack_exports__);
  * This source code is licensed under the MIT license found in the
  * LICENSE file in the root directory of this source tree.
  *
- *  strict
+ * 
  */
 
 /**
@@ -31508,6 +33270,64 @@ function keyValMap(list, keyFn, valFn) {
 
 /***/ }),
 
+/***/ "./node_modules/graphql/jsutils/mapValue.mjs":
+/*!***************************************************!*\
+  !*** ./node_modules/graphql/jsutils/mapValue.mjs ***!
+  \***************************************************/
+/*! exports provided: default */
+/***/ (function(__webpack_module__, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return mapValue; });
+/* harmony import */ var _polyfills_objectEntries__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../polyfills/objectEntries */ "./node_modules/graphql/polyfills/objectEntries.mjs");
+/**
+ * Copyright (c) 2019-present, Facebook, Inc.
+ *
+ * This source code is licensed under the MIT license found in the
+ * LICENSE file in the root directory of this source tree.
+ *
+ * 
+ */
+
+/**
+ * Creates an object map with the same keys as `map` and values generated by
+ * running each value of `map` thru `fn`.
+ */
+
+function mapValue(map, fn) {
+  var result = Object.create(null);
+  var _iteratorNormalCompletion = true;
+  var _didIteratorError = false;
+  var _iteratorError = undefined;
+
+  try {
+    for (var _iterator = Object(_polyfills_objectEntries__WEBPACK_IMPORTED_MODULE_0__["default"])(map)[Symbol.iterator](), _step; !(_iteratorNormalCompletion = (_step = _iterator.next()).done); _iteratorNormalCompletion = true) {
+      var _ref2 = _step.value;
+      var _key = _ref2[0];
+      var _value = _ref2[1];
+      result[_key] = fn(_value, _key);
+    }
+  } catch (err) {
+    _didIteratorError = true;
+    _iteratorError = err;
+  } finally {
+    try {
+      if (!_iteratorNormalCompletion && _iterator.return != null) {
+        _iterator.return();
+      }
+    } finally {
+      if (_didIteratorError) {
+        throw _iteratorError;
+      }
+    }
+  }
+
+  return result;
+}
+
+/***/ }),
+
 /***/ "./node_modules/graphql/jsutils/memoize3.mjs":
 /*!***************************************************!*\
   !*** ./node_modules/graphql/jsutils/memoize3.mjs ***!
@@ -31524,7 +33344,7 @@ __webpack_require__.r(__webpack_exports__);
  * This source code is licensed under the MIT license found in the
  * LICENSE file in the root directory of this source tree.
  *
- *  strict
+ * 
  */
 
 /**
@@ -31571,33 +33391,25 @@ function memoize3(fn) {
 
 /***/ }),
 
-/***/ "./node_modules/graphql/jsutils/objectValues.mjs":
-/*!*******************************************************!*\
-  !*** ./node_modules/graphql/jsutils/objectValues.mjs ***!
-  \*******************************************************/
+/***/ "./node_modules/graphql/jsutils/nodejsCustomInspectSymbol.mjs":
+/*!********************************************************************!*\
+  !*** ./node_modules/graphql/jsutils/nodejsCustomInspectSymbol.mjs ***!
+  \********************************************************************/
 /*! exports provided: default */
 /***/ (function(__webpack_module__, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /**
- * Copyright (c) 2015-present, Facebook, Inc.
+ * Copyright (c) 2018-present, Facebook, Inc.
  *
  * This source code is licensed under the MIT license found in the
  * LICENSE file in the root directory of this source tree.
  *
- *  strict
+ * 
  */
-
-/* eslint-disable no-redeclare */
-// $FlowFixMe workaround for: https://github.com/facebook/flow/issues/2221
-var objectValues = Object.values || function (obj) {
-  return Object.keys(obj).map(function (key) {
-    return obj[key];
-  });
-};
-
-/* harmony default export */ __webpack_exports__["default"] = (objectValues);
+var nodejsCustomInspectSymbol = typeof Symbol === 'function' ? Symbol.for('nodejs.util.inspect.custom') : undefined;
+/* harmony default export */ __webpack_exports__["default"] = (nodejsCustomInspectSymbol);
 
 /***/ }),
 
@@ -31611,24 +33423,35 @@ var objectValues = Object.values || function (obj) {
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return orList; });
+/* harmony import */ var _invariant__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./invariant */ "./node_modules/graphql/jsutils/invariant.mjs");
 /**
  * Copyright (c) 2015-present, Facebook, Inc.
  *
  * This source code is licensed under the MIT license found in the
  * LICENSE file in the root directory of this source tree.
  *
- *  strict
+ * 
  */
+
 var MAX_LENGTH = 5;
 /**
  * Given [ A, B, C ] return 'A, B, or C'.
  */
 
 function orList(items) {
+  !(items.length !== 0) ? Object(_invariant__WEBPACK_IMPORTED_MODULE_0__["default"])(0) : void 0;
+
+  if (items.length === 1) {
+    return items[0];
+  }
+
+  if (items.length === 2) {
+    return items[0] + ' or ' + items[1];
+  }
+
   var selected = items.slice(0, MAX_LENGTH);
-  return selected.reduce(function (list, quoted, index) {
-    return list + (selected.length > 2 ? ', ' : ' ') + (index === selected.length - 1 ? 'or ' : '') + quoted;
-  });
+  var lastItem = selected.pop();
+  return selected.join(', ') + ', or ' + lastItem;
 }
 
 /***/ }),
@@ -31649,7 +33472,7 @@ __webpack_require__.r(__webpack_exports__);
  * This source code is licensed under the MIT license found in the
  * LICENSE file in the root directory of this source tree.
  *
- *  strict
+ * 
  */
 
 /**
@@ -31691,7 +33514,7 @@ __webpack_require__.r(__webpack_exports__);
  * This source code is licensed under the MIT license found in the
  * LICENSE file in the root directory of this source tree.
  *
- *  strict
+ * 
  */
 
 
@@ -31729,7 +33552,7 @@ __webpack_require__.r(__webpack_exports__);
  * This source code is licensed under the MIT license found in the
  * LICENSE file in the root directory of this source tree.
  *
- *  strict
+ * 
  */
 
 /**
@@ -31760,7 +33583,7 @@ __webpack_require__.r(__webpack_exports__);
  * This source code is licensed under the MIT license found in the
  * LICENSE file in the root directory of this source tree.
  *
- *  strict
+ * 
  */
 
 /**
@@ -31861,7 +33684,7 @@ __webpack_require__.r(__webpack_exports__);
  * This source code is licensed under the MIT license found in the
  * LICENSE file in the root directory of this source tree.
  *
- *  strict
+ * 
  */
 
 /**
@@ -31940,7 +33763,7 @@ __webpack_require__.r(__webpack_exports__);
  * This source code is licensed under the MIT license found in the
  * LICENSE file in the root directory of this source tree.
  *
- *  strict
+ * 
  */
 
 /**
@@ -32047,7 +33870,7 @@ __webpack_require__.r(__webpack_exports__);
  * This source code is licensed under the MIT license found in the
  * LICENSE file in the root directory of this source tree.
  *
- *  strict
+ * 
  */
 
 
@@ -32077,7 +33900,7 @@ __webpack_require__.r(__webpack_exports__);
  * This source code is licensed under the MIT license found in the
  * LICENSE file in the root directory of this source tree.
  *
- *  strict
+ * 
  */
 
 /**
@@ -32157,16 +33980,18 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "createLexer", function() { return createLexer; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "TokenKind", function() { return TokenKind; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "getTokenDesc", function() { return getTokenDesc; });
-/* harmony import */ var _error__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../error */ "./node_modules/graphql/error/index.mjs");
-/* harmony import */ var _blockStringValue__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./blockStringValue */ "./node_modules/graphql/language/blockStringValue.mjs");
+/* harmony import */ var _jsutils_defineToJSON__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../jsutils/defineToJSON */ "./node_modules/graphql/jsutils/defineToJSON.mjs");
+/* harmony import */ var _error__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../error */ "./node_modules/graphql/error/index.mjs");
+/* harmony import */ var _blockStringValue__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./blockStringValue */ "./node_modules/graphql/language/blockStringValue.mjs");
 /**
  * Copyright (c) 2015-present, Facebook, Inc.
  *
  * This source code is licensed under the MIT license found in the
  * LICENSE file in the root directory of this source tree.
  *
- *  strict
+ * 
  */
+
 
 
 /**
@@ -32273,14 +34098,14 @@ function Tok(kind, start, end, line, column, prev, value) {
 } // Print a simplified form when appearing in JSON/util.inspect.
 
 
-Tok.prototype.toJSON = Tok.prototype.inspect = function toJSON() {
+Object(_jsutils_defineToJSON__WEBPACK_IMPORTED_MODULE_0__["default"])(Tok, function () {
   return {
     kind: this.kind,
     value: this.value,
     line: this.line,
     column: this.column
   };
-};
+});
 
 function printCharCode(code) {
   return (// NaN/undefined represents access beyond the end of the file.
@@ -32292,9 +34117,9 @@ function printCharCode(code) {
 /**
  * Gets the next token from the source starting at the given position.
  *
- * This skips over whitespace and comments until it finds the next lexable
- * token, then lexes punctuators immediately or calls the appropriate helper
- * function for more complicated tokens.
+ * This skips over whitespace until it finds the next lexable token, then lexes
+ * punctuators immediately or calls the appropriate helper function for more
+ * complicated tokens.
  */
 
 
@@ -32450,13 +34275,13 @@ function readToken(lexer, prev) {
 
     case 34:
       if (charCodeAt.call(body, pos + 1) === 34 && charCodeAt.call(body, pos + 2) === 34) {
-        return readBlockString(source, pos, line, col, prev);
+        return readBlockString(source, pos, line, col, prev, lexer);
       }
 
       return readString(source, pos, line, col, prev);
   }
 
-  throw Object(_error__WEBPACK_IMPORTED_MODULE_0__["syntaxError"])(source, pos, unexpectedCharacterMessage(code));
+  throw Object(_error__WEBPACK_IMPORTED_MODULE_1__["syntaxError"])(source, pos, unexpectedCharacterMessage(code));
 }
 /**
  * Report a message that an unexpected character was encountered.
@@ -32477,8 +34302,7 @@ function unexpectedCharacterMessage(code) {
 }
 /**
  * Reads from body starting at startPosition until it finds a non-whitespace
- * or commented character, then returns the position of that character for
- * lexing.
+ * character, then returns the position of that character for lexing.
  */
 
 
@@ -32557,7 +34381,7 @@ function readNumber(source, start, firstCode, line, col, prev) {
     code = charCodeAt.call(body, ++position);
 
     if (code >= 48 && code <= 57) {
-      throw Object(_error__WEBPACK_IMPORTED_MODULE_0__["syntaxError"])(source, position, "Invalid number, unexpected digit after 0: ".concat(printCharCode(code), "."));
+      throw Object(_error__WEBPACK_IMPORTED_MODULE_1__["syntaxError"])(source, position, "Invalid number, unexpected digit after 0: ".concat(printCharCode(code), "."));
     }
   } else {
     position = readDigits(source, position, code);
@@ -32607,7 +34431,7 @@ function readDigits(source, start, firstCode) {
     return position;
   }
 
-  throw Object(_error__WEBPACK_IMPORTED_MODULE_0__["syntaxError"])(source, position, "Invalid number, expected digit but got: ".concat(printCharCode(code), "."));
+  throw Object(_error__WEBPACK_IMPORTED_MODULE_1__["syntaxError"])(source, position, "Invalid number, expected digit but got: ".concat(printCharCode(code), "."));
 }
 /**
  * Reads a string token from the source file.
@@ -32633,7 +34457,7 @@ function readString(source, start, line, col, prev) {
 
 
     if (code < 0x0020 && code !== 0x0009) {
-      throw Object(_error__WEBPACK_IMPORTED_MODULE_0__["syntaxError"])(source, position, "Invalid character within String: ".concat(printCharCode(code), "."));
+      throw Object(_error__WEBPACK_IMPORTED_MODULE_1__["syntaxError"])(source, position, "Invalid character within String: ".concat(printCharCode(code), "."));
     }
 
     ++position;
@@ -32681,7 +34505,7 @@ function readString(source, start, line, col, prev) {
           var charCode = uniCharCode(charCodeAt.call(body, position + 1), charCodeAt.call(body, position + 2), charCodeAt.call(body, position + 3), charCodeAt.call(body, position + 4));
 
           if (charCode < 0) {
-            throw Object(_error__WEBPACK_IMPORTED_MODULE_0__["syntaxError"])(source, position, 'Invalid character escape sequence: ' + "\\u".concat(body.slice(position + 1, position + 5), "."));
+            throw Object(_error__WEBPACK_IMPORTED_MODULE_1__["syntaxError"])(source, position, 'Invalid character escape sequence: ' + "\\u".concat(body.slice(position + 1, position + 5), "."));
           }
 
           value += String.fromCharCode(charCode);
@@ -32689,7 +34513,7 @@ function readString(source, start, line, col, prev) {
           break;
 
         default:
-          throw Object(_error__WEBPACK_IMPORTED_MODULE_0__["syntaxError"])(source, position, "Invalid character escape sequence: \\".concat(String.fromCharCode(code), "."));
+          throw Object(_error__WEBPACK_IMPORTED_MODULE_1__["syntaxError"])(source, position, "Invalid character escape sequence: \\".concat(String.fromCharCode(code), "."));
       }
 
       ++position;
@@ -32697,7 +34521,7 @@ function readString(source, start, line, col, prev) {
     }
   }
 
-  throw Object(_error__WEBPACK_IMPORTED_MODULE_0__["syntaxError"])(source, position, 'Unterminated string.');
+  throw Object(_error__WEBPACK_IMPORTED_MODULE_1__["syntaxError"])(source, position, 'Unterminated string.');
 }
 /**
  * Reads a block string token from the source file.
@@ -32706,7 +34530,7 @@ function readString(source, start, line, col, prev) {
  */
 
 
-function readBlockString(source, start, line, col, prev) {
+function readBlockString(source, start, line, col, prev, lexer) {
   var body = source.body;
   var position = start + 3;
   var chunkStart = position;
@@ -32717,16 +34541,31 @@ function readBlockString(source, start, line, col, prev) {
     // Closing Triple-Quote (""")
     if (code === 34 && charCodeAt.call(body, position + 1) === 34 && charCodeAt.call(body, position + 2) === 34) {
       rawValue += slice.call(body, chunkStart, position);
-      return new Tok(TokenKind.BLOCK_STRING, start, position + 3, line, col, prev, Object(_blockStringValue__WEBPACK_IMPORTED_MODULE_1__["default"])(rawValue));
+      return new Tok(TokenKind.BLOCK_STRING, start, position + 3, line, col, prev, Object(_blockStringValue__WEBPACK_IMPORTED_MODULE_2__["default"])(rawValue));
     } // SourceCharacter
 
 
     if (code < 0x0020 && code !== 0x0009 && code !== 0x000a && code !== 0x000d) {
-      throw Object(_error__WEBPACK_IMPORTED_MODULE_0__["syntaxError"])(source, position, "Invalid character within String: ".concat(printCharCode(code), "."));
-    } // Escape Triple-Quote (\""")
+      throw Object(_error__WEBPACK_IMPORTED_MODULE_1__["syntaxError"])(source, position, "Invalid character within String: ".concat(printCharCode(code), "."));
+    }
 
+    if (code === 10) {
+      // new line
+      ++position;
+      ++lexer.line;
+      lexer.lineStart = position;
+    } else if (code === 13) {
+      // carriage return
+      if (charCodeAt.call(body, position + 1) === 10) {
+        position += 2;
+      } else {
+        ++position;
+      }
 
-    if (code === 92 && charCodeAt.call(body, position + 1) === 34 && charCodeAt.call(body, position + 2) === 34 && charCodeAt.call(body, position + 3) === 34) {
+      ++lexer.line;
+      lexer.lineStart = position;
+    } else if ( // Escape Triple-Quote (\""")
+    code === 92 && charCodeAt.call(body, position + 1) === 34 && charCodeAt.call(body, position + 2) === 34 && charCodeAt.call(body, position + 3) === 34) {
       rawValue += slice.call(body, chunkStart, position) + '"""';
       position += 4;
       chunkStart = position;
@@ -32735,7 +34574,7 @@ function readBlockString(source, start, line, col, prev) {
     }
   }
 
-  throw Object(_error__WEBPACK_IMPORTED_MODULE_0__["syntaxError"])(source, position, 'Unterminated string.');
+  throw Object(_error__WEBPACK_IMPORTED_MODULE_1__["syntaxError"])(source, position, 'Unterminated string.');
 }
 /**
  * Converts four hexadecimal chars to the integer that the
@@ -32810,7 +34649,7 @@ __webpack_require__.r(__webpack_exports__);
  * This source code is licensed under the MIT license found in the
  * LICENSE file in the root directory of this source tree.
  *
- *  strict
+ * 
  */
 
 /**
@@ -32856,19 +34695,21 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "parseTypeReference", function() { return parseTypeReference; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "parseNamedType", function() { return parseNamedType; });
 /* harmony import */ var _jsutils_inspect__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../jsutils/inspect */ "./node_modules/graphql/jsutils/inspect.mjs");
-/* harmony import */ var _source__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./source */ "./node_modules/graphql/language/source.mjs");
-/* harmony import */ var _error__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../error */ "./node_modules/graphql/error/index.mjs");
-/* harmony import */ var _lexer__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./lexer */ "./node_modules/graphql/language/lexer.mjs");
-/* harmony import */ var _kinds__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./kinds */ "./node_modules/graphql/language/kinds.mjs");
-/* harmony import */ var _directiveLocation__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./directiveLocation */ "./node_modules/graphql/language/directiveLocation.mjs");
+/* harmony import */ var _jsutils_defineToJSON__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../jsutils/defineToJSON */ "./node_modules/graphql/jsutils/defineToJSON.mjs");
+/* harmony import */ var _source__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./source */ "./node_modules/graphql/language/source.mjs");
+/* harmony import */ var _error__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../error */ "./node_modules/graphql/error/index.mjs");
+/* harmony import */ var _lexer__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./lexer */ "./node_modules/graphql/language/lexer.mjs");
+/* harmony import */ var _kinds__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./kinds */ "./node_modules/graphql/language/kinds.mjs");
+/* harmony import */ var _directiveLocation__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./directiveLocation */ "./node_modules/graphql/language/directiveLocation.mjs");
 /**
  * Copyright (c) 2015-present, Facebook, Inc.
  *
  * This source code is licensed under the MIT license found in the
  * LICENSE file in the root directory of this source tree.
  *
- *  strict
+ * 
  */
+
 
 
 
@@ -32884,13 +34725,13 @@ __webpack_require__.r(__webpack_exports__);
  * Throws GraphQLError if a syntax error is encountered.
  */
 function parse(source, options) {
-  var sourceObj = typeof source === 'string' ? new _source__WEBPACK_IMPORTED_MODULE_1__["Source"](source) : source;
+  var sourceObj = typeof source === 'string' ? new _source__WEBPACK_IMPORTED_MODULE_2__["Source"](source) : source;
 
-  if (!(sourceObj instanceof _source__WEBPACK_IMPORTED_MODULE_1__["Source"])) {
+  if (!(sourceObj instanceof _source__WEBPACK_IMPORTED_MODULE_2__["Source"])) {
     throw new TypeError("Must provide Source. Received: ".concat(Object(_jsutils_inspect__WEBPACK_IMPORTED_MODULE_0__["default"])(sourceObj)));
   }
 
-  var lexer = Object(_lexer__WEBPACK_IMPORTED_MODULE_3__["createLexer"])(sourceObj, options || {});
+  var lexer = Object(_lexer__WEBPACK_IMPORTED_MODULE_4__["createLexer"])(sourceObj, options || {});
   return parseDocument(lexer);
 }
 /**
@@ -32905,11 +34746,11 @@ function parse(source, options) {
  */
 
 function parseValue(source, options) {
-  var sourceObj = typeof source === 'string' ? new _source__WEBPACK_IMPORTED_MODULE_1__["Source"](source) : source;
-  var lexer = Object(_lexer__WEBPACK_IMPORTED_MODULE_3__["createLexer"])(sourceObj, options || {});
-  expect(lexer, _lexer__WEBPACK_IMPORTED_MODULE_3__["TokenKind"].SOF);
+  var sourceObj = typeof source === 'string' ? new _source__WEBPACK_IMPORTED_MODULE_2__["Source"](source) : source;
+  var lexer = Object(_lexer__WEBPACK_IMPORTED_MODULE_4__["createLexer"])(sourceObj, options || {});
+  expect(lexer, _lexer__WEBPACK_IMPORTED_MODULE_4__["TokenKind"].SOF);
   var value = parseValueLiteral(lexer, false);
-  expect(lexer, _lexer__WEBPACK_IMPORTED_MODULE_3__["TokenKind"].EOF);
+  expect(lexer, _lexer__WEBPACK_IMPORTED_MODULE_4__["TokenKind"].EOF);
   return value;
 }
 /**
@@ -32924,11 +34765,11 @@ function parseValue(source, options) {
  */
 
 function parseType(source, options) {
-  var sourceObj = typeof source === 'string' ? new _source__WEBPACK_IMPORTED_MODULE_1__["Source"](source) : source;
-  var lexer = Object(_lexer__WEBPACK_IMPORTED_MODULE_3__["createLexer"])(sourceObj, options || {});
-  expect(lexer, _lexer__WEBPACK_IMPORTED_MODULE_3__["TokenKind"].SOF);
+  var sourceObj = typeof source === 'string' ? new _source__WEBPACK_IMPORTED_MODULE_2__["Source"](source) : source;
+  var lexer = Object(_lexer__WEBPACK_IMPORTED_MODULE_4__["createLexer"])(sourceObj, options || {});
+  expect(lexer, _lexer__WEBPACK_IMPORTED_MODULE_4__["TokenKind"].SOF);
   var type = parseTypeReference(lexer);
-  expect(lexer, _lexer__WEBPACK_IMPORTED_MODULE_3__["TokenKind"].EOF);
+  expect(lexer, _lexer__WEBPACK_IMPORTED_MODULE_4__["TokenKind"].EOF);
   return type;
 }
 /**
@@ -32936,9 +34777,9 @@ function parseType(source, options) {
  */
 
 function parseName(lexer) {
-  var token = expect(lexer, _lexer__WEBPACK_IMPORTED_MODULE_3__["TokenKind"].NAME);
+  var token = expect(lexer, _lexer__WEBPACK_IMPORTED_MODULE_4__["TokenKind"].NAME);
   return {
-    kind: _kinds__WEBPACK_IMPORTED_MODULE_4__["Kind"].NAME,
+    kind: _kinds__WEBPACK_IMPORTED_MODULE_5__["Kind"].NAME,
     value: token.value,
     loc: loc(lexer, token)
   };
@@ -32952,8 +34793,8 @@ function parseName(lexer) {
 function parseDocument(lexer) {
   var start = lexer.token;
   return {
-    kind: _kinds__WEBPACK_IMPORTED_MODULE_4__["Kind"].DOCUMENT,
-    definitions: many(lexer, _lexer__WEBPACK_IMPORTED_MODULE_3__["TokenKind"].SOF, parseDefinition, _lexer__WEBPACK_IMPORTED_MODULE_3__["TokenKind"].EOF),
+    kind: _kinds__WEBPACK_IMPORTED_MODULE_5__["Kind"].DOCUMENT,
+    definitions: many(lexer, _lexer__WEBPACK_IMPORTED_MODULE_4__["TokenKind"].SOF, parseDefinition, _lexer__WEBPACK_IMPORTED_MODULE_4__["TokenKind"].EOF),
     loc: loc(lexer, start)
   };
 }
@@ -32966,7 +34807,7 @@ function parseDocument(lexer) {
 
 
 function parseDefinition(lexer) {
-  if (peek(lexer, _lexer__WEBPACK_IMPORTED_MODULE_3__["TokenKind"].NAME)) {
+  if (peek(lexer, _lexer__WEBPACK_IMPORTED_MODULE_4__["TokenKind"].NAME)) {
     switch (lexer.token.value) {
       case 'query':
       case 'mutation':
@@ -32987,7 +34828,7 @@ function parseDefinition(lexer) {
       case 'extend':
         return parseTypeSystemExtension(lexer);
     }
-  } else if (peek(lexer, _lexer__WEBPACK_IMPORTED_MODULE_3__["TokenKind"].BRACE_L)) {
+  } else if (peek(lexer, _lexer__WEBPACK_IMPORTED_MODULE_4__["TokenKind"].BRACE_L)) {
     return parseExecutableDefinition(lexer);
   } else if (peekDescription(lexer)) {
     return parseTypeSystemDefinition(lexer);
@@ -33003,7 +34844,7 @@ function parseDefinition(lexer) {
 
 
 function parseExecutableDefinition(lexer) {
-  if (peek(lexer, _lexer__WEBPACK_IMPORTED_MODULE_3__["TokenKind"].NAME)) {
+  if (peek(lexer, _lexer__WEBPACK_IMPORTED_MODULE_4__["TokenKind"].NAME)) {
     switch (lexer.token.value) {
       case 'query':
       case 'mutation':
@@ -33013,7 +34854,7 @@ function parseExecutableDefinition(lexer) {
       case 'fragment':
         return parseFragmentDefinition(lexer);
     }
-  } else if (peek(lexer, _lexer__WEBPACK_IMPORTED_MODULE_3__["TokenKind"].BRACE_L)) {
+  } else if (peek(lexer, _lexer__WEBPACK_IMPORTED_MODULE_4__["TokenKind"].BRACE_L)) {
     return parseOperationDefinition(lexer);
   }
 
@@ -33030,9 +34871,9 @@ function parseExecutableDefinition(lexer) {
 function parseOperationDefinition(lexer) {
   var start = lexer.token;
 
-  if (peek(lexer, _lexer__WEBPACK_IMPORTED_MODULE_3__["TokenKind"].BRACE_L)) {
+  if (peek(lexer, _lexer__WEBPACK_IMPORTED_MODULE_4__["TokenKind"].BRACE_L)) {
     return {
-      kind: _kinds__WEBPACK_IMPORTED_MODULE_4__["Kind"].OPERATION_DEFINITION,
+      kind: _kinds__WEBPACK_IMPORTED_MODULE_5__["Kind"].OPERATION_DEFINITION,
       operation: 'query',
       name: undefined,
       variableDefinitions: [],
@@ -33045,12 +34886,12 @@ function parseOperationDefinition(lexer) {
   var operation = parseOperationType(lexer);
   var name;
 
-  if (peek(lexer, _lexer__WEBPACK_IMPORTED_MODULE_3__["TokenKind"].NAME)) {
+  if (peek(lexer, _lexer__WEBPACK_IMPORTED_MODULE_4__["TokenKind"].NAME)) {
     name = parseName(lexer);
   }
 
   return {
-    kind: _kinds__WEBPACK_IMPORTED_MODULE_4__["Kind"].OPERATION_DEFINITION,
+    kind: _kinds__WEBPACK_IMPORTED_MODULE_5__["Kind"].OPERATION_DEFINITION,
     operation: operation,
     name: name,
     variableDefinitions: parseVariableDefinitions(lexer),
@@ -33065,7 +34906,7 @@ function parseOperationDefinition(lexer) {
 
 
 function parseOperationType(lexer) {
-  var operationToken = expect(lexer, _lexer__WEBPACK_IMPORTED_MODULE_3__["TokenKind"].NAME);
+  var operationToken = expect(lexer, _lexer__WEBPACK_IMPORTED_MODULE_4__["TokenKind"].NAME);
 
   switch (operationToken.value) {
     case 'query':
@@ -33086,7 +34927,7 @@ function parseOperationType(lexer) {
 
 
 function parseVariableDefinitions(lexer) {
-  return peek(lexer, _lexer__WEBPACK_IMPORTED_MODULE_3__["TokenKind"].PAREN_L) ? many(lexer, _lexer__WEBPACK_IMPORTED_MODULE_3__["TokenKind"].PAREN_L, parseVariableDefinition, _lexer__WEBPACK_IMPORTED_MODULE_3__["TokenKind"].PAREN_R) : [];
+  return peek(lexer, _lexer__WEBPACK_IMPORTED_MODULE_4__["TokenKind"].PAREN_L) ? many(lexer, _lexer__WEBPACK_IMPORTED_MODULE_4__["TokenKind"].PAREN_L, parseVariableDefinition, _lexer__WEBPACK_IMPORTED_MODULE_4__["TokenKind"].PAREN_R) : [];
 }
 /**
  * VariableDefinition : Variable : Type DefaultValue? Directives[Const]?
@@ -33095,23 +34936,12 @@ function parseVariableDefinitions(lexer) {
 
 function parseVariableDefinition(lexer) {
   var start = lexer.token;
-
-  if (lexer.options.experimentalVariableDefinitionDirectives) {
-    return {
-      kind: _kinds__WEBPACK_IMPORTED_MODULE_4__["Kind"].VARIABLE_DEFINITION,
-      variable: parseVariable(lexer),
-      type: (expect(lexer, _lexer__WEBPACK_IMPORTED_MODULE_3__["TokenKind"].COLON), parseTypeReference(lexer)),
-      defaultValue: skip(lexer, _lexer__WEBPACK_IMPORTED_MODULE_3__["TokenKind"].EQUALS) ? parseValueLiteral(lexer, true) : undefined,
-      directives: parseDirectives(lexer, true),
-      loc: loc(lexer, start)
-    };
-  }
-
   return {
-    kind: _kinds__WEBPACK_IMPORTED_MODULE_4__["Kind"].VARIABLE_DEFINITION,
+    kind: _kinds__WEBPACK_IMPORTED_MODULE_5__["Kind"].VARIABLE_DEFINITION,
     variable: parseVariable(lexer),
-    type: (expect(lexer, _lexer__WEBPACK_IMPORTED_MODULE_3__["TokenKind"].COLON), parseTypeReference(lexer)),
-    defaultValue: skip(lexer, _lexer__WEBPACK_IMPORTED_MODULE_3__["TokenKind"].EQUALS) ? parseValueLiteral(lexer, true) : undefined,
+    type: (expect(lexer, _lexer__WEBPACK_IMPORTED_MODULE_4__["TokenKind"].COLON), parseTypeReference(lexer)),
+    defaultValue: skip(lexer, _lexer__WEBPACK_IMPORTED_MODULE_4__["TokenKind"].EQUALS) ? parseValueLiteral(lexer, true) : undefined,
+    directives: parseDirectives(lexer, true),
     loc: loc(lexer, start)
   };
 }
@@ -33122,9 +34952,9 @@ function parseVariableDefinition(lexer) {
 
 function parseVariable(lexer) {
   var start = lexer.token;
-  expect(lexer, _lexer__WEBPACK_IMPORTED_MODULE_3__["TokenKind"].DOLLAR);
+  expect(lexer, _lexer__WEBPACK_IMPORTED_MODULE_4__["TokenKind"].DOLLAR);
   return {
-    kind: _kinds__WEBPACK_IMPORTED_MODULE_4__["Kind"].VARIABLE,
+    kind: _kinds__WEBPACK_IMPORTED_MODULE_5__["Kind"].VARIABLE,
     name: parseName(lexer),
     loc: loc(lexer, start)
   };
@@ -33137,8 +34967,8 @@ function parseVariable(lexer) {
 function parseSelectionSet(lexer) {
   var start = lexer.token;
   return {
-    kind: _kinds__WEBPACK_IMPORTED_MODULE_4__["Kind"].SELECTION_SET,
-    selections: many(lexer, _lexer__WEBPACK_IMPORTED_MODULE_3__["TokenKind"].BRACE_L, parseSelection, _lexer__WEBPACK_IMPORTED_MODULE_3__["TokenKind"].BRACE_R),
+    kind: _kinds__WEBPACK_IMPORTED_MODULE_5__["Kind"].SELECTION_SET,
+    selections: many(lexer, _lexer__WEBPACK_IMPORTED_MODULE_4__["TokenKind"].BRACE_L, parseSelection, _lexer__WEBPACK_IMPORTED_MODULE_4__["TokenKind"].BRACE_R),
     loc: loc(lexer, start)
   };
 }
@@ -33151,7 +34981,7 @@ function parseSelectionSet(lexer) {
 
 
 function parseSelection(lexer) {
-  return peek(lexer, _lexer__WEBPACK_IMPORTED_MODULE_3__["TokenKind"].SPREAD) ? parseFragment(lexer) : parseField(lexer);
+  return peek(lexer, _lexer__WEBPACK_IMPORTED_MODULE_4__["TokenKind"].SPREAD) ? parseFragment(lexer) : parseField(lexer);
 }
 /**
  * Field : Alias? Name Arguments? Directives? SelectionSet?
@@ -33166,7 +34996,7 @@ function parseField(lexer) {
   var alias;
   var name;
 
-  if (skip(lexer, _lexer__WEBPACK_IMPORTED_MODULE_3__["TokenKind"].COLON)) {
+  if (skip(lexer, _lexer__WEBPACK_IMPORTED_MODULE_4__["TokenKind"].COLON)) {
     alias = nameOrAlias;
     name = parseName(lexer);
   } else {
@@ -33174,12 +35004,12 @@ function parseField(lexer) {
   }
 
   return {
-    kind: _kinds__WEBPACK_IMPORTED_MODULE_4__["Kind"].FIELD,
+    kind: _kinds__WEBPACK_IMPORTED_MODULE_5__["Kind"].FIELD,
     alias: alias,
     name: name,
     arguments: parseArguments(lexer, false),
     directives: parseDirectives(lexer, false),
-    selectionSet: peek(lexer, _lexer__WEBPACK_IMPORTED_MODULE_3__["TokenKind"].BRACE_L) ? parseSelectionSet(lexer) : undefined,
+    selectionSet: peek(lexer, _lexer__WEBPACK_IMPORTED_MODULE_4__["TokenKind"].BRACE_L) ? parseSelectionSet(lexer) : undefined,
     loc: loc(lexer, start)
   };
 }
@@ -33190,7 +35020,7 @@ function parseField(lexer) {
 
 function parseArguments(lexer, isConst) {
   var item = isConst ? parseConstArgument : parseArgument;
-  return peek(lexer, _lexer__WEBPACK_IMPORTED_MODULE_3__["TokenKind"].PAREN_L) ? many(lexer, _lexer__WEBPACK_IMPORTED_MODULE_3__["TokenKind"].PAREN_L, item, _lexer__WEBPACK_IMPORTED_MODULE_3__["TokenKind"].PAREN_R) : [];
+  return peek(lexer, _lexer__WEBPACK_IMPORTED_MODULE_4__["TokenKind"].PAREN_L) ? many(lexer, _lexer__WEBPACK_IMPORTED_MODULE_4__["TokenKind"].PAREN_L, item, _lexer__WEBPACK_IMPORTED_MODULE_4__["TokenKind"].PAREN_R) : [];
 }
 /**
  * Argument[Const] : Name : Value[?Const]
@@ -33200,9 +35030,9 @@ function parseArguments(lexer, isConst) {
 function parseArgument(lexer) {
   var start = lexer.token;
   return {
-    kind: _kinds__WEBPACK_IMPORTED_MODULE_4__["Kind"].ARGUMENT,
+    kind: _kinds__WEBPACK_IMPORTED_MODULE_5__["Kind"].ARGUMENT,
     name: parseName(lexer),
-    value: (expect(lexer, _lexer__WEBPACK_IMPORTED_MODULE_3__["TokenKind"].COLON), parseValueLiteral(lexer, false)),
+    value: (expect(lexer, _lexer__WEBPACK_IMPORTED_MODULE_4__["TokenKind"].COLON), parseValueLiteral(lexer, false)),
     loc: loc(lexer, start)
   };
 }
@@ -33210,9 +35040,9 @@ function parseArgument(lexer) {
 function parseConstArgument(lexer) {
   var start = lexer.token;
   return {
-    kind: _kinds__WEBPACK_IMPORTED_MODULE_4__["Kind"].ARGUMENT,
+    kind: _kinds__WEBPACK_IMPORTED_MODULE_5__["Kind"].ARGUMENT,
     name: parseName(lexer),
-    value: (expect(lexer, _lexer__WEBPACK_IMPORTED_MODULE_3__["TokenKind"].COLON), parseConstValue(lexer)),
+    value: (expect(lexer, _lexer__WEBPACK_IMPORTED_MODULE_4__["TokenKind"].COLON), parseConstValue(lexer)),
     loc: loc(lexer, start)
   };
 } // Implements the parsing rules in the Fragments section.
@@ -33228,27 +35058,21 @@ function parseConstArgument(lexer) {
 
 function parseFragment(lexer) {
   var start = lexer.token;
-  expect(lexer, _lexer__WEBPACK_IMPORTED_MODULE_3__["TokenKind"].SPREAD);
+  expect(lexer, _lexer__WEBPACK_IMPORTED_MODULE_4__["TokenKind"].SPREAD);
+  var hasTypeCondition = skipKeyword(lexer, 'on');
 
-  if (peek(lexer, _lexer__WEBPACK_IMPORTED_MODULE_3__["TokenKind"].NAME) && lexer.token.value !== 'on') {
+  if (!hasTypeCondition && peek(lexer, _lexer__WEBPACK_IMPORTED_MODULE_4__["TokenKind"].NAME)) {
     return {
-      kind: _kinds__WEBPACK_IMPORTED_MODULE_4__["Kind"].FRAGMENT_SPREAD,
+      kind: _kinds__WEBPACK_IMPORTED_MODULE_5__["Kind"].FRAGMENT_SPREAD,
       name: parseFragmentName(lexer),
       directives: parseDirectives(lexer, false),
       loc: loc(lexer, start)
     };
   }
 
-  var typeCondition;
-
-  if (lexer.token.value === 'on') {
-    lexer.advance();
-    typeCondition = parseNamedType(lexer);
-  }
-
   return {
-    kind: _kinds__WEBPACK_IMPORTED_MODULE_4__["Kind"].INLINE_FRAGMENT,
-    typeCondition: typeCondition,
+    kind: _kinds__WEBPACK_IMPORTED_MODULE_5__["Kind"].INLINE_FRAGMENT,
+    typeCondition: hasTypeCondition ? parseNamedType(lexer) : undefined,
     directives: parseDirectives(lexer, false),
     selectionSet: parseSelectionSet(lexer),
     loc: loc(lexer, start)
@@ -33270,7 +35094,7 @@ function parseFragmentDefinition(lexer) {
 
   if (lexer.options.experimentalFragmentVariables) {
     return {
-      kind: _kinds__WEBPACK_IMPORTED_MODULE_4__["Kind"].FRAGMENT_DEFINITION,
+      kind: _kinds__WEBPACK_IMPORTED_MODULE_5__["Kind"].FRAGMENT_DEFINITION,
       name: parseFragmentName(lexer),
       variableDefinitions: parseVariableDefinitions(lexer),
       typeCondition: (expectKeyword(lexer, 'on'), parseNamedType(lexer)),
@@ -33281,7 +35105,7 @@ function parseFragmentDefinition(lexer) {
   }
 
   return {
-    kind: _kinds__WEBPACK_IMPORTED_MODULE_4__["Kind"].FRAGMENT_DEFINITION,
+    kind: _kinds__WEBPACK_IMPORTED_MODULE_5__["Kind"].FRAGMENT_DEFINITION,
     name: parseFragmentName(lexer),
     typeCondition: (expectKeyword(lexer, 'on'), parseNamedType(lexer)),
     directives: parseDirectives(lexer, false),
@@ -33326,56 +35150,56 @@ function parseValueLiteral(lexer, isConst) {
   var token = lexer.token;
 
   switch (token.kind) {
-    case _lexer__WEBPACK_IMPORTED_MODULE_3__["TokenKind"].BRACKET_L:
+    case _lexer__WEBPACK_IMPORTED_MODULE_4__["TokenKind"].BRACKET_L:
       return parseList(lexer, isConst);
 
-    case _lexer__WEBPACK_IMPORTED_MODULE_3__["TokenKind"].BRACE_L:
+    case _lexer__WEBPACK_IMPORTED_MODULE_4__["TokenKind"].BRACE_L:
       return parseObject(lexer, isConst);
 
-    case _lexer__WEBPACK_IMPORTED_MODULE_3__["TokenKind"].INT:
+    case _lexer__WEBPACK_IMPORTED_MODULE_4__["TokenKind"].INT:
       lexer.advance();
       return {
-        kind: _kinds__WEBPACK_IMPORTED_MODULE_4__["Kind"].INT,
+        kind: _kinds__WEBPACK_IMPORTED_MODULE_5__["Kind"].INT,
         value: token.value,
         loc: loc(lexer, token)
       };
 
-    case _lexer__WEBPACK_IMPORTED_MODULE_3__["TokenKind"].FLOAT:
+    case _lexer__WEBPACK_IMPORTED_MODULE_4__["TokenKind"].FLOAT:
       lexer.advance();
       return {
-        kind: _kinds__WEBPACK_IMPORTED_MODULE_4__["Kind"].FLOAT,
+        kind: _kinds__WEBPACK_IMPORTED_MODULE_5__["Kind"].FLOAT,
         value: token.value,
         loc: loc(lexer, token)
       };
 
-    case _lexer__WEBPACK_IMPORTED_MODULE_3__["TokenKind"].STRING:
-    case _lexer__WEBPACK_IMPORTED_MODULE_3__["TokenKind"].BLOCK_STRING:
+    case _lexer__WEBPACK_IMPORTED_MODULE_4__["TokenKind"].STRING:
+    case _lexer__WEBPACK_IMPORTED_MODULE_4__["TokenKind"].BLOCK_STRING:
       return parseStringLiteral(lexer);
 
-    case _lexer__WEBPACK_IMPORTED_MODULE_3__["TokenKind"].NAME:
+    case _lexer__WEBPACK_IMPORTED_MODULE_4__["TokenKind"].NAME:
       if (token.value === 'true' || token.value === 'false') {
         lexer.advance();
         return {
-          kind: _kinds__WEBPACK_IMPORTED_MODULE_4__["Kind"].BOOLEAN,
+          kind: _kinds__WEBPACK_IMPORTED_MODULE_5__["Kind"].BOOLEAN,
           value: token.value === 'true',
           loc: loc(lexer, token)
         };
       } else if (token.value === 'null') {
         lexer.advance();
         return {
-          kind: _kinds__WEBPACK_IMPORTED_MODULE_4__["Kind"].NULL,
+          kind: _kinds__WEBPACK_IMPORTED_MODULE_5__["Kind"].NULL,
           loc: loc(lexer, token)
         };
       }
 
       lexer.advance();
       return {
-        kind: _kinds__WEBPACK_IMPORTED_MODULE_4__["Kind"].ENUM,
+        kind: _kinds__WEBPACK_IMPORTED_MODULE_5__["Kind"].ENUM,
         value: token.value,
         loc: loc(lexer, token)
       };
 
-    case _lexer__WEBPACK_IMPORTED_MODULE_3__["TokenKind"].DOLLAR:
+    case _lexer__WEBPACK_IMPORTED_MODULE_4__["TokenKind"].DOLLAR:
       if (!isConst) {
         return parseVariable(lexer);
       }
@@ -33390,9 +35214,9 @@ function parseStringLiteral(lexer) {
   var token = lexer.token;
   lexer.advance();
   return {
-    kind: _kinds__WEBPACK_IMPORTED_MODULE_4__["Kind"].STRING,
+    kind: _kinds__WEBPACK_IMPORTED_MODULE_5__["Kind"].STRING,
     value: token.value,
-    block: token.kind === _lexer__WEBPACK_IMPORTED_MODULE_3__["TokenKind"].BLOCK_STRING,
+    block: token.kind === _lexer__WEBPACK_IMPORTED_MODULE_4__["TokenKind"].BLOCK_STRING,
     loc: loc(lexer, token)
   };
 }
@@ -33415,8 +35239,8 @@ function parseList(lexer, isConst) {
   var start = lexer.token;
   var item = isConst ? parseConstValue : parseValueValue;
   return {
-    kind: _kinds__WEBPACK_IMPORTED_MODULE_4__["Kind"].LIST,
-    values: any(lexer, _lexer__WEBPACK_IMPORTED_MODULE_3__["TokenKind"].BRACKET_L, item, _lexer__WEBPACK_IMPORTED_MODULE_3__["TokenKind"].BRACKET_R),
+    kind: _kinds__WEBPACK_IMPORTED_MODULE_5__["Kind"].LIST,
+    values: any(lexer, _lexer__WEBPACK_IMPORTED_MODULE_4__["TokenKind"].BRACKET_L, item, _lexer__WEBPACK_IMPORTED_MODULE_4__["TokenKind"].BRACKET_R),
     loc: loc(lexer, start)
   };
 }
@@ -33429,15 +35253,15 @@ function parseList(lexer, isConst) {
 
 function parseObject(lexer, isConst) {
   var start = lexer.token;
-  expect(lexer, _lexer__WEBPACK_IMPORTED_MODULE_3__["TokenKind"].BRACE_L);
+  expect(lexer, _lexer__WEBPACK_IMPORTED_MODULE_4__["TokenKind"].BRACE_L);
   var fields = [];
 
-  while (!skip(lexer, _lexer__WEBPACK_IMPORTED_MODULE_3__["TokenKind"].BRACE_R)) {
+  while (!skip(lexer, _lexer__WEBPACK_IMPORTED_MODULE_4__["TokenKind"].BRACE_R)) {
     fields.push(parseObjectField(lexer, isConst));
   }
 
   return {
-    kind: _kinds__WEBPACK_IMPORTED_MODULE_4__["Kind"].OBJECT,
+    kind: _kinds__WEBPACK_IMPORTED_MODULE_5__["Kind"].OBJECT,
     fields: fields,
     loc: loc(lexer, start)
   };
@@ -33450,9 +35274,9 @@ function parseObject(lexer, isConst) {
 function parseObjectField(lexer, isConst) {
   var start = lexer.token;
   return {
-    kind: _kinds__WEBPACK_IMPORTED_MODULE_4__["Kind"].OBJECT_FIELD,
+    kind: _kinds__WEBPACK_IMPORTED_MODULE_5__["Kind"].OBJECT_FIELD,
     name: parseName(lexer),
-    value: (expect(lexer, _lexer__WEBPACK_IMPORTED_MODULE_3__["TokenKind"].COLON), parseValueLiteral(lexer, isConst)),
+    value: (expect(lexer, _lexer__WEBPACK_IMPORTED_MODULE_4__["TokenKind"].COLON), parseValueLiteral(lexer, isConst)),
     loc: loc(lexer, start)
   };
 } // Implements the parsing rules in the Directives section.
@@ -33465,7 +35289,7 @@ function parseObjectField(lexer, isConst) {
 function parseDirectives(lexer, isConst) {
   var directives = [];
 
-  while (peek(lexer, _lexer__WEBPACK_IMPORTED_MODULE_3__["TokenKind"].AT)) {
+  while (peek(lexer, _lexer__WEBPACK_IMPORTED_MODULE_4__["TokenKind"].AT)) {
     directives.push(parseDirective(lexer, isConst));
   }
 
@@ -33478,9 +35302,9 @@ function parseDirectives(lexer, isConst) {
 
 function parseDirective(lexer, isConst) {
   var start = lexer.token;
-  expect(lexer, _lexer__WEBPACK_IMPORTED_MODULE_3__["TokenKind"].AT);
+  expect(lexer, _lexer__WEBPACK_IMPORTED_MODULE_4__["TokenKind"].AT);
   return {
-    kind: _kinds__WEBPACK_IMPORTED_MODULE_4__["Kind"].DIRECTIVE,
+    kind: _kinds__WEBPACK_IMPORTED_MODULE_5__["Kind"].DIRECTIVE,
     name: parseName(lexer),
     arguments: parseArguments(lexer, isConst),
     loc: loc(lexer, start)
@@ -33499,11 +35323,11 @@ function parseTypeReference(lexer) {
   var start = lexer.token;
   var type;
 
-  if (skip(lexer, _lexer__WEBPACK_IMPORTED_MODULE_3__["TokenKind"].BRACKET_L)) {
+  if (skip(lexer, _lexer__WEBPACK_IMPORTED_MODULE_4__["TokenKind"].BRACKET_L)) {
     type = parseTypeReference(lexer);
-    expect(lexer, _lexer__WEBPACK_IMPORTED_MODULE_3__["TokenKind"].BRACKET_R);
+    expect(lexer, _lexer__WEBPACK_IMPORTED_MODULE_4__["TokenKind"].BRACKET_R);
     type = {
-      kind: _kinds__WEBPACK_IMPORTED_MODULE_4__["Kind"].LIST_TYPE,
+      kind: _kinds__WEBPACK_IMPORTED_MODULE_5__["Kind"].LIST_TYPE,
       type: type,
       loc: loc(lexer, start)
     };
@@ -33511,9 +35335,9 @@ function parseTypeReference(lexer) {
     type = parseNamedType(lexer);
   }
 
-  if (skip(lexer, _lexer__WEBPACK_IMPORTED_MODULE_3__["TokenKind"].BANG)) {
+  if (skip(lexer, _lexer__WEBPACK_IMPORTED_MODULE_4__["TokenKind"].BANG)) {
     return {
-      kind: _kinds__WEBPACK_IMPORTED_MODULE_4__["Kind"].NON_NULL_TYPE,
+      kind: _kinds__WEBPACK_IMPORTED_MODULE_5__["Kind"].NON_NULL_TYPE,
       type: type,
       loc: loc(lexer, start)
     };
@@ -33528,7 +35352,7 @@ function parseTypeReference(lexer) {
 function parseNamedType(lexer) {
   var start = lexer.token;
   return {
-    kind: _kinds__WEBPACK_IMPORTED_MODULE_4__["Kind"].NAMED_TYPE,
+    kind: _kinds__WEBPACK_IMPORTED_MODULE_5__["Kind"].NAMED_TYPE,
     name: parseName(lexer),
     loc: loc(lexer, start)
   };
@@ -33553,7 +35377,7 @@ function parseTypeSystemDefinition(lexer) {
   // Many definitions begin with a description and require a lookahead.
   var keywordToken = peekDescription(lexer) ? lexer.lookahead() : lexer.token;
 
-  if (keywordToken.kind === _lexer__WEBPACK_IMPORTED_MODULE_3__["TokenKind"].NAME) {
+  if (keywordToken.kind === _lexer__WEBPACK_IMPORTED_MODULE_4__["TokenKind"].NAME) {
     switch (keywordToken.value) {
       case 'schema':
         return parseSchemaDefinition(lexer);
@@ -33585,7 +35409,7 @@ function parseTypeSystemDefinition(lexer) {
 }
 
 function peekDescription(lexer) {
-  return peek(lexer, _lexer__WEBPACK_IMPORTED_MODULE_3__["TokenKind"].STRING) || peek(lexer, _lexer__WEBPACK_IMPORTED_MODULE_3__["TokenKind"].BLOCK_STRING);
+  return peek(lexer, _lexer__WEBPACK_IMPORTED_MODULE_4__["TokenKind"].STRING) || peek(lexer, _lexer__WEBPACK_IMPORTED_MODULE_4__["TokenKind"].BLOCK_STRING);
 }
 /**
  * Description : StringValue
@@ -33606,9 +35430,9 @@ function parseSchemaDefinition(lexer) {
   var start = lexer.token;
   expectKeyword(lexer, 'schema');
   var directives = parseDirectives(lexer, true);
-  var operationTypes = many(lexer, _lexer__WEBPACK_IMPORTED_MODULE_3__["TokenKind"].BRACE_L, parseOperationTypeDefinition, _lexer__WEBPACK_IMPORTED_MODULE_3__["TokenKind"].BRACE_R);
+  var operationTypes = many(lexer, _lexer__WEBPACK_IMPORTED_MODULE_4__["TokenKind"].BRACE_L, parseOperationTypeDefinition, _lexer__WEBPACK_IMPORTED_MODULE_4__["TokenKind"].BRACE_R);
   return {
-    kind: _kinds__WEBPACK_IMPORTED_MODULE_4__["Kind"].SCHEMA_DEFINITION,
+    kind: _kinds__WEBPACK_IMPORTED_MODULE_5__["Kind"].SCHEMA_DEFINITION,
     directives: directives,
     operationTypes: operationTypes,
     loc: loc(lexer, start)
@@ -33622,10 +35446,10 @@ function parseSchemaDefinition(lexer) {
 function parseOperationTypeDefinition(lexer) {
   var start = lexer.token;
   var operation = parseOperationType(lexer);
-  expect(lexer, _lexer__WEBPACK_IMPORTED_MODULE_3__["TokenKind"].COLON);
+  expect(lexer, _lexer__WEBPACK_IMPORTED_MODULE_4__["TokenKind"].COLON);
   var type = parseNamedType(lexer);
   return {
-    kind: _kinds__WEBPACK_IMPORTED_MODULE_4__["Kind"].OPERATION_TYPE_DEFINITION,
+    kind: _kinds__WEBPACK_IMPORTED_MODULE_5__["Kind"].OPERATION_TYPE_DEFINITION,
     operation: operation,
     type: type,
     loc: loc(lexer, start)
@@ -33643,7 +35467,7 @@ function parseScalarTypeDefinition(lexer) {
   var name = parseName(lexer);
   var directives = parseDirectives(lexer, true);
   return {
-    kind: _kinds__WEBPACK_IMPORTED_MODULE_4__["Kind"].SCALAR_TYPE_DEFINITION,
+    kind: _kinds__WEBPACK_IMPORTED_MODULE_5__["Kind"].SCALAR_TYPE_DEFINITION,
     description: description,
     name: name,
     directives: directives,
@@ -33666,7 +35490,7 @@ function parseObjectTypeDefinition(lexer) {
   var directives = parseDirectives(lexer, true);
   var fields = parseFieldsDefinition(lexer);
   return {
-    kind: _kinds__WEBPACK_IMPORTED_MODULE_4__["Kind"].OBJECT_TYPE_DEFINITION,
+    kind: _kinds__WEBPACK_IMPORTED_MODULE_5__["Kind"].OBJECT_TYPE_DEFINITION,
     description: description,
     name: name,
     interfaces: interfaces,
@@ -33685,15 +35509,14 @@ function parseObjectTypeDefinition(lexer) {
 function parseImplementsInterfaces(lexer) {
   var types = [];
 
-  if (lexer.token.value === 'implements') {
-    lexer.advance(); // Optional leading ampersand
-
-    skip(lexer, _lexer__WEBPACK_IMPORTED_MODULE_3__["TokenKind"].AMP);
+  if (skipKeyword(lexer, 'implements')) {
+    // Optional leading ampersand
+    skip(lexer, _lexer__WEBPACK_IMPORTED_MODULE_4__["TokenKind"].AMP);
 
     do {
       types.push(parseNamedType(lexer));
-    } while (skip(lexer, _lexer__WEBPACK_IMPORTED_MODULE_3__["TokenKind"].AMP) || // Legacy support for the SDL?
-    lexer.options.allowLegacySDLImplementsInterfaces && peek(lexer, _lexer__WEBPACK_IMPORTED_MODULE_3__["TokenKind"].NAME));
+    } while (skip(lexer, _lexer__WEBPACK_IMPORTED_MODULE_4__["TokenKind"].AMP) || // Legacy support for the SDL?
+    lexer.options.allowLegacySDLImplementsInterfaces && peek(lexer, _lexer__WEBPACK_IMPORTED_MODULE_4__["TokenKind"].NAME));
   }
 
   return types;
@@ -33705,13 +35528,13 @@ function parseImplementsInterfaces(lexer) {
 
 function parseFieldsDefinition(lexer) {
   // Legacy support for the SDL?
-  if (lexer.options.allowLegacySDLEmptyFields && peek(lexer, _lexer__WEBPACK_IMPORTED_MODULE_3__["TokenKind"].BRACE_L) && lexer.lookahead().kind === _lexer__WEBPACK_IMPORTED_MODULE_3__["TokenKind"].BRACE_R) {
+  if (lexer.options.allowLegacySDLEmptyFields && peek(lexer, _lexer__WEBPACK_IMPORTED_MODULE_4__["TokenKind"].BRACE_L) && lexer.lookahead().kind === _lexer__WEBPACK_IMPORTED_MODULE_4__["TokenKind"].BRACE_R) {
     lexer.advance();
     lexer.advance();
     return [];
   }
 
-  return peek(lexer, _lexer__WEBPACK_IMPORTED_MODULE_3__["TokenKind"].BRACE_L) ? many(lexer, _lexer__WEBPACK_IMPORTED_MODULE_3__["TokenKind"].BRACE_L, parseFieldDefinition, _lexer__WEBPACK_IMPORTED_MODULE_3__["TokenKind"].BRACE_R) : [];
+  return peek(lexer, _lexer__WEBPACK_IMPORTED_MODULE_4__["TokenKind"].BRACE_L) ? many(lexer, _lexer__WEBPACK_IMPORTED_MODULE_4__["TokenKind"].BRACE_L, parseFieldDefinition, _lexer__WEBPACK_IMPORTED_MODULE_4__["TokenKind"].BRACE_R) : [];
 }
 /**
  * FieldDefinition :
@@ -33724,11 +35547,11 @@ function parseFieldDefinition(lexer) {
   var description = parseDescription(lexer);
   var name = parseName(lexer);
   var args = parseArgumentDefs(lexer);
-  expect(lexer, _lexer__WEBPACK_IMPORTED_MODULE_3__["TokenKind"].COLON);
+  expect(lexer, _lexer__WEBPACK_IMPORTED_MODULE_4__["TokenKind"].COLON);
   var type = parseTypeReference(lexer);
   var directives = parseDirectives(lexer, true);
   return {
-    kind: _kinds__WEBPACK_IMPORTED_MODULE_4__["Kind"].FIELD_DEFINITION,
+    kind: _kinds__WEBPACK_IMPORTED_MODULE_5__["Kind"].FIELD_DEFINITION,
     description: description,
     name: name,
     arguments: args,
@@ -33743,11 +35566,11 @@ function parseFieldDefinition(lexer) {
 
 
 function parseArgumentDefs(lexer) {
-  if (!peek(lexer, _lexer__WEBPACK_IMPORTED_MODULE_3__["TokenKind"].PAREN_L)) {
+  if (!peek(lexer, _lexer__WEBPACK_IMPORTED_MODULE_4__["TokenKind"].PAREN_L)) {
     return [];
   }
 
-  return many(lexer, _lexer__WEBPACK_IMPORTED_MODULE_3__["TokenKind"].PAREN_L, parseInputValueDef, _lexer__WEBPACK_IMPORTED_MODULE_3__["TokenKind"].PAREN_R);
+  return many(lexer, _lexer__WEBPACK_IMPORTED_MODULE_4__["TokenKind"].PAREN_L, parseInputValueDef, _lexer__WEBPACK_IMPORTED_MODULE_4__["TokenKind"].PAREN_R);
 }
 /**
  * InputValueDefinition :
@@ -33759,17 +35582,17 @@ function parseInputValueDef(lexer) {
   var start = lexer.token;
   var description = parseDescription(lexer);
   var name = parseName(lexer);
-  expect(lexer, _lexer__WEBPACK_IMPORTED_MODULE_3__["TokenKind"].COLON);
+  expect(lexer, _lexer__WEBPACK_IMPORTED_MODULE_4__["TokenKind"].COLON);
   var type = parseTypeReference(lexer);
   var defaultValue;
 
-  if (skip(lexer, _lexer__WEBPACK_IMPORTED_MODULE_3__["TokenKind"].EQUALS)) {
+  if (skip(lexer, _lexer__WEBPACK_IMPORTED_MODULE_4__["TokenKind"].EQUALS)) {
     defaultValue = parseConstValue(lexer);
   }
 
   var directives = parseDirectives(lexer, true);
   return {
-    kind: _kinds__WEBPACK_IMPORTED_MODULE_4__["Kind"].INPUT_VALUE_DEFINITION,
+    kind: _kinds__WEBPACK_IMPORTED_MODULE_5__["Kind"].INPUT_VALUE_DEFINITION,
     description: description,
     name: name,
     type: type,
@@ -33792,7 +35615,7 @@ function parseInterfaceTypeDefinition(lexer) {
   var directives = parseDirectives(lexer, true);
   var fields = parseFieldsDefinition(lexer);
   return {
-    kind: _kinds__WEBPACK_IMPORTED_MODULE_4__["Kind"].INTERFACE_TYPE_DEFINITION,
+    kind: _kinds__WEBPACK_IMPORTED_MODULE_5__["Kind"].INTERFACE_TYPE_DEFINITION,
     description: description,
     name: name,
     directives: directives,
@@ -33814,7 +35637,7 @@ function parseUnionTypeDefinition(lexer) {
   var directives = parseDirectives(lexer, true);
   var types = parseUnionMemberTypes(lexer);
   return {
-    kind: _kinds__WEBPACK_IMPORTED_MODULE_4__["Kind"].UNION_TYPE_DEFINITION,
+    kind: _kinds__WEBPACK_IMPORTED_MODULE_5__["Kind"].UNION_TYPE_DEFINITION,
     description: description,
     name: name,
     directives: directives,
@@ -33832,13 +35655,13 @@ function parseUnionTypeDefinition(lexer) {
 function parseUnionMemberTypes(lexer) {
   var types = [];
 
-  if (skip(lexer, _lexer__WEBPACK_IMPORTED_MODULE_3__["TokenKind"].EQUALS)) {
+  if (skip(lexer, _lexer__WEBPACK_IMPORTED_MODULE_4__["TokenKind"].EQUALS)) {
     // Optional leading pipe
-    skip(lexer, _lexer__WEBPACK_IMPORTED_MODULE_3__["TokenKind"].PIPE);
+    skip(lexer, _lexer__WEBPACK_IMPORTED_MODULE_4__["TokenKind"].PIPE);
 
     do {
       types.push(parseNamedType(lexer));
-    } while (skip(lexer, _lexer__WEBPACK_IMPORTED_MODULE_3__["TokenKind"].PIPE));
+    } while (skip(lexer, _lexer__WEBPACK_IMPORTED_MODULE_4__["TokenKind"].PIPE));
   }
 
   return types;
@@ -33857,7 +35680,7 @@ function parseEnumTypeDefinition(lexer) {
   var directives = parseDirectives(lexer, true);
   var values = parseEnumValuesDefinition(lexer);
   return {
-    kind: _kinds__WEBPACK_IMPORTED_MODULE_4__["Kind"].ENUM_TYPE_DEFINITION,
+    kind: _kinds__WEBPACK_IMPORTED_MODULE_5__["Kind"].ENUM_TYPE_DEFINITION,
     description: description,
     name: name,
     directives: directives,
@@ -33871,7 +35694,7 @@ function parseEnumTypeDefinition(lexer) {
 
 
 function parseEnumValuesDefinition(lexer) {
-  return peek(lexer, _lexer__WEBPACK_IMPORTED_MODULE_3__["TokenKind"].BRACE_L) ? many(lexer, _lexer__WEBPACK_IMPORTED_MODULE_3__["TokenKind"].BRACE_L, parseEnumValueDefinition, _lexer__WEBPACK_IMPORTED_MODULE_3__["TokenKind"].BRACE_R) : [];
+  return peek(lexer, _lexer__WEBPACK_IMPORTED_MODULE_4__["TokenKind"].BRACE_L) ? many(lexer, _lexer__WEBPACK_IMPORTED_MODULE_4__["TokenKind"].BRACE_L, parseEnumValueDefinition, _lexer__WEBPACK_IMPORTED_MODULE_4__["TokenKind"].BRACE_R) : [];
 }
 /**
  * EnumValueDefinition : Description? EnumValue Directives[Const]?
@@ -33886,7 +35709,7 @@ function parseEnumValueDefinition(lexer) {
   var name = parseName(lexer);
   var directives = parseDirectives(lexer, true);
   return {
-    kind: _kinds__WEBPACK_IMPORTED_MODULE_4__["Kind"].ENUM_VALUE_DEFINITION,
+    kind: _kinds__WEBPACK_IMPORTED_MODULE_5__["Kind"].ENUM_VALUE_DEFINITION,
     description: description,
     name: name,
     directives: directives,
@@ -33907,7 +35730,7 @@ function parseInputObjectTypeDefinition(lexer) {
   var directives = parseDirectives(lexer, true);
   var fields = parseInputFieldsDefinition(lexer);
   return {
-    kind: _kinds__WEBPACK_IMPORTED_MODULE_4__["Kind"].INPUT_OBJECT_TYPE_DEFINITION,
+    kind: _kinds__WEBPACK_IMPORTED_MODULE_5__["Kind"].INPUT_OBJECT_TYPE_DEFINITION,
     description: description,
     name: name,
     directives: directives,
@@ -33921,7 +35744,7 @@ function parseInputObjectTypeDefinition(lexer) {
 
 
 function parseInputFieldsDefinition(lexer) {
-  return peek(lexer, _lexer__WEBPACK_IMPORTED_MODULE_3__["TokenKind"].BRACE_L) ? many(lexer, _lexer__WEBPACK_IMPORTED_MODULE_3__["TokenKind"].BRACE_L, parseInputValueDef, _lexer__WEBPACK_IMPORTED_MODULE_3__["TokenKind"].BRACE_R) : [];
+  return peek(lexer, _lexer__WEBPACK_IMPORTED_MODULE_4__["TokenKind"].BRACE_L) ? many(lexer, _lexer__WEBPACK_IMPORTED_MODULE_4__["TokenKind"].BRACE_L, parseInputValueDef, _lexer__WEBPACK_IMPORTED_MODULE_4__["TokenKind"].BRACE_R) : [];
 }
 /**
  * TypeSystemExtension :
@@ -33941,7 +35764,7 @@ function parseInputFieldsDefinition(lexer) {
 function parseTypeSystemExtension(lexer) {
   var keywordToken = lexer.lookahead();
 
-  if (keywordToken.kind === _lexer__WEBPACK_IMPORTED_MODULE_3__["TokenKind"].NAME) {
+  if (keywordToken.kind === _lexer__WEBPACK_IMPORTED_MODULE_4__["TokenKind"].NAME) {
     switch (keywordToken.value) {
       case 'schema':
         return parseSchemaExtension(lexer);
@@ -33980,14 +35803,14 @@ function parseSchemaExtension(lexer) {
   expectKeyword(lexer, 'extend');
   expectKeyword(lexer, 'schema');
   var directives = parseDirectives(lexer, true);
-  var operationTypes = peek(lexer, _lexer__WEBPACK_IMPORTED_MODULE_3__["TokenKind"].BRACE_L) ? many(lexer, _lexer__WEBPACK_IMPORTED_MODULE_3__["TokenKind"].BRACE_L, parseOperationTypeDefinition, _lexer__WEBPACK_IMPORTED_MODULE_3__["TokenKind"].BRACE_R) : [];
+  var operationTypes = peek(lexer, _lexer__WEBPACK_IMPORTED_MODULE_4__["TokenKind"].BRACE_L) ? many(lexer, _lexer__WEBPACK_IMPORTED_MODULE_4__["TokenKind"].BRACE_L, parseOperationTypeDefinition, _lexer__WEBPACK_IMPORTED_MODULE_4__["TokenKind"].BRACE_R) : [];
 
   if (directives.length === 0 && operationTypes.length === 0) {
     throw unexpected(lexer);
   }
 
   return {
-    kind: _kinds__WEBPACK_IMPORTED_MODULE_4__["Kind"].SCHEMA_EXTENSION,
+    kind: _kinds__WEBPACK_IMPORTED_MODULE_5__["Kind"].SCHEMA_EXTENSION,
     directives: directives,
     operationTypes: operationTypes,
     loc: loc(lexer, start)
@@ -34011,7 +35834,7 @@ function parseScalarTypeExtension(lexer) {
   }
 
   return {
-    kind: _kinds__WEBPACK_IMPORTED_MODULE_4__["Kind"].SCALAR_TYPE_EXTENSION,
+    kind: _kinds__WEBPACK_IMPORTED_MODULE_5__["Kind"].SCALAR_TYPE_EXTENSION,
     name: name,
     directives: directives,
     loc: loc(lexer, start)
@@ -34039,7 +35862,7 @@ function parseObjectTypeExtension(lexer) {
   }
 
   return {
-    kind: _kinds__WEBPACK_IMPORTED_MODULE_4__["Kind"].OBJECT_TYPE_EXTENSION,
+    kind: _kinds__WEBPACK_IMPORTED_MODULE_5__["Kind"].OBJECT_TYPE_EXTENSION,
     name: name,
     interfaces: interfaces,
     directives: directives,
@@ -34067,7 +35890,7 @@ function parseInterfaceTypeExtension(lexer) {
   }
 
   return {
-    kind: _kinds__WEBPACK_IMPORTED_MODULE_4__["Kind"].INTERFACE_TYPE_EXTENSION,
+    kind: _kinds__WEBPACK_IMPORTED_MODULE_5__["Kind"].INTERFACE_TYPE_EXTENSION,
     name: name,
     directives: directives,
     fields: fields,
@@ -34094,7 +35917,7 @@ function parseUnionTypeExtension(lexer) {
   }
 
   return {
-    kind: _kinds__WEBPACK_IMPORTED_MODULE_4__["Kind"].UNION_TYPE_EXTENSION,
+    kind: _kinds__WEBPACK_IMPORTED_MODULE_5__["Kind"].UNION_TYPE_EXTENSION,
     name: name,
     directives: directives,
     types: types,
@@ -34121,7 +35944,7 @@ function parseEnumTypeExtension(lexer) {
   }
 
   return {
-    kind: _kinds__WEBPACK_IMPORTED_MODULE_4__["Kind"].ENUM_TYPE_EXTENSION,
+    kind: _kinds__WEBPACK_IMPORTED_MODULE_5__["Kind"].ENUM_TYPE_EXTENSION,
     name: name,
     directives: directives,
     values: values,
@@ -34148,7 +35971,7 @@ function parseInputObjectTypeExtension(lexer) {
   }
 
   return {
-    kind: _kinds__WEBPACK_IMPORTED_MODULE_4__["Kind"].INPUT_OBJECT_TYPE_EXTENSION,
+    kind: _kinds__WEBPACK_IMPORTED_MODULE_5__["Kind"].INPUT_OBJECT_TYPE_EXTENSION,
     name: name,
     directives: directives,
     fields: fields,
@@ -34165,13 +35988,13 @@ function parseDirectiveDefinition(lexer) {
   var start = lexer.token;
   var description = parseDescription(lexer);
   expectKeyword(lexer, 'directive');
-  expect(lexer, _lexer__WEBPACK_IMPORTED_MODULE_3__["TokenKind"].AT);
+  expect(lexer, _lexer__WEBPACK_IMPORTED_MODULE_4__["TokenKind"].AT);
   var name = parseName(lexer);
   var args = parseArgumentDefs(lexer);
   expectKeyword(lexer, 'on');
   var locations = parseDirectiveLocations(lexer);
   return {
-    kind: _kinds__WEBPACK_IMPORTED_MODULE_4__["Kind"].DIRECTIVE_DEFINITION,
+    kind: _kinds__WEBPACK_IMPORTED_MODULE_5__["Kind"].DIRECTIVE_DEFINITION,
     description: description,
     name: name,
     arguments: args,
@@ -34188,12 +36011,12 @@ function parseDirectiveDefinition(lexer) {
 
 function parseDirectiveLocations(lexer) {
   // Optional leading pipe
-  skip(lexer, _lexer__WEBPACK_IMPORTED_MODULE_3__["TokenKind"].PIPE);
+  skip(lexer, _lexer__WEBPACK_IMPORTED_MODULE_4__["TokenKind"].PIPE);
   var locations = [];
 
   do {
     locations.push(parseDirectiveLocation(lexer));
-  } while (skip(lexer, _lexer__WEBPACK_IMPORTED_MODULE_3__["TokenKind"].PIPE));
+  } while (skip(lexer, _lexer__WEBPACK_IMPORTED_MODULE_4__["TokenKind"].PIPE));
 
   return locations;
 }
@@ -34230,7 +36053,7 @@ function parseDirectiveLocation(lexer) {
   var start = lexer.token;
   var name = parseName(lexer);
 
-  if (_directiveLocation__WEBPACK_IMPORTED_MODULE_5__["DirectiveLocation"].hasOwnProperty(name.value)) {
+  if (_directiveLocation__WEBPACK_IMPORTED_MODULE_6__["DirectiveLocation"].hasOwnProperty(name.value)) {
     return name;
   }
 
@@ -34258,16 +36081,15 @@ function Loc(startToken, endToken, source) {
 } // Print a simplified form when appearing in JSON/util.inspect.
 
 
-Loc.prototype.toJSON = Loc.prototype.inspect = function toJSON() {
+Object(_jsutils_defineToJSON__WEBPACK_IMPORTED_MODULE_1__["default"])(Loc, function () {
   return {
     start: this.start,
     end: this.end
   };
-};
+});
 /**
  * Determines if the next token is of a given kind
  */
-
 
 function peek(lexer, kind) {
   return lexer.token.kind === kind;
@@ -34279,13 +36101,12 @@ function peek(lexer, kind) {
 
 
 function skip(lexer, kind) {
-  var match = lexer.token.kind === kind;
-
-  if (match) {
+  if (lexer.token.kind === kind) {
     lexer.advance();
+    return true;
   }
 
-  return match;
+  return false;
 }
 /**
  * If the next token is of the given kind, return that token after advancing
@@ -34301,24 +36122,35 @@ function expect(lexer, kind) {
     return token;
   }
 
-  throw Object(_error__WEBPACK_IMPORTED_MODULE_2__["syntaxError"])(lexer.source, token.start, "Expected ".concat(kind, ", found ").concat(Object(_lexer__WEBPACK_IMPORTED_MODULE_3__["getTokenDesc"])(token)));
+  throw Object(_error__WEBPACK_IMPORTED_MODULE_3__["syntaxError"])(lexer.source, token.start, "Expected ".concat(kind, ", found ").concat(Object(_lexer__WEBPACK_IMPORTED_MODULE_4__["getTokenDesc"])(token)));
+}
+/**
+ * If the next token is a keyword with the given value, return true after advancing
+ * the lexer. Otherwise, do not change the parser state and return false.
+ */
+
+
+function skipKeyword(lexer, value) {
+  var token = lexer.token;
+
+  if (token.kind === _lexer__WEBPACK_IMPORTED_MODULE_4__["TokenKind"].NAME && token.value === value) {
+    lexer.advance();
+    return true;
+  }
+
+  return false;
 }
 /**
  * If the next token is a keyword with the given value, return that token after
- * advancing the lexer. Otherwise, do not change the parser state and return
- * false.
+ * advancing the lexer. Otherwise, do not change the parser state and throw
+ * an error.
  */
 
 
 function expectKeyword(lexer, value) {
-  var token = lexer.token;
-
-  if (token.kind === _lexer__WEBPACK_IMPORTED_MODULE_3__["TokenKind"].NAME && token.value === value) {
-    lexer.advance();
-    return token;
+  if (!skipKeyword(lexer, value)) {
+    throw Object(_error__WEBPACK_IMPORTED_MODULE_3__["syntaxError"])(lexer.source, lexer.token.start, "Expected \"".concat(value, "\", found ").concat(Object(_lexer__WEBPACK_IMPORTED_MODULE_4__["getTokenDesc"])(lexer.token)));
   }
-
-  throw Object(_error__WEBPACK_IMPORTED_MODULE_2__["syntaxError"])(lexer.source, token.start, "Expected \"".concat(value, "\", found ").concat(Object(_lexer__WEBPACK_IMPORTED_MODULE_3__["getTokenDesc"])(token)));
 }
 /**
  * Helper function for creating an error when an unexpected lexed token
@@ -34328,7 +36160,7 @@ function expectKeyword(lexer, value) {
 
 function unexpected(lexer, atToken) {
   var token = atToken || lexer.token;
-  return Object(_error__WEBPACK_IMPORTED_MODULE_2__["syntaxError"])(lexer.source, token.start, "Unexpected ".concat(Object(_lexer__WEBPACK_IMPORTED_MODULE_3__["getTokenDesc"])(token)));
+  return Object(_error__WEBPACK_IMPORTED_MODULE_3__["syntaxError"])(lexer.source, token.start, "Unexpected ".concat(Object(_lexer__WEBPACK_IMPORTED_MODULE_4__["getTokenDesc"])(token)));
 }
 /**
  * Returns a possibly empty list of parse nodes, determined by
@@ -34394,7 +36226,7 @@ __webpack_require__.r(__webpack_exports__);
  * This source code is licensed under the MIT license found in the
  * LICENSE file in the root directory of this source tree.
  *
- *  strict
+ * 
  */
 
 function isDefinitionNode(node) {
@@ -34443,6 +36275,8 @@ __webpack_require__.r(__webpack_exports__);
  *
  * This source code is licensed under the MIT license found in the
  * LICENSE file in the root directory of this source tree.
+ *
+ * 
  */
 
 /**
@@ -34608,9 +36442,7 @@ var printDocASTReducer = {
         args = _ref24.arguments,
         type = _ref24.type,
         directives = _ref24.directives;
-    return name + (args.every(function (arg) {
-      return arg.indexOf('\n') === -1;
-    }) ? wrap('(', join(args, ', '), ')') : wrap('(\n', indent(join(args, '\n')), '\n)')) + ': ' + type + wrap(' ', join(directives, ' '));
+    return name + (hasMultilineItems(args) ? wrap('(\n', indent(join(args, '\n')), '\n)') : wrap('(', join(args, ', '), ')')) + ': ' + type + wrap(' ', join(directives, ' '));
   }),
   InputValueDefinition: addDescription(function (_ref25) {
     var name = _ref25.name,
@@ -34652,9 +36484,7 @@ var printDocASTReducer = {
     var name = _ref31.name,
         args = _ref31.arguments,
         locations = _ref31.locations;
-    return 'directive @' + name + (args.every(function (arg) {
-      return arg.indexOf('\n') === -1;
-    }) ? wrap('(', join(args, ', '), ')') : wrap('(\n', indent(join(args, '\n')), '\n)')) + ' on ' + join(locations, ' | ');
+    return 'directive @' + name + (hasMultilineItems(args) ? wrap('(\n', indent(join(args, '\n')), '\n)') : wrap('(', join(args, ', '), ')')) + ' on ' + join(locations, ' | ');
   }),
   SchemaExtension: function SchemaExtension(_ref32) {
     var directives = _ref32.directives,
@@ -34737,6 +36567,14 @@ function wrap(start, maybeString, end) {
 function indent(maybeString) {
   return maybeString && '  ' + maybeString.replace(/\n/g, '\n  ');
 }
+
+function isMultiline(string) {
+  return string.indexOf('\n') !== -1;
+}
+
+function hasMultilineItems(maybeArray) {
+  return maybeArray && maybeArray.some(isMultiline);
+}
 /**
  * Print a block string in the indented block form by adding a leading and
  * trailing blank line. However, if a block string starts with whitespace and is
@@ -34746,7 +36584,7 @@ function indent(maybeString) {
 
 function printBlockString(value, isDescription) {
   var escaped = value.replace(/"""/g, '\\"""');
-  return (value[0] === ' ' || value[0] === '\t') && value.indexOf('\n') === -1 ? "\"\"\"".concat(escaped.replace(/"$/, '"\n'), "\"\"\"") : "\"\"\"\n".concat(isDescription ? escaped : indent(escaped), "\n\"\"\"");
+  return isMultiline(value) || value[0] !== ' ' && value[0] !== '\t' ? "\"\"\"\n".concat(isDescription ? escaped : indent(escaped), "\n\"\"\"") : "\"\"\"".concat(escaped.replace(/"$/, '"\n'), "\"\"\"");
 }
 
 /***/ }),
@@ -34763,15 +36601,13 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "Source", function() { return Source; });
 /* harmony import */ var _jsutils_invariant__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../jsutils/invariant */ "./node_modules/graphql/jsutils/invariant.mjs");
 /* harmony import */ var _jsutils_defineToStringTag__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../jsutils/defineToStringTag */ "./node_modules/graphql/jsutils/defineToStringTag.mjs");
-function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
-
 /**
  * Copyright (c) 2015-present, Facebook, Inc.
  *
  * This source code is licensed under the MIT license found in the
  * LICENSE file in the root directory of this source tree.
  *
- *  strict
+ * 
  */
 
 
@@ -34785,12 +36621,6 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
  * line and column in locationOffset are 1-indexed
  */
 var Source = function Source(body, name, locationOffset) {
-  _defineProperty(this, "body", void 0);
-
-  _defineProperty(this, "name", void 0);
-
-  _defineProperty(this, "locationOffset", void 0);
-
   this.body = body;
   this.name = name || 'GraphQL request';
   this.locationOffset = locationOffset || {
@@ -34827,7 +36657,7 @@ __webpack_require__.r(__webpack_exports__);
  * This source code is licensed under the MIT license found in the
  * LICENSE file in the root directory of this source tree.
  *
- *  strict
+ * 
  */
 
 var QueryDocumentKeys = {
@@ -34998,10 +36828,11 @@ function visit(root, visitor) {
         } else {
           var clone = {};
 
-          for (var k in node) {
-            if (node.hasOwnProperty(k)) {
-              clone[k] = node[k];
-            }
+          var _arr = Object.keys(node);
+
+          for (var _i = 0; _i < _arr.length; _i++) {
+            var k = _arr[_i];
+            clone[k] = node[k];
           }
 
           node = clone;
@@ -35255,6 +37086,157 @@ function getVisitFn(visitor, kind, isLeaving) {
 
 /***/ }),
 
+/***/ "./node_modules/graphql/polyfills/find.mjs":
+/*!*************************************************!*\
+  !*** ./node_modules/graphql/polyfills/find.mjs ***!
+  \*************************************************/
+/*! exports provided: default */
+/***/ (function(__webpack_module__, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/**
+ * Copyright (c) 2015-present, Facebook, Inc.
+ *
+ * This source code is licensed under the MIT license found in the
+ * LICENSE file in the root directory of this source tree.
+ *
+ * 
+ */
+
+/* eslint-disable no-redeclare */
+// $FlowFixMe
+var find = Array.prototype.find ? function (list, predicate) {
+  return Array.prototype.find.call(list, predicate);
+} : function (list, predicate) {
+  for (var i = 0; i < list.length; i++) {
+    var value = list[i];
+
+    if (predicate(value)) {
+      return value;
+    }
+  }
+};
+/* harmony default export */ __webpack_exports__["default"] = (find);
+
+/***/ }),
+
+/***/ "./node_modules/graphql/polyfills/isFinite.mjs":
+/*!*****************************************************!*\
+  !*** ./node_modules/graphql/polyfills/isFinite.mjs ***!
+  \*****************************************************/
+/*! exports provided: default */
+/***/ (function(__webpack_module__, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/**
+ * Copyright (c) 2018-present, Facebook, Inc.
+ *
+ * This source code is licensed under the MIT license found in the
+ * LICENSE file in the root directory of this source tree.
+ *
+ * 
+ */
+
+/* eslint-disable no-redeclare */
+// $FlowFixMe workaround for: https://github.com/facebook/flow/issues/4441
+var isFinite = Number.isFinite || function (value) {
+  return typeof value === 'number' && isFinite(value);
+};
+
+/* harmony default export */ __webpack_exports__["default"] = (isFinite);
+
+/***/ }),
+
+/***/ "./node_modules/graphql/polyfills/isInteger.mjs":
+/*!******************************************************!*\
+  !*** ./node_modules/graphql/polyfills/isInteger.mjs ***!
+  \******************************************************/
+/*! exports provided: default */
+/***/ (function(__webpack_module__, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/**
+ * Copyright (c) 2018-present, Facebook, Inc.
+ *
+ * This source code is licensed under the MIT license found in the
+ * LICENSE file in the root directory of this source tree.
+ *
+ * 
+ */
+
+/* eslint-disable no-redeclare */
+// $FlowFixMe workaround for: https://github.com/facebook/flow/issues/4441
+var isInteger = Number.isInteger || function (value) {
+  return typeof value === 'number' && isFinite(value) && Math.floor(value) === value;
+};
+
+/* harmony default export */ __webpack_exports__["default"] = (isInteger);
+
+/***/ }),
+
+/***/ "./node_modules/graphql/polyfills/objectEntries.mjs":
+/*!**********************************************************!*\
+  !*** ./node_modules/graphql/polyfills/objectEntries.mjs ***!
+  \**********************************************************/
+/*! exports provided: default */
+/***/ (function(__webpack_module__, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/**
+ * Copyright (c) 2019-present, Facebook, Inc.
+ *
+ * This source code is licensed under the MIT license found in the
+ * LICENSE file in the root directory of this source tree.
+ *
+ * 
+ */
+
+/* eslint-disable no-redeclare */
+// $FlowFixMe workaround for: https://github.com/facebook/flow/issues/5838
+var objectEntries = Object.entries || function (obj) {
+  return Object.keys(obj).map(function (key) {
+    return [key, obj[key]];
+  });
+};
+
+/* harmony default export */ __webpack_exports__["default"] = (objectEntries);
+
+/***/ }),
+
+/***/ "./node_modules/graphql/polyfills/objectValues.mjs":
+/*!*********************************************************!*\
+  !*** ./node_modules/graphql/polyfills/objectValues.mjs ***!
+  \*********************************************************/
+/*! exports provided: default */
+/***/ (function(__webpack_module__, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/**
+ * Copyright (c) 2015-present, Facebook, Inc.
+ *
+ * This source code is licensed under the MIT license found in the
+ * LICENSE file in the root directory of this source tree.
+ *
+ * 
+ */
+
+/* eslint-disable no-redeclare */
+// $FlowFixMe workaround for: https://github.com/facebook/flow/issues/2221
+var objectValues = Object.values || function (obj) {
+  return Object.keys(obj).map(function (key) {
+    return obj[key];
+  });
+};
+
+/* harmony default export */ __webpack_exports__["default"] = (objectValues);
+
+/***/ }),
+
 /***/ "./node_modules/graphql/subscription/index.mjs":
 /*!*****************************************************!*\
   !*** ./node_modules/graphql/subscription/index.mjs ***!
@@ -35275,7 +37257,7 @@ __webpack_require__.r(__webpack_exports__);
  * This source code is licensed under the MIT license found in the
  * LICENSE file in the root directory of this source tree.
  *
- *  strict
+ * 
  */
 
 
@@ -35300,7 +37282,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
  * This source code is licensed under the MIT license found in the
  * LICENSE file in the root directory of this source tree.
  *
- *  strict
+ * 
  */
 
 
@@ -35405,7 +37387,7 @@ __webpack_require__.r(__webpack_exports__);
  * This source code is licensed under the MIT license found in the
  * LICENSE file in the root directory of this source tree.
  *
- *  strict
+ * 
  */
 
 
@@ -35611,14 +37593,16 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "GraphQLEnumType", function() { return GraphQLEnumType; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "GraphQLInputObjectType", function() { return GraphQLInputObjectType; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "isRequiredInputField", function() { return isRequiredInputField; });
-/* harmony import */ var _jsutils_defineToJSON__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../jsutils/defineToJSON */ "./node_modules/graphql/jsutils/defineToJSON.mjs");
-/* harmony import */ var _jsutils_defineToStringTag__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../jsutils/defineToStringTag */ "./node_modules/graphql/jsutils/defineToStringTag.mjs");
-/* harmony import */ var _jsutils_instanceOf__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../jsutils/instanceOf */ "./node_modules/graphql/jsutils/instanceOf.mjs");
-/* harmony import */ var _jsutils_inspect__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../jsutils/inspect */ "./node_modules/graphql/jsutils/inspect.mjs");
-/* harmony import */ var _jsutils_invariant__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../jsutils/invariant */ "./node_modules/graphql/jsutils/invariant.mjs");
-/* harmony import */ var _jsutils_keyMap__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../jsutils/keyMap */ "./node_modules/graphql/jsutils/keyMap.mjs");
-/* harmony import */ var _language_kinds__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../language/kinds */ "./node_modules/graphql/language/kinds.mjs");
-/* harmony import */ var _utilities_valueFromASTUntyped__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../utilities/valueFromASTUntyped */ "./node_modules/graphql/utilities/valueFromASTUntyped.mjs");
+/* harmony import */ var _polyfills_objectEntries__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../polyfills/objectEntries */ "./node_modules/graphql/polyfills/objectEntries.mjs");
+/* harmony import */ var _jsutils_defineToJSON__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../jsutils/defineToJSON */ "./node_modules/graphql/jsutils/defineToJSON.mjs");
+/* harmony import */ var _jsutils_defineToStringTag__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../jsutils/defineToStringTag */ "./node_modules/graphql/jsutils/defineToStringTag.mjs");
+/* harmony import */ var _jsutils_instanceOf__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../jsutils/instanceOf */ "./node_modules/graphql/jsutils/instanceOf.mjs");
+/* harmony import */ var _jsutils_inspect__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../jsutils/inspect */ "./node_modules/graphql/jsutils/inspect.mjs");
+/* harmony import */ var _jsutils_invariant__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../jsutils/invariant */ "./node_modules/graphql/jsutils/invariant.mjs");
+/* harmony import */ var _jsutils_keyMap__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../jsutils/keyMap */ "./node_modules/graphql/jsutils/keyMap.mjs");
+/* harmony import */ var _jsutils_mapValue__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../jsutils/mapValue */ "./node_modules/graphql/jsutils/mapValue.mjs");
+/* harmony import */ var _language_kinds__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ../language/kinds */ "./node_modules/graphql/language/kinds.mjs");
+/* harmony import */ var _utilities_valueFromASTUntyped__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ../utilities/valueFromASTUntyped */ "./node_modules/graphql/utilities/valueFromASTUntyped.mjs");
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
 function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; var ownKeys = Object.keys(source); if (typeof Object.getOwnPropertySymbols === 'function') { ownKeys = ownKeys.concat(Object.getOwnPropertySymbols(source).filter(function (sym) { return Object.getOwnPropertyDescriptor(source, sym).enumerable; })); } ownKeys.forEach(function (key) { _defineProperty(target, key, source[key]); }); } return target; }
@@ -35631,8 +37615,10 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
  * This source code is licensed under the MIT license found in the
  * LICENSE file in the root directory of this source tree.
  *
- *  strict
+ * 
  */
+
+
 
 
 
@@ -35645,7 +37631,7 @@ function isType(type) {
   return isScalarType(type) || isObjectType(type) || isInterfaceType(type) || isUnionType(type) || isEnumType(type) || isInputObjectType(type) || isListType(type) || isNonNullType(type);
 }
 function assertType(type) {
-  !isType(type) ? Object(_jsutils_invariant__WEBPACK_IMPORTED_MODULE_4__["default"])(0, "Expected ".concat(Object(_jsutils_inspect__WEBPACK_IMPORTED_MODULE_3__["default"])(type), " to be a GraphQL type.")) : void 0;
+  !isType(type) ? Object(_jsutils_invariant__WEBPACK_IMPORTED_MODULE_5__["default"])(0, "Expected ".concat(Object(_jsutils_inspect__WEBPACK_IMPORTED_MODULE_4__["default"])(type), " to be a GraphQL type.")) : void 0;
   return type;
 }
 /**
@@ -35654,66 +37640,66 @@ function assertType(type) {
 
 // eslint-disable-next-line no-redeclare
 function isScalarType(type) {
-  return Object(_jsutils_instanceOf__WEBPACK_IMPORTED_MODULE_2__["default"])(type, GraphQLScalarType);
+  return Object(_jsutils_instanceOf__WEBPACK_IMPORTED_MODULE_3__["default"])(type, GraphQLScalarType);
 }
 function assertScalarType(type) {
-  !isScalarType(type) ? Object(_jsutils_invariant__WEBPACK_IMPORTED_MODULE_4__["default"])(0, "Expected ".concat(Object(_jsutils_inspect__WEBPACK_IMPORTED_MODULE_3__["default"])(type), " to be a GraphQL Scalar type.")) : void 0;
+  !isScalarType(type) ? Object(_jsutils_invariant__WEBPACK_IMPORTED_MODULE_5__["default"])(0, "Expected ".concat(Object(_jsutils_inspect__WEBPACK_IMPORTED_MODULE_4__["default"])(type), " to be a GraphQL Scalar type.")) : void 0;
   return type;
 }
 // eslint-disable-next-line no-redeclare
 function isObjectType(type) {
-  return Object(_jsutils_instanceOf__WEBPACK_IMPORTED_MODULE_2__["default"])(type, GraphQLObjectType);
+  return Object(_jsutils_instanceOf__WEBPACK_IMPORTED_MODULE_3__["default"])(type, GraphQLObjectType);
 }
 function assertObjectType(type) {
-  !isObjectType(type) ? Object(_jsutils_invariant__WEBPACK_IMPORTED_MODULE_4__["default"])(0, "Expected ".concat(Object(_jsutils_inspect__WEBPACK_IMPORTED_MODULE_3__["default"])(type), " to be a GraphQL Object type.")) : void 0;
+  !isObjectType(type) ? Object(_jsutils_invariant__WEBPACK_IMPORTED_MODULE_5__["default"])(0, "Expected ".concat(Object(_jsutils_inspect__WEBPACK_IMPORTED_MODULE_4__["default"])(type), " to be a GraphQL Object type.")) : void 0;
   return type;
 }
 // eslint-disable-next-line no-redeclare
 function isInterfaceType(type) {
-  return Object(_jsutils_instanceOf__WEBPACK_IMPORTED_MODULE_2__["default"])(type, GraphQLInterfaceType);
+  return Object(_jsutils_instanceOf__WEBPACK_IMPORTED_MODULE_3__["default"])(type, GraphQLInterfaceType);
 }
 function assertInterfaceType(type) {
-  !isInterfaceType(type) ? Object(_jsutils_invariant__WEBPACK_IMPORTED_MODULE_4__["default"])(0, "Expected ".concat(Object(_jsutils_inspect__WEBPACK_IMPORTED_MODULE_3__["default"])(type), " to be a GraphQL Interface type.")) : void 0;
+  !isInterfaceType(type) ? Object(_jsutils_invariant__WEBPACK_IMPORTED_MODULE_5__["default"])(0, "Expected ".concat(Object(_jsutils_inspect__WEBPACK_IMPORTED_MODULE_4__["default"])(type), " to be a GraphQL Interface type.")) : void 0;
   return type;
 }
 // eslint-disable-next-line no-redeclare
 function isUnionType(type) {
-  return Object(_jsutils_instanceOf__WEBPACK_IMPORTED_MODULE_2__["default"])(type, GraphQLUnionType);
+  return Object(_jsutils_instanceOf__WEBPACK_IMPORTED_MODULE_3__["default"])(type, GraphQLUnionType);
 }
 function assertUnionType(type) {
-  !isUnionType(type) ? Object(_jsutils_invariant__WEBPACK_IMPORTED_MODULE_4__["default"])(0, "Expected ".concat(Object(_jsutils_inspect__WEBPACK_IMPORTED_MODULE_3__["default"])(type), " to be a GraphQL Union type.")) : void 0;
+  !isUnionType(type) ? Object(_jsutils_invariant__WEBPACK_IMPORTED_MODULE_5__["default"])(0, "Expected ".concat(Object(_jsutils_inspect__WEBPACK_IMPORTED_MODULE_4__["default"])(type), " to be a GraphQL Union type.")) : void 0;
   return type;
 }
 // eslint-disable-next-line no-redeclare
 function isEnumType(type) {
-  return Object(_jsutils_instanceOf__WEBPACK_IMPORTED_MODULE_2__["default"])(type, GraphQLEnumType);
+  return Object(_jsutils_instanceOf__WEBPACK_IMPORTED_MODULE_3__["default"])(type, GraphQLEnumType);
 }
 function assertEnumType(type) {
-  !isEnumType(type) ? Object(_jsutils_invariant__WEBPACK_IMPORTED_MODULE_4__["default"])(0, "Expected ".concat(Object(_jsutils_inspect__WEBPACK_IMPORTED_MODULE_3__["default"])(type), " to be a GraphQL Enum type.")) : void 0;
+  !isEnumType(type) ? Object(_jsutils_invariant__WEBPACK_IMPORTED_MODULE_5__["default"])(0, "Expected ".concat(Object(_jsutils_inspect__WEBPACK_IMPORTED_MODULE_4__["default"])(type), " to be a GraphQL Enum type.")) : void 0;
   return type;
 }
 // eslint-disable-next-line no-redeclare
 function isInputObjectType(type) {
-  return Object(_jsutils_instanceOf__WEBPACK_IMPORTED_MODULE_2__["default"])(type, GraphQLInputObjectType);
+  return Object(_jsutils_instanceOf__WEBPACK_IMPORTED_MODULE_3__["default"])(type, GraphQLInputObjectType);
 }
 function assertInputObjectType(type) {
-  !isInputObjectType(type) ? Object(_jsutils_invariant__WEBPACK_IMPORTED_MODULE_4__["default"])(0, "Expected ".concat(Object(_jsutils_inspect__WEBPACK_IMPORTED_MODULE_3__["default"])(type), " to be a GraphQL Input Object type.")) : void 0;
+  !isInputObjectType(type) ? Object(_jsutils_invariant__WEBPACK_IMPORTED_MODULE_5__["default"])(0, "Expected ".concat(Object(_jsutils_inspect__WEBPACK_IMPORTED_MODULE_4__["default"])(type), " to be a GraphQL Input Object type.")) : void 0;
   return type;
 }
 // eslint-disable-next-line no-redeclare
 function isListType(type) {
-  return Object(_jsutils_instanceOf__WEBPACK_IMPORTED_MODULE_2__["default"])(type, GraphQLList);
+  return Object(_jsutils_instanceOf__WEBPACK_IMPORTED_MODULE_3__["default"])(type, GraphQLList);
 }
 function assertListType(type) {
-  !isListType(type) ? Object(_jsutils_invariant__WEBPACK_IMPORTED_MODULE_4__["default"])(0, "Expected ".concat(Object(_jsutils_inspect__WEBPACK_IMPORTED_MODULE_3__["default"])(type), " to be a GraphQL List type.")) : void 0;
+  !isListType(type) ? Object(_jsutils_invariant__WEBPACK_IMPORTED_MODULE_5__["default"])(0, "Expected ".concat(Object(_jsutils_inspect__WEBPACK_IMPORTED_MODULE_4__["default"])(type), " to be a GraphQL List type.")) : void 0;
   return type;
 }
 // eslint-disable-next-line no-redeclare
 function isNonNullType(type) {
-  return Object(_jsutils_instanceOf__WEBPACK_IMPORTED_MODULE_2__["default"])(type, GraphQLNonNull);
+  return Object(_jsutils_instanceOf__WEBPACK_IMPORTED_MODULE_3__["default"])(type, GraphQLNonNull);
 }
 function assertNonNullType(type) {
-  !isNonNullType(type) ? Object(_jsutils_invariant__WEBPACK_IMPORTED_MODULE_4__["default"])(0, "Expected ".concat(Object(_jsutils_inspect__WEBPACK_IMPORTED_MODULE_3__["default"])(type), " to be a GraphQL Non-Null type.")) : void 0;
+  !isNonNullType(type) ? Object(_jsutils_invariant__WEBPACK_IMPORTED_MODULE_5__["default"])(0, "Expected ".concat(Object(_jsutils_inspect__WEBPACK_IMPORTED_MODULE_4__["default"])(type), " to be a GraphQL Non-Null type.")) : void 0;
   return type;
 }
 /**
@@ -35724,7 +37710,7 @@ function isInputType(type) {
   return isScalarType(type) || isEnumType(type) || isInputObjectType(type) || isWrappingType(type) && isInputType(type.ofType);
 }
 function assertInputType(type) {
-  !isInputType(type) ? Object(_jsutils_invariant__WEBPACK_IMPORTED_MODULE_4__["default"])(0, "Expected ".concat(Object(_jsutils_inspect__WEBPACK_IMPORTED_MODULE_3__["default"])(type), " to be a GraphQL input type.")) : void 0;
+  !isInputType(type) ? Object(_jsutils_invariant__WEBPACK_IMPORTED_MODULE_5__["default"])(0, "Expected ".concat(Object(_jsutils_inspect__WEBPACK_IMPORTED_MODULE_4__["default"])(type), " to be a GraphQL input type.")) : void 0;
   return type;
 }
 /**
@@ -35735,7 +37721,7 @@ function isOutputType(type) {
   return isScalarType(type) || isObjectType(type) || isInterfaceType(type) || isUnionType(type) || isEnumType(type) || isWrappingType(type) && isOutputType(type.ofType);
 }
 function assertOutputType(type) {
-  !isOutputType(type) ? Object(_jsutils_invariant__WEBPACK_IMPORTED_MODULE_4__["default"])(0, "Expected ".concat(Object(_jsutils_inspect__WEBPACK_IMPORTED_MODULE_3__["default"])(type), " to be a GraphQL output type.")) : void 0;
+  !isOutputType(type) ? Object(_jsutils_invariant__WEBPACK_IMPORTED_MODULE_5__["default"])(0, "Expected ".concat(Object(_jsutils_inspect__WEBPACK_IMPORTED_MODULE_4__["default"])(type), " to be a GraphQL output type.")) : void 0;
   return type;
 }
 /**
@@ -35746,7 +37732,7 @@ function isLeafType(type) {
   return isScalarType(type) || isEnumType(type);
 }
 function assertLeafType(type) {
-  !isLeafType(type) ? Object(_jsutils_invariant__WEBPACK_IMPORTED_MODULE_4__["default"])(0, "Expected ".concat(Object(_jsutils_inspect__WEBPACK_IMPORTED_MODULE_3__["default"])(type), " to be a GraphQL leaf type.")) : void 0;
+  !isLeafType(type) ? Object(_jsutils_invariant__WEBPACK_IMPORTED_MODULE_5__["default"])(0, "Expected ".concat(Object(_jsutils_inspect__WEBPACK_IMPORTED_MODULE_4__["default"])(type), " to be a GraphQL leaf type.")) : void 0;
   return type;
 }
 /**
@@ -35757,7 +37743,7 @@ function isCompositeType(type) {
   return isObjectType(type) || isInterfaceType(type) || isUnionType(type);
 }
 function assertCompositeType(type) {
-  !isCompositeType(type) ? Object(_jsutils_invariant__WEBPACK_IMPORTED_MODULE_4__["default"])(0, "Expected ".concat(Object(_jsutils_inspect__WEBPACK_IMPORTED_MODULE_3__["default"])(type), " to be a GraphQL composite type.")) : void 0;
+  !isCompositeType(type) ? Object(_jsutils_invariant__WEBPACK_IMPORTED_MODULE_5__["default"])(0, "Expected ".concat(Object(_jsutils_inspect__WEBPACK_IMPORTED_MODULE_4__["default"])(type), " to be a GraphQL composite type.")) : void 0;
   return type;
 }
 /**
@@ -35768,7 +37754,7 @@ function isAbstractType(type) {
   return isInterfaceType(type) || isUnionType(type);
 }
 function assertAbstractType(type) {
-  !isAbstractType(type) ? Object(_jsutils_invariant__WEBPACK_IMPORTED_MODULE_4__["default"])(0, "Expected ".concat(Object(_jsutils_inspect__WEBPACK_IMPORTED_MODULE_3__["default"])(type), " to be a GraphQL abstract type.")) : void 0;
+  !isAbstractType(type) ? Object(_jsutils_invariant__WEBPACK_IMPORTED_MODULE_5__["default"])(0, "Expected ".concat(Object(_jsutils_inspect__WEBPACK_IMPORTED_MODULE_4__["default"])(type), " to be a GraphQL abstract type.")) : void 0;
   return type;
 }
 /**
@@ -35803,7 +37789,7 @@ GraphQLList.prototype.toString = function toString() {
   return '[' + String(this.ofType) + ']';
 };
 
-Object(_jsutils_defineToJSON__WEBPACK_IMPORTED_MODULE_0__["default"])(GraphQLList);
+Object(_jsutils_defineToJSON__WEBPACK_IMPORTED_MODULE_1__["default"])(GraphQLList);
 /**
  * Non-Null Type Wrapper
  *
@@ -35838,7 +37824,7 @@ GraphQLNonNull.prototype.toString = function toString() {
   return String(this.ofType) + '!';
 };
 
-Object(_jsutils_defineToJSON__WEBPACK_IMPORTED_MODULE_0__["default"])(GraphQLNonNull);
+Object(_jsutils_defineToJSON__WEBPACK_IMPORTED_MODULE_1__["default"])(GraphQLNonNull);
 /**
  * These types wrap and modify other types
  */
@@ -35847,7 +37833,7 @@ function isWrappingType(type) {
   return isListType(type) || isNonNullType(type);
 }
 function assertWrappingType(type) {
-  !isWrappingType(type) ? Object(_jsutils_invariant__WEBPACK_IMPORTED_MODULE_4__["default"])(0, "Expected ".concat(Object(_jsutils_inspect__WEBPACK_IMPORTED_MODULE_3__["default"])(type), " to be a GraphQL wrapping type.")) : void 0;
+  !isWrappingType(type) ? Object(_jsutils_invariant__WEBPACK_IMPORTED_MODULE_5__["default"])(0, "Expected ".concat(Object(_jsutils_inspect__WEBPACK_IMPORTED_MODULE_4__["default"])(type), " to be a GraphQL wrapping type.")) : void 0;
   return type;
 }
 /**
@@ -35858,7 +37844,7 @@ function isNullableType(type) {
   return isType(type) && !isNonNullType(type);
 }
 function assertNullableType(type) {
-  !isNullableType(type) ? Object(_jsutils_invariant__WEBPACK_IMPORTED_MODULE_4__["default"])(0, "Expected ".concat(Object(_jsutils_inspect__WEBPACK_IMPORTED_MODULE_3__["default"])(type), " to be a GraphQL nullable type.")) : void 0;
+  !isNullableType(type) ? Object(_jsutils_invariant__WEBPACK_IMPORTED_MODULE_5__["default"])(0, "Expected ".concat(Object(_jsutils_inspect__WEBPACK_IMPORTED_MODULE_4__["default"])(type), " to be a GraphQL nullable type.")) : void 0;
   return type;
 }
 /* eslint-disable no-redeclare */
@@ -35877,7 +37863,7 @@ function isNamedType(type) {
   return isScalarType(type) || isObjectType(type) || isInterfaceType(type) || isUnionType(type) || isEnumType(type) || isInputObjectType(type);
 }
 function assertNamedType(type) {
-  !isNamedType(type) ? Object(_jsutils_invariant__WEBPACK_IMPORTED_MODULE_4__["default"])(0, "Expected ".concat(Object(_jsutils_inspect__WEBPACK_IMPORTED_MODULE_3__["default"])(type), " to be a GraphQL named type.")) : void 0;
+  !isNamedType(type) ? Object(_jsutils_invariant__WEBPACK_IMPORTED_MODULE_5__["default"])(0, "Expected ".concat(Object(_jsutils_inspect__WEBPACK_IMPORTED_MODULE_4__["default"])(type), " to be a GraphQL named type.")) : void 0;
   return type;
 }
 /* eslint-disable no-redeclare */
@@ -35900,6 +37886,7 @@ function getNamedType(type) {
  */
 
 function resolveThunk(thunk) {
+  // $FlowFixMe(>=0.90.0)
   return typeof thunk === 'function' ? thunk() : thunk;
 }
 /**
@@ -35932,20 +37919,6 @@ var GraphQLScalarType =
 /*#__PURE__*/
 function () {
   function GraphQLScalarType(config) {
-    _defineProperty(this, "name", void 0);
-
-    _defineProperty(this, "description", void 0);
-
-    _defineProperty(this, "serialize", void 0);
-
-    _defineProperty(this, "parseValue", void 0);
-
-    _defineProperty(this, "parseLiteral", void 0);
-
-    _defineProperty(this, "astNode", void 0);
-
-    _defineProperty(this, "extensionASTNodes", void 0);
-
     this.name = config.name;
     this.description = config.description;
     this.serialize = config.serialize;
@@ -35954,14 +37927,14 @@ function () {
       return value;
     };
 
-    this.parseLiteral = config.parseLiteral || _utilities_valueFromASTUntyped__WEBPACK_IMPORTED_MODULE_7__["valueFromASTUntyped"];
+    this.parseLiteral = config.parseLiteral || _utilities_valueFromASTUntyped__WEBPACK_IMPORTED_MODULE_9__["valueFromASTUntyped"];
     this.astNode = config.astNode;
     this.extensionASTNodes = config.extensionASTNodes;
-    !(typeof config.name === 'string') ? Object(_jsutils_invariant__WEBPACK_IMPORTED_MODULE_4__["default"])(0, 'Must provide name.') : void 0;
-    !(typeof config.serialize === 'function') ? Object(_jsutils_invariant__WEBPACK_IMPORTED_MODULE_4__["default"])(0, "".concat(this.name, " must provide \"serialize\" function. If this custom Scalar ") + 'is also used as an input type, ensure "parseValue" and "parseLiteral" ' + 'functions are also provided.') : void 0;
+    !(typeof config.name === 'string') ? Object(_jsutils_invariant__WEBPACK_IMPORTED_MODULE_5__["default"])(0, 'Must provide name.') : void 0;
+    !(typeof config.serialize === 'function') ? Object(_jsutils_invariant__WEBPACK_IMPORTED_MODULE_5__["default"])(0, "".concat(this.name, " must provide \"serialize\" function. If this custom Scalar ") + 'is also used as an input type, ensure "parseValue" and "parseLiteral" ' + 'functions are also provided.') : void 0;
 
     if (config.parseValue || config.parseLiteral) {
-      !(typeof config.parseValue === 'function' && typeof config.parseLiteral === 'function') ? Object(_jsutils_invariant__WEBPACK_IMPORTED_MODULE_4__["default"])(0, "".concat(this.name, " must provide both \"parseValue\" and \"parseLiteral\" ") + 'functions.') : void 0;
+      !(typeof config.parseValue === 'function' && typeof config.parseLiteral === 'function') ? Object(_jsutils_invariant__WEBPACK_IMPORTED_MODULE_5__["default"])(0, "".concat(this.name, " must provide both \"parseValue\" and \"parseLiteral\" ") + 'functions.') : void 0;
     }
   }
 
@@ -35974,8 +37947,8 @@ function () {
   return GraphQLScalarType;
 }(); // Conditionally apply `[Symbol.toStringTag]` if `Symbol`s are supported
 
-Object(_jsutils_defineToStringTag__WEBPACK_IMPORTED_MODULE_1__["default"])(GraphQLScalarType);
-Object(_jsutils_defineToJSON__WEBPACK_IMPORTED_MODULE_0__["default"])(GraphQLScalarType);
+Object(_jsutils_defineToStringTag__WEBPACK_IMPORTED_MODULE_2__["default"])(GraphQLScalarType);
+Object(_jsutils_defineToJSON__WEBPACK_IMPORTED_MODULE_1__["default"])(GraphQLScalarType);
 
 /**
  * Object Type Definition
@@ -36018,20 +37991,6 @@ var GraphQLObjectType =
 /*#__PURE__*/
 function () {
   function GraphQLObjectType(config) {
-    _defineProperty(this, "name", void 0);
-
-    _defineProperty(this, "description", void 0);
-
-    _defineProperty(this, "astNode", void 0);
-
-    _defineProperty(this, "extensionASTNodes", void 0);
-
-    _defineProperty(this, "isTypeOf", void 0);
-
-    _defineProperty(this, "_fields", void 0);
-
-    _defineProperty(this, "_interfaces", void 0);
-
     this.name = config.name;
     this.description = config.description;
     this.astNode = config.astNode;
@@ -36039,8 +37998,8 @@ function () {
     this.isTypeOf = config.isTypeOf;
     this._fields = defineFieldMap.bind(undefined, config);
     this._interfaces = defineInterfaces.bind(undefined, config);
-    !(typeof config.name === 'string') ? Object(_jsutils_invariant__WEBPACK_IMPORTED_MODULE_4__["default"])(0, 'Must provide name.') : void 0;
-    !(config.isTypeOf == null || typeof config.isTypeOf === 'function') ? Object(_jsutils_invariant__WEBPACK_IMPORTED_MODULE_4__["default"])(0, "".concat(this.name, " must provide \"isTypeOf\" as a function, ") + "but got: ".concat(Object(_jsutils_inspect__WEBPACK_IMPORTED_MODULE_3__["default"])(config.isTypeOf), ".")) : void 0;
+    !(typeof config.name === 'string') ? Object(_jsutils_invariant__WEBPACK_IMPORTED_MODULE_5__["default"])(0, 'Must provide name.') : void 0;
+    !(config.isTypeOf == null || typeof config.isTypeOf === 'function') ? Object(_jsutils_invariant__WEBPACK_IMPORTED_MODULE_5__["default"])(0, "".concat(this.name, " must provide \"isTypeOf\" as a function, ") + "but got: ".concat(Object(_jsutils_inspect__WEBPACK_IMPORTED_MODULE_4__["default"])(config.isTypeOf), ".")) : void 0;
   }
 
   var _proto2 = GraphQLObjectType.prototype;
@@ -36068,60 +38027,41 @@ function () {
   return GraphQLObjectType;
 }(); // Conditionally apply `[Symbol.toStringTag]` if `Symbol`s are supported
 
-Object(_jsutils_defineToStringTag__WEBPACK_IMPORTED_MODULE_1__["default"])(GraphQLObjectType);
-Object(_jsutils_defineToJSON__WEBPACK_IMPORTED_MODULE_0__["default"])(GraphQLObjectType);
+Object(_jsutils_defineToStringTag__WEBPACK_IMPORTED_MODULE_2__["default"])(GraphQLObjectType);
+Object(_jsutils_defineToJSON__WEBPACK_IMPORTED_MODULE_1__["default"])(GraphQLObjectType);
 
 function defineInterfaces(config) {
   var interfaces = resolveThunk(config.interfaces) || [];
-  !Array.isArray(interfaces) ? Object(_jsutils_invariant__WEBPACK_IMPORTED_MODULE_4__["default"])(0, "".concat(config.name, " interfaces must be an Array or a function which returns ") + 'an Array.') : void 0;
+  !Array.isArray(interfaces) ? Object(_jsutils_invariant__WEBPACK_IMPORTED_MODULE_5__["default"])(0, "".concat(config.name, " interfaces must be an Array or a function which returns ") + 'an Array.') : void 0;
   return interfaces;
 }
 
 function defineFieldMap(config) {
   var fieldMap = resolveThunk(config.fields) || {};
-  !isPlainObj(fieldMap) ? Object(_jsutils_invariant__WEBPACK_IMPORTED_MODULE_4__["default"])(0, "".concat(config.name, " fields must be an object with field names as keys or a ") + 'function which returns such an object.') : void 0;
-  var resultFieldMap = Object.create(null);
-
-  var _arr = Object.keys(fieldMap);
-
-  var _loop = function _loop() {
-    var fieldName = _arr[_i];
-    var fieldConfig = fieldMap[fieldName];
-    !isPlainObj(fieldConfig) ? Object(_jsutils_invariant__WEBPACK_IMPORTED_MODULE_4__["default"])(0, "".concat(config.name, ".").concat(fieldName, " field config must be an object")) : void 0;
-    !!fieldConfig.hasOwnProperty('isDeprecated') ? Object(_jsutils_invariant__WEBPACK_IMPORTED_MODULE_4__["default"])(0, "".concat(config.name, ".").concat(fieldName, " should provide \"deprecationReason\" ") + 'instead of "isDeprecated".') : void 0;
-
-    var field = _objectSpread({}, fieldConfig, {
-      isDeprecated: Boolean(fieldConfig.deprecationReason),
-      name: fieldName
+  !isPlainObj(fieldMap) ? Object(_jsutils_invariant__WEBPACK_IMPORTED_MODULE_5__["default"])(0, "".concat(config.name, " fields must be an object with field names as keys or a ") + 'function which returns such an object.') : void 0;
+  return Object(_jsutils_mapValue__WEBPACK_IMPORTED_MODULE_7__["default"])(fieldMap, function (fieldConfig, fieldName) {
+    !isPlainObj(fieldConfig) ? Object(_jsutils_invariant__WEBPACK_IMPORTED_MODULE_5__["default"])(0, "".concat(config.name, ".").concat(fieldName, " field config must be an object")) : void 0;
+    !!fieldConfig.hasOwnProperty('isDeprecated') ? Object(_jsutils_invariant__WEBPACK_IMPORTED_MODULE_5__["default"])(0, "".concat(config.name, ".").concat(fieldName, " should provide \"deprecationReason\" ") + 'instead of "isDeprecated".') : void 0;
+    !(fieldConfig.resolve == null || typeof fieldConfig.resolve === 'function') ? Object(_jsutils_invariant__WEBPACK_IMPORTED_MODULE_5__["default"])(0, "".concat(config.name, ".").concat(fieldName, " field resolver must be a function if ") + "provided, but got: ".concat(Object(_jsutils_inspect__WEBPACK_IMPORTED_MODULE_4__["default"])(fieldConfig.resolve), ".")) : void 0;
+    var argsConfig = fieldConfig.args || {};
+    !isPlainObj(argsConfig) ? Object(_jsutils_invariant__WEBPACK_IMPORTED_MODULE_5__["default"])(0, "".concat(config.name, ".").concat(fieldName, " args must be an object with argument ") + 'names as keys.') : void 0;
+    var args = Object(_polyfills_objectEntries__WEBPACK_IMPORTED_MODULE_0__["default"])(argsConfig).map(function (_ref) {
+      var argName = _ref[0],
+          arg = _ref[1];
+      return {
+        name: argName,
+        description: arg.description === undefined ? null : arg.description,
+        type: arg.type,
+        defaultValue: arg.defaultValue,
+        astNode: arg.astNode
+      };
     });
-
-    !(field.resolve == null || typeof field.resolve === 'function') ? Object(_jsutils_invariant__WEBPACK_IMPORTED_MODULE_4__["default"])(0, "".concat(config.name, ".").concat(fieldName, " field resolver must be a function if ") + "provided, but got: ".concat(Object(_jsutils_inspect__WEBPACK_IMPORTED_MODULE_3__["default"])(field.resolve), ".")) : void 0;
-    var argsConfig = fieldConfig.args;
-
-    if (!argsConfig) {
-      field.args = [];
-    } else {
-      !isPlainObj(argsConfig) ? Object(_jsutils_invariant__WEBPACK_IMPORTED_MODULE_4__["default"])(0, "".concat(config.name, ".").concat(fieldName, " args must be an object with argument ") + 'names as keys.') : void 0;
-      field.args = Object.keys(argsConfig).map(function (argName) {
-        var arg = argsConfig[argName];
-        return {
-          name: argName,
-          description: arg.description === undefined ? null : arg.description,
-          type: arg.type,
-          defaultValue: arg.defaultValue,
-          astNode: arg.astNode
-        };
-      });
-    }
-
-    resultFieldMap[fieldName] = field;
-  };
-
-  for (var _i = 0; _i < _arr.length; _i++) {
-    _loop();
-  }
-
-  return resultFieldMap;
+    return _objectSpread({}, fieldConfig, {
+      isDeprecated: Boolean(fieldConfig.deprecationReason),
+      name: fieldName,
+      args: args
+    });
+  });
 }
 
 function isPlainObj(obj) {
@@ -36154,26 +38094,14 @@ var GraphQLInterfaceType =
 /*#__PURE__*/
 function () {
   function GraphQLInterfaceType(config) {
-    _defineProperty(this, "name", void 0);
-
-    _defineProperty(this, "description", void 0);
-
-    _defineProperty(this, "astNode", void 0);
-
-    _defineProperty(this, "extensionASTNodes", void 0);
-
-    _defineProperty(this, "resolveType", void 0);
-
-    _defineProperty(this, "_fields", void 0);
-
     this.name = config.name;
     this.description = config.description;
     this.astNode = config.astNode;
     this.extensionASTNodes = config.extensionASTNodes;
     this.resolveType = config.resolveType;
     this._fields = defineFieldMap.bind(undefined, config);
-    !(typeof config.name === 'string') ? Object(_jsutils_invariant__WEBPACK_IMPORTED_MODULE_4__["default"])(0, 'Must provide name.') : void 0;
-    !(config.resolveType == null || typeof config.resolveType === 'function') ? Object(_jsutils_invariant__WEBPACK_IMPORTED_MODULE_4__["default"])(0, "".concat(this.name, " must provide \"resolveType\" as a function, ") + "but got: ".concat(Object(_jsutils_inspect__WEBPACK_IMPORTED_MODULE_3__["default"])(config.resolveType), ".")) : void 0;
+    !(typeof config.name === 'string') ? Object(_jsutils_invariant__WEBPACK_IMPORTED_MODULE_5__["default"])(0, 'Must provide name.') : void 0;
+    !(config.resolveType == null || typeof config.resolveType === 'function') ? Object(_jsutils_invariant__WEBPACK_IMPORTED_MODULE_5__["default"])(0, "".concat(this.name, " must provide \"resolveType\" as a function, ") + "but got: ".concat(Object(_jsutils_inspect__WEBPACK_IMPORTED_MODULE_4__["default"])(config.resolveType), ".")) : void 0;
   }
 
   var _proto3 = GraphQLInterfaceType.prototype;
@@ -36193,8 +38121,8 @@ function () {
   return GraphQLInterfaceType;
 }(); // Conditionally apply `[Symbol.toStringTag]` if `Symbol`s are supported
 
-Object(_jsutils_defineToStringTag__WEBPACK_IMPORTED_MODULE_1__["default"])(GraphQLInterfaceType);
-Object(_jsutils_defineToJSON__WEBPACK_IMPORTED_MODULE_0__["default"])(GraphQLInterfaceType);
+Object(_jsutils_defineToStringTag__WEBPACK_IMPORTED_MODULE_2__["default"])(GraphQLInterfaceType);
+Object(_jsutils_defineToJSON__WEBPACK_IMPORTED_MODULE_1__["default"])(GraphQLInterfaceType);
 
 /**
  * Union Type Definition
@@ -36223,26 +38151,14 @@ var GraphQLUnionType =
 /*#__PURE__*/
 function () {
   function GraphQLUnionType(config) {
-    _defineProperty(this, "name", void 0);
-
-    _defineProperty(this, "description", void 0);
-
-    _defineProperty(this, "astNode", void 0);
-
-    _defineProperty(this, "extensionASTNodes", void 0);
-
-    _defineProperty(this, "resolveType", void 0);
-
-    _defineProperty(this, "_types", void 0);
-
     this.name = config.name;
     this.description = config.description;
     this.astNode = config.astNode;
     this.extensionASTNodes = config.extensionASTNodes;
     this.resolveType = config.resolveType;
     this._types = defineTypes.bind(undefined, config);
-    !(typeof config.name === 'string') ? Object(_jsutils_invariant__WEBPACK_IMPORTED_MODULE_4__["default"])(0, 'Must provide name.') : void 0;
-    !(config.resolveType == null || typeof config.resolveType === 'function') ? Object(_jsutils_invariant__WEBPACK_IMPORTED_MODULE_4__["default"])(0, "".concat(this.name, " must provide \"resolveType\" as a function, ") + "but got: ".concat(Object(_jsutils_inspect__WEBPACK_IMPORTED_MODULE_3__["default"])(config.resolveType), ".")) : void 0;
+    !(typeof config.name === 'string') ? Object(_jsutils_invariant__WEBPACK_IMPORTED_MODULE_5__["default"])(0, 'Must provide name.') : void 0;
+    !(config.resolveType == null || typeof config.resolveType === 'function') ? Object(_jsutils_invariant__WEBPACK_IMPORTED_MODULE_5__["default"])(0, "".concat(this.name, " must provide \"resolveType\" as a function, ") + "but got: ".concat(Object(_jsutils_inspect__WEBPACK_IMPORTED_MODULE_4__["default"])(config.resolveType), ".")) : void 0;
   }
 
   var _proto4 = GraphQLUnionType.prototype;
@@ -36262,12 +38178,12 @@ function () {
   return GraphQLUnionType;
 }(); // Conditionally apply `[Symbol.toStringTag]` if `Symbol`s are supported
 
-Object(_jsutils_defineToStringTag__WEBPACK_IMPORTED_MODULE_1__["default"])(GraphQLUnionType);
-Object(_jsutils_defineToJSON__WEBPACK_IMPORTED_MODULE_0__["default"])(GraphQLUnionType);
+Object(_jsutils_defineToStringTag__WEBPACK_IMPORTED_MODULE_2__["default"])(GraphQLUnionType);
+Object(_jsutils_defineToJSON__WEBPACK_IMPORTED_MODULE_1__["default"])(GraphQLUnionType);
 
 function defineTypes(config) {
   var types = resolveThunk(config.types) || [];
-  !Array.isArray(types) ? Object(_jsutils_invariant__WEBPACK_IMPORTED_MODULE_4__["default"])(0, 'Must provide Array of types or a function which returns ' + "such an array for Union ".concat(config.name, ".")) : void 0;
+  !Array.isArray(types) ? Object(_jsutils_invariant__WEBPACK_IMPORTED_MODULE_5__["default"])(0, 'Must provide Array of types or a function which returns ' + "such an array for Union ".concat(config.name, ".")) : void 0;
   return types;
 }
 
@@ -36300,20 +38216,6 @@ function () {
   function GraphQLEnumType(config
   /* <T> */
   ) {
-    _defineProperty(this, "name", void 0);
-
-    _defineProperty(this, "description", void 0);
-
-    _defineProperty(this, "astNode", void 0);
-
-    _defineProperty(this, "extensionASTNodes", void 0);
-
-    _defineProperty(this, "_values", void 0);
-
-    _defineProperty(this, "_valueLookup", void 0);
-
-    _defineProperty(this, "_nameLookup", void 0);
-
     this.name = config.name;
     this.description = config.description;
     this.astNode = config.astNode;
@@ -36322,10 +38224,10 @@ function () {
     this._valueLookup = new Map(this._values.map(function (enumValue) {
       return [enumValue.value, enumValue];
     }));
-    this._nameLookup = Object(_jsutils_keyMap__WEBPACK_IMPORTED_MODULE_5__["default"])(this._values, function (value) {
+    this._nameLookup = Object(_jsutils_keyMap__WEBPACK_IMPORTED_MODULE_6__["default"])(this._values, function (value) {
       return value.name;
     });
-    !(typeof config.name === 'string') ? Object(_jsutils_invariant__WEBPACK_IMPORTED_MODULE_4__["default"])(0, 'Must provide name.') : void 0;
+    !(typeof config.name === 'string') ? Object(_jsutils_invariant__WEBPACK_IMPORTED_MODULE_5__["default"])(0, 'Must provide name.') : void 0;
   }
 
   var _proto5 = GraphQLEnumType.prototype;
@@ -36364,7 +38266,7 @@ function () {
   /* T */
   {
     // Note: variables will be resolved to a value before calling this function.
-    if (valueNode.kind === _language_kinds__WEBPACK_IMPORTED_MODULE_6__["Kind"].ENUM) {
+    if (valueNode.kind === _language_kinds__WEBPACK_IMPORTED_MODULE_8__["Kind"].ENUM) {
       var enumValue = this.getValue(valueNode.value);
 
       if (enumValue) {
@@ -36380,17 +38282,18 @@ function () {
   return GraphQLEnumType;
 }(); // Conditionally apply `[Symbol.toStringTag]` if `Symbol`s are supported
 
-Object(_jsutils_defineToStringTag__WEBPACK_IMPORTED_MODULE_1__["default"])(GraphQLEnumType);
-Object(_jsutils_defineToJSON__WEBPACK_IMPORTED_MODULE_0__["default"])(GraphQLEnumType);
+Object(_jsutils_defineToStringTag__WEBPACK_IMPORTED_MODULE_2__["default"])(GraphQLEnumType);
+Object(_jsutils_defineToJSON__WEBPACK_IMPORTED_MODULE_1__["default"])(GraphQLEnumType);
 
 function defineEnumValues(type, valueMap
 /* <T> */
 ) {
-  !isPlainObj(valueMap) ? Object(_jsutils_invariant__WEBPACK_IMPORTED_MODULE_4__["default"])(0, "".concat(type.name, " values must be an object with value names as keys.")) : void 0;
-  return Object.keys(valueMap).map(function (valueName) {
-    var value = valueMap[valueName];
-    !isPlainObj(value) ? Object(_jsutils_invariant__WEBPACK_IMPORTED_MODULE_4__["default"])(0, "".concat(type.name, ".").concat(valueName, " must refer to an object with a \"value\" key ") + "representing an internal value but got: ".concat(Object(_jsutils_inspect__WEBPACK_IMPORTED_MODULE_3__["default"])(value), ".")) : void 0;
-    !!value.hasOwnProperty('isDeprecated') ? Object(_jsutils_invariant__WEBPACK_IMPORTED_MODULE_4__["default"])(0, "".concat(type.name, ".").concat(valueName, " should provide \"deprecationReason\" instead ") + 'of "isDeprecated".') : void 0;
+  !isPlainObj(valueMap) ? Object(_jsutils_invariant__WEBPACK_IMPORTED_MODULE_5__["default"])(0, "".concat(type.name, " values must be an object with value names as keys.")) : void 0;
+  return Object(_polyfills_objectEntries__WEBPACK_IMPORTED_MODULE_0__["default"])(valueMap).map(function (_ref2) {
+    var valueName = _ref2[0],
+        value = _ref2[1];
+    !isPlainObj(value) ? Object(_jsutils_invariant__WEBPACK_IMPORTED_MODULE_5__["default"])(0, "".concat(type.name, ".").concat(valueName, " must refer to an object with a \"value\" key ") + "representing an internal value but got: ".concat(Object(_jsutils_inspect__WEBPACK_IMPORTED_MODULE_4__["default"])(value), ".")) : void 0;
+    !!value.hasOwnProperty('isDeprecated') ? Object(_jsutils_invariant__WEBPACK_IMPORTED_MODULE_5__["default"])(0, "".concat(type.name, ".").concat(valueName, " should provide \"deprecationReason\" instead ") + 'of "isDeprecated".') : void 0;
     return {
       name: valueName,
       description: value.description,
@@ -36426,22 +38329,12 @@ var GraphQLInputObjectType =
 /*#__PURE__*/
 function () {
   function GraphQLInputObjectType(config) {
-    _defineProperty(this, "name", void 0);
-
-    _defineProperty(this, "description", void 0);
-
-    _defineProperty(this, "astNode", void 0);
-
-    _defineProperty(this, "extensionASTNodes", void 0);
-
-    _defineProperty(this, "_fields", void 0);
-
     this.name = config.name;
     this.description = config.description;
     this.astNode = config.astNode;
     this.extensionASTNodes = config.extensionASTNodes;
     this._fields = defineInputFieldMap.bind(undefined, config);
-    !(typeof config.name === 'string') ? Object(_jsutils_invariant__WEBPACK_IMPORTED_MODULE_4__["default"])(0, 'Must provide name.') : void 0;
+    !(typeof config.name === 'string') ? Object(_jsutils_invariant__WEBPACK_IMPORTED_MODULE_5__["default"])(0, 'Must provide name.') : void 0;
   }
 
   var _proto6 = GraphQLInputObjectType.prototype;
@@ -36461,28 +38354,18 @@ function () {
   return GraphQLInputObjectType;
 }(); // Conditionally apply `[Symbol.toStringTag]` if `Symbol`s are supported
 
-Object(_jsutils_defineToStringTag__WEBPACK_IMPORTED_MODULE_1__["default"])(GraphQLInputObjectType);
-Object(_jsutils_defineToJSON__WEBPACK_IMPORTED_MODULE_0__["default"])(GraphQLInputObjectType);
+Object(_jsutils_defineToStringTag__WEBPACK_IMPORTED_MODULE_2__["default"])(GraphQLInputObjectType);
+Object(_jsutils_defineToJSON__WEBPACK_IMPORTED_MODULE_1__["default"])(GraphQLInputObjectType);
 
 function defineInputFieldMap(config) {
   var fieldMap = resolveThunk(config.fields) || {};
-  !isPlainObj(fieldMap) ? Object(_jsutils_invariant__WEBPACK_IMPORTED_MODULE_4__["default"])(0, "".concat(config.name, " fields must be an object with field names as keys or a ") + 'function which returns such an object.') : void 0;
-  var resultFieldMap = Object.create(null);
-
-  var _arr2 = Object.keys(fieldMap);
-
-  for (var _i2 = 0; _i2 < _arr2.length; _i2++) {
-    var fieldName = _arr2[_i2];
-
-    var field = _objectSpread({}, fieldMap[fieldName], {
+  !isPlainObj(fieldMap) ? Object(_jsutils_invariant__WEBPACK_IMPORTED_MODULE_5__["default"])(0, "".concat(config.name, " fields must be an object with field names as keys or a ") + 'function which returns such an object.') : void 0;
+  return Object(_jsutils_mapValue__WEBPACK_IMPORTED_MODULE_7__["default"])(fieldMap, function (fieldConfig, fieldName) {
+    !!fieldConfig.hasOwnProperty('resolve') ? Object(_jsutils_invariant__WEBPACK_IMPORTED_MODULE_5__["default"])(0, "".concat(config.name, ".").concat(fieldName, " field has a resolve property, but ") + 'Input Types cannot define resolvers.') : void 0;
+    return _objectSpread({}, fieldConfig, {
       name: fieldName
     });
-
-    !!field.hasOwnProperty('resolve') ? Object(_jsutils_invariant__WEBPACK_IMPORTED_MODULE_4__["default"])(0, "".concat(config.name, ".").concat(fieldName, " field has a resolve property, but ") + 'Input Types cannot define resolvers.') : void 0;
-    resultFieldMap[fieldName] = field;
-  }
-
-  return resultFieldMap;
+  });
 }
 
 function isRequiredInputField(field) {
@@ -36495,12 +38378,13 @@ function isRequiredInputField(field) {
 /*!**************************************************!*\
   !*** ./node_modules/graphql/type/directives.mjs ***!
   \**************************************************/
-/*! exports provided: isDirective, GraphQLDirective, GraphQLIncludeDirective, GraphQLSkipDirective, DEFAULT_DEPRECATION_REASON, GraphQLDeprecatedDirective, specifiedDirectives, isSpecifiedDirective */
+/*! exports provided: isDirective, assertDirective, GraphQLDirective, GraphQLIncludeDirective, GraphQLSkipDirective, DEFAULT_DEPRECATION_REASON, GraphQLDeprecatedDirective, specifiedDirectives, isSpecifiedDirective */
 /***/ (function(__webpack_module__, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "isDirective", function() { return isDirective; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "assertDirective", function() { return assertDirective; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "GraphQLDirective", function() { return GraphQLDirective; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "GraphQLIncludeDirective", function() { return GraphQLIncludeDirective; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "GraphQLSkipDirective", function() { return GraphQLSkipDirective; });
@@ -36508,14 +38392,16 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "GraphQLDeprecatedDirective", function() { return GraphQLDeprecatedDirective; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "specifiedDirectives", function() { return specifiedDirectives; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "isSpecifiedDirective", function() { return isSpecifiedDirective; });
-/* harmony import */ var _definition__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./definition */ "./node_modules/graphql/type/definition.mjs");
-/* harmony import */ var _scalars__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./scalars */ "./node_modules/graphql/type/scalars.mjs");
-/* harmony import */ var _jsutils_defineToStringTag__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../jsutils/defineToStringTag */ "./node_modules/graphql/jsutils/defineToStringTag.mjs");
-/* harmony import */ var _jsutils_defineToJSON__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../jsutils/defineToJSON */ "./node_modules/graphql/jsutils/defineToJSON.mjs");
-/* harmony import */ var _jsutils_instanceOf__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../jsutils/instanceOf */ "./node_modules/graphql/jsutils/instanceOf.mjs");
-/* harmony import */ var _jsutils_invariant__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../jsutils/invariant */ "./node_modules/graphql/jsutils/invariant.mjs");
-/* harmony import */ var _language_directiveLocation__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../language/directiveLocation */ "./node_modules/graphql/language/directiveLocation.mjs");
-function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+/* harmony import */ var _polyfills_objectEntries__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../polyfills/objectEntries */ "./node_modules/graphql/polyfills/objectEntries.mjs");
+/* harmony import */ var _definition__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./definition */ "./node_modules/graphql/type/definition.mjs");
+/* harmony import */ var _scalars__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./scalars */ "./node_modules/graphql/type/scalars.mjs");
+/* harmony import */ var _jsutils_defineToStringTag__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../jsutils/defineToStringTag */ "./node_modules/graphql/jsutils/defineToStringTag.mjs");
+/* harmony import */ var _jsutils_defineToJSON__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../jsutils/defineToJSON */ "./node_modules/graphql/jsutils/defineToJSON.mjs");
+/* harmony import */ var _jsutils_instanceOf__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../jsutils/instanceOf */ "./node_modules/graphql/jsutils/instanceOf.mjs");
+/* harmony import */ var _jsutils_invariant__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../jsutils/invariant */ "./node_modules/graphql/jsutils/invariant.mjs");
+/* harmony import */ var _jsutils_inspect__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../jsutils/inspect */ "./node_modules/graphql/jsutils/inspect.mjs");
+/* harmony import */ var _language_directiveLocation__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ../language/directiveLocation */ "./node_modules/graphql/language/directiveLocation.mjs");
+function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
 /**
  * Copyright (c) 2015-present, Facebook, Inc.
@@ -36523,8 +38409,10 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
  * This source code is licensed under the MIT license found in the
  * LICENSE file in the root directory of this source tree.
  *
- *  strict
+ * 
  */
+
+
 
 
 
@@ -36538,7 +38426,11 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 
 // eslint-disable-next-line no-redeclare
 function isDirective(directive) {
-  return Object(_jsutils_instanceOf__WEBPACK_IMPORTED_MODULE_4__["default"])(directive, GraphQLDirective);
+  return Object(_jsutils_instanceOf__WEBPACK_IMPORTED_MODULE_5__["default"])(directive, GraphQLDirective);
+}
+function assertDirective(directive) {
+  !isDirective(directive) ? Object(_jsutils_invariant__WEBPACK_IMPORTED_MODULE_6__["default"])(0, "Expected ".concat(Object(_jsutils_inspect__WEBPACK_IMPORTED_MODULE_7__["default"])(directive), " to be a GraphQL directive.")) : void 0;
+  return directive;
 }
 /**
  * Directives are used by the GraphQL runtime as a way of modifying execution
@@ -36549,39 +38441,25 @@ var GraphQLDirective =
 /*#__PURE__*/
 function () {
   function GraphQLDirective(config) {
-    _defineProperty(this, "name", void 0);
-
-    _defineProperty(this, "description", void 0);
-
-    _defineProperty(this, "locations", void 0);
-
-    _defineProperty(this, "args", void 0);
-
-    _defineProperty(this, "astNode", void 0);
-
     this.name = config.name;
     this.description = config.description;
     this.locations = config.locations;
     this.astNode = config.astNode;
-    !config.name ? Object(_jsutils_invariant__WEBPACK_IMPORTED_MODULE_5__["default"])(0, 'Directive must be named.') : void 0;
-    !Array.isArray(config.locations) ? Object(_jsutils_invariant__WEBPACK_IMPORTED_MODULE_5__["default"])(0, 'Must provide locations for directive.') : void 0;
-    var args = config.args;
-
-    if (!args) {
-      this.args = [];
-    } else {
-      !!Array.isArray(args) ? Object(_jsutils_invariant__WEBPACK_IMPORTED_MODULE_5__["default"])(0, "@".concat(config.name, " args must be an object with argument names as keys.")) : void 0;
-      this.args = Object.keys(args).map(function (argName) {
-        var arg = args[argName];
-        return {
-          name: argName,
-          description: arg.description === undefined ? null : arg.description,
-          type: arg.type,
-          defaultValue: arg.defaultValue,
-          astNode: arg.astNode
-        };
-      });
-    }
+    !config.name ? Object(_jsutils_invariant__WEBPACK_IMPORTED_MODULE_6__["default"])(0, 'Directive must be named.') : void 0;
+    !Array.isArray(config.locations) ? Object(_jsutils_invariant__WEBPACK_IMPORTED_MODULE_6__["default"])(0, "@".concat(config.name, " locations must be an Array.")) : void 0;
+    var args = config.args || {};
+    !(_typeof(args) === 'object' && !Array.isArray(args)) ? Object(_jsutils_invariant__WEBPACK_IMPORTED_MODULE_6__["default"])(0, "@".concat(config.name, " args must be an object with argument names as keys.")) : void 0;
+    this.args = Object(_polyfills_objectEntries__WEBPACK_IMPORTED_MODULE_0__["default"])(args).map(function (_ref) {
+      var argName = _ref[0],
+          arg = _ref[1];
+      return {
+        name: argName,
+        description: arg.description === undefined ? null : arg.description,
+        type: arg.type,
+        defaultValue: arg.defaultValue,
+        astNode: arg.astNode
+      };
+    });
   }
 
   var _proto = GraphQLDirective.prototype;
@@ -36593,8 +38471,8 @@ function () {
   return GraphQLDirective;
 }(); // Conditionally apply `[Symbol.toStringTag]` if `Symbol`s are supported
 
-Object(_jsutils_defineToStringTag__WEBPACK_IMPORTED_MODULE_2__["default"])(GraphQLDirective);
-Object(_jsutils_defineToJSON__WEBPACK_IMPORTED_MODULE_3__["default"])(GraphQLDirective);
+Object(_jsutils_defineToStringTag__WEBPACK_IMPORTED_MODULE_3__["default"])(GraphQLDirective);
+Object(_jsutils_defineToJSON__WEBPACK_IMPORTED_MODULE_4__["default"])(GraphQLDirective);
 
 /**
  * Used to conditionally include fields or fragments.
@@ -36602,10 +38480,10 @@ Object(_jsutils_defineToJSON__WEBPACK_IMPORTED_MODULE_3__["default"])(GraphQLDir
 var GraphQLIncludeDirective = new GraphQLDirective({
   name: 'include',
   description: 'Directs the executor to include this field or fragment only when ' + 'the `if` argument is true.',
-  locations: [_language_directiveLocation__WEBPACK_IMPORTED_MODULE_6__["DirectiveLocation"].FIELD, _language_directiveLocation__WEBPACK_IMPORTED_MODULE_6__["DirectiveLocation"].FRAGMENT_SPREAD, _language_directiveLocation__WEBPACK_IMPORTED_MODULE_6__["DirectiveLocation"].INLINE_FRAGMENT],
+  locations: [_language_directiveLocation__WEBPACK_IMPORTED_MODULE_8__["DirectiveLocation"].FIELD, _language_directiveLocation__WEBPACK_IMPORTED_MODULE_8__["DirectiveLocation"].FRAGMENT_SPREAD, _language_directiveLocation__WEBPACK_IMPORTED_MODULE_8__["DirectiveLocation"].INLINE_FRAGMENT],
   args: {
     if: {
-      type: Object(_definition__WEBPACK_IMPORTED_MODULE_0__["GraphQLNonNull"])(_scalars__WEBPACK_IMPORTED_MODULE_1__["GraphQLBoolean"]),
+      type: Object(_definition__WEBPACK_IMPORTED_MODULE_1__["GraphQLNonNull"])(_scalars__WEBPACK_IMPORTED_MODULE_2__["GraphQLBoolean"]),
       description: 'Included when true.'
     }
   }
@@ -36617,10 +38495,10 @@ var GraphQLIncludeDirective = new GraphQLDirective({
 var GraphQLSkipDirective = new GraphQLDirective({
   name: 'skip',
   description: 'Directs the executor to skip this field or fragment when the `if` ' + 'argument is true.',
-  locations: [_language_directiveLocation__WEBPACK_IMPORTED_MODULE_6__["DirectiveLocation"].FIELD, _language_directiveLocation__WEBPACK_IMPORTED_MODULE_6__["DirectiveLocation"].FRAGMENT_SPREAD, _language_directiveLocation__WEBPACK_IMPORTED_MODULE_6__["DirectiveLocation"].INLINE_FRAGMENT],
+  locations: [_language_directiveLocation__WEBPACK_IMPORTED_MODULE_8__["DirectiveLocation"].FIELD, _language_directiveLocation__WEBPACK_IMPORTED_MODULE_8__["DirectiveLocation"].FRAGMENT_SPREAD, _language_directiveLocation__WEBPACK_IMPORTED_MODULE_8__["DirectiveLocation"].INLINE_FRAGMENT],
   args: {
     if: {
-      type: Object(_definition__WEBPACK_IMPORTED_MODULE_0__["GraphQLNonNull"])(_scalars__WEBPACK_IMPORTED_MODULE_1__["GraphQLBoolean"]),
+      type: Object(_definition__WEBPACK_IMPORTED_MODULE_1__["GraphQLNonNull"])(_scalars__WEBPACK_IMPORTED_MODULE_2__["GraphQLBoolean"]),
       description: 'Skipped when true.'
     }
   }
@@ -36637,10 +38515,10 @@ var DEFAULT_DEPRECATION_REASON = 'No longer supported';
 var GraphQLDeprecatedDirective = new GraphQLDirective({
   name: 'deprecated',
   description: 'Marks an element of a GraphQL schema as no longer supported.',
-  locations: [_language_directiveLocation__WEBPACK_IMPORTED_MODULE_6__["DirectiveLocation"].FIELD_DEFINITION, _language_directiveLocation__WEBPACK_IMPORTED_MODULE_6__["DirectiveLocation"].ENUM_VALUE],
+  locations: [_language_directiveLocation__WEBPACK_IMPORTED_MODULE_8__["DirectiveLocation"].FIELD_DEFINITION, _language_directiveLocation__WEBPACK_IMPORTED_MODULE_8__["DirectiveLocation"].ENUM_VALUE],
   args: {
     reason: {
-      type: _scalars__WEBPACK_IMPORTED_MODULE_1__["GraphQLString"],
+      type: _scalars__WEBPACK_IMPORTED_MODULE_2__["GraphQLString"],
       description: 'Explains why this element was deprecated, usually also including a ' + 'suggestion for how to access supported similar data. Formatted using ' + 'the Markdown syntax (as specified by [CommonMark](https://commonmark.org/).',
       defaultValue: DEFAULT_DEPRECATION_REASON
     }
@@ -36663,13 +38541,15 @@ function isSpecifiedDirective(directive) {
 /*!*********************************************!*\
   !*** ./node_modules/graphql/type/index.mjs ***!
   \*********************************************/
-/*! exports provided: isSchema, GraphQLSchema, isType, isScalarType, isObjectType, isInterfaceType, isUnionType, isEnumType, isInputObjectType, isListType, isNonNullType, isInputType, isOutputType, isLeafType, isCompositeType, isAbstractType, isWrappingType, isNullableType, isNamedType, isRequiredArgument, isRequiredInputField, assertType, assertScalarType, assertObjectType, assertInterfaceType, assertUnionType, assertEnumType, assertInputObjectType, assertListType, assertNonNullType, assertInputType, assertOutputType, assertLeafType, assertCompositeType, assertAbstractType, assertWrappingType, assertNullableType, assertNamedType, getNullableType, getNamedType, GraphQLScalarType, GraphQLObjectType, GraphQLInterfaceType, GraphQLUnionType, GraphQLEnumType, GraphQLInputObjectType, GraphQLList, GraphQLNonNull, isDirective, GraphQLDirective, isSpecifiedDirective, specifiedDirectives, GraphQLIncludeDirective, GraphQLSkipDirective, GraphQLDeprecatedDirective, DEFAULT_DEPRECATION_REASON, isSpecifiedScalarType, specifiedScalarTypes, GraphQLInt, GraphQLFloat, GraphQLString, GraphQLBoolean, GraphQLID, TypeKind, isIntrospectionType, introspectionTypes, __Schema, __Directive, __DirectiveLocation, __Type, __Field, __InputValue, __EnumValue, __TypeKind, SchemaMetaFieldDef, TypeMetaFieldDef, TypeNameMetaFieldDef, validateSchema, assertValidSchema */
+/*! exports provided: isSchema, assertSchema, GraphQLSchema, isType, isScalarType, isObjectType, isInterfaceType, isUnionType, isEnumType, isInputObjectType, isListType, isNonNullType, isInputType, isOutputType, isLeafType, isCompositeType, isAbstractType, isWrappingType, isNullableType, isNamedType, isRequiredArgument, isRequiredInputField, assertType, assertScalarType, assertObjectType, assertInterfaceType, assertUnionType, assertEnumType, assertInputObjectType, assertListType, assertNonNullType, assertInputType, assertOutputType, assertLeafType, assertCompositeType, assertAbstractType, assertWrappingType, assertNullableType, assertNamedType, getNullableType, getNamedType, GraphQLScalarType, GraphQLObjectType, GraphQLInterfaceType, GraphQLUnionType, GraphQLEnumType, GraphQLInputObjectType, GraphQLList, GraphQLNonNull, isDirective, assertDirective, GraphQLDirective, isSpecifiedDirective, specifiedDirectives, GraphQLIncludeDirective, GraphQLSkipDirective, GraphQLDeprecatedDirective, DEFAULT_DEPRECATION_REASON, isSpecifiedScalarType, specifiedScalarTypes, GraphQLInt, GraphQLFloat, GraphQLString, GraphQLBoolean, GraphQLID, TypeKind, isIntrospectionType, introspectionTypes, __Schema, __Directive, __DirectiveLocation, __Type, __Field, __InputValue, __EnumValue, __TypeKind, SchemaMetaFieldDef, TypeMetaFieldDef, TypeNameMetaFieldDef, validateSchema, assertValidSchema */
 /***/ (function(__webpack_module__, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _schema__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./schema */ "./node_modules/graphql/type/schema.mjs");
 /* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "isSchema", function() { return _schema__WEBPACK_IMPORTED_MODULE_0__["isSchema"]; });
+
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "assertSchema", function() { return _schema__WEBPACK_IMPORTED_MODULE_0__["assertSchema"]; });
 
 /* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "GraphQLSchema", function() { return _schema__WEBPACK_IMPORTED_MODULE_0__["GraphQLSchema"]; });
 
@@ -36769,6 +38649,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _directives__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./directives */ "./node_modules/graphql/type/directives.mjs");
 /* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "isDirective", function() { return _directives__WEBPACK_IMPORTED_MODULE_2__["isDirective"]; });
 
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "assertDirective", function() { return _directives__WEBPACK_IMPORTED_MODULE_2__["assertDirective"]; });
+
 /* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "GraphQLDirective", function() { return _directives__WEBPACK_IMPORTED_MODULE_2__["GraphQLDirective"]; });
 
 /* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "isSpecifiedDirective", function() { return _directives__WEBPACK_IMPORTED_MODULE_2__["isSpecifiedDirective"]; });
@@ -36838,7 +38720,7 @@ __webpack_require__.r(__webpack_exports__);
  * This source code is licensed under the MIT license found in the
  * LICENSE file in the root directory of this source tree.
  *
- *  strict
+ * 
  */
 
 
@@ -36873,8 +38755,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "TypeNameMetaFieldDef", function() { return TypeNameMetaFieldDef; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "introspectionTypes", function() { return introspectionTypes; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "isIntrospectionType", function() { return isIntrospectionType; });
-/* harmony import */ var _jsutils_isInvalid__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../jsutils/isInvalid */ "./node_modules/graphql/jsutils/isInvalid.mjs");
-/* harmony import */ var _jsutils_objectValues__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../jsutils/objectValues */ "./node_modules/graphql/jsutils/objectValues.mjs");
+/* harmony import */ var _polyfills_objectValues__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../polyfills/objectValues */ "./node_modules/graphql/polyfills/objectValues.mjs");
+/* harmony import */ var _jsutils_isInvalid__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../jsutils/isInvalid */ "./node_modules/graphql/jsutils/isInvalid.mjs");
 /* harmony import */ var _utilities_astFromValue__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../utilities/astFromValue */ "./node_modules/graphql/utilities/astFromValue.mjs");
 /* harmony import */ var _language_printer__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../language/printer */ "./node_modules/graphql/language/printer.mjs");
 /* harmony import */ var _definition__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./definition */ "./node_modules/graphql/type/definition.mjs");
@@ -36886,7 +38768,7 @@ __webpack_require__.r(__webpack_exports__);
  * This source code is licensed under the MIT license found in the
  * LICENSE file in the root directory of this source tree.
  *
- *  strict
+ * 
  */
 
 
@@ -36904,7 +38786,7 @@ var __Schema = new _definition__WEBPACK_IMPORTED_MODULE_4__["GraphQLObjectType"]
         description: 'A list of all types supported by this server.',
         type: Object(_definition__WEBPACK_IMPORTED_MODULE_4__["GraphQLNonNull"])(Object(_definition__WEBPACK_IMPORTED_MODULE_4__["GraphQLList"])(Object(_definition__WEBPACK_IMPORTED_MODULE_4__["GraphQLNonNull"])(__Type))),
         resolve: function resolve(schema) {
-          return Object(_jsutils_objectValues__WEBPACK_IMPORTED_MODULE_1__["default"])(schema.getTypeMap());
+          return Object(_polyfills_objectValues__WEBPACK_IMPORTED_MODULE_0__["default"])(schema.getTypeMap());
         }
       },
       queryType: {
@@ -37105,7 +38987,7 @@ var __Type = new _definition__WEBPACK_IMPORTED_MODULE_4__["GraphQLObjectType"]({
           var includeDeprecated = _ref.includeDeprecated;
 
           if (Object(_definition__WEBPACK_IMPORTED_MODULE_4__["isObjectType"])(type) || Object(_definition__WEBPACK_IMPORTED_MODULE_4__["isInterfaceType"])(type)) {
-            var fields = Object(_jsutils_objectValues__WEBPACK_IMPORTED_MODULE_1__["default"])(type.getFields());
+            var fields = Object(_polyfills_objectValues__WEBPACK_IMPORTED_MODULE_0__["default"])(type.getFields());
 
             if (!includeDeprecated) {
               fields = fields.filter(function (field) {
@@ -37165,7 +39047,7 @@ var __Type = new _definition__WEBPACK_IMPORTED_MODULE_4__["GraphQLObjectType"]({
         type: Object(_definition__WEBPACK_IMPORTED_MODULE_4__["GraphQLList"])(Object(_definition__WEBPACK_IMPORTED_MODULE_4__["GraphQLNonNull"])(__InputValue)),
         resolve: function resolve(type) {
           if (Object(_definition__WEBPACK_IMPORTED_MODULE_4__["isInputObjectType"])(type)) {
-            return Object(_jsutils_objectValues__WEBPACK_IMPORTED_MODULE_1__["default"])(type.getFields());
+            return Object(_polyfills_objectValues__WEBPACK_IMPORTED_MODULE_0__["default"])(type.getFields());
           }
         }
       },
@@ -37249,7 +39131,7 @@ var __InputValue = new _definition__WEBPACK_IMPORTED_MODULE_4__["GraphQLObjectTy
         type: _scalars__WEBPACK_IMPORTED_MODULE_5__["GraphQLString"],
         description: 'A GraphQL-formatted string representing the default value for this ' + 'input value.',
         resolve: function resolve(inputVal) {
-          return Object(_jsutils_isInvalid__WEBPACK_IMPORTED_MODULE_0__["default"])(inputVal.defaultValue) ? null : Object(_language_printer__WEBPACK_IMPORTED_MODULE_3__["print"])(Object(_utilities_astFromValue__WEBPACK_IMPORTED_MODULE_2__["astFromValue"])(inputVal.defaultValue, inputVal.type));
+          return Object(_jsutils_isInvalid__WEBPACK_IMPORTED_MODULE_1__["default"])(inputVal.defaultValue) ? null : Object(_language_printer__WEBPACK_IMPORTED_MODULE_3__["print"])(Object(_utilities_astFromValue__WEBPACK_IMPORTED_MODULE_2__["astFromValue"])(inputVal.defaultValue, inputVal.type));
         }
       }
     };
@@ -37399,18 +39281,20 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "GraphQLID", function() { return GraphQLID; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "specifiedScalarTypes", function() { return specifiedScalarTypes; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "isSpecifiedScalarType", function() { return isSpecifiedScalarType; });
-/* harmony import */ var _jsutils_inspect__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../jsutils/inspect */ "./node_modules/graphql/jsutils/inspect.mjs");
-/* harmony import */ var _jsutils_isFinite__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../jsutils/isFinite */ "./node_modules/graphql/jsutils/isFinite.mjs");
-/* harmony import */ var _jsutils_isInteger__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../jsutils/isInteger */ "./node_modules/graphql/jsutils/isInteger.mjs");
+/* harmony import */ var _polyfills_isFinite__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../polyfills/isFinite */ "./node_modules/graphql/polyfills/isFinite.mjs");
+/* harmony import */ var _polyfills_isInteger__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../polyfills/isInteger */ "./node_modules/graphql/polyfills/isInteger.mjs");
+/* harmony import */ var _jsutils_inspect__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../jsutils/inspect */ "./node_modules/graphql/jsutils/inspect.mjs");
 /* harmony import */ var _definition__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./definition */ "./node_modules/graphql/type/definition.mjs");
 /* harmony import */ var _language_kinds__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../language/kinds */ "./node_modules/graphql/language/kinds.mjs");
+function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+
 /**
  * Copyright (c) 2015-present, Facebook, Inc.
  *
  * This source code is licensed under the MIT license found in the
  * LICENSE file in the root directory of this source tree.
  *
- *  strict
+ * 
  */
 
 
@@ -37436,24 +39320,24 @@ function serializeInt(value) {
     num = Number(value);
   }
 
-  if (!Object(_jsutils_isInteger__WEBPACK_IMPORTED_MODULE_2__["default"])(num)) {
-    throw new TypeError("Int cannot represent non-integer value: ".concat(Object(_jsutils_inspect__WEBPACK_IMPORTED_MODULE_0__["default"])(value)));
+  if (!Object(_polyfills_isInteger__WEBPACK_IMPORTED_MODULE_1__["default"])(num)) {
+    throw new TypeError("Int cannot represent non-integer value: ".concat(Object(_jsutils_inspect__WEBPACK_IMPORTED_MODULE_2__["default"])(value)));
   }
 
   if (num > MAX_INT || num < MIN_INT) {
-    throw new TypeError("Int cannot represent non 32-bit signed integer value: ".concat(Object(_jsutils_inspect__WEBPACK_IMPORTED_MODULE_0__["default"])(value)));
+    throw new TypeError("Int cannot represent non 32-bit signed integer value: ".concat(Object(_jsutils_inspect__WEBPACK_IMPORTED_MODULE_2__["default"])(value)));
   }
 
   return num;
 }
 
 function coerceInt(value) {
-  if (!Object(_jsutils_isInteger__WEBPACK_IMPORTED_MODULE_2__["default"])(value)) {
-    throw new TypeError("Int cannot represent non-integer value: ".concat(Object(_jsutils_inspect__WEBPACK_IMPORTED_MODULE_0__["default"])(value)));
+  if (!Object(_polyfills_isInteger__WEBPACK_IMPORTED_MODULE_1__["default"])(value)) {
+    throw new TypeError("Int cannot represent non-integer value: ".concat(Object(_jsutils_inspect__WEBPACK_IMPORTED_MODULE_2__["default"])(value)));
   }
 
   if (value > MAX_INT || value < MIN_INT) {
-    throw new TypeError("Int cannot represent non 32-bit signed integer value: ".concat(Object(_jsutils_inspect__WEBPACK_IMPORTED_MODULE_0__["default"])(value)));
+    throw new TypeError("Int cannot represent non 32-bit signed integer value: ".concat(Object(_jsutils_inspect__WEBPACK_IMPORTED_MODULE_2__["default"])(value)));
   }
 
   return value;
@@ -37488,16 +39372,16 @@ function serializeFloat(value) {
     num = Number(value);
   }
 
-  if (!Object(_jsutils_isFinite__WEBPACK_IMPORTED_MODULE_1__["default"])(num)) {
-    throw new TypeError("Float cannot represent non numeric value: ".concat(Object(_jsutils_inspect__WEBPACK_IMPORTED_MODULE_0__["default"])(value)));
+  if (!Object(_polyfills_isFinite__WEBPACK_IMPORTED_MODULE_0__["default"])(num)) {
+    throw new TypeError("Float cannot represent non numeric value: ".concat(Object(_jsutils_inspect__WEBPACK_IMPORTED_MODULE_2__["default"])(value)));
   }
 
   return num;
 }
 
 function coerceFloat(value) {
-  if (!Object(_jsutils_isFinite__WEBPACK_IMPORTED_MODULE_1__["default"])(value)) {
-    throw new TypeError("Float cannot represent non numeric value: ".concat(Object(_jsutils_inspect__WEBPACK_IMPORTED_MODULE_0__["default"])(value)));
+  if (!Object(_polyfills_isFinite__WEBPACK_IMPORTED_MODULE_0__["default"])(value)) {
+    throw new TypeError("Float cannot represent non numeric value: ".concat(Object(_jsutils_inspect__WEBPACK_IMPORTED_MODULE_2__["default"])(value)));
   }
 
   return value;
@@ -37505,39 +39389,57 @@ function coerceFloat(value) {
 
 var GraphQLFloat = new _definition__WEBPACK_IMPORTED_MODULE_3__["GraphQLScalarType"]({
   name: 'Float',
-  description: 'The `Float` scalar type represents signed double-precision fractional ' + 'values as specified by ' + '[IEEE 754](http://en.wikipedia.org/wiki/IEEE_floating_point). ',
+  description: 'The `Float` scalar type represents signed double-precision fractional ' + 'values as specified by ' + '[IEEE 754](https://en.wikipedia.org/wiki/IEEE_floating_point). ',
   serialize: serializeFloat,
   parseValue: coerceFloat,
   parseLiteral: function parseLiteral(ast) {
     return ast.kind === _language_kinds__WEBPACK_IMPORTED_MODULE_4__["Kind"].FLOAT || ast.kind === _language_kinds__WEBPACK_IMPORTED_MODULE_4__["Kind"].INT ? parseFloat(ast.value) : undefined;
   }
-});
+}); // Support serializing objects with custom valueOf() or toJSON() functions -
+// a common way to represent a complex value which can be represented as
+// a string (ex: MongoDB id objects).
 
-function serializeString(value) {
-  // Support serializing objects with custom valueOf() functions - a common way
-  // to represent an complex value which can be represented as a string
-  // (ex: MongoDB id objects).
-  var result = value && typeof value.valueOf === 'function' ? value.valueOf() : value; // Serialize string, boolean and number values to a string, but do not
+function serializeObject(value) {
+  if (_typeof(value) === 'object' && value !== null) {
+    if (typeof value.valueOf === 'function') {
+      var valueOfResult = value.valueOf();
+
+      if (_typeof(valueOfResult) !== 'object') {
+        return valueOfResult;
+      }
+    }
+
+    if (typeof value.toJSON === 'function') {
+      // $FlowFixMe(>=0.90.0)
+      return value.toJSON();
+    }
+  }
+
+  return value;
+}
+
+function serializeString(rawValue) {
+  var value = serializeObject(rawValue); // Serialize string, boolean and number values to a string, but do not
   // attempt to coerce object, function, symbol, or other types as strings.
 
-  if (typeof result === 'string') {
-    return result;
+  if (typeof value === 'string') {
+    return value;
   }
 
-  if (typeof result === 'boolean') {
-    return result ? 'true' : 'false';
+  if (typeof value === 'boolean') {
+    return value ? 'true' : 'false';
   }
 
-  if (Object(_jsutils_isFinite__WEBPACK_IMPORTED_MODULE_1__["default"])(result)) {
-    return result.toString();
+  if (Object(_polyfills_isFinite__WEBPACK_IMPORTED_MODULE_0__["default"])(value)) {
+    return value.toString();
   }
 
-  throw new TypeError("String cannot represent value: ".concat(Object(_jsutils_inspect__WEBPACK_IMPORTED_MODULE_0__["default"])(value)));
+  throw new TypeError("String cannot represent value: ".concat(Object(_jsutils_inspect__WEBPACK_IMPORTED_MODULE_2__["default"])(rawValue)));
 }
 
 function coerceString(value) {
   if (typeof value !== 'string') {
-    throw new TypeError("String cannot represent a non string value: ".concat(Object(_jsutils_inspect__WEBPACK_IMPORTED_MODULE_0__["default"])(value)));
+    throw new TypeError("String cannot represent a non string value: ".concat(Object(_jsutils_inspect__WEBPACK_IMPORTED_MODULE_2__["default"])(value)));
   }
 
   return value;
@@ -37558,16 +39460,16 @@ function serializeBoolean(value) {
     return value;
   }
 
-  if (Object(_jsutils_isFinite__WEBPACK_IMPORTED_MODULE_1__["default"])(value)) {
+  if (Object(_polyfills_isFinite__WEBPACK_IMPORTED_MODULE_0__["default"])(value)) {
     return value !== 0;
   }
 
-  throw new TypeError("Boolean cannot represent a non boolean value: ".concat(Object(_jsutils_inspect__WEBPACK_IMPORTED_MODULE_0__["default"])(value)));
+  throw new TypeError("Boolean cannot represent a non boolean value: ".concat(Object(_jsutils_inspect__WEBPACK_IMPORTED_MODULE_2__["default"])(value)));
 }
 
 function coerceBoolean(value) {
   if (typeof value !== 'boolean') {
-    throw new TypeError("Boolean cannot represent a non boolean value: ".concat(Object(_jsutils_inspect__WEBPACK_IMPORTED_MODULE_0__["default"])(value)));
+    throw new TypeError("Boolean cannot represent a non boolean value: ".concat(Object(_jsutils_inspect__WEBPACK_IMPORTED_MODULE_2__["default"])(value)));
   }
 
   return value;
@@ -37583,20 +39485,18 @@ var GraphQLBoolean = new _definition__WEBPACK_IMPORTED_MODULE_3__["GraphQLScalar
   }
 });
 
-function serializeID(value) {
-  // Support serializing objects with custom valueOf() functions - a common way
-  // to represent an object identifier (ex. MongoDB).
-  var result = value && typeof value.valueOf === 'function' ? value.valueOf() : value;
+function serializeID(rawValue) {
+  var value = serializeObject(rawValue);
 
-  if (typeof result === 'string') {
-    return result;
+  if (typeof value === 'string') {
+    return value;
   }
 
-  if (Object(_jsutils_isInteger__WEBPACK_IMPORTED_MODULE_2__["default"])(result)) {
-    return String(result);
+  if (Object(_polyfills_isInteger__WEBPACK_IMPORTED_MODULE_1__["default"])(value)) {
+    return String(value);
   }
 
-  throw new TypeError("ID cannot represent value: ".concat(Object(_jsutils_inspect__WEBPACK_IMPORTED_MODULE_0__["default"])(value)));
+  throw new TypeError("ID cannot represent value: ".concat(Object(_jsutils_inspect__WEBPACK_IMPORTED_MODULE_2__["default"])(rawValue)));
 }
 
 function coerceID(value) {
@@ -37604,11 +39504,11 @@ function coerceID(value) {
     return value;
   }
 
-  if (Object(_jsutils_isInteger__WEBPACK_IMPORTED_MODULE_2__["default"])(value)) {
+  if (Object(_polyfills_isInteger__WEBPACK_IMPORTED_MODULE_1__["default"])(value)) {
     return value.toString();
   }
 
-  throw new TypeError("ID cannot represent value: ".concat(Object(_jsutils_inspect__WEBPACK_IMPORTED_MODULE_0__["default"])(value)));
+  throw new TypeError("ID cannot represent value: ".concat(Object(_jsutils_inspect__WEBPACK_IMPORTED_MODULE_2__["default"])(value)));
 }
 
 var GraphQLID = new _definition__WEBPACK_IMPORTED_MODULE_3__["GraphQLScalarType"]({
@@ -37633,25 +39533,24 @@ function isSpecifiedScalarType(type) {
 /*!**********************************************!*\
   !*** ./node_modules/graphql/type/schema.mjs ***!
   \**********************************************/
-/*! exports provided: isSchema, GraphQLSchema */
+/*! exports provided: isSchema, assertSchema, GraphQLSchema */
 /***/ (function(__webpack_module__, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "isSchema", function() { return isSchema; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "assertSchema", function() { return assertSchema; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "GraphQLSchema", function() { return GraphQLSchema; });
-/* harmony import */ var _definition__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./definition */ "./node_modules/graphql/type/definition.mjs");
-/* harmony import */ var _directives__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./directives */ "./node_modules/graphql/type/directives.mjs");
-/* harmony import */ var _jsutils_inspect__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../jsutils/inspect */ "./node_modules/graphql/jsutils/inspect.mjs");
-/* harmony import */ var _introspection__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./introspection */ "./node_modules/graphql/type/introspection.mjs");
-/* harmony import */ var _jsutils_defineToStringTag__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../jsutils/defineToStringTag */ "./node_modules/graphql/jsutils/defineToStringTag.mjs");
-/* harmony import */ var _jsutils_find__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../jsutils/find */ "./node_modules/graphql/jsutils/find.mjs");
-/* harmony import */ var _jsutils_instanceOf__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../jsutils/instanceOf */ "./node_modules/graphql/jsutils/instanceOf.mjs");
-/* harmony import */ var _jsutils_invariant__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../jsutils/invariant */ "./node_modules/graphql/jsutils/invariant.mjs");
-/* harmony import */ var _jsutils_objectValues__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ../jsutils/objectValues */ "./node_modules/graphql/jsutils/objectValues.mjs");
+/* harmony import */ var _polyfills_find__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../polyfills/find */ "./node_modules/graphql/polyfills/find.mjs");
+/* harmony import */ var _polyfills_objectValues__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../polyfills/objectValues */ "./node_modules/graphql/polyfills/objectValues.mjs");
+/* harmony import */ var _definition__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./definition */ "./node_modules/graphql/type/definition.mjs");
+/* harmony import */ var _directives__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./directives */ "./node_modules/graphql/type/directives.mjs");
+/* harmony import */ var _jsutils_inspect__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../jsutils/inspect */ "./node_modules/graphql/jsutils/inspect.mjs");
+/* harmony import */ var _introspection__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./introspection */ "./node_modules/graphql/type/introspection.mjs");
+/* harmony import */ var _jsutils_defineToStringTag__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../jsutils/defineToStringTag */ "./node_modules/graphql/jsutils/defineToStringTag.mjs");
+/* harmony import */ var _jsutils_instanceOf__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../jsutils/instanceOf */ "./node_modules/graphql/jsutils/instanceOf.mjs");
+/* harmony import */ var _jsutils_invariant__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ../jsutils/invariant */ "./node_modules/graphql/jsutils/invariant.mjs");
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
-
-function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
 /**
  * Copyright (c) 2015-present, Facebook, Inc.
@@ -37659,7 +39558,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
  * This source code is licensed under the MIT license found in the
  * LICENSE file in the root directory of this source tree.
  *
- *  strict
+ * 
  */
 
 
@@ -37672,7 +39571,11 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 
 // eslint-disable-next-line no-redeclare
 function isSchema(schema) {
-  return Object(_jsutils_instanceOf__WEBPACK_IMPORTED_MODULE_6__["default"])(schema, GraphQLSchema);
+  return Object(_jsutils_instanceOf__WEBPACK_IMPORTED_MODULE_7__["default"])(schema, GraphQLSchema);
+}
+function assertSchema(schema) {
+  !isSchema(schema) ? Object(_jsutils_invariant__WEBPACK_IMPORTED_MODULE_8__["default"])(0, "Expected ".concat(Object(_jsutils_inspect__WEBPACK_IMPORTED_MODULE_4__["default"])(schema), " to be a GraphQL schema.")) : void 0;
+  return schema;
 }
 /**
  * Schema Definition
@@ -37707,39 +39610,18 @@ function () {
   // Used as a cache for validateSchema().
   // Referenced by validateSchema().
   function GraphQLSchema(config) {
-    _defineProperty(this, "astNode", void 0);
-
-    _defineProperty(this, "extensionASTNodes", void 0);
-
-    _defineProperty(this, "_queryType", void 0);
-
-    _defineProperty(this, "_mutationType", void 0);
-
-    _defineProperty(this, "_subscriptionType", void 0);
-
-    _defineProperty(this, "_directives", void 0);
-
-    _defineProperty(this, "_typeMap", void 0);
-
-    _defineProperty(this, "_implementations", void 0);
-
-    _defineProperty(this, "_possibleTypeMap", void 0);
-
-    _defineProperty(this, "__validationErrors", void 0);
-
-    _defineProperty(this, "__allowedLegacyNames", void 0);
-
     // If this schema was built from a source known to be valid, then it may be
     // marked with assumeValid to avoid an additional type system validation.
     if (config && config.assumeValid) {
       this.__validationErrors = [];
     } else {
-      // Otherwise check for common mistakes during construction to produce
+      this.__validationErrors = undefined; // Otherwise check for common mistakes during construction to produce
       // clear and early error messages.
-      !(_typeof(config) === 'object') ? Object(_jsutils_invariant__WEBPACK_IMPORTED_MODULE_7__["default"])(0, 'Must provide configuration object.') : void 0;
-      !(!config.types || Array.isArray(config.types)) ? Object(_jsutils_invariant__WEBPACK_IMPORTED_MODULE_7__["default"])(0, "\"types\" must be Array if provided but got: ".concat(Object(_jsutils_inspect__WEBPACK_IMPORTED_MODULE_2__["default"])(config.types), ".")) : void 0;
-      !(!config.directives || Array.isArray(config.directives)) ? Object(_jsutils_invariant__WEBPACK_IMPORTED_MODULE_7__["default"])(0, '"directives" must be Array if provided but got: ' + "".concat(Object(_jsutils_inspect__WEBPACK_IMPORTED_MODULE_2__["default"])(config.directives), ".")) : void 0;
-      !(!config.allowedLegacyNames || Array.isArray(config.allowedLegacyNames)) ? Object(_jsutils_invariant__WEBPACK_IMPORTED_MODULE_7__["default"])(0, '"allowedLegacyNames" must be Array if provided but got: ' + "".concat(Object(_jsutils_inspect__WEBPACK_IMPORTED_MODULE_2__["default"])(config.allowedLegacyNames), ".")) : void 0;
+
+      !(_typeof(config) === 'object') ? Object(_jsutils_invariant__WEBPACK_IMPORTED_MODULE_8__["default"])(0, 'Must provide configuration object.') : void 0;
+      !(!config.types || Array.isArray(config.types)) ? Object(_jsutils_invariant__WEBPACK_IMPORTED_MODULE_8__["default"])(0, "\"types\" must be Array if provided but got: ".concat(Object(_jsutils_inspect__WEBPACK_IMPORTED_MODULE_4__["default"])(config.types), ".")) : void 0;
+      !(!config.directives || Array.isArray(config.directives)) ? Object(_jsutils_invariant__WEBPACK_IMPORTED_MODULE_8__["default"])(0, '"directives" must be Array if provided but got: ' + "".concat(Object(_jsutils_inspect__WEBPACK_IMPORTED_MODULE_4__["default"])(config.directives), ".")) : void 0;
+      !(!config.allowedLegacyNames || Array.isArray(config.allowedLegacyNames)) ? Object(_jsutils_invariant__WEBPACK_IMPORTED_MODULE_8__["default"])(0, '"allowedLegacyNames" must be Array if provided but got: ' + "".concat(Object(_jsutils_inspect__WEBPACK_IMPORTED_MODULE_4__["default"])(config.allowedLegacyNames), ".")) : void 0;
     }
 
     this.__allowedLegacyNames = config.allowedLegacyNames || [];
@@ -37747,11 +39629,11 @@ function () {
     this._mutationType = config.mutation;
     this._subscriptionType = config.subscription; // Provide specified directives (e.g. @include and @skip) by default.
 
-    this._directives = config.directives || _directives__WEBPACK_IMPORTED_MODULE_1__["specifiedDirectives"];
+    this._directives = config.directives || _directives__WEBPACK_IMPORTED_MODULE_3__["specifiedDirectives"];
     this.astNode = config.astNode;
     this.extensionASTNodes = config.extensionASTNodes; // Build type map now to detect any errors within this schema.
 
-    var initialTypes = [this.getQueryType(), this.getMutationType(), this.getSubscriptionType(), _introspection__WEBPACK_IMPORTED_MODULE_3__["__Schema"]];
+    var initialTypes = [this.getQueryType(), this.getMutationType(), this.getSubscriptionType(), _introspection__WEBPACK_IMPORTED_MODULE_5__["__Schema"]];
     var types = config.types;
 
     if (types) {
@@ -37765,51 +39647,67 @@ function () {
 
     typeMap = this._directives.reduce(typeMapDirectiveReducer, typeMap); // Storing the resulting map for reference by the schema.
 
-    this._typeMap = typeMap; // Keep track of all implementations by interface name.
+    this._typeMap = typeMap;
+    this._possibleTypeMap = Object.create(null); // Keep track of all implementations by interface name.
 
     this._implementations = Object.create(null);
+    var _iteratorNormalCompletion = true;
+    var _didIteratorError = false;
+    var _iteratorError = undefined;
 
-    var _arr = Object.keys(this._typeMap);
+    try {
+      for (var _iterator = Object(_polyfills_objectValues__WEBPACK_IMPORTED_MODULE_1__["default"])(this._typeMap)[Symbol.iterator](), _step; !(_iteratorNormalCompletion = (_step = _iterator.next()).done); _iteratorNormalCompletion = true) {
+        var type = _step.value;
 
-    for (var _i = 0; _i < _arr.length; _i++) {
-      var typeName = _arr[_i];
-      var type = this._typeMap[typeName];
+        if (Object(_definition__WEBPACK_IMPORTED_MODULE_2__["isObjectType"])(type)) {
+          var _iteratorNormalCompletion2 = true;
+          var _didIteratorError2 = false;
+          var _iteratorError2 = undefined;
 
-      if (Object(_definition__WEBPACK_IMPORTED_MODULE_0__["isObjectType"])(type)) {
-        var _iteratorNormalCompletion = true;
-        var _didIteratorError = false;
-        var _iteratorError = undefined;
+          try {
+            for (var _iterator2 = type.getInterfaces()[Symbol.iterator](), _step2; !(_iteratorNormalCompletion2 = (_step2 = _iterator2.next()).done); _iteratorNormalCompletion2 = true) {
+              var iface = _step2.value;
 
-        try {
-          for (var _iterator = type.getInterfaces()[Symbol.iterator](), _step; !(_iteratorNormalCompletion = (_step = _iterator.next()).done); _iteratorNormalCompletion = true) {
-            var iface = _step.value;
+              if (Object(_definition__WEBPACK_IMPORTED_MODULE_2__["isInterfaceType"])(iface)) {
+                var impls = this._implementations[iface.name];
 
-            if (Object(_definition__WEBPACK_IMPORTED_MODULE_0__["isInterfaceType"])(iface)) {
-              var impls = this._implementations[iface.name];
-
-              if (impls) {
-                impls.push(type);
-              } else {
-                this._implementations[iface.name] = [type];
+                if (impls) {
+                  impls.push(type);
+                } else {
+                  this._implementations[iface.name] = [type];
+                }
+              }
+            }
+          } catch (err) {
+            _didIteratorError2 = true;
+            _iteratorError2 = err;
+          } finally {
+            try {
+              if (!_iteratorNormalCompletion2 && _iterator2.return != null) {
+                _iterator2.return();
+              }
+            } finally {
+              if (_didIteratorError2) {
+                throw _iteratorError2;
               }
             }
           }
-        } catch (err) {
-          _didIteratorError = true;
-          _iteratorError = err;
-        } finally {
-          try {
-            if (!_iteratorNormalCompletion && _iterator.return != null) {
-              _iterator.return();
-            }
-          } finally {
-            if (_didIteratorError) {
-              throw _iteratorError;
-            }
-          }
+        } else if (Object(_definition__WEBPACK_IMPORTED_MODULE_2__["isAbstractType"])(type) && !this._implementations[type.name]) {
+          this._implementations[type.name] = [];
         }
-      } else if (Object(_definition__WEBPACK_IMPORTED_MODULE_0__["isAbstractType"])(type) && !this._implementations[type.name]) {
-        this._implementations[type.name] = [];
+      }
+    } catch (err) {
+      _didIteratorError = true;
+      _iteratorError = err;
+    } finally {
+      try {
+        if (!_iteratorNormalCompletion && _iterator.return != null) {
+          _iterator.return();
+        }
+      } finally {
+        if (_didIteratorError) {
+          throw _iteratorError;
+        }
       }
     }
   }
@@ -37837,7 +39735,7 @@ function () {
   };
 
   _proto.getPossibleTypes = function getPossibleTypes(abstractType) {
-    if (Object(_definition__WEBPACK_IMPORTED_MODULE_0__["isUnionType"])(abstractType)) {
+    if (Object(_definition__WEBPACK_IMPORTED_MODULE_2__["isUnionType"])(abstractType)) {
       return abstractType.getTypes();
     }
 
@@ -37846,10 +39744,6 @@ function () {
 
   _proto.isPossibleType = function isPossibleType(abstractType, possibleType) {
     var possibleTypeMap = this._possibleTypeMap;
-
-    if (!possibleTypeMap) {
-      this._possibleTypeMap = possibleTypeMap = Object.create(null);
-    }
 
     if (!possibleTypeMap[abstractType.name]) {
       var possibleTypes = this.getPossibleTypes(abstractType);
@@ -37866,7 +39760,7 @@ function () {
   };
 
   _proto.getDirective = function getDirective(name) {
-    return Object(_jsutils_find__WEBPACK_IMPORTED_MODULE_5__["default"])(this.getDirectives(), function (directive) {
+    return Object(_polyfills_find__WEBPACK_IMPORTED_MODULE_0__["default"])(this.getDirectives(), function (directive) {
       return directive.name === name;
     });
   };
@@ -37874,41 +39768,41 @@ function () {
   return GraphQLSchema;
 }(); // Conditionally apply `[Symbol.toStringTag]` if `Symbol`s are supported
 
-Object(_jsutils_defineToStringTag__WEBPACK_IMPORTED_MODULE_4__["default"])(GraphQLSchema);
+Object(_jsutils_defineToStringTag__WEBPACK_IMPORTED_MODULE_6__["default"])(GraphQLSchema);
 
 function typeMapReducer(map, type) {
   if (!type) {
     return map;
   }
 
-  if (Object(_definition__WEBPACK_IMPORTED_MODULE_0__["isWrappingType"])(type)) {
+  if (Object(_definition__WEBPACK_IMPORTED_MODULE_2__["isWrappingType"])(type)) {
     return typeMapReducer(map, type.ofType);
   }
 
   if (map[type.name]) {
-    !(map[type.name] === type) ? Object(_jsutils_invariant__WEBPACK_IMPORTED_MODULE_7__["default"])(0, 'Schema must contain unique named types but contains multiple ' + "types named \"".concat(type.name, "\".")) : void 0;
+    !(map[type.name] === type) ? Object(_jsutils_invariant__WEBPACK_IMPORTED_MODULE_8__["default"])(0, 'Schema must contain unique named types but contains multiple ' + "types named \"".concat(type.name, "\".")) : void 0;
     return map;
   }
 
   map[type.name] = type;
   var reducedMap = map;
 
-  if (Object(_definition__WEBPACK_IMPORTED_MODULE_0__["isUnionType"])(type)) {
+  if (Object(_definition__WEBPACK_IMPORTED_MODULE_2__["isUnionType"])(type)) {
     reducedMap = type.getTypes().reduce(typeMapReducer, reducedMap);
   }
 
-  if (Object(_definition__WEBPACK_IMPORTED_MODULE_0__["isObjectType"])(type)) {
+  if (Object(_definition__WEBPACK_IMPORTED_MODULE_2__["isObjectType"])(type)) {
     reducedMap = type.getInterfaces().reduce(typeMapReducer, reducedMap);
   }
 
-  if (Object(_definition__WEBPACK_IMPORTED_MODULE_0__["isObjectType"])(type) || Object(_definition__WEBPACK_IMPORTED_MODULE_0__["isInterfaceType"])(type)) {
-    var _iteratorNormalCompletion2 = true;
-    var _didIteratorError2 = false;
-    var _iteratorError2 = undefined;
+  if (Object(_definition__WEBPACK_IMPORTED_MODULE_2__["isObjectType"])(type) || Object(_definition__WEBPACK_IMPORTED_MODULE_2__["isInterfaceType"])(type)) {
+    var _iteratorNormalCompletion3 = true;
+    var _didIteratorError3 = false;
+    var _iteratorError3 = undefined;
 
     try {
-      for (var _iterator2 = Object(_jsutils_objectValues__WEBPACK_IMPORTED_MODULE_8__["default"])(type.getFields())[Symbol.iterator](), _step2; !(_iteratorNormalCompletion2 = (_step2 = _iterator2.next()).done); _iteratorNormalCompletion2 = true) {
-        var field = _step2.value;
+      for (var _iterator3 = Object(_polyfills_objectValues__WEBPACK_IMPORTED_MODULE_1__["default"])(type.getFields())[Symbol.iterator](), _step3; !(_iteratorNormalCompletion3 = (_step3 = _iterator3.next()).done); _iteratorNormalCompletion3 = true) {
+        var field = _step3.value;
 
         if (field.args) {
           var fieldArgTypes = field.args.map(function (arg) {
@@ -37918,32 +39812,6 @@ function typeMapReducer(map, type) {
         }
 
         reducedMap = typeMapReducer(reducedMap, field.type);
-      }
-    } catch (err) {
-      _didIteratorError2 = true;
-      _iteratorError2 = err;
-    } finally {
-      try {
-        if (!_iteratorNormalCompletion2 && _iterator2.return != null) {
-          _iterator2.return();
-        }
-      } finally {
-        if (_didIteratorError2) {
-          throw _iteratorError2;
-        }
-      }
-    }
-  }
-
-  if (Object(_definition__WEBPACK_IMPORTED_MODULE_0__["isInputObjectType"])(type)) {
-    var _iteratorNormalCompletion3 = true;
-    var _didIteratorError3 = false;
-    var _iteratorError3 = undefined;
-
-    try {
-      for (var _iterator3 = Object(_jsutils_objectValues__WEBPACK_IMPORTED_MODULE_8__["default"])(type.getFields())[Symbol.iterator](), _step3; !(_iteratorNormalCompletion3 = (_step3 = _iterator3.next()).done); _iteratorNormalCompletion3 = true) {
-        var _field = _step3.value;
-        reducedMap = typeMapReducer(reducedMap, _field.type);
       }
     } catch (err) {
       _didIteratorError3 = true;
@@ -37961,12 +39829,38 @@ function typeMapReducer(map, type) {
     }
   }
 
+  if (Object(_definition__WEBPACK_IMPORTED_MODULE_2__["isInputObjectType"])(type)) {
+    var _iteratorNormalCompletion4 = true;
+    var _didIteratorError4 = false;
+    var _iteratorError4 = undefined;
+
+    try {
+      for (var _iterator4 = Object(_polyfills_objectValues__WEBPACK_IMPORTED_MODULE_1__["default"])(type.getFields())[Symbol.iterator](), _step4; !(_iteratorNormalCompletion4 = (_step4 = _iterator4.next()).done); _iteratorNormalCompletion4 = true) {
+        var _field = _step4.value;
+        reducedMap = typeMapReducer(reducedMap, _field.type);
+      }
+    } catch (err) {
+      _didIteratorError4 = true;
+      _iteratorError4 = err;
+    } finally {
+      try {
+        if (!_iteratorNormalCompletion4 && _iterator4.return != null) {
+          _iterator4.return();
+        }
+      } finally {
+        if (_didIteratorError4) {
+          throw _iteratorError4;
+        }
+      }
+    }
+  }
+
   return reducedMap;
 }
 
 function typeMapDirectiveReducer(map, directive) {
   // Directives are not validated until validateSchema() is called.
-  if (!Object(_directives__WEBPACK_IMPORTED_MODULE_1__["isDirective"])(directive)) {
+  if (!Object(_directives__WEBPACK_IMPORTED_MODULE_3__["isDirective"])(directive)) {
     return map;
   }
 
@@ -37988,26 +39882,24 @@ function typeMapDirectiveReducer(map, directive) {
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "validateSchema", function() { return validateSchema; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "assertValidSchema", function() { return assertValidSchema; });
-/* harmony import */ var _definition__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./definition */ "./node_modules/graphql/type/definition.mjs");
-/* harmony import */ var _directives__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./directives */ "./node_modules/graphql/type/directives.mjs");
-/* harmony import */ var _introspection__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./introspection */ "./node_modules/graphql/type/introspection.mjs");
-/* harmony import */ var _schema__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./schema */ "./node_modules/graphql/type/schema.mjs");
-/* harmony import */ var _jsutils_inspect__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../jsutils/inspect */ "./node_modules/graphql/jsutils/inspect.mjs");
-/* harmony import */ var _jsutils_find__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../jsutils/find */ "./node_modules/graphql/jsutils/find.mjs");
-/* harmony import */ var _jsutils_invariant__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../jsutils/invariant */ "./node_modules/graphql/jsutils/invariant.mjs");
-/* harmony import */ var _jsutils_objectValues__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../jsutils/objectValues */ "./node_modules/graphql/jsutils/objectValues.mjs");
+/* harmony import */ var _polyfills_find__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../polyfills/find */ "./node_modules/graphql/polyfills/find.mjs");
+/* harmony import */ var _polyfills_objectValues__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../polyfills/objectValues */ "./node_modules/graphql/polyfills/objectValues.mjs");
+/* harmony import */ var _polyfills_objectEntries__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../polyfills/objectEntries */ "./node_modules/graphql/polyfills/objectEntries.mjs");
+/* harmony import */ var _definition__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./definition */ "./node_modules/graphql/type/definition.mjs");
+/* harmony import */ var _directives__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./directives */ "./node_modules/graphql/type/directives.mjs");
+/* harmony import */ var _introspection__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./introspection */ "./node_modules/graphql/type/introspection.mjs");
+/* harmony import */ var _schema__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./schema */ "./node_modules/graphql/type/schema.mjs");
+/* harmony import */ var _jsutils_inspect__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../jsutils/inspect */ "./node_modules/graphql/jsutils/inspect.mjs");
 /* harmony import */ var _error_GraphQLError__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ../error/GraphQLError */ "./node_modules/graphql/error/GraphQLError.mjs");
 /* harmony import */ var _utilities_assertValidName__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ../utilities/assertValidName */ "./node_modules/graphql/utilities/assertValidName.mjs");
 /* harmony import */ var _utilities_typeComparators__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ../utilities/typeComparators */ "./node_modules/graphql/utilities/typeComparators.mjs");
-function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
-
 /**
  * Copyright (c) 2015-present, Facebook, Inc.
  *
  * This source code is licensed under the MIT license found in the
  * LICENSE file in the root directory of this source tree.
  *
- *  strict
+ * 
  */
 
 
@@ -38030,7 +39922,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 
 function validateSchema(schema) {
   // First check to ensure the provided value is in fact a GraphQLSchema.
-  !Object(_schema__WEBPACK_IMPORTED_MODULE_3__["isSchema"])(schema) ? Object(_jsutils_invariant__WEBPACK_IMPORTED_MODULE_6__["default"])(0, "Expected ".concat(Object(_jsutils_inspect__WEBPACK_IMPORTED_MODULE_4__["default"])(schema), " to be a GraphQL schema.")) : void 0; // If this Schema has already been validated, return the previous results.
+  Object(_schema__WEBPACK_IMPORTED_MODULE_6__["assertSchema"])(schema); // If this Schema has already been validated, return the previous results.
 
   if (schema.__validationErrors) {
     return schema.__validationErrors;
@@ -38066,10 +39958,6 @@ var SchemaValidationContext =
 /*#__PURE__*/
 function () {
   function SchemaValidationContext(schema) {
-    _defineProperty(this, "_errors", void 0);
-
-    _defineProperty(this, "schema", void 0);
-
     this._errors = [];
     this.schema = schema;
   }
@@ -38099,20 +39987,20 @@ function validateRootTypes(context) {
 
   if (!queryType) {
     context.reportError("Query root type must be provided.", schema.astNode);
-  } else if (!Object(_definition__WEBPACK_IMPORTED_MODULE_0__["isObjectType"])(queryType)) {
-    context.reportError("Query root type must be Object type, it cannot be ".concat(Object(_jsutils_inspect__WEBPACK_IMPORTED_MODULE_4__["default"])(queryType), "."), getOperationTypeNode(schema, queryType, 'query'));
+  } else if (!Object(_definition__WEBPACK_IMPORTED_MODULE_3__["isObjectType"])(queryType)) {
+    context.reportError("Query root type must be Object type, it cannot be ".concat(Object(_jsutils_inspect__WEBPACK_IMPORTED_MODULE_7__["default"])(queryType), "."), getOperationTypeNode(schema, queryType, 'query'));
   }
 
   var mutationType = schema.getMutationType();
 
-  if (mutationType && !Object(_definition__WEBPACK_IMPORTED_MODULE_0__["isObjectType"])(mutationType)) {
-    context.reportError('Mutation root type must be Object type if provided, it cannot be ' + "".concat(Object(_jsutils_inspect__WEBPACK_IMPORTED_MODULE_4__["default"])(mutationType), "."), getOperationTypeNode(schema, mutationType, 'mutation'));
+  if (mutationType && !Object(_definition__WEBPACK_IMPORTED_MODULE_3__["isObjectType"])(mutationType)) {
+    context.reportError('Mutation root type must be Object type if provided, it cannot be ' + "".concat(Object(_jsutils_inspect__WEBPACK_IMPORTED_MODULE_7__["default"])(mutationType), "."), getOperationTypeNode(schema, mutationType, 'mutation'));
   }
 
   var subscriptionType = schema.getSubscriptionType();
 
-  if (subscriptionType && !Object(_definition__WEBPACK_IMPORTED_MODULE_0__["isObjectType"])(subscriptionType)) {
-    context.reportError('Subscription root type must be Object type if provided, it cannot be ' + "".concat(Object(_jsutils_inspect__WEBPACK_IMPORTED_MODULE_4__["default"])(subscriptionType), "."), getOperationTypeNode(schema, subscriptionType, 'subscription'));
+  if (subscriptionType && !Object(_definition__WEBPACK_IMPORTED_MODULE_3__["isObjectType"])(subscriptionType)) {
+    context.reportError('Subscription root type must be Object type if provided, it cannot be ' + "".concat(Object(_jsutils_inspect__WEBPACK_IMPORTED_MODULE_7__["default"])(subscriptionType), "."), getOperationTypeNode(schema, subscriptionType, 'subscription'));
   }
 }
 
@@ -38160,8 +40048,8 @@ function validateDirectives(context) {
       var directive = _step2.value;
 
       // Ensure all directives are in fact GraphQL directives.
-      if (!Object(_directives__WEBPACK_IMPORTED_MODULE_1__["isDirective"])(directive)) {
-        context.reportError("Expected directive but got: ".concat(Object(_jsutils_inspect__WEBPACK_IMPORTED_MODULE_4__["default"])(directive), "."), directive && directive.astNode);
+      if (!Object(_directives__WEBPACK_IMPORTED_MODULE_4__["isDirective"])(directive)) {
+        context.reportError("Expected directive but got: ".concat(Object(_jsutils_inspect__WEBPACK_IMPORTED_MODULE_7__["default"])(directive), "."), directive && directive.astNode);
         continue;
       } // Ensure they are named correctly.
 
@@ -38188,8 +40076,8 @@ function validateDirectives(context) {
 
           argNames[argName] = true; // Ensure the type is an input type.
 
-          if (!Object(_definition__WEBPACK_IMPORTED_MODULE_0__["isInputType"])(arg.type)) {
-            context.reportError("The type of @".concat(directive.name, "(").concat(argName, ":) must be Input Type ") + "but got: ".concat(Object(_jsutils_inspect__WEBPACK_IMPORTED_MODULE_4__["default"])(arg.type), "."), getDirectiveArgTypeNode(directive, argName));
+          if (!Object(_definition__WEBPACK_IMPORTED_MODULE_3__["isInputType"])(arg.type)) {
+            context.reportError("The type of @".concat(directive.name, "(").concat(argName, ":) must be Input Type ") + "but got: ".concat(Object(_jsutils_inspect__WEBPACK_IMPORTED_MODULE_7__["default"])(arg.type), "."), getDirectiveArgTypeNode(directive, argName));
           }
         }
       } catch (err) {
@@ -38245,35 +40133,35 @@ function validateTypes(context) {
   var _iteratorError4 = undefined;
 
   try {
-    for (var _iterator4 = Object(_jsutils_objectValues__WEBPACK_IMPORTED_MODULE_7__["default"])(typeMap)[Symbol.iterator](), _step4; !(_iteratorNormalCompletion4 = (_step4 = _iterator4.next()).done); _iteratorNormalCompletion4 = true) {
+    for (var _iterator4 = Object(_polyfills_objectValues__WEBPACK_IMPORTED_MODULE_1__["default"])(typeMap)[Symbol.iterator](), _step4; !(_iteratorNormalCompletion4 = (_step4 = _iterator4.next()).done); _iteratorNormalCompletion4 = true) {
       var type = _step4.value;
 
       // Ensure all provided types are in fact GraphQL type.
-      if (!Object(_definition__WEBPACK_IMPORTED_MODULE_0__["isNamedType"])(type)) {
-        context.reportError("Expected GraphQL named type but got: ".concat(Object(_jsutils_inspect__WEBPACK_IMPORTED_MODULE_4__["default"])(type), "."), type && type.astNode);
+      if (!Object(_definition__WEBPACK_IMPORTED_MODULE_3__["isNamedType"])(type)) {
+        context.reportError("Expected GraphQL named type but got: ".concat(Object(_jsutils_inspect__WEBPACK_IMPORTED_MODULE_7__["default"])(type), "."), type && type.astNode);
         continue;
       } // Ensure it is named correctly (excluding introspection types).
 
 
-      if (!Object(_introspection__WEBPACK_IMPORTED_MODULE_2__["isIntrospectionType"])(type)) {
+      if (!Object(_introspection__WEBPACK_IMPORTED_MODULE_5__["isIntrospectionType"])(type)) {
         validateName(context, type);
       }
 
-      if (Object(_definition__WEBPACK_IMPORTED_MODULE_0__["isObjectType"])(type)) {
+      if (Object(_definition__WEBPACK_IMPORTED_MODULE_3__["isObjectType"])(type)) {
         // Ensure fields are valid
         validateFields(context, type); // Ensure objects implement the interfaces they claim to.
 
         validateObjectInterfaces(context, type);
-      } else if (Object(_definition__WEBPACK_IMPORTED_MODULE_0__["isInterfaceType"])(type)) {
+      } else if (Object(_definition__WEBPACK_IMPORTED_MODULE_3__["isInterfaceType"])(type)) {
         // Ensure fields are valid.
         validateFields(context, type);
-      } else if (Object(_definition__WEBPACK_IMPORTED_MODULE_0__["isUnionType"])(type)) {
+      } else if (Object(_definition__WEBPACK_IMPORTED_MODULE_3__["isUnionType"])(type)) {
         // Ensure Unions include valid member types.
         validateUnionMembers(context, type);
-      } else if (Object(_definition__WEBPACK_IMPORTED_MODULE_0__["isEnumType"])(type)) {
+      } else if (Object(_definition__WEBPACK_IMPORTED_MODULE_3__["isEnumType"])(type)) {
         // Ensure Enums have valid values.
         validateEnumValues(context, type);
-      } else if (Object(_definition__WEBPACK_IMPORTED_MODULE_0__["isInputObjectType"])(type)) {
+      } else if (Object(_definition__WEBPACK_IMPORTED_MODULE_3__["isInputObjectType"])(type)) {
         // Ensure Input Object fields are valid.
         validateInputFields(context, type);
       }
@@ -38295,7 +40183,7 @@ function validateTypes(context) {
 }
 
 function validateFields(context, type) {
-  var fields = Object(_jsutils_objectValues__WEBPACK_IMPORTED_MODULE_7__["default"])(type.getFields()); // Objects and Interfaces both must define one or more fields.
+  var fields = Object(_polyfills_objectValues__WEBPACK_IMPORTED_MODULE_1__["default"])(type.getFields()); // Objects and Interfaces both must define one or more fields.
 
   if (fields.length === 0) {
     context.reportError("Type ".concat(type.name, " must define one or more fields."), getAllNodes(type));
@@ -38309,18 +40197,10 @@ function validateFields(context, type) {
     for (var _iterator5 = fields[Symbol.iterator](), _step5; !(_iteratorNormalCompletion5 = (_step5 = _iterator5.next()).done); _iteratorNormalCompletion5 = true) {
       var field = _step5.value;
       // Ensure they are named correctly.
-      validateName(context, field); // Ensure they were defined at most once.
+      validateName(context, field); // Ensure the type is an output type
 
-      var fieldNodes = getAllFieldNodes(type, field.name);
-
-      if (fieldNodes.length > 1) {
-        context.reportError("Field ".concat(type.name, ".").concat(field.name, " can only be defined once."), fieldNodes);
-        continue;
-      } // Ensure the type is an output type
-
-
-      if (!Object(_definition__WEBPACK_IMPORTED_MODULE_0__["isOutputType"])(field.type)) {
-        context.reportError("The type of ".concat(type.name, ".").concat(field.name, " must be Output Type ") + "but got: ".concat(Object(_jsutils_inspect__WEBPACK_IMPORTED_MODULE_4__["default"])(field.type), "."), getFieldTypeNode(type, field.name));
+      if (!Object(_definition__WEBPACK_IMPORTED_MODULE_3__["isOutputType"])(field.type)) {
+        context.reportError("The type of ".concat(type.name, ".").concat(field.name, " must be Output Type ") + "but got: ".concat(Object(_jsutils_inspect__WEBPACK_IMPORTED_MODULE_7__["default"])(field.type), "."), getFieldTypeNode(type, field.name));
       } // Ensure the arguments are valid
 
 
@@ -38342,8 +40222,8 @@ function validateFields(context, type) {
 
           argNames[argName] = true; // Ensure the type is an input type
 
-          if (!Object(_definition__WEBPACK_IMPORTED_MODULE_0__["isInputType"])(arg.type)) {
-            context.reportError("The type of ".concat(type.name, ".").concat(field.name, "(").concat(argName, ":) must be Input ") + "Type but got: ".concat(Object(_jsutils_inspect__WEBPACK_IMPORTED_MODULE_4__["default"])(arg.type), "."), getFieldArgTypeNode(type, field.name, argName));
+          if (!Object(_definition__WEBPACK_IMPORTED_MODULE_3__["isInputType"])(arg.type)) {
+            context.reportError("The type of ".concat(type.name, ".").concat(field.name, "(").concat(argName, ":) must be Input ") + "Type but got: ".concat(Object(_jsutils_inspect__WEBPACK_IMPORTED_MODULE_7__["default"])(arg.type), "."), getFieldArgTypeNode(type, field.name, argName));
           }
         }
       } catch (err) {
@@ -38387,8 +40267,8 @@ function validateObjectInterfaces(context, object) {
     for (var _iterator7 = object.getInterfaces()[Symbol.iterator](), _step7; !(_iteratorNormalCompletion7 = (_step7 = _iterator7.next()).done); _iteratorNormalCompletion7 = true) {
       var iface = _step7.value;
 
-      if (!Object(_definition__WEBPACK_IMPORTED_MODULE_0__["isInterfaceType"])(iface)) {
-        context.reportError("Type ".concat(Object(_jsutils_inspect__WEBPACK_IMPORTED_MODULE_4__["default"])(object), " must only implement Interface types, ") + "it cannot implement ".concat(Object(_jsutils_inspect__WEBPACK_IMPORTED_MODULE_4__["default"])(iface), "."), getImplementsInterfaceNode(object, iface));
+      if (!Object(_definition__WEBPACK_IMPORTED_MODULE_3__["isInterfaceType"])(iface)) {
+        context.reportError("Type ".concat(Object(_jsutils_inspect__WEBPACK_IMPORTED_MODULE_7__["default"])(object), " must only implement Interface types, ") + "it cannot implement ".concat(Object(_jsutils_inspect__WEBPACK_IMPORTED_MODULE_7__["default"])(iface), "."), getImplementsInterfaceNode(object, iface));
         continue;
       }
 
@@ -38420,104 +40300,122 @@ function validateObjectImplementsInterface(context, object, iface) {
   var objectFieldMap = object.getFields();
   var ifaceFieldMap = iface.getFields(); // Assert each interface field is implemented.
 
-  var _arr = Object.keys(ifaceFieldMap);
+  var _iteratorNormalCompletion8 = true;
+  var _didIteratorError8 = false;
+  var _iteratorError8 = undefined;
 
-  for (var _i = 0; _i < _arr.length; _i++) {
-    var fieldName = _arr[_i];
-    var objectField = objectFieldMap[fieldName];
-    var ifaceField = ifaceFieldMap[fieldName]; // Assert interface field exists on object.
+  try {
+    for (var _iterator8 = Object(_polyfills_objectEntries__WEBPACK_IMPORTED_MODULE_2__["default"])(ifaceFieldMap)[Symbol.iterator](), _step8; !(_iteratorNormalCompletion8 = (_step8 = _iterator8.next()).done); _iteratorNormalCompletion8 = true) {
+      var _ref2 = _step8.value;
+      var fieldName = _ref2[0];
+      var ifaceField = _ref2[1];
+      var objectField = objectFieldMap[fieldName]; // Assert interface field exists on object.
 
-    if (!objectField) {
-      context.reportError("Interface field ".concat(iface.name, ".").concat(fieldName, " expected but ") + "".concat(object.name, " does not provide it."), [getFieldNode(iface, fieldName)].concat(getAllNodes(object)));
-      continue;
-    } // Assert interface field type is satisfied by object field type, by being
-    // a valid subtype. (covariant)
-
-
-    if (!Object(_utilities_typeComparators__WEBPACK_IMPORTED_MODULE_10__["isTypeSubTypeOf"])(context.schema, objectField.type, ifaceField.type)) {
-      context.reportError("Interface field ".concat(iface.name, ".").concat(fieldName, " expects type ") + "".concat(Object(_jsutils_inspect__WEBPACK_IMPORTED_MODULE_4__["default"])(ifaceField.type), " but ").concat(object.name, ".").concat(fieldName, " ") + "is type ".concat(Object(_jsutils_inspect__WEBPACK_IMPORTED_MODULE_4__["default"])(objectField.type), "."), [getFieldTypeNode(iface, fieldName), getFieldTypeNode(object, fieldName)]);
-    } // Assert each interface field arg is implemented.
-
-
-    var _iteratorNormalCompletion8 = true;
-    var _didIteratorError8 = false;
-    var _iteratorError8 = undefined;
-
-    try {
-      var _loop = function _loop() {
-        var ifaceArg = _step8.value;
-        var argName = ifaceArg.name;
-        var objectArg = Object(_jsutils_find__WEBPACK_IMPORTED_MODULE_5__["default"])(objectField.args, function (arg) {
-          return arg.name === argName;
-        }); // Assert interface field arg exists on object field.
-
-        if (!objectArg) {
-          context.reportError("Interface field argument ".concat(iface.name, ".").concat(fieldName, "(").concat(argName, ":) ") + "expected but ".concat(object.name, ".").concat(fieldName, " does not provide it."), [getFieldArgNode(iface, fieldName, argName), getFieldNode(object, fieldName)]);
-          return "continue";
-        } // Assert interface field arg type matches object field arg type.
-        // (invariant)
-        // TODO: change to contravariant?
+      if (!objectField) {
+        context.reportError("Interface field ".concat(iface.name, ".").concat(fieldName, " expected but ") + "".concat(object.name, " does not provide it."), [getFieldNode(iface, fieldName)].concat(getAllNodes(object)));
+        continue;
+      } // Assert interface field type is satisfied by object field type, by being
+      // a valid subtype. (covariant)
 
 
-        if (!Object(_utilities_typeComparators__WEBPACK_IMPORTED_MODULE_10__["isEqualType"])(ifaceArg.type, objectArg.type)) {
-          context.reportError("Interface field argument ".concat(iface.name, ".").concat(fieldName, "(").concat(argName, ":) ") + "expects type ".concat(Object(_jsutils_inspect__WEBPACK_IMPORTED_MODULE_4__["default"])(ifaceArg.type), " but ") + "".concat(object.name, ".").concat(fieldName, "(").concat(argName, ":) is type ") + "".concat(Object(_jsutils_inspect__WEBPACK_IMPORTED_MODULE_4__["default"])(objectArg.type), "."), [getFieldArgTypeNode(iface, fieldName, argName), getFieldArgTypeNode(object, fieldName, argName)]);
-        } // TODO: validate default values?
+      if (!Object(_utilities_typeComparators__WEBPACK_IMPORTED_MODULE_10__["isTypeSubTypeOf"])(context.schema, objectField.type, ifaceField.type)) {
+        context.reportError("Interface field ".concat(iface.name, ".").concat(fieldName, " expects type ") + "".concat(Object(_jsutils_inspect__WEBPACK_IMPORTED_MODULE_7__["default"])(ifaceField.type), " but ").concat(object.name, ".").concat(fieldName, " ") + "is type ".concat(Object(_jsutils_inspect__WEBPACK_IMPORTED_MODULE_7__["default"])(objectField.type), "."), [getFieldTypeNode(iface, fieldName), getFieldTypeNode(object, fieldName)]);
+      } // Assert each interface field arg is implemented.
 
-      };
 
-      for (var _iterator8 = ifaceField.args[Symbol.iterator](), _step8; !(_iteratorNormalCompletion8 = (_step8 = _iterator8.next()).done); _iteratorNormalCompletion8 = true) {
-        var _ret = _loop();
+      var _iteratorNormalCompletion9 = true;
+      var _didIteratorError9 = false;
+      var _iteratorError9 = undefined;
 
-        if (_ret === "continue") continue;
-      } // Assert additional arguments must not be required.
-
-    } catch (err) {
-      _didIteratorError8 = true;
-      _iteratorError8 = err;
-    } finally {
       try {
-        if (!_iteratorNormalCompletion8 && _iterator8.return != null) {
-          _iterator8.return();
-        }
+        var _loop = function _loop() {
+          var ifaceArg = _step9.value;
+          var argName = ifaceArg.name;
+          var objectArg = Object(_polyfills_find__WEBPACK_IMPORTED_MODULE_0__["default"])(objectField.args, function (arg) {
+            return arg.name === argName;
+          }); // Assert interface field arg exists on object field.
+
+          if (!objectArg) {
+            context.reportError("Interface field argument ".concat(iface.name, ".").concat(fieldName, "(").concat(argName, ":) ") + "expected but ".concat(object.name, ".").concat(fieldName, " does not provide it."), [getFieldArgNode(iface, fieldName, argName), getFieldNode(object, fieldName)]);
+            return "continue";
+          } // Assert interface field arg type matches object field arg type.
+          // (invariant)
+          // TODO: change to contravariant?
+
+
+          if (!Object(_utilities_typeComparators__WEBPACK_IMPORTED_MODULE_10__["isEqualType"])(ifaceArg.type, objectArg.type)) {
+            context.reportError("Interface field argument ".concat(iface.name, ".").concat(fieldName, "(").concat(argName, ":) ") + "expects type ".concat(Object(_jsutils_inspect__WEBPACK_IMPORTED_MODULE_7__["default"])(ifaceArg.type), " but ") + "".concat(object.name, ".").concat(fieldName, "(").concat(argName, ":) is type ") + "".concat(Object(_jsutils_inspect__WEBPACK_IMPORTED_MODULE_7__["default"])(objectArg.type), "."), [getFieldArgTypeNode(iface, fieldName, argName), getFieldArgTypeNode(object, fieldName, argName)]);
+          } // TODO: validate default values?
+
+        };
+
+        for (var _iterator9 = ifaceField.args[Symbol.iterator](), _step9; !(_iteratorNormalCompletion9 = (_step9 = _iterator9.next()).done); _iteratorNormalCompletion9 = true) {
+          var _ret = _loop();
+
+          if (_ret === "continue") continue;
+        } // Assert additional arguments must not be required.
+
+      } catch (err) {
+        _didIteratorError9 = true;
+        _iteratorError9 = err;
       } finally {
-        if (_didIteratorError8) {
-          throw _iteratorError8;
+        try {
+          if (!_iteratorNormalCompletion9 && _iterator9.return != null) {
+            _iterator9.return();
+          }
+        } finally {
+          if (_didIteratorError9) {
+            throw _iteratorError9;
+          }
+        }
+      }
+
+      var _iteratorNormalCompletion10 = true;
+      var _didIteratorError10 = false;
+      var _iteratorError10 = undefined;
+
+      try {
+        var _loop2 = function _loop2() {
+          var objectArg = _step10.value;
+          var argName = objectArg.name;
+          var ifaceArg = Object(_polyfills_find__WEBPACK_IMPORTED_MODULE_0__["default"])(ifaceField.args, function (arg) {
+            return arg.name === argName;
+          });
+
+          if (!ifaceArg && Object(_definition__WEBPACK_IMPORTED_MODULE_3__["isRequiredArgument"])(objectArg)) {
+            context.reportError("Object field ".concat(object.name, ".").concat(fieldName, " includes required ") + "argument ".concat(argName, " that is missing from the Interface field ") + "".concat(iface.name, ".").concat(fieldName, "."), [getFieldArgNode(object, fieldName, argName), getFieldNode(iface, fieldName)]);
+          }
+        };
+
+        for (var _iterator10 = objectField.args[Symbol.iterator](), _step10; !(_iteratorNormalCompletion10 = (_step10 = _iterator10.next()).done); _iteratorNormalCompletion10 = true) {
+          _loop2();
+        }
+      } catch (err) {
+        _didIteratorError10 = true;
+        _iteratorError10 = err;
+      } finally {
+        try {
+          if (!_iteratorNormalCompletion10 && _iterator10.return != null) {
+            _iterator10.return();
+          }
+        } finally {
+          if (_didIteratorError10) {
+            throw _iteratorError10;
+          }
         }
       }
     }
-
-    var _iteratorNormalCompletion9 = true;
-    var _didIteratorError9 = false;
-    var _iteratorError9 = undefined;
-
+  } catch (err) {
+    _didIteratorError8 = true;
+    _iteratorError8 = err;
+  } finally {
     try {
-      var _loop2 = function _loop2() {
-        var objectArg = _step9.value;
-        var argName = objectArg.name;
-        var ifaceArg = Object(_jsutils_find__WEBPACK_IMPORTED_MODULE_5__["default"])(ifaceField.args, function (arg) {
-          return arg.name === argName;
-        });
-
-        if (!ifaceArg && Object(_definition__WEBPACK_IMPORTED_MODULE_0__["isRequiredArgument"])(objectArg)) {
-          context.reportError("Object field ".concat(object.name, ".").concat(fieldName, " includes required ") + "argument ".concat(argName, " that is missing from the Interface field ") + "".concat(iface.name, ".").concat(fieldName, "."), [getFieldArgNode(object, fieldName, argName), getFieldNode(iface, fieldName)]);
-        }
-      };
-
-      for (var _iterator9 = objectField.args[Symbol.iterator](), _step9; !(_iteratorNormalCompletion9 = (_step9 = _iterator9.next()).done); _iteratorNormalCompletion9 = true) {
-        _loop2();
+      if (!_iteratorNormalCompletion8 && _iterator8.return != null) {
+        _iterator8.return();
       }
-    } catch (err) {
-      _didIteratorError9 = true;
-      _iteratorError9 = err;
     } finally {
-      try {
-        if (!_iteratorNormalCompletion9 && _iterator9.return != null) {
-          _iterator9.return();
-        }
-      } finally {
-        if (_didIteratorError9) {
-          throw _iteratorError9;
-        }
+      if (_didIteratorError8) {
+        throw _iteratorError8;
       }
     }
   }
@@ -38531,13 +40429,13 @@ function validateUnionMembers(context, union) {
   }
 
   var includedTypeNames = Object.create(null);
-  var _iteratorNormalCompletion10 = true;
-  var _didIteratorError10 = false;
-  var _iteratorError10 = undefined;
+  var _iteratorNormalCompletion11 = true;
+  var _didIteratorError11 = false;
+  var _iteratorError11 = undefined;
 
   try {
-    for (var _iterator10 = memberTypes[Symbol.iterator](), _step10; !(_iteratorNormalCompletion10 = (_step10 = _iterator10.next()).done); _iteratorNormalCompletion10 = true) {
-      var memberType = _step10.value;
+    for (var _iterator11 = memberTypes[Symbol.iterator](), _step11; !(_iteratorNormalCompletion11 = (_step11 = _iterator11.next()).done); _iteratorNormalCompletion11 = true) {
+      var memberType = _step11.value;
 
       if (includedTypeNames[memberType.name]) {
         context.reportError("Union type ".concat(union.name, " can only include type ") + "".concat(memberType.name, " once."), getUnionMemberTypeNodes(union, memberType.name));
@@ -38546,53 +40444,8 @@ function validateUnionMembers(context, union) {
 
       includedTypeNames[memberType.name] = true;
 
-      if (!Object(_definition__WEBPACK_IMPORTED_MODULE_0__["isObjectType"])(memberType)) {
-        context.reportError("Union type ".concat(union.name, " can only include Object types, ") + "it cannot include ".concat(Object(_jsutils_inspect__WEBPACK_IMPORTED_MODULE_4__["default"])(memberType), "."), getUnionMemberTypeNodes(union, String(memberType)));
-      }
-    }
-  } catch (err) {
-    _didIteratorError10 = true;
-    _iteratorError10 = err;
-  } finally {
-    try {
-      if (!_iteratorNormalCompletion10 && _iterator10.return != null) {
-        _iterator10.return();
-      }
-    } finally {
-      if (_didIteratorError10) {
-        throw _iteratorError10;
-      }
-    }
-  }
-}
-
-function validateEnumValues(context, enumType) {
-  var enumValues = enumType.getValues();
-
-  if (enumValues.length === 0) {
-    context.reportError("Enum type ".concat(enumType.name, " must define one or more values."), getAllNodes(enumType));
-  }
-
-  var _iteratorNormalCompletion11 = true;
-  var _didIteratorError11 = false;
-  var _iteratorError11 = undefined;
-
-  try {
-    for (var _iterator11 = enumValues[Symbol.iterator](), _step11; !(_iteratorNormalCompletion11 = (_step11 = _iterator11.next()).done); _iteratorNormalCompletion11 = true) {
-      var enumValue = _step11.value;
-      var valueName = enumValue.name; // Ensure no duplicates.
-
-      var allNodes = getEnumValueNodes(enumType, valueName);
-
-      if (allNodes && allNodes.length > 1) {
-        context.reportError("Enum type ".concat(enumType.name, " can include value ").concat(valueName, " only once."), allNodes);
-      } // Ensure valid name.
-
-
-      validateName(context, enumValue);
-
-      if (valueName === 'true' || valueName === 'false' || valueName === 'null') {
-        context.reportError("Enum type ".concat(enumType.name, " cannot include value: ").concat(valueName, "."), enumValue.astNode);
+      if (!Object(_definition__WEBPACK_IMPORTED_MODULE_3__["isObjectType"])(memberType)) {
+        context.reportError("Union type ".concat(union.name, " can only include Object types, ") + "it cannot include ".concat(Object(_jsutils_inspect__WEBPACK_IMPORTED_MODULE_7__["default"])(memberType), "."), getUnionMemberTypeNodes(union, String(memberType)));
       }
     }
   } catch (err) {
@@ -38611,27 +40464,26 @@ function validateEnumValues(context, enumType) {
   }
 }
 
-function validateInputFields(context, inputObj) {
-  var fields = Object(_jsutils_objectValues__WEBPACK_IMPORTED_MODULE_7__["default"])(inputObj.getFields());
+function validateEnumValues(context, enumType) {
+  var enumValues = enumType.getValues();
 
-  if (fields.length === 0) {
-    context.reportError("Input Object type ".concat(inputObj.name, " must define one or more fields."), getAllNodes(inputObj));
-  } // Ensure the arguments are valid
-
+  if (enumValues.length === 0) {
+    context.reportError("Enum type ".concat(enumType.name, " must define one or more values."), getAllNodes(enumType));
+  }
 
   var _iteratorNormalCompletion12 = true;
   var _didIteratorError12 = false;
   var _iteratorError12 = undefined;
 
   try {
-    for (var _iterator12 = fields[Symbol.iterator](), _step12; !(_iteratorNormalCompletion12 = (_step12 = _iterator12.next()).done); _iteratorNormalCompletion12 = true) {
-      var field = _step12.value;
-      // Ensure they are named correctly.
-      validateName(context, field); // TODO: Ensure they are unique per field.
-      // Ensure the type is an input type
+    for (var _iterator12 = enumValues[Symbol.iterator](), _step12; !(_iteratorNormalCompletion12 = (_step12 = _iterator12.next()).done); _iteratorNormalCompletion12 = true) {
+      var enumValue = _step12.value;
+      var valueName = enumValue.name; // Ensure valid name.
 
-      if (!Object(_definition__WEBPACK_IMPORTED_MODULE_0__["isInputType"])(field.type)) {
-        context.reportError("The type of ".concat(inputObj.name, ".").concat(field.name, " must be Input Type ") + "but got: ".concat(Object(_jsutils_inspect__WEBPACK_IMPORTED_MODULE_4__["default"])(field.type), "."), field.astNode && field.astNode.type);
+      validateName(context, enumValue);
+
+      if (valueName === 'true' || valueName === 'false' || valueName === 'null') {
+        context.reportError("Enum type ".concat(enumType.name, " cannot include value: ").concat(valueName, "."), enumValue.astNode);
       }
     }
   } catch (err) {
@@ -38650,28 +40502,26 @@ function validateInputFields(context, inputObj) {
   }
 }
 
-function getAllNodes(object) {
-  var astNode = object.astNode,
-      extensionASTNodes = object.extensionASTNodes;
-  return astNode ? extensionASTNodes ? [astNode].concat(extensionASTNodes) : [astNode] : extensionASTNodes || [];
-}
+function validateInputFields(context, inputObj) {
+  var fields = Object(_polyfills_objectValues__WEBPACK_IMPORTED_MODULE_1__["default"])(inputObj.getFields());
 
-function getAllSubNodes(object, getter) {
-  var result = [];
+  if (fields.length === 0) {
+    context.reportError("Input Object type ".concat(inputObj.name, " must define one or more fields."), getAllNodes(inputObj));
+  } // Ensure the arguments are valid
+
+
   var _iteratorNormalCompletion13 = true;
   var _didIteratorError13 = false;
   var _iteratorError13 = undefined;
 
   try {
-    for (var _iterator13 = getAllNodes(object)[Symbol.iterator](), _step13; !(_iteratorNormalCompletion13 = (_step13 = _iterator13.next()).done); _iteratorNormalCompletion13 = true) {
-      var astNode = _step13.value;
+    for (var _iterator13 = fields[Symbol.iterator](), _step13; !(_iteratorNormalCompletion13 = (_step13 = _iterator13.next()).done); _iteratorNormalCompletion13 = true) {
+      var field = _step13.value;
+      // Ensure they are named correctly.
+      validateName(context, field); // Ensure the type is an input type
 
-      if (astNode) {
-        var subNodes = getter(astNode);
-
-        if (subNodes) {
-          result = result.concat(subNodes);
-        }
+      if (!Object(_definition__WEBPACK_IMPORTED_MODULE_3__["isInputType"])(field.type)) {
+        context.reportError("The type of ".concat(inputObj.name, ".").concat(field.name, " must be Input Type ") + "but got: ".concat(Object(_jsutils_inspect__WEBPACK_IMPORTED_MODULE_7__["default"])(field.type), "."), field.astNode && field.astNode.type);
       }
     }
   } catch (err) {
@@ -38685,6 +40535,46 @@ function getAllSubNodes(object, getter) {
     } finally {
       if (_didIteratorError13) {
         throw _iteratorError13;
+      }
+    }
+  }
+}
+
+function getAllNodes(object) {
+  var astNode = object.astNode,
+      extensionASTNodes = object.extensionASTNodes;
+  return astNode ? extensionASTNodes ? [astNode].concat(extensionASTNodes) : [astNode] : extensionASTNodes || [];
+}
+
+function getAllSubNodes(object, getter) {
+  var result = [];
+  var _iteratorNormalCompletion14 = true;
+  var _didIteratorError14 = false;
+  var _iteratorError14 = undefined;
+
+  try {
+    for (var _iterator14 = getAllNodes(object)[Symbol.iterator](), _step14; !(_iteratorNormalCompletion14 = (_step14 = _iterator14.next()).done); _iteratorNormalCompletion14 = true) {
+      var astNode = _step14.value;
+
+      if (astNode) {
+        var subNodes = getter(astNode);
+
+        if (subNodes) {
+          result = result.concat(subNodes);
+        }
+      }
+    }
+  } catch (err) {
+    _didIteratorError14 = true;
+    _iteratorError14 = err;
+  } finally {
+    try {
+      if (!_iteratorNormalCompletion14 && _iterator14.return != null) {
+        _iterator14.return();
+      }
+    } finally {
+      if (_didIteratorError14) {
+        throw _iteratorError14;
       }
     }
   }
@@ -38705,13 +40595,9 @@ function getAllImplementsInterfaceNodes(type, iface) {
 }
 
 function getFieldNode(type, fieldName) {
-  return getAllFieldNodes(type, fieldName)[0];
-}
-
-function getAllFieldNodes(type, fieldName) {
-  return getAllSubNodes(type, function (typeNode) {
+  return Object(_polyfills_find__WEBPACK_IMPORTED_MODULE_0__["default"])(getAllSubNodes(type, function (typeNode) {
     return typeNode.fields;
-  }).filter(function (fieldNode) {
+  }), function (fieldNode) {
     return fieldNode.name.value === fieldName;
   });
 }
@@ -38730,29 +40616,29 @@ function getAllFieldArgNodes(type, fieldName, argName) {
   var fieldNode = getFieldNode(type, fieldName);
 
   if (fieldNode && fieldNode.arguments) {
-    var _iteratorNormalCompletion14 = true;
-    var _didIteratorError14 = false;
-    var _iteratorError14 = undefined;
+    var _iteratorNormalCompletion15 = true;
+    var _didIteratorError15 = false;
+    var _iteratorError15 = undefined;
 
     try {
-      for (var _iterator14 = fieldNode.arguments[Symbol.iterator](), _step14; !(_iteratorNormalCompletion14 = (_step14 = _iterator14.next()).done); _iteratorNormalCompletion14 = true) {
-        var node = _step14.value;
+      for (var _iterator15 = fieldNode.arguments[Symbol.iterator](), _step15; !(_iteratorNormalCompletion15 = (_step15 = _iterator15.next()).done); _iteratorNormalCompletion15 = true) {
+        var node = _step15.value;
 
         if (node.name.value === argName) {
           argNodes.push(node);
         }
       }
     } catch (err) {
-      _didIteratorError14 = true;
-      _iteratorError14 = err;
+      _didIteratorError15 = true;
+      _iteratorError15 = err;
     } finally {
       try {
-        if (!_iteratorNormalCompletion14 && _iterator14.return != null) {
-          _iterator14.return();
+        if (!_iteratorNormalCompletion15 && _iterator15.return != null) {
+          _iterator15.return();
         }
       } finally {
-        if (_didIteratorError14) {
-          throw _iteratorError14;
+        if (_didIteratorError15) {
+          throw _iteratorError15;
         }
       }
     }
@@ -38787,14 +40673,6 @@ function getUnionMemberTypeNodes(union, typeName) {
   });
 }
 
-function getEnumValueNodes(enumType, valueName) {
-  return getAllSubNodes(enumType, function (enumNode) {
-    return enumNode.values;
-  }).filter(function (valueNode) {
-    return valueNode.name.value === valueName;
-  });
-}
-
 /***/ }),
 
 /***/ "./node_modules/graphql/utilities/TypeInfo.mjs":
@@ -38807,20 +40685,18 @@ function getEnumValueNodes(enumType, valueName) {
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "TypeInfo", function() { return TypeInfo; });
-/* harmony import */ var _language_kinds__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../language/kinds */ "./node_modules/graphql/language/kinds.mjs");
-/* harmony import */ var _type_definition__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../type/definition */ "./node_modules/graphql/type/definition.mjs");
-/* harmony import */ var _type_introspection__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../type/introspection */ "./node_modules/graphql/type/introspection.mjs");
-/* harmony import */ var _typeFromAST__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./typeFromAST */ "./node_modules/graphql/utilities/typeFromAST.mjs");
-/* harmony import */ var _jsutils_find__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../jsutils/find */ "./node_modules/graphql/jsutils/find.mjs");
-function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
-
+/* harmony import */ var _polyfills_find__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../polyfills/find */ "./node_modules/graphql/polyfills/find.mjs");
+/* harmony import */ var _language_kinds__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../language/kinds */ "./node_modules/graphql/language/kinds.mjs");
+/* harmony import */ var _type_definition__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../type/definition */ "./node_modules/graphql/type/definition.mjs");
+/* harmony import */ var _type_introspection__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../type/introspection */ "./node_modules/graphql/type/introspection.mjs");
+/* harmony import */ var _typeFromAST__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./typeFromAST */ "./node_modules/graphql/utilities/typeFromAST.mjs");
 /**
  * Copyright (c) 2015-present, Facebook, Inc.
  *
  * This source code is licensed under the MIT license found in the
  * LICENSE file in the root directory of this source tree.
  *
- *  strict
+ * 
  */
 
 
@@ -38840,26 +40716,6 @@ function () {
   // to support non-spec-compliant codebases. You should never need to use it.
   getFieldDefFn, // Initial type may be provided in rare cases to facilitate traversals
   initialType) {
-    _defineProperty(this, "_schema", void 0);
-
-    _defineProperty(this, "_typeStack", void 0);
-
-    _defineProperty(this, "_parentTypeStack", void 0);
-
-    _defineProperty(this, "_inputTypeStack", void 0);
-
-    _defineProperty(this, "_fieldDefStack", void 0);
-
-    _defineProperty(this, "_defaultValueStack", void 0);
-
-    _defineProperty(this, "_directive", void 0);
-
-    _defineProperty(this, "_argument", void 0);
-
-    _defineProperty(this, "_enumValue", void 0);
-
-    _defineProperty(this, "_getFieldDef", void 0);
-
     this._schema = schema;
     this._typeStack = [];
     this._parentTypeStack = [];
@@ -38872,15 +40728,15 @@ function () {
     this._getFieldDef = getFieldDefFn || getFieldDef;
 
     if (initialType) {
-      if (Object(_type_definition__WEBPACK_IMPORTED_MODULE_1__["isInputType"])(initialType)) {
+      if (Object(_type_definition__WEBPACK_IMPORTED_MODULE_2__["isInputType"])(initialType)) {
         this._inputTypeStack.push(initialType);
       }
 
-      if (Object(_type_definition__WEBPACK_IMPORTED_MODULE_1__["isCompositeType"])(initialType)) {
+      if (Object(_type_definition__WEBPACK_IMPORTED_MODULE_2__["isCompositeType"])(initialType)) {
         this._parentTypeStack.push(initialType);
       }
 
-      if (Object(_type_definition__WEBPACK_IMPORTED_MODULE_1__["isOutputType"])(initialType)) {
+      if (Object(_type_definition__WEBPACK_IMPORTED_MODULE_2__["isOutputType"])(initialType)) {
         this._typeStack.push(initialType);
       }
     }
@@ -38943,14 +40799,14 @@ function () {
     // which occurs before guarantees of schema and document validity.
 
     switch (node.kind) {
-      case _language_kinds__WEBPACK_IMPORTED_MODULE_0__["Kind"].SELECTION_SET:
-        var namedType = Object(_type_definition__WEBPACK_IMPORTED_MODULE_1__["getNamedType"])(this.getType());
+      case _language_kinds__WEBPACK_IMPORTED_MODULE_1__["Kind"].SELECTION_SET:
+        var namedType = Object(_type_definition__WEBPACK_IMPORTED_MODULE_2__["getNamedType"])(this.getType());
 
-        this._parentTypeStack.push(Object(_type_definition__WEBPACK_IMPORTED_MODULE_1__["isCompositeType"])(namedType) ? namedType : undefined);
+        this._parentTypeStack.push(Object(_type_definition__WEBPACK_IMPORTED_MODULE_2__["isCompositeType"])(namedType) ? namedType : undefined);
 
         break;
 
-      case _language_kinds__WEBPACK_IMPORTED_MODULE_0__["Kind"].FIELD:
+      case _language_kinds__WEBPACK_IMPORTED_MODULE_1__["Kind"].FIELD:
         var parentType = this.getParentType();
         var fieldDef;
         var fieldType;
@@ -38965,15 +40821,15 @@ function () {
 
         this._fieldDefStack.push(fieldDef);
 
-        this._typeStack.push(Object(_type_definition__WEBPACK_IMPORTED_MODULE_1__["isOutputType"])(fieldType) ? fieldType : undefined);
+        this._typeStack.push(Object(_type_definition__WEBPACK_IMPORTED_MODULE_2__["isOutputType"])(fieldType) ? fieldType : undefined);
 
         break;
 
-      case _language_kinds__WEBPACK_IMPORTED_MODULE_0__["Kind"].DIRECTIVE:
+      case _language_kinds__WEBPACK_IMPORTED_MODULE_1__["Kind"].DIRECTIVE:
         this._directive = schema.getDirective(node.name.value);
         break;
 
-      case _language_kinds__WEBPACK_IMPORTED_MODULE_0__["Kind"].OPERATION_DEFINITION:
+      case _language_kinds__WEBPACK_IMPORTED_MODULE_1__["Kind"].OPERATION_DEFINITION:
         var type;
 
         if (node.operation === 'query') {
@@ -38984,33 +40840,33 @@ function () {
           type = schema.getSubscriptionType();
         }
 
-        this._typeStack.push(Object(_type_definition__WEBPACK_IMPORTED_MODULE_1__["isObjectType"])(type) ? type : undefined);
+        this._typeStack.push(Object(_type_definition__WEBPACK_IMPORTED_MODULE_2__["isObjectType"])(type) ? type : undefined);
 
         break;
 
-      case _language_kinds__WEBPACK_IMPORTED_MODULE_0__["Kind"].INLINE_FRAGMENT:
-      case _language_kinds__WEBPACK_IMPORTED_MODULE_0__["Kind"].FRAGMENT_DEFINITION:
+      case _language_kinds__WEBPACK_IMPORTED_MODULE_1__["Kind"].INLINE_FRAGMENT:
+      case _language_kinds__WEBPACK_IMPORTED_MODULE_1__["Kind"].FRAGMENT_DEFINITION:
         var typeConditionAST = node.typeCondition;
-        var outputType = typeConditionAST ? Object(_typeFromAST__WEBPACK_IMPORTED_MODULE_3__["typeFromAST"])(schema, typeConditionAST) : Object(_type_definition__WEBPACK_IMPORTED_MODULE_1__["getNamedType"])(this.getType());
+        var outputType = typeConditionAST ? Object(_typeFromAST__WEBPACK_IMPORTED_MODULE_4__["typeFromAST"])(schema, typeConditionAST) : Object(_type_definition__WEBPACK_IMPORTED_MODULE_2__["getNamedType"])(this.getType());
 
-        this._typeStack.push(Object(_type_definition__WEBPACK_IMPORTED_MODULE_1__["isOutputType"])(outputType) ? outputType : undefined);
-
-        break;
-
-      case _language_kinds__WEBPACK_IMPORTED_MODULE_0__["Kind"].VARIABLE_DEFINITION:
-        var inputType = Object(_typeFromAST__WEBPACK_IMPORTED_MODULE_3__["typeFromAST"])(schema, node.type);
-
-        this._inputTypeStack.push(Object(_type_definition__WEBPACK_IMPORTED_MODULE_1__["isInputType"])(inputType) ? inputType : undefined);
+        this._typeStack.push(Object(_type_definition__WEBPACK_IMPORTED_MODULE_2__["isOutputType"])(outputType) ? outputType : undefined);
 
         break;
 
-      case _language_kinds__WEBPACK_IMPORTED_MODULE_0__["Kind"].ARGUMENT:
+      case _language_kinds__WEBPACK_IMPORTED_MODULE_1__["Kind"].VARIABLE_DEFINITION:
+        var inputType = Object(_typeFromAST__WEBPACK_IMPORTED_MODULE_4__["typeFromAST"])(schema, node.type);
+
+        this._inputTypeStack.push(Object(_type_definition__WEBPACK_IMPORTED_MODULE_2__["isInputType"])(inputType) ? inputType : undefined);
+
+        break;
+
+      case _language_kinds__WEBPACK_IMPORTED_MODULE_1__["Kind"].ARGUMENT:
         var argDef;
         var argType;
         var fieldOrDirective = this.getDirective() || this.getFieldDef();
 
         if (fieldOrDirective) {
-          argDef = Object(_jsutils_find__WEBPACK_IMPORTED_MODULE_4__["default"])(fieldOrDirective.args, function (arg) {
+          argDef = Object(_polyfills_find__WEBPACK_IMPORTED_MODULE_0__["default"])(fieldOrDirective.args, function (arg) {
             return arg.name === node.name.value;
           });
 
@@ -39023,26 +40879,26 @@ function () {
 
         this._defaultValueStack.push(argDef ? argDef.defaultValue : undefined);
 
-        this._inputTypeStack.push(Object(_type_definition__WEBPACK_IMPORTED_MODULE_1__["isInputType"])(argType) ? argType : undefined);
+        this._inputTypeStack.push(Object(_type_definition__WEBPACK_IMPORTED_MODULE_2__["isInputType"])(argType) ? argType : undefined);
 
         break;
 
-      case _language_kinds__WEBPACK_IMPORTED_MODULE_0__["Kind"].LIST:
-        var listType = Object(_type_definition__WEBPACK_IMPORTED_MODULE_1__["getNullableType"])(this.getInputType());
-        var itemType = Object(_type_definition__WEBPACK_IMPORTED_MODULE_1__["isListType"])(listType) ? listType.ofType : listType; // List positions never have a default value.
+      case _language_kinds__WEBPACK_IMPORTED_MODULE_1__["Kind"].LIST:
+        var listType = Object(_type_definition__WEBPACK_IMPORTED_MODULE_2__["getNullableType"])(this.getInputType());
+        var itemType = Object(_type_definition__WEBPACK_IMPORTED_MODULE_2__["isListType"])(listType) ? listType.ofType : listType; // List positions never have a default value.
 
         this._defaultValueStack.push(undefined);
 
-        this._inputTypeStack.push(Object(_type_definition__WEBPACK_IMPORTED_MODULE_1__["isInputType"])(itemType) ? itemType : undefined);
+        this._inputTypeStack.push(Object(_type_definition__WEBPACK_IMPORTED_MODULE_2__["isInputType"])(itemType) ? itemType : undefined);
 
         break;
 
-      case _language_kinds__WEBPACK_IMPORTED_MODULE_0__["Kind"].OBJECT_FIELD:
-        var objectType = Object(_type_definition__WEBPACK_IMPORTED_MODULE_1__["getNamedType"])(this.getInputType());
+      case _language_kinds__WEBPACK_IMPORTED_MODULE_1__["Kind"].OBJECT_FIELD:
+        var objectType = Object(_type_definition__WEBPACK_IMPORTED_MODULE_2__["getNamedType"])(this.getInputType());
         var inputFieldType;
         var inputField;
 
-        if (Object(_type_definition__WEBPACK_IMPORTED_MODULE_1__["isInputObjectType"])(objectType)) {
+        if (Object(_type_definition__WEBPACK_IMPORTED_MODULE_2__["isInputObjectType"])(objectType)) {
           inputField = objectType.getFields()[node.name.value];
 
           if (inputField) {
@@ -39052,15 +40908,15 @@ function () {
 
         this._defaultValueStack.push(inputField ? inputField.defaultValue : undefined);
 
-        this._inputTypeStack.push(Object(_type_definition__WEBPACK_IMPORTED_MODULE_1__["isInputType"])(inputFieldType) ? inputFieldType : undefined);
+        this._inputTypeStack.push(Object(_type_definition__WEBPACK_IMPORTED_MODULE_2__["isInputType"])(inputFieldType) ? inputFieldType : undefined);
 
         break;
 
-      case _language_kinds__WEBPACK_IMPORTED_MODULE_0__["Kind"].ENUM:
-        var enumType = Object(_type_definition__WEBPACK_IMPORTED_MODULE_1__["getNamedType"])(this.getInputType());
+      case _language_kinds__WEBPACK_IMPORTED_MODULE_1__["Kind"].ENUM:
+        var enumType = Object(_type_definition__WEBPACK_IMPORTED_MODULE_2__["getNamedType"])(this.getInputType());
         var enumValue;
 
-        if (Object(_type_definition__WEBPACK_IMPORTED_MODULE_1__["isEnumType"])(enumType)) {
+        if (Object(_type_definition__WEBPACK_IMPORTED_MODULE_2__["isEnumType"])(enumType)) {
           enumValue = enumType.getValue(node.value);
         }
 
@@ -39071,35 +40927,35 @@ function () {
 
   _proto.leave = function leave(node) {
     switch (node.kind) {
-      case _language_kinds__WEBPACK_IMPORTED_MODULE_0__["Kind"].SELECTION_SET:
+      case _language_kinds__WEBPACK_IMPORTED_MODULE_1__["Kind"].SELECTION_SET:
         this._parentTypeStack.pop();
 
         break;
 
-      case _language_kinds__WEBPACK_IMPORTED_MODULE_0__["Kind"].FIELD:
+      case _language_kinds__WEBPACK_IMPORTED_MODULE_1__["Kind"].FIELD:
         this._fieldDefStack.pop();
 
         this._typeStack.pop();
 
         break;
 
-      case _language_kinds__WEBPACK_IMPORTED_MODULE_0__["Kind"].DIRECTIVE:
+      case _language_kinds__WEBPACK_IMPORTED_MODULE_1__["Kind"].DIRECTIVE:
         this._directive = null;
         break;
 
-      case _language_kinds__WEBPACK_IMPORTED_MODULE_0__["Kind"].OPERATION_DEFINITION:
-      case _language_kinds__WEBPACK_IMPORTED_MODULE_0__["Kind"].INLINE_FRAGMENT:
-      case _language_kinds__WEBPACK_IMPORTED_MODULE_0__["Kind"].FRAGMENT_DEFINITION:
+      case _language_kinds__WEBPACK_IMPORTED_MODULE_1__["Kind"].OPERATION_DEFINITION:
+      case _language_kinds__WEBPACK_IMPORTED_MODULE_1__["Kind"].INLINE_FRAGMENT:
+      case _language_kinds__WEBPACK_IMPORTED_MODULE_1__["Kind"].FRAGMENT_DEFINITION:
         this._typeStack.pop();
 
         break;
 
-      case _language_kinds__WEBPACK_IMPORTED_MODULE_0__["Kind"].VARIABLE_DEFINITION:
+      case _language_kinds__WEBPACK_IMPORTED_MODULE_1__["Kind"].VARIABLE_DEFINITION:
         this._inputTypeStack.pop();
 
         break;
 
-      case _language_kinds__WEBPACK_IMPORTED_MODULE_0__["Kind"].ARGUMENT:
+      case _language_kinds__WEBPACK_IMPORTED_MODULE_1__["Kind"].ARGUMENT:
         this._argument = null;
 
         this._defaultValueStack.pop();
@@ -39108,15 +40964,15 @@ function () {
 
         break;
 
-      case _language_kinds__WEBPACK_IMPORTED_MODULE_0__["Kind"].LIST:
-      case _language_kinds__WEBPACK_IMPORTED_MODULE_0__["Kind"].OBJECT_FIELD:
+      case _language_kinds__WEBPACK_IMPORTED_MODULE_1__["Kind"].LIST:
+      case _language_kinds__WEBPACK_IMPORTED_MODULE_1__["Kind"].OBJECT_FIELD:
         this._defaultValueStack.pop();
 
         this._inputTypeStack.pop();
 
         break;
 
-      case _language_kinds__WEBPACK_IMPORTED_MODULE_0__["Kind"].ENUM:
+      case _language_kinds__WEBPACK_IMPORTED_MODULE_1__["Kind"].ENUM:
         this._enumValue = null;
         break;
     }
@@ -39133,19 +40989,19 @@ function () {
 function getFieldDef(schema, parentType, fieldNode) {
   var name = fieldNode.name.value;
 
-  if (name === _type_introspection__WEBPACK_IMPORTED_MODULE_2__["SchemaMetaFieldDef"].name && schema.getQueryType() === parentType) {
-    return _type_introspection__WEBPACK_IMPORTED_MODULE_2__["SchemaMetaFieldDef"];
+  if (name === _type_introspection__WEBPACK_IMPORTED_MODULE_3__["SchemaMetaFieldDef"].name && schema.getQueryType() === parentType) {
+    return _type_introspection__WEBPACK_IMPORTED_MODULE_3__["SchemaMetaFieldDef"];
   }
 
-  if (name === _type_introspection__WEBPACK_IMPORTED_MODULE_2__["TypeMetaFieldDef"].name && schema.getQueryType() === parentType) {
-    return _type_introspection__WEBPACK_IMPORTED_MODULE_2__["TypeMetaFieldDef"];
+  if (name === _type_introspection__WEBPACK_IMPORTED_MODULE_3__["TypeMetaFieldDef"].name && schema.getQueryType() === parentType) {
+    return _type_introspection__WEBPACK_IMPORTED_MODULE_3__["TypeMetaFieldDef"];
   }
 
-  if (name === _type_introspection__WEBPACK_IMPORTED_MODULE_2__["TypeNameMetaFieldDef"].name && Object(_type_definition__WEBPACK_IMPORTED_MODULE_1__["isCompositeType"])(parentType)) {
-    return _type_introspection__WEBPACK_IMPORTED_MODULE_2__["TypeNameMetaFieldDef"];
+  if (name === _type_introspection__WEBPACK_IMPORTED_MODULE_3__["TypeNameMetaFieldDef"].name && Object(_type_definition__WEBPACK_IMPORTED_MODULE_2__["isCompositeType"])(parentType)) {
+    return _type_introspection__WEBPACK_IMPORTED_MODULE_3__["TypeNameMetaFieldDef"];
   }
 
-  if (Object(_type_definition__WEBPACK_IMPORTED_MODULE_1__["isObjectType"])(parentType) || Object(_type_definition__WEBPACK_IMPORTED_MODULE_1__["isInterfaceType"])(parentType)) {
+  if (Object(_type_definition__WEBPACK_IMPORTED_MODULE_2__["isObjectType"])(parentType) || Object(_type_definition__WEBPACK_IMPORTED_MODULE_2__["isInterfaceType"])(parentType)) {
     return parentType.getFields()[name];
   }
 }
@@ -39171,7 +41027,7 @@ __webpack_require__.r(__webpack_exports__);
  * This source code is licensed under the MIT license found in the
  * LICENSE file in the root directory of this source tree.
  *
- *  strict
+ * 
  */
 
 
@@ -39218,10 +41074,10 @@ function isValidNameError(name, node) {
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "astFromValue", function() { return astFromValue; });
 /* harmony import */ var iterall__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! iterall */ "./node_modules/iterall/index.mjs");
-/* harmony import */ var _jsutils_inspect__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../jsutils/inspect */ "./node_modules/graphql/jsutils/inspect.mjs");
-/* harmony import */ var _jsutils_isNullish__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../jsutils/isNullish */ "./node_modules/graphql/jsutils/isNullish.mjs");
-/* harmony import */ var _jsutils_isInvalid__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../jsutils/isInvalid */ "./node_modules/graphql/jsutils/isInvalid.mjs");
-/* harmony import */ var _jsutils_objectValues__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../jsutils/objectValues */ "./node_modules/graphql/jsutils/objectValues.mjs");
+/* harmony import */ var _polyfills_objectValues__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../polyfills/objectValues */ "./node_modules/graphql/polyfills/objectValues.mjs");
+/* harmony import */ var _jsutils_inspect__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../jsutils/inspect */ "./node_modules/graphql/jsutils/inspect.mjs");
+/* harmony import */ var _jsutils_isNullish__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../jsutils/isNullish */ "./node_modules/graphql/jsutils/isNullish.mjs");
+/* harmony import */ var _jsutils_isInvalid__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../jsutils/isInvalid */ "./node_modules/graphql/jsutils/isInvalid.mjs");
 /* harmony import */ var _language_kinds__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../language/kinds */ "./node_modules/graphql/language/kinds.mjs");
 /* harmony import */ var _type_definition__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../type/definition */ "./node_modules/graphql/type/definition.mjs");
 /* harmony import */ var _type_scalars__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../type/scalars */ "./node_modules/graphql/type/scalars.mjs");
@@ -39233,7 +41089,7 @@ function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterat
  * This source code is licensed under the MIT license found in the
  * LICENSE file in the root directory of this source tree.
  *
- *  strict
+ * 
  */
 
 
@@ -39280,7 +41136,7 @@ function astFromValue(value, type) {
   } // undefined, NaN
 
 
-  if (Object(_jsutils_isInvalid__WEBPACK_IMPORTED_MODULE_3__["default"])(value)) {
+  if (Object(_jsutils_isInvalid__WEBPACK_IMPORTED_MODULE_4__["default"])(value)) {
     return null;
   } // Convert JavaScript array to GraphQL list. If the GraphQLType is a list, but
   // the value is not an array, convert the value using the list's item type.
@@ -39314,7 +41170,7 @@ function astFromValue(value, type) {
       return null;
     }
 
-    var fields = Object(_jsutils_objectValues__WEBPACK_IMPORTED_MODULE_4__["default"])(type.getFields());
+    var fields = Object(_polyfills_objectValues__WEBPACK_IMPORTED_MODULE_1__["default"])(type.getFields());
     var fieldNodes = [];
     var _iteratorNormalCompletion = true;
     var _didIteratorError = false;
@@ -39362,7 +41218,7 @@ function astFromValue(value, type) {
     // to an externally represented value before converting into an AST.
     var serialized = type.serialize(value);
 
-    if (Object(_jsutils_isNullish__WEBPACK_IMPORTED_MODULE_2__["default"])(serialized)) {
+    if (Object(_jsutils_isNullish__WEBPACK_IMPORTED_MODULE_3__["default"])(serialized)) {
       return null;
     } // Others serialize based on their corresponding JavaScript scalar types.
 
@@ -39409,7 +41265,7 @@ function astFromValue(value, type) {
       };
     }
 
-    throw new TypeError("Cannot convert value to AST: ".concat(Object(_jsutils_inspect__WEBPACK_IMPORTED_MODULE_1__["default"])(serialized)));
+    throw new TypeError("Cannot convert value to AST: ".concat(Object(_jsutils_inspect__WEBPACK_IMPORTED_MODULE_2__["default"])(serialized)));
   }
   /* istanbul ignore next */
 
@@ -39439,32 +41295,32 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ASTDefinitionBuilder", function() { return ASTDefinitionBuilder; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "getDescription", function() { return getDescription; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "buildSchema", function() { return buildSchema; });
-/* harmony import */ var _jsutils_invariant__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../jsutils/invariant */ "./node_modules/graphql/jsutils/invariant.mjs");
-/* harmony import */ var _jsutils_keyMap__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../jsutils/keyMap */ "./node_modules/graphql/jsutils/keyMap.mjs");
-/* harmony import */ var _jsutils_keyValMap__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../jsutils/keyValMap */ "./node_modules/graphql/jsutils/keyValMap.mjs");
-/* harmony import */ var _valueFromAST__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./valueFromAST */ "./node_modules/graphql/utilities/valueFromAST.mjs");
-/* harmony import */ var _validation_validate__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../validation/validate */ "./node_modules/graphql/validation/validate.mjs");
-/* harmony import */ var _language_blockStringValue__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../language/blockStringValue */ "./node_modules/graphql/language/blockStringValue.mjs");
-/* harmony import */ var _language_lexer__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../language/lexer */ "./node_modules/graphql/language/lexer.mjs");
-/* harmony import */ var _language_parser__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../language/parser */ "./node_modules/graphql/language/parser.mjs");
-/* harmony import */ var _execution_values__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ../execution/values */ "./node_modules/graphql/execution/values.mjs");
-/* harmony import */ var _language_kinds__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ../language/kinds */ "./node_modules/graphql/language/kinds.mjs");
-/* harmony import */ var _language_predicates__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ../language/predicates */ "./node_modules/graphql/language/predicates.mjs");
-/* harmony import */ var _type_definition__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ../type/definition */ "./node_modules/graphql/type/definition.mjs");
-/* harmony import */ var _type_directives__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ../type/directives */ "./node_modules/graphql/type/directives.mjs");
-/* harmony import */ var _type_introspection__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! ../type/introspection */ "./node_modules/graphql/type/introspection.mjs");
-/* harmony import */ var _type_scalars__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! ../type/scalars */ "./node_modules/graphql/type/scalars.mjs");
-/* harmony import */ var _type_schema__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(/*! ../type/schema */ "./node_modules/graphql/type/schema.mjs");
-function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
-
+/* harmony import */ var _polyfills_objectValues__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../polyfills/objectValues */ "./node_modules/graphql/polyfills/objectValues.mjs");
+/* harmony import */ var _jsutils_invariant__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../jsutils/invariant */ "./node_modules/graphql/jsutils/invariant.mjs");
+/* harmony import */ var _jsutils_keyMap__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../jsutils/keyMap */ "./node_modules/graphql/jsutils/keyMap.mjs");
+/* harmony import */ var _jsutils_keyValMap__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../jsutils/keyValMap */ "./node_modules/graphql/jsutils/keyValMap.mjs");
+/* harmony import */ var _valueFromAST__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./valueFromAST */ "./node_modules/graphql/utilities/valueFromAST.mjs");
+/* harmony import */ var _validation_validate__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../validation/validate */ "./node_modules/graphql/validation/validate.mjs");
+/* harmony import */ var _language_blockStringValue__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../language/blockStringValue */ "./node_modules/graphql/language/blockStringValue.mjs");
+/* harmony import */ var _language_lexer__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../language/lexer */ "./node_modules/graphql/language/lexer.mjs");
+/* harmony import */ var _language_parser__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ../language/parser */ "./node_modules/graphql/language/parser.mjs");
+/* harmony import */ var _execution_values__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ../execution/values */ "./node_modules/graphql/execution/values.mjs");
+/* harmony import */ var _language_kinds__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ../language/kinds */ "./node_modules/graphql/language/kinds.mjs");
+/* harmony import */ var _language_predicates__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ../language/predicates */ "./node_modules/graphql/language/predicates.mjs");
+/* harmony import */ var _type_definition__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ../type/definition */ "./node_modules/graphql/type/definition.mjs");
+/* harmony import */ var _type_directives__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! ../type/directives */ "./node_modules/graphql/type/directives.mjs");
+/* harmony import */ var _type_introspection__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! ../type/introspection */ "./node_modules/graphql/type/introspection.mjs");
+/* harmony import */ var _type_scalars__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(/*! ../type/scalars */ "./node_modules/graphql/type/scalars.mjs");
+/* harmony import */ var _type_schema__WEBPACK_IMPORTED_MODULE_16__ = __webpack_require__(/*! ../type/schema */ "./node_modules/graphql/type/schema.mjs");
 /**
  * Copyright (c) 2015-present, Facebook, Inc.
  *
  * This source code is licensed under the MIT license found in the
  * LICENSE file in the root directory of this source tree.
  *
- *  strict
+ * 
  */
+
 
 
 
@@ -39499,33 +41355,43 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
  *
  */
 function buildASTSchema(documentAST, options) {
-  !(documentAST && documentAST.kind === _language_kinds__WEBPACK_IMPORTED_MODULE_9__["Kind"].DOCUMENT) ? Object(_jsutils_invariant__WEBPACK_IMPORTED_MODULE_0__["default"])(0, 'Must provide valid Document AST') : void 0;
+  !(documentAST && documentAST.kind === _language_kinds__WEBPACK_IMPORTED_MODULE_10__["Kind"].DOCUMENT) ? Object(_jsutils_invariant__WEBPACK_IMPORTED_MODULE_1__["default"])(0, 'Must provide valid Document AST') : void 0;
 
   if (!options || !(options.assumeValid || options.assumeValidSDL)) {
-    Object(_validation_validate__WEBPACK_IMPORTED_MODULE_4__["assertValidSDL"])(documentAST);
+    Object(_validation_validate__WEBPACK_IMPORTED_MODULE_5__["assertValidSDL"])(documentAST);
   }
 
   var schemaDef;
-  var typeDefs = [];
   var nodeMap = Object.create(null);
   var directiveDefs = [];
+  var _iteratorNormalCompletion = true;
+  var _didIteratorError = false;
+  var _iteratorError = undefined;
 
-  for (var i = 0; i < documentAST.definitions.length; i++) {
-    var def = documentAST.definitions[i];
+  try {
+    for (var _iterator = documentAST.definitions[Symbol.iterator](), _step; !(_iteratorNormalCompletion = (_step = _iterator.next()).done); _iteratorNormalCompletion = true) {
+      var def = _step.value;
 
-    if (def.kind === _language_kinds__WEBPACK_IMPORTED_MODULE_9__["Kind"].SCHEMA_DEFINITION) {
-      schemaDef = def;
-    } else if (Object(_language_predicates__WEBPACK_IMPORTED_MODULE_10__["isTypeDefinitionNode"])(def)) {
-      var typeName = def.name.value;
-
-      if (nodeMap[typeName]) {
-        throw new Error("Type \"".concat(typeName, "\" was defined more than once."));
+      if (def.kind === _language_kinds__WEBPACK_IMPORTED_MODULE_10__["Kind"].SCHEMA_DEFINITION) {
+        schemaDef = def;
+      } else if (Object(_language_predicates__WEBPACK_IMPORTED_MODULE_11__["isTypeDefinitionNode"])(def)) {
+        nodeMap[def.name.value] = def;
+      } else if (def.kind === _language_kinds__WEBPACK_IMPORTED_MODULE_10__["Kind"].DIRECTIVE_DEFINITION) {
+        directiveDefs.push(def);
       }
-
-      typeDefs.push(def);
-      nodeMap[typeName] = def;
-    } else if (def.kind === _language_kinds__WEBPACK_IMPORTED_MODULE_9__["Kind"].DIRECTIVE_DEFINITION) {
-      directiveDefs.push(def);
+    }
+  } catch (err) {
+    _didIteratorError = true;
+    _iteratorError = err;
+  } finally {
+    try {
+      if (!_iteratorNormalCompletion && _iterator.return != null) {
+        _iterator.return();
+      }
+    } finally {
+      if (_didIteratorError) {
+        throw _iteratorError;
+      }
     }
   }
 
@@ -39534,8 +41400,8 @@ function buildASTSchema(documentAST, options) {
     mutation: nodeMap.Mutation,
     subscription: nodeMap.Subscription
   };
-  var definitionBuilder = new ASTDefinitionBuilder(nodeMap, options, function (typeRef) {
-    throw new Error("Type \"".concat(typeRef.name.value, "\" not found in document."));
+  var definitionBuilder = new ASTDefinitionBuilder(nodeMap, options, function (typeName) {
+    throw new Error("Type \"".concat(typeName, "\" not found in document."));
   });
   var directives = directiveDefs.map(function (def) {
     return definitionBuilder.buildDirective(def);
@@ -39544,29 +41410,29 @@ function buildASTSchema(documentAST, options) {
   if (!directives.some(function (directive) {
     return directive.name === 'skip';
   })) {
-    directives.push(_type_directives__WEBPACK_IMPORTED_MODULE_12__["GraphQLSkipDirective"]);
+    directives.push(_type_directives__WEBPACK_IMPORTED_MODULE_13__["GraphQLSkipDirective"]);
   }
 
   if (!directives.some(function (directive) {
     return directive.name === 'include';
   })) {
-    directives.push(_type_directives__WEBPACK_IMPORTED_MODULE_12__["GraphQLIncludeDirective"]);
+    directives.push(_type_directives__WEBPACK_IMPORTED_MODULE_13__["GraphQLIncludeDirective"]);
   }
 
   if (!directives.some(function (directive) {
     return directive.name === 'deprecated';
   })) {
-    directives.push(_type_directives__WEBPACK_IMPORTED_MODULE_12__["GraphQLDeprecatedDirective"]);
+    directives.push(_type_directives__WEBPACK_IMPORTED_MODULE_13__["GraphQLDeprecatedDirective"]);
   } // Note: While this could make early assertions to get the correctly
   // typed values below, that would throw immediately while type system
   // validation with validateSchema() will produce more actionable results.
 
 
-  return new _type_schema__WEBPACK_IMPORTED_MODULE_15__["GraphQLSchema"]({
+  return new _type_schema__WEBPACK_IMPORTED_MODULE_16__["GraphQLSchema"]({
     query: operationTypes.query ? definitionBuilder.buildType(operationTypes.query) : null,
     mutation: operationTypes.mutation ? definitionBuilder.buildType(operationTypes.mutation) : null,
     subscription: operationTypes.subscription ? definitionBuilder.buildType(operationTypes.subscription) : null,
-    types: typeDefs.map(function (node) {
+    types: Object(_polyfills_objectValues__WEBPACK_IMPORTED_MODULE_0__["default"])(nodeMap).map(function (node) {
       return definitionBuilder.buildType(node);
     }),
     directives: directives,
@@ -39577,37 +41443,26 @@ function buildASTSchema(documentAST, options) {
 
   function getOperationTypes(schema) {
     var opTypes = {};
-    var _iteratorNormalCompletion = true;
-    var _didIteratorError = false;
-    var _iteratorError = undefined;
+    var _iteratorNormalCompletion2 = true;
+    var _didIteratorError2 = false;
+    var _iteratorError2 = undefined;
 
     try {
-      for (var _iterator = schema.operationTypes[Symbol.iterator](), _step; !(_iteratorNormalCompletion = (_step = _iterator.next()).done); _iteratorNormalCompletion = true) {
-        var operationType = _step.value;
-        var _typeName = operationType.type.name.value;
-        var operation = operationType.operation;
-
-        if (opTypes[operation]) {
-          throw new Error("Must provide only one ".concat(operation, " type in schema."));
-        }
-
-        if (!nodeMap[_typeName]) {
-          throw new Error("Specified ".concat(operation, " type \"").concat(_typeName, "\" not found in document."));
-        }
-
-        opTypes[operation] = operationType.type;
+      for (var _iterator2 = schema.operationTypes[Symbol.iterator](), _step2; !(_iteratorNormalCompletion2 = (_step2 = _iterator2.next()).done); _iteratorNormalCompletion2 = true) {
+        var operationType = _step2.value;
+        opTypes[operationType.operation] = operationType.type;
       }
     } catch (err) {
-      _didIteratorError = true;
-      _iteratorError = err;
+      _didIteratorError2 = true;
+      _iteratorError2 = err;
     } finally {
       try {
-        if (!_iteratorNormalCompletion && _iterator.return != null) {
-          _iterator.return();
+        if (!_iteratorNormalCompletion2 && _iterator2.return != null) {
+          _iterator2.return();
         }
       } finally {
-        if (_didIteratorError) {
-          throw _iteratorError;
+        if (_didIteratorError2) {
+          throw _iteratorError2;
         }
       }
     }
@@ -39619,19 +41474,11 @@ var ASTDefinitionBuilder =
 /*#__PURE__*/
 function () {
   function ASTDefinitionBuilder(typeDefinitionsMap, options, resolveType) {
-    _defineProperty(this, "_typeDefinitionsMap", void 0);
-
-    _defineProperty(this, "_options", void 0);
-
-    _defineProperty(this, "_resolveType", void 0);
-
-    _defineProperty(this, "_cache", void 0);
-
     this._typeDefinitionsMap = typeDefinitionsMap;
     this._options = options;
     this._resolveType = resolveType; // Initialize to the GraphQL built in scalars and introspection types.
 
-    this._cache = Object(_jsutils_keyMap__WEBPACK_IMPORTED_MODULE_1__["default"])(_type_scalars__WEBPACK_IMPORTED_MODULE_14__["specifiedScalarTypes"].concat(_type_introspection__WEBPACK_IMPORTED_MODULE_13__["introspectionTypes"]), function (type) {
+    this._cache = Object(_jsutils_keyMap__WEBPACK_IMPORTED_MODULE_2__["default"])(_type_scalars__WEBPACK_IMPORTED_MODULE_15__["specifiedScalarTypes"].concat(_type_introspection__WEBPACK_IMPORTED_MODULE_14__["introspectionTypes"]), function (type) {
       return type.name;
     });
   }
@@ -39642,9 +41489,9 @@ function () {
     var typeName = node.name.value;
 
     if (!this._cache[typeName]) {
-      if (node.kind === _language_kinds__WEBPACK_IMPORTED_MODULE_9__["Kind"].NAMED_TYPE) {
+      if (node.kind === _language_kinds__WEBPACK_IMPORTED_MODULE_10__["Kind"].NAMED_TYPE) {
         var defNode = this._typeDefinitionsMap[typeName];
-        this._cache[typeName] = defNode ? this._makeSchemaDef(defNode) : this._resolveType(node);
+        this._cache[typeName] = defNode ? this._makeSchemaDef(defNode) : this._resolveType(node.name.value);
       } else {
         this._cache[typeName] = this._makeSchemaDef(node);
       }
@@ -39654,40 +41501,63 @@ function () {
   };
 
   _proto._buildWrappedType = function _buildWrappedType(typeNode) {
-    if (typeNode.kind === _language_kinds__WEBPACK_IMPORTED_MODULE_9__["Kind"].LIST_TYPE) {
-      return Object(_type_definition__WEBPACK_IMPORTED_MODULE_11__["GraphQLList"])(this._buildWrappedType(typeNode.type));
+    if (typeNode.kind === _language_kinds__WEBPACK_IMPORTED_MODULE_10__["Kind"].LIST_TYPE) {
+      return Object(_type_definition__WEBPACK_IMPORTED_MODULE_12__["GraphQLList"])(this._buildWrappedType(typeNode.type));
     }
 
-    if (typeNode.kind === _language_kinds__WEBPACK_IMPORTED_MODULE_9__["Kind"].NON_NULL_TYPE) {
-      return Object(_type_definition__WEBPACK_IMPORTED_MODULE_11__["GraphQLNonNull"])( // Note: GraphQLNonNull constructor validates this type
+    if (typeNode.kind === _language_kinds__WEBPACK_IMPORTED_MODULE_10__["Kind"].NON_NULL_TYPE) {
+      return Object(_type_definition__WEBPACK_IMPORTED_MODULE_12__["GraphQLNonNull"])( // Note: GraphQLNonNull constructor validates this type
       this._buildWrappedType(typeNode.type));
     }
 
     return this.buildType(typeNode);
   };
 
-  _proto.buildDirective = function buildDirective(directiveNode) {
-    return new _type_directives__WEBPACK_IMPORTED_MODULE_12__["GraphQLDirective"]({
-      name: directiveNode.name.value,
-      description: getDescription(directiveNode, this._options),
-      locations: directiveNode.locations.map(function (node) {
-        return node.value;
+  _proto.buildDirective = function buildDirective(directive) {
+    var _this = this;
+
+    var locations = directive.locations.map(function (_ref) {
+      var value = _ref.value;
+      return value;
+    });
+    return new _type_directives__WEBPACK_IMPORTED_MODULE_13__["GraphQLDirective"]({
+      name: directive.name.value,
+      description: getDescription(directive, this._options),
+      locations: locations,
+      args: keyByNameNode(directive.arguments || [], function (arg) {
+        return _this.buildArg(arg);
       }),
-      args: directiveNode.arguments && this._makeInputValues(directiveNode.arguments),
-      astNode: directiveNode
+      astNode: directive
     });
   };
 
   _proto.buildField = function buildField(field) {
+    var _this2 = this;
+
     return {
       // Note: While this could make assertions to get the correctly typed
       // value, that would throw immediately while type system validation
       // with validateSchema() will produce more actionable results.
       type: this._buildWrappedType(field.type),
       description: getDescription(field, this._options),
-      args: field.arguments && this._makeInputValues(field.arguments),
+      args: keyByNameNode(field.arguments || [], function (arg) {
+        return _this2.buildArg(arg);
+      }),
       deprecationReason: getDeprecationReason(field),
       astNode: field
+    };
+  };
+
+  _proto.buildArg = function buildArg(value) {
+    // Note: While this could make assertions to get the correctly typed
+    // value, that would throw immediately while type system validation
+    var type = this._buildWrappedType(value.type);
+
+    return {
+      type: type,
+      description: getDescription(value, this._options),
+      defaultValue: Object(_valueFromAST__WEBPACK_IMPORTED_MODULE_4__["valueFromAST"])(value.defaultValue, type),
+      astNode: value
     };
   };
 
@@ -39697,10 +41567,9 @@ function () {
     var type = this._buildWrappedType(value.type);
 
     return {
-      name: value.name.value,
       type: type,
       description: getDescription(value, this._options),
-      defaultValue: Object(_valueFromAST__WEBPACK_IMPORTED_MODULE_3__["valueFromAST"])(value.defaultValue, type),
+      defaultValue: Object(_valueFromAST__WEBPACK_IMPORTED_MODULE_4__["valueFromAST"])(value.defaultValue, type),
       astNode: value
     };
   };
@@ -39713,129 +41582,114 @@ function () {
     };
   };
 
-  _proto._makeSchemaDef = function _makeSchemaDef(def) {
-    switch (def.kind) {
-      case _language_kinds__WEBPACK_IMPORTED_MODULE_9__["Kind"].OBJECT_TYPE_DEFINITION:
-        return this._makeTypeDef(def);
+  _proto._makeSchemaDef = function _makeSchemaDef(astNode) {
+    switch (astNode.kind) {
+      case _language_kinds__WEBPACK_IMPORTED_MODULE_10__["Kind"].OBJECT_TYPE_DEFINITION:
+        return this._makeTypeDef(astNode);
 
-      case _language_kinds__WEBPACK_IMPORTED_MODULE_9__["Kind"].INTERFACE_TYPE_DEFINITION:
-        return this._makeInterfaceDef(def);
+      case _language_kinds__WEBPACK_IMPORTED_MODULE_10__["Kind"].INTERFACE_TYPE_DEFINITION:
+        return this._makeInterfaceDef(astNode);
 
-      case _language_kinds__WEBPACK_IMPORTED_MODULE_9__["Kind"].ENUM_TYPE_DEFINITION:
-        return this._makeEnumDef(def);
+      case _language_kinds__WEBPACK_IMPORTED_MODULE_10__["Kind"].ENUM_TYPE_DEFINITION:
+        return this._makeEnumDef(astNode);
 
-      case _language_kinds__WEBPACK_IMPORTED_MODULE_9__["Kind"].UNION_TYPE_DEFINITION:
-        return this._makeUnionDef(def);
+      case _language_kinds__WEBPACK_IMPORTED_MODULE_10__["Kind"].UNION_TYPE_DEFINITION:
+        return this._makeUnionDef(astNode);
 
-      case _language_kinds__WEBPACK_IMPORTED_MODULE_9__["Kind"].SCALAR_TYPE_DEFINITION:
-        return this._makeScalarDef(def);
+      case _language_kinds__WEBPACK_IMPORTED_MODULE_10__["Kind"].SCALAR_TYPE_DEFINITION:
+        return this._makeScalarDef(astNode);
 
-      case _language_kinds__WEBPACK_IMPORTED_MODULE_9__["Kind"].INPUT_OBJECT_TYPE_DEFINITION:
-        return this._makeInputObjectDef(def);
+      case _language_kinds__WEBPACK_IMPORTED_MODULE_10__["Kind"].INPUT_OBJECT_TYPE_DEFINITION:
+        return this._makeInputObjectDef(astNode);
 
       default:
-        throw new Error("Type kind \"".concat(def.kind, "\" not supported."));
+        throw new Error("Type kind \"".concat(astNode.kind, "\" not supported."));
     }
   };
 
-  _proto._makeTypeDef = function _makeTypeDef(def) {
-    var _this = this;
-
-    var interfaces = def.interfaces;
-    return new _type_definition__WEBPACK_IMPORTED_MODULE_11__["GraphQLObjectType"]({
-      name: def.name.value,
-      description: getDescription(def, this._options),
-      fields: function fields() {
-        return _this._makeFieldDefMap(def);
-      },
-      // Note: While this could make early assertions to get the correctly
-      // typed values, that would throw immediately while type system
-      // validation with validateSchema() will produce more actionable results.
-      interfaces: interfaces ? function () {
-        return interfaces.map(function (ref) {
-          return _this.buildType(ref);
-        });
-      } : [],
-      astNode: def
-    });
-  };
-
-  _proto._makeFieldDefMap = function _makeFieldDefMap(def) {
-    var _this2 = this;
-
-    return def.fields ? Object(_jsutils_keyValMap__WEBPACK_IMPORTED_MODULE_2__["default"])(def.fields, function (field) {
-      return field.name.value;
-    }, function (field) {
-      return _this2.buildField(field);
-    }) : {};
-  };
-
-  _proto._makeInputValues = function _makeInputValues(values) {
+  _proto._makeTypeDef = function _makeTypeDef(astNode) {
     var _this3 = this;
 
-    return Object(_jsutils_keyValMap__WEBPACK_IMPORTED_MODULE_2__["default"])(values, function (value) {
-      return value.name.value;
-    }, function (value) {
-      return _this3.buildInputField(value);
+    var interfaceNodes = astNode.interfaces;
+    var fieldNodes = astNode.fields; // Note: While this could make assertions to get the correctly typed
+    // values below, that would throw immediately while type system
+    // validation with validateSchema() will produce more actionable results.
+
+    var interfaces = interfaceNodes && interfaceNodes.length > 0 ? function () {
+      return interfaceNodes.map(function (ref) {
+        return _this3.buildType(ref);
+      });
+    } : [];
+    var fields = fieldNodes && fieldNodes.length > 0 ? function () {
+      return keyByNameNode(fieldNodes, function (field) {
+        return _this3.buildField(field);
+      });
+    } : Object.create(null);
+    return new _type_definition__WEBPACK_IMPORTED_MODULE_12__["GraphQLObjectType"]({
+      name: astNode.name.value,
+      description: getDescription(astNode, this._options),
+      interfaces: interfaces,
+      fields: fields,
+      astNode: astNode
     });
   };
 
-  _proto._makeInterfaceDef = function _makeInterfaceDef(def) {
+  _proto._makeInterfaceDef = function _makeInterfaceDef(astNode) {
     var _this4 = this;
 
-    return new _type_definition__WEBPACK_IMPORTED_MODULE_11__["GraphQLInterfaceType"]({
-      name: def.name.value,
-      description: getDescription(def, this._options),
-      fields: function fields() {
-        return _this4._makeFieldDefMap(def);
-      },
-      astNode: def
+    var fieldNodes = astNode.fields;
+    var fields = fieldNodes && fieldNodes.length > 0 ? function () {
+      return keyByNameNode(fieldNodes, function (field) {
+        return _this4.buildField(field);
+      });
+    } : Object.create(null);
+    return new _type_definition__WEBPACK_IMPORTED_MODULE_12__["GraphQLInterfaceType"]({
+      name: astNode.name.value,
+      description: getDescription(astNode, this._options),
+      fields: fields,
+      astNode: astNode
     });
   };
 
-  _proto._makeEnumDef = function _makeEnumDef(def) {
-    return new _type_definition__WEBPACK_IMPORTED_MODULE_11__["GraphQLEnumType"]({
-      name: def.name.value,
-      description: getDescription(def, this._options),
-      values: this._makeValueDefMap(def),
-      astNode: def
-    });
-  };
-
-  _proto._makeValueDefMap = function _makeValueDefMap(def) {
+  _proto._makeEnumDef = function _makeEnumDef(astNode) {
     var _this5 = this;
 
-    return def.values ? Object(_jsutils_keyValMap__WEBPACK_IMPORTED_MODULE_2__["default"])(def.values, function (enumValue) {
-      return enumValue.name.value;
-    }, function (enumValue) {
-      return _this5.buildEnumValue(enumValue);
-    }) : {};
-  };
-
-  _proto._makeUnionDef = function _makeUnionDef(def) {
-    var _this6 = this;
-
-    var types = def.types;
-    return new _type_definition__WEBPACK_IMPORTED_MODULE_11__["GraphQLUnionType"]({
-      name: def.name.value,
-      description: getDescription(def, this._options),
-      // Note: While this could make assertions to get the correctly typed
-      // values below, that would throw immediately while type system
-      // validation with validateSchema() will produce more actionable results.
-      types: types ? function () {
-        return types.map(function (ref) {
-          return _this6.buildType(ref);
-        });
-      } : [],
-      astNode: def
+    var valueNodes = astNode.values || [];
+    return new _type_definition__WEBPACK_IMPORTED_MODULE_12__["GraphQLEnumType"]({
+      name: astNode.name.value,
+      description: getDescription(astNode, this._options),
+      values: keyByNameNode(valueNodes, function (value) {
+        return _this5.buildEnumValue(value);
+      }),
+      astNode: astNode
     });
   };
 
-  _proto._makeScalarDef = function _makeScalarDef(def) {
-    return new _type_definition__WEBPACK_IMPORTED_MODULE_11__["GraphQLScalarType"]({
-      name: def.name.value,
-      description: getDescription(def, this._options),
-      astNode: def,
+  _proto._makeUnionDef = function _makeUnionDef(astNode) {
+    var _this6 = this;
+
+    var typeNodes = astNode.types; // Note: While this could make assertions to get the correctly typed
+    // values below, that would throw immediately while type system
+    // validation with validateSchema() will produce more actionable results.
+
+    var types = typeNodes && typeNodes.length > 0 ? function () {
+      return typeNodes.map(function (ref) {
+        return _this6.buildType(ref);
+      });
+    } : [];
+    return new _type_definition__WEBPACK_IMPORTED_MODULE_12__["GraphQLUnionType"]({
+      name: astNode.name.value,
+      description: getDescription(astNode, this._options),
+      types: types,
+      astNode: astNode
+    });
+  };
+
+  _proto._makeScalarDef = function _makeScalarDef(astNode) {
+    return new _type_definition__WEBPACK_IMPORTED_MODULE_12__["GraphQLScalarType"]({
+      name: astNode.name.value,
+      description: getDescription(astNode, this._options),
+      astNode: astNode,
       serialize: function serialize(value) {
         return value;
       }
@@ -39845,25 +41699,36 @@ function () {
   _proto._makeInputObjectDef = function _makeInputObjectDef(def) {
     var _this7 = this;
 
-    return new _type_definition__WEBPACK_IMPORTED_MODULE_11__["GraphQLInputObjectType"]({
+    var fields = def.fields;
+    return new _type_definition__WEBPACK_IMPORTED_MODULE_12__["GraphQLInputObjectType"]({
       name: def.name.value,
       description: getDescription(def, this._options),
-      fields: function fields() {
-        return def.fields ? _this7._makeInputValues(def.fields) : {};
-      },
+      fields: fields ? function () {
+        return keyByNameNode(fields, function (field) {
+          return _this7.buildInputField(field);
+        });
+      } : Object.create(null),
       astNode: def
     });
   };
 
   return ASTDefinitionBuilder;
 }();
+
+function keyByNameNode(list, valFn) {
+  return Object(_jsutils_keyValMap__WEBPACK_IMPORTED_MODULE_3__["default"])(list, function (_ref2) {
+    var name = _ref2.name;
+    return name.value;
+  }, valFn);
+}
 /**
  * Given a field or enum value node, returns the string value for the
  * deprecation reason.
  */
 
+
 function getDeprecationReason(node) {
-  var deprecated = Object(_execution_values__WEBPACK_IMPORTED_MODULE_8__["getDirectiveValues"])(_type_directives__WEBPACK_IMPORTED_MODULE_12__["GraphQLDeprecatedDirective"], node);
+  var deprecated = Object(_execution_values__WEBPACK_IMPORTED_MODULE_9__["getDirectiveValues"])(_type_directives__WEBPACK_IMPORTED_MODULE_13__["GraphQLDeprecatedDirective"], node);
   return deprecated && deprecated.reason;
 }
 /**
@@ -39887,7 +41752,7 @@ function getDescription(node, options) {
     var rawValue = getLeadingCommentBlock(node);
 
     if (rawValue !== undefined) {
-      return Object(_language_blockStringValue__WEBPACK_IMPORTED_MODULE_5__["default"])('\n' + rawValue);
+      return Object(_language_blockStringValue__WEBPACK_IMPORTED_MODULE_6__["default"])('\n' + rawValue);
     }
   }
 }
@@ -39902,7 +41767,7 @@ function getLeadingCommentBlock(node) {
   var comments = [];
   var token = loc.startToken.prev;
 
-  while (token && token.kind === _language_lexer__WEBPACK_IMPORTED_MODULE_6__["TokenKind"].COMMENT && token.next && token.prev && token.line + 1 === token.next.line && token.line !== token.prev.line) {
+  while (token && token.kind === _language_lexer__WEBPACK_IMPORTED_MODULE_7__["TokenKind"].COMMENT && token.next && token.prev && token.line + 1 === token.next.line && token.line !== token.prev.line) {
     var value = String(token.value);
     comments.push(value);
     token = token.prev;
@@ -39917,7 +41782,7 @@ function getLeadingCommentBlock(node) {
 
 
 function buildSchema(source, options) {
-  return buildASTSchema(Object(_language_parser__WEBPACK_IMPORTED_MODULE_7__["parse"])(source, options), options);
+  return buildASTSchema(Object(_language_parser__WEBPACK_IMPORTED_MODULE_8__["parse"])(source, options), options);
 }
 
 /***/ }),
@@ -39949,7 +41814,7 @@ __webpack_require__.r(__webpack_exports__);
  * This source code is licensed under the MIT license found in the
  * LICENSE file in the root directory of this source tree.
  *
- *  strict
+ * 
  */
 
 
@@ -40037,13 +41902,13 @@ function buildClientSchema(introspection, options) {
 
   function getInputType(typeRef) {
     var type = getType(typeRef);
-    !Object(_type_definition__WEBPACK_IMPORTED_MODULE_7__["isInputType"])(type) ? Object(_jsutils_invariant__WEBPACK_IMPORTED_MODULE_1__["default"])(0, 'Introspection must provide input type for arguments.') : void 0;
+    !Object(_type_definition__WEBPACK_IMPORTED_MODULE_7__["isInputType"])(type) ? Object(_jsutils_invariant__WEBPACK_IMPORTED_MODULE_1__["default"])(0, 'Introspection must provide input type for arguments, but received: ' + Object(_jsutils_inspect__WEBPACK_IMPORTED_MODULE_0__["default"])(type) + '.') : void 0;
     return type;
   }
 
   function getOutputType(typeRef) {
     var type = getType(typeRef);
-    !Object(_type_definition__WEBPACK_IMPORTED_MODULE_7__["isOutputType"])(type) ? Object(_jsutils_invariant__WEBPACK_IMPORTED_MODULE_1__["default"])(0, 'Introspection must provide output type for fields.') : void 0;
+    !Object(_type_definition__WEBPACK_IMPORTED_MODULE_7__["isOutputType"])(type) ? Object(_jsutils_invariant__WEBPACK_IMPORTED_MODULE_1__["default"])(0, 'Introspection must provide output type for fields, but received: ' + Object(_jsutils_inspect__WEBPACK_IMPORTED_MODULE_0__["default"])(type) + '.') : void 0;
     return type;
   }
 
@@ -40260,12 +42125,13 @@ function buildClientSchema(introspection, options) {
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "coerceValue", function() { return coerceValue; });
 /* harmony import */ var iterall__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! iterall */ "./node_modules/iterall/index.mjs");
-/* harmony import */ var _jsutils_inspect__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../jsutils/inspect */ "./node_modules/graphql/jsutils/inspect.mjs");
-/* harmony import */ var _jsutils_isInvalid__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../jsutils/isInvalid */ "./node_modules/graphql/jsutils/isInvalid.mjs");
-/* harmony import */ var _jsutils_orList__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../jsutils/orList */ "./node_modules/graphql/jsutils/orList.mjs");
-/* harmony import */ var _jsutils_suggestionList__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../jsutils/suggestionList */ "./node_modules/graphql/jsutils/suggestionList.mjs");
-/* harmony import */ var _error_GraphQLError__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../error/GraphQLError */ "./node_modules/graphql/error/GraphQLError.mjs");
-/* harmony import */ var _type_definition__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../type/definition */ "./node_modules/graphql/type/definition.mjs");
+/* harmony import */ var _polyfills_objectValues__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../polyfills/objectValues */ "./node_modules/graphql/polyfills/objectValues.mjs");
+/* harmony import */ var _jsutils_inspect__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../jsutils/inspect */ "./node_modules/graphql/jsutils/inspect.mjs");
+/* harmony import */ var _jsutils_isInvalid__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../jsutils/isInvalid */ "./node_modules/graphql/jsutils/isInvalid.mjs");
+/* harmony import */ var _jsutils_orList__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../jsutils/orList */ "./node_modules/graphql/jsutils/orList.mjs");
+/* harmony import */ var _jsutils_suggestionList__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../jsutils/suggestionList */ "./node_modules/graphql/jsutils/suggestionList.mjs");
+/* harmony import */ var _error_GraphQLError__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../error/GraphQLError */ "./node_modules/graphql/error/GraphQLError.mjs");
+/* harmony import */ var _type_definition__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../type/definition */ "./node_modules/graphql/type/definition.mjs");
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
 /**
@@ -40274,8 +42140,9 @@ function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterat
  * This source code is licensed under the MIT license found in the
  * LICENSE file in the root directory of this source tree.
  *
- *  strict
+ * 
  */
+
 
 
 
@@ -40293,9 +42160,9 @@ function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterat
  */
 function coerceValue(value, type, blameNode, path) {
   // A value must be provided if the type is non-null.
-  if (Object(_type_definition__WEBPACK_IMPORTED_MODULE_6__["isNonNullType"])(type)) {
+  if (Object(_type_definition__WEBPACK_IMPORTED_MODULE_7__["isNonNullType"])(type)) {
     if (value == null) {
-      return ofErrors([coercionError("Expected non-nullable type ".concat(Object(_jsutils_inspect__WEBPACK_IMPORTED_MODULE_1__["default"])(type), " not to be null"), blameNode, path)]);
+      return ofErrors([coercionError("Expected non-nullable type ".concat(Object(_jsutils_inspect__WEBPACK_IMPORTED_MODULE_2__["default"])(type), " not to be null"), blameNode, path)]);
     }
 
     return coerceValue(value, type.ofType, blameNode, path);
@@ -40306,14 +42173,14 @@ function coerceValue(value, type, blameNode, path) {
     return ofValue(null);
   }
 
-  if (Object(_type_definition__WEBPACK_IMPORTED_MODULE_6__["isScalarType"])(type)) {
+  if (Object(_type_definition__WEBPACK_IMPORTED_MODULE_7__["isScalarType"])(type)) {
     // Scalars determine if a value is valid via parseValue(), which can
     // throw to indicate failure. If it throws, maintain a reference to
     // the original error.
     try {
       var parseResult = type.parseValue(value);
 
-      if (Object(_jsutils_isInvalid__WEBPACK_IMPORTED_MODULE_2__["default"])(parseResult)) {
+      if (Object(_jsutils_isInvalid__WEBPACK_IMPORTED_MODULE_3__["default"])(parseResult)) {
         return ofErrors([coercionError("Expected type ".concat(type.name), blameNode, path)]);
       }
 
@@ -40323,7 +42190,7 @@ function coerceValue(value, type, blameNode, path) {
     }
   }
 
-  if (Object(_type_definition__WEBPACK_IMPORTED_MODULE_6__["isEnumType"])(type)) {
+  if (Object(_type_definition__WEBPACK_IMPORTED_MODULE_7__["isEnumType"])(type)) {
     if (typeof value === 'string') {
       var enumValue = type.getValue(value);
 
@@ -40332,14 +42199,14 @@ function coerceValue(value, type, blameNode, path) {
       }
     }
 
-    var suggestions = Object(_jsutils_suggestionList__WEBPACK_IMPORTED_MODULE_4__["default"])(String(value), type.getValues().map(function (enumValue) {
+    var suggestions = Object(_jsutils_suggestionList__WEBPACK_IMPORTED_MODULE_5__["default"])(String(value), type.getValues().map(function (enumValue) {
       return enumValue.name;
     }));
-    var didYouMean = suggestions.length !== 0 ? "did you mean ".concat(Object(_jsutils_orList__WEBPACK_IMPORTED_MODULE_3__["default"])(suggestions), "?") : undefined;
+    var didYouMean = suggestions.length !== 0 ? "did you mean ".concat(Object(_jsutils_orList__WEBPACK_IMPORTED_MODULE_4__["default"])(suggestions), "?") : undefined;
     return ofErrors([coercionError("Expected type ".concat(type.name), blameNode, path, didYouMean)]);
   }
 
-  if (Object(_type_definition__WEBPACK_IMPORTED_MODULE_6__["isListType"])(type)) {
+  if (Object(_type_definition__WEBPACK_IMPORTED_MODULE_7__["isListType"])(type)) {
     var itemType = type.ofType;
 
     if (Object(iterall__WEBPACK_IMPORTED_MODULE_0__["isCollection"])(value)) {
@@ -40362,7 +42229,7 @@ function coerceValue(value, type, blameNode, path) {
     return coercedItem.errors ? coercedItem : ofValue([coercedItem.value]);
   }
 
-  if (Object(_type_definition__WEBPACK_IMPORTED_MODULE_6__["isInputObjectType"])(type)) {
+  if (Object(_type_definition__WEBPACK_IMPORTED_MODULE_7__["isInputObjectType"])(type)) {
     if (_typeof(value) !== 'object') {
       return ofErrors([coercionError("Expected type ".concat(type.name, " to be an object"), blameNode, path)]);
     }
@@ -40372,39 +42239,58 @@ function coerceValue(value, type, blameNode, path) {
     var _coercedValue = {};
     var fields = type.getFields(); // Ensure every defined field is valid.
 
-    for (var fieldName in fields) {
-      if (hasOwnProperty.call(fields, fieldName)) {
-        var field = fields[fieldName];
-        var fieldValue = value[fieldName];
+    var _iteratorNormalCompletion = true;
+    var _didIteratorError = false;
+    var _iteratorError = undefined;
 
-        if (Object(_jsutils_isInvalid__WEBPACK_IMPORTED_MODULE_2__["default"])(fieldValue)) {
-          if (!Object(_jsutils_isInvalid__WEBPACK_IMPORTED_MODULE_2__["default"])(field.defaultValue)) {
-            _coercedValue[fieldName] = field.defaultValue;
-          } else if (Object(_type_definition__WEBPACK_IMPORTED_MODULE_6__["isNonNullType"])(field.type)) {
-            _errors = add(_errors, coercionError("Field ".concat(printPath(atPath(path, fieldName)), " of required ") + "type ".concat(Object(_jsutils_inspect__WEBPACK_IMPORTED_MODULE_1__["default"])(field.type), " was not provided"), blameNode));
+    try {
+      for (var _iterator = Object(_polyfills_objectValues__WEBPACK_IMPORTED_MODULE_1__["default"])(fields)[Symbol.iterator](), _step; !(_iteratorNormalCompletion = (_step = _iterator.next()).done); _iteratorNormalCompletion = true) {
+        var field = _step.value;
+        var fieldValue = value[field.name];
+
+        if (Object(_jsutils_isInvalid__WEBPACK_IMPORTED_MODULE_3__["default"])(fieldValue)) {
+          if (!Object(_jsutils_isInvalid__WEBPACK_IMPORTED_MODULE_3__["default"])(field.defaultValue)) {
+            _coercedValue[field.name] = field.defaultValue;
+          } else if (Object(_type_definition__WEBPACK_IMPORTED_MODULE_7__["isNonNullType"])(field.type)) {
+            _errors = add(_errors, coercionError("Field ".concat(printPath(atPath(path, field.name)), " of required ") + "type ".concat(Object(_jsutils_inspect__WEBPACK_IMPORTED_MODULE_2__["default"])(field.type), " was not provided"), blameNode));
           }
         } else {
-          var coercedField = coerceValue(fieldValue, field.type, blameNode, atPath(path, fieldName));
+          var coercedField = coerceValue(fieldValue, field.type, blameNode, atPath(path, field.name));
 
           if (coercedField.errors) {
             _errors = add(_errors, coercedField.errors);
           } else if (!_errors) {
-            _coercedValue[fieldName] = coercedField.value;
+            _coercedValue[field.name] = coercedField.value;
           }
         }
-      }
-    } // Ensure every provided field is defined.
+      } // Ensure every provided field is defined.
 
-
-    for (var _fieldName in value) {
-      if (hasOwnProperty.call(value, _fieldName)) {
-        if (!fields[_fieldName]) {
-          var _suggestions = Object(_jsutils_suggestionList__WEBPACK_IMPORTED_MODULE_4__["default"])(_fieldName, Object.keys(fields));
-
-          var _didYouMean = _suggestions.length !== 0 ? "did you mean ".concat(Object(_jsutils_orList__WEBPACK_IMPORTED_MODULE_3__["default"])(_suggestions), "?") : undefined;
-
-          _errors = add(_errors, coercionError("Field \"".concat(_fieldName, "\" is not defined by type ").concat(type.name), blameNode, path, _didYouMean));
+    } catch (err) {
+      _didIteratorError = true;
+      _iteratorError = err;
+    } finally {
+      try {
+        if (!_iteratorNormalCompletion && _iterator.return != null) {
+          _iterator.return();
         }
+      } finally {
+        if (_didIteratorError) {
+          throw _iteratorError;
+        }
+      }
+    }
+
+    var _arr = Object.keys(value);
+
+    for (var _i = 0; _i < _arr.length; _i++) {
+      var fieldName = _arr[_i];
+
+      if (!fields[fieldName]) {
+        var _suggestions = Object(_jsutils_suggestionList__WEBPACK_IMPORTED_MODULE_5__["default"])(fieldName, Object.keys(fields));
+
+        var _didYouMean = _suggestions.length !== 0 ? "did you mean ".concat(Object(_jsutils_orList__WEBPACK_IMPORTED_MODULE_4__["default"])(_suggestions), "?") : undefined;
+
+        _errors = add(_errors, coercionError("Field \"".concat(fieldName, "\" is not defined by type ").concat(type.name), blameNode, path, _didYouMean));
       }
     }
 
@@ -40444,7 +42330,7 @@ function atPath(prev, key) {
 function coercionError(message, blameNode, path, subMessage, originalError) {
   var pathStr = printPath(path); // Return a GraphQLError instance
 
-  return new _error_GraphQLError__WEBPACK_IMPORTED_MODULE_5__["GraphQLError"](message + (pathStr ? ' at ' + pathStr : '') + (subMessage ? '; ' + subMessage : '.'), blameNode, undefined, undefined, undefined, originalError);
+  return new _error_GraphQLError__WEBPACK_IMPORTED_MODULE_6__["GraphQLError"](message + (pathStr ? ' at ' + pathStr : '') + (subMessage ? '; ' + subMessage : '.'), blameNode, undefined, undefined, undefined, originalError);
 } // Build a string describing the path into the value where the error was found
 
 
@@ -40459,8 +42345,6 @@ function printPath(path) {
 
   return pathStr ? 'value' + pathStr : '';
 }
-
-var hasOwnProperty = Object.prototype.hasOwnProperty;
 
 /***/ }),
 
@@ -40480,7 +42364,7 @@ __webpack_require__.r(__webpack_exports__);
  * This source code is licensed under the MIT license found in the
  * LICENSE file in the root directory of this source tree.
  *
- *  strict
+ * 
  */
 
 /**
@@ -40517,20 +42401,19 @@ function concatAST(asts) {
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "extendSchema", function() { return extendSchema; });
-/* harmony import */ var _jsutils_invariant__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../jsutils/invariant */ "./node_modules/graphql/jsutils/invariant.mjs");
-/* harmony import */ var _jsutils_keyMap__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../jsutils/keyMap */ "./node_modules/graphql/jsutils/keyMap.mjs");
-/* harmony import */ var _jsutils_keyValMap__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../jsutils/keyValMap */ "./node_modules/graphql/jsutils/keyValMap.mjs");
-/* harmony import */ var _jsutils_objectValues__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../jsutils/objectValues */ "./node_modules/graphql/jsutils/objectValues.mjs");
+/* harmony import */ var _polyfills_objectValues__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../polyfills/objectValues */ "./node_modules/graphql/polyfills/objectValues.mjs");
+/* harmony import */ var _jsutils_invariant__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../jsutils/invariant */ "./node_modules/graphql/jsutils/invariant.mjs");
+/* harmony import */ var _jsutils_mapValue__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../jsutils/mapValue */ "./node_modules/graphql/jsutils/mapValue.mjs");
+/* harmony import */ var _jsutils_keyValMap__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../jsutils/keyValMap */ "./node_modules/graphql/jsutils/keyValMap.mjs");
 /* harmony import */ var _buildASTSchema__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./buildASTSchema */ "./node_modules/graphql/utilities/buildASTSchema.mjs");
 /* harmony import */ var _validation_validate__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../validation/validate */ "./node_modules/graphql/validation/validate.mjs");
-/* harmony import */ var _error_GraphQLError__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../error/GraphQLError */ "./node_modules/graphql/error/GraphQLError.mjs");
-/* harmony import */ var _type_schema__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../type/schema */ "./node_modules/graphql/type/schema.mjs");
-/* harmony import */ var _type_introspection__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ../type/introspection */ "./node_modules/graphql/type/introspection.mjs");
-/* harmony import */ var _type_scalars__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ../type/scalars */ "./node_modules/graphql/type/scalars.mjs");
-/* harmony import */ var _type_definition__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ../type/definition */ "./node_modules/graphql/type/definition.mjs");
-/* harmony import */ var _type_directives__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ../type/directives */ "./node_modules/graphql/type/directives.mjs");
-/* harmony import */ var _language_kinds__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ../language/kinds */ "./node_modules/graphql/language/kinds.mjs");
-/* harmony import */ var _language_predicates__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! ../language/predicates */ "./node_modules/graphql/language/predicates.mjs");
+/* harmony import */ var _type_schema__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../type/schema */ "./node_modules/graphql/type/schema.mjs");
+/* harmony import */ var _type_introspection__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../type/introspection */ "./node_modules/graphql/type/introspection.mjs");
+/* harmony import */ var _type_scalars__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ../type/scalars */ "./node_modules/graphql/type/scalars.mjs");
+/* harmony import */ var _type_definition__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ../type/definition */ "./node_modules/graphql/type/definition.mjs");
+/* harmony import */ var _type_directives__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ../type/directives */ "./node_modules/graphql/type/directives.mjs");
+/* harmony import */ var _language_kinds__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ../language/kinds */ "./node_modules/graphql/language/kinds.mjs");
+/* harmony import */ var _language_predicates__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ../language/predicates */ "./node_modules/graphql/language/predicates.mjs");
 function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; var ownKeys = Object.keys(source); if (typeof Object.getOwnPropertySymbols === 'function') { ownKeys = ownKeys.concat(Object.getOwnPropertySymbols(source).filter(function (sym) { return Object.getOwnPropertyDescriptor(source, sym).enumerable; })); } ownKeys.forEach(function (key) { _defineProperty(target, key, source[key]); }); } return target; }
 
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
@@ -40541,9 +42424,8 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
  * This source code is licensed under the MIT license found in the
  * LICENSE file in the root directory of this source tree.
  *
- *  strict
+ * 
  */
-
 
 
 
@@ -40577,8 +42459,8 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
  *
  */
 function extendSchema(schema, documentAST, options) {
-  !Object(_type_schema__WEBPACK_IMPORTED_MODULE_7__["isSchema"])(schema) ? Object(_jsutils_invariant__WEBPACK_IMPORTED_MODULE_0__["default"])(0, 'Must provide valid GraphQLSchema') : void 0;
-  !(documentAST && documentAST.kind === _language_kinds__WEBPACK_IMPORTED_MODULE_12__["Kind"].DOCUMENT) ? Object(_jsutils_invariant__WEBPACK_IMPORTED_MODULE_0__["default"])(0, 'Must provide valid Document AST') : void 0;
+  Object(_type_schema__WEBPACK_IMPORTED_MODULE_6__["assertSchema"])(schema);
+  !(documentAST && documentAST.kind === _language_kinds__WEBPACK_IMPORTED_MODULE_11__["Kind"].DOCUMENT) ? Object(_jsutils_invariant__WEBPACK_IMPORTED_MODULE_1__["default"])(0, 'Must provide valid Document AST') : void 0;
 
   if (!options || !(options.assumeValid || options.assumeValidSDL)) {
     Object(_validation_validate__WEBPACK_IMPORTED_MODULE_5__["assertValidSDLExtension"])(documentAST, schema);
@@ -40593,64 +42475,54 @@ function extendSchema(schema, documentAST, options) {
   var schemaDef; // Schema extensions are collected which may add additional operation types.
 
   var schemaExtensions = [];
+  var _iteratorNormalCompletion = true;
+  var _didIteratorError = false;
+  var _iteratorError = undefined;
 
-  for (var i = 0; i < documentAST.definitions.length; i++) {
-    var def = documentAST.definitions[i];
+  try {
+    for (var _iterator = documentAST.definitions[Symbol.iterator](), _step; !(_iteratorNormalCompletion = (_step = _iterator.next()).done); _iteratorNormalCompletion = true) {
+      var def = _step.value;
 
-    if (def.kind === _language_kinds__WEBPACK_IMPORTED_MODULE_12__["Kind"].SCHEMA_DEFINITION) {
-      schemaDef = def;
-    } else if (def.kind === _language_kinds__WEBPACK_IMPORTED_MODULE_12__["Kind"].SCHEMA_EXTENSION) {
-      schemaExtensions.push(def);
-    } else if (Object(_language_predicates__WEBPACK_IMPORTED_MODULE_13__["isTypeDefinitionNode"])(def)) {
-      // Sanity check that none of the defined types conflict with the
-      // schema's existing types.
-      var typeName = def.name.value;
-
-      if (schema.getType(typeName)) {
-        throw new _error_GraphQLError__WEBPACK_IMPORTED_MODULE_6__["GraphQLError"]("Type \"".concat(typeName, "\" already exists in the schema. It cannot also ") + 'be defined in this type definition.', [def]);
+      if (def.kind === _language_kinds__WEBPACK_IMPORTED_MODULE_11__["Kind"].SCHEMA_DEFINITION) {
+        schemaDef = def;
+      } else if (def.kind === _language_kinds__WEBPACK_IMPORTED_MODULE_11__["Kind"].SCHEMA_EXTENSION) {
+        schemaExtensions.push(def);
+      } else if (Object(_language_predicates__WEBPACK_IMPORTED_MODULE_12__["isTypeDefinitionNode"])(def)) {
+        var typeName = def.name.value;
+        typeDefinitionMap[typeName] = def;
+      } else if (Object(_language_predicates__WEBPACK_IMPORTED_MODULE_12__["isTypeExtensionNode"])(def)) {
+        var extendedTypeName = def.name.value;
+        var existingTypeExtensions = typeExtensionsMap[extendedTypeName];
+        typeExtensionsMap[extendedTypeName] = existingTypeExtensions ? existingTypeExtensions.concat([def]) : [def];
+      } else if (def.kind === _language_kinds__WEBPACK_IMPORTED_MODULE_11__["Kind"].DIRECTIVE_DEFINITION) {
+        directiveDefinitions.push(def);
       }
+    } // If this document contains no new types, extensions, or directives then
+    // return the same unmodified GraphQLSchema instance.
 
-      typeDefinitionMap[typeName] = def;
-    } else if (Object(_language_predicates__WEBPACK_IMPORTED_MODULE_13__["isTypeExtensionNode"])(def)) {
-      // Sanity check that this type extension exists within the
-      // schema's existing types.
-      var extendedTypeName = def.name.value;
-      var existingType = schema.getType(extendedTypeName);
-
-      if (!existingType) {
-        throw new _error_GraphQLError__WEBPACK_IMPORTED_MODULE_6__["GraphQLError"]("Cannot extend type \"".concat(extendedTypeName, "\" because it does not ") + 'exist in the existing schema.', [def]);
+  } catch (err) {
+    _didIteratorError = true;
+    _iteratorError = err;
+  } finally {
+    try {
+      if (!_iteratorNormalCompletion && _iterator.return != null) {
+        _iterator.return();
       }
-
-      checkExtensionNode(existingType, def);
-      var existingTypeExtensions = typeExtensionsMap[extendedTypeName];
-      typeExtensionsMap[extendedTypeName] = existingTypeExtensions ? existingTypeExtensions.concat([def]) : [def];
-    } else if (def.kind === _language_kinds__WEBPACK_IMPORTED_MODULE_12__["Kind"].DIRECTIVE_DEFINITION) {
-      var directiveName = def.name.value;
-      var existingDirective = schema.getDirective(directiveName);
-
-      if (existingDirective) {
-        throw new _error_GraphQLError__WEBPACK_IMPORTED_MODULE_6__["GraphQLError"]("Directive \"".concat(directiveName, "\" already exists in the schema. It ") + 'cannot be redefined.', [def]);
+    } finally {
+      if (_didIteratorError) {
+        throw _iteratorError;
       }
-
-      directiveDefinitions.push(def);
     }
-  } // If this document contains no new types, extensions, or directives then
-  // return the same unmodified GraphQLSchema instance.
-
+  }
 
   if (Object.keys(typeExtensionsMap).length === 0 && Object.keys(typeDefinitionMap).length === 0 && directiveDefinitions.length === 0 && schemaExtensions.length === 0 && !schemaDef) {
     return schema;
   }
 
-  var astBuilder = new _buildASTSchema__WEBPACK_IMPORTED_MODULE_4__["ASTDefinitionBuilder"](typeDefinitionMap, options, function (typeRef) {
-    var typeName = typeRef.name.value;
+  var astBuilder = new _buildASTSchema__WEBPACK_IMPORTED_MODULE_4__["ASTDefinitionBuilder"](typeDefinitionMap, options, function (typeName) {
     var existingType = schema.getType(typeName);
-
-    if (existingType) {
-      return extendNamedType(existingType);
-    }
-
-    throw new _error_GraphQLError__WEBPACK_IMPORTED_MODULE_6__["GraphQLError"]("Unknown type: \"".concat(typeName, "\". Ensure that this type exists ") + 'either in the original schema, or is added in a type definition.', [typeRef]);
+    !existingType ? Object(_jsutils_invariant__WEBPACK_IMPORTED_MODULE_1__["default"])(0, "Unknown type: \"".concat(typeName, "\".")) : void 0;
+    return extendNamedType(existingType);
   });
   var extendTypeCache = Object.create(null); // Get the extended root operation types.
 
@@ -40661,36 +42533,31 @@ function extendSchema(schema, documentAST, options) {
   };
 
   if (schemaDef) {
-    var _iteratorNormalCompletion = true;
-    var _didIteratorError = false;
-    var _iteratorError = undefined;
+    var _iteratorNormalCompletion2 = true;
+    var _didIteratorError2 = false;
+    var _iteratorError2 = undefined;
 
     try {
-      for (var _iterator = schemaDef.operationTypes[Symbol.iterator](), _step; !(_iteratorNormalCompletion = (_step = _iterator.next()).done); _iteratorNormalCompletion = true) {
-        var _ref2 = _step.value;
-        var operation = _ref2.operation,
-            type = _ref2.type;
-
-        if (operationTypes[operation]) {
-          throw new Error("Must provide only one ".concat(operation, " type in schema."));
-        } // Note: While this could make early assertions to get the correctly
+      for (var _iterator2 = schemaDef.operationTypes[Symbol.iterator](), _step2; !(_iteratorNormalCompletion2 = (_step2 = _iterator2.next()).done); _iteratorNormalCompletion2 = true) {
+        var _ref2 = _step2.value;
+        var operation = _ref2.operation;
+        var type = _ref2.type;
+        // Note: While this could make early assertions to get the correctly
         // typed values, that would throw immediately while type system
         // validation with validateSchema() will produce more actionable results.
-
-
         operationTypes[operation] = astBuilder.buildType(type);
       }
     } catch (err) {
-      _didIteratorError = true;
-      _iteratorError = err;
+      _didIteratorError2 = true;
+      _iteratorError2 = err;
     } finally {
       try {
-        if (!_iteratorNormalCompletion && _iterator.return != null) {
-          _iterator.return();
+        if (!_iteratorNormalCompletion2 && _iterator2.return != null) {
+          _iterator2.return();
         }
       } finally {
-        if (_didIteratorError) {
-          throw _iteratorError;
+        if (_didIteratorError2) {
+          throw _iteratorError2;
         }
       }
     }
@@ -40701,36 +42568,31 @@ function extendSchema(schema, documentAST, options) {
     var schemaExtension = schemaExtensions[_i];
 
     if (schemaExtension.operationTypes) {
-      var _iteratorNormalCompletion12 = true;
-      var _didIteratorError12 = false;
-      var _iteratorError12 = undefined;
+      var _iteratorNormalCompletion14 = true;
+      var _didIteratorError14 = false;
+      var _iteratorError14 = undefined;
 
       try {
-        for (var _iterator12 = schemaExtension.operationTypes[Symbol.iterator](), _step12; !(_iteratorNormalCompletion12 = (_step12 = _iterator12.next()).done); _iteratorNormalCompletion12 = true) {
-          var _ref4 = _step12.value;
-          var operation = _ref4.operation,
-              type = _ref4.type;
-
-          if (operationTypes[operation]) {
-            throw new Error("Must provide only one ".concat(operation, " type in schema."));
-          } // Note: While this could make early assertions to get the correctly
+        for (var _iterator14 = schemaExtension.operationTypes[Symbol.iterator](), _step14; !(_iteratorNormalCompletion14 = (_step14 = _iterator14.next()).done); _iteratorNormalCompletion14 = true) {
+          var _ref4 = _step14.value;
+          var _operation = _ref4.operation;
+          var _type = _ref4.type;
+          // Note: While this could make early assertions to get the correctly
           // typed values, that would throw immediately while type system
           // validation with validateSchema() will produce more actionable results.
-
-
-          operationTypes[operation] = astBuilder.buildType(type);
+          operationTypes[_operation] = astBuilder.buildType(_type);
         }
       } catch (err) {
-        _didIteratorError12 = true;
-        _iteratorError12 = err;
+        _didIteratorError14 = true;
+        _iteratorError14 = err;
       } finally {
         try {
-          if (!_iteratorNormalCompletion12 && _iterator12.return != null) {
-            _iterator12.return();
+          if (!_iteratorNormalCompletion14 && _iterator14.return != null) {
+            _iterator14.return();
           }
         } finally {
-          if (_didIteratorError12) {
-            throw _iteratorError12;
+          if (_didIteratorError14) {
+            throw _iteratorError14;
           }
         }
       }
@@ -40738,16 +42600,16 @@ function extendSchema(schema, documentAST, options) {
   }
 
   var schemaExtensionASTNodes = schemaExtensions ? schema.extensionASTNodes ? schema.extensionASTNodes.concat(schemaExtensions) : schemaExtensions : schema.extensionASTNodes;
-  var types = Object(_jsutils_objectValues__WEBPACK_IMPORTED_MODULE_3__["default"])(schema.getTypeMap()).map(function (type) {
+  var types = [].concat(Object(_polyfills_objectValues__WEBPACK_IMPORTED_MODULE_0__["default"])(schema.getTypeMap()).map(function (type) {
     return extendNamedType(type);
-  }).concat(Object(_jsutils_objectValues__WEBPACK_IMPORTED_MODULE_3__["default"])(typeDefinitionMap).map(function (type) {
+  }), Object(_polyfills_objectValues__WEBPACK_IMPORTED_MODULE_0__["default"])(typeDefinitionMap).map(function (type) {
     return astBuilder.buildType(type);
   })); // Support both original legacy names and extended legacy names.
 
   var allowedLegacyNames = schema.__allowedLegacyNames.concat(options && options.allowedLegacyNames || []); // Then produce and return a Schema with these types.
 
 
-  return new _type_schema__WEBPACK_IMPORTED_MODULE_7__["GraphQLSchema"](_objectSpread({}, operationTypes, {
+  return new _type_schema__WEBPACK_IMPORTED_MODULE_6__["GraphQLSchema"](_objectSpread({}, operationTypes, {
     types: types,
     directives: getMergedDirectives(),
     astNode: schema.astNode,
@@ -40758,7 +42620,7 @@ function extendSchema(schema, documentAST, options) {
 
   function getMergedDirectives() {
     var existingDirectives = schema.getDirectives().map(extendDirective);
-    !existingDirectives ? Object(_jsutils_invariant__WEBPACK_IMPORTED_MODULE_0__["default"])(0, 'schema must have default directives') : void 0;
+    !existingDirectives ? Object(_jsutils_invariant__WEBPACK_IMPORTED_MODULE_1__["default"])(0, 'schema must have default directives') : void 0;
     return existingDirectives.concat(directiveDefinitions.map(function (node) {
       return astBuilder.buildDirective(node);
     }));
@@ -40769,7 +42631,7 @@ function extendSchema(schema, documentAST, options) {
   }
 
   function extendNamedType(type) {
-    if (Object(_type_introspection__WEBPACK_IMPORTED_MODULE_8__["isIntrospectionType"])(type) || Object(_type_scalars__WEBPACK_IMPORTED_MODULE_9__["isSpecifiedScalarType"])(type)) {
+    if (Object(_type_introspection__WEBPACK_IMPORTED_MODULE_7__["isIntrospectionType"])(type) || Object(_type_scalars__WEBPACK_IMPORTED_MODULE_8__["isSpecifiedScalarType"])(type)) {
       // Builtin types are not extended.
       return type;
     }
@@ -40777,17 +42639,17 @@ function extendSchema(schema, documentAST, options) {
     var name = type.name;
 
     if (!extendTypeCache[name]) {
-      if (Object(_type_definition__WEBPACK_IMPORTED_MODULE_10__["isScalarType"])(type)) {
+      if (Object(_type_definition__WEBPACK_IMPORTED_MODULE_9__["isScalarType"])(type)) {
         extendTypeCache[name] = extendScalarType(type);
-      } else if (Object(_type_definition__WEBPACK_IMPORTED_MODULE_10__["isObjectType"])(type)) {
+      } else if (Object(_type_definition__WEBPACK_IMPORTED_MODULE_9__["isObjectType"])(type)) {
         extendTypeCache[name] = extendObjectType(type);
-      } else if (Object(_type_definition__WEBPACK_IMPORTED_MODULE_10__["isInterfaceType"])(type)) {
+      } else if (Object(_type_definition__WEBPACK_IMPORTED_MODULE_9__["isInterfaceType"])(type)) {
         extendTypeCache[name] = extendInterfaceType(type);
-      } else if (Object(_type_definition__WEBPACK_IMPORTED_MODULE_10__["isUnionType"])(type)) {
+      } else if (Object(_type_definition__WEBPACK_IMPORTED_MODULE_9__["isUnionType"])(type)) {
         extendTypeCache[name] = extendUnionType(type);
-      } else if (Object(_type_definition__WEBPACK_IMPORTED_MODULE_10__["isEnumType"])(type)) {
+      } else if (Object(_type_definition__WEBPACK_IMPORTED_MODULE_9__["isEnumType"])(type)) {
         extendTypeCache[name] = extendEnumType(type);
-      } else if (Object(_type_definition__WEBPACK_IMPORTED_MODULE_10__["isInputObjectType"])(type)) {
+      } else if (Object(_type_definition__WEBPACK_IMPORTED_MODULE_9__["isInputObjectType"])(type)) {
         extendTypeCache[name] = extendInputObjectType(type);
       }
     }
@@ -40796,7 +42658,7 @@ function extendSchema(schema, documentAST, options) {
   }
 
   function extendDirective(directive) {
-    return new _type_directives__WEBPACK_IMPORTED_MODULE_11__["GraphQLDirective"]({
+    return new _type_directives__WEBPACK_IMPORTED_MODULE_10__["GraphQLDirective"]({
       name: directive.name,
       description: directive.description,
       locations: directive.locations,
@@ -40808,7 +42670,7 @@ function extendSchema(schema, documentAST, options) {
   function extendInputObjectType(type) {
     var name = type.name;
     var extensionASTNodes = typeExtensionsMap[name] ? type.extensionASTNodes ? type.extensionASTNodes.concat(typeExtensionsMap[name]) : typeExtensionsMap[name] : type.extensionASTNodes;
-    return new _type_definition__WEBPACK_IMPORTED_MODULE_10__["GraphQLInputObjectType"]({
+    return new _type_definition__WEBPACK_IMPORTED_MODULE_9__["GraphQLInputObjectType"]({
       name: name,
       description: type.description,
       fields: function fields() {
@@ -40820,74 +42682,60 @@ function extendSchema(schema, documentAST, options) {
   }
 
   function extendInputFieldMap(type) {
-    var newFieldMap = Object.create(null);
-    var oldFieldMap = type.getFields();
-
-    var _arr = Object.keys(oldFieldMap);
-
-    for (var _i2 = 0; _i2 < _arr.length; _i2++) {
-      var _fieldName = _arr[_i2];
-      var _field = oldFieldMap[_fieldName];
-      newFieldMap[_fieldName] = {
-        description: _field.description,
-        type: extendType(_field.type),
-        defaultValue: _field.defaultValue,
-        astNode: _field.astNode
+    var newFieldMap = Object(_jsutils_mapValue__WEBPACK_IMPORTED_MODULE_2__["default"])(type.getFields(), function (field) {
+      return {
+        description: field.description,
+        type: extendType(field.type),
+        defaultValue: field.defaultValue,
+        astNode: field.astNode
       };
-    } // If there are any extensions to the fields, apply those here.
-
+    }); // If there are any extensions to the fields, apply those here.
 
     var extensions = typeExtensionsMap[type.name];
 
     if (extensions) {
-      var _iteratorNormalCompletion2 = true;
-      var _didIteratorError2 = false;
-      var _iteratorError2 = undefined;
+      var _iteratorNormalCompletion3 = true;
+      var _didIteratorError3 = false;
+      var _iteratorError3 = undefined;
 
       try {
-        for (var _iterator2 = extensions[Symbol.iterator](), _step2; !(_iteratorNormalCompletion2 = (_step2 = _iterator2.next()).done); _iteratorNormalCompletion2 = true) {
-          var extension = _step2.value;
-          var _iteratorNormalCompletion3 = true;
-          var _didIteratorError3 = false;
-          var _iteratorError3 = undefined;
+        for (var _iterator3 = extensions[Symbol.iterator](), _step3; !(_iteratorNormalCompletion3 = (_step3 = _iterator3.next()).done); _iteratorNormalCompletion3 = true) {
+          var extension = _step3.value;
+          var _iteratorNormalCompletion4 = true;
+          var _didIteratorError4 = false;
+          var _iteratorError4 = undefined;
 
           try {
-            for (var _iterator3 = extension.fields[Symbol.iterator](), _step3; !(_iteratorNormalCompletion3 = (_step3 = _iterator3.next()).done); _iteratorNormalCompletion3 = true) {
-              var field = _step3.value;
-              var fieldName = field.name.value;
-
-              if (oldFieldMap[fieldName]) {
-                throw new _error_GraphQLError__WEBPACK_IMPORTED_MODULE_6__["GraphQLError"]("Field \"".concat(type.name, ".").concat(fieldName, "\" already exists in the ") + 'schema. It cannot also be defined in this type extension.', [field]);
-              }
-
-              newFieldMap[fieldName] = astBuilder.buildInputField(field);
+            for (var _iterator4 = extension.fields[Symbol.iterator](), _step4; !(_iteratorNormalCompletion4 = (_step4 = _iterator4.next()).done); _iteratorNormalCompletion4 = true) {
+              var field = _step4.value;
+              newFieldMap[field.name.value] = astBuilder.buildInputField(field);
             }
           } catch (err) {
-            _didIteratorError3 = true;
-            _iteratorError3 = err;
+            _didIteratorError4 = true;
+            _iteratorError4 = err;
           } finally {
             try {
-              if (!_iteratorNormalCompletion3 && _iterator3.return != null) {
-                _iterator3.return();
+              if (!_iteratorNormalCompletion4 && _iterator4.return != null) {
+                _iterator4.return();
               }
             } finally {
-              if (_didIteratorError3) {
-                throw _iteratorError3;
+              if (_didIteratorError4) {
+                throw _iteratorError4;
               }
             }
           }
         }
       } catch (err) {
-        _didIteratorError2 = true;
-        _iteratorError2 = err;
+        _didIteratorError3 = true;
+        _iteratorError3 = err;
       } finally {
         try {
-          if (!_iteratorNormalCompletion2 && _iterator2.return != null) {
-            _iterator2.return();
+          if (!_iteratorNormalCompletion3 && _iterator3.return != null) {
+            _iterator3.return();
           }
         } finally {
-          if (_didIteratorError2) {
-            throw _iteratorError2;
+          if (_didIteratorError3) {
+            throw _iteratorError3;
           }
         }
       }
@@ -40899,7 +42747,7 @@ function extendSchema(schema, documentAST, options) {
   function extendEnumType(type) {
     var name = type.name;
     var extensionASTNodes = typeExtensionsMap[name] ? type.extensionASTNodes ? type.extensionASTNodes.concat(typeExtensionsMap[name]) : typeExtensionsMap[name] : type.extensionASTNodes;
-    return new _type_definition__WEBPACK_IMPORTED_MODULE_10__["GraphQLEnumType"]({
+    return new _type_definition__WEBPACK_IMPORTED_MODULE_9__["GraphQLEnumType"]({
       name: name,
       description: type.description,
       values: extendValueMap(type),
@@ -40910,161 +42758,35 @@ function extendSchema(schema, documentAST, options) {
 
   function extendValueMap(type) {
     var newValueMap = Object.create(null);
-    var oldValueMap = Object(_jsutils_keyMap__WEBPACK_IMPORTED_MODULE_1__["default"])(type.getValues(), function (value) {
-      return value.name;
-    });
+    var _iteratorNormalCompletion5 = true;
+    var _didIteratorError5 = false;
+    var _iteratorError5 = undefined;
 
-    var _arr2 = Object.keys(oldValueMap);
+    try {
+      for (var _iterator5 = type.getValues()[Symbol.iterator](), _step5; !(_iteratorNormalCompletion5 = (_step5 = _iterator5.next()).done); _iteratorNormalCompletion5 = true) {
+        var _value = _step5.value;
+        newValueMap[_value.name] = {
+          description: _value.description,
+          value: _value.value,
+          deprecationReason: _value.deprecationReason,
+          astNode: _value.astNode
+        };
+      } // If there are any extensions to the values, apply those here.
 
-    for (var _i3 = 0; _i3 < _arr2.length; _i3++) {
-      var _valueName = _arr2[_i3];
-      var _value = oldValueMap[_valueName];
-      newValueMap[_valueName] = {
-        name: _value.name,
-        description: _value.description,
-        value: _value.value,
-        deprecationReason: _value.deprecationReason,
-        astNode: _value.astNode
-      };
-    } // If there are any extensions to the values, apply those here.
-
-
-    var extensions = typeExtensionsMap[type.name];
-
-    if (extensions) {
-      var _iteratorNormalCompletion4 = true;
-      var _didIteratorError4 = false;
-      var _iteratorError4 = undefined;
-
+    } catch (err) {
+      _didIteratorError5 = true;
+      _iteratorError5 = err;
+    } finally {
       try {
-        for (var _iterator4 = extensions[Symbol.iterator](), _step4; !(_iteratorNormalCompletion4 = (_step4 = _iterator4.next()).done); _iteratorNormalCompletion4 = true) {
-          var extension = _step4.value;
-          var _iteratorNormalCompletion5 = true;
-          var _didIteratorError5 = false;
-          var _iteratorError5 = undefined;
-
-          try {
-            for (var _iterator5 = extension.values[Symbol.iterator](), _step5; !(_iteratorNormalCompletion5 = (_step5 = _iterator5.next()).done); _iteratorNormalCompletion5 = true) {
-              var value = _step5.value;
-              var valueName = value.name.value;
-
-              if (oldValueMap[valueName]) {
-                throw new _error_GraphQLError__WEBPACK_IMPORTED_MODULE_6__["GraphQLError"]("Enum value \"".concat(type.name, ".").concat(valueName, "\" already exists in the ") + 'schema. It cannot also be defined in this type extension.', [value]);
-              }
-
-              newValueMap[valueName] = astBuilder.buildEnumValue(value);
-            }
-          } catch (err) {
-            _didIteratorError5 = true;
-            _iteratorError5 = err;
-          } finally {
-            try {
-              if (!_iteratorNormalCompletion5 && _iterator5.return != null) {
-                _iterator5.return();
-              }
-            } finally {
-              if (_didIteratorError5) {
-                throw _iteratorError5;
-              }
-            }
-          }
+        if (!_iteratorNormalCompletion5 && _iterator5.return != null) {
+          _iterator5.return();
         }
-      } catch (err) {
-        _didIteratorError4 = true;
-        _iteratorError4 = err;
       } finally {
-        try {
-          if (!_iteratorNormalCompletion4 && _iterator4.return != null) {
-            _iterator4.return();
-          }
-        } finally {
-          if (_didIteratorError4) {
-            throw _iteratorError4;
-          }
+        if (_didIteratorError5) {
+          throw _iteratorError5;
         }
       }
     }
-
-    return newValueMap;
-  }
-
-  function extendScalarType(type) {
-    var name = type.name;
-    var extensionASTNodes = typeExtensionsMap[name] ? type.extensionASTNodes ? type.extensionASTNodes.concat(typeExtensionsMap[name]) : typeExtensionsMap[name] : type.extensionASTNodes;
-    return new _type_definition__WEBPACK_IMPORTED_MODULE_10__["GraphQLScalarType"]({
-      name: name,
-      description: type.description,
-      astNode: type.astNode,
-      extensionASTNodes: extensionASTNodes,
-      serialize: type.serialize,
-      parseValue: type.parseValue,
-      parseLiteral: type.parseLiteral
-    });
-  }
-
-  function extendObjectType(type) {
-    var name = type.name;
-    var extensionASTNodes = typeExtensionsMap[name] ? type.extensionASTNodes ? type.extensionASTNodes.concat(typeExtensionsMap[name]) : typeExtensionsMap[name] : type.extensionASTNodes;
-    return new _type_definition__WEBPACK_IMPORTED_MODULE_10__["GraphQLObjectType"]({
-      name: name,
-      description: type.description,
-      interfaces: function interfaces() {
-        return extendImplementedInterfaces(type);
-      },
-      fields: function fields() {
-        return extendFieldMap(type);
-      },
-      astNode: type.astNode,
-      extensionASTNodes: extensionASTNodes,
-      isTypeOf: type.isTypeOf
-    });
-  }
-
-  function extendArgs(args) {
-    return Object(_jsutils_keyValMap__WEBPACK_IMPORTED_MODULE_2__["default"])(args, function (arg) {
-      return arg.name;
-    }, function (arg) {
-      return {
-        type: extendType(arg.type),
-        defaultValue: arg.defaultValue,
-        description: arg.description,
-        astNode: arg.astNode
-      };
-    });
-  }
-
-  function extendInterfaceType(type) {
-    var name = type.name;
-    var extensionASTNodes = typeExtensionsMap[name] ? type.extensionASTNodes ? type.extensionASTNodes.concat(typeExtensionsMap[name]) : typeExtensionsMap[name] : type.extensionASTNodes;
-    return new _type_definition__WEBPACK_IMPORTED_MODULE_10__["GraphQLInterfaceType"]({
-      name: type.name,
-      description: type.description,
-      fields: function fields() {
-        return extendFieldMap(type);
-      },
-      astNode: type.astNode,
-      extensionASTNodes: extensionASTNodes,
-      resolveType: type.resolveType
-    });
-  }
-
-  function extendUnionType(type) {
-    var name = type.name;
-    var extensionASTNodes = typeExtensionsMap[name] ? type.extensionASTNodes ? type.extensionASTNodes.concat(typeExtensionsMap[name]) : typeExtensionsMap[name] : type.extensionASTNodes;
-    return new _type_definition__WEBPACK_IMPORTED_MODULE_10__["GraphQLUnionType"]({
-      name: name,
-      description: type.description,
-      types: function types() {
-        return extendPossibleTypes(type);
-      },
-      astNode: type.astNode,
-      resolveType: type.resolveType,
-      extensionASTNodes: extensionASTNodes
-    });
-  }
-
-  function extendPossibleTypes(type) {
-    var possibleTypes = type.getTypes().map(extendNamedType); // If there are any extensions to the union, apply those here.
 
     var extensions = typeExtensionsMap[type.name];
 
@@ -41081,12 +42803,9 @@ function extendSchema(schema, documentAST, options) {
           var _iteratorError7 = undefined;
 
           try {
-            for (var _iterator7 = extension.types[Symbol.iterator](), _step7; !(_iteratorNormalCompletion7 = (_step7 = _iterator7.next()).done); _iteratorNormalCompletion7 = true) {
-              var namedType = _step7.value;
-              // Note: While this could make early assertions to get the correctly
-              // typed values, that would throw immediately while type system
-              // validation with validateSchema() will produce more actionable results.
-              possibleTypes.push(astBuilder.buildType(namedType));
+            for (var _iterator7 = extension.values[Symbol.iterator](), _step7; !(_iteratorNormalCompletion7 = (_step7 = _iterator7.next()).done); _iteratorNormalCompletion7 = true) {
+              var value = _step7.value;
+              newValueMap[value.name.value] = astBuilder.buildEnumValue(value);
             }
           } catch (err) {
             _didIteratorError7 = true;
@@ -41119,11 +42838,86 @@ function extendSchema(schema, documentAST, options) {
       }
     }
 
-    return possibleTypes;
+    return newValueMap;
   }
 
-  function extendImplementedInterfaces(type) {
-    var interfaces = type.getInterfaces().map(extendNamedType); // If there are any extensions to the interfaces, apply those here.
+  function extendScalarType(type) {
+    var name = type.name;
+    var extensionASTNodes = typeExtensionsMap[name] ? type.extensionASTNodes ? type.extensionASTNodes.concat(typeExtensionsMap[name]) : typeExtensionsMap[name] : type.extensionASTNodes;
+    return new _type_definition__WEBPACK_IMPORTED_MODULE_9__["GraphQLScalarType"]({
+      name: name,
+      description: type.description,
+      astNode: type.astNode,
+      extensionASTNodes: extensionASTNodes,
+      serialize: type.serialize,
+      parseValue: type.parseValue,
+      parseLiteral: type.parseLiteral
+    });
+  }
+
+  function extendObjectType(type) {
+    var name = type.name;
+    var extensionASTNodes = typeExtensionsMap[name] ? type.extensionASTNodes ? type.extensionASTNodes.concat(typeExtensionsMap[name]) : typeExtensionsMap[name] : type.extensionASTNodes;
+    return new _type_definition__WEBPACK_IMPORTED_MODULE_9__["GraphQLObjectType"]({
+      name: name,
+      description: type.description,
+      interfaces: function interfaces() {
+        return extendImplementedInterfaces(type);
+      },
+      fields: function fields() {
+        return extendFieldMap(type);
+      },
+      astNode: type.astNode,
+      extensionASTNodes: extensionASTNodes,
+      isTypeOf: type.isTypeOf
+    });
+  }
+
+  function extendArgs(args) {
+    return Object(_jsutils_keyValMap__WEBPACK_IMPORTED_MODULE_3__["default"])(args, function (arg) {
+      return arg.name;
+    }, function (arg) {
+      return {
+        type: extendType(arg.type),
+        defaultValue: arg.defaultValue,
+        description: arg.description,
+        astNode: arg.astNode
+      };
+    });
+  }
+
+  function extendInterfaceType(type) {
+    var name = type.name;
+    var extensionASTNodes = typeExtensionsMap[name] ? type.extensionASTNodes ? type.extensionASTNodes.concat(typeExtensionsMap[name]) : typeExtensionsMap[name] : type.extensionASTNodes;
+    return new _type_definition__WEBPACK_IMPORTED_MODULE_9__["GraphQLInterfaceType"]({
+      name: type.name,
+      description: type.description,
+      fields: function fields() {
+        return extendFieldMap(type);
+      },
+      astNode: type.astNode,
+      extensionASTNodes: extensionASTNodes,
+      resolveType: type.resolveType
+    });
+  }
+
+  function extendUnionType(type) {
+    var name = type.name;
+    var extensionASTNodes = typeExtensionsMap[name] ? type.extensionASTNodes ? type.extensionASTNodes.concat(typeExtensionsMap[name]) : typeExtensionsMap[name] : type.extensionASTNodes;
+    return new _type_definition__WEBPACK_IMPORTED_MODULE_9__["GraphQLUnionType"]({
+      name: name,
+      description: type.description,
+      types: function types() {
+        return extendPossibleTypes(type);
+      },
+      astNode: type.astNode,
+      resolveType: type.resolveType,
+      extensionASTNodes: extensionASTNodes
+    });
+  }
+
+  function extendPossibleTypes(type) {
+    var possibleTypes = type.getTypes().map(extendNamedType); // If there are any extensions to the union, apply those here.
 
     var extensions = typeExtensionsMap[type.name];
 
@@ -41140,12 +42934,12 @@ function extendSchema(schema, documentAST, options) {
           var _iteratorError9 = undefined;
 
           try {
-            for (var _iterator9 = extension.interfaces[Symbol.iterator](), _step9; !(_iteratorNormalCompletion9 = (_step9 = _iterator9.next()).done); _iteratorNormalCompletion9 = true) {
+            for (var _iterator9 = extension.types[Symbol.iterator](), _step9; !(_iteratorNormalCompletion9 = (_step9 = _iterator9.next()).done); _iteratorNormalCompletion9 = true) {
               var namedType = _step9.value;
               // Note: While this could make early assertions to get the correctly
               // typed values, that would throw immediately while type system
               // validation with validateSchema() will produce more actionable results.
-              interfaces.push(astBuilder.buildType(namedType));
+              possibleTypes.push(astBuilder.buildType(namedType));
             }
           } catch (err) {
             _didIteratorError9 = true;
@@ -41178,28 +42972,11 @@ function extendSchema(schema, documentAST, options) {
       }
     }
 
-    return interfaces;
+    return possibleTypes;
   }
 
-  function extendFieldMap(type) {
-    var newFieldMap = Object.create(null);
-    var oldFieldMap = type.getFields();
-
-    var _arr3 = Object.keys(oldFieldMap);
-
-    for (var _i4 = 0; _i4 < _arr3.length; _i4++) {
-      var _fieldName2 = _arr3[_i4];
-      var _field2 = oldFieldMap[_fieldName2];
-      newFieldMap[_fieldName2] = {
-        description: _field2.description,
-        deprecationReason: _field2.deprecationReason,
-        type: extendType(_field2.type),
-        args: extendArgs(_field2.args),
-        astNode: _field2.astNode,
-        resolve: _field2.resolve
-      };
-    } // If there are any extensions to the fields, apply those here.
-
+  function extendImplementedInterfaces(type) {
+    var interfaces = type.getInterfaces().map(extendNamedType); // If there are any extensions to the interfaces, apply those here.
 
     var extensions = typeExtensionsMap[type.name];
 
@@ -41216,15 +42993,12 @@ function extendSchema(schema, documentAST, options) {
           var _iteratorError11 = undefined;
 
           try {
-            for (var _iterator11 = extension.fields[Symbol.iterator](), _step11; !(_iteratorNormalCompletion11 = (_step11 = _iterator11.next()).done); _iteratorNormalCompletion11 = true) {
-              var field = _step11.value;
-              var fieldName = field.name.value;
-
-              if (oldFieldMap[fieldName]) {
-                throw new _error_GraphQLError__WEBPACK_IMPORTED_MODULE_6__["GraphQLError"]("Field \"".concat(type.name, ".").concat(fieldName, "\" already exists in the ") + 'schema. It cannot also be defined in this type extension.', [field]);
-              }
-
-              newFieldMap[fieldName] = astBuilder.buildField(field);
+            for (var _iterator11 = extension.interfaces[Symbol.iterator](), _step11; !(_iteratorNormalCompletion11 = (_step11 = _iterator11.next()).done); _iteratorNormalCompletion11 = true) {
+              var namedType = _step11.value;
+              // Note: While this could make early assertions to get the correctly
+              // typed values, that would throw immediately while type system
+              // validation with validateSchema() will produce more actionable results.
+              interfaces.push(astBuilder.buildType(namedType));
             }
           } catch (err) {
             _didIteratorError11 = true;
@@ -41257,58 +43031,84 @@ function extendSchema(schema, documentAST, options) {
       }
     }
 
+    return interfaces;
+  }
+
+  function extendFieldMap(type) {
+    var newFieldMap = Object(_jsutils_mapValue__WEBPACK_IMPORTED_MODULE_2__["default"])(type.getFields(), function (field) {
+      return {
+        description: field.description,
+        deprecationReason: field.deprecationReason,
+        type: extendType(field.type),
+        args: extendArgs(field.args),
+        astNode: field.astNode,
+        resolve: field.resolve
+      };
+    }); // If there are any extensions to the fields, apply those here.
+
+    var extensions = typeExtensionsMap[type.name];
+
+    if (extensions) {
+      var _iteratorNormalCompletion12 = true;
+      var _didIteratorError12 = false;
+      var _iteratorError12 = undefined;
+
+      try {
+        for (var _iterator12 = extensions[Symbol.iterator](), _step12; !(_iteratorNormalCompletion12 = (_step12 = _iterator12.next()).done); _iteratorNormalCompletion12 = true) {
+          var extension = _step12.value;
+          var _iteratorNormalCompletion13 = true;
+          var _didIteratorError13 = false;
+          var _iteratorError13 = undefined;
+
+          try {
+            for (var _iterator13 = extension.fields[Symbol.iterator](), _step13; !(_iteratorNormalCompletion13 = (_step13 = _iterator13.next()).done); _iteratorNormalCompletion13 = true) {
+              var field = _step13.value;
+              newFieldMap[field.name.value] = astBuilder.buildField(field);
+            }
+          } catch (err) {
+            _didIteratorError13 = true;
+            _iteratorError13 = err;
+          } finally {
+            try {
+              if (!_iteratorNormalCompletion13 && _iterator13.return != null) {
+                _iterator13.return();
+              }
+            } finally {
+              if (_didIteratorError13) {
+                throw _iteratorError13;
+              }
+            }
+          }
+        }
+      } catch (err) {
+        _didIteratorError12 = true;
+        _iteratorError12 = err;
+      } finally {
+        try {
+          if (!_iteratorNormalCompletion12 && _iterator12.return != null) {
+            _iterator12.return();
+          }
+        } finally {
+          if (_didIteratorError12) {
+            throw _iteratorError12;
+          }
+        }
+      }
+    }
+
     return newFieldMap;
   }
 
   function extendType(typeDef) {
-    if (Object(_type_definition__WEBPACK_IMPORTED_MODULE_10__["isListType"])(typeDef)) {
-      return Object(_type_definition__WEBPACK_IMPORTED_MODULE_10__["GraphQLList"])(extendType(typeDef.ofType));
+    if (Object(_type_definition__WEBPACK_IMPORTED_MODULE_9__["isListType"])(typeDef)) {
+      return Object(_type_definition__WEBPACK_IMPORTED_MODULE_9__["GraphQLList"])(extendType(typeDef.ofType));
     }
 
-    if (Object(_type_definition__WEBPACK_IMPORTED_MODULE_10__["isNonNullType"])(typeDef)) {
-      return Object(_type_definition__WEBPACK_IMPORTED_MODULE_10__["GraphQLNonNull"])(extendType(typeDef.ofType));
+    if (Object(_type_definition__WEBPACK_IMPORTED_MODULE_9__["isNonNullType"])(typeDef)) {
+      return Object(_type_definition__WEBPACK_IMPORTED_MODULE_9__["GraphQLNonNull"])(extendType(typeDef.ofType));
     }
 
     return extendNamedType(typeDef);
-  }
-}
-
-function checkExtensionNode(type, node) {
-  switch (node.kind) {
-    case _language_kinds__WEBPACK_IMPORTED_MODULE_12__["Kind"].OBJECT_TYPE_EXTENSION:
-      if (!Object(_type_definition__WEBPACK_IMPORTED_MODULE_10__["isObjectType"])(type)) {
-        throw new _error_GraphQLError__WEBPACK_IMPORTED_MODULE_6__["GraphQLError"]("Cannot extend non-object type \"".concat(type.name, "\"."), [node]);
-      }
-
-      break;
-
-    case _language_kinds__WEBPACK_IMPORTED_MODULE_12__["Kind"].INTERFACE_TYPE_EXTENSION:
-      if (!Object(_type_definition__WEBPACK_IMPORTED_MODULE_10__["isInterfaceType"])(type)) {
-        throw new _error_GraphQLError__WEBPACK_IMPORTED_MODULE_6__["GraphQLError"]("Cannot extend non-interface type \"".concat(type.name, "\"."), [node]);
-      }
-
-      break;
-
-    case _language_kinds__WEBPACK_IMPORTED_MODULE_12__["Kind"].ENUM_TYPE_EXTENSION:
-      if (!Object(_type_definition__WEBPACK_IMPORTED_MODULE_10__["isEnumType"])(type)) {
-        throw new _error_GraphQLError__WEBPACK_IMPORTED_MODULE_6__["GraphQLError"]("Cannot extend non-enum type \"".concat(type.name, "\"."), [node]);
-      }
-
-      break;
-
-    case _language_kinds__WEBPACK_IMPORTED_MODULE_12__["Kind"].UNION_TYPE_EXTENSION:
-      if (!Object(_type_definition__WEBPACK_IMPORTED_MODULE_10__["isUnionType"])(type)) {
-        throw new _error_GraphQLError__WEBPACK_IMPORTED_MODULE_6__["GraphQLError"]("Cannot extend non-union type \"".concat(type.name, "\"."), [node]);
-      }
-
-      break;
-
-    case _language_kinds__WEBPACK_IMPORTED_MODULE_12__["Kind"].INPUT_OBJECT_TYPE_EXTENSION:
-      if (!Object(_type_definition__WEBPACK_IMPORTED_MODULE_10__["isInputObjectType"])(type)) {
-        throw new _error_GraphQLError__WEBPACK_IMPORTED_MODULE_6__["GraphQLError"]("Cannot extend non-input object type \"".concat(type.name, "\"."), [node]);
-      }
-
-      break;
   }
 }
 
@@ -41343,16 +43143,18 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "findAddedNonNullDirectiveArgs", function() { return findAddedNonNullDirectiveArgs; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "findRemovedLocationsForDirective", function() { return findRemovedLocationsForDirective; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "findRemovedDirectiveLocations", function() { return findRemovedDirectiveLocations; });
-/* harmony import */ var _type_definition__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../type/definition */ "./node_modules/graphql/type/definition.mjs");
-/* harmony import */ var _jsutils_keyMap__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../jsutils/keyMap */ "./node_modules/graphql/jsutils/keyMap.mjs");
+/* harmony import */ var _polyfills_find__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../polyfills/find */ "./node_modules/graphql/polyfills/find.mjs");
+/* harmony import */ var _type_definition__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../type/definition */ "./node_modules/graphql/type/definition.mjs");
+/* harmony import */ var _jsutils_keyMap__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../jsutils/keyMap */ "./node_modules/graphql/jsutils/keyMap.mjs");
 /**
  * Copyright (c) 2016-present, Facebook, Inc.
  *
  * This source code is licensed under the MIT license found in the
  * LICENSE file in the root directory of this source tree.
  *
- *  strict
+ * 
  */
+
 
 
 var BreakingChangeType = {
@@ -41386,7 +43188,7 @@ var DangerousChangeType = {
  * of breaking changes covered by the other functions down below.
  */
 function findBreakingChanges(oldSchema, newSchema) {
-  return findRemovedTypes(oldSchema, newSchema).concat(findTypesThatChangedKind(oldSchema, newSchema), findFieldsThatChangedTypeOnObjectOrInterfaceTypes(oldSchema, newSchema), findFieldsThatChangedTypeOnInputObjectTypes(oldSchema, newSchema).breakingChanges, findTypesRemovedFromUnions(oldSchema, newSchema), findValuesRemovedFromEnums(oldSchema, newSchema), findArgChanges(oldSchema, newSchema).breakingChanges, findInterfacesRemovedFromObjectTypes(oldSchema, newSchema), findRemovedDirectives(oldSchema, newSchema), findRemovedDirectiveArgs(oldSchema, newSchema), findAddedNonNullDirectiveArgs(oldSchema, newSchema), findRemovedDirectiveLocations(oldSchema, newSchema));
+  return [].concat(findRemovedTypes(oldSchema, newSchema), findTypesThatChangedKind(oldSchema, newSchema), findFieldsThatChangedTypeOnObjectOrInterfaceTypes(oldSchema, newSchema), findFieldsThatChangedTypeOnInputObjectTypes(oldSchema, newSchema).breakingChanges, findTypesRemovedFromUnions(oldSchema, newSchema), findValuesRemovedFromEnums(oldSchema, newSchema), findArgChanges(oldSchema, newSchema).breakingChanges, findInterfacesRemovedFromObjectTypes(oldSchema, newSchema), findRemovedDirectives(oldSchema, newSchema), findRemovedDirectiveArgs(oldSchema, newSchema), findAddedNonNullDirectiveArgs(oldSchema, newSchema), findRemovedDirectiveLocations(oldSchema, newSchema));
 }
 /**
  * Given two schemas, returns an Array containing descriptions of all the types
@@ -41394,7 +43196,7 @@ function findBreakingChanges(oldSchema, newSchema) {
  */
 
 function findDangerousChanges(oldSchema, newSchema) {
-  return findArgChanges(oldSchema, newSchema).dangerousChanges.concat(findValuesAddedToEnums(oldSchema, newSchema), findInterfacesAddedToObjectTypes(oldSchema, newSchema), findTypesAddedToUnions(oldSchema, newSchema), findFieldsThatChangedTypeOnInputObjectTypes(oldSchema, newSchema).dangerousChanges);
+  return [].concat(findArgChanges(oldSchema, newSchema).dangerousChanges, findValuesAddedToEnums(oldSchema, newSchema), findInterfacesAddedToObjectTypes(oldSchema, newSchema), findTypesAddedToUnions(oldSchema, newSchema), findFieldsThatChangedTypeOnInputObjectTypes(oldSchema, newSchema).dangerousChanges);
 }
 /**
  * Given two schemas, returns an Array containing descriptions of any breaking
@@ -41473,7 +43275,7 @@ function findArgChanges(oldSchema, newSchema) {
     var oldType = oldTypeMap[typeName];
     var newType = newTypeMap[typeName];
 
-    if (!(Object(_type_definition__WEBPACK_IMPORTED_MODULE_0__["isObjectType"])(oldType) || Object(_type_definition__WEBPACK_IMPORTED_MODULE_0__["isInterfaceType"])(oldType)) || !(Object(_type_definition__WEBPACK_IMPORTED_MODULE_0__["isObjectType"])(newType) || Object(_type_definition__WEBPACK_IMPORTED_MODULE_0__["isInterfaceType"])(newType)) || newType.constructor !== oldType.constructor) {
+    if (!(Object(_type_definition__WEBPACK_IMPORTED_MODULE_1__["isObjectType"])(oldType) || Object(_type_definition__WEBPACK_IMPORTED_MODULE_1__["isInterfaceType"])(oldType)) || !(Object(_type_definition__WEBPACK_IMPORTED_MODULE_1__["isObjectType"])(newType) || Object(_type_definition__WEBPACK_IMPORTED_MODULE_1__["isInterfaceType"])(newType)) || newType.constructor !== oldType.constructor) {
       continue;
     }
 
@@ -41497,7 +43299,7 @@ function findArgChanges(oldSchema, newSchema) {
         var _loop = function _loop() {
           var oldArgDef = _step.value;
           var newArgs = newTypeFields[fieldName].args;
-          var newArgDef = newArgs.find(function (arg) {
+          var newArgDef = Object(_polyfills_find__WEBPACK_IMPORTED_MODULE_0__["default"])(newArgs, function (arg) {
             return arg.name === oldArgDef.name;
           }); // Arg not present
 
@@ -41550,14 +43352,14 @@ function findArgChanges(oldSchema, newSchema) {
         var _loop2 = function _loop2() {
           var newArgDef = _step2.value;
           var oldArgs = oldTypeFields[fieldName].args;
-          var oldArgDef = oldArgs.find(function (arg) {
+          var oldArgDef = Object(_polyfills_find__WEBPACK_IMPORTED_MODULE_0__["default"])(oldArgs, function (arg) {
             return arg.name === newArgDef.name;
           });
 
           if (!oldArgDef) {
             var argName = newArgDef.name;
 
-            if (Object(_type_definition__WEBPACK_IMPORTED_MODULE_0__["isRequiredArgument"])(newArgDef)) {
+            if (Object(_type_definition__WEBPACK_IMPORTED_MODULE_1__["isRequiredArgument"])(newArgDef)) {
               breakingChanges.push({
                 type: BreakingChangeType.REQUIRED_ARG_ADDED,
                 description: "A required arg ".concat(argName, " on ") + "".concat(typeName, ".").concat(fieldName, " was added")
@@ -41598,27 +43400,27 @@ function findArgChanges(oldSchema, newSchema) {
 }
 
 function typeKindName(type) {
-  if (Object(_type_definition__WEBPACK_IMPORTED_MODULE_0__["isScalarType"])(type)) {
+  if (Object(_type_definition__WEBPACK_IMPORTED_MODULE_1__["isScalarType"])(type)) {
     return 'a Scalar type';
   }
 
-  if (Object(_type_definition__WEBPACK_IMPORTED_MODULE_0__["isObjectType"])(type)) {
+  if (Object(_type_definition__WEBPACK_IMPORTED_MODULE_1__["isObjectType"])(type)) {
     return 'an Object type';
   }
 
-  if (Object(_type_definition__WEBPACK_IMPORTED_MODULE_0__["isInterfaceType"])(type)) {
+  if (Object(_type_definition__WEBPACK_IMPORTED_MODULE_1__["isInterfaceType"])(type)) {
     return 'an Interface type';
   }
 
-  if (Object(_type_definition__WEBPACK_IMPORTED_MODULE_0__["isUnionType"])(type)) {
+  if (Object(_type_definition__WEBPACK_IMPORTED_MODULE_1__["isUnionType"])(type)) {
     return 'a Union type';
   }
 
-  if (Object(_type_definition__WEBPACK_IMPORTED_MODULE_0__["isEnumType"])(type)) {
+  if (Object(_type_definition__WEBPACK_IMPORTED_MODULE_1__["isEnumType"])(type)) {
     return 'an Enum type';
   }
 
-  if (Object(_type_definition__WEBPACK_IMPORTED_MODULE_0__["isInputObjectType"])(type)) {
+  if (Object(_type_definition__WEBPACK_IMPORTED_MODULE_1__["isInputObjectType"])(type)) {
     return 'an Input type';
   }
 
@@ -41637,7 +43439,7 @@ function findFieldsThatChangedTypeOnObjectOrInterfaceTypes(oldSchema, newSchema)
     var oldType = oldTypeMap[typeName];
     var newType = newTypeMap[typeName];
 
-    if (!(Object(_type_definition__WEBPACK_IMPORTED_MODULE_0__["isObjectType"])(oldType) || Object(_type_definition__WEBPACK_IMPORTED_MODULE_0__["isInterfaceType"])(oldType)) || !(Object(_type_definition__WEBPACK_IMPORTED_MODULE_0__["isObjectType"])(newType) || Object(_type_definition__WEBPACK_IMPORTED_MODULE_0__["isInterfaceType"])(newType)) || newType.constructor !== oldType.constructor) {
+    if (!(Object(_type_definition__WEBPACK_IMPORTED_MODULE_1__["isObjectType"])(oldType) || Object(_type_definition__WEBPACK_IMPORTED_MODULE_1__["isInterfaceType"])(oldType)) || !(Object(_type_definition__WEBPACK_IMPORTED_MODULE_1__["isObjectType"])(newType) || Object(_type_definition__WEBPACK_IMPORTED_MODULE_1__["isInterfaceType"])(newType)) || newType.constructor !== oldType.constructor) {
       continue;
     }
 
@@ -41661,8 +43463,8 @@ function findFieldsThatChangedTypeOnObjectOrInterfaceTypes(oldSchema, newSchema)
         var isSafe = isChangeSafeForObjectOrInterfaceField(oldFieldType, newFieldType);
 
         if (!isSafe) {
-          var oldFieldTypeString = Object(_type_definition__WEBPACK_IMPORTED_MODULE_0__["isNamedType"])(oldFieldType) ? oldFieldType.name : oldFieldType.toString();
-          var newFieldTypeString = Object(_type_definition__WEBPACK_IMPORTED_MODULE_0__["isNamedType"])(newFieldType) ? newFieldType.name : newFieldType.toString();
+          var oldFieldTypeString = Object(_type_definition__WEBPACK_IMPORTED_MODULE_1__["isNamedType"])(oldFieldType) ? oldFieldType.name : oldFieldType.toString();
+          var newFieldTypeString = Object(_type_definition__WEBPACK_IMPORTED_MODULE_1__["isNamedType"])(newFieldType) ? newFieldType.name : newFieldType.toString();
           breakingChanges.push({
             type: BreakingChangeType.FIELD_CHANGED_KIND,
             description: "".concat(typeName, ".").concat(fieldName, " changed type from ") + "".concat(oldFieldTypeString, " to ").concat(newFieldTypeString, ".")
@@ -41687,7 +43489,7 @@ function findFieldsThatChangedTypeOnInputObjectTypes(oldSchema, newSchema) {
     var oldType = oldTypeMap[typeName];
     var newType = newTypeMap[typeName];
 
-    if (!Object(_type_definition__WEBPACK_IMPORTED_MODULE_0__["isInputObjectType"])(oldType) || !Object(_type_definition__WEBPACK_IMPORTED_MODULE_0__["isInputObjectType"])(newType)) {
+    if (!Object(_type_definition__WEBPACK_IMPORTED_MODULE_1__["isInputObjectType"])(oldType) || !Object(_type_definition__WEBPACK_IMPORTED_MODULE_1__["isInputObjectType"])(newType)) {
       continue;
     }
 
@@ -41711,8 +43513,8 @@ function findFieldsThatChangedTypeOnInputObjectTypes(oldSchema, newSchema) {
         var isSafe = isChangeSafeForInputObjectFieldOrFieldArg(oldFieldType, newFieldType);
 
         if (!isSafe) {
-          var oldFieldTypeString = Object(_type_definition__WEBPACK_IMPORTED_MODULE_0__["isNamedType"])(oldFieldType) ? oldFieldType.name : oldFieldType.toString();
-          var newFieldTypeString = Object(_type_definition__WEBPACK_IMPORTED_MODULE_0__["isNamedType"])(newFieldType) ? newFieldType.name : newFieldType.toString();
+          var oldFieldTypeString = Object(_type_definition__WEBPACK_IMPORTED_MODULE_1__["isNamedType"])(oldFieldType) ? oldFieldType.name : oldFieldType.toString();
+          var newFieldTypeString = Object(_type_definition__WEBPACK_IMPORTED_MODULE_1__["isNamedType"])(newFieldType) ? newFieldType.name : newFieldType.toString();
           breakingChanges.push({
             type: BreakingChangeType.FIELD_CHANGED_KIND,
             description: "".concat(typeName, ".").concat(fieldName, " changed type from ") + "".concat(oldFieldTypeString, " to ").concat(newFieldTypeString, ".")
@@ -41728,7 +43530,7 @@ function findFieldsThatChangedTypeOnInputObjectTypes(oldSchema, newSchema) {
       var _fieldName = _arr9[_i9];
 
       if (!(_fieldName in oldTypeFieldsDef)) {
-        if (Object(_type_definition__WEBPACK_IMPORTED_MODULE_0__["isRequiredInputField"])(newTypeFieldsDef[_fieldName])) {
+        if (Object(_type_definition__WEBPACK_IMPORTED_MODULE_1__["isRequiredInputField"])(newTypeFieldsDef[_fieldName])) {
           breakingChanges.push({
             type: BreakingChangeType.REQUIRED_INPUT_FIELD_ADDED,
             description: "A required field ".concat(_fieldName, " on ") + "input type ".concat(typeName, " was added.")
@@ -41750,36 +43552,36 @@ function findFieldsThatChangedTypeOnInputObjectTypes(oldSchema, newSchema) {
 }
 
 function isChangeSafeForObjectOrInterfaceField(oldType, newType) {
-  if (Object(_type_definition__WEBPACK_IMPORTED_MODULE_0__["isNamedType"])(oldType)) {
+  if (Object(_type_definition__WEBPACK_IMPORTED_MODULE_1__["isNamedType"])(oldType)) {
     return (// if they're both named types, see if their names are equivalent
-      Object(_type_definition__WEBPACK_IMPORTED_MODULE_0__["isNamedType"])(newType) && oldType.name === newType.name || // moving from nullable to non-null of the same underlying type is safe
-      Object(_type_definition__WEBPACK_IMPORTED_MODULE_0__["isNonNullType"])(newType) && isChangeSafeForObjectOrInterfaceField(oldType, newType.ofType)
+      Object(_type_definition__WEBPACK_IMPORTED_MODULE_1__["isNamedType"])(newType) && oldType.name === newType.name || // moving from nullable to non-null of the same underlying type is safe
+      Object(_type_definition__WEBPACK_IMPORTED_MODULE_1__["isNonNullType"])(newType) && isChangeSafeForObjectOrInterfaceField(oldType, newType.ofType)
     );
-  } else if (Object(_type_definition__WEBPACK_IMPORTED_MODULE_0__["isListType"])(oldType)) {
+  } else if (Object(_type_definition__WEBPACK_IMPORTED_MODULE_1__["isListType"])(oldType)) {
     return (// if they're both lists, make sure the underlying types are compatible
-      Object(_type_definition__WEBPACK_IMPORTED_MODULE_0__["isListType"])(newType) && isChangeSafeForObjectOrInterfaceField(oldType.ofType, newType.ofType) || // moving from nullable to non-null of the same underlying type is safe
-      Object(_type_definition__WEBPACK_IMPORTED_MODULE_0__["isNonNullType"])(newType) && isChangeSafeForObjectOrInterfaceField(oldType, newType.ofType)
+      Object(_type_definition__WEBPACK_IMPORTED_MODULE_1__["isListType"])(newType) && isChangeSafeForObjectOrInterfaceField(oldType.ofType, newType.ofType) || // moving from nullable to non-null of the same underlying type is safe
+      Object(_type_definition__WEBPACK_IMPORTED_MODULE_1__["isNonNullType"])(newType) && isChangeSafeForObjectOrInterfaceField(oldType, newType.ofType)
     );
-  } else if (Object(_type_definition__WEBPACK_IMPORTED_MODULE_0__["isNonNullType"])(oldType)) {
+  } else if (Object(_type_definition__WEBPACK_IMPORTED_MODULE_1__["isNonNullType"])(oldType)) {
     // if they're both non-null, make sure the underlying types are compatible
-    return Object(_type_definition__WEBPACK_IMPORTED_MODULE_0__["isNonNullType"])(newType) && isChangeSafeForObjectOrInterfaceField(oldType.ofType, newType.ofType);
+    return Object(_type_definition__WEBPACK_IMPORTED_MODULE_1__["isNonNullType"])(newType) && isChangeSafeForObjectOrInterfaceField(oldType.ofType, newType.ofType);
   }
 
   return false;
 }
 
 function isChangeSafeForInputObjectFieldOrFieldArg(oldType, newType) {
-  if (Object(_type_definition__WEBPACK_IMPORTED_MODULE_0__["isNamedType"])(oldType)) {
+  if (Object(_type_definition__WEBPACK_IMPORTED_MODULE_1__["isNamedType"])(oldType)) {
     // if they're both named types, see if their names are equivalent
-    return Object(_type_definition__WEBPACK_IMPORTED_MODULE_0__["isNamedType"])(newType) && oldType.name === newType.name;
-  } else if (Object(_type_definition__WEBPACK_IMPORTED_MODULE_0__["isListType"])(oldType)) {
+    return Object(_type_definition__WEBPACK_IMPORTED_MODULE_1__["isNamedType"])(newType) && oldType.name === newType.name;
+  } else if (Object(_type_definition__WEBPACK_IMPORTED_MODULE_1__["isListType"])(oldType)) {
     // if they're both lists, make sure the underlying types are compatible
-    return Object(_type_definition__WEBPACK_IMPORTED_MODULE_0__["isListType"])(newType) && isChangeSafeForInputObjectFieldOrFieldArg(oldType.ofType, newType.ofType);
-  } else if (Object(_type_definition__WEBPACK_IMPORTED_MODULE_0__["isNonNullType"])(oldType)) {
+    return Object(_type_definition__WEBPACK_IMPORTED_MODULE_1__["isListType"])(newType) && isChangeSafeForInputObjectFieldOrFieldArg(oldType.ofType, newType.ofType);
+  } else if (Object(_type_definition__WEBPACK_IMPORTED_MODULE_1__["isNonNullType"])(oldType)) {
     return (// if they're both non-null, make sure the underlying types are
       // compatible
-      Object(_type_definition__WEBPACK_IMPORTED_MODULE_0__["isNonNullType"])(newType) && isChangeSafeForInputObjectFieldOrFieldArg(oldType.ofType, newType.ofType) || // moving from non-null to nullable of the same underlying type is safe
-      !Object(_type_definition__WEBPACK_IMPORTED_MODULE_0__["isNonNullType"])(newType) && isChangeSafeForInputObjectFieldOrFieldArg(oldType.ofType, newType)
+      Object(_type_definition__WEBPACK_IMPORTED_MODULE_1__["isNonNullType"])(newType) && isChangeSafeForInputObjectFieldOrFieldArg(oldType.ofType, newType.ofType) || // moving from non-null to nullable of the same underlying type is safe
+      !Object(_type_definition__WEBPACK_IMPORTED_MODULE_1__["isNonNullType"])(newType) && isChangeSafeForInputObjectFieldOrFieldArg(oldType.ofType, newType)
     );
   }
 
@@ -41803,7 +43605,7 @@ function findTypesRemovedFromUnions(oldSchema, newSchema) {
     var oldType = oldTypeMap[typeName];
     var newType = newTypeMap[typeName];
 
-    if (!Object(_type_definition__WEBPACK_IMPORTED_MODULE_0__["isUnionType"])(oldType) || !Object(_type_definition__WEBPACK_IMPORTED_MODULE_0__["isUnionType"])(newType)) {
+    if (!Object(_type_definition__WEBPACK_IMPORTED_MODULE_1__["isUnionType"])(oldType) || !Object(_type_definition__WEBPACK_IMPORTED_MODULE_1__["isUnionType"])(newType)) {
       continue;
     }
 
@@ -41882,7 +43684,7 @@ function findTypesAddedToUnions(oldSchema, newSchema) {
     var oldType = oldTypeMap[typeName];
     var newType = newTypeMap[typeName];
 
-    if (!Object(_type_definition__WEBPACK_IMPORTED_MODULE_0__["isUnionType"])(oldType) || !Object(_type_definition__WEBPACK_IMPORTED_MODULE_0__["isUnionType"])(newType)) {
+    if (!Object(_type_definition__WEBPACK_IMPORTED_MODULE_1__["isUnionType"])(oldType) || !Object(_type_definition__WEBPACK_IMPORTED_MODULE_1__["isUnionType"])(newType)) {
       continue;
     }
 
@@ -41961,7 +43763,7 @@ function findValuesRemovedFromEnums(oldSchema, newSchema) {
     var oldType = oldTypeMap[typeName];
     var newType = newTypeMap[typeName];
 
-    if (!Object(_type_definition__WEBPACK_IMPORTED_MODULE_0__["isEnumType"])(oldType) || !Object(_type_definition__WEBPACK_IMPORTED_MODULE_0__["isEnumType"])(newType)) {
+    if (!Object(_type_definition__WEBPACK_IMPORTED_MODULE_1__["isEnumType"])(oldType) || !Object(_type_definition__WEBPACK_IMPORTED_MODULE_1__["isEnumType"])(newType)) {
       continue;
     }
 
@@ -42040,7 +43842,7 @@ function findValuesAddedToEnums(oldSchema, newSchema) {
     var oldType = oldTypeMap[typeName];
     var newType = newTypeMap[typeName];
 
-    if (!Object(_type_definition__WEBPACK_IMPORTED_MODULE_0__["isEnumType"])(oldType) || !Object(_type_definition__WEBPACK_IMPORTED_MODULE_0__["isEnumType"])(newType)) {
+    if (!Object(_type_definition__WEBPACK_IMPORTED_MODULE_1__["isEnumType"])(oldType) || !Object(_type_definition__WEBPACK_IMPORTED_MODULE_1__["isEnumType"])(newType)) {
       continue;
     }
 
@@ -42114,7 +43916,7 @@ function findInterfacesRemovedFromObjectTypes(oldSchema, newSchema) {
     var oldType = oldTypeMap[typeName];
     var newType = newTypeMap[typeName];
 
-    if (!Object(_type_definition__WEBPACK_IMPORTED_MODULE_0__["isObjectType"])(oldType) || !Object(_type_definition__WEBPACK_IMPORTED_MODULE_0__["isObjectType"])(newType)) {
+    if (!Object(_type_definition__WEBPACK_IMPORTED_MODULE_1__["isObjectType"])(oldType) || !Object(_type_definition__WEBPACK_IMPORTED_MODULE_1__["isObjectType"])(newType)) {
       continue;
     }
 
@@ -42171,7 +43973,7 @@ function findInterfacesAddedToObjectTypes(oldSchema, newSchema) {
     var oldType = oldTypeMap[typeName];
     var newType = newTypeMap[typeName];
 
-    if (!Object(_type_definition__WEBPACK_IMPORTED_MODULE_0__["isObjectType"])(oldType) || !Object(_type_definition__WEBPACK_IMPORTED_MODULE_0__["isObjectType"])(newType)) {
+    if (!Object(_type_definition__WEBPACK_IMPORTED_MODULE_1__["isObjectType"])(oldType) || !Object(_type_definition__WEBPACK_IMPORTED_MODULE_1__["isObjectType"])(newType)) {
       continue;
     }
 
@@ -42403,7 +44205,7 @@ function findAddedNonNullDirectiveArgs(oldSchema, newSchema) {
         for (var _iterator19 = findAddedArgsForDirective(oldDirective, newDirective)[Symbol.iterator](), _step19; !(_iteratorNormalCompletion19 = (_step19 = _iterator19.next()).done); _iteratorNormalCompletion19 = true) {
           var arg = _step19.value;
 
-          if (Object(_type_definition__WEBPACK_IMPORTED_MODULE_0__["isRequiredArgument"])(arg)) {
+          if (Object(_type_definition__WEBPACK_IMPORTED_MODULE_1__["isRequiredArgument"])(arg)) {
             addedNonNullableArgs.push({
               type: BreakingChangeType.REQUIRED_DIRECTIVE_ARG_ADDED,
               description: "A required arg ".concat(arg.name, " on directive ") + "".concat(newDirective.name, " was added")
@@ -42536,13 +44338,13 @@ function findRemovedDirectiveLocations(oldSchema, newSchema) {
 }
 
 function getDirectiveMapForSchema(schema) {
-  return Object(_jsutils_keyMap__WEBPACK_IMPORTED_MODULE_1__["default"])(schema.getDirectives(), function (dir) {
+  return Object(_jsutils_keyMap__WEBPACK_IMPORTED_MODULE_2__["default"])(schema.getDirectives(), function (dir) {
     return dir.name;
   });
 }
 
 function getArgumentMapForDirective(directive) {
-  return Object(_jsutils_keyMap__WEBPACK_IMPORTED_MODULE_1__["default"])(directive.args, function (arg) {
+  return Object(_jsutils_keyMap__WEBPACK_IMPORTED_MODULE_2__["default"])(directive.args, function (arg) {
     return arg.name;
   });
 }
@@ -42569,7 +44371,7 @@ __webpack_require__.r(__webpack_exports__);
  * This source code is licensed under the MIT license found in the
  * LICENSE file in the root directory of this source tree.
  *
- *  strict
+ * 
  */
 
 
@@ -42632,7 +44434,7 @@ __webpack_require__.r(__webpack_exports__);
  * This source code is licensed under the MIT license found in the
  * LICENSE file in the root directory of this source tree.
  *
- *  strict
+ * 
  */
 
 
@@ -42685,7 +44487,7 @@ __webpack_require__.r(__webpack_exports__);
  * This source code is licensed under the MIT license found in the
  * LICENSE file in the root directory of this source tree.
  *
- *  strict
+ * 
  */
 
 
@@ -42834,7 +44636,7 @@ __webpack_require__.r(__webpack_exports__);
  * This source code is licensed under the MIT license found in the
  * LICENSE file in the root directory of this source tree.
  *
- *  strict
+ * 
  */
 // The GraphQL query recommended for a full schema introspection.
 
@@ -42906,7 +44708,7 @@ __webpack_require__.r(__webpack_exports__);
  * This source code is licensed under the MIT license found in the
  * LICENSE file in the root directory of this source tree.
  *
- *  strict
+ * 
  */
 
 
@@ -42948,7 +44750,7 @@ __webpack_require__.r(__webpack_exports__);
  * This source code is licensed under the MIT license found in the
  * LICENSE file in the root directory of this source tree.
  *
- *  strict
+ * 
  */
 function getIntrospectionQuery(options) {
   var descriptions = !(options && options.descriptions === false);
@@ -42981,7 +44783,7 @@ __webpack_require__.r(__webpack_exports__);
  * This source code is licensed under the MIT license found in the
  * LICENSE file in the root directory of this source tree.
  *
- *  strict
+ * 
  */
 
 
@@ -43021,7 +44823,7 @@ __webpack_require__.r(__webpack_exports__);
  * This source code is licensed under the MIT license found in the
  * LICENSE file in the root directory of this source tree.
  *
- *  strict
+ * 
  */
 
 
@@ -43062,8 +44864,8 @@ function isValidLiteralValue(type, valueNode) {
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "lexicographicSortSchema", function() { return lexicographicSortSchema; });
-/* harmony import */ var _jsutils_keyValMap__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../jsutils/keyValMap */ "./node_modules/graphql/jsutils/keyValMap.mjs");
-/* harmony import */ var _jsutils_objectValues__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../jsutils/objectValues */ "./node_modules/graphql/jsutils/objectValues.mjs");
+/* harmony import */ var _polyfills_objectValues__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../polyfills/objectValues */ "./node_modules/graphql/polyfills/objectValues.mjs");
+/* harmony import */ var _jsutils_keyValMap__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../jsutils/keyValMap */ "./node_modules/graphql/jsutils/keyValMap.mjs");
 /* harmony import */ var _type_schema__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../type/schema */ "./node_modules/graphql/type/schema.mjs");
 /* harmony import */ var _type_directives__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../type/directives */ "./node_modules/graphql/type/directives.mjs");
 /* harmony import */ var _type_definition__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../type/definition */ "./node_modules/graphql/type/definition.mjs");
@@ -43079,7 +44881,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
  * This source code is licensed under the MIT license found in the
  * LICENSE file in the root directory of this source tree.
  *
- *  strict
+ * 
  */
 
 
@@ -43100,7 +44902,7 @@ function lexicographicSortSchema(schema) {
   };
 
   return new _type_schema__WEBPACK_IMPORTED_MODULE_2__["GraphQLSchema"]({
-    types: sortTypes(Object(_jsutils_objectValues__WEBPACK_IMPORTED_MODULE_1__["default"])(schema.getTypeMap())),
+    types: sortTypes(Object(_polyfills_objectValues__WEBPACK_IMPORTED_MODULE_0__["default"])(schema.getTypeMap())),
     directives: sortByName(schema.getDirectives()).map(sortDirective),
     query: sortMaybeType(schema.getQueryType()),
     mutation: sortMaybeType(schema.getMutationType()),
@@ -43121,7 +44923,7 @@ function lexicographicSortSchema(schema) {
   }
 
   function sortArgs(args) {
-    return Object(_jsutils_keyValMap__WEBPACK_IMPORTED_MODULE_0__["default"])(sortByName(args), function (arg) {
+    return Object(_jsutils_keyValMap__WEBPACK_IMPORTED_MODULE_1__["default"])(sortByName(args), function (arg) {
       return arg.name;
     }, function (arg) {
       return _objectSpread({}, arg, {
@@ -43225,7 +45027,7 @@ function lexicographicSortSchema(schema) {
     } else if (Object(_type_definition__WEBPACK_IMPORTED_MODULE_4__["isEnumType"])(type)) {
       return new _type_definition__WEBPACK_IMPORTED_MODULE_4__["GraphQLEnumType"]({
         name: type.name,
-        values: Object(_jsutils_keyValMap__WEBPACK_IMPORTED_MODULE_0__["default"])(sortByName(type.getValues()), function (val) {
+        values: Object(_jsutils_keyValMap__WEBPACK_IMPORTED_MODULE_1__["default"])(sortByName(type.getValues()), function (val) {
           return val.name;
         }, function (val) {
           return {
@@ -43296,9 +45098,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "printSchema", function() { return printSchema; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "printIntrospectionSchema", function() { return printIntrospectionSchema; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "printType", function() { return printType; });
-/* harmony import */ var _jsutils_isNullish__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../jsutils/isNullish */ "./node_modules/graphql/jsutils/isNullish.mjs");
-/* harmony import */ var _jsutils_isInvalid__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../jsutils/isInvalid */ "./node_modules/graphql/jsutils/isInvalid.mjs");
-/* harmony import */ var _jsutils_objectValues__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../jsutils/objectValues */ "./node_modules/graphql/jsutils/objectValues.mjs");
+/* harmony import */ var _polyfills_objectValues__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../polyfills/objectValues */ "./node_modules/graphql/polyfills/objectValues.mjs");
+/* harmony import */ var _jsutils_isNullish__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../jsutils/isNullish */ "./node_modules/graphql/jsutils/isNullish.mjs");
+/* harmony import */ var _jsutils_isInvalid__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../jsutils/isInvalid */ "./node_modules/graphql/jsutils/isInvalid.mjs");
 /* harmony import */ var _utilities_astFromValue__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../utilities/astFromValue */ "./node_modules/graphql/utilities/astFromValue.mjs");
 /* harmony import */ var _language_printer__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../language/printer */ "./node_modules/graphql/language/printer.mjs");
 /* harmony import */ var _type_definition__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../type/definition */ "./node_modules/graphql/type/definition.mjs");
@@ -43311,7 +45113,7 @@ __webpack_require__.r(__webpack_exports__);
  * This source code is licensed under the MIT license found in the
  * LICENSE file in the root directory of this source tree.
  *
- *  strict
+ * 
  */
 
 
@@ -43346,7 +45148,7 @@ function isDefinedType(type) {
 function printFilteredSchema(schema, directiveFilter, typeFilter, options) {
   var directives = schema.getDirectives().filter(directiveFilter);
   var typeMap = schema.getTypeMap();
-  var types = Object(_jsutils_objectValues__WEBPACK_IMPORTED_MODULE_2__["default"])(typeMap).sort(function (type1, type2) {
+  var types = Object(_polyfills_objectValues__WEBPACK_IMPORTED_MODULE_0__["default"])(typeMap).sort(function (type1, type2) {
     return type1.name.localeCompare(type2.name);
   }).filter(typeFilter);
   return [printSchemaDefinition(schema)].concat(directives.map(function (directive) {
@@ -43469,14 +45271,14 @@ function printEnumValues(values, options) {
 }
 
 function printInputObject(type, options) {
-  var fields = Object(_jsutils_objectValues__WEBPACK_IMPORTED_MODULE_2__["default"])(type.getFields());
+  var fields = Object(_polyfills_objectValues__WEBPACK_IMPORTED_MODULE_0__["default"])(type.getFields());
   return printDescription(options, type) + "input ".concat(type.name, " {\n") + fields.map(function (f, i) {
     return printDescription(options, f, '  ', !i) + '  ' + printInputValue(f);
   }).join('\n') + '\n' + '}';
 }
 
 function printFields(options, type) {
-  var fields = Object(_jsutils_objectValues__WEBPACK_IMPORTED_MODULE_2__["default"])(type.getFields());
+  var fields = Object(_polyfills_objectValues__WEBPACK_IMPORTED_MODULE_0__["default"])(type.getFields());
   return fields.map(function (f, i) {
     return printDescription(options, f, '  ', !i) + '  ' + f.name + printArgs(options, f.args, '  ') + ': ' + String(f.type) + printDeprecated(f);
   }).join('\n');
@@ -43504,7 +45306,7 @@ function printArgs(options, args) {
 function printInputValue(arg) {
   var argDecl = arg.name + ': ' + String(arg.type);
 
-  if (!Object(_jsutils_isInvalid__WEBPACK_IMPORTED_MODULE_1__["default"])(arg.defaultValue)) {
+  if (!Object(_jsutils_isInvalid__WEBPACK_IMPORTED_MODULE_2__["default"])(arg.defaultValue)) {
     argDecl += " = ".concat(Object(_language_printer__WEBPACK_IMPORTED_MODULE_4__["print"])(Object(_utilities_astFromValue__WEBPACK_IMPORTED_MODULE_3__["astFromValue"])(arg.defaultValue, arg.type)));
   }
 
@@ -43522,7 +45324,7 @@ function printDeprecated(fieldOrEnumVal) {
 
   var reason = fieldOrEnumVal.deprecationReason;
 
-  if (Object(_jsutils_isNullish__WEBPACK_IMPORTED_MODULE_0__["default"])(reason) || reason === '' || reason === _type_directives__WEBPACK_IMPORTED_MODULE_7__["DEFAULT_DEPRECATION_REASON"]) {
+  if (Object(_jsutils_isNullish__WEBPACK_IMPORTED_MODULE_1__["default"])(reason) || reason === '' || reason === _type_directives__WEBPACK_IMPORTED_MODULE_7__["DEFAULT_DEPRECATION_REASON"]) {
     return ' @deprecated';
   }
 
@@ -43646,7 +45448,7 @@ __webpack_require__.r(__webpack_exports__);
  * This source code is licensed under the MIT license found in the
  * LICENSE file in the root directory of this source tree.
  *
- *  strict
+ * 
  */
 
 
@@ -43757,7 +45559,7 @@ __webpack_require__.r(__webpack_exports__);
  * This source code is licensed under the MIT license found in the
  * LICENSE file in the root directory of this source tree.
  *
- *  strict
+ * 
  */
 
 
@@ -43889,7 +45691,7 @@ __webpack_require__.r(__webpack_exports__);
  * This source code is licensed under the MIT license found in the
  * LICENSE file in the root directory of this source tree.
  *
- *  strict
+ * 
  */
 
 
@@ -43928,9 +45730,9 @@ function typeFromAST(schema, typeNode) {
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "valueFromAST", function() { return valueFromAST; });
-/* harmony import */ var _jsutils_keyMap__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../jsutils/keyMap */ "./node_modules/graphql/jsutils/keyMap.mjs");
-/* harmony import */ var _jsutils_isInvalid__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../jsutils/isInvalid */ "./node_modules/graphql/jsutils/isInvalid.mjs");
-/* harmony import */ var _jsutils_objectValues__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../jsutils/objectValues */ "./node_modules/graphql/jsutils/objectValues.mjs");
+/* harmony import */ var _polyfills_objectValues__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../polyfills/objectValues */ "./node_modules/graphql/polyfills/objectValues.mjs");
+/* harmony import */ var _jsutils_keyMap__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../jsutils/keyMap */ "./node_modules/graphql/jsutils/keyMap.mjs");
+/* harmony import */ var _jsutils_isInvalid__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../jsutils/isInvalid */ "./node_modules/graphql/jsutils/isInvalid.mjs");
 /* harmony import */ var _language_kinds__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../language/kinds */ "./node_modules/graphql/language/kinds.mjs");
 /* harmony import */ var _type_definition__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../type/definition */ "./node_modules/graphql/type/definition.mjs");
 /**
@@ -43939,7 +45741,7 @@ __webpack_require__.r(__webpack_exports__);
  * This source code is licensed under the MIT license found in the
  * LICENSE file in the root directory of this source tree.
  *
- *  strict
+ * 
  */
 
 
@@ -43990,7 +45792,7 @@ function valueFromAST(valueNode, type, variables) {
   if (valueNode.kind === _language_kinds__WEBPACK_IMPORTED_MODULE_3__["Kind"].VARIABLE) {
     var variableName = valueNode.name.value;
 
-    if (!variables || Object(_jsutils_isInvalid__WEBPACK_IMPORTED_MODULE_1__["default"])(variables[variableName])) {
+    if (!variables || Object(_jsutils_isInvalid__WEBPACK_IMPORTED_MODULE_2__["default"])(variables[variableName])) {
       // No valid return value.
       return;
     }
@@ -44026,7 +45828,7 @@ function valueFromAST(valueNode, type, variables) {
         } else {
           var itemValue = valueFromAST(itemNodes[i], itemType, variables);
 
-          if (Object(_jsutils_isInvalid__WEBPACK_IMPORTED_MODULE_1__["default"])(itemValue)) {
+          if (Object(_jsutils_isInvalid__WEBPACK_IMPORTED_MODULE_2__["default"])(itemValue)) {
             return; // Invalid: intentionally return no value.
           }
 
@@ -44039,7 +45841,7 @@ function valueFromAST(valueNode, type, variables) {
 
     var coercedValue = valueFromAST(valueNode, itemType, variables);
 
-    if (Object(_jsutils_isInvalid__WEBPACK_IMPORTED_MODULE_1__["default"])(coercedValue)) {
+    if (Object(_jsutils_isInvalid__WEBPACK_IMPORTED_MODULE_2__["default"])(coercedValue)) {
       return; // Invalid: intentionally return no value.
     }
 
@@ -44052,10 +45854,10 @@ function valueFromAST(valueNode, type, variables) {
     }
 
     var coercedObj = Object.create(null);
-    var fieldNodes = Object(_jsutils_keyMap__WEBPACK_IMPORTED_MODULE_0__["default"])(valueNode.fields, function (field) {
+    var fieldNodes = Object(_jsutils_keyMap__WEBPACK_IMPORTED_MODULE_1__["default"])(valueNode.fields, function (field) {
       return field.name.value;
     });
-    var fields = Object(_jsutils_objectValues__WEBPACK_IMPORTED_MODULE_2__["default"])(type.getFields());
+    var fields = Object(_polyfills_objectValues__WEBPACK_IMPORTED_MODULE_0__["default"])(type.getFields());
 
     for (var _i = 0; _i < fields.length; _i++) {
       var field = fields[_i];
@@ -44073,7 +45875,7 @@ function valueFromAST(valueNode, type, variables) {
 
       var fieldValue = valueFromAST(fieldNode.value, field.type, variables);
 
-      if (Object(_jsutils_isInvalid__WEBPACK_IMPORTED_MODULE_1__["default"])(fieldValue)) {
+      if (Object(_jsutils_isInvalid__WEBPACK_IMPORTED_MODULE_2__["default"])(fieldValue)) {
         return; // Invalid: intentionally return no value.
       }
 
@@ -44109,7 +45911,7 @@ function valueFromAST(valueNode, type, variables) {
       return; // Invalid: intentionally return no value.
     }
 
-    if (Object(_jsutils_isInvalid__WEBPACK_IMPORTED_MODULE_1__["default"])(result)) {
+    if (Object(_jsutils_isInvalid__WEBPACK_IMPORTED_MODULE_2__["default"])(result)) {
       return; // Invalid: intentionally return no value.
     }
 
@@ -44123,7 +45925,7 @@ function valueFromAST(valueNode, type, variables) {
 // in the set of variables.
 
 function isMissingVariable(valueNode, variables) {
-  return valueNode.kind === _language_kinds__WEBPACK_IMPORTED_MODULE_3__["Kind"].VARIABLE && (!variables || Object(_jsutils_isInvalid__WEBPACK_IMPORTED_MODULE_1__["default"])(variables[valueNode.name.value]));
+  return valueNode.kind === _language_kinds__WEBPACK_IMPORTED_MODULE_3__["Kind"].VARIABLE && (!variables || Object(_jsutils_isInvalid__WEBPACK_IMPORTED_MODULE_2__["default"])(variables[valueNode.name.value]));
 }
 
 /***/ }),
@@ -44147,7 +45949,7 @@ __webpack_require__.r(__webpack_exports__);
  * This source code is licensed under the MIT license found in the
  * LICENSE file in the root directory of this source tree.
  *
- *  strict
+ * 
  */
 
 
@@ -44226,17 +46028,13 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _utilities_TypeInfo__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../utilities/TypeInfo */ "./node_modules/graphql/utilities/TypeInfo.mjs");
 function _inheritsLoose(subClass, superClass) { subClass.prototype = Object.create(superClass.prototype); subClass.prototype.constructor = subClass; subClass.__proto__ = superClass; }
 
-function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
-
-function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
-
 /**
  * Copyright (c) 2015-present, Facebook, Inc.
  *
  * This source code is licensed under the MIT license found in the
  * LICENSE file in the root directory of this source tree.
  *
- *  strict
+ * 
  */
 
 
@@ -44251,12 +46049,11 @@ var ASTValidationContext =
 /*#__PURE__*/
 function () {
   function ASTValidationContext(ast) {
-    _defineProperty(this, "_ast", void 0);
-
-    _defineProperty(this, "_errors", void 0);
-
     this._ast = ast;
     this._errors = [];
+    this._fragments = undefined;
+    this._fragmentSpreads = new Map();
+    this._recursivelyReferencedFragments = new Map();
   }
 
   var _proto = ASTValidationContext.prototype;
@@ -44273,72 +46070,7 @@ function () {
     return this._ast;
   };
 
-  return ASTValidationContext;
-}();
-var SDLValidationContext =
-/*#__PURE__*/
-function (_ASTValidationContext) {
-  _inheritsLoose(SDLValidationContext, _ASTValidationContext);
-
-  function SDLValidationContext(ast, schema) {
-    var _this;
-
-    _this = _ASTValidationContext.call(this, ast) || this;
-
-    _defineProperty(_assertThisInitialized(_assertThisInitialized(_this)), "_schema", void 0);
-
-    _this._schema = schema;
-    return _this;
-  }
-
-  var _proto2 = SDLValidationContext.prototype;
-
-  _proto2.getSchema = function getSchema() {
-    return this._schema;
-  };
-
-  return SDLValidationContext;
-}(ASTValidationContext);
-var ValidationContext =
-/*#__PURE__*/
-function (_ASTValidationContext2) {
-  _inheritsLoose(ValidationContext, _ASTValidationContext2);
-
-  function ValidationContext(schema, ast, typeInfo) {
-    var _this2;
-
-    _this2 = _ASTValidationContext2.call(this, ast) || this;
-
-    _defineProperty(_assertThisInitialized(_assertThisInitialized(_this2)), "_schema", void 0);
-
-    _defineProperty(_assertThisInitialized(_assertThisInitialized(_this2)), "_typeInfo", void 0);
-
-    _defineProperty(_assertThisInitialized(_assertThisInitialized(_this2)), "_fragments", void 0);
-
-    _defineProperty(_assertThisInitialized(_assertThisInitialized(_this2)), "_fragmentSpreads", void 0);
-
-    _defineProperty(_assertThisInitialized(_assertThisInitialized(_this2)), "_recursivelyReferencedFragments", void 0);
-
-    _defineProperty(_assertThisInitialized(_assertThisInitialized(_this2)), "_variableUsages", void 0);
-
-    _defineProperty(_assertThisInitialized(_assertThisInitialized(_this2)), "_recursiveVariableUsages", void 0);
-
-    _this2._schema = schema;
-    _this2._typeInfo = typeInfo;
-    _this2._fragmentSpreads = new Map();
-    _this2._recursivelyReferencedFragments = new Map();
-    _this2._variableUsages = new Map();
-    _this2._recursiveVariableUsages = new Map();
-    return _this2;
-  }
-
-  var _proto3 = ValidationContext.prototype;
-
-  _proto3.getSchema = function getSchema() {
-    return this._schema;
-  };
-
-  _proto3.getFragment = function getFragment(name) {
+  _proto.getFragment = function getFragment(name) {
     var fragments = this._fragments;
 
     if (!fragments) {
@@ -44354,7 +46086,7 @@ function (_ASTValidationContext2) {
     return fragments[name];
   };
 
-  _proto3.getFragmentSpreads = function getFragmentSpreads(node) {
+  _proto.getFragmentSpreads = function getFragmentSpreads(node) {
     var spreads = this._fragmentSpreads.get(node);
 
     if (!spreads) {
@@ -44381,7 +46113,7 @@ function (_ASTValidationContext2) {
     return spreads;
   };
 
-  _proto3.getRecursivelyReferencedFragments = function getRecursivelyReferencedFragments(operation) {
+  _proto.getRecursivelyReferencedFragments = function getRecursivelyReferencedFragments(operation) {
     var fragments = this._recursivelyReferencedFragments.get(operation);
 
     if (!fragments) {
@@ -44412,6 +46144,51 @@ function (_ASTValidationContext2) {
     }
 
     return fragments;
+  };
+
+  return ASTValidationContext;
+}();
+var SDLValidationContext =
+/*#__PURE__*/
+function (_ASTValidationContext) {
+  _inheritsLoose(SDLValidationContext, _ASTValidationContext);
+
+  function SDLValidationContext(ast, schema) {
+    var _this;
+
+    _this = _ASTValidationContext.call(this, ast) || this;
+    _this._schema = schema;
+    return _this;
+  }
+
+  var _proto2 = SDLValidationContext.prototype;
+
+  _proto2.getSchema = function getSchema() {
+    return this._schema;
+  };
+
+  return SDLValidationContext;
+}(ASTValidationContext);
+var ValidationContext =
+/*#__PURE__*/
+function (_ASTValidationContext2) {
+  _inheritsLoose(ValidationContext, _ASTValidationContext2);
+
+  function ValidationContext(schema, ast, typeInfo) {
+    var _this2;
+
+    _this2 = _ASTValidationContext2.call(this, ast) || this;
+    _this2._schema = schema;
+    _this2._typeInfo = typeInfo;
+    _this2._variableUsages = new Map();
+    _this2._recursiveVariableUsages = new Map();
+    return _this2;
+  }
+
+  var _proto3 = ValidationContext.prototype;
+
+  _proto3.getSchema = function getSchema() {
+    return this._schema;
   };
 
   _proto3.getVariableUsages = function getVariableUsages(node) {
@@ -44589,7 +46366,7 @@ __webpack_require__.r(__webpack_exports__);
  * This source code is licensed under the MIT license found in the
  * LICENSE file in the root directory of this source tree.
  *
- *  strict
+ * 
  */
 
 
@@ -44667,7 +46444,7 @@ __webpack_require__.r(__webpack_exports__);
  * This source code is licensed under the MIT license found in the
  * LICENSE file in the root directory of this source tree.
  *
- *  strict
+ * 
  */
 
 
@@ -44740,7 +46517,7 @@ __webpack_require__.r(__webpack_exports__);
  * This source code is licensed under the MIT license found in the
  * LICENSE file in the root directory of this source tree.
  *
- *  strict
+ * 
  */
 
 
@@ -44908,7 +46685,7 @@ __webpack_require__.r(__webpack_exports__);
  * This source code is licensed under the MIT license found in the
  * LICENSE file in the root directory of this source tree.
  *
- *  strict
+ * 
  */
 
 
@@ -44981,7 +46758,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
  * This source code is licensed under the MIT license found in the
  * LICENSE file in the root directory of this source tree.
  *
- *  strict
+ * 
  */
 
 
@@ -45156,7 +46933,7 @@ __webpack_require__.r(__webpack_exports__);
  * This source code is licensed under the MIT license found in the
  * LICENSE file in the root directory of this source tree.
  *
- *  strict
+ * 
  */
 
 
@@ -45347,7 +47124,7 @@ __webpack_require__.r(__webpack_exports__);
  * This source code is licensed under the MIT license found in the
  * LICENSE file in the root directory of this source tree.
  *
- *  strict
+ * 
  */
 
 function unknownFragmentMessage(fragName) {
@@ -45389,14 +47166,18 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _error_GraphQLError__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../error/GraphQLError */ "./node_modules/graphql/error/GraphQLError.mjs");
 /* harmony import */ var _jsutils_suggestionList__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../jsutils/suggestionList */ "./node_modules/graphql/jsutils/suggestionList.mjs");
 /* harmony import */ var _jsutils_quotedOrList__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../jsutils/quotedOrList */ "./node_modules/graphql/jsutils/quotedOrList.mjs");
+/* harmony import */ var _language_predicates__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../language/predicates */ "./node_modules/graphql/language/predicates.mjs");
+/* harmony import */ var _type_scalars__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../type/scalars */ "./node_modules/graphql/type/scalars.mjs");
 /**
  * Copyright (c) 2015-present, Facebook, Inc.
  *
  * This source code is licensed under the MIT license found in the
  * LICENSE file in the root directory of this source tree.
  *
- *  strict
+ * 
  */
+
+
 
 
 
@@ -45417,32 +47198,65 @@ function unknownTypeMessage(typeName, suggestedTypes) {
  */
 
 function KnownTypeNames(context) {
-  return {
-    // TODO: when validating IDL, re-enable these. Experimental version does not
-    // add unreferenced types, resulting in false-positive errors. Squelched
-    // errors for now.
-    ObjectTypeDefinition: function ObjectTypeDefinition() {
-      return false;
-    },
-    InterfaceTypeDefinition: function InterfaceTypeDefinition() {
-      return false;
-    },
-    UnionTypeDefinition: function UnionTypeDefinition() {
-      return false;
-    },
-    InputObjectTypeDefinition: function InputObjectTypeDefinition() {
-      return false;
-    },
-    NamedType: function NamedType(node) {
-      var schema = context.getSchema();
-      var typeName = node.name.value;
-      var type = schema.getType(typeName);
+  var schema = context.getSchema();
+  var existingTypesMap = schema ? schema.getTypeMap() : Object.create(null);
+  var definedTypes = Object.create(null);
+  var _iteratorNormalCompletion = true;
+  var _didIteratorError = false;
+  var _iteratorError = undefined;
 
-      if (!type) {
-        context.reportError(new _error_GraphQLError__WEBPACK_IMPORTED_MODULE_0__["GraphQLError"](unknownTypeMessage(typeName, Object(_jsutils_suggestionList__WEBPACK_IMPORTED_MODULE_1__["default"])(typeName, Object.keys(schema.getTypeMap()))), [node]));
+  try {
+    for (var _iterator = context.getDocument().definitions[Symbol.iterator](), _step; !(_iteratorNormalCompletion = (_step = _iterator.next()).done); _iteratorNormalCompletion = true) {
+      var def = _step.value;
+
+      if (Object(_language_predicates__WEBPACK_IMPORTED_MODULE_3__["isTypeDefinitionNode"])(def)) {
+        definedTypes[def.name.value] = true;
+      }
+    }
+  } catch (err) {
+    _didIteratorError = true;
+    _iteratorError = err;
+  } finally {
+    try {
+      if (!_iteratorNormalCompletion && _iterator.return != null) {
+        _iterator.return();
+      }
+    } finally {
+      if (_didIteratorError) {
+        throw _iteratorError;
+      }
+    }
+  }
+
+  var typeNames = Object.keys(existingTypesMap).concat(Object.keys(definedTypes));
+  return {
+    NamedType: function NamedType(node, _1, parent, _2, ancestors) {
+      var typeName = node.name.value;
+
+      if (!existingTypesMap[typeName] && !definedTypes[typeName]) {
+        var definitionNode = ancestors[2] || parent;
+        var isSDL = isSDLNode(definitionNode);
+
+        if (isSDL && isSpecifiedScalarName(typeName)) {
+          return;
+        }
+
+        var suggestedTypes = Object(_jsutils_suggestionList__WEBPACK_IMPORTED_MODULE_1__["default"])(typeName, isSDL ? specifiedScalarsNames.concat(typeNames) : typeNames);
+        context.reportError(new _error_GraphQLError__WEBPACK_IMPORTED_MODULE_0__["GraphQLError"](unknownTypeMessage(typeName, suggestedTypes), node));
       }
     }
   };
+}
+var specifiedScalarsNames = _type_scalars__WEBPACK_IMPORTED_MODULE_4__["specifiedScalarTypes"].map(function (type) {
+  return type.name;
+});
+
+function isSpecifiedScalarName(typeName) {
+  return specifiedScalarsNames.indexOf(typeName) !== -1;
+}
+
+function isSDLNode(value) {
+  return Boolean(value && !Array.isArray(value) && (Object(_language_predicates__WEBPACK_IMPORTED_MODULE_3__["isTypeSystemDefinitionNode"])(value) || Object(_language_predicates__WEBPACK_IMPORTED_MODULE_3__["isTypeSystemExtensionNode"])(value)));
 }
 
 /***/ }),
@@ -45466,7 +47280,7 @@ __webpack_require__.r(__webpack_exports__);
  * This source code is licensed under the MIT license found in the
  * LICENSE file in the root directory of this source tree.
  *
- *  strict
+ * 
  */
 
 
@@ -45517,7 +47331,7 @@ __webpack_require__.r(__webpack_exports__);
  * This source code is licensed under the MIT license found in the
  * LICENSE file in the root directory of this source tree.
  *
- *  strict
+ * 
  */
 
 function schemaDefinitionNotAloneMessage() {
@@ -45572,7 +47386,7 @@ __webpack_require__.r(__webpack_exports__);
  * This source code is licensed under the MIT license found in the
  * LICENSE file in the root directory of this source tree.
  *
- *  strict
+ * 
  */
 
 function cycleErrorMessage(fragName, spreadNames) {
@@ -45661,7 +47475,7 @@ __webpack_require__.r(__webpack_exports__);
  * This source code is licensed under the MIT license found in the
  * LICENSE file in the root directory of this source tree.
  *
- *  strict
+ * 
  */
 
 function undefinedVarMessage(varName, opName) {
@@ -45739,7 +47553,7 @@ __webpack_require__.r(__webpack_exports__);
  * This source code is licensed under the MIT license found in the
  * LICENSE file in the root directory of this source tree.
  *
- *  strict
+ * 
  */
 
 function unusedFragMessage(fragName) {
@@ -45828,7 +47642,7 @@ __webpack_require__.r(__webpack_exports__);
  * This source code is licensed under the MIT license found in the
  * LICENSE file in the root directory of this source tree.
  *
- *  strict
+ * 
  */
 
 function unusedVariableMessage(varName, opName) {
@@ -45906,23 +47720,23 @@ function NoUnusedVariables(context) {
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "fieldsConflictMessage", function() { return fieldsConflictMessage; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "OverlappingFieldsCanBeMerged", function() { return OverlappingFieldsCanBeMerged; });
-/* harmony import */ var _error_GraphQLError__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../error/GraphQLError */ "./node_modules/graphql/error/GraphQLError.mjs");
-/* harmony import */ var _jsutils_inspect__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../jsutils/inspect */ "./node_modules/graphql/jsutils/inspect.mjs");
-/* harmony import */ var _jsutils_find__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../jsutils/find */ "./node_modules/graphql/jsutils/find.mjs");
-/* harmony import */ var _language_kinds__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../language/kinds */ "./node_modules/graphql/language/kinds.mjs");
-/* harmony import */ var _language_printer__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../language/printer */ "./node_modules/graphql/language/printer.mjs");
-/* harmony import */ var _type_definition__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../../type/definition */ "./node_modules/graphql/type/definition.mjs");
-/* harmony import */ var _utilities_typeFromAST__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../../utilities/typeFromAST */ "./node_modules/graphql/utilities/typeFromAST.mjs");
-function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
-
+/* harmony import */ var _polyfills_find__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../polyfills/find */ "./node_modules/graphql/polyfills/find.mjs");
+/* harmony import */ var _polyfills_objectEntries__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../polyfills/objectEntries */ "./node_modules/graphql/polyfills/objectEntries.mjs");
+/* harmony import */ var _error_GraphQLError__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../error/GraphQLError */ "./node_modules/graphql/error/GraphQLError.mjs");
+/* harmony import */ var _jsutils_inspect__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../jsutils/inspect */ "./node_modules/graphql/jsutils/inspect.mjs");
+/* harmony import */ var _language_kinds__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../language/kinds */ "./node_modules/graphql/language/kinds.mjs");
+/* harmony import */ var _language_printer__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../../language/printer */ "./node_modules/graphql/language/printer.mjs");
+/* harmony import */ var _type_definition__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../../type/definition */ "./node_modules/graphql/type/definition.mjs");
+/* harmony import */ var _utilities_typeFromAST__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../../utilities/typeFromAST */ "./node_modules/graphql/utilities/typeFromAST.mjs");
 /**
  * Copyright (c) 2015-present, Facebook, Inc.
  *
  * This source code is licensed under the MIT license found in the
  * LICENSE file in the root directory of this source tree.
  *
- *  strict
+ * 
  */
+
 
 
 
@@ -45974,7 +47788,7 @@ function OverlappingFieldsCanBeMerged(context) {
         var reason = _ref2$[1];
         var fields1 = _ref3[1];
         var fields2 = _ref3[2];
-        context.reportError(new _error_GraphQLError__WEBPACK_IMPORTED_MODULE_0__["GraphQLError"](fieldsConflictMessage(responseName, reason), fields1.concat(fields2)));
+        context.reportError(new _error_GraphQLError__WEBPACK_IMPORTED_MODULE_2__["GraphQLError"](fieldsConflictMessage(responseName, reason), fields1.concat(fields2)));
       }
     }
   };
@@ -46200,25 +48014,43 @@ function collectConflictsWithin(context, conflicts, cachedFieldsAndFragmentNames
   // A field map is a keyed collection, where each key represents a response
   // name and the value at that key is a list of all fields which provide that
   // response name. For every response name, if there are multiple fields, they
-  // must be compared to find a potential conflict.
-  var _arr = Object.keys(fieldMap);
+  var _iteratorNormalCompletion = true;
+  var _didIteratorError = false;
+  var _iteratorError = undefined;
 
-  for (var _i3 = 0; _i3 < _arr.length; _i3++) {
-    var responseName = _arr[_i3];
-    var fields = fieldMap[responseName]; // This compares every field in the list to every other field in this list
-    // (except to itself). If the list only has one item, nothing needs to
-    // be compared.
+  try {
+    for (var _iterator = Object(_polyfills_objectEntries__WEBPACK_IMPORTED_MODULE_1__["default"])(fieldMap)[Symbol.iterator](), _step; !(_iteratorNormalCompletion = (_step = _iterator.next()).done); _iteratorNormalCompletion = true) {
+      var _ref5 = _step.value;
+      var responseName = _ref5[0];
+      var fields = _ref5[1];
 
-    if (fields.length > 1) {
-      for (var i = 0; i < fields.length; i++) {
-        for (var j = i + 1; j < fields.length; j++) {
-          var conflict = findConflict(context, cachedFieldsAndFragmentNames, comparedFragmentPairs, false, // within one collection is never mutually exclusive
-          responseName, fields[i], fields[j]);
+      // This compares every field in the list to every other field in this list
+      // (except to itself). If the list only has one item, nothing needs to
+      // be compared.
+      if (fields.length > 1) {
+        for (var i = 0; i < fields.length; i++) {
+          for (var j = i + 1; j < fields.length; j++) {
+            var conflict = findConflict(context, cachedFieldsAndFragmentNames, comparedFragmentPairs, false, // within one collection is never mutually exclusive
+            responseName, fields[i], fields[j]);
 
-          if (conflict) {
-            conflicts.push(conflict);
+            if (conflict) {
+              conflicts.push(conflict);
+            }
           }
         }
+      }
+    }
+  } catch (err) {
+    _didIteratorError = true;
+    _iteratorError = err;
+  } finally {
+    try {
+      if (!_iteratorNormalCompletion && _iterator.return != null) {
+        _iterator.return();
+      }
+    } finally {
+      if (_didIteratorError) {
+        throw _iteratorError;
       }
     }
   }
@@ -46235,10 +48067,10 @@ function collectConflictsBetween(context, conflicts, cachedFieldsAndFragmentName
   // response name. For any response name which appears in both provided field
   // maps, each field from the first field map must be compared to every field
   // in the second field map to find potential conflicts.
-  var _arr2 = Object.keys(fieldMap1);
+  var _arr = Object.keys(fieldMap1);
 
-  for (var _i4 = 0; _i4 < _arr2.length; _i4++) {
-    var responseName = _arr2[_i4];
+  for (var _i3 = 0; _i3 < _arr.length; _i3++) {
+    var responseName = _arr[_i3];
     var fields2 = fieldMap2[responseName];
 
     if (fields2) {
@@ -46274,7 +48106,7 @@ function findConflict(context, cachedFieldsAndFragmentNames, comparedFragmentPai
   // in the current state of the schema, then perhaps in some future version,
   // thus may not safely diverge.
 
-  var areMutuallyExclusive = parentFieldsAreMutuallyExclusive || parentType1 !== parentType2 && Object(_type_definition__WEBPACK_IMPORTED_MODULE_5__["isObjectType"])(parentType1) && Object(_type_definition__WEBPACK_IMPORTED_MODULE_5__["isObjectType"])(parentType2); // The return type for each field.
+  var areMutuallyExclusive = parentFieldsAreMutuallyExclusive || parentType1 !== parentType2 && Object(_type_definition__WEBPACK_IMPORTED_MODULE_6__["isObjectType"])(parentType1) && Object(_type_definition__WEBPACK_IMPORTED_MODULE_6__["isObjectType"])(parentType2); // The return type for each field.
 
   var type1 = def1 && def1.type;
   var type2 = def2 && def2.type;
@@ -46295,7 +48127,7 @@ function findConflict(context, cachedFieldsAndFragmentNames, comparedFragmentPai
   }
 
   if (type1 && type2 && doTypesConflict(type1, type2)) {
-    return [[responseName, "they return conflicting types ".concat(Object(_jsutils_inspect__WEBPACK_IMPORTED_MODULE_1__["default"])(type1), " and ").concat(Object(_jsutils_inspect__WEBPACK_IMPORTED_MODULE_1__["default"])(type2))], [node1], [node2]];
+    return [[responseName, "they return conflicting types ".concat(Object(_jsutils_inspect__WEBPACK_IMPORTED_MODULE_3__["default"])(type1), " and ").concat(Object(_jsutils_inspect__WEBPACK_IMPORTED_MODULE_3__["default"])(type2))], [node1], [node2]];
   } // Collect and compare sub-fields. Use the same "visited fragment names" list
   // for both collections so fields in a fragment reference are never
   // compared to themselves.
@@ -46305,7 +48137,7 @@ function findConflict(context, cachedFieldsAndFragmentNames, comparedFragmentPai
   var selectionSet2 = node2.selectionSet;
 
   if (selectionSet1 && selectionSet2) {
-    var conflicts = findConflictsBetweenSubSelectionSets(context, cachedFieldsAndFragmentNames, comparedFragmentPairs, areMutuallyExclusive, Object(_type_definition__WEBPACK_IMPORTED_MODULE_5__["getNamedType"])(type1), selectionSet1, Object(_type_definition__WEBPACK_IMPORTED_MODULE_5__["getNamedType"])(type2), selectionSet2);
+    var conflicts = findConflictsBetweenSubSelectionSets(context, cachedFieldsAndFragmentNames, comparedFragmentPairs, areMutuallyExclusive, Object(_type_definition__WEBPACK_IMPORTED_MODULE_6__["getNamedType"])(type1), selectionSet1, Object(_type_definition__WEBPACK_IMPORTED_MODULE_6__["getNamedType"])(type2), selectionSet2);
     return subfieldConflicts(conflicts, responseName, node1, node2);
   }
 }
@@ -46316,7 +48148,7 @@ function sameArguments(arguments1, arguments2) {
   }
 
   return arguments1.every(function (argument1) {
-    var argument2 = Object(_jsutils_find__WEBPACK_IMPORTED_MODULE_2__["default"])(arguments2, function (argument) {
+    var argument2 = Object(_polyfills_find__WEBPACK_IMPORTED_MODULE_0__["default"])(arguments2, function (argument) {
       return argument.name.value === argument1.name.value;
     });
 
@@ -46329,30 +48161,30 @@ function sameArguments(arguments1, arguments2) {
 }
 
 function sameValue(value1, value2) {
-  return !value1 && !value2 || Object(_language_printer__WEBPACK_IMPORTED_MODULE_4__["print"])(value1) === Object(_language_printer__WEBPACK_IMPORTED_MODULE_4__["print"])(value2);
+  return !value1 && !value2 || Object(_language_printer__WEBPACK_IMPORTED_MODULE_5__["print"])(value1) === Object(_language_printer__WEBPACK_IMPORTED_MODULE_5__["print"])(value2);
 } // Two types conflict if both types could not apply to a value simultaneously.
 // Composite types are ignored as their individual field types will be compared
 // later recursively. However List and Non-Null types must match.
 
 
 function doTypesConflict(type1, type2) {
-  if (Object(_type_definition__WEBPACK_IMPORTED_MODULE_5__["isListType"])(type1)) {
-    return Object(_type_definition__WEBPACK_IMPORTED_MODULE_5__["isListType"])(type2) ? doTypesConflict(type1.ofType, type2.ofType) : true;
+  if (Object(_type_definition__WEBPACK_IMPORTED_MODULE_6__["isListType"])(type1)) {
+    return Object(_type_definition__WEBPACK_IMPORTED_MODULE_6__["isListType"])(type2) ? doTypesConflict(type1.ofType, type2.ofType) : true;
   }
 
-  if (Object(_type_definition__WEBPACK_IMPORTED_MODULE_5__["isListType"])(type2)) {
+  if (Object(_type_definition__WEBPACK_IMPORTED_MODULE_6__["isListType"])(type2)) {
     return true;
   }
 
-  if (Object(_type_definition__WEBPACK_IMPORTED_MODULE_5__["isNonNullType"])(type1)) {
-    return Object(_type_definition__WEBPACK_IMPORTED_MODULE_5__["isNonNullType"])(type2) ? doTypesConflict(type1.ofType, type2.ofType) : true;
+  if (Object(_type_definition__WEBPACK_IMPORTED_MODULE_6__["isNonNullType"])(type1)) {
+    return Object(_type_definition__WEBPACK_IMPORTED_MODULE_6__["isNonNullType"])(type2) ? doTypesConflict(type1.ofType, type2.ofType) : true;
   }
 
-  if (Object(_type_definition__WEBPACK_IMPORTED_MODULE_5__["isNonNullType"])(type2)) {
+  if (Object(_type_definition__WEBPACK_IMPORTED_MODULE_6__["isNonNullType"])(type2)) {
     return true;
   }
 
-  if (Object(_type_definition__WEBPACK_IMPORTED_MODULE_5__["isLeafType"])(type1) || Object(_type_definition__WEBPACK_IMPORTED_MODULE_5__["isLeafType"])(type2)) {
+  if (Object(_type_definition__WEBPACK_IMPORTED_MODULE_6__["isLeafType"])(type1) || Object(_type_definition__WEBPACK_IMPORTED_MODULE_6__["isLeafType"])(type2)) {
     return type1 !== type2;
   }
 
@@ -46388,7 +48220,7 @@ function getReferencedFieldsAndFragmentNames(context, cachedFieldsAndFragmentNam
     return cached;
   }
 
-  var fragmentType = Object(_utilities_typeFromAST__WEBPACK_IMPORTED_MODULE_6__["typeFromAST"])(context.getSchema(), fragment.typeCondition);
+  var fragmentType = Object(_utilities_typeFromAST__WEBPACK_IMPORTED_MODULE_7__["typeFromAST"])(context.getSchema(), fragment.typeCondition);
   return getFieldsAndFragmentNames(context, cachedFieldsAndFragmentNames, fragmentType, fragment.selectionSet);
 }
 
@@ -46397,11 +48229,11 @@ function _collectFieldsAndFragmentNames(context, parentType, selectionSet, nodeA
     var selection = selectionSet.selections[i];
 
     switch (selection.kind) {
-      case _language_kinds__WEBPACK_IMPORTED_MODULE_3__["Kind"].FIELD:
+      case _language_kinds__WEBPACK_IMPORTED_MODULE_4__["Kind"].FIELD:
         var fieldName = selection.name.value;
         var fieldDef = void 0;
 
-        if (Object(_type_definition__WEBPACK_IMPORTED_MODULE_5__["isObjectType"])(parentType) || Object(_type_definition__WEBPACK_IMPORTED_MODULE_5__["isInterfaceType"])(parentType)) {
+        if (Object(_type_definition__WEBPACK_IMPORTED_MODULE_6__["isObjectType"])(parentType) || Object(_type_definition__WEBPACK_IMPORTED_MODULE_6__["isInterfaceType"])(parentType)) {
           fieldDef = parentType.getFields()[fieldName];
         }
 
@@ -46414,13 +48246,13 @@ function _collectFieldsAndFragmentNames(context, parentType, selectionSet, nodeA
         nodeAndDefs[responseName].push([parentType, selection, fieldDef]);
         break;
 
-      case _language_kinds__WEBPACK_IMPORTED_MODULE_3__["Kind"].FRAGMENT_SPREAD:
+      case _language_kinds__WEBPACK_IMPORTED_MODULE_4__["Kind"].FRAGMENT_SPREAD:
         fragmentNames[selection.name.value] = true;
         break;
 
-      case _language_kinds__WEBPACK_IMPORTED_MODULE_3__["Kind"].INLINE_FRAGMENT:
+      case _language_kinds__WEBPACK_IMPORTED_MODULE_4__["Kind"].INLINE_FRAGMENT:
         var typeCondition = selection.typeCondition;
-        var inlineFragmentType = typeCondition ? Object(_utilities_typeFromAST__WEBPACK_IMPORTED_MODULE_6__["typeFromAST"])(context.getSchema(), typeCondition) : parentType;
+        var inlineFragmentType = typeCondition ? Object(_utilities_typeFromAST__WEBPACK_IMPORTED_MODULE_7__["typeFromAST"])(context.getSchema(), typeCondition) : parentType;
 
         _collectFieldsAndFragmentNames(context, inlineFragmentType, selection.selectionSet, nodeAndDefs, fragmentNames);
 
@@ -46433,14 +48265,14 @@ function _collectFieldsAndFragmentNames(context, parentType, selectionSet, nodeA
 
 function subfieldConflicts(conflicts, responseName, node1, node2) {
   if (conflicts.length > 0) {
-    return [[responseName, conflicts.map(function (_ref4) {
-      var reason = _ref4[0];
+    return [[responseName, conflicts.map(function (_ref6) {
+      var reason = _ref6[0];
       return reason;
-    })], conflicts.reduce(function (allFields, _ref5) {
-      var fields1 = _ref5[1];
+    })], conflicts.reduce(function (allFields, _ref7) {
+      var fields1 = _ref7[1];
       return allFields.concat(fields1);
-    }, [node1]), conflicts.reduce(function (allFields, _ref6) {
-      var fields2 = _ref6[2];
+    }, [node1]), conflicts.reduce(function (allFields, _ref8) {
+      var fields2 = _ref8[2];
       return allFields.concat(fields2);
     }, [node2])];
   }
@@ -46455,8 +48287,6 @@ var PairSet =
 /*#__PURE__*/
 function () {
   function PairSet() {
-    _defineProperty(this, "_data", void 0);
-
     this._data = Object.create(null);
   }
 
@@ -46525,7 +48355,7 @@ __webpack_require__.r(__webpack_exports__);
  * This source code is licensed under the MIT license found in the
  * LICENSE file in the root directory of this source tree.
  *
- *  strict
+ * 
  */
 
 
@@ -46582,6 +48412,173 @@ function getFragmentType(context, name) {
 
 /***/ }),
 
+/***/ "./node_modules/graphql/validation/rules/PossibleTypeExtensions.mjs":
+/*!**************************************************************************!*\
+  !*** ./node_modules/graphql/validation/rules/PossibleTypeExtensions.mjs ***!
+  \**************************************************************************/
+/*! exports provided: extendingUnknownTypeMessage, extendingDifferentTypeKindMessage, PossibleTypeExtensions */
+/***/ (function(__webpack_module__, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "extendingUnknownTypeMessage", function() { return extendingUnknownTypeMessage; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "extendingDifferentTypeKindMessage", function() { return extendingDifferentTypeKindMessage; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "PossibleTypeExtensions", function() { return PossibleTypeExtensions; });
+/* harmony import */ var _jsutils_quotedOrList__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../jsutils/quotedOrList */ "./node_modules/graphql/jsutils/quotedOrList.mjs");
+/* harmony import */ var _jsutils_suggestionList__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../jsutils/suggestionList */ "./node_modules/graphql/jsutils/suggestionList.mjs");
+/* harmony import */ var _error_GraphQLError__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../error/GraphQLError */ "./node_modules/graphql/error/GraphQLError.mjs");
+/* harmony import */ var _language_kinds__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../language/kinds */ "./node_modules/graphql/language/kinds.mjs");
+/* harmony import */ var _language_predicates__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../language/predicates */ "./node_modules/graphql/language/predicates.mjs");
+/* harmony import */ var _type_definition__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../../type/definition */ "./node_modules/graphql/type/definition.mjs");
+var _defKindToExtKind;
+
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
+/**
+ * Copyright (c) 2018-present, Facebook, Inc.
+ *
+ * This source code is licensed under the MIT license found in the
+ * LICENSE file in the root directory of this source tree.
+ *
+ * 
+ */
+
+
+
+
+
+
+function extendingUnknownTypeMessage(typeName, suggestedTypes) {
+  var message = "Cannot extend type \"".concat(typeName, "\" because it does not defined.");
+
+  if (suggestedTypes.length) {
+    message += " Did you mean ".concat(Object(_jsutils_quotedOrList__WEBPACK_IMPORTED_MODULE_0__["default"])(suggestedTypes), "?");
+  }
+
+  return message;
+}
+function extendingDifferentTypeKindMessage(typeName, kind) {
+  return "Cannot extend non-".concat(kind, " type \"").concat(typeName, "\".");
+}
+/**
+ * Possible type extension
+ *
+ * A type extension is only valid if the type defined and have the same kind.
+ */
+
+function PossibleTypeExtensions(context) {
+  var schema = context.getSchema();
+  var definedTypes = Object.create(null);
+  var _iteratorNormalCompletion = true;
+  var _didIteratorError = false;
+  var _iteratorError = undefined;
+
+  try {
+    for (var _iterator = context.getDocument().definitions[Symbol.iterator](), _step; !(_iteratorNormalCompletion = (_step = _iterator.next()).done); _iteratorNormalCompletion = true) {
+      var def = _step.value;
+
+      if (Object(_language_predicates__WEBPACK_IMPORTED_MODULE_4__["isTypeDefinitionNode"])(def)) {
+        definedTypes[def.name.value] = def;
+      }
+    }
+  } catch (err) {
+    _didIteratorError = true;
+    _iteratorError = err;
+  } finally {
+    try {
+      if (!_iteratorNormalCompletion && _iterator.return != null) {
+        _iterator.return();
+      }
+    } finally {
+      if (_didIteratorError) {
+        throw _iteratorError;
+      }
+    }
+  }
+
+  return {
+    ScalarTypeExtension: checkExtension,
+    ObjectTypeExtension: checkExtension,
+    InterfaceTypeExtension: checkExtension,
+    UnionTypeExtension: checkExtension,
+    EnumTypeExtension: checkExtension,
+    InputObjectTypeExtension: checkExtension
+  };
+
+  function checkExtension(node) {
+    var typeName = node.name.value;
+    var defNode = definedTypes[typeName];
+    var existingType = schema && schema.getType(typeName);
+
+    if (defNode) {
+      var expectedKind = defKindToExtKind[defNode.kind];
+
+      if (expectedKind !== node.kind) {
+        context.reportError(new _error_GraphQLError__WEBPACK_IMPORTED_MODULE_2__["GraphQLError"](extendingDifferentTypeKindMessage(typeName, extensionKindToTypeName(expectedKind)), [defNode, node]));
+      }
+    } else if (existingType) {
+      var _expectedKind = typeToExtKind(existingType);
+
+      if (_expectedKind !== node.kind) {
+        context.reportError(new _error_GraphQLError__WEBPACK_IMPORTED_MODULE_2__["GraphQLError"](extendingDifferentTypeKindMessage(typeName, extensionKindToTypeName(_expectedKind)), node));
+      }
+    } else {
+      var allTypeNames = Object.keys(definedTypes);
+
+      if (schema) {
+        allTypeNames = allTypeNames.concat(Object.keys(schema.getTypeMap()));
+      }
+
+      var suggestedTypes = Object(_jsutils_suggestionList__WEBPACK_IMPORTED_MODULE_1__["default"])(typeName, allTypeNames);
+      context.reportError(new _error_GraphQLError__WEBPACK_IMPORTED_MODULE_2__["GraphQLError"](extendingUnknownTypeMessage(typeName, suggestedTypes), node.name));
+    }
+  }
+}
+var defKindToExtKind = (_defKindToExtKind = {}, _defineProperty(_defKindToExtKind, _language_kinds__WEBPACK_IMPORTED_MODULE_3__["Kind"].SCALAR_TYPE_DEFINITION, _language_kinds__WEBPACK_IMPORTED_MODULE_3__["Kind"].SCALAR_TYPE_EXTENSION), _defineProperty(_defKindToExtKind, _language_kinds__WEBPACK_IMPORTED_MODULE_3__["Kind"].OBJECT_TYPE_DEFINITION, _language_kinds__WEBPACK_IMPORTED_MODULE_3__["Kind"].OBJECT_TYPE_EXTENSION), _defineProperty(_defKindToExtKind, _language_kinds__WEBPACK_IMPORTED_MODULE_3__["Kind"].INTERFACE_TYPE_DEFINITION, _language_kinds__WEBPACK_IMPORTED_MODULE_3__["Kind"].INTERFACE_TYPE_EXTENSION), _defineProperty(_defKindToExtKind, _language_kinds__WEBPACK_IMPORTED_MODULE_3__["Kind"].UNION_TYPE_DEFINITION, _language_kinds__WEBPACK_IMPORTED_MODULE_3__["Kind"].UNION_TYPE_EXTENSION), _defineProperty(_defKindToExtKind, _language_kinds__WEBPACK_IMPORTED_MODULE_3__["Kind"].ENUM_TYPE_DEFINITION, _language_kinds__WEBPACK_IMPORTED_MODULE_3__["Kind"].ENUM_TYPE_EXTENSION), _defineProperty(_defKindToExtKind, _language_kinds__WEBPACK_IMPORTED_MODULE_3__["Kind"].INPUT_OBJECT_TYPE_DEFINITION, _language_kinds__WEBPACK_IMPORTED_MODULE_3__["Kind"].INPUT_OBJECT_TYPE_EXTENSION), _defKindToExtKind);
+
+function typeToExtKind(type) {
+  if (Object(_type_definition__WEBPACK_IMPORTED_MODULE_5__["isScalarType"])(type)) {
+    return _language_kinds__WEBPACK_IMPORTED_MODULE_3__["Kind"].SCALAR_TYPE_EXTENSION;
+  } else if (Object(_type_definition__WEBPACK_IMPORTED_MODULE_5__["isObjectType"])(type)) {
+    return _language_kinds__WEBPACK_IMPORTED_MODULE_3__["Kind"].OBJECT_TYPE_EXTENSION;
+  } else if (Object(_type_definition__WEBPACK_IMPORTED_MODULE_5__["isInterfaceType"])(type)) {
+    return _language_kinds__WEBPACK_IMPORTED_MODULE_3__["Kind"].INTERFACE_TYPE_EXTENSION;
+  } else if (Object(_type_definition__WEBPACK_IMPORTED_MODULE_5__["isUnionType"])(type)) {
+    return _language_kinds__WEBPACK_IMPORTED_MODULE_3__["Kind"].UNION_TYPE_EXTENSION;
+  } else if (Object(_type_definition__WEBPACK_IMPORTED_MODULE_5__["isEnumType"])(type)) {
+    return _language_kinds__WEBPACK_IMPORTED_MODULE_3__["Kind"].ENUM_TYPE_EXTENSION;
+  } else if (Object(_type_definition__WEBPACK_IMPORTED_MODULE_5__["isInputObjectType"])(type)) {
+    return _language_kinds__WEBPACK_IMPORTED_MODULE_3__["Kind"].INPUT_OBJECT_TYPE_EXTENSION;
+  }
+}
+
+function extensionKindToTypeName(kind) {
+  switch (kind) {
+    case _language_kinds__WEBPACK_IMPORTED_MODULE_3__["Kind"].SCALAR_TYPE_EXTENSION:
+      return 'scalar';
+
+    case _language_kinds__WEBPACK_IMPORTED_MODULE_3__["Kind"].OBJECT_TYPE_EXTENSION:
+      return 'object';
+
+    case _language_kinds__WEBPACK_IMPORTED_MODULE_3__["Kind"].INTERFACE_TYPE_EXTENSION:
+      return 'interface';
+
+    case _language_kinds__WEBPACK_IMPORTED_MODULE_3__["Kind"].UNION_TYPE_EXTENSION:
+      return 'union';
+
+    case _language_kinds__WEBPACK_IMPORTED_MODULE_3__["Kind"].ENUM_TYPE_EXTENSION:
+      return 'enum';
+
+    case _language_kinds__WEBPACK_IMPORTED_MODULE_3__["Kind"].INPUT_OBJECT_TYPE_EXTENSION:
+      return 'input object';
+
+    default:
+      return 'unknown type';
+  }
+}
+
+/***/ }),
+
 /***/ "./node_modules/graphql/validation/rules/ProvidedRequiredArguments.mjs":
 /*!*****************************************************************************!*\
   !*** ./node_modules/graphql/validation/rules/ProvidedRequiredArguments.mjs ***!
@@ -46612,7 +48609,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
  * This source code is licensed under the MIT license found in the
  * LICENSE file in the root directory of this source tree.
  *
- *  strict
+ * 
  */
 
 
@@ -46797,7 +48794,7 @@ __webpack_require__.r(__webpack_exports__);
  * This source code is licensed under the MIT license found in the
  * LICENSE file in the root directory of this source tree.
  *
- *  strict
+ * 
  */
 
 
@@ -46854,7 +48851,7 @@ __webpack_require__.r(__webpack_exports__);
  * This source code is licensed under the MIT license found in the
  * LICENSE file in the root directory of this source tree.
  *
- *  strict
+ * 
  */
 
 function singleFieldOnlyMessage(name) {
@@ -46898,7 +48895,7 @@ __webpack_require__.r(__webpack_exports__);
  * This source code is licensed under the MIT license found in the
  * LICENSE file in the root directory of this source tree.
  *
- *  strict
+ * 
  */
 
 function duplicateArgMessage(argName) {
@@ -46936,6 +48933,65 @@ function UniqueArgumentNames(context) {
 
 /***/ }),
 
+/***/ "./node_modules/graphql/validation/rules/UniqueDirectiveNames.mjs":
+/*!************************************************************************!*\
+  !*** ./node_modules/graphql/validation/rules/UniqueDirectiveNames.mjs ***!
+  \************************************************************************/
+/*! exports provided: duplicateDirectiveNameMessage, existedDirectiveNameMessage, UniqueDirectiveNames */
+/***/ (function(__webpack_module__, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "duplicateDirectiveNameMessage", function() { return duplicateDirectiveNameMessage; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "existedDirectiveNameMessage", function() { return existedDirectiveNameMessage; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "UniqueDirectiveNames", function() { return UniqueDirectiveNames; });
+/* harmony import */ var _error_GraphQLError__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../error/GraphQLError */ "./node_modules/graphql/error/GraphQLError.mjs");
+/**
+ * Copyright (c) 2018-present, Facebook, Inc.
+ *
+ * This source code is licensed under the MIT license found in the
+ * LICENSE file in the root directory of this source tree.
+ *
+ * 
+ */
+
+function duplicateDirectiveNameMessage(directiveName) {
+  return "There can be only one directive named \"".concat(directiveName, "\".");
+}
+function existedDirectiveNameMessage(directiveName) {
+  return "Directive \"".concat(directiveName, "\" already exists in the schema. ") + 'It cannot be redefined.';
+}
+/**
+ * Unique directive names
+ *
+ * A GraphQL document is only valid if all defined directives have unique names.
+ */
+
+function UniqueDirectiveNames(context) {
+  var knownDirectiveNames = Object.create(null);
+  var schema = context.getSchema();
+  return {
+    DirectiveDefinition: function DirectiveDefinition(node) {
+      var directiveName = node.name.value;
+
+      if (schema && schema.getDirective(directiveName)) {
+        context.reportError(new _error_GraphQLError__WEBPACK_IMPORTED_MODULE_0__["GraphQLError"](existedDirectiveNameMessage(directiveName), node.name));
+        return;
+      }
+
+      if (knownDirectiveNames[directiveName]) {
+        context.reportError(new _error_GraphQLError__WEBPACK_IMPORTED_MODULE_0__["GraphQLError"](duplicateDirectiveNameMessage(directiveName), [knownDirectiveNames[directiveName], node.name]));
+      } else {
+        knownDirectiveNames[directiveName] = node.name;
+      }
+
+      return false;
+    }
+  };
+}
+
+/***/ }),
+
 /***/ "./node_modules/graphql/validation/rules/UniqueDirectivesPerLocation.mjs":
 /*!*******************************************************************************!*\
   !*** ./node_modules/graphql/validation/rules/UniqueDirectivesPerLocation.mjs ***!
@@ -46954,7 +49010,7 @@ __webpack_require__.r(__webpack_exports__);
  * This source code is licensed under the MIT license found in the
  * LICENSE file in the root directory of this source tree.
  *
- *  strict
+ * 
  */
 
 function duplicateDirectiveMessage(directiveName) {
@@ -47014,6 +49070,213 @@ function UniqueDirectivesPerLocation(context) {
 
 /***/ }),
 
+/***/ "./node_modules/graphql/validation/rules/UniqueEnumValueNames.mjs":
+/*!************************************************************************!*\
+  !*** ./node_modules/graphql/validation/rules/UniqueEnumValueNames.mjs ***!
+  \************************************************************************/
+/*! exports provided: duplicateEnumValueNameMessage, existedEnumValueNameMessage, UniqueEnumValueNames */
+/***/ (function(__webpack_module__, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "duplicateEnumValueNameMessage", function() { return duplicateEnumValueNameMessage; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "existedEnumValueNameMessage", function() { return existedEnumValueNameMessage; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "UniqueEnumValueNames", function() { return UniqueEnumValueNames; });
+/* harmony import */ var _error_GraphQLError__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../error/GraphQLError */ "./node_modules/graphql/error/GraphQLError.mjs");
+/* harmony import */ var _type_definition__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../type/definition */ "./node_modules/graphql/type/definition.mjs");
+/**
+ * Copyright (c) 2018-present, Facebook, Inc.
+ *
+ * This source code is licensed under the MIT license found in the
+ * LICENSE file in the root directory of this source tree.
+ *
+ * 
+ */
+
+
+function duplicateEnumValueNameMessage(typeName, valueName) {
+  return "Enum value \"".concat(typeName, ".").concat(valueName, "\" can only be defined once.");
+}
+function existedEnumValueNameMessage(typeName, valueName) {
+  return "Enum value \"".concat(typeName, ".").concat(valueName, "\" already exists in the schema. ") + 'It cannot also be defined in this type extension.';
+}
+/**
+ * Unique enum value names
+ *
+ * A GraphQL enum type is only valid if all its values are uniquely named.
+ */
+
+function UniqueEnumValueNames(context) {
+  var schema = context.getSchema();
+  var existingTypeMap = schema ? schema.getTypeMap() : Object.create(null);
+  var knownValueNames = Object.create(null);
+  return {
+    EnumTypeDefinition: checkValueUniqueness,
+    EnumTypeExtension: checkValueUniqueness
+  };
+
+  function checkValueUniqueness(node) {
+    var typeName = node.name.value;
+
+    if (!knownValueNames[typeName]) {
+      knownValueNames[typeName] = Object.create(null);
+    }
+
+    var valueNames = knownValueNames[typeName];
+
+    if (node.values) {
+      var _iteratorNormalCompletion = true;
+      var _didIteratorError = false;
+      var _iteratorError = undefined;
+
+      try {
+        for (var _iterator = node.values[Symbol.iterator](), _step; !(_iteratorNormalCompletion = (_step = _iterator.next()).done); _iteratorNormalCompletion = true) {
+          var valueDef = _step.value;
+          var valueName = valueDef.name.value;
+          var existingType = existingTypeMap[typeName];
+
+          if (Object(_type_definition__WEBPACK_IMPORTED_MODULE_1__["isEnumType"])(existingType) && existingType.getValue(valueName)) {
+            context.reportError(new _error_GraphQLError__WEBPACK_IMPORTED_MODULE_0__["GraphQLError"](existedEnumValueNameMessage(typeName, valueName), valueDef.name));
+            continue;
+          }
+
+          if (valueNames[valueName]) {
+            context.reportError(new _error_GraphQLError__WEBPACK_IMPORTED_MODULE_0__["GraphQLError"](duplicateEnumValueNameMessage(typeName, valueName), [valueNames[valueName], valueDef.name]));
+          } else {
+            valueNames[valueName] = valueDef.name;
+          }
+        }
+      } catch (err) {
+        _didIteratorError = true;
+        _iteratorError = err;
+      } finally {
+        try {
+          if (!_iteratorNormalCompletion && _iterator.return != null) {
+            _iterator.return();
+          }
+        } finally {
+          if (_didIteratorError) {
+            throw _iteratorError;
+          }
+        }
+      }
+    }
+
+    return false;
+  }
+}
+
+/***/ }),
+
+/***/ "./node_modules/graphql/validation/rules/UniqueFieldDefinitionNames.mjs":
+/*!******************************************************************************!*\
+  !*** ./node_modules/graphql/validation/rules/UniqueFieldDefinitionNames.mjs ***!
+  \******************************************************************************/
+/*! exports provided: duplicateFieldDefinitionNameMessage, existedFieldDefinitionNameMessage, UniqueFieldDefinitionNames */
+/***/ (function(__webpack_module__, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "duplicateFieldDefinitionNameMessage", function() { return duplicateFieldDefinitionNameMessage; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "existedFieldDefinitionNameMessage", function() { return existedFieldDefinitionNameMessage; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "UniqueFieldDefinitionNames", function() { return UniqueFieldDefinitionNames; });
+/* harmony import */ var _error_GraphQLError__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../error/GraphQLError */ "./node_modules/graphql/error/GraphQLError.mjs");
+/* harmony import */ var _type_definition__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../type/definition */ "./node_modules/graphql/type/definition.mjs");
+/**
+ * Copyright (c) 2018-present, Facebook, Inc.
+ *
+ * This source code is licensed under the MIT license found in the
+ * LICENSE file in the root directory of this source tree.
+ *
+ * 
+ */
+
+
+function duplicateFieldDefinitionNameMessage(typeName, fieldName) {
+  return "Field \"".concat(typeName, ".").concat(fieldName, "\" can only be defined once.");
+}
+function existedFieldDefinitionNameMessage(typeName, fieldName) {
+  return "Field \"".concat(typeName, ".").concat(fieldName, "\" already exists in the schema. ") + 'It cannot also be defined in this type extension.';
+}
+/**
+ * Unique field definition names
+ *
+ * A GraphQL complex type is only valid if all its fields are uniquely named.
+ */
+
+function UniqueFieldDefinitionNames(context) {
+  var schema = context.getSchema();
+  var existingTypeMap = schema ? schema.getTypeMap() : Object.create(null);
+  var knownFieldNames = Object.create(null);
+  return {
+    InputObjectTypeDefinition: checkFieldUniqueness,
+    InputObjectTypeExtension: checkFieldUniqueness,
+    InterfaceTypeDefinition: checkFieldUniqueness,
+    InterfaceTypeExtension: checkFieldUniqueness,
+    ObjectTypeDefinition: checkFieldUniqueness,
+    ObjectTypeExtension: checkFieldUniqueness
+  };
+
+  function checkFieldUniqueness(node) {
+    var typeName = node.name.value;
+
+    if (!knownFieldNames[typeName]) {
+      knownFieldNames[typeName] = Object.create(null);
+    }
+
+    var fieldNames = knownFieldNames[typeName];
+
+    if (node.fields) {
+      var _iteratorNormalCompletion = true;
+      var _didIteratorError = false;
+      var _iteratorError = undefined;
+
+      try {
+        for (var _iterator = node.fields[Symbol.iterator](), _step; !(_iteratorNormalCompletion = (_step = _iterator.next()).done); _iteratorNormalCompletion = true) {
+          var fieldDef = _step.value;
+          var fieldName = fieldDef.name.value;
+
+          if (hasField(existingTypeMap[typeName], fieldName)) {
+            context.reportError(new _error_GraphQLError__WEBPACK_IMPORTED_MODULE_0__["GraphQLError"](existedFieldDefinitionNameMessage(typeName, fieldName), fieldDef.name));
+            continue;
+          }
+
+          if (fieldNames[fieldName]) {
+            context.reportError(new _error_GraphQLError__WEBPACK_IMPORTED_MODULE_0__["GraphQLError"](duplicateFieldDefinitionNameMessage(typeName, fieldName), [fieldNames[fieldName], fieldDef.name]));
+          } else {
+            fieldNames[fieldName] = fieldDef.name;
+          }
+        }
+      } catch (err) {
+        _didIteratorError = true;
+        _iteratorError = err;
+      } finally {
+        try {
+          if (!_iteratorNormalCompletion && _iterator.return != null) {
+            _iterator.return();
+          }
+        } finally {
+          if (_didIteratorError) {
+            throw _iteratorError;
+          }
+        }
+      }
+    }
+
+    return false;
+  }
+}
+
+function hasField(type, fieldName) {
+  if (Object(_type_definition__WEBPACK_IMPORTED_MODULE_1__["isObjectType"])(type) || Object(_type_definition__WEBPACK_IMPORTED_MODULE_1__["isInterfaceType"])(type) || Object(_type_definition__WEBPACK_IMPORTED_MODULE_1__["isInputObjectType"])(type)) {
+    return type.getFields()[fieldName];
+  }
+
+  return false;
+}
+
+/***/ }),
+
 /***/ "./node_modules/graphql/validation/rules/UniqueFragmentNames.mjs":
 /*!***********************************************************************!*\
   !*** ./node_modules/graphql/validation/rules/UniqueFragmentNames.mjs ***!
@@ -47032,7 +49295,7 @@ __webpack_require__.r(__webpack_exports__);
  * This source code is licensed under the MIT license found in the
  * LICENSE file in the root directory of this source tree.
  *
- *  strict
+ * 
  */
 
 function duplicateFragmentNameMessage(fragName) {
@@ -47084,7 +49347,7 @@ __webpack_require__.r(__webpack_exports__);
  * This source code is licensed under the MIT license found in the
  * LICENSE file in the root directory of this source tree.
  *
- *  strict
+ * 
  */
 
 function duplicateInputFieldMessage(fieldName) {
@@ -47144,7 +49407,7 @@ __webpack_require__.r(__webpack_exports__);
  * This source code is licensed under the MIT license found in the
  * LICENSE file in the root directory of this source tree.
  *
- *  strict
+ * 
  */
 
 function duplicateOperationNameMessage(operationName) {
@@ -47180,6 +49443,161 @@ function UniqueOperationNames(context) {
 
 /***/ }),
 
+/***/ "./node_modules/graphql/validation/rules/UniqueOperationTypes.mjs":
+/*!************************************************************************!*\
+  !*** ./node_modules/graphql/validation/rules/UniqueOperationTypes.mjs ***!
+  \************************************************************************/
+/*! exports provided: duplicateOperationTypeMessage, existedOperationTypeMessage, UniqueOperationTypes */
+/***/ (function(__webpack_module__, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "duplicateOperationTypeMessage", function() { return duplicateOperationTypeMessage; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "existedOperationTypeMessage", function() { return existedOperationTypeMessage; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "UniqueOperationTypes", function() { return UniqueOperationTypes; });
+/* harmony import */ var _error_GraphQLError__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../error/GraphQLError */ "./node_modules/graphql/error/GraphQLError.mjs");
+/**
+ * Copyright (c) 2018-present, Facebook, Inc.
+ *
+ * This source code is licensed under the MIT license found in the
+ * LICENSE file in the root directory of this source tree.
+ *
+ * 
+ */
+
+function duplicateOperationTypeMessage(operation) {
+  return "There can be only one ".concat(operation, " type in schema.");
+}
+function existedOperationTypeMessage(operation) {
+  return "Type for ".concat(operation, " already defined in the schema. ") + 'It cannot be redefined.';
+}
+/**
+ * Unique operation types
+ *
+ * A GraphQL document is only valid if it has only one type per operation.
+ */
+
+function UniqueOperationTypes(context) {
+  var schema = context.getSchema();
+  var definedOperationTypes = Object.create(null);
+  var existingOperationTypes = schema ? {
+    query: schema.getQueryType(),
+    mutation: schema.getMutationType(),
+    subscription: schema.getSubscriptionType()
+  } : {};
+  return {
+    SchemaDefinition: checkOperationTypes,
+    SchemaExtension: checkOperationTypes
+  };
+
+  function checkOperationTypes(node) {
+    if (node.operationTypes) {
+      var _iteratorNormalCompletion = true;
+      var _didIteratorError = false;
+      var _iteratorError = undefined;
+
+      try {
+        for (var _iterator = (node.operationTypes || [])[Symbol.iterator](), _step; !(_iteratorNormalCompletion = (_step = _iterator.next()).done); _iteratorNormalCompletion = true) {
+          var operationType = _step.value;
+          var operation = operationType.operation;
+          var alreadyDefinedOperationType = definedOperationTypes[operation];
+
+          if (existingOperationTypes[operation]) {
+            context.reportError(new _error_GraphQLError__WEBPACK_IMPORTED_MODULE_0__["GraphQLError"](existedOperationTypeMessage(operation), operationType));
+          } else if (alreadyDefinedOperationType) {
+            context.reportError(new _error_GraphQLError__WEBPACK_IMPORTED_MODULE_0__["GraphQLError"](duplicateOperationTypeMessage(operation), [alreadyDefinedOperationType, operationType]));
+          } else {
+            definedOperationTypes[operation] = operationType;
+          }
+        }
+      } catch (err) {
+        _didIteratorError = true;
+        _iteratorError = err;
+      } finally {
+        try {
+          if (!_iteratorNormalCompletion && _iterator.return != null) {
+            _iterator.return();
+          }
+        } finally {
+          if (_didIteratorError) {
+            throw _iteratorError;
+          }
+        }
+      }
+    }
+
+    return false;
+  }
+}
+
+/***/ }),
+
+/***/ "./node_modules/graphql/validation/rules/UniqueTypeNames.mjs":
+/*!*******************************************************************!*\
+  !*** ./node_modules/graphql/validation/rules/UniqueTypeNames.mjs ***!
+  \*******************************************************************/
+/*! exports provided: duplicateTypeNameMessage, existedTypeNameMessage, UniqueTypeNames */
+/***/ (function(__webpack_module__, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "duplicateTypeNameMessage", function() { return duplicateTypeNameMessage; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "existedTypeNameMessage", function() { return existedTypeNameMessage; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "UniqueTypeNames", function() { return UniqueTypeNames; });
+/* harmony import */ var _error_GraphQLError__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../error/GraphQLError */ "./node_modules/graphql/error/GraphQLError.mjs");
+/**
+ * Copyright (c) 2018-present, Facebook, Inc.
+ *
+ * This source code is licensed under the MIT license found in the
+ * LICENSE file in the root directory of this source tree.
+ *
+ * 
+ */
+
+function duplicateTypeNameMessage(typeName) {
+  return "There can be only one type named \"".concat(typeName, "\".");
+}
+function existedTypeNameMessage(typeName) {
+  return "Type \"".concat(typeName, "\" already exists in the schema. ") + 'It cannot also be defined in this type definition.';
+}
+/**
+ * Unique type names
+ *
+ * A GraphQL document is only valid if all defined types have unique names.
+ */
+
+function UniqueTypeNames(context) {
+  var knownTypeNames = Object.create(null);
+  var schema = context.getSchema();
+  return {
+    ScalarTypeDefinition: checkTypeName,
+    ObjectTypeDefinition: checkTypeName,
+    InterfaceTypeDefinition: checkTypeName,
+    UnionTypeDefinition: checkTypeName,
+    EnumTypeDefinition: checkTypeName,
+    InputObjectTypeDefinition: checkTypeName
+  };
+
+  function checkTypeName(node) {
+    var typeName = node.name.value;
+
+    if (schema && schema.getType(typeName)) {
+      context.reportError(new _error_GraphQLError__WEBPACK_IMPORTED_MODULE_0__["GraphQLError"](existedTypeNameMessage(typeName), node.name));
+      return;
+    }
+
+    if (knownTypeNames[typeName]) {
+      context.reportError(new _error_GraphQLError__WEBPACK_IMPORTED_MODULE_0__["GraphQLError"](duplicateTypeNameMessage(typeName), [knownTypeNames[typeName], node.name]));
+    } else {
+      knownTypeNames[typeName] = node.name;
+    }
+
+    return false;
+  }
+}
+
+/***/ }),
+
 /***/ "./node_modules/graphql/validation/rules/UniqueVariableNames.mjs":
 /*!***********************************************************************!*\
   !*** ./node_modules/graphql/validation/rules/UniqueVariableNames.mjs ***!
@@ -47198,7 +49616,7 @@ __webpack_require__.r(__webpack_exports__);
  * This source code is licensed under the MIT license found in the
  * LICENSE file in the root directory of this source tree.
  *
- *  strict
+ * 
  */
 
 function duplicateVariableMessage(variableName) {
@@ -47243,22 +49661,24 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "requiredFieldMessage", function() { return requiredFieldMessage; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "unknownFieldMessage", function() { return unknownFieldMessage; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ValuesOfCorrectType", function() { return ValuesOfCorrectType; });
-/* harmony import */ var _error_GraphQLError__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../error/GraphQLError */ "./node_modules/graphql/error/GraphQLError.mjs");
-/* harmony import */ var _language_printer__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../language/printer */ "./node_modules/graphql/language/printer.mjs");
-/* harmony import */ var _type_definition__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../type/definition */ "./node_modules/graphql/type/definition.mjs");
-/* harmony import */ var _jsutils_inspect__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../jsutils/inspect */ "./node_modules/graphql/jsutils/inspect.mjs");
-/* harmony import */ var _jsutils_isInvalid__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../jsutils/isInvalid */ "./node_modules/graphql/jsutils/isInvalid.mjs");
-/* harmony import */ var _jsutils_keyMap__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../../jsutils/keyMap */ "./node_modules/graphql/jsutils/keyMap.mjs");
-/* harmony import */ var _jsutils_orList__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../../jsutils/orList */ "./node_modules/graphql/jsutils/orList.mjs");
-/* harmony import */ var _jsutils_suggestionList__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../../jsutils/suggestionList */ "./node_modules/graphql/jsutils/suggestionList.mjs");
+/* harmony import */ var _polyfills_objectValues__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../polyfills/objectValues */ "./node_modules/graphql/polyfills/objectValues.mjs");
+/* harmony import */ var _error_GraphQLError__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../error/GraphQLError */ "./node_modules/graphql/error/GraphQLError.mjs");
+/* harmony import */ var _language_printer__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../language/printer */ "./node_modules/graphql/language/printer.mjs");
+/* harmony import */ var _type_definition__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../type/definition */ "./node_modules/graphql/type/definition.mjs");
+/* harmony import */ var _jsutils_inspect__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../jsutils/inspect */ "./node_modules/graphql/jsutils/inspect.mjs");
+/* harmony import */ var _jsutils_isInvalid__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../../jsutils/isInvalid */ "./node_modules/graphql/jsutils/isInvalid.mjs");
+/* harmony import */ var _jsutils_keyMap__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../../jsutils/keyMap */ "./node_modules/graphql/jsutils/keyMap.mjs");
+/* harmony import */ var _jsutils_orList__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../../jsutils/orList */ "./node_modules/graphql/jsutils/orList.mjs");
+/* harmony import */ var _jsutils_suggestionList__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ../../jsutils/suggestionList */ "./node_modules/graphql/jsutils/suggestionList.mjs");
 /**
  * Copyright (c) 2015-present, Facebook, Inc.
  *
  * This source code is licensed under the MIT license found in the
  * LICENSE file in the root directory of this source tree.
  *
- *  strict
+ * 
  */
+
 
 
 
@@ -47288,64 +49708,78 @@ function ValuesOfCorrectType(context) {
     NullValue: function NullValue(node) {
       var type = context.getInputType();
 
-      if (Object(_type_definition__WEBPACK_IMPORTED_MODULE_2__["isNonNullType"])(type)) {
-        context.reportError(new _error_GraphQLError__WEBPACK_IMPORTED_MODULE_0__["GraphQLError"](badValueMessage(Object(_jsutils_inspect__WEBPACK_IMPORTED_MODULE_3__["default"])(type), Object(_language_printer__WEBPACK_IMPORTED_MODULE_1__["print"])(node)), node));
+      if (Object(_type_definition__WEBPACK_IMPORTED_MODULE_3__["isNonNullType"])(type)) {
+        context.reportError(new _error_GraphQLError__WEBPACK_IMPORTED_MODULE_1__["GraphQLError"](badValueMessage(Object(_jsutils_inspect__WEBPACK_IMPORTED_MODULE_4__["default"])(type), Object(_language_printer__WEBPACK_IMPORTED_MODULE_2__["print"])(node)), node));
       }
     },
     ListValue: function ListValue(node) {
       // Note: TypeInfo will traverse into a list's item type, so look to the
       // parent input type to check if it is a list.
-      var type = Object(_type_definition__WEBPACK_IMPORTED_MODULE_2__["getNullableType"])(context.getParentInputType());
+      var type = Object(_type_definition__WEBPACK_IMPORTED_MODULE_3__["getNullableType"])(context.getParentInputType());
 
-      if (!Object(_type_definition__WEBPACK_IMPORTED_MODULE_2__["isListType"])(type)) {
+      if (!Object(_type_definition__WEBPACK_IMPORTED_MODULE_3__["isListType"])(type)) {
         isValidScalar(context, node);
         return false; // Don't traverse further.
       }
     },
     ObjectValue: function ObjectValue(node) {
-      var type = Object(_type_definition__WEBPACK_IMPORTED_MODULE_2__["getNamedType"])(context.getInputType());
+      var type = Object(_type_definition__WEBPACK_IMPORTED_MODULE_3__["getNamedType"])(context.getInputType());
 
-      if (!Object(_type_definition__WEBPACK_IMPORTED_MODULE_2__["isInputObjectType"])(type)) {
+      if (!Object(_type_definition__WEBPACK_IMPORTED_MODULE_3__["isInputObjectType"])(type)) {
         isValidScalar(context, node);
         return false; // Don't traverse further.
       } // Ensure every required field exists.
 
 
-      var inputFields = type.getFields();
-      var fieldNodeMap = Object(_jsutils_keyMap__WEBPACK_IMPORTED_MODULE_5__["default"])(node.fields, function (field) {
+      var fieldNodeMap = Object(_jsutils_keyMap__WEBPACK_IMPORTED_MODULE_6__["default"])(node.fields, function (field) {
         return field.name.value;
       });
+      var _iteratorNormalCompletion = true;
+      var _didIteratorError = false;
+      var _iteratorError = undefined;
 
-      var _arr = Object.keys(inputFields);
+      try {
+        for (var _iterator = Object(_polyfills_objectValues__WEBPACK_IMPORTED_MODULE_0__["default"])(type.getFields())[Symbol.iterator](), _step; !(_iteratorNormalCompletion = (_step = _iterator.next()).done); _iteratorNormalCompletion = true) {
+          var fieldDef = _step.value;
+          var fieldNode = fieldNodeMap[fieldDef.name];
 
-      for (var _i = 0; _i < _arr.length; _i++) {
-        var fieldName = _arr[_i];
-        var fieldDef = inputFields[fieldName];
-        var fieldNode = fieldNodeMap[fieldName];
-
-        if (!fieldNode && Object(_type_definition__WEBPACK_IMPORTED_MODULE_2__["isRequiredInputField"])(fieldDef)) {
-          var typeStr = Object(_jsutils_inspect__WEBPACK_IMPORTED_MODULE_3__["default"])(fieldDef.type);
-          context.reportError(new _error_GraphQLError__WEBPACK_IMPORTED_MODULE_0__["GraphQLError"](requiredFieldMessage(type.name, fieldName, typeStr), node));
+          if (!fieldNode && Object(_type_definition__WEBPACK_IMPORTED_MODULE_3__["isRequiredInputField"])(fieldDef)) {
+            var typeStr = Object(_jsutils_inspect__WEBPACK_IMPORTED_MODULE_4__["default"])(fieldDef.type);
+            context.reportError(new _error_GraphQLError__WEBPACK_IMPORTED_MODULE_1__["GraphQLError"](requiredFieldMessage(type.name, fieldDef.name, typeStr), node));
+          }
+        }
+      } catch (err) {
+        _didIteratorError = true;
+        _iteratorError = err;
+      } finally {
+        try {
+          if (!_iteratorNormalCompletion && _iterator.return != null) {
+            _iterator.return();
+          }
+        } finally {
+          if (_didIteratorError) {
+            throw _iteratorError;
+          }
         }
       }
     },
     ObjectField: function ObjectField(node) {
-      var parentType = Object(_type_definition__WEBPACK_IMPORTED_MODULE_2__["getNamedType"])(context.getParentInputType());
+      var parentType = Object(_type_definition__WEBPACK_IMPORTED_MODULE_3__["getNamedType"])(context.getParentInputType());
       var fieldType = context.getInputType();
 
-      if (!fieldType && Object(_type_definition__WEBPACK_IMPORTED_MODULE_2__["isInputObjectType"])(parentType)) {
-        var suggestions = Object(_jsutils_suggestionList__WEBPACK_IMPORTED_MODULE_7__["default"])(node.name.value, Object.keys(parentType.getFields()));
-        var didYouMean = suggestions.length !== 0 ? "Did you mean ".concat(Object(_jsutils_orList__WEBPACK_IMPORTED_MODULE_6__["default"])(suggestions), "?") : undefined;
-        context.reportError(new _error_GraphQLError__WEBPACK_IMPORTED_MODULE_0__["GraphQLError"](unknownFieldMessage(parentType.name, node.name.value, didYouMean), node));
+      if (!fieldType && Object(_type_definition__WEBPACK_IMPORTED_MODULE_3__["isInputObjectType"])(parentType)) {
+        var suggestions = Object(_jsutils_suggestionList__WEBPACK_IMPORTED_MODULE_8__["default"])(node.name.value, Object.keys(parentType.getFields()));
+        var didYouMean = suggestions.length !== 0 ? "Did you mean ".concat(Object(_jsutils_orList__WEBPACK_IMPORTED_MODULE_7__["default"])(suggestions), "?") : undefined;
+        context.reportError(new _error_GraphQLError__WEBPACK_IMPORTED_MODULE_1__["GraphQLError"](unknownFieldMessage(parentType.name, node.name.value, didYouMean), node));
       }
     },
     EnumValue: function EnumValue(node) {
-      var type = Object(_type_definition__WEBPACK_IMPORTED_MODULE_2__["getNamedType"])(context.getInputType());
+      var type = Object(_type_definition__WEBPACK_IMPORTED_MODULE_3__["getNamedType"])(context.getInputType());
 
-      if (!Object(_type_definition__WEBPACK_IMPORTED_MODULE_2__["isEnumType"])(type)) {
+      if (!Object(_type_definition__WEBPACK_IMPORTED_MODULE_3__["isEnumType"])(type)) {
         isValidScalar(context, node);
       } else if (!type.getValue(node.value)) {
-        context.reportError(new _error_GraphQLError__WEBPACK_IMPORTED_MODULE_0__["GraphQLError"](badValueMessage(type.name, Object(_language_printer__WEBPACK_IMPORTED_MODULE_1__["print"])(node), enumTypeSuggestion(type, node)), node));
+        context.reportError(new _error_GraphQLError__WEBPACK_IMPORTED_MODULE_1__["GraphQLError"](badValueMessage(type.name, Object(_language_printer__WEBPACK_IMPORTED_MODULE_2__["print"])(node), enumTypeSuggestion(type, node)), node));
       }
     },
     IntValue: function IntValue(node) {
@@ -47375,10 +49809,10 @@ function isValidScalar(context, node) {
     return;
   }
 
-  var type = Object(_type_definition__WEBPACK_IMPORTED_MODULE_2__["getNamedType"])(locationType);
+  var type = Object(_type_definition__WEBPACK_IMPORTED_MODULE_3__["getNamedType"])(locationType);
 
-  if (!Object(_type_definition__WEBPACK_IMPORTED_MODULE_2__["isScalarType"])(type)) {
-    context.reportError(new _error_GraphQLError__WEBPACK_IMPORTED_MODULE_0__["GraphQLError"](badValueMessage(Object(_jsutils_inspect__WEBPACK_IMPORTED_MODULE_3__["default"])(locationType), Object(_language_printer__WEBPACK_IMPORTED_MODULE_1__["print"])(node), enumTypeSuggestion(type, node)), node));
+  if (!Object(_type_definition__WEBPACK_IMPORTED_MODULE_3__["isScalarType"])(type)) {
+    context.reportError(new _error_GraphQLError__WEBPACK_IMPORTED_MODULE_1__["GraphQLError"](badValueMessage(Object(_jsutils_inspect__WEBPACK_IMPORTED_MODULE_4__["default"])(locationType), Object(_language_printer__WEBPACK_IMPORTED_MODULE_2__["print"])(node), enumTypeSuggestion(type, node)), node));
     return;
   } // Scalars determine if a literal value is valid via parseLiteral() which
   // may throw or return an invalid value to indicate failure.
@@ -47389,23 +49823,23 @@ function isValidScalar(context, node) {
     /* variables */
     );
 
-    if (Object(_jsutils_isInvalid__WEBPACK_IMPORTED_MODULE_4__["default"])(parseResult)) {
-      context.reportError(new _error_GraphQLError__WEBPACK_IMPORTED_MODULE_0__["GraphQLError"](badValueMessage(Object(_jsutils_inspect__WEBPACK_IMPORTED_MODULE_3__["default"])(locationType), Object(_language_printer__WEBPACK_IMPORTED_MODULE_1__["print"])(node)), node));
+    if (Object(_jsutils_isInvalid__WEBPACK_IMPORTED_MODULE_5__["default"])(parseResult)) {
+      context.reportError(new _error_GraphQLError__WEBPACK_IMPORTED_MODULE_1__["GraphQLError"](badValueMessage(Object(_jsutils_inspect__WEBPACK_IMPORTED_MODULE_4__["default"])(locationType), Object(_language_printer__WEBPACK_IMPORTED_MODULE_2__["print"])(node)), node));
     }
   } catch (error) {
     // Ensure a reference to the original error is maintained.
-    context.reportError(new _error_GraphQLError__WEBPACK_IMPORTED_MODULE_0__["GraphQLError"](badValueMessage(Object(_jsutils_inspect__WEBPACK_IMPORTED_MODULE_3__["default"])(locationType), Object(_language_printer__WEBPACK_IMPORTED_MODULE_1__["print"])(node), error.message), node, undefined, undefined, undefined, error));
+    context.reportError(new _error_GraphQLError__WEBPACK_IMPORTED_MODULE_1__["GraphQLError"](badValueMessage(Object(_jsutils_inspect__WEBPACK_IMPORTED_MODULE_4__["default"])(locationType), Object(_language_printer__WEBPACK_IMPORTED_MODULE_2__["print"])(node), error.message), node, undefined, undefined, undefined, error));
   }
 }
 
 function enumTypeSuggestion(type, node) {
-  if (Object(_type_definition__WEBPACK_IMPORTED_MODULE_2__["isEnumType"])(type)) {
-    var suggestions = Object(_jsutils_suggestionList__WEBPACK_IMPORTED_MODULE_7__["default"])(Object(_language_printer__WEBPACK_IMPORTED_MODULE_1__["print"])(node), type.getValues().map(function (value) {
+  if (Object(_type_definition__WEBPACK_IMPORTED_MODULE_3__["isEnumType"])(type)) {
+    var suggestions = Object(_jsutils_suggestionList__WEBPACK_IMPORTED_MODULE_8__["default"])(Object(_language_printer__WEBPACK_IMPORTED_MODULE_2__["print"])(node), type.getValues().map(function (value) {
       return value.name;
     }));
 
     if (suggestions.length !== 0) {
-      return "Did you mean the enum value ".concat(Object(_jsutils_orList__WEBPACK_IMPORTED_MODULE_6__["default"])(suggestions), "?");
+      return "Did you mean the enum value ".concat(Object(_jsutils_orList__WEBPACK_IMPORTED_MODULE_7__["default"])(suggestions), "?");
     }
   }
 }
@@ -47433,7 +49867,7 @@ __webpack_require__.r(__webpack_exports__);
  * This source code is licensed under the MIT license found in the
  * LICENSE file in the root directory of this source tree.
  *
- *  strict
+ * 
  */
 
 
@@ -47487,7 +49921,7 @@ __webpack_require__.r(__webpack_exports__);
  * This source code is licensed under the MIT license found in the
  * LICENSE file in the root directory of this source tree.
  *
- *  strict
+ * 
  */
 
 
@@ -47518,9 +49952,9 @@ function VariablesInAllowedPosition(context) {
         try {
           for (var _iterator = usages[Symbol.iterator](), _step; !(_iteratorNormalCompletion = (_step = _iterator.next()).done); _iteratorNormalCompletion = true) {
             var _ref2 = _step.value;
-            var node = _ref2.node,
-                type = _ref2.type,
-                defaultValue = _ref2.defaultValue;
+            var node = _ref2.node;
+            var type = _ref2.type;
+            var defaultValue = _ref2.defaultValue;
             var varName = node.name.value;
             var varDef = varDefMap[varName];
 
@@ -47621,13 +50055,19 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _rules_OverlappingFieldsCanBeMerged__WEBPACK_IMPORTED_MODULE_24__ = __webpack_require__(/*! ./rules/OverlappingFieldsCanBeMerged */ "./node_modules/graphql/validation/rules/OverlappingFieldsCanBeMerged.mjs");
 /* harmony import */ var _rules_UniqueInputFieldNames__WEBPACK_IMPORTED_MODULE_25__ = __webpack_require__(/*! ./rules/UniqueInputFieldNames */ "./node_modules/graphql/validation/rules/UniqueInputFieldNames.mjs");
 /* harmony import */ var _rules_LoneSchemaDefinition__WEBPACK_IMPORTED_MODULE_26__ = __webpack_require__(/*! ./rules/LoneSchemaDefinition */ "./node_modules/graphql/validation/rules/LoneSchemaDefinition.mjs");
+/* harmony import */ var _rules_UniqueOperationTypes__WEBPACK_IMPORTED_MODULE_27__ = __webpack_require__(/*! ./rules/UniqueOperationTypes */ "./node_modules/graphql/validation/rules/UniqueOperationTypes.mjs");
+/* harmony import */ var _rules_UniqueTypeNames__WEBPACK_IMPORTED_MODULE_28__ = __webpack_require__(/*! ./rules/UniqueTypeNames */ "./node_modules/graphql/validation/rules/UniqueTypeNames.mjs");
+/* harmony import */ var _rules_UniqueEnumValueNames__WEBPACK_IMPORTED_MODULE_29__ = __webpack_require__(/*! ./rules/UniqueEnumValueNames */ "./node_modules/graphql/validation/rules/UniqueEnumValueNames.mjs");
+/* harmony import */ var _rules_UniqueFieldDefinitionNames__WEBPACK_IMPORTED_MODULE_30__ = __webpack_require__(/*! ./rules/UniqueFieldDefinitionNames */ "./node_modules/graphql/validation/rules/UniqueFieldDefinitionNames.mjs");
+/* harmony import */ var _rules_UniqueDirectiveNames__WEBPACK_IMPORTED_MODULE_31__ = __webpack_require__(/*! ./rules/UniqueDirectiveNames */ "./node_modules/graphql/validation/rules/UniqueDirectiveNames.mjs");
+/* harmony import */ var _rules_PossibleTypeExtensions__WEBPACK_IMPORTED_MODULE_32__ = __webpack_require__(/*! ./rules/PossibleTypeExtensions */ "./node_modules/graphql/validation/rules/PossibleTypeExtensions.mjs");
 /**
  * Copyright (c) 2015-present, Facebook, Inc.
  *
  * This source code is licensed under the MIT license found in the
  * LICENSE file in the root directory of this source tree.
  *
- *  strict
+ * 
  */
 // Spec Section: "Executable Definitions"
  // Spec Section: "Operation Name Uniqueness"
@@ -47691,9 +50131,15 @@ __webpack_require__.r(__webpack_exports__);
 var specifiedRules = [_rules_ExecutableDefinitions__WEBPACK_IMPORTED_MODULE_0__["ExecutableDefinitions"], _rules_UniqueOperationNames__WEBPACK_IMPORTED_MODULE_1__["UniqueOperationNames"], _rules_LoneAnonymousOperation__WEBPACK_IMPORTED_MODULE_2__["LoneAnonymousOperation"], _rules_SingleFieldSubscriptions__WEBPACK_IMPORTED_MODULE_3__["SingleFieldSubscriptions"], _rules_KnownTypeNames__WEBPACK_IMPORTED_MODULE_4__["KnownTypeNames"], _rules_FragmentsOnCompositeTypes__WEBPACK_IMPORTED_MODULE_5__["FragmentsOnCompositeTypes"], _rules_VariablesAreInputTypes__WEBPACK_IMPORTED_MODULE_6__["VariablesAreInputTypes"], _rules_ScalarLeafs__WEBPACK_IMPORTED_MODULE_7__["ScalarLeafs"], _rules_FieldsOnCorrectType__WEBPACK_IMPORTED_MODULE_8__["FieldsOnCorrectType"], _rules_UniqueFragmentNames__WEBPACK_IMPORTED_MODULE_9__["UniqueFragmentNames"], _rules_KnownFragmentNames__WEBPACK_IMPORTED_MODULE_10__["KnownFragmentNames"], _rules_NoUnusedFragments__WEBPACK_IMPORTED_MODULE_11__["NoUnusedFragments"], _rules_PossibleFragmentSpreads__WEBPACK_IMPORTED_MODULE_12__["PossibleFragmentSpreads"], _rules_NoFragmentCycles__WEBPACK_IMPORTED_MODULE_13__["NoFragmentCycles"], _rules_UniqueVariableNames__WEBPACK_IMPORTED_MODULE_14__["UniqueVariableNames"], _rules_NoUndefinedVariables__WEBPACK_IMPORTED_MODULE_15__["NoUndefinedVariables"], _rules_NoUnusedVariables__WEBPACK_IMPORTED_MODULE_16__["NoUnusedVariables"], _rules_KnownDirectives__WEBPACK_IMPORTED_MODULE_17__["KnownDirectives"], _rules_UniqueDirectivesPerLocation__WEBPACK_IMPORTED_MODULE_18__["UniqueDirectivesPerLocation"], _rules_KnownArgumentNames__WEBPACK_IMPORTED_MODULE_19__["KnownArgumentNames"], _rules_UniqueArgumentNames__WEBPACK_IMPORTED_MODULE_20__["UniqueArgumentNames"], _rules_ValuesOfCorrectType__WEBPACK_IMPORTED_MODULE_21__["ValuesOfCorrectType"], _rules_ProvidedRequiredArguments__WEBPACK_IMPORTED_MODULE_22__["ProvidedRequiredArguments"], _rules_VariablesInAllowedPosition__WEBPACK_IMPORTED_MODULE_23__["VariablesInAllowedPosition"], _rules_OverlappingFieldsCanBeMerged__WEBPACK_IMPORTED_MODULE_24__["OverlappingFieldsCanBeMerged"], _rules_UniqueInputFieldNames__WEBPACK_IMPORTED_MODULE_25__["UniqueInputFieldNames"]];
 
 
+
+
+
+
+
+
  // @internal
 
-var specifiedSDLRules = [_rules_LoneSchemaDefinition__WEBPACK_IMPORTED_MODULE_26__["LoneSchemaDefinition"], _rules_KnownDirectives__WEBPACK_IMPORTED_MODULE_17__["KnownDirectives"], _rules_UniqueDirectivesPerLocation__WEBPACK_IMPORTED_MODULE_18__["UniqueDirectivesPerLocation"], _rules_KnownArgumentNames__WEBPACK_IMPORTED_MODULE_19__["KnownArgumentNamesOnDirectives"], _rules_UniqueArgumentNames__WEBPACK_IMPORTED_MODULE_20__["UniqueArgumentNames"], _rules_UniqueInputFieldNames__WEBPACK_IMPORTED_MODULE_25__["UniqueInputFieldNames"], _rules_ProvidedRequiredArguments__WEBPACK_IMPORTED_MODULE_22__["ProvidedRequiredArgumentsOnDirectives"]];
+var specifiedSDLRules = [_rules_LoneSchemaDefinition__WEBPACK_IMPORTED_MODULE_26__["LoneSchemaDefinition"], _rules_UniqueOperationTypes__WEBPACK_IMPORTED_MODULE_27__["UniqueOperationTypes"], _rules_UniqueTypeNames__WEBPACK_IMPORTED_MODULE_28__["UniqueTypeNames"], _rules_UniqueEnumValueNames__WEBPACK_IMPORTED_MODULE_29__["UniqueEnumValueNames"], _rules_UniqueFieldDefinitionNames__WEBPACK_IMPORTED_MODULE_30__["UniqueFieldDefinitionNames"], _rules_UniqueDirectiveNames__WEBPACK_IMPORTED_MODULE_31__["UniqueDirectiveNames"], _rules_KnownTypeNames__WEBPACK_IMPORTED_MODULE_4__["KnownTypeNames"], _rules_KnownDirectives__WEBPACK_IMPORTED_MODULE_17__["KnownDirectives"], _rules_UniqueDirectivesPerLocation__WEBPACK_IMPORTED_MODULE_18__["UniqueDirectivesPerLocation"], _rules_PossibleTypeExtensions__WEBPACK_IMPORTED_MODULE_32__["PossibleTypeExtensions"], _rules_KnownArgumentNames__WEBPACK_IMPORTED_MODULE_19__["KnownArgumentNamesOnDirectives"], _rules_UniqueArgumentNames__WEBPACK_IMPORTED_MODULE_20__["UniqueArgumentNames"], _rules_UniqueInputFieldNames__WEBPACK_IMPORTED_MODULE_25__["UniqueInputFieldNames"], _rules_ProvidedRequiredArguments__WEBPACK_IMPORTED_MODULE_22__["ProvidedRequiredArgumentsOnDirectives"]];
 
 /***/ }),
 
@@ -47722,7 +50168,7 @@ __webpack_require__.r(__webpack_exports__);
  * This source code is licensed under the MIT license found in the
  * LICENSE file in the root directory of this source tree.
  *
- *  strict
+ * 
  */
 
 
@@ -63873,6 +66319,10 @@ class ComunicaEngine {
     this._subject = subject;
     this._engine = (0, _actorInitSparql.newEngine)();
   }
+
+  getDocument(subject) {
+    return subject.replace(/#.*/, '');
+  }
   /**
    * Creates an asynchronous iterable
    * of results for the given SPARQL query.
@@ -63880,13 +66330,16 @@ class ComunicaEngine {
 
 
   execute(sparql) {
-    // Create an iterator function that reads the next binding
+    // Comunica does not support SPARQL UPDATE queries yet,
+    // so we temporarily throw an error for them.
+    if (sparql.startsWith('INSERT') || sparql.startsWith('DELETE')) return this.executeUpdate(sparql); // Create an iterator function that reads the next binding
+
     let bindings;
 
     const next = async () => {
       if (!bindings) {
         // Determine the document to query from the subject
-        const document = (await this._subject).replace(/#.*/, '');
+        const document = this.getDocument((await this._subject));
         const sources = [{
           type: 'file',
           value: document
@@ -63929,6 +66382,14 @@ class ComunicaEngine {
         bindings.on('end', done);
       }
     }
+  }
+  /**
+   * Throws an error for update queries.
+   */
+
+
+  executeUpdate(sparql) {
+    throw new Error(`Comunica does not support SPARQL UPDATE queries, received: ${sparql}`);
   }
 
 }
@@ -80343,485 +82804,6 @@ module.exports = values;
 
 /***/ }),
 
-/***/ "./node_modules/lru-cache/index.js":
-/*!*****************************************!*\
-  !*** ./node_modules/lru-cache/index.js ***!
-  \*****************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-module.exports = LRUCache
-
-// This will be a proper iterable 'Map' in engines that support it,
-// or a fakey-fake PseudoMap in older versions.
-var Map = __webpack_require__(/*! pseudomap */ "./node_modules/pseudomap/map.js")
-var util = __webpack_require__(/*! util */ "./node_modules/util/util.js")
-
-// A linked list to keep track of recently-used-ness
-var Yallist = __webpack_require__(/*! yallist */ "./node_modules/yallist/yallist.js")
-
-// use symbols if possible, otherwise just _props
-var hasSymbol = typeof Symbol === 'function'
-var makeSymbol
-if (hasSymbol) {
-  makeSymbol = function (key) {
-    return Symbol(key)
-  }
-} else {
-  makeSymbol = function (key) {
-    return '_' + key
-  }
-}
-
-var MAX = makeSymbol('max')
-var LENGTH = makeSymbol('length')
-var LENGTH_CALCULATOR = makeSymbol('lengthCalculator')
-var ALLOW_STALE = makeSymbol('allowStale')
-var MAX_AGE = makeSymbol('maxAge')
-var DISPOSE = makeSymbol('dispose')
-var NO_DISPOSE_ON_SET = makeSymbol('noDisposeOnSet')
-var LRU_LIST = makeSymbol('lruList')
-var CACHE = makeSymbol('cache')
-
-function naiveLength () { return 1 }
-
-// lruList is a yallist where the head is the youngest
-// item, and the tail is the oldest.  the list contains the Hit
-// objects as the entries.
-// Each Hit object has a reference to its Yallist.Node.  This
-// never changes.
-//
-// cache is a Map (or PseudoMap) that matches the keys to
-// the Yallist.Node object.
-function LRUCache (options) {
-  if (!(this instanceof LRUCache)) {
-    return new LRUCache(options)
-  }
-
-  if (typeof options === 'number') {
-    options = { max: options }
-  }
-
-  if (!options) {
-    options = {}
-  }
-
-  var max = this[MAX] = options.max
-  // Kind of weird to have a default max of Infinity, but oh well.
-  if (!max ||
-      !(typeof max === 'number') ||
-      max <= 0) {
-    this[MAX] = Infinity
-  }
-
-  var lc = options.length || naiveLength
-  if (typeof lc !== 'function') {
-    lc = naiveLength
-  }
-  this[LENGTH_CALCULATOR] = lc
-
-  this[ALLOW_STALE] = options.stale || false
-  this[MAX_AGE] = options.maxAge || 0
-  this[DISPOSE] = options.dispose
-  this[NO_DISPOSE_ON_SET] = options.noDisposeOnSet || false
-  this.reset()
-}
-
-// resize the cache when the max changes.
-Object.defineProperty(LRUCache.prototype, 'max', {
-  set: function (mL) {
-    if (!mL || !(typeof mL === 'number') || mL <= 0) {
-      mL = Infinity
-    }
-    this[MAX] = mL
-    trim(this)
-  },
-  get: function () {
-    return this[MAX]
-  },
-  enumerable: true
-})
-
-Object.defineProperty(LRUCache.prototype, 'allowStale', {
-  set: function (allowStale) {
-    this[ALLOW_STALE] = !!allowStale
-  },
-  get: function () {
-    return this[ALLOW_STALE]
-  },
-  enumerable: true
-})
-
-Object.defineProperty(LRUCache.prototype, 'maxAge', {
-  set: function (mA) {
-    if (!mA || !(typeof mA === 'number') || mA < 0) {
-      mA = 0
-    }
-    this[MAX_AGE] = mA
-    trim(this)
-  },
-  get: function () {
-    return this[MAX_AGE]
-  },
-  enumerable: true
-})
-
-// resize the cache when the lengthCalculator changes.
-Object.defineProperty(LRUCache.prototype, 'lengthCalculator', {
-  set: function (lC) {
-    if (typeof lC !== 'function') {
-      lC = naiveLength
-    }
-    if (lC !== this[LENGTH_CALCULATOR]) {
-      this[LENGTH_CALCULATOR] = lC
-      this[LENGTH] = 0
-      this[LRU_LIST].forEach(function (hit) {
-        hit.length = this[LENGTH_CALCULATOR](hit.value, hit.key)
-        this[LENGTH] += hit.length
-      }, this)
-    }
-    trim(this)
-  },
-  get: function () { return this[LENGTH_CALCULATOR] },
-  enumerable: true
-})
-
-Object.defineProperty(LRUCache.prototype, 'length', {
-  get: function () { return this[LENGTH] },
-  enumerable: true
-})
-
-Object.defineProperty(LRUCache.prototype, 'itemCount', {
-  get: function () { return this[LRU_LIST].length },
-  enumerable: true
-})
-
-LRUCache.prototype.rforEach = function (fn, thisp) {
-  thisp = thisp || this
-  for (var walker = this[LRU_LIST].tail; walker !== null;) {
-    var prev = walker.prev
-    forEachStep(this, fn, walker, thisp)
-    walker = prev
-  }
-}
-
-function forEachStep (self, fn, node, thisp) {
-  var hit = node.value
-  if (isStale(self, hit)) {
-    del(self, node)
-    if (!self[ALLOW_STALE]) {
-      hit = undefined
-    }
-  }
-  if (hit) {
-    fn.call(thisp, hit.value, hit.key, self)
-  }
-}
-
-LRUCache.prototype.forEach = function (fn, thisp) {
-  thisp = thisp || this
-  for (var walker = this[LRU_LIST].head; walker !== null;) {
-    var next = walker.next
-    forEachStep(this, fn, walker, thisp)
-    walker = next
-  }
-}
-
-LRUCache.prototype.keys = function () {
-  return this[LRU_LIST].toArray().map(function (k) {
-    return k.key
-  }, this)
-}
-
-LRUCache.prototype.values = function () {
-  return this[LRU_LIST].toArray().map(function (k) {
-    return k.value
-  }, this)
-}
-
-LRUCache.prototype.reset = function () {
-  if (this[DISPOSE] &&
-      this[LRU_LIST] &&
-      this[LRU_LIST].length) {
-    this[LRU_LIST].forEach(function (hit) {
-      this[DISPOSE](hit.key, hit.value)
-    }, this)
-  }
-
-  this[CACHE] = new Map() // hash of items by key
-  this[LRU_LIST] = new Yallist() // list of items in order of use recency
-  this[LENGTH] = 0 // length of items in the list
-}
-
-LRUCache.prototype.dump = function () {
-  return this[LRU_LIST].map(function (hit) {
-    if (!isStale(this, hit)) {
-      return {
-        k: hit.key,
-        v: hit.value,
-        e: hit.now + (hit.maxAge || 0)
-      }
-    }
-  }, this).toArray().filter(function (h) {
-    return h
-  })
-}
-
-LRUCache.prototype.dumpLru = function () {
-  return this[LRU_LIST]
-}
-
-LRUCache.prototype.inspect = function (n, opts) {
-  var str = 'LRUCache {'
-  var extras = false
-
-  var as = this[ALLOW_STALE]
-  if (as) {
-    str += '\n  allowStale: true'
-    extras = true
-  }
-
-  var max = this[MAX]
-  if (max && max !== Infinity) {
-    if (extras) {
-      str += ','
-    }
-    str += '\n  max: ' + util.inspect(max, opts)
-    extras = true
-  }
-
-  var maxAge = this[MAX_AGE]
-  if (maxAge) {
-    if (extras) {
-      str += ','
-    }
-    str += '\n  maxAge: ' + util.inspect(maxAge, opts)
-    extras = true
-  }
-
-  var lc = this[LENGTH_CALCULATOR]
-  if (lc && lc !== naiveLength) {
-    if (extras) {
-      str += ','
-    }
-    str += '\n  length: ' + util.inspect(this[LENGTH], opts)
-    extras = true
-  }
-
-  var didFirst = false
-  this[LRU_LIST].forEach(function (item) {
-    if (didFirst) {
-      str += ',\n  '
-    } else {
-      if (extras) {
-        str += ',\n'
-      }
-      didFirst = true
-      str += '\n  '
-    }
-    var key = util.inspect(item.key).split('\n').join('\n  ')
-    var val = { value: item.value }
-    if (item.maxAge !== maxAge) {
-      val.maxAge = item.maxAge
-    }
-    if (lc !== naiveLength) {
-      val.length = item.length
-    }
-    if (isStale(this, item)) {
-      val.stale = true
-    }
-
-    val = util.inspect(val, opts).split('\n').join('\n  ')
-    str += key + ' => ' + val
-  })
-
-  if (didFirst || extras) {
-    str += '\n'
-  }
-  str += '}'
-
-  return str
-}
-
-LRUCache.prototype.set = function (key, value, maxAge) {
-  maxAge = maxAge || this[MAX_AGE]
-
-  var now = maxAge ? Date.now() : 0
-  var len = this[LENGTH_CALCULATOR](value, key)
-
-  if (this[CACHE].has(key)) {
-    if (len > this[MAX]) {
-      del(this, this[CACHE].get(key))
-      return false
-    }
-
-    var node = this[CACHE].get(key)
-    var item = node.value
-
-    // dispose of the old one before overwriting
-    // split out into 2 ifs for better coverage tracking
-    if (this[DISPOSE]) {
-      if (!this[NO_DISPOSE_ON_SET]) {
-        this[DISPOSE](key, item.value)
-      }
-    }
-
-    item.now = now
-    item.maxAge = maxAge
-    item.value = value
-    this[LENGTH] += len - item.length
-    item.length = len
-    this.get(key)
-    trim(this)
-    return true
-  }
-
-  var hit = new Entry(key, value, len, now, maxAge)
-
-  // oversized objects fall out of cache automatically.
-  if (hit.length > this[MAX]) {
-    if (this[DISPOSE]) {
-      this[DISPOSE](key, value)
-    }
-    return false
-  }
-
-  this[LENGTH] += hit.length
-  this[LRU_LIST].unshift(hit)
-  this[CACHE].set(key, this[LRU_LIST].head)
-  trim(this)
-  return true
-}
-
-LRUCache.prototype.has = function (key) {
-  if (!this[CACHE].has(key)) return false
-  var hit = this[CACHE].get(key).value
-  if (isStale(this, hit)) {
-    return false
-  }
-  return true
-}
-
-LRUCache.prototype.get = function (key) {
-  return get(this, key, true)
-}
-
-LRUCache.prototype.peek = function (key) {
-  return get(this, key, false)
-}
-
-LRUCache.prototype.pop = function () {
-  var node = this[LRU_LIST].tail
-  if (!node) return null
-  del(this, node)
-  return node.value
-}
-
-LRUCache.prototype.del = function (key) {
-  del(this, this[CACHE].get(key))
-}
-
-LRUCache.prototype.load = function (arr) {
-  // reset the cache
-  this.reset()
-
-  var now = Date.now()
-  // A previous serialized cache has the most recent items first
-  for (var l = arr.length - 1; l >= 0; l--) {
-    var hit = arr[l]
-    var expiresAt = hit.e || 0
-    if (expiresAt === 0) {
-      // the item was created without expiration in a non aged cache
-      this.set(hit.k, hit.v)
-    } else {
-      var maxAge = expiresAt - now
-      // dont add already expired items
-      if (maxAge > 0) {
-        this.set(hit.k, hit.v, maxAge)
-      }
-    }
-  }
-}
-
-LRUCache.prototype.prune = function () {
-  var self = this
-  this[CACHE].forEach(function (value, key) {
-    get(self, key, false)
-  })
-}
-
-function get (self, key, doUse) {
-  var node = self[CACHE].get(key)
-  if (node) {
-    var hit = node.value
-    if (isStale(self, hit)) {
-      del(self, node)
-      if (!self[ALLOW_STALE]) hit = undefined
-    } else {
-      if (doUse) {
-        self[LRU_LIST].unshiftNode(node)
-      }
-    }
-    if (hit) hit = hit.value
-  }
-  return hit
-}
-
-function isStale (self, hit) {
-  if (!hit || (!hit.maxAge && !self[MAX_AGE])) {
-    return false
-  }
-  var stale = false
-  var diff = Date.now() - hit.now
-  if (hit.maxAge) {
-    stale = diff > hit.maxAge
-  } else {
-    stale = self[MAX_AGE] && (diff > self[MAX_AGE])
-  }
-  return stale
-}
-
-function trim (self) {
-  if (self[LENGTH] > self[MAX]) {
-    for (var walker = self[LRU_LIST].tail;
-         self[LENGTH] > self[MAX] && walker !== null;) {
-      // We know that we're about to delete this one, and also
-      // what the next least recently used key will be, so just
-      // go ahead and set it now.
-      var prev = walker.prev
-      del(self, walker)
-      walker = prev
-    }
-  }
-}
-
-function del (self, node) {
-  if (node) {
-    var hit = node.value
-    if (self[DISPOSE]) {
-      self[DISPOSE](hit.key, hit.value)
-    }
-    self[LENGTH] -= hit.length
-    self[CACHE].delete(hit.key)
-    self[LRU_LIST].removeNode(node)
-  }
-}
-
-// classy, since V8 prefers predictable objects.
-function Entry (key, value, length, now, maxAge) {
-  this.key = key
-  this.value = value
-  this.length = length
-  this.now = now
-  this.maxAge = maxAge || 0
-}
-
-
-/***/ }),
-
 /***/ "./node_modules/md5.js/index.js":
 /*!**************************************!*\
   !*** ./node_modules/md5.js/index.js ***!
@@ -81804,6 +83786,20 @@ var escapeReplacements = {
 };
 var illegalIriChars = /[\x00-\x20<>\\"\{\}\|\^\`]/;
 
+var lineModeRegExps = {
+  _iri: true,
+  _unescapedIri: true,
+  _unescapedQuote: true,
+  _singleQuote: true,
+  _langcode: true,
+  _blank: true,
+  _newline: true,
+  _comment: true,
+  _whitespace: true,
+  _endOfFile: true,
+};
+var invalidRegExp = /$0^/;
+
 // ## Constructor
 function N3Lexer(options) {
   if (!(this instanceof N3Lexer))
@@ -81811,24 +83807,19 @@ function N3Lexer(options) {
   options = options || {};
 
   // In line mode (N-Triples or N-Quads), only simple features may be parsed
-  if (options.lineMode) {
+  if (this._lineMode = !!options.lineMode) {
+    this._n3Mode = false;
     // Don't tokenize special literals
-    this._tripleQuotedString = this._number = this._boolean = /$0^/;
-    // Swap the tokenize method for a restricted version
-    var self = this;
-    this._tokenize = this.tokenize;
-    this.tokenize = function (input, callback) {
-      this._tokenize(input, function (error, token) {
-        if (!error && /^(?:IRI|blank|literal|langcode|typeIRI|\.|eof)$/.test(token.type))
-          callback && callback(error, token);
-        else
-          callback && callback(error || self._syntaxError(token.type, callback = null));
-      });
-    };
+    for (var key in this) {
+      if (!(key in lineModeRegExps) && this[key] instanceof RegExp)
+        this[key] = invalidRegExp;
+    }
   }
-  // Enable N3 functionality by default
-  this._n3Mode = options.n3 !== false;
-  // Disable comment tokens by default
+  // When not in line mode, enable N3 functionality by default
+  else {
+    this._n3Mode = options.n3 !== false;
+  }
+  // Don't output comment tokens by default
   this._comments = !!options.comments;
 }
 
@@ -82089,9 +84080,10 @@ N3Lexer.prototype = {
       case ')':
       case '{':
       case '}':
-        // The next token is punctuation
-        matchLength = 1;
-        type = firstChar;
+        if (!this._lineMode) {
+          matchLength = 1;
+          type = firstChar;
+        }
         break;
 
       default:
@@ -82616,19 +84608,22 @@ N3Parser.prototype = {
 
   // ### `_readPredicateAfterBlank` reads a predicate after an anonymous blank node
   _readPredicateAfterBlank: function (token) {
-    // If a dot follows a blank node in top context, there is no predicate
-    if (token.type === '.' && !this._contextStack.length) {
-      this._subject = null; // cancel the current quad
+    switch (token.type) {
+    case '.':
+    case '}':
+      // No predicate is coming if the triple is terminated here
+      this._subject = null;
       return this._readPunctuation(token);
+    default:
+      return this._readPredicate(token);
     }
-    return this._readPredicate(token);
   },
 
   // ### `_readListItem` reads items from a list
   _readListItem: function (token) {
     var item = null,                      // The item of the list
         list = null,                      // The list itself
-        prevList = this._subject,         // The previous list that contains this list
+        previousList = this._subject,     // The previous list that contains this list
         stack = this._contextStack,       // The stack of parent contexts
         parent = stack[stack.length - 1], // The parent containing the current list
         next = this._readListItem;        // The next function to execute
@@ -82694,7 +84689,7 @@ N3Parser.prototype = {
       this._subject = list = this._blank();
 
     // Is this the first element of the list?
-    if (prevList === null) {
+    if (previousList === null) {
       // This list is either the subject or the object of its parent
       if (parent.predicate === null)
         parent.subject = list;
@@ -82703,7 +84698,7 @@ N3Parser.prototype = {
     }
     else {
       // Continue the previous list with the current list
-      this._emit(prevList, this.RDF_REST, list, this._graph);
+      this._emit(previousList, this.RDF_REST, list, this._graph);
     }
     // If an item was read, add it to the list
     if (item !== null) {
@@ -84218,7 +86213,7 @@ N3Writer.prototype = {
     return  this._encodeIriOrBlank(subject)   + ' ' +
             this._encodeIriOrBlank(predicate) + ' ' +
             this._encodeObject(object) +
-            (graph && graph.value ? ' ' + this._encodeIriOrBlank(graph) + '.\n' : '.\n');
+            (graph && graph.value ? ' ' + this._encodeIriOrBlank(graph) + ' .\n' : ' .\n');
   },
 
   // ### `quadsToString` serializes an array of quads as a string
@@ -89736,151 +91731,6 @@ process.umask = function() { return 0; };
 
 /***/ }),
 
-/***/ "./node_modules/pseudomap/map.js":
-/*!***************************************!*\
-  !*** ./node_modules/pseudomap/map.js ***!
-  \***************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-/* WEBPACK VAR INJECTION */(function(process) {if (process.env.npm_package_name === 'pseudomap' &&
-    process.env.npm_lifecycle_script === 'test')
-  process.env.TEST_PSEUDOMAP = 'true'
-
-if (typeof Map === 'function' && !process.env.TEST_PSEUDOMAP) {
-  module.exports = Map
-} else {
-  module.exports = __webpack_require__(/*! ./pseudomap */ "./node_modules/pseudomap/pseudomap.js")
-}
-
-/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./../process/browser.js */ "./node_modules/process/browser.js")))
-
-/***/ }),
-
-/***/ "./node_modules/pseudomap/pseudomap.js":
-/*!*********************************************!*\
-  !*** ./node_modules/pseudomap/pseudomap.js ***!
-  \*********************************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-var hasOwnProperty = Object.prototype.hasOwnProperty
-
-module.exports = PseudoMap
-
-function PseudoMap (set) {
-  if (!(this instanceof PseudoMap)) // whyyyyyyy
-    throw new TypeError("Constructor PseudoMap requires 'new'")
-
-  this.clear()
-
-  if (set) {
-    if ((set instanceof PseudoMap) ||
-        (typeof Map === 'function' && set instanceof Map))
-      set.forEach(function (value, key) {
-        this.set(key, value)
-      }, this)
-    else if (Array.isArray(set))
-      set.forEach(function (kv) {
-        this.set(kv[0], kv[1])
-      }, this)
-    else
-      throw new TypeError('invalid argument')
-  }
-}
-
-PseudoMap.prototype.forEach = function (fn, thisp) {
-  thisp = thisp || this
-  Object.keys(this._data).forEach(function (k) {
-    if (k !== 'size')
-      fn.call(thisp, this._data[k].value, this._data[k].key)
-  }, this)
-}
-
-PseudoMap.prototype.has = function (k) {
-  return !!find(this._data, k)
-}
-
-PseudoMap.prototype.get = function (k) {
-  var res = find(this._data, k)
-  return res && res.value
-}
-
-PseudoMap.prototype.set = function (k, v) {
-  set(this._data, k, v)
-}
-
-PseudoMap.prototype.delete = function (k) {
-  var res = find(this._data, k)
-  if (res) {
-    delete this._data[res._index]
-    this._data.size--
-  }
-}
-
-PseudoMap.prototype.clear = function () {
-  var data = Object.create(null)
-  data.size = 0
-
-  Object.defineProperty(this, '_data', {
-    value: data,
-    enumerable: false,
-    configurable: true,
-    writable: false
-  })
-}
-
-Object.defineProperty(PseudoMap.prototype, 'size', {
-  get: function () {
-    return this._data.size
-  },
-  set: function (n) {},
-  enumerable: true,
-  configurable: true
-})
-
-PseudoMap.prototype.values =
-PseudoMap.prototype.keys =
-PseudoMap.prototype.entries = function () {
-  throw new Error('iterators are not implemented in this version')
-}
-
-// Either identical, or both NaN
-function same (a, b) {
-  return a === b || a !== a && b !== b
-}
-
-function Entry (k, v, i) {
-  this.key = k
-  this.value = v
-  this._index = i
-}
-
-function find (data, k) {
-  for (var i = 0, s = '_' + k, key = s;
-       hasOwnProperty.call(data, key);
-       key = s + i++) {
-    if (same(data[key].key, k))
-      return data[key]
-  }
-}
-
-function set (data, k, v) {
-  for (var i = 0, s = '_' + k, key = s;
-       hasOwnProperty.call(data, key);
-       key = s + i++) {
-    if (same(data[key].key, k)) {
-      data[key].value = v
-      return
-    }
-  }
-  data.size++
-  data[key] = new Entry(k, v, key)
-}
-
-
-/***/ }),
-
 /***/ "./node_modules/public-encrypt/browser.js":
 /*!************************************************!*\
   !*** ./node_modules/public-encrypt/browser.js ***!
@@ -93932,6 +95782,7 @@ class RdfXmlParser extends stream_1.Transform {
         this.nodeIds = {};
         if (args) {
             Object.assign(this, args);
+            this.options = args;
         }
         if (!this.dataFactory) {
             this.dataFactory = __webpack_require__(/*! @rdfjs/data-model */ "./node_modules/@rdfjs/data-model/index.js");
@@ -94015,6 +95866,19 @@ class RdfXmlParser extends stream_1.Transform {
             uri = defaultNamespace || '';
         }
         return { prefix, local, uri };
+    }
+    /**
+     * Parses the given text stream into a quad stream.
+     * @param {NodeJS.EventEmitter} stream A text stream.
+     * @return {NodeJS.EventEmitter} A quad stream.
+     */
+    import(stream) {
+        const output = new stream_1.PassThrough({ objectMode: true });
+        stream.on('error', (error) => parsed.emit('error', error));
+        stream.on('data', (data) => output.write(data));
+        stream.on('end', () => output.emit('end'));
+        const parsed = output.pipe(new RdfXmlParser(this.options));
+        return parsed;
     }
     _transform(chunk, encoding, callback) {
         this.saxStream.write(chunk, encoding);
@@ -97002,18 +98866,26 @@ function resolve(relativeIRI, baseIRI) {
     if (!relativeIRI.length) {
         return baseIRI;
     }
-    // If the value starts with a hash, concat directly
+    // If the value starts with a query character, concat directly (but strip the existing query)
+    if (relativeIRI.startsWith('?')) {
+        const baseQueryPos = baseIRI.indexOf('?');
+        if (baseQueryPos > 0) {
+            baseIRI = baseIRI.substr(0, baseQueryPos);
+        }
+        return baseIRI + relativeIRI;
+    }
+    // If the value starts with a fragment character, concat directly
     if (relativeIRI.startsWith('#')) {
         return baseIRI + relativeIRI;
     }
     // Ignore baseIRI if it is empty
     if (!baseIRI.length) {
-        return relativeIRI;
+        return removeDotSegmentsOfPath(relativeIRI, relativeIRI.indexOf(':'));
     }
     // Ignore baseIRI if the value is absolute
     const valueColonPos = relativeIRI.indexOf(':');
     if (valueColonPos >= 0) {
-        return relativeIRI;
+        return removeDotSegmentsOfPath(relativeIRI, valueColonPos);
     }
     // At this point, the baseIRI MUST be absolute, otherwise we error
     const baseColonPos = baseIRI.indexOf(':');
@@ -97023,7 +98895,7 @@ function resolve(relativeIRI, baseIRI) {
     const baseIRIScheme = baseIRI.substr(0, baseColonPos + 1);
     // Inherit the baseIRI scheme if the value starts with '//'
     if (relativeIRI.indexOf('//') === 0) {
-        return baseIRIScheme + relativeIRI;
+        return baseIRIScheme + removeDotSegmentsOfPath(relativeIRI, valueColonPos);
     }
     // Check cases where '://' occurs in the baseIRI, and where there is no '/' after a ':' anymore.
     let baseSlashAfterColonPos;
@@ -97034,10 +98906,10 @@ function resolve(relativeIRI, baseIRI) {
             // If something other than a '/' follows the '://', append the value after a '/',
             // otherwise, prefix the value with only the baseIRI scheme.
             if (baseIRI.length > baseColonPos + 3) {
-                return baseIRI + '/' + relativeIRI;
+                return baseIRI + '/' + removeDotSegmentsOfPath(relativeIRI, valueColonPos);
             }
             else {
-                return baseIRIScheme + relativeIRI;
+                return baseIRIScheme + removeDotSegmentsOfPath(relativeIRI, valueColonPos);
             }
         }
     }
@@ -97048,36 +98920,145 @@ function resolve(relativeIRI, baseIRI) {
         // If something other than a '/' follows the ':', append the value after a '/',
         // otherwise, prefix the value with only the baseIRI scheme.
         if (baseIRI.length > baseColonPos + 1) {
-            return baseIRI + '/' + relativeIRI;
+            return baseIRI + '/' + removeDotSegmentsOfPath(relativeIRI, valueColonPos);
         }
         else {
-            return baseIRIScheme + relativeIRI;
+            return baseIRIScheme + removeDotSegmentsOfPath(relativeIRI, valueColonPos);
         }
     }
     // If the value starts with a '/', then prefix it with everything before the first effective slash of the base IRI.
     if (relativeIRI.indexOf('/') === 0) {
-        return baseIRI.substr(0, baseSlashAfterColonPos) + relativeIRI;
+        return baseIRI.substr(0, baseSlashAfterColonPos) + removeDotSegments(relativeIRI);
     }
     let baseIRIPath = baseIRI.substr(baseSlashAfterColonPos);
     const baseIRILastSlashPos = baseIRIPath.lastIndexOf('/');
     // Ignore everything after the last '/' in the baseIRI path
     if (baseIRILastSlashPos >= 0 && baseIRILastSlashPos < baseIRIPath.length - 1) {
         baseIRIPath = baseIRIPath.substr(0, baseIRILastSlashPos + 1);
+        // Also remove the first character of the relative path if it starts with '.' (and not '..' or './')
+        // This change is only allowed if there is something else following the path
+        if (relativeIRI[0] === '.' && relativeIRI[1] !== '.' && relativeIRI[1] !== '/' && relativeIRI[2]) {
+            relativeIRI = relativeIRI.substr(1);
+        }
     }
     // Prefix the value with the baseIRI path where
     relativeIRI = baseIRIPath + relativeIRI;
-    // Remove all occurrences of '*/../' to collapse paths to parents
-    while (relativeIRI.match(/[^\/]*\/\.\.\//)) {
-        relativeIRI = relativeIRI.replace(/[^\/]*\/\.\.\//, '');
-    }
-    // Remove all occurrences of './'
-    relativeIRI = relativeIRI.replace(/\.\//g, '');
-    // Remove suffix '/.'
-    relativeIRI = relativeIRI.replace(/\/\.$/, '/');
+    // Remove dot segment from the IRI
+    relativeIRI = removeDotSegments(relativeIRI);
     // Prefix our transformed value with the part of the baseIRI until the first '/' after the first ':'.
     return baseIRI.substr(0, baseSlashAfterColonPos) + relativeIRI;
 }
 exports.resolve = resolve;
+/**
+ * Remove dot segments from the given path,
+ * as described in https://www.ietf.org/rfc/rfc3986.txt (page 32).
+ * @param {string} path An IRI path.
+ * @return {string} A path, will always start with a '/'.
+ */
+function removeDotSegments(path) {
+    // Prepare a buffer with segments between each '/.
+    // Each segment represents an array of characters.
+    const segmentBuffers = [];
+    let i = 0;
+    while (i < path.length) {
+        // Remove '/.' or '/..'
+        switch (path[i]) {
+            case '/':
+                if (path[i + 1] === '.') {
+                    if (path[i + 2] === '.') {
+                        // Append the remaining path as-is if we find an invalid character after the '.'
+                        if (!isCharacterAllowedAfterRelativePathSegment(path[i + 3])) {
+                            segmentBuffers[segmentBuffers.length - 1].push(path.substr(i));
+                            i = path.length;
+                            break;
+                        }
+                        // Go to parent directory,
+                        // so we remove a parent segment
+                        segmentBuffers.pop();
+                        // Ensure that we end with a slash if there is a trailing '/..'
+                        if (!path[i + 3]) {
+                            segmentBuffers.push([]);
+                        }
+                        i += 3;
+                    }
+                    else {
+                        // Append the remaining path as-is if we find an invalid character after the '.'
+                        if (!isCharacterAllowedAfterRelativePathSegment(path[i + 2])) {
+                            segmentBuffers[segmentBuffers.length - 1].push(path.substr(i));
+                            i = path.length;
+                            break;
+                        }
+                        // Ensure that we end with a slash if there is a trailing '/.'
+                        if (!path[i + 2]) {
+                            segmentBuffers.push([]);
+                        }
+                        // Go to the current directory,
+                        // so we do nothing
+                        i += 2;
+                    }
+                }
+                else {
+                    // Start a new segment
+                    segmentBuffers.push([]);
+                    i++;
+                }
+                break;
+            case '#':
+            case '?':
+                // Query and fragment string should be appended unchanged
+                if (!segmentBuffers.length) {
+                    segmentBuffers.push([]);
+                }
+                segmentBuffers[segmentBuffers.length - 1].push(path.substr(i));
+                // Break the while loop
+                i = path.length;
+                break;
+            default:
+                // Not a special character, just append it to our buffer
+                if (!segmentBuffers.length) {
+                    segmentBuffers.push([]);
+                }
+                segmentBuffers[segmentBuffers.length - 1].push(path[i]);
+                i++;
+                break;
+        }
+    }
+    return '/' + segmentBuffers.map((buffer) => buffer.join('')).join('/');
+}
+exports.removeDotSegments = removeDotSegments;
+/**
+ * Removes dot segments of the given IRI.
+ * @param {string} iri An IRI (or part of IRI).
+ * @param {number} colonPosition The position of the first ':' in the IRI.
+ * @return {string} The IRI where dot segments were removed.
+ */
+function removeDotSegmentsOfPath(iri, colonPosition) {
+    // Determine where we should start looking for the first '/' that indicates the start of the path
+    let searchOffset = colonPosition + 1;
+    if (colonPosition >= 0) {
+        if (iri[colonPosition + 1] === '/' && iri[colonPosition + 2] === '/') {
+            searchOffset = colonPosition + 3;
+        }
+    }
+    else {
+        if (iri[0] === '/' && iri[1] === '/') {
+            searchOffset = 2;
+        }
+    }
+    // Determine the path
+    const pathSeparator = iri.indexOf('/', searchOffset);
+    if (pathSeparator < 0) {
+        return iri;
+    }
+    const base = iri.substr(0, pathSeparator);
+    const path = iri.substr(pathSeparator);
+    // Remove dot segments from the path
+    return base + removeDotSegments(path);
+}
+exports.removeDotSegmentsOfPath = removeDotSegmentsOfPath;
+function isCharacterAllowedAfterRelativePathSegment(character) {
+    return !character || character === '#' || character === '?' || character === '/';
+}
 //# sourceMappingURL=Resolve.js.map
 
 /***/ }),
@@ -101425,6 +103406,7 @@ function removeQuadsRecursive(op, graphs) {
 Object.defineProperty(exports, "__esModule", { value: true });
 const Algebra = __webpack_require__(/*! ./algebra */ "./node_modules/sparqlalgebrajs/lib/algebra.js");
 const factory_1 = __webpack_require__(/*! ./factory */ "./node_modules/sparqlalgebrajs/lib/factory.js");
+const util_1 = __webpack_require__(/*! ./util */ "./node_modules/sparqlalgebrajs/lib/util.js");
 const Parser = __webpack_require__(/*! sparqljs */ "./node_modules/sparqljs/sparql.js").Parser;
 const isEqual = __webpack_require__(/*! lodash.isequal */ "./node_modules/lodash.isequal/index.js");
 const types = Algebra.types;
@@ -101452,10 +103434,11 @@ function translate(sparql, options) {
         parser._resetBlanks();
         sparql = parser.parse(sparql);
     }
-    return translateQuery(sparql, options.quads);
+    return translateQuery(sparql, options.quads, options.blankToVariable);
 }
 exports.default = translate;
-function translateQuery(sparql, quads) {
+function translateQuery(sparql, quads, blankToVariable) {
+    // this set is filled in during the inScopeVariables call
     variables = new Set();
     varCount = 0;
     useQuads = quads;
@@ -101466,6 +103449,9 @@ function translateQuery(sparql, quads) {
     let vars = new Set(Object.keys(inScopeVariables(group)).map(factory.createTerm.bind(factory)));
     let res = translateGroupGraphPattern(group);
     res = translateAggregates(sparql, res, vars);
+    if (blankToVariable) {
+        res = translateBlankNodesToVariables(res, vars);
+    }
     return res;
 }
 function isString(str) {
@@ -101543,7 +103529,7 @@ function translateGroupGraphPattern(thingy) {
     else if (thingy.type === 'values')
         result = translateInlineData(thingy);
     else if (thingy.type === 'query')
-        result = translateQuery(thingy, useQuads);
+        result = translateQuery(thingy, useQuads, false);
     else
         throw new Error('Unexpected type: ' + thingy.type);
     if (filters.length > 0) {
@@ -101870,6 +103856,39 @@ function translateBoundAggregate(thingy, v) {
     A.variable = v;
     return A;
 }
+function translateBlankNodesToVariables(res, variables) {
+    const blankToVariableMapping = {};
+    const variablesRaw = Array.from(variables).reduce((acc, variable) => {
+        acc[variable.value] = true;
+        return acc;
+    }, {});
+    return util_1.default.mapOperation(res, {
+        'path': (op, factory) => {
+            return {
+                result: factory.createPath(blankToVariable(op.subject), op.predicate, blankToVariable(op.object), blankToVariable(op.graph)),
+                recurse: false,
+            };
+        },
+        'pattern': (op, factory) => {
+            return {
+                result: factory.createPattern(blankToVariable(op.subject), blankToVariable(op.predicate), blankToVariable(op.object), blankToVariable(op.graph)),
+                recurse: false,
+            };
+        },
+    });
+    function blankToVariable(term) {
+        if (term.termType === 'BlankNode') {
+            let variable = blankToVariableMapping[term.value];
+            if (!variable) {
+                variable = util_1.default.createUniqueVariable(term.value, variablesRaw, factory.dataFactory);
+                variablesRaw[variable.value] = true;
+                blankToVariableMapping[term.value] = variable;
+            }
+            return variable;
+        }
+        return term;
+    }
+}
 //# sourceMappingURL=sparqlAlgebra.js.map
 
 /***/ }),
@@ -102126,7 +104145,7 @@ class Util {
      * to specifically modify the given objects before triggering recursion.
      * The return value of those callbacks should indicate whether recursion should be applied to this returned object or not.
      * @param {Operation} op - The Operation to recurse on.
-     * @param { [type: string]: (op: Operation) => RecurseResult } callbacks - A map of required callback Operations.
+     * @param { [type: string]: (op: Operation, factory: Factory) => RecurseResult } callbacks - A map of required callback Operations.
      * @param {Factory} factory - Factory used to create new Operations. Will use default factory if none is provided.
      * @returns {Operation} - The copied result.
      */
@@ -102135,7 +104154,7 @@ class Util {
         let doRecursion = true;
         factory = factory || new factory_1.default();
         if (callbacks[op.type])
-            ({ result, recurse: doRecursion } = callbacks[op.type](op));
+            ({ result, recurse: doRecursion } = callbacks[op.type](op, factory));
         if (!doRecursion)
             return result;
         let mapOp = (op) => Util.mapOperation(op, callbacks, factory);
@@ -102241,7 +104260,7 @@ class Util {
      * Both functions call each other while copying.
      * Should not be called directly since it does not execute the callbacks, these happen in {@link mapOperation}.
      * @param {Expression} expr - The Operation to recurse on.
-     * @param { [type: string]: (op: Operation) => RecurseResult } callbacks - A map of required callback Operations.
+     * @param { [type: string]: (op: Operation, factory: Factory) => RecurseResult } callbacks - A map of required callback Operations.
      * @param {Factory} factory - Factory used to create new Operations. Will use default factory if none is provided.
      * @returns {Operation} - The copied result.
      */
@@ -102270,9 +104289,2643 @@ class Util {
             default: throw new Error('Unknown Expression type ' + expr.expressionType);
         }
     }
+    static createUniqueVariable(label, variables, dataFactory) {
+        let counter = 0;
+        let labelLoop = label;
+        while (variables[labelLoop]) {
+            labelLoop = label + counter++;
+        }
+        return dataFactory.variable(labelLoop);
+    }
 }
 exports.default = Util;
 //# sourceMappingURL=util.js.map
+
+/***/ }),
+
+/***/ "./node_modules/sparqlee/dist/index.js":
+/*!*********************************************!*\
+  !*** ./node_modules/sparqlee/dist/index.js ***!
+  \*********************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+Object.defineProperty(exports, "__esModule", { value: true });
+var AsyncEvaluator_1 = __webpack_require__(/*! ./lib/evaluators/AsyncEvaluator */ "./node_modules/sparqlee/dist/lib/evaluators/AsyncEvaluator.js");
+exports.AsyncEvaluator = AsyncEvaluator_1.AsyncEvaluator;
+var SimpleEvaluator_1 = __webpack_require__(/*! ./lib/evaluators/SimpleEvaluator */ "./node_modules/sparqlee/dist/lib/evaluators/SimpleEvaluator.js");
+exports.SimpleEvaluator = SimpleEvaluator_1.SimpleEvaluator;
+var Errors_1 = __webpack_require__(/*! ./lib/util/Errors */ "./node_modules/sparqlee/dist/lib/util/Errors.js");
+exports.ExpressionError = Errors_1.ExpressionError;
+exports.isExpressionError = Errors_1.isExpressionError;
+//# sourceMappingURL=index.js.map
+
+/***/ }),
+
+/***/ "./node_modules/sparqlee/dist/lib/Transformation.js":
+/*!**********************************************************!*\
+  !*** ./node_modules/sparqlee/dist/lib/Transformation.js ***!
+  \**********************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+Object.defineProperty(exports, "__esModule", { value: true });
+const RDFString = __webpack_require__(/*! rdf-string */ "./node_modules/rdf-string/index.js");
+const sparqlalgebrajs_1 = __webpack_require__(/*! sparqlalgebrajs */ "./node_modules/sparqlalgebrajs/index.js");
+const E = __webpack_require__(/*! ./expressions */ "./node_modules/sparqlee/dist/lib/expressions/index.js");
+const C = __webpack_require__(/*! ./util/Consts */ "./node_modules/sparqlee/dist/lib/util/Consts.js");
+const Err = __webpack_require__(/*! ./util/Errors */ "./node_modules/sparqlee/dist/lib/util/Errors.js");
+const P = __webpack_require__(/*! ./util/Parsing */ "./node_modules/sparqlee/dist/lib/util/Parsing.js");
+const functions_1 = __webpack_require__(/*! ./functions */ "./node_modules/sparqlee/dist/lib/functions/index.js");
+const Consts_1 = __webpack_require__(/*! ./util/Consts */ "./node_modules/sparqlee/dist/lib/util/Consts.js");
+function transformAlgebra(expr, hooks = {}) {
+    if (!expr) {
+        throw new Err.InvalidExpression(expr);
+    }
+    const types = sparqlalgebrajs_1.Algebra.expressionTypes;
+    switch (expr.expressionType) {
+        case types.TERM:
+            return transformTerm(expr);
+        case types.OPERATOR:
+            return transformOperator(expr);
+        case types.NAMED:
+            return transformNamed(expr);
+        case types.EXISTENCE:
+            return transformExistence(expr, hooks.existence);
+        case types.AGGREGATE:
+            return transformAggregate(expr, hooks.aggregate);
+        default: throw new Err.InvalidExpressionType(expr);
+    }
+}
+exports.transformAlgebra = transformAlgebra;
+function transformTerm(term) {
+    if (!term.term) {
+        throw new Err.InvalidExpression(term);
+    }
+    switch (term.term.termType) {
+        case 'Variable': return new E.Variable(RDFString.termToString(term.term));
+        case 'Literal': return tranformLiteral(term.term);
+        case 'NamedNode': return new E.NamedNode(term.term.value);
+        case 'BlankNode': return new E.BlankNode(term.term.value);
+        default: throw new Err.InvalidTermType(term);
+    }
+}
+exports.transformTerm = transformTerm;
+// TODO: Maybe do this with a map?
+// tslint:disable-next-line:no-any
+function tranformLiteral(lit) {
+    if (!lit.datatype) {
+        return (lit.language)
+            ? new E.LangStringLiteral(lit.value, lit.language)
+            : new E.StringLiteral(lit.value);
+    }
+    switch (lit.datatype.value) {
+        case null:
+        case undefined:
+        case '': {
+            return (lit.language)
+                ? new E.LangStringLiteral(lit.value, lit.language)
+                : new E.StringLiteral(lit.value);
+        }
+        case Consts_1.TypeURL.XSD_STRING:
+            return new E.StringLiteral(lit.value);
+        case Consts_1.TypeURL.RDF_LANG_STRING:
+            return new E.LangStringLiteral(lit.value, lit.language);
+        case Consts_1.TypeURL.XSD_DATE_TIME: {
+            const val = new Date(lit.value);
+            if (isNaN(val.getTime())) {
+                return new E.NonLexicalLiteral(undefined, lit.value, lit.datatype);
+            }
+            return new E.DateTimeLiteral(new Date(lit.value), lit.value);
+        }
+        case Consts_1.TypeURL.XSD_BOOLEAN: {
+            if (lit.value !== 'true' && lit.value !== 'false') {
+                return new E.NonLexicalLiteral(undefined, lit.value, lit.datatype);
+            }
+            return new E.BooleanLiteral(lit.value === 'true', lit.value);
+        }
+        case Consts_1.TypeURL.XSD_INTEGER:
+        case Consts_1.TypeURL.XSD_DECIMAL:
+        case Consts_1.TypeURL.XSD_NEGATIVE_INTEGER:
+        case Consts_1.TypeURL.XSD_NON_NEGATIVE_INTEGER:
+        case Consts_1.TypeURL.XSD_NON_POSITIVE_INTEGER:
+        case Consts_1.TypeURL.XSD_POSITIVE_INTEGER:
+        case Consts_1.TypeURL.XSD_LONG:
+        case Consts_1.TypeURL.XSD_INT:
+        case Consts_1.TypeURL.XSD_SHORT:
+        case Consts_1.TypeURL.XSD_BYTE:
+        case Consts_1.TypeURL.XSD_UNSIGNED_LONG:
+        case Consts_1.TypeURL.XSD_UNSIGNED_INT:
+        case Consts_1.TypeURL.XSD_UNSIGNED_SHORT:
+        case Consts_1.TypeURL.XSD_UNSIGNED_BYTE:
+        case Consts_1.TypeURL.XSD_INT: {
+            const val = P.parseXSDDecimal(lit.value);
+            if (val === undefined) {
+                return new E.NonLexicalLiteral(undefined, lit.value, lit.datatype);
+            }
+            return new E.NumericLiteral(val, lit.value, lit.datatype);
+        }
+        case Consts_1.TypeURL.XSD_FLOAT:
+        case Consts_1.TypeURL.XSD_DOUBLE: {
+            const val = P.parseXSDFloat(lit.value);
+            if (val === undefined) {
+                return new E.NonLexicalLiteral(undefined, lit.value, lit.datatype);
+            }
+            return new E.NumericLiteral(val, lit.value, lit.datatype);
+        }
+        default: return new E.Literal(lit.value, lit.value, lit.datatype);
+    }
+}
+exports.tranformLiteral = tranformLiteral;
+function transformOperator(expr) {
+    if (C.SpecialOperators.contains(expr.operator)) {
+        const op = expr.operator;
+        const args = expr.args.map((a) => transformAlgebra(a));
+        const func = functions_1.specialFunctions.get(op);
+        if (!func.checkArity(args)) {
+            throw new Err.InvalidArity(args, op);
+        }
+        return new E.SpecialOperator(args, func.applyAsync, func.applySync);
+    }
+    else {
+        if (!C.Operators.contains(expr.operator)) {
+            throw new Err.UnknownOperator(expr.operator);
+        }
+        const op = expr.operator;
+        const args = expr.args.map((a) => transformAlgebra(a));
+        const func = functions_1.regularFunctions.get(op);
+        if (!hasCorrectArity(args, func.arity)) {
+            throw new Err.InvalidArity(args, op);
+        }
+        return new E.Operator(args, func.apply);
+    }
+}
+// TODO: Support passing functions to override default behaviour;
+function transformNamed(expr) {
+    const funcName = expr.name.value;
+    if (!C.NamedOperators.contains(funcName)) {
+        throw new Err.UnknownNamedOperator(expr.name.value);
+    }
+    // tslint:disable-next-line:no-any
+    const op = expr.name.value;
+    const args = expr.args.map((a) => transformAlgebra(a));
+    const func = functions_1.namedFunctions.get(op);
+    return new E.Named(expr.name, args, func.apply);
+}
+exports.transformNamed = transformNamed;
+function hasCorrectArity(args, arity) {
+    // Infinity is used to represent var-args, so it's always correct.
+    if (arity === Infinity) {
+        return true;
+    }
+    // If the function has overloaded arity, the actual arity needs to be present.
+    if (Array.isArray(arity)) {
+        return arity.indexOf(args.length) >= 0;
+    }
+    return args.length === arity;
+}
+function transformAggregate(expr, hook) {
+    const name = expr.aggregator;
+    if (!hook) {
+        throw new Err.NoAggregator(name);
+    }
+    return new E.Aggregate(name, hook, expr);
+}
+exports.transformAggregate = transformAggregate;
+function transformExistence(expr, hook) {
+    if (!hook) {
+        throw new Err.NoExistenceHook();
+    }
+    return new E.Existence(hook, expr);
+}
+exports.transformExistence = transformExistence;
+//# sourceMappingURL=Transformation.js.map
+
+/***/ }),
+
+/***/ "./node_modules/sparqlee/dist/lib/evaluators/AsyncEvaluator.js":
+/*!*********************************************************************!*\
+  !*** ./node_modules/sparqlee/dist/lib/evaluators/AsyncEvaluator.js ***!
+  \*********************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+Object.defineProperty(exports, "__esModule", { value: true });
+const RDFDM = __webpack_require__(/*! @rdfjs/data-model */ "./node_modules/@rdfjs/data-model/index.js");
+const E = __webpack_require__(/*! ../expressions/Expressions */ "./node_modules/sparqlee/dist/lib/expressions/Expressions.js");
+const C = __webpack_require__(/*! ../util/Consts */ "./node_modules/sparqlee/dist/lib/util/Consts.js");
+const Err = __webpack_require__(/*! ../util/Errors */ "./node_modules/sparqlee/dist/lib/util/Errors.js");
+const Transformation_1 = __webpack_require__(/*! ../Transformation */ "./node_modules/sparqlee/dist/lib/Transformation.js");
+class AsyncEvaluator {
+    constructor(algExpr, hooks = {}) {
+        this.algExpr = algExpr;
+        this.hooks = hooks;
+        // tslint:disable-next-line:member-ordering
+        this.evaluators = {
+            [E.ExpressionType.Term]: this.evalTerm,
+            [E.ExpressionType.Variable]: this.evalVariable,
+            [E.ExpressionType.Operator]: this.evalOperator,
+            [E.ExpressionType.SpecialOperator]: this.evalSpecialOperator,
+            [E.ExpressionType.Named]: this.evalNamed,
+            [E.ExpressionType.Existence]: this.evalExistence,
+            [E.ExpressionType.Aggregate]: this.evalAggregate,
+        };
+        this.expr = Transformation_1.transformAlgebra(algExpr, hooks);
+    }
+    async evaluate(mapping) {
+        const result = await this.evalRecursive(this.expr, mapping);
+        return log(result).toRDF();
+    }
+    async evaluateAsEBV(mapping) {
+        const result = await this.evalRecursive(this.expr, mapping);
+        return log(result).coerceEBV();
+    }
+    async evaluateAsInternal(mapping) {
+        return this.evalRecursive(this.expr, mapping);
+    }
+    async evalRecursive(expr, mapping) {
+        const evaluator = this.evaluators[expr.expressionType];
+        if (!evaluator) {
+            throw new Err.InvalidExpressionType(expr);
+        }
+        return evaluator.bind(this)(expr, mapping);
+    }
+    async evalTerm(expr, mapping) {
+        return expr;
+    }
+    async evalVariable(expr, mapping) {
+        const term = mapping.get(expr.name);
+        if (!term) {
+            throw new Err.UnboundVariableError(expr.name, mapping);
+        }
+        return Transformation_1.transformTerm({
+            term,
+            type: 'expression',
+            expressionType: 'term',
+        });
+    }
+    async evalOperator(expr, mapping) {
+        const argPromises = expr.args.map((arg) => this.evalRecursive(arg, mapping));
+        const argResults = await Promise.all(argPromises);
+        return expr.apply(argResults);
+    }
+    async evalSpecialOperator(expr, mapping) {
+        const evaluate = this.evalRecursive.bind(this);
+        const context = { args: expr.args, mapping, evaluate };
+        return expr.applyAsync(context);
+    }
+    async evalNamed(expr, mapping) {
+        const argPromises = expr.args.map((arg) => this.evalRecursive(arg, mapping));
+        const argResults = await Promise.all(argPromises);
+        return expr.apply(argResults);
+    }
+    async evalExistence(expr, mapping) {
+        const result = await expr.exists_with(mapping);
+        return Transformation_1.transformTerm({
+            term: RDFDM.literal(result.toString(), C.make(C.TypeURL.XSD_BOOLEAN)),
+            expressionType: 'term',
+            type: 'expression',
+        });
+    }
+    async evalAggregate(expr, _mapping) {
+        const result = await expr.aggregate();
+        return Transformation_1.transformTerm({
+            type: 'expression',
+            expressionType: 'term',
+            term: result,
+        });
+    }
+}
+exports.AsyncEvaluator = AsyncEvaluator;
+function log(val) {
+    // console.log(val);
+    return val;
+}
+//# sourceMappingURL=AsyncEvaluator.js.map
+
+/***/ }),
+
+/***/ "./node_modules/sparqlee/dist/lib/evaluators/SimpleEvaluator.js":
+/*!**********************************************************************!*\
+  !*** ./node_modules/sparqlee/dist/lib/evaluators/SimpleEvaluator.js ***!
+  \**********************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+Object.defineProperty(exports, "__esModule", { value: true });
+const E = __webpack_require__(/*! ../expressions/Expressions */ "./node_modules/sparqlee/dist/lib/expressions/Expressions.js");
+const Err = __webpack_require__(/*! ../util/Errors */ "./node_modules/sparqlee/dist/lib/util/Errors.js");
+const Transformation_1 = __webpack_require__(/*! ../Transformation */ "./node_modules/sparqlee/dist/lib/Transformation.js");
+/**
+ * Evaluator that does not support EXISTS, AGGREGATES or custom Named operators.
+ * Evaluates everything sync.
+ */
+class SimpleEvaluator {
+    constructor(algExpr) {
+        this.algExpr = algExpr;
+        // tslint:disable-next-line:member-ordering
+        this.evaluators = {
+            [E.ExpressionType.Term]: this.evalTerm,
+            [E.ExpressionType.Variable]: this.evalVariable,
+            [E.ExpressionType.Operator]: this.evalOperator,
+            [E.ExpressionType.SpecialOperator]: this.evalSpecialOperator,
+            [E.ExpressionType.Named]: this.evalNamed,
+            [E.ExpressionType.Existence]: this.evalExistence,
+            [E.ExpressionType.Aggregate]: this.evalAggregate,
+        };
+        this.expr = Transformation_1.transformAlgebra(algExpr);
+    }
+    evaluate(mapping) {
+        const result = this.evalRecursive(this.expr, mapping);
+        return log(result).toRDF();
+    }
+    evaluateAsEBV(mapping) {
+        const result = this.evalRecursive(this.expr, mapping);
+        return log(result).coerceEBV();
+    }
+    evaluateAsInternal(mapping) {
+        return this.evalRecursive(this.expr, mapping);
+    }
+    evalRecursive(expr, mapping) {
+        const evaluator = this.evaluators[expr.expressionType];
+        if (!evaluator) {
+            throw new Err.InvalidExpressionType(expr);
+        }
+        return evaluator.bind(this)(expr, mapping);
+    }
+    evalTerm(expr, mapping) {
+        return expr;
+    }
+    evalVariable(expr, mapping) {
+        const term = mapping.get(expr.name);
+        if (!term) {
+            throw new Err.UnboundVariableError(expr.name, mapping);
+        }
+        return Transformation_1.transformTerm({
+            term,
+            type: 'expression',
+            expressionType: 'term',
+        });
+    }
+    evalOperator(expr, mapping) {
+        const args = expr.args.map((arg) => this.evalRecursive(arg, mapping));
+        return expr.apply(args);
+    }
+    evalSpecialOperator(expr, mapping) {
+        const evaluate = this.evalRecursive.bind(this);
+        const context = { args: expr.args, mapping, evaluate };
+        return expr.applySync(context);
+    }
+    evalNamed(expr, mapping) {
+        const args = expr.args.map((arg) => this.evalRecursive(arg, mapping));
+        return expr.apply(args);
+    }
+    evalExistence(expr, mapping) {
+        throw new UnsupportedOperation('EXISTS');
+    }
+    evalAggregate(expr, mapping) {
+        throw new UnsupportedOperation(`aggregate ${expr.name}`);
+    }
+}
+exports.SimpleEvaluator = SimpleEvaluator;
+function log(val) {
+    // console.log(val);
+    return val;
+}
+class UnsupportedOperation extends Error {
+    constructor(operation) {
+        super(`Operation '${operation}' is unsupported in SimpleEvaluator`);
+    }
+}
+exports.UnsupportedOperation = UnsupportedOperation;
+//# sourceMappingURL=SimpleEvaluator.js.map
+
+/***/ }),
+
+/***/ "./node_modules/sparqlee/dist/lib/expressions/Aggregate.js":
+/*!*****************************************************************!*\
+  !*** ./node_modules/sparqlee/dist/lib/expressions/Aggregate.js ***!
+  \*****************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+Object.defineProperty(exports, "__esModule", { value: true });
+const Expressions_1 = __webpack_require__(/*! ./Expressions */ "./node_modules/sparqlee/dist/lib/expressions/Expressions.js");
+class Aggregate {
+    constructor(name, aggregator, expression) {
+        this.name = name;
+        this.aggregator = aggregator;
+        this.expression = expression;
+        this.expressionType = Expressions_1.ExpressionType.Aggregate;
+    }
+    aggregate() {
+        return this.aggregator(this.expression);
+    }
+}
+exports.Aggregate = Aggregate;
+//# sourceMappingURL=Aggregate.js.map
+
+/***/ }),
+
+/***/ "./node_modules/sparqlee/dist/lib/expressions/Existence.js":
+/*!*****************************************************************!*\
+  !*** ./node_modules/sparqlee/dist/lib/expressions/Existence.js ***!
+  \*****************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+Object.defineProperty(exports, "__esModule", { value: true });
+const Expressions_1 = __webpack_require__(/*! ./Expressions */ "./node_modules/sparqlee/dist/lib/expressions/Expressions.js");
+class Existence {
+    constructor(exists, expression) {
+        this.exists = exists;
+        this.expression = expression;
+        this.expressionType = Expressions_1.ExpressionType.Existence;
+    }
+    exists_with(mapping) {
+        return this.exists(this.expression, mapping);
+    }
+}
+exports.Existence = Existence;
+//# sourceMappingURL=Existence.js.map
+
+/***/ }),
+
+/***/ "./node_modules/sparqlee/dist/lib/expressions/Expressions.js":
+/*!*******************************************************************!*\
+  !*** ./node_modules/sparqlee/dist/lib/expressions/Expressions.js ***!
+  \*******************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+Object.defineProperty(exports, "__esModule", { value: true });
+var ExpressionType;
+(function (ExpressionType) {
+    ExpressionType["Aggregate"] = "aggregate";
+    ExpressionType["Existence"] = "existence";
+    ExpressionType["Named"] = "named";
+    ExpressionType["Operator"] = "operator";
+    ExpressionType["SpecialOperator"] = "specialOperator";
+    ExpressionType["Term"] = "term";
+    ExpressionType["Variable"] = "variable";
+})(ExpressionType = exports.ExpressionType || (exports.ExpressionType = {}));
+//# sourceMappingURL=Expressions.js.map
+
+/***/ }),
+
+/***/ "./node_modules/sparqlee/dist/lib/expressions/Named.js":
+/*!*************************************************************!*\
+  !*** ./node_modules/sparqlee/dist/lib/expressions/Named.js ***!
+  \*************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+Object.defineProperty(exports, "__esModule", { value: true });
+const Expressions_1 = __webpack_require__(/*! ./Expressions */ "./node_modules/sparqlee/dist/lib/expressions/Expressions.js");
+class Named {
+    constructor(name, args, apply) {
+        this.name = name;
+        this.args = args;
+        this.apply = apply;
+        this.expressionType = Expressions_1.ExpressionType.Named;
+    }
+}
+exports.Named = Named;
+//# sourceMappingURL=Named.js.map
+
+/***/ }),
+
+/***/ "./node_modules/sparqlee/dist/lib/expressions/Operator.js":
+/*!****************************************************************!*\
+  !*** ./node_modules/sparqlee/dist/lib/expressions/Operator.js ***!
+  \****************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+Object.defineProperty(exports, "__esModule", { value: true });
+const Expressions_1 = __webpack_require__(/*! ./Expressions */ "./node_modules/sparqlee/dist/lib/expressions/Expressions.js");
+class Operator {
+    constructor(args, apply) {
+        this.args = args;
+        this.apply = apply;
+        this.expressionType = Expressions_1.ExpressionType.Operator;
+    }
+}
+exports.Operator = Operator;
+//# sourceMappingURL=Operator.js.map
+
+/***/ }),
+
+/***/ "./node_modules/sparqlee/dist/lib/expressions/SpecialOperator.js":
+/*!***********************************************************************!*\
+  !*** ./node_modules/sparqlee/dist/lib/expressions/SpecialOperator.js ***!
+  \***********************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+Object.defineProperty(exports, "__esModule", { value: true });
+const Expressions_1 = __webpack_require__(/*! ./Expressions */ "./node_modules/sparqlee/dist/lib/expressions/Expressions.js");
+class SpecialOperator {
+    constructor(args, applyAsync, applySync) {
+        this.args = args;
+        this.applyAsync = applyAsync;
+        this.applySync = applySync;
+        this.expressionType = Expressions_1.ExpressionType.SpecialOperator;
+    }
+}
+exports.SpecialOperator = SpecialOperator;
+//# sourceMappingURL=SpecialOperator.js.map
+
+/***/ }),
+
+/***/ "./node_modules/sparqlee/dist/lib/expressions/Term.js":
+/*!************************************************************!*\
+  !*** ./node_modules/sparqlee/dist/lib/expressions/Term.js ***!
+  \************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+Object.defineProperty(exports, "__esModule", { value: true });
+const RDFDM = __webpack_require__(/*! @rdfjs/data-model */ "./node_modules/@rdfjs/data-model/index.js");
+const Expressions_1 = __webpack_require__(/*! ./Expressions */ "./node_modules/sparqlee/dist/lib/expressions/Expressions.js");
+const C = __webpack_require__(/*! ../util/Consts */ "./node_modules/sparqlee/dist/lib/util/Consts.js");
+const Err = __webpack_require__(/*! ../util/Errors */ "./node_modules/sparqlee/dist/lib/util/Errors.js");
+class Term {
+    constructor() {
+        this.expressionType = Expressions_1.ExpressionType.Term;
+    }
+    str() {
+        throw new Err.InvalidArgumentTypes([this], C.RegularOperator.STR);
+    }
+    coerceEBV() {
+        throw new Err.EBVCoercionError(this);
+    }
+}
+exports.Term = Term;
+// NamedNodes -----------------------------------------------------------------
+class NamedNode extends Term {
+    constructor(value) {
+        super();
+        this.value = value;
+        this.termType = 'namedNode';
+    }
+    toRDF() {
+        return RDFDM.namedNode(this.value);
+    }
+    str() {
+        return this.value;
+    }
+}
+exports.NamedNode = NamedNode;
+// BlankNodes -----------------------------------------------------------------
+class BlankNode extends Term {
+    constructor(value) {
+        super();
+        this.value = value;
+        this.termType = 'blankNode';
+        this.value = value;
+    }
+    static nextID() {
+        BlankNode._nextID += 1;
+        return BlankNode.nextID.toString();
+    }
+    toRDF() {
+        return RDFDM.blankNode(this.value);
+    }
+}
+BlankNode._nextID = 0;
+exports.BlankNode = BlankNode;
+class Literal extends Term {
+    constructor(typedValue, strValue, typeURL, language) {
+        super();
+        this.typedValue = typedValue;
+        this.strValue = strValue;
+        this.typeURL = typeURL;
+        this.language = language;
+        this.termType = 'literal';
+        this.type = C.type(typeURL.value);
+    }
+    toRDF() {
+        return RDFDM.literal(this.strValue || this.typedValue.toString(), this.language || this.typeURL);
+    }
+    str() {
+        return this.strValue || this.typedValue.toString();
+    }
+}
+exports.Literal = Literal;
+class NumericLiteral extends Literal {
+    coerceEBV() {
+        return !!this.typedValue;
+    }
+    toRDF() {
+        const term = super.toRDF();
+        if (!isFinite(this.typedValue)) {
+            term.value = term.value.replace('Infinity', 'INF');
+        }
+        return term;
+    }
+}
+exports.NumericLiteral = NumericLiteral;
+class BooleanLiteral extends Literal {
+    constructor(typedValue, strValue) {
+        super(typedValue, strValue, C.make(C.TypeURL.XSD_BOOLEAN));
+        this.typedValue = typedValue;
+        this.strValue = strValue;
+    }
+    coerceEBV() {
+        return !!this.typedValue;
+    }
+}
+exports.BooleanLiteral = BooleanLiteral;
+class DateTimeLiteral extends Literal {
+    // strValue is mandatory here because toISOString will always add
+    // milliseconds, even if they were not present.
+    constructor(typedValue, strValue) {
+        super(typedValue, strValue, C.make(C.TypeURL.XSD_DATE_TIME));
+        this.typedValue = typedValue;
+        this.strValue = strValue;
+    }
+}
+exports.DateTimeLiteral = DateTimeLiteral;
+class LangStringLiteral extends Literal {
+    constructor(typedValue, language) {
+        super(typedValue, typedValue, C.make(C.TypeURL.RDF_LANG_STRING), language);
+        this.typedValue = typedValue;
+        this.language = language;
+    }
+    coerceEBV() {
+        return this.strValue.length !== 0;
+    }
+}
+exports.LangStringLiteral = LangStringLiteral;
+// https://www.w3.org/TR/2004/REC-rdf-concepts-20040210/#dfn-plain-literal
+// https://www.w3.org/TR/sparql11-query/#defn_SimpleLiteral
+// https://www.w3.org/TR/sparql11-query/#func-strings
+// This does not include language tagged literals
+class StringLiteral extends Literal {
+    constructor(typedValue) {
+        super(typedValue, typedValue, C.make(C.TypeURL.XSD_STRING));
+        this.typedValue = typedValue;
+    }
+    coerceEBV() {
+        return this.strValue.length !== 0;
+    }
+}
+exports.StringLiteral = StringLiteral;
+/*
+ * This class is used when a literal is parsed, and it's value is
+ * an invalid lexical form for it's datatype. The spec defines value with
+ * invalid lexical form are still valid terms, and as such we can not error
+ * immediately. This class makes sure that the typedValue will remain undefined,
+ * and the category 'nonlexical'. This way, only when operators apply to the
+ * 'nonlexical' category, they will keep working, otherwise they will throw a
+ * type error.
+ * This seems to match the spec, except maybe for functions that accept
+ * non-lexical values for their datatype.
+ *
+ * See:
+ *  - https://www.w3.org/TR/xquery/#dt-type-error
+ *  - https://www.w3.org/TR/rdf-concepts/#section-Literal-Value
+ *  - https://www.w3.org/TR/xquery/#dt-ebv
+ *  - ... some other more precise thing i can't find...
+ */
+class NonLexicalLiteral extends Literal {
+    constructor(typedValue, strValue, dataType, language) {
+        super(typedValue, strValue, dataType, language);
+        this.typedValue = undefined;
+        this.type = 'nonlexical';
+        this.shouldBeCategory = C.type(dataType.value);
+    }
+    coerceEBV() {
+        const isNumericOrBool = C.NumericTypeCategories.contains(this.shouldBeCategory)
+            || this.shouldBeCategory === 'boolean';
+        if (isNumericOrBool) {
+            return false;
+        }
+        throw new Err.EBVCoercionError(this);
+    }
+}
+exports.NonLexicalLiteral = NonLexicalLiteral;
+//# sourceMappingURL=Term.js.map
+
+/***/ }),
+
+/***/ "./node_modules/sparqlee/dist/lib/expressions/Variable.js":
+/*!****************************************************************!*\
+  !*** ./node_modules/sparqlee/dist/lib/expressions/Variable.js ***!
+  \****************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+Object.defineProperty(exports, "__esModule", { value: true });
+const Expressions_1 = __webpack_require__(/*! ./Expressions */ "./node_modules/sparqlee/dist/lib/expressions/Expressions.js");
+class Variable {
+    constructor(name) {
+        this.expressionType = Expressions_1.ExpressionType.Variable;
+        this.name = name;
+    }
+}
+exports.Variable = Variable;
+//# sourceMappingURL=Variable.js.map
+
+/***/ }),
+
+/***/ "./node_modules/sparqlee/dist/lib/expressions/index.js":
+/*!*************************************************************!*\
+  !*** ./node_modules/sparqlee/dist/lib/expressions/index.js ***!
+  \*************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+function __export(m) {
+    for (var p in m) if (!exports.hasOwnProperty(p)) exports[p] = m[p];
+}
+Object.defineProperty(exports, "__esModule", { value: true });
+__export(__webpack_require__(/*! ./Expressions */ "./node_modules/sparqlee/dist/lib/expressions/Expressions.js"));
+__export(__webpack_require__(/*! ./Variable */ "./node_modules/sparqlee/dist/lib/expressions/Variable.js"));
+__export(__webpack_require__(/*! ./Term */ "./node_modules/sparqlee/dist/lib/expressions/Term.js"));
+__export(__webpack_require__(/*! ./Operator */ "./node_modules/sparqlee/dist/lib/expressions/Operator.js"));
+__export(__webpack_require__(/*! ./SpecialOperator */ "./node_modules/sparqlee/dist/lib/expressions/SpecialOperator.js"));
+__export(__webpack_require__(/*! ./Named */ "./node_modules/sparqlee/dist/lib/expressions/Named.js"));
+__export(__webpack_require__(/*! ./Aggregate */ "./node_modules/sparqlee/dist/lib/expressions/Aggregate.js"));
+__export(__webpack_require__(/*! ./Existence */ "./node_modules/sparqlee/dist/lib/expressions/Existence.js"));
+//# sourceMappingURL=index.js.map
+
+/***/ }),
+
+/***/ "./node_modules/sparqlee/dist/lib/functions/FunctionClasses.js":
+/*!*********************************************************************!*\
+  !*** ./node_modules/sparqlee/dist/lib/functions/FunctionClasses.js ***!
+  \*********************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+Object.defineProperty(exports, "__esModule", { value: true });
+const immutable_1 = __webpack_require__(/*! immutable */ "./node_modules/immutable/dist/immutable.js");
+const Err = __webpack_require__(/*! ../util/Errors */ "./node_modules/sparqlee/dist/lib/util/Errors.js");
+class OverloadedFunction {
+    constructor(operator, definition) {
+        this.operator = operator;
+        /**
+         * A function application works by monomorphing the function to a specific
+         * instance depending on the runtime types. We then just apply this function
+         * to the args.
+         */
+        this.apply = (args) => {
+            const func = this.monomorph(args) || this.handleInvalidTypes(args);
+            return func(args);
+        };
+        this.arity = definition.arity;
+        this.overloads = definition.overloads;
+    }
+    /**
+     * We monomorph by checking the map of overloads for keys corresponding
+     * to the runtime types. We start by checking for an implementation for the
+     * most concrete types (integer, string, date, IRI), if we find none,
+     * we consider their term types (literal, blank, IRI), and lastly we consider
+     * all arguments as generic terms.
+     *
+     * Another option would be to populate the overloads with an implementation
+     * for every concrete type when the function is generic over termtypes or
+     * terms.
+     */
+    monomorph(args) {
+        return ( false
+            || this.overloads.get(Typer.asConcreteTypes(args))
+            || this.overloads.get(Typer.asTermTypes(args))
+            || this.overloads.get(Typer.asGenericTerms(args)));
+    }
+}
+exports.OverloadedFunction = OverloadedFunction;
+class Typer {
+    static asConcreteTypes(args) {
+        // tslint:disable-next-line:no-any
+        return immutable_1.List(args.map((a) => a.type || a.termType));
+    }
+    static asTermTypes(args) {
+        return immutable_1.List(args.map((a) => a.termType));
+    }
+    static asGenericTerms(args) {
+        return immutable_1.List(Array(args.length).fill('term'));
+    }
+}
+// Regular Functions ----------------------------------------------------------
+/**
+ * Varying kinds of functions take arguments of different types on which the
+ * specific behaviour is dependant. Although their behaviour is often varying,
+ * it is always relatively simple, and better suited for synced behaviour.
+ * The types of their arguments are always terms, but might differ in
+ * their term-type (eg: iri, literal),
+ * their specific literal type (eg: string, integer),
+ * their arity (see BNODE),
+ * or even their specific numeric type (eg: integer, float).
+ *
+ * Examples include:
+ *  - Arithmetic operations such as: *, -, /, +
+ *  - Bool operators such as: =, !=, <=, <, ...
+ *  - Functions such as: str, IRI
+ *
+ * See also: https://www.w3.org/TR/sparql11-query/#func-rdfTerms
+ * and https://www.w3.org/TR/sparql11-query/#OperatorMapping
+ */
+class RegularFunction extends OverloadedFunction {
+    constructor(op, definition) {
+        super(op, definition);
+        this.functionClass = 'regular';
+    }
+    handleInvalidTypes(args) {
+        throw new Err.InvalidArgumentTypes(args, this.operator);
+    }
+}
+exports.RegularFunction = RegularFunction;
+// Named Functions ------------------------------------------------------------
+class NamedFunction extends OverloadedFunction {
+    constructor(op, definition) {
+        super(op, definition);
+        this.functionClass = 'named';
+    }
+    handleInvalidTypes(args) {
+        throw new Err.InvalidArgumentTypes(args, this.operator);
+    }
+}
+exports.NamedFunction = NamedFunction;
+// Special Functions ----------------------------------------------------------
+/*
+ * Special Functions are those that don't really fit in sensible categories and
+ * have extremely heterogeneous signatures that make them impossible to abstract
+ * over. They are small in number, and their behaviour is often complex and open
+ * for multiple correct implementations with different trade-offs.
+ *
+ * Due to their varying nature, they need all available information present
+ * during evaluation. This reflects in the signature of the apply() method.
+ *
+ * They need access to an evaluator to be able to even implement their logic.
+ * Especially relevant for IF, and the logical connectives.
+ *
+ * They can have both sync and async implementations, and both would make sense
+ * in some contexts.
+ */
+class SpecialFunction {
+    constructor(operator, definition) {
+        this.operator = operator;
+        this.functionClass = 'special';
+        this.arity = definition.arity;
+        this.applySync = definition.applySync;
+        this.applyAsync = definition.applyAsync;
+        this.checkArity = definition.checkArity || defaultArityCheck(this.arity);
+    }
+}
+exports.SpecialFunction = SpecialFunction;
+function defaultArityCheck(arity) {
+    return (args) => {
+        // Infinity is used to represent var-args, so it's always correct.
+        if (arity === Infinity) {
+            return true;
+        }
+        // If the function has overloaded arity, the actual arity needs to be present.
+        if (Array.isArray(arity)) {
+            return arity.indexOf(args.length) >= 0;
+        }
+        return args.length === arity;
+    };
+}
+//# sourceMappingURL=FunctionClasses.js.map
+
+/***/ }),
+
+/***/ "./node_modules/sparqlee/dist/lib/functions/Helpers.js":
+/*!*************************************************************!*\
+  !*** ./node_modules/sparqlee/dist/lib/functions/Helpers.js ***!
+  \*************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+/**
+ * These helpers provide a (albeit inflexible) DSL for writing function
+ * definitions for the SPARQL functions.
+ */
+Object.defineProperty(exports, "__esModule", { value: true });
+const immutable_1 = __webpack_require__(/*! immutable */ "./node_modules/immutable/dist/immutable.js");
+const E = __webpack_require__(/*! ../expressions */ "./node_modules/sparqlee/dist/lib/expressions/index.js");
+const C = __webpack_require__(/*! ../util/Consts */ "./node_modules/sparqlee/dist/lib/util/Consts.js");
+const Err = __webpack_require__(/*! ../util/Errors */ "./node_modules/sparqlee/dist/lib/util/Errors.js");
+const Consts_1 = __webpack_require__(/*! ../util/Consts */ "./node_modules/sparqlee/dist/lib/util/Consts.js");
+function declare() {
+    return new Builder();
+}
+exports.declare = declare;
+class Builder {
+    constructor() {
+        this.implementations = [];
+    }
+    collect() {
+        return map(this.implementations);
+    }
+    log() {
+        // tslint:disable-next-line:no-console
+        console.log(this.implementations);
+        return this;
+    }
+    add(impl) {
+        this.implementations.push(impl);
+        return this;
+    }
+    set(argTypes, func) {
+        const types = immutable_1.List(argTypes);
+        return this.add(new Impl({ types, func }));
+    }
+    copy({ from, to }) {
+        const last = this.implementations.length - 1;
+        const _from = immutable_1.List(from);
+        for (let i = last; i >= 0; i--) {
+            const impl = this.implementations[i];
+            if (impl.get('types').equals(_from)) {
+                return this.set(to, impl.get('func'));
+            }
+        }
+        throw new Err.UnexpectedError('Tried to copy implementation, but types not found', { from, to });
+    }
+    setUnary(type, op) {
+        return this.set([type], ([val]) => {
+            return op(val);
+        });
+    }
+    setLitUnary(type, op) {
+        return this.set([type], ([val]) => {
+            return op(val.typedValue);
+        });
+    }
+    setLitBinary(types, op) {
+        return this.set(types, ([left, right]) => {
+            return op(left.typedValue, right.typedValue);
+        });
+    }
+    setLitTernary(types, op) {
+        return this.set(types, ([a1, a2, a3]) => {
+            return op(a1.typedValue, a2.typedValue, a3.typedValue);
+        });
+    }
+    unimplemented(msg) {
+        for (let arity = 0; arity <= 5; arity++) {
+            const types = Array(arity).fill('term');
+            const func = (_args) => { throw new Err.UnimplementedError(msg); };
+            this.set(types, func);
+        }
+        return this;
+    }
+    onTerm1(op) {
+        return this.set(['term'], ([term]) => op(term));
+    }
+    onLiteral1(op) {
+        return this.set(['literal'], ([term]) => op(term));
+    }
+    onString1(op) {
+        return this
+            .set(['string'], ([lit]) => op(lit))
+            .set(['langString'], ([lit]) => op(lit));
+    }
+    onNumeric1(op) {
+        return this
+            .set(['integer'], ([val]) => op(val))
+            .set(['decimal'], ([val]) => op(val))
+            .set(['float'], ([val]) => op(val))
+            .set(['double'], ([val]) => op(val))
+            .invalidLexicalForm(['nonlexical'], 1);
+    }
+    /*
+    * Arithetic Operators take numbers, and return numbers.
+    * Check 'numeric' for behaviour of the generic numeric helper.
+    * https://www.w3.org/TR/sparql11-query/#OperatorMapping
+    */
+    arithmetic(op) {
+        const opFac = (dt) => ([left, right]) => number(op(left.typedValue, right.typedValue), dt || Consts_1.TypeURL.XSD_FLOAT);
+        return this.numeric(opFac);
+    }
+    numberTest(test) {
+        const func = ([left, right]) => {
+            const result = test(left.typedValue, right.typedValue);
+            return bool(result);
+        };
+        return this.numeric(() => func);
+    }
+    stringTest(test) {
+        return this
+            .set(['string', 'string'], ([left, right]) => {
+            const result = test(left.typedValue, right.typedValue);
+            return bool(result);
+        })
+            .invalidLexicalForm(['nonlexical', 'string'], 1)
+            .invalidLexicalForm(['string', 'nonlexical'], 2);
+    }
+    booleanTest(test) {
+        return this
+            .set(['boolean', 'boolean'], ([left, right]) => {
+            const result = test(left.typedValue, right.typedValue);
+            return bool(result);
+        })
+            .invalidLexicalForm(['nonlexical', 'boolean'], 1)
+            .invalidLexicalForm(['boolean', 'nonlexical'], 2);
+    }
+    dateTimeTest(test) {
+        return this
+            .set(['date', 'date'], ([left, right]) => {
+            const result = test(left.typedValue, right.typedValue);
+            return bool(result);
+        })
+            .invalidLexicalForm(['nonlexical', 'date'], 1)
+            .invalidLexicalForm(['date', 'nonlexical'], 2);
+    }
+    numeric(opFac) {
+        return this
+            .set(['integer', 'integer'], opFac(Consts_1.TypeURL.XSD_INTEGER))
+            .set(['integer', 'decimal'], opFac())
+            .set(['integer', 'float'], opFac())
+            .set(['integer', 'double'], opFac())
+            .invalidLexicalForm(['integer', 'nonlexical'], 2)
+            .set(['decimal', 'integer'], opFac())
+            .set(['decimal', 'decimal'], opFac(Consts_1.TypeURL.XSD_DECIMAL))
+            .set(['decimal', 'float'], opFac())
+            .set(['decimal', 'double'], opFac())
+            .invalidLexicalForm(['decimal', 'nonlexical'], 2)
+            .set(['float', 'integer'], opFac())
+            .set(['float', 'decimal'], opFac())
+            .set(['float', 'float'], opFac(Consts_1.TypeURL.XSD_FLOAT))
+            .set(['float', 'double'], opFac())
+            .invalidLexicalForm(['float', 'nonlexical'], 2)
+            .set(['double', 'integer'], opFac())
+            .set(['double', 'decimal'], opFac())
+            .set(['double', 'float'], opFac())
+            .set(['double', 'double'], opFac(Consts_1.TypeURL.XSD_DOUBLE))
+            .invalidLexicalForm(['double', 'nonlexical'], 2)
+            .invalidLexicalForm(['nonlexical', 'integer'], 1)
+            .invalidLexicalForm(['nonlexical', 'decimal'], 1)
+            .invalidLexicalForm(['nonlexical', 'float'], 1)
+            .invalidLexicalForm(['nonlexical', 'double'], 1);
+    }
+    invalidLexicalForm(types, index) {
+        return this.set(types, (args) => {
+            throw new Err.InvalidLexicalForm(args[index - 1].toRDF());
+        });
+    }
+    chain(impls) {
+        this.implementations = this.implementations.concat(impls);
+        return this;
+    }
+}
+exports.Builder = Builder;
+const implDefaults = {
+    types: [],
+    func() {
+        const msg = 'Implementation not set yet declared as implemented';
+        throw new Err.UnexpectedError(msg);
+    },
+};
+class Impl extends immutable_1.Record(implDefaults) {
+    constructor(params) { super(params); }
+    get(value) {
+        return super.get(value);
+    }
+    toPair() {
+        return [this.get('types'), this.get('func')];
+    }
+}
+exports.Impl = Impl;
+function map(implementations) {
+    const typeImplPair = implementations.map((i) => i.toPair());
+    return immutable_1.Map(typeImplPair);
+}
+exports.map = map;
+// ----------------------------------------------------------------------------
+// Literal Construction helpers
+// ----------------------------------------------------------------------------
+function bool(val) {
+    return new E.BooleanLiteral(val);
+}
+exports.bool = bool;
+function number(num, dt) {
+    return new E.NumericLiteral(num, undefined, C.make(dt || Consts_1.TypeURL.XSD_FLOAT));
+}
+exports.number = number;
+function string(s) {
+    return new E.StringLiteral(s);
+}
+exports.string = string;
+function dateTime(date, str) {
+    return new E.DateTimeLiteral(date, str);
+}
+exports.dateTime = dateTime;
+//# sourceMappingURL=Helpers.js.map
+
+/***/ }),
+
+/***/ "./node_modules/sparqlee/dist/lib/functions/NamedFunctions.js":
+/*!********************************************************************!*\
+  !*** ./node_modules/sparqlee/dist/lib/functions/NamedFunctions.js ***!
+  \********************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+Object.defineProperty(exports, "__esModule", { value: true });
+const immutable_1 = __webpack_require__(/*! immutable */ "./node_modules/immutable/dist/immutable.js");
+const Err = __webpack_require__(/*! ../util/Errors */ "./node_modules/sparqlee/dist/lib/util/Errors.js");
+const Consts_1 = __webpack_require__(/*! ../util/Consts */ "./node_modules/sparqlee/dist/lib/util/Consts.js");
+const Parsing_1 = __webpack_require__(/*! ../util/Parsing */ "./node_modules/sparqlee/dist/lib/util/Parsing.js");
+const Helpers_1 = __webpack_require__(/*! ./Helpers */ "./node_modules/sparqlee/dist/lib/functions/Helpers.js");
+// ----------------------------------------------------------------------------
+// ----------------------------------------------------------------------------
+// ----------------------------------------------------------------------------
+// Begin definitions.
+// ----------------------------------------------------------------------------
+// XPath Constructor functions
+// https://www.w3.org/TR/sparql11-query/#FunctionMapping
+// ----------------------------------------------------------------------------
+const toString = {
+    arity: 1,
+    overloads: Helpers_1.declare()
+        .onTerm1((term) => Helpers_1.string(term.str()))
+        .collect(),
+};
+const toFloat = {
+    arity: 1,
+    overloads: Helpers_1.declare()
+        .onNumeric1((val) => Helpers_1.number(val.typedValue))
+        .setLitUnary('boolean', (val) => Helpers_1.number(val ? 1 : 0))
+        .setUnary('string', (val) => {
+        const result = Parsing_1.parseXSDFloat(val.str());
+        if (!result) {
+            throw new Err.CastError(val, Consts_1.TypeURL.XSD_FLOAT);
+        }
+        return Helpers_1.number(result);
+    })
+        .copy({ from: ['string'], to: ['nonlexical'] })
+        .collect(),
+};
+const toDouble = {
+    arity: 1,
+    overloads: Helpers_1.declare()
+        .onNumeric1((val) => Helpers_1.number(val.typedValue, Consts_1.TypeURL.XSD_DOUBLE))
+        .setLitUnary('boolean', (val) => Helpers_1.number(val ? 1 : 0, Consts_1.TypeURL.XSD_DOUBLE))
+        .setUnary('string', (val) => {
+        const result = Parsing_1.parseXSDFloat(val.str());
+        if (!result) {
+            throw new Err.CastError(val, Consts_1.TypeURL.XSD_DOUBLE);
+        }
+        return Helpers_1.number(result, Consts_1.TypeURL.XSD_DOUBLE);
+    })
+        .copy({ from: ['string'], to: ['nonlexical'] })
+        .collect(),
+};
+const toDecimal = {
+    arity: 1,
+    overloads: Helpers_1.declare()
+        .onNumeric1((val) => {
+        const result = Parsing_1.parseXSDDecimal(val.str());
+        if (!result) {
+            throw new Err.CastError(val, Consts_1.TypeURL.XSD_DECIMAL);
+        }
+        return Helpers_1.number(result, Consts_1.TypeURL.XSD_DECIMAL);
+    })
+        .copy({ from: ['integer'], to: ['string'] })
+        .copy({ from: ['integer'], to: ['nonlexical'] })
+        .setLitUnary('boolean', (val) => Helpers_1.number(val ? 1 : 0, Consts_1.TypeURL.XSD_DECIMAL))
+        .collect(),
+};
+const toInteger = {
+    arity: 1,
+    overloads: Helpers_1.declare()
+        .setLitUnary('boolean', (val) => Helpers_1.number(val ? 1 : 0, Consts_1.TypeURL.XSD_INTEGER))
+        .onNumeric1((val) => {
+        const result = Parsing_1.parseXSDInteger(val.str());
+        if (!result) {
+            throw new Err.CastError(val, Consts_1.TypeURL.XSD_INTEGER);
+        }
+        return Helpers_1.number(result, Consts_1.TypeURL.XSD_INTEGER);
+    })
+        .copy({ from: ['integer'], to: ['string'] })
+        .copy({ from: ['integer'], to: ['nonlexical'] })
+        .collect(),
+};
+const toDatetime = {
+    arity: 1,
+    overloads: Helpers_1.declare()
+        .setUnary('date', (val) => val)
+        .setUnary('string', (val) => {
+        const date = new Date(val.str());
+        if (isNaN(date.getTime())) {
+            throw new Err.CastError(val, Consts_1.TypeURL.XSD_DATE_TIME);
+        }
+        return Helpers_1.dateTime(date, val.str());
+    })
+        .copy({ from: ['string'], to: ['nonlexical'] })
+        .collect(),
+};
+const toBoolean = {
+    arity: 1,
+    overloads: Helpers_1.declare()
+        .onNumeric1((val) => Helpers_1.bool(val.coerceEBV()))
+        .setUnary('boolean', (val) => val)
+        .setUnary('string', (val) => {
+        const str = val.str();
+        if (str !== 'true' && str !== 'false') {
+            throw new Err.CastError(val, Consts_1.TypeURL.XSD_BOOLEAN);
+        }
+        return Helpers_1.bool((str === 'true'));
+    })
+        .copy({ from: ['string'], to: ['nonlexical'] })
+        .collect(),
+};
+// End definitions.
+// ----------------------------------------------------------------------------
+// ----------------------------------------------------------------------------
+// ----------------------------------------------------------------------------
+const _definitions = {
+    // --------------------------------------------------------------------------
+    // XPath Constructor functions
+    // https://www.w3.org/TR/sparql11-query/#FunctionMapping
+    // --------------------------------------------------------------------------
+    [Consts_1.TypeURL.XSD_STRING]: toString,
+    [Consts_1.TypeURL.XSD_FLOAT]: toFloat,
+    [Consts_1.TypeURL.XSD_DOUBLE]: toDouble,
+    [Consts_1.TypeURL.XSD_DECIMAL]: toDecimal,
+    [Consts_1.TypeURL.XSD_INTEGER]: toInteger,
+    [Consts_1.TypeURL.XSD_DATE_TIME]: toDatetime,
+    [Consts_1.TypeURL.XSD_BOOLEAN]: toBoolean,
+};
+exports.namedDefinitions = immutable_1.Map(_definitions);
+//# sourceMappingURL=NamedFunctions.js.map
+
+/***/ }),
+
+/***/ "./node_modules/sparqlee/dist/lib/functions/RegularFunctions.js":
+/*!**********************************************************************!*\
+  !*** ./node_modules/sparqlee/dist/lib/functions/RegularFunctions.js ***!
+  \**********************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+Object.defineProperty(exports, "__esModule", { value: true });
+const immutable_1 = __webpack_require__(/*! immutable */ "./node_modules/immutable/dist/immutable.js");
+const E = __webpack_require__(/*! ../expressions */ "./node_modules/sparqlee/dist/lib/expressions/index.js");
+const Err = __webpack_require__(/*! ../util/Errors */ "./node_modules/sparqlee/dist/lib/util/Errors.js");
+const X = __webpack_require__(/*! ./XPathFunctions */ "./node_modules/sparqlee/dist/lib/functions/XPathFunctions.js");
+const Consts_1 = __webpack_require__(/*! ../util/Consts */ "./node_modules/sparqlee/dist/lib/util/Consts.js");
+const Helpers_1 = __webpack_require__(/*! ./Helpers */ "./node_modules/sparqlee/dist/lib/functions/Helpers.js");
+// ----------------------------------------------------------------------------
+// ----------------------------------------------------------------------------
+// ----------------------------------------------------------------------------
+// Begin definitions
+// ----------------------------------------------------------------------------
+// Operator Mapping
+// https://www.w3.org/TR/sparql11-query/#OperatorMapping
+// ----------------------------------------------------------------------------
+const not = {
+    arity: 1,
+    overloads: Helpers_1.declare()
+        .onTerm1((val) => Helpers_1.bool(!val.coerceEBV()))
+        .collect(),
+};
+const unaryPlus = {
+    arity: 1,
+    overloads: Helpers_1.declare()
+        .onNumeric1((val) => {
+        return Helpers_1.number(val.typedValue, val.typeURL.value);
+    })
+        .collect(),
+};
+const unaryMinus = {
+    arity: 1,
+    overloads: Helpers_1.declare()
+        .onNumeric1((val) => {
+        return Helpers_1.number(-val.typedValue, val.typeURL.value);
+    })
+        .collect(),
+};
+const multiplication = {
+    arity: 2,
+    overloads: Helpers_1.declare()
+        .arithmetic((left, right) => left * right)
+        .collect(),
+};
+const division = {
+    arity: 2,
+    overloads: Helpers_1.declare()
+        .arithmetic((left, right) => left / right)
+        .setLitBinary(['integer', 'integer'], (left, right) => {
+        if (right === 0) {
+            throw new Err.ExpressionError('Integer division by 0');
+        }
+        return Helpers_1.number(left / right, Consts_1.TypeURL.XSD_DECIMAL);
+    })
+        .collect(),
+};
+const addition = {
+    arity: 2,
+    overloads: Helpers_1.declare()
+        .arithmetic((left, right) => left + right)
+        .collect(),
+};
+const subtraction = {
+    arity: 2,
+    overloads: Helpers_1.declare()
+        .arithmetic((left, right) => left - right)
+        .collect(),
+};
+// https://www.w3.org/TR/sparql11-query/#func-RDFterm-equal
+const equality = {
+    arity: 2,
+    overloads: Helpers_1.declare()
+        .numberTest((left, right) => left === right)
+        .stringTest((left, right) => left.localeCompare(right) === 0)
+        .booleanTest((left, right) => left === right)
+        .dateTimeTest((left, right) => left.getTime() === right.getTime())
+        .set(['term', 'term'], ([left, right]) => Helpers_1.bool(RDFTermEqual(left, right)))
+        .collect(),
+};
+function RDFTermEqual(_left, _right) {
+    const left = _left.toRDF();
+    const right = _right.toRDF();
+    const val = left.equals(right);
+    if ((left.termType === 'Literal') && (right.termType === 'Literal')) {
+        throw new Err.RDFEqualTypeError([_left, _right]);
+    }
+    return val;
+}
+const inequality = {
+    arity: 2,
+    overloads: Helpers_1.declare()
+        .numberTest((left, right) => left !== right)
+        .stringTest((left, right) => left.localeCompare(right) !== 0)
+        .booleanTest((left, right) => left !== right)
+        .dateTimeTest((left, right) => left.getTime() !== right.getTime())
+        .set(['term', 'term'], ([left, right]) => Helpers_1.bool(!RDFTermEqual(left, right)))
+        .collect(),
+};
+const lesserThan = {
+    arity: 2,
+    overloads: Helpers_1.declare()
+        .numberTest((left, right) => left < right)
+        .stringTest((left, right) => left.localeCompare(right) === -1)
+        .booleanTest((left, right) => left < right)
+        .dateTimeTest((left, right) => left.getTime() < right.getTime())
+        .collect(),
+};
+const greaterThan = {
+    arity: 2,
+    overloads: Helpers_1.declare()
+        .numberTest((left, right) => left > right)
+        .stringTest((left, right) => left.localeCompare(right) === 1)
+        .booleanTest((left, right) => left > right)
+        .dateTimeTest((left, right) => left.getTime() > right.getTime())
+        .collect(),
+};
+const lesserThanEqual = {
+    arity: 2,
+    overloads: Helpers_1.declare()
+        .numberTest((left, right) => left <= right)
+        .stringTest((left, right) => left.localeCompare(right) !== 1)
+        .booleanTest((left, right) => left <= right)
+        .dateTimeTest((left, right) => left.getTime() <= right.getTime())
+        .collect(),
+};
+const greaterThanEqual = {
+    arity: 2,
+    overloads: Helpers_1.declare()
+        .numberTest((left, right) => left >= right)
+        .stringTest((left, right) => left.localeCompare(right) !== -1)
+        .booleanTest((left, right) => left >= right)
+        .dateTimeTest((left, right) => left.getTime() >= right.getTime())
+        .collect(),
+};
+// ----------------------------------------------------------------------------
+// Functions on RDF Terms
+// https://www.w3.org/TR/sparql11-query/#func-rdfTerms
+// ----------------------------------------------------------------------------
+const isIRI = {
+    arity: 1,
+    overloads: Helpers_1.declare().unimplemented('isIRI').collect(),
+};
+const isBlank = {
+    arity: 1,
+    overloads: Helpers_1.declare().unimplemented('isBlank').collect(),
+};
+const isLiteral = {
+    arity: 1,
+    overloads: Helpers_1.declare().unimplemented('isLiteral').collect(),
+};
+const isNumeric = {
+    arity: 1,
+    overloads: Helpers_1.declare().unimplemented('isNumeric').collect(),
+};
+const toString = {
+    arity: 1,
+    overloads: Helpers_1.declare()
+        .onTerm1((term) => Helpers_1.string(term.str()))
+        .collect(),
+};
+const lang = {
+    arity: 1,
+    overloads: Helpers_1.declare().onLiteral1((lit) => Helpers_1.string(lit.language || '')).collect(),
+};
+const datatype = {
+    arity: 1,
+    overloads: Helpers_1.declare().onLiteral1((lit) => Helpers_1.string((lit.typeURL) ? lit.typeURL.value : Consts_1.TypeURL.XSD_STRING)).collect(),
+};
+const IRI = {
+    arity: 1,
+    overloads: Helpers_1.declare().unimplemented('IRI').collect(),
+};
+// https://www.w3.org/TR/sparql11-query/#func-bnode
+// id has to be distinct over all id's in dataset
+const BNODE = {
+    arity: [0, 1],
+    overloads: Helpers_1.declare()
+        // .set([], () => new E.BlankNode()) // TODO
+        .setLitUnary('string', (val) => new E.BlankNode(val))
+        .collect(),
+};
+const STRDT = {
+    arity: 2,
+    overloads: Helpers_1.declare().unimplemented('STRDT').collect(),
+};
+const STRLANG = {
+    arity: 2,
+    overloads: Helpers_1.declare().unimplemented('STRLANG').collect(),
+};
+const UUID = {
+    arity: 0,
+    overloads: Helpers_1.declare().unimplemented('UUID').collect(),
+};
+const STRUUID = {
+    arity: 0,
+    overloads: Helpers_1.declare().unimplemented('STRUUID').collect(),
+};
+// ----------------------------------------------------------------------------
+// Functions on strings
+// https://www.w3.org/TR/sparql11-query/#func-forms
+// ----------------------------------------------------------------------------
+const STRLEN = {
+    arity: 1,
+    overloads: Helpers_1.declare()
+        .onLiteral1((lit) => Helpers_1.number(lit.typedValue.length, Consts_1.TypeURL.XSD_INTEGER))
+        .collect(),
+};
+const SUBSTR = {
+    arity: [2, 3],
+    overloads: Helpers_1.declare().unimplemented('SUBSTR').collect(),
+};
+const UCASE = {
+    arity: 1,
+    overloads: Helpers_1.declare().unimplemented('UCASE').collect(),
+};
+const LCASE = {
+    arity: 1,
+    overloads: Helpers_1.declare().unimplemented('LCASE').collect(),
+};
+const STRSTARTS = {
+    arity: 2,
+    overloads: Helpers_1.declare().unimplemented('STRSTARTS').collect(),
+};
+const STRENDS = {
+    arity: 2,
+    overloads: Helpers_1.declare().unimplemented('STRENDS').collect(),
+};
+const CONTAINS = {
+    arity: 2,
+    overloads: Helpers_1.declare().unimplemented('CONTAINS').collect(),
+};
+const STRBEFORE = {
+    arity: 2,
+    overloads: Helpers_1.declare().unimplemented('STRBEFORE').collect(),
+};
+const STRAFTER = {
+    arity: 2,
+    overloads: Helpers_1.declare().unimplemented('STRAFTER').collect(),
+};
+const ENCODE_FOR_URI = {
+    arity: 1,
+    overloads: Helpers_1.declare().unimplemented('ENCODE_FOR_URI').collect(),
+};
+const CONCAT = {
+    arity: Infinity,
+    overloads: Helpers_1.declare().unimplemented('CONCAT').collect(),
+};
+const langmatches = {
+    arity: 2,
+    overloads: Helpers_1.declare()
+        .setLitBinary(['string', 'string'], (tag, range) => Helpers_1.bool(X.langMatches(tag, range))).collect(),
+};
+const regex2 = (text, pattern) => Helpers_1.bool(X.matches(text, pattern));
+const regex3 = (text, pattern, flags) => Helpers_1.bool(X.matches(text, pattern, flags));
+const REGEX = {
+    arity: [2, 3],
+    overloads: Helpers_1.declare()
+        .setLitBinary(['string', 'string'], regex2)
+        .setLitBinary(['langString', 'langString'], regex2)
+        .setLitTernary(['string', 'string', 'string'], regex3)
+        .setLitTernary(['langString', 'string', 'string'], regex3)
+        .collect(),
+};
+const REPLACE = {
+    arity: [3, 4],
+    overloads: Helpers_1.declare().unimplemented('REPLACE').collect(),
+};
+// ----------------------------------------------------------------------------
+// Functions on numerics
+// https://www.w3.org/TR/sparql11-query/#func-numerics
+// ----------------------------------------------------------------------------
+const abs = {
+    arity: 1,
+    overloads: Helpers_1.declare().unimplemented('abs').collect(),
+};
+const round = {
+    arity: 1,
+    overloads: Helpers_1.declare().unimplemented('round').collect(),
+};
+const ceil = {
+    arity: 1,
+    overloads: Helpers_1.declare().unimplemented('ceil').collect(),
+};
+const floor = {
+    arity: 1,
+    overloads: Helpers_1.declare().unimplemented('floor').collect(),
+};
+const RAND = {
+    arity: 1,
+    overloads: Helpers_1.declare().unimplemented('RAND').collect(),
+};
+// ----------------------------------------------------------------------------
+// Functions on Dates and Times
+// https://www.w3.org/TR/sparql11-query/#func-date-time
+// ----------------------------------------------------------------------------
+const now = {
+    arity: 0,
+    overloads: Helpers_1.declare().unimplemented('now').collect(),
+};
+const year = {
+    arity: 1,
+    overloads: Helpers_1.declare().unimplemented('year').collect(),
+};
+const month = {
+    arity: 1,
+    overloads: Helpers_1.declare().unimplemented('month').collect(),
+};
+const day = {
+    arity: 1,
+    overloads: Helpers_1.declare().unimplemented('day').collect(),
+};
+const hours = {
+    arity: 1,
+    overloads: Helpers_1.declare().unimplemented('hours').collect(),
+};
+const minutes = {
+    arity: 1,
+    overloads: Helpers_1.declare().unimplemented('minutes').collect(),
+};
+const seconds = {
+    arity: 1,
+    overloads: Helpers_1.declare().unimplemented('seconds').collect(),
+};
+const timezone = {
+    arity: 1,
+    overloads: Helpers_1.declare().unimplemented('timezone').collect(),
+};
+const tz = {
+    arity: 1,
+    overloads: Helpers_1.declare().unimplemented('tz').collect(),
+};
+// ----------------------------------------------------------------------------
+// Hash functions
+// https://www.w3.org/TR/sparql11-query/#func-hash
+// ----------------------------------------------------------------------------
+const MD5 = {
+    arity: 1,
+    overloads: Helpers_1.declare().unimplemented('MD5').collect(),
+};
+const SHA1 = {
+    arity: 1,
+    overloads: Helpers_1.declare().unimplemented('SHA1').collect(),
+};
+const SHA256 = {
+    arity: 1,
+    overloads: Helpers_1.declare().unimplemented('SHA256').collect(),
+};
+const SHA384 = {
+    arity: 1,
+    overloads: Helpers_1.declare().unimplemented('SHA384').collect(),
+};
+const SHA512 = {
+    arity: 1,
+    overloads: Helpers_1.declare().unimplemented('SHA512').collect(),
+};
+// End definitions.
+// ----------------------------------------------------------------------------
+// ----------------------------------------------------------------------------
+// ----------------------------------------------------------------------------
+/*
+ * Collect all the definitions from above into an object
+ */
+const _definitions = {
+    // --------------------------------------------------------------------------
+    // Operator Mapping
+    // https://www.w3.org/TR/sparql11-query/#OperatorMapping
+    // --------------------------------------------------------------------------
+    '!': not,
+    'UPLUS': unaryPlus,
+    'UMINUS': unaryMinus,
+    '*': multiplication,
+    '/': division,
+    '+': addition,
+    '-': subtraction,
+    '=': equality,
+    '!=': inequality,
+    '<': lesserThan,
+    '>': greaterThan,
+    '<=': lesserThanEqual,
+    '>=': greaterThanEqual,
+    // --------------------------------------------------------------------------
+    // Functions on RDF Terms
+    // https://www.w3.org/TR/sparql11-query/#func-rdfTerms
+    // --------------------------------------------------------------------------
+    'isIRI': isIRI,
+    'isBlank': isBlank,
+    'isLiteral': isLiteral,
+    'isNumeric': isNumeric,
+    'str': toString,
+    'lang': lang,
+    'datatype': datatype,
+    'IRI': IRI,
+    'BNODE': BNODE,
+    'STRDT': STRDT,
+    'STRLANG': STRLANG,
+    'UUID': UUID,
+    'STRUUID': STRUUID,
+    // --------------------------------------------------------------------------
+    // Functions on strings
+    // https://www.w3.org/TR/sparql11-query/#func-forms
+    // --------------------------------------------------------------------------
+    'strlen': STRLEN,
+    'SUBSTR': SUBSTR,
+    'UCASE': UCASE,
+    'LCASE': LCASE,
+    'STRSTARTS': STRSTARTS,
+    'STRENDS': STRENDS,
+    'CONTAINS': CONTAINS,
+    'STRBEFORE': STRBEFORE,
+    'STRAFTER': STRAFTER,
+    'ENCODE_FOR_URI': ENCODE_FOR_URI,
+    'CONCAT': CONCAT,
+    'langmatches': langmatches,
+    'regex': REGEX,
+    'REPLACE': REPLACE,
+    // --------------------------------------------------------------------------
+    // Functions on numerics
+    // https://www.w3.org/TR/sparql11-query/#func-numerics
+    // --------------------------------------------------------------------------
+    'abs': abs,
+    'round': round,
+    'ceil': ceil,
+    'floor': floor,
+    'RAND': RAND,
+    // --------------------------------------------------------------------------
+    // Functions on Dates and Times
+    // https://www.w3.org/TR/sparql11-query/#func-date-time
+    // --------------------------------------------------------------------------
+    'now': now,
+    'year': year,
+    'month': month,
+    'day': day,
+    'hours': hours,
+    'minutes': minutes,
+    'seconds': seconds,
+    'timezone': timezone,
+    'tz': tz,
+    // --------------------------------------------------------------------------
+    // Hash functions
+    // https://www.w3.org/TR/sparql11-query/#func-hash
+    // --------------------------------------------------------------------------
+    'MD5': MD5,
+    'SHA1': SHA1,
+    'SHA256': SHA256,
+    'SHA384': SHA384,
+    'SHA512': SHA512,
+};
+exports.definitions = immutable_1.Map(_definitions);
+//# sourceMappingURL=RegularFunctions.js.map
+
+/***/ }),
+
+/***/ "./node_modules/sparqlee/dist/lib/functions/SpecialFunctions.js":
+/*!**********************************************************************!*\
+  !*** ./node_modules/sparqlee/dist/lib/functions/SpecialFunctions.js ***!
+  \**********************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+Object.defineProperty(exports, "__esModule", { value: true });
+const immutable_1 = __webpack_require__(/*! immutable */ "./node_modules/immutable/dist/immutable.js");
+const E = __webpack_require__(/*! ../expressions */ "./node_modules/sparqlee/dist/lib/expressions/index.js");
+const C = __webpack_require__(/*! ../util/Consts */ "./node_modules/sparqlee/dist/lib/util/Consts.js");
+const Err = __webpack_require__(/*! ../util/Errors */ "./node_modules/sparqlee/dist/lib/util/Errors.js");
+const Helpers_1 = __webpack_require__(/*! ./Helpers */ "./node_modules/sparqlee/dist/lib/functions/Helpers.js");
+const index_1 = __webpack_require__(/*! ./index */ "./node_modules/sparqlee/dist/lib/functions/index.js");
+function _bound({ args, mapping }) {
+    const variable = args[0];
+    if (variable.expressionType !== E.ExpressionType.Variable) {
+        throw new Err.InvalidArgumentTypes(args, C.SpecialOperator.BOUND);
+    }
+    const val = mapping.has(variable.name) && !!mapping.get(variable.name);
+    return Helpers_1.bool(val);
+}
+// BOUND ----------------------------------------------------------------------
+const bound = {
+    arity: 1,
+    async applyAsync({ args, mapping }) {
+        return _bound({ args, mapping });
+    },
+    applySync({ args, mapping }) {
+        return _bound({ args, mapping });
+    },
+};
+// IF -------------------------------------------------------------------------
+const ifSPARQL = {
+    arity: 3,
+    async applyAsync({ args, mapping, evaluate }) {
+        const valFirst = await evaluate(args[0], mapping);
+        const ebv = valFirst.coerceEBV();
+        return (ebv)
+            ? evaluate(args[1], mapping)
+            : evaluate(args[2], mapping);
+    },
+    applySync({ args, mapping, evaluate }) {
+        const valFirst = evaluate(args[0], mapping);
+        const ebv = valFirst.coerceEBV();
+        return (ebv)
+            ? evaluate(args[1], mapping)
+            : evaluate(args[2], mapping);
+    },
+};
+// COALESCE -------------------------------------------------------------------
+const coalesce = {
+    arity: Infinity,
+    async applyAsync({ args, mapping, evaluate }) {
+        const errors = [];
+        for (const expr of args) {
+            try {
+                return await evaluate(expr, mapping);
+            }
+            catch (err) {
+                errors.push(err);
+            }
+        }
+        throw new Err.CoalesceError(errors);
+    },
+    applySync({ args, mapping, evaluate }) {
+        const errors = [];
+        for (const expr of args) {
+            try {
+                return evaluate(expr, mapping);
+            }
+            catch (err) {
+                errors.push(err);
+            }
+        }
+        throw new Err.CoalesceError(errors);
+    },
+};
+// logical-or (||) ------------------------------------------------------------
+// https://www.w3.org/TR/sparql11-query/#func-logical-or
+const logicalOr = {
+    arity: 2,
+    async applyAsync({ args, mapping, evaluate }) {
+        const [leftExpr, rightExpr] = args;
+        try {
+            const leftTerm = await evaluate(leftExpr, mapping);
+            const left = leftTerm.coerceEBV();
+            if (left) {
+                return Helpers_1.bool(true);
+            }
+            const rightTerm = await evaluate(rightExpr, mapping);
+            const right = rightTerm.coerceEBV();
+            return Helpers_1.bool(right);
+        }
+        catch (leftErr) {
+            const rightTerm = await evaluate(rightExpr, mapping);
+            const right = rightTerm.coerceEBV();
+            if (!right) {
+                throw leftErr;
+            }
+            return Helpers_1.bool(true);
+        }
+    },
+    applySync({ args, mapping, evaluate }) {
+        const [leftExpr, rightExpr] = args;
+        try {
+            const leftTerm = evaluate(leftExpr, mapping);
+            const left = leftTerm.coerceEBV();
+            if (left) {
+                return Helpers_1.bool(true);
+            }
+            const rightTerm = evaluate(rightExpr, mapping);
+            const right = rightTerm.coerceEBV();
+            return Helpers_1.bool(right);
+        }
+        catch (leftErr) {
+            const rightTerm = evaluate(rightExpr, mapping);
+            const right = rightTerm.coerceEBV();
+            if (!right) {
+                throw leftErr;
+            }
+            return Helpers_1.bool(true);
+        }
+    },
+};
+// logical-and (&&) -----------------------------------------------------------
+// https://www.w3.org/TR/sparql11-query/#func-logical-and
+const logicalAnd = {
+    arity: 2,
+    async applyAsync({ args, mapping, evaluate }) {
+        const [leftExpr, rightExpr] = args;
+        try {
+            const leftTerm = await evaluate(leftExpr, mapping);
+            const left = leftTerm.coerceEBV();
+            if (!left) {
+                return Helpers_1.bool(false);
+            }
+            const rightTerm = await evaluate(rightExpr, mapping);
+            const right = rightTerm.coerceEBV();
+            return Helpers_1.bool(right);
+        }
+        catch (leftErr) {
+            const rightTerm = await evaluate(rightExpr, mapping);
+            const right = rightTerm.coerceEBV();
+            if (right) {
+                throw leftErr;
+            }
+            return Helpers_1.bool(false);
+        }
+    },
+    applySync({ args, mapping, evaluate }) {
+        const [leftExpr, rightExpr] = args;
+        try {
+            const leftTerm = evaluate(leftExpr, mapping);
+            const left = leftTerm.coerceEBV();
+            if (!left) {
+                return Helpers_1.bool(false);
+            }
+            const rightTerm = evaluate(rightExpr, mapping);
+            const right = rightTerm.coerceEBV();
+            return Helpers_1.bool(right);
+        }
+        catch (leftErr) {
+            const rightTerm = evaluate(rightExpr, mapping);
+            const right = rightTerm.coerceEBV();
+            if (right) {
+                throw leftErr;
+            }
+            return Helpers_1.bool(false);
+        }
+    },
+};
+// sameTerm -------------------------------------------------------------------
+const sameTerm = {
+    arity: 2,
+    async applyAsync({ args, mapping, evaluate }) {
+        const [leftExpr, rightExpr] = args.map((a) => evaluate(a, mapping));
+        const left = await leftExpr;
+        const right = await rightExpr;
+        return Helpers_1.bool(left.toRDF().equals(right.toRDF()));
+    },
+    applySync({ args, mapping, evaluate }) {
+        const [left, right] = args.map((a) => evaluate(a, mapping));
+        return Helpers_1.bool(left.toRDF().equals(right.toRDF()));
+    },
+};
+// IN -------------------------------------------------------------------------
+const inSPARQL = {
+    arity: Infinity,
+    checkArity(args) { return args.length >= 1; },
+    async applyAsync({ args, mapping, evaluate }) {
+        const [leftExpr, ...remaining] = args;
+        const left = await evaluate(leftExpr, mapping);
+        return inRecursiveAsync(left, { args: remaining, mapping, evaluate }, []);
+    },
+    applySync({ args, mapping, evaluate }) {
+        const [leftExpr, ...remaining] = args;
+        const left = evaluate(leftExpr, mapping);
+        return inRecursiveSync(left, { args: remaining, mapping, evaluate }, []);
+    },
+};
+async function inRecursiveAsync(needle, { args, mapping, evaluate }, results) {
+    if (args.length === 0) {
+        const noErrors = results.every((v) => !v);
+        return (noErrors) ? Helpers_1.bool(false) : Promise.reject(new Err.InError(results));
+    }
+    try {
+        const next = await evaluate(args.shift(), mapping);
+        const isEqual = index_1.regularFunctions.get(C.RegularOperator.EQUAL);
+        if (isEqual.apply([needle, next])) {
+            return Helpers_1.bool(true);
+        }
+        else {
+            inRecursiveAsync(needle, { args, mapping, evaluate }, [...results, false]);
+        }
+    }
+    catch (err) {
+        return inRecursiveAsync(needle, { args, mapping, evaluate }, [...results, err]);
+    }
+}
+function inRecursiveSync(needle, { args, mapping, evaluate }, results) {
+    if (args.length === 0) {
+        const noErrors = results.every((v) => !v);
+        if (noErrors) {
+            Helpers_1.bool(false);
+        }
+        else {
+            throw new Err.InError(results);
+        }
+    }
+    try {
+        const next = evaluate(args.shift(), mapping);
+        const isEqual = index_1.regularFunctions.get(C.RegularOperator.EQUAL);
+        if (isEqual.apply([needle, next])) {
+            return Helpers_1.bool(true);
+        }
+        else {
+            inRecursiveSync(needle, { args, mapping, evaluate }, [...results, false]);
+        }
+    }
+    catch (err) {
+        return inRecursiveSync(needle, { args, mapping, evaluate }, [...results, err]);
+    }
+}
+// NOT IN ---------------------------------------------------------------------
+const notInSPARQL = {
+    arity: Infinity,
+    checkArity(args) { return args.length >= 1; },
+    async applyAsync(context) {
+        const _in = index_1.specialFunctions.get(C.SpecialOperator.IN);
+        const isIn = await _in.applyAsync(context);
+        return Helpers_1.bool(!isIn.typedValue);
+    },
+    applySync(context) {
+        const _in = index_1.specialFunctions.get(C.SpecialOperator.IN);
+        const isIn = _in.applySync(context);
+        return Helpers_1.bool(!isIn.typedValue);
+    },
+};
+const _specialDefinitions = {
+    // --------------------------------------------------------------------------
+    // Functional Forms
+    // https://www.w3.org/TR/sparql11-query/#func-forms
+    // --------------------------------------------------------------------------
+    'bound': bound,
+    'if': ifSPARQL,
+    'coalesce': coalesce,
+    '&&': logicalAnd,
+    '||': logicalOr,
+    'sameterm': sameTerm,
+    'in': inSPARQL,
+    'notin': notInSPARQL,
+};
+exports.specialDefinitions = immutable_1.Map(_specialDefinitions);
+//# sourceMappingURL=SpecialFunctions.js.map
+
+/***/ }),
+
+/***/ "./node_modules/sparqlee/dist/lib/functions/XPathFunctions.js":
+/*!********************************************************************!*\
+  !*** ./node_modules/sparqlee/dist/lib/functions/XPathFunctions.js ***!
+  \********************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+Object.defineProperty(exports, "__esModule", { value: true });
+// https://www.w3.org/TR/xpath-functions/#func-matches
+// https://www.w3.org/TR/xpath-functions/#flags
+function matches(text, pattern, flags) {
+    // TODO: Only flags 'i' and 'm' match between XPath and JS.
+    // 's', 'x', 'q', would need proper implementation.
+    const reg = new RegExp(pattern, flags);
+    return reg.test(text);
+}
+exports.matches = matches;
+// TODO: Not an XPath function
+// TODO: Publish as package
+// https://www.ietf.org/rfc/rfc4647.txt
+// https://www.w3.org/TR/sparql11-query/#func-langMatches
+function langMatches(tag, range) {
+    const langTags = tag.split('-');
+    const rangeTags = range.split('-');
+    if (!_matchLangTag(rangeTags[0], langTags[0])
+        && !_isWildCard(langTags[0])) {
+        return false;
+    }
+    let lI = 1;
+    let rI = 1;
+    while (rI < rangeTags.length) {
+        if (_isWildCard(rangeTags[rI])) {
+            rI++;
+            continue;
+        }
+        if (lI === langTags.length) {
+            return false;
+        }
+        if (_matchLangTag(rangeTags[rI], langTags[lI])) {
+            lI++;
+            rI++;
+            continue;
+        }
+        if (langTags[lI].length === 1) {
+            return false;
+        }
+        lI++;
+    }
+    return true;
+}
+exports.langMatches = langMatches;
+function _isWildCard(tag) {
+    return tag === '*';
+}
+function _matchLangTag(left, right) {
+    const matchInitial = new RegExp(`/${left}/`, 'i');
+    return matchInitial.test(`/${right}/`);
+}
+//# sourceMappingURL=XPathFunctions.js.map
+
+/***/ }),
+
+/***/ "./node_modules/sparqlee/dist/lib/functions/index.js":
+/*!***********************************************************!*\
+  !*** ./node_modules/sparqlee/dist/lib/functions/index.js ***!
+  \***********************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+function __export(m) {
+    for (var p in m) if (!exports.hasOwnProperty(p)) exports[p] = m[p];
+}
+Object.defineProperty(exports, "__esModule", { value: true });
+const FunctionClasses_1 = __webpack_require__(/*! ./FunctionClasses */ "./node_modules/sparqlee/dist/lib/functions/FunctionClasses.js");
+const NamedFunctions_1 = __webpack_require__(/*! ./NamedFunctions */ "./node_modules/sparqlee/dist/lib/functions/NamedFunctions.js");
+const RegularFunctions_1 = __webpack_require__(/*! ./RegularFunctions */ "./node_modules/sparqlee/dist/lib/functions/RegularFunctions.js");
+const SpecialFunctions_1 = __webpack_require__(/*! ./SpecialFunctions */ "./node_modules/sparqlee/dist/lib/functions/SpecialFunctions.js");
+__export(__webpack_require__(/*! ./FunctionClasses */ "./node_modules/sparqlee/dist/lib/functions/FunctionClasses.js"));
+exports.regularFunctions = RegularFunctions_1.definitions
+    .map((def, op) => new FunctionClasses_1.RegularFunction(op, def))
+    .toMap();
+exports.specialFunctions = SpecialFunctions_1.specialDefinitions
+    .map((def, op) => new FunctionClasses_1.SpecialFunction(op, def))
+    .toMap();
+exports.namedFunctions = NamedFunctions_1.namedDefinitions
+    .map((def, op) => new FunctionClasses_1.NamedFunction(op, def))
+    .toMap();
+//# sourceMappingURL=index.js.map
+
+/***/ }),
+
+/***/ "./node_modules/sparqlee/dist/lib/util/Consts.js":
+/*!*******************************************************!*\
+  !*** ./node_modules/sparqlee/dist/lib/util/Consts.js ***!
+  \*******************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+Object.defineProperty(exports, "__esModule", { value: true });
+// tslint:disable:variable-name
+const RDFDM = __webpack_require__(/*! @rdfjs/data-model */ "./node_modules/@rdfjs/data-model/index.js");
+const immutable_1 = __webpack_require__(/*! immutable */ "./node_modules/immutable/dist/immutable.js");
+exports.TRUE_STR = '"true"^^xsd:boolean';
+exports.FALSE_STR = '"false"^^xsd:boolean';
+exports.EVB_ERR_STR = '"not an dateTime"^^xsd:dateTime';
+var TypeURL;
+(function (TypeURL) {
+    TypeURL["XSD_STRING"] = "http://www.w3.org/2001/XMLSchema#string";
+    TypeURL["RDF_LANG_STRING"] = "http://www.w3.org/1999/02/22-rdf-syntax-ns#langString";
+    TypeURL["XSD_BOOLEAN"] = "http://www.w3.org/2001/XMLSchema#boolean";
+    TypeURL["XSD_DATE_TIME"] = "http://www.w3.org/2001/XMLSchema#dateTime";
+    // Numeric types
+    TypeURL["XSD_INTEGER"] = "http://www.w3.org/2001/XMLSchema#integer";
+    TypeURL["XSD_DECIMAL"] = "http://www.w3.org/2001/XMLSchema#decimal";
+    TypeURL["XSD_FLOAT"] = "http://www.w3.org/2001/XMLSchema#float";
+    TypeURL["XSD_DOUBLE"] = "http://www.w3.org/2001/XMLSchema#double";
+    // Derived numeric types
+    TypeURL["XSD_NON_POSITIVE_INTEGER"] = "http://www.w3.org/2001/XMLSchema#nonPositiveInteger";
+    TypeURL["XSD_NEGATIVE_INTEGER"] = "http://www.w3.org/2001/XMLSchema#negativeInteger";
+    TypeURL["XSD_LONG"] = "http://www.w3.org/2001/XMLSchema#long";
+    TypeURL["XSD_INT"] = "http://www.w3.org/2001/XMLSchema#int";
+    TypeURL["XSD_SHORT"] = "http://www.w3.org/2001/XMLSchema#short";
+    TypeURL["XSD_BYTE"] = "http://www.w3.org/2001/XMLSchema#byte";
+    TypeURL["XSD_NON_NEGATIVE_INTEGER"] = "http://www.w3.org/2001/XMLSchema#nonNegativeInteger";
+    TypeURL["XSD_UNSIGNED_LONG"] = "http://www.w3.org/2001/XMLSchema#unsignedLong";
+    TypeURL["XSD_UNSIGNED_INT"] = "http://www.w3.org/2001/XMLSchema#unsignedInt";
+    TypeURL["XSD_UNSIGNED_SHORT"] = "http://www.w3.org/2001/XMLSchema#unsignedShort";
+    TypeURL["XSD_UNSIGNED_BYTE"] = "http://www.w3.org/2001/XMLSchema#unsignedByte";
+    TypeURL["XSD_POSITIVE_INTEGER"] = "http://www.w3.org/2001/XMLSchema#positiveInteger";
+})(TypeURL = exports.TypeURL || (exports.TypeURL = {}));
+function make(dt) {
+    return RDFDM.namedNode(dt);
+}
+exports.make = make;
+// https://www.w3.org/TR/sparql11-query/#operandDataTypes
+var NumericType;
+(function (NumericType) {
+    NumericType["XSD_INTEGER"] = "http://www.w3.org/2001/XMLSchema#integer";
+    NumericType["XSD_DECIMAL"] = "http://www.w3.org/2001/XMLSchema#decimal";
+    NumericType["XSD_FLOAT"] = "http://www.w3.org/2001/XMLSchema#float";
+    NumericType["XSD_DOUBLE"] = "http://www.w3.org/2001/XMLSchema#double";
+    NumericType["XSD_NON_POSITIVE_INTEGER"] = "http://www.w3.org/2001/XMLSchema#nonPositiveInteger";
+    NumericType["XSD_NEGATIVE_INTEGER"] = "http://www.w3.org/2001/XMLSchema#negativeInteger";
+    NumericType["XSD_LONG"] = "http://www.w3.org/2001/XMLSchema#long";
+    NumericType["XSD_INT"] = "http://www.w3.org/2001/XMLSchema#int";
+    NumericType["XSD_SHORT"] = "http://www.w3.org/2001/XMLSchema#short";
+    NumericType["XSD_BYTE"] = "http://www.w3.org/2001/XMLSchema#byte";
+    NumericType["XSD_NON_NEGATIVE_INTEGER"] = "http://www.w3.org/2001/XMLSchema#nonNegativeInteger";
+    NumericType["XSD_UNSIGNED_LONG"] = "http://www.w3.org/2001/XMLSchema#unsignedLong";
+    NumericType["XSD_UNSIGNED_INT"] = "http://www.w3.org/2001/XMLSchema#unsignedInt";
+    NumericType["XSD_UNSIGNED_SHORT"] = "http://www.w3.org/2001/XMLSchema#unsignedShort";
+    NumericType["XSD_UNSIGNED_BYTE"] = "http://www.w3.org/2001/XMLSchema#unsignedByte";
+    NumericType["XSD_POSITIVE_INTEGER"] = "http://www.w3.org/2001/XMLSchema#positiveInteger";
+})(NumericType = exports.NumericType || (exports.NumericType = {}));
+exports.commonTerms = {
+    true: RDFDM.literal('true', RDFDM.namedNode(TypeURL.XSD_BOOLEAN)),
+    false: RDFDM.literal('false', RDFDM.namedNode(TypeURL.XSD_BOOLEAN)),
+};
+exports.NumericTypeCategories = immutable_1.Set(['integer', 'decimal', 'float', 'double']);
+function type(typeURL) {
+    switch (typeURL) {
+        case null:
+        case undefined:
+        case '':
+        case TypeURL.XSD_STRING: return 'string';
+        case TypeURL.RDF_LANG_STRING: return 'langString';
+        case TypeURL.XSD_DATE_TIME: return 'date';
+        case TypeURL.XSD_BOOLEAN: return 'boolean';
+        case TypeURL.XSD_DECIMAL: return 'decimal';
+        case TypeURL.XSD_FLOAT: return 'float';
+        case TypeURL.XSD_DOUBLE: return 'double';
+        case TypeURL.XSD_INTEGER:
+        case TypeURL.XSD_NON_POSITIVE_INTEGER:
+        case TypeURL.XSD_NEGATIVE_INTEGER:
+        case TypeURL.XSD_LONG:
+        case TypeURL.XSD_INT:
+        case TypeURL.XSD_SHORT:
+        case TypeURL.XSD_BYTE:
+        case TypeURL.XSD_NON_NEGATIVE_INTEGER:
+        case TypeURL.XSD_UNSIGNED_LONG:
+        case TypeURL.XSD_UNSIGNED_INT:
+        case TypeURL.XSD_UNSIGNED_SHORT:
+        case TypeURL.XSD_UNSIGNED_BYTE:
+        case TypeURL.XSD_POSITIVE_INTEGER: return 'integer';
+        default: return 'other';
+    }
+}
+exports.type = type;
+// If datatypes get lost or lose specificity during operations, we can insert a
+// concrete type, since categories should remain the same. This mostly (only)
+// relevant for integer subtypes.
+const _decategorize = immutable_1.Map([
+    ['integer', TypeURL.XSD_INTEGER],
+    ['float', TypeURL.XSD_FLOAT],
+    ['double', TypeURL.XSD_DOUBLE],
+    ['decimal', TypeURL.XSD_DECIMAL],
+]);
+function decategorize(cat) {
+    return _decategorize.get(cat);
+}
+exports.decategorize = decategorize;
+// TODO: Remove unneeded double typing
+var RegularOperator;
+(function (RegularOperator) {
+    // Operator mapping
+    // https://www.w3.org/TR/sparql11-query/#OperatorMapping
+    RegularOperator["NOT"] = "!";
+    RegularOperator["UMINUS"] = "UMINUS";
+    RegularOperator["UPLUS"] = "UPLUS";
+    // LOGICAL_AND // See SpecialOperators
+    // LOGICAL_OR  // See SpecialOperators
+    RegularOperator["EQUAL"] = "=";
+    RegularOperator["NOT_EQUAL"] = "!=";
+    RegularOperator["LT"] = "<";
+    RegularOperator["GT"] = ">";
+    RegularOperator["LTE"] = "<=";
+    RegularOperator["GTE"] = ">=";
+    RegularOperator["MULTIPLICATION"] = "*";
+    RegularOperator["DIVISION"] = "/";
+    RegularOperator["ADDITION"] = "+";
+    RegularOperator["SUBTRACTION"] = "-";
+    // Functional Forms
+    // https://www.w3.org/TR/sparql11-query/#func-forms
+    // See SpecialOperators
+    // Functions on RDF Terms
+    // https://www.w3.org/TR/sparql11-query/#func-rdfTerms
+    RegularOperator["IS_IRI"] = "isIRI";
+    RegularOperator["IS_BLANK"] = "isBlank";
+    RegularOperator["IS_LITERAL"] = "isLiteral";
+    RegularOperator["IS_NUMERIC"] = "isNumeric";
+    RegularOperator["STR"] = "str";
+    RegularOperator["LANG"] = "lang";
+    RegularOperator["DATATYPE"] = "datatype";
+    RegularOperator["IRI"] = "IRI";
+    RegularOperator["BNODE"] = "BNODE";
+    RegularOperator["STRDT"] = "STRDT";
+    RegularOperator["STRLANG"] = "STRLANG";
+    RegularOperator["UUID"] = "UUID";
+    RegularOperator["STRUUID"] = "STRUUID";
+    // Functions on strings
+    // https://www.w3.org/TR/sparql11-query/#func-strings
+    RegularOperator["STRLEN"] = "strlen";
+    RegularOperator["SUBSTR"] = "SUBSTR";
+    RegularOperator["UCASE"] = "UCASE";
+    RegularOperator["LCASE"] = "LCASE";
+    RegularOperator["STRSTARTS"] = "STRSTARTS";
+    RegularOperator["STRENDS"] = "STRENDS";
+    RegularOperator["CONTAINS"] = "CONTAINS";
+    RegularOperator["STRBEFORE"] = "STRBEFORE";
+    RegularOperator["STRAFTER"] = "STRAFTER";
+    RegularOperator["ENCODE_FOR_URI"] = "ENCODE_FOR_URI";
+    RegularOperator["CONCAT"] = "CONCAT";
+    RegularOperator["LANG_MATCHES"] = "langmatches";
+    RegularOperator["REGEX"] = "regex";
+    RegularOperator["REPLACE"] = "REPLACE";
+    // Functions on numerics
+    // https://www.w3.org/TR/sparql11-query/#func-numerics
+    RegularOperator["ABS"] = "abs";
+    RegularOperator["ROUND"] = "round";
+    RegularOperator["CEIL"] = "ceil";
+    RegularOperator["FLOOR"] = "floor";
+    RegularOperator["RAND"] = "RAND";
+    // Functions on Dates and Times
+    // https://www.w3.org/TR/sparql11-query/#func-date-time
+    RegularOperator["NOW"] = "now";
+    RegularOperator["YEAR"] = "year";
+    RegularOperator["MONTH"] = "month";
+    RegularOperator["DAY"] = "day";
+    RegularOperator["HOURS"] = "hours";
+    RegularOperator["MINUTES"] = "minutes";
+    RegularOperator["SECONDS"] = "seconds";
+    RegularOperator["TIMEZONE"] = "timezone";
+    RegularOperator["TZ"] = "tz";
+    // Hash functions
+    // https://www.w3.org/TR/sparql11-query/#func-hash
+    RegularOperator["MD5"] = "MD5";
+    RegularOperator["SHA1"] = "SHA1";
+    RegularOperator["SHA256"] = "SHA256";
+    RegularOperator["SHA384"] = "SHA384";
+    RegularOperator["SHA512"] = "SHA512";
+    // XPath Constructor functions
+    // https://www.w3.org/TR/sparql11-query/#FunctionMapping
+    // See Named Operators
+})(RegularOperator = exports.RegularOperator || (exports.RegularOperator = {}));
+var SpecialOperator;
+(function (SpecialOperator) {
+    // Functional Forms
+    // https://www.w3.org/TR/sparql11-query/#func-forms
+    SpecialOperator["BOUND"] = "bound";
+    SpecialOperator["IF"] = "if";
+    SpecialOperator["COALESCE"] = "coalesce";
+    // EXISTENCE = 'existence',
+    SpecialOperator["LOGICAL_OR"] = "||";
+    SpecialOperator["LOGICAL_AND"] = "&&";
+    // EQUAL = '=', // See RegularOperators
+    SpecialOperator["SAME_TERM"] = "sameterm";
+    SpecialOperator["IN"] = "in";
+    SpecialOperator["NOT_IN"] = "notin";
+})(SpecialOperator = exports.SpecialOperator || (exports.SpecialOperator = {}));
+exports.RegularOperators = immutable_1.Set(Object.values(RegularOperator));
+exports.SpecialOperators = immutable_1.Set(Object.values(SpecialOperator));
+exports.Operators = exports.RegularOperators.union(exports.SpecialOperators);
+exports.NamedOperators = immutable_1.Set([
+    TypeURL.XSD_STRING,
+    TypeURL.XSD_FLOAT,
+    TypeURL.XSD_DOUBLE,
+    TypeURL.XSD_DECIMAL,
+    TypeURL.XSD_INTEGER,
+    TypeURL.XSD_DATE_TIME,
+    TypeURL.XSD_BOOLEAN,
+]);
+//# sourceMappingURL=Consts.js.map
+
+/***/ }),
+
+/***/ "./node_modules/sparqlee/dist/lib/util/Errors.js":
+/*!*******************************************************!*\
+  !*** ./node_modules/sparqlee/dist/lib/util/Errors.js ***!
+  \*******************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+Object.defineProperty(exports, "__esModule", { value: true });
+/**
+ * This class of error will be thrown when an expression errors.
+ * Various reasons this could happen are:
+ *   - invalid types for the given operator
+ *   - unbound variables
+ *   - invalid lexical forms
+ *   - ...
+ *
+ * The distinction is made so that one can catch this specific type
+ * and handle it accordingly to the SPARQL spec (relevant for e.g. FILTER, EXTEND),
+ * while others (programming errors) can be re-thrown.
+ *
+ * @see isExpressionError
+ */
+class ExpressionError extends Error {
+}
+exports.ExpressionError = ExpressionError;
+/**
+ * Checks whether a given error is an {@link ExpressionError}.
+ * Also useful for mocking in tests for covering all branches.
+ *
+ * @see ExpressionError
+ */
+function isExpressionError(error) {
+    return error instanceof ExpressionError;
+}
+exports.isExpressionError = isExpressionError;
+/**
+ * A literal has an invalid lexical form for the datatype it is accompanied by.
+ * This error is only thrown when the term is as function argument that requires
+ * a valid lexical form.
+ */
+class InvalidLexicalForm extends ExpressionError {
+    constructor(arg) {
+        super(`Invalid lexical form '${pp(arg)}'`);
+        this.arg = arg;
+    }
+}
+exports.InvalidLexicalForm = InvalidLexicalForm;
+/**
+ * A variable in the expression was not bound.
+ */
+class UnboundVariableError extends ExpressionError {
+    constructor(variable, bindings) {
+        super(`Unbound variable '${pp(variable)}'`);
+        this.variable = variable;
+        this.bindings = bindings;
+    }
+}
+exports.UnboundVariableError = UnboundVariableError;
+/**
+ * An invalid term was being coerced to an Effective Boolean Value.
+ *
+ * See the {@link https://www.w3.org/TR/sparql11-query/#ebv | SPARQL docs}
+ * on EBVs.
+ */
+class EBVCoercionError extends ExpressionError {
+    constructor(arg) {
+        super(`Cannot coerce term to EBV '${pp(arg)}'`);
+        this.arg = arg;
+    }
+}
+exports.EBVCoercionError = EBVCoercionError;
+/**
+ * An equality test was done on literals with unsupported datatypes.
+ *
+ * See {@link https://www.w3.org/TR/sparql11-query/#func-RDFterm-equal | term equality spec}.
+ */
+class RDFEqualTypeError extends ExpressionError {
+    constructor(args) {
+        super('Equality test for literals with unsupported datatypes');
+        this.args = args;
+    }
+}
+exports.RDFEqualTypeError = RDFEqualTypeError;
+/**
+ * All the expressions in a COALESCE call threw errors.
+ */
+class CoalesceError extends ExpressionError {
+    constructor(errors) {
+        super('All COALESCE arguments threw errors');
+        this.errors = errors;
+    }
+}
+exports.CoalesceError = CoalesceError;
+/**
+ * No arguments to an IN call where equal, and at least one threw an error.
+ */
+class InError extends ExpressionError {
+    constructor(errors) {
+        super('Some argument to IN errorred and none where equal. ' +
+            errors.map((err) => `(${err.toString()}) `).join('and '));
+        this.errors = errors;
+    }
+}
+exports.InError = InError;
+/**
+ * Literals were passed to an operator that doesn't support their datatypes.
+ */
+class InvalidArgumentTypes extends ExpressionError {
+    constructor(args, op) {
+        super(`Argument types not valid for operator: '${pp(op)}' with '${pp(args)}`);
+        this.args = args;
+        this.op = op;
+    }
+}
+exports.InvalidArgumentTypes = InvalidArgumentTypes;
+/**
+ * An invalid typecast happened.
+ */
+class CastError extends ExpressionError {
+    constructor(arg, cast) {
+        super(`Invalid cast: '${pp(arg)}' to '${pp(cast)}'`);
+        this.arg = arg;
+    }
+}
+exports.CastError = CastError;
+// Non Expression Errors ------------------------------------------------------
+/**
+ * An error that arises when we detect a 'should-be-impossible' state.
+ * Given that this error is thrown, it clearly wasn't impossible, and some
+ * mistake has been made.
+ */
+class UnexpectedError extends Error {
+    constructor(message, payload) {
+        super(`Programmer Error '${message}'`);
+        this.payload = payload;
+    }
+}
+exports.UnexpectedError = UnexpectedError;
+/**
+ * An Error that signals a feature or function is yet unimplemented.
+ */
+class UnimplementedError extends Error {
+    constructor(feature) {
+        super(`Unimplemented feature '${feature}!'`);
+    }
+}
+exports.UnimplementedError = UnimplementedError;
+class InvalidArity extends Error {
+    constructor(args, op) {
+        super(`The amount of args don't match the arity of the operator '${pp(op)}'.`);
+        this.args = args;
+        this.op = op;
+    }
+}
+exports.InvalidArity = InvalidArity;
+class InvalidExpression extends Error {
+    constructor(expr) {
+        super(`Invalid SPARQL Expression '${pp(expr)}'`);
+    }
+}
+exports.InvalidExpression = InvalidExpression;
+class InvalidExpressionType extends Error {
+    constructor(expr) {
+        super(`Invalid expression type for SPARQL Expression '${pp(expr)}'`);
+        this.expr = expr;
+    }
+}
+exports.InvalidExpressionType = InvalidExpressionType;
+class InvalidTermType extends Error {
+    constructor(term) {
+        super(`Invalid term type for term '${pp(term)}'`);
+        this.term = term;
+    }
+}
+exports.InvalidTermType = InvalidTermType;
+class UnknownOperator extends Error {
+    constructor(name) {
+        super(`Unknown operator: '${pp(name)}`);
+    }
+}
+exports.UnknownOperator = UnknownOperator;
+class UnknownNamedOperator extends Error {
+    constructor(name) {
+        super(`Unknown named operator: '${pp(name)}'`);
+    }
+}
+exports.UnknownNamedOperator = UnknownNamedOperator;
+class NoAggregator extends Error {
+    constructor(name) {
+        super(`Aggregate expression ${pp(name)} found, but no aggregate hook provided.`);
+    }
+}
+exports.NoAggregator = NoAggregator;
+class NoExistenceHook extends Error {
+    constructor() {
+        super('EXISTS found, but no existence hook provided.');
+    }
+}
+exports.NoExistenceHook = NoExistenceHook;
+function pp(o) {
+    return JSON.stringify(o);
+}
+//# sourceMappingURL=Errors.js.map
+
+/***/ }),
+
+/***/ "./node_modules/sparqlee/dist/lib/util/Parsing.js":
+/*!********************************************************!*\
+  !*** ./node_modules/sparqlee/dist/lib/util/Parsing.js ***!
+  \********************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+// TODO: Find a library for this
+Object.defineProperty(exports, "__esModule", { value: true });
+/**
+ * TODO: Fix decently
+ * Parses float datatypes (double, float).
+ *
+ * All invalid lexical values return undefined.
+ *
+ * @param value the string to interpret as a number
+ */
+function parseXSDFloat(value) {
+    const numb = Number(value);
+    if (isNaN(numb)) {
+        if (value === 'NaN') {
+            return NaN;
+        }
+        if (value === 'INF') {
+            return Infinity;
+        }
+        if (value === '-INF') {
+            return -Infinity;
+        }
+        return undefined;
+    }
+    return numb;
+}
+exports.parseXSDFloat = parseXSDFloat;
+/**
+ * Parses decimal datatypes (decimal, int, byte, nonPositiveInteger, etc...).
+ *
+ * All other values, including NaN, INF, and floating point numbers all
+ * return undefined;
+ *
+ * @param value the string to interpret as a number
+ */
+function parseXSDDecimal(value) {
+    if (/^(\-|\+)?([0-9]+(\.[0-9]+)?)$/.test(value)) {
+        const numb = Number(value);
+        return (isNaN(numb)) ? undefined : numb;
+    }
+    return undefined;
+}
+exports.parseXSDDecimal = parseXSDDecimal;
+/**
+ * Parses integer datatypes (decimal, int, byte, nonPositiveInteger, etc...).
+ *
+ * All other values, including NaN, INF, and floating point numbers all
+ * return undefined;
+ *
+ * @param value the string to interpret as a number
+ */
+function parseXSDInteger(value) {
+    if (/^(\-|\+)?([0-9]+)$/.test(value)) {
+        const numb = Number(value);
+        return (isNaN(numb)) ? undefined : numb;
+    }
+    return undefined;
+}
+exports.parseXSDInteger = parseXSDInteger;
+//# sourceMappingURL=Parsing.js.map
 
 /***/ }),
 
@@ -102286,14 +106939,14 @@ exports.default = Util;
 var XSD_INTEGER = 'http://www.w3.org/2001/XMLSchema#integer';
 
 function Generator(options, prefixes) {
-  this._options = options || {};
+  this._options = options = options || {};
 
   prefixes = prefixes || {};
   this._prefixByIri = {};
   var prefixIris = [];
   for (var prefix in prefixes) {
     var iri = prefixes[prefix];
-    if (typeof iri === 'string') {
+    if (isString(iri)) {
       this._prefixByIri[iri] = prefix;
       prefixIris.push(iri);
     }
@@ -102301,9 +106954,9 @@ function Generator(options, prefixes) {
   var iriList = prefixIris.join('|').replace(/[\]\/\(\)\*\+\?\.\\\$]/g, '\\$&');
   this._prefixRegex = new RegExp('^(' + iriList + ')([a-zA-Z][\\-_a-zA-Z0-9]*)$');
   this._usedPrefixes = {};
+  this._indent =  isString(options.indent)  ? options.indent  : '  ';
+  this._newline = isString(options.newline) ? options.newline : '\n';
 }
-
-var INDENTATION = '  ';
 
 // Converts the parsed query object into a SPARQL query
 Generator.prototype.toQuery = function (q) {
@@ -102322,34 +106975,34 @@ Generator.prototype.toQuery = function (q) {
              '(' + this.toExpression(variable.expression) + ' AS ' + variable.variable + ')';
     }, this) + ' ';
   else if (q.template)
-    query += this.group(q.template, true) + '\n';
+    query += this.group(q.template, true) + this._newline;
 
   if (q.from)
-    query += mapJoin(q.from.default || [], '', function (g) { return 'FROM ' + this.toEntity(g) + '\n'; }, this) +
-             mapJoin(q.from.named || [], '', function (g) { return 'FROM NAMED ' + this.toEntity(g) + '\n'; }, this);
+    query += mapJoin(q.from.default || [], '', function (g) { return 'FROM ' + this.toEntity(g) + this._newline; }, this) +
+             mapJoin(q.from.named || [], '', function (g) { return 'FROM NAMED ' + this.toEntity(g) + this._newline; }, this);
   if (q.where)
-    query += 'WHERE ' + this.group(q.where, true)  + '\n';
+    query += 'WHERE ' + this.group(q.where, true) + this._newline;
 
   if (q.updates)
-    query += mapJoin(q.updates, ';\n', this.toUpdate, this);
+    query += mapJoin(q.updates, ';' + this._newline, this.toUpdate, this);
 
   if (q.group)
     query += 'GROUP BY ' + mapJoin(q.group, undefined, function (it) {
       var result = isString(it.expression) ? it.expression : '(' + this.toExpression(it.expression) + ')';
       return it.variable ? '(' + result + ' AS ' + it.variable + ')' : result;
-    }, this) + '\n';
+    }, this) + this._newline;
   if (q.having)
-    query += 'HAVING (' + mapJoin(q.having, undefined, this.toExpression, this) + ')\n';
+    query += 'HAVING (' + mapJoin(q.having, undefined, this.toExpression, this) + ')' + this._newline;
   if (q.order)
     query += 'ORDER BY ' + mapJoin(q.order, undefined, function (it) {
       var expr = '(' + this.toExpression(it.expression) + ')';
       return !it.descending ? expr : 'DESC ' + expr;
-    }, this) + '\n';
+    }, this) + this._newline;
 
   if (q.offset)
-    query += 'OFFSET ' + q.offset + '\n';
+    query += 'OFFSET ' + q.offset + this._newline;
   if (q.limit)
-    query += 'LIMIT ' + q.limit + '\n';
+    query += 'LIMIT ' + q.limit + this._newline;
 
   if (q.values)
     query += this.values(q);
@@ -102360,11 +107013,11 @@ Generator.prototype.toQuery = function (q) {
 };
 
 Generator.prototype.baseAndPrefixes = function (q) {
-  var base = q.base ? ('BASE <' + q.base + '>\n') : '';
+  var base = q.base ? ('BASE <' + q.base + '>' + this._newline) : '';
   var prefixes = '';
   for (var key in q.prefixes) {
     if (this._options.allPrefixes || this._usedPrefixes[key])
-      prefixes += 'PREFIX ' + key + ': <' + q.prefixes[key] + '>\n';
+      prefixes += 'PREFIX ' + key + ': <' + q.prefixes[key] + '>' + this._newline;
   }
   return base + prefixes;
 };
@@ -102383,7 +107036,7 @@ Generator.prototype.triple = function (t) {
 };
 
 Generator.prototype.array = function (items) {
-  return mapJoin(items, '\n', this.toPattern, this);
+  return mapJoin(items, this._newline, this.toPattern, this);
 };
 
 Generator.prototype.bgp = function (bgp) {
@@ -102401,7 +107054,7 @@ Generator.prototype.encodeTriples = function (triples) {
     if (triple.subject !== subject) {
       // Terminate previous triple
       if (subject)
-        parts.push('.\n');
+        parts.push('.' + this._newline);
       subject = triple.subject;
       predicate = triple.predicate;
       parts.push(this.toEntity(subject), ' ', this.toEntity(predicate));
@@ -102409,7 +107062,7 @@ Generator.prototype.encodeTriples = function (triples) {
     // Triple with same subject but different predicate
     else if (triple.predicate !== predicate) {
       predicate = triple.predicate;
-      parts.push(';\n', INDENTATION, this.toEntity(predicate));
+      parts.push(';' + this._newline, this._indent, this.toEntity(predicate));
     }
     // Triple with same subject and predicate
     else {
@@ -102429,7 +107082,7 @@ Generator.prototype.graph = function (graph) {
 Generator.prototype.group = function (group, inline) {
   group = inline !== true ? this.array(group.patterns || group.triples)
                           : this.toPattern(group.type !== 'group' ? group : group.patterns);
-  return group.indexOf('\n') === -1 ? '{ ' + group + ' }' : '{\n' + indent(group) + '\n}';
+  return group.indexOf(this._newline) === -1 ? '{ ' + group + ' }' : '{' + this._newline + this.indent(group) + this._newline + '}';
 };
 
 Generator.prototype.query = function (query) {
@@ -102449,7 +107102,7 @@ Generator.prototype.optional = function (optional) {
 };
 
 Generator.prototype.union = function (union) {
-  return mapJoin(union.patterns, '\nUNION\n', function (p) { return this.group(p, true); }, this);
+  return mapJoin(union.patterns, this._newline + 'UNION' + this._newline, function (p) { return this.group(p, true); }, this);
 };
 
 Generator.prototype.minus = function (minus) {
@@ -102462,13 +107115,21 @@ Generator.prototype.values = function (valuesList) {
     for (var key in values) keyHash[key] = true;
     return keyHash;
   }, {}));
+  // Check whether simple syntax can be used
+  var lparen, rparen;
+  if (keys.length === 1) {
+    lparen = rparen = '';
+  } else {
+    lparen = '(';
+    rparen = ')';
+  }
   // Create value rows
-  return 'VALUES (' + keys.join(' ') + ') {\n' +
-    mapJoin(valuesList.values, '\n', function (values) {
-      return '  (' + mapJoin(keys, undefined, function (key) {
+  return 'VALUES ' + lparen + keys.join(' ') + rparen + ' {' + this._newline +
+    mapJoin(valuesList.values, this._newline, function (values) {
+      return '  ' + lparen + mapJoin(keys, undefined, function (key) {
         return values[key] !== undefined ? this.toEntity(values[key]) : 'UNDEF';
-      }, this) + ')';
-    }, this) + '\n}';
+      }, this) + rparen;
+    }, this) + this._newline + '}';
 };
 
 Generator.prototype.service = function (service) {
@@ -102509,7 +107170,7 @@ Generator.prototype.toExpression = function (expr) {
                  (isString(args[1]) ? this.toEntity(args[1]) : '(' + this.toExpression(args[1]) + ')');
       // Unary operators
       case '!':
-        return '!' + this.toExpression(args[0]);
+        return '!(' + this.toExpression(args[0]) + ')';
       // IN and NOT IN
       case 'notin':
         operator = 'NOT IN';
@@ -102606,9 +107267,9 @@ Generator.prototype.toUpdate = function (update) {
   case 'deletewhere':
     return 'DELETE WHERE ' + this.group(update.delete, true);
   case 'insertdelete':
-    return (update.graph ? 'WITH ' + this.toEntity(update.graph) + '\n' : '') +
-           (update.delete.length ? 'DELETE ' + this.group(update.delete, true) + '\n' : '') +
-           (update.insert.length ? 'INSERT ' + this.group(update.insert, true) + '\n' : '') +
+    return (update.graph ? 'WITH ' + this.toEntity(update.graph) + this._newline : '') +
+           (update.delete.length ? 'DELETE ' + this.group(update.delete, true) + this._newline : '') +
+           (update.insert.length ? 'INSERT ' + this.group(update.insert, true) + this._newline : '') +
            'WHERE ' + this.group(update.where, true);
   case 'add':
   case 'copy':
@@ -102628,6 +107289,9 @@ Generator.prototype.toUpdate = function (update) {
   }
 };
 
+// Indents each line of the string
+Generator.prototype.indent = function(text) { return text.replace(/^/gm, this._indent); }
+
 // Checks whether the object is a string
 function isString(object) { return typeof object === 'string'; }
 
@@ -102636,12 +107300,11 @@ function mapJoin(array, sep, func, self) {
   return array.map(func, self).join(isString(sep) ? sep : ' ');
 }
 
-// Indents each line of the string
-function indent(text) { return text.replace(/^/gm, INDENTATION); }
-
 /**
  * @param options {
- *   allPrefixes: boolean
+ *   allPrefixes: boolean,
+ *   indentation: string,
+ *   newline: string
  * }
  */
 module.exports = function SparqlGenerator(options) {
@@ -102734,12 +107397,12 @@ module.exports = function SparqlGenerator(options) {
   }
 */
 var SparqlParser = (function(){
-var o=function(k,v,o,l){for(o=o||{},l=k.length;l--;o[k[l]]=v);return o},$V0=[6,12,15,24,34,43,48,97,107,110,112,113,122,123,128,297,298,299,300,301],$V1=[2,195],$V2=[97,107,110,112,113,122,123,128,297,298,299,300,301],$V3=[1,18],$V4=[1,27],$V5=[6,83],$V6=[38,39,51],$V7=[38,51],$V8=[1,55],$V9=[1,57],$Va=[1,53],$Vb=[1,56],$Vc=[28,29,292],$Vd=[13,16,285],$Ve=[109,131,295,302],$Vf=[13,16,109,131,285],$Vg=[1,79],$Vh=[1,83],$Vi=[1,85],$Vj=[109,131,295,296,302],$Vk=[13,16,109,131,285,296],$Vl=[1,91],$Vm=[2,235],$Vn=[1,90],$Vo=[13,16,28,29,80,165,214,217,218,271,272,273,274,275,276,277,278,279,280,281,282,283,284,285],$Vp=[6,38,39,51,61,68,71,79,81,83],$Vq=[6,13,16,28,38,39,51,61,68,71,79,81,83,285],$Vr=[6,13,16,28,29,31,32,38,39,41,51,61,68,71,79,80,81,83,90,106,109,122,123,125,130,157,158,160,163,164,165,182,186,207,212,214,215,217,218,222,226,230,245,250,267,271,272,273,274,275,276,277,278,279,280,281,282,283,284,285,292,303,305,306,308,309,310,311,312,313,314,315],$Vs=[1,106],$Vt=[1,107],$Vu=[6,13,16,28,29,39,41,80,83,109,157,158,160,163,164,165,214,217,218,271,272,273,274,275,276,277,278,279,280,281,282,283,284,285,303],$Vv=[28,32],$Vw=[2,292],$Vx=[1,122],$Vy=[1,120],$Vz=[6,182],$VA=[2,309],$VB=[2,297],$VC=[38,125],$VD=[6,41,68,71,79,81,83],$VE=[2,237],$VF=[1,136],$VG=[1,138],$VH=[1,148],$VI=[1,154],$VJ=[1,157],$VK=[1,153],$VL=[1,155],$VM=[1,151],$VN=[1,152],$VO=[1,158],$VP=[1,159],$VQ=[1,162],$VR=[1,163],$VS=[1,164],$VT=[1,165],$VU=[1,166],$VV=[1,167],$VW=[1,168],$VX=[1,169],$VY=[1,170],$VZ=[1,171],$V_=[1,172],$V$=[1,173],$V01=[6,61,68,71,79,81,83],$V11=[28,29,38,39,51],$V21=[13,16,28,29,80,247,248,249,251,253,254,256,257,260,262,271,272,273,274,275,276,277,278,279,280,281,282,283,284,285,315,316,317,318,319,320],$V31=[2,406],$V41=[1,186],$V51=[1,187],$V61=[1,188],$V71=[13,16,41,80,90,271,272,273,274,275,276,277,278,279,280,281,282,283,284,285],$V81=[6,106,182],$V91=[41,109],$Va1=[6,41,71,79,81,83],$Vb1=[2,321],$Vc1=[2,313],$Vd1=[1,222],$Ve1=[1,224],$Vf1=[41,109,303],$Vg1=[13,16,28,29,32,39,41,80,83,109,157,158,160,163,164,165,182,186,207,212,214,215,217,218,250,271,272,273,274,275,276,277,278,279,280,281,282,283,284,285,303],$Vh1=[13,16,28,29,31,32,39,41,80,83,90,109,157,158,160,163,164,165,182,186,207,212,214,215,217,218,222,226,230,245,250,267,271,272,273,274,275,276,277,278,279,280,281,282,283,284,285,292,303,306,309,310,311,312,313,314,315],$Vi1=[13,16,28,29,31,32,39,41,80,83,90,109,157,158,160,163,164,165,182,186,207,212,214,215,217,218,222,226,230,245,250,267,269,270,271,272,273,274,275,276,277,278,279,280,281,282,283,284,285,292,303,306,309,310,311,312,313,314,315],$Vj1=[31,32,182,222,250],$Vk1=[31,32,182,222,226,250],$Vl1=[31,32,182,222,226,230,245,250,267,279,280,281,282,283,284,309,310,311,312,313,314,315],$Vm1=[31,32,182,222,226,230,245,250,267,279,280,281,282,283,284,292,306,309,310,311,312,313,314,315],$Vn1=[1,256],$Vo1=[1,257],$Vp1=[1,259],$Vq1=[1,260],$Vr1=[1,261],$Vs1=[1,262],$Vt1=[1,264],$Vu1=[1,265],$Vv1=[2,413],$Vw1=[1,267],$Vx1=[1,268],$Vy1=[1,269],$Vz1=[1,275],$VA1=[1,270],$VB1=[1,271],$VC1=[1,272],$VD1=[1,273],$VE1=[1,274],$VF1=[1,282],$VG1=[1,293],$VH1=[6,41,79,81,83],$VI1=[1,310],$VJ1=[1,309],$VK1=[39,41,83,109,157,158,160,163,164],$VL1=[1,318],$VM1=[1,319],$VN1=[41,109,182,215,303],$VO1=[2,351],$VP1=[13,16,28,29,32,80,165,214,217,218,271,272,273,274,275,276,277,278,279,280,281,282,283,284,285],$VQ1=[13,16,28,29,32,39,41,80,83,109,157,158,160,163,164,165,182,214,215,217,218,250,271,272,273,274,275,276,277,278,279,280,281,282,283,284,285,303],$VR1=[13,16,28,29,80,207,245,247,248,249,251,253,254,256,257,260,262,271,272,273,274,275,276,277,278,279,280,281,282,283,284,285,309,315,316,317,318,319,320],$VS1=[1,343],$VT1=[1,344],$VU1=[1,346],$VV1=[1,345],$VW1=[6,13,16,28,29,31,32,39,41,68,71,74,76,79,80,81,83,109,157,158,160,163,164,165,182,214,217,218,222,226,230,245,247,248,249,250,251,253,254,256,257,260,262,267,271,272,273,274,275,276,277,278,279,280,281,282,283,284,285,292,303,306,309,310,311,312,313,314,315,316,317,318,319,320],$VX1=[1,354],$VY1=[1,353],$VZ1=[29,165],$V_1=[13,16,32,41,80,90,271,272,273,274,275,276,277,278,279,280,281,282,283,284,285],$V$1=[29,41],$V02=[2,312],$V12=[6,41,83],$V22=[6,13,16,29,41,71,79,81,83,247,248,249,251,253,254,256,257,260,262,285,315,316,317,318,319,320],$V32=[6,13,16,28,29,39,41,71,74,76,79,80,81,83,109,157,158,160,163,164,165,214,217,218,247,248,249,251,253,254,256,257,260,262,271,272,273,274,275,276,277,278,279,280,281,282,283,284,285,303,315,316,317,318,319,320],$V42=[6,13,16,28,29,41,68,71,79,81,83,247,248,249,251,253,254,256,257,260,262,285,315,316,317,318,319,320],$V52=[6,13,16,28,29,31,32,39,41,61,68,71,74,76,79,80,81,83,109,157,158,160,163,164,165,182,214,217,218,222,226,230,245,247,248,249,250,251,253,254,256,257,260,262,267,271,272,273,274,275,276,277,278,279,280,281,282,283,284,285,292,303,304,306,309,310,311,312,313,314,315,316,317,318,319,320],$V62=[13,16,29,186,207,212,285],$V72=[2,363],$V82=[1,395],$V92=[39,41,83,109,157,158,160,163,164,303],$Va2=[13,16,28,29,32,39,41,80,83,109,157,158,160,163,164,165,182,186,214,215,217,218,250,271,272,273,274,275,276,277,278,279,280,281,282,283,284,285,303],$Vb2=[13,16,28,29,80,207,245,247,248,249,251,253,254,256,257,260,262,271,272,273,274,275,276,277,278,279,280,281,282,283,284,285,292,309,315,316,317,318,319,320],$Vc2=[1,444],$Vd2=[1,441],$Ve2=[1,442],$Vf2=[13,16,28,29,39,41,80,83,109,157,158,160,163,164,165,214,217,218,271,272,273,274,275,276,277,278,279,280,281,282,283,284,285],$Vg2=[13,16,28,285],$Vh2=[13,16,28,29,39,41,80,83,109,157,158,160,163,164,165,214,217,218,271,272,273,274,275,276,277,278,279,280,281,282,283,284,285,303],$Vi2=[2,324],$Vj2=[39,41,83,109,157,158,160,163,164,182,215,303],$Vk2=[13,16,32,80,90,271,272,273,274,275,276,277,278,279,280,281,282,283,284,285],$Vl2=[6,13,16,28,29,41,74,76,79,81,83,247,248,249,251,253,254,256,257,260,262,285,315,316,317,318,319,320],$Vm2=[2,319],$Vn2=[13,16,29,186,207,285],$Vo2=[13,16,28,29,41,80,109,165,214,217,218,271,272,273,274,275,276,277,278,279,280,281,282,283,284,285],$Vp2=[13,16,28,29,32,80,165,214,217,218,271,272,273,274,275,276,277,278,279,280,281,282,283,284,285,305,306],$Vq2=[13,16,28,29,32,80,165,214,217,218,271,272,273,274,275,276,277,278,279,280,281,282,283,284,285,292,305,306,308,309],$Vr2=[1,554],$Vs2=[1,555],$Vt2=[2,307],$Vu2=[13,16,32,186,212,285];
+var o=function(k,v,o,l){for(o=o||{},l=k.length;l--;o[k[l]]=v);return o},$V0=[6,12,15,24,34,43,48,99,109,112,114,115,124,125,130,298,299,300,301,302],$V1=[2,196],$V2=[99,109,112,114,115,124,125,130,298,299,300,301,302],$V3=[1,18],$V4=[1,27],$V5=[6,83],$V6=[38,39,51],$V7=[38,51],$V8=[1,55],$V9=[1,57],$Va=[1,53],$Vb=[1,56],$Vc=[28,29,293],$Vd=[13,16,286],$Ve=[111,133,296,303],$Vf=[13,16,111,133,286],$Vg=[1,80],$Vh=[1,84],$Vi=[1,86],$Vj=[111,133,296,297,303],$Vk=[13,16,111,133,286,297],$Vl=[1,92],$Vm=[2,236],$Vn=[1,91],$Vo=[13,16,28,29,80,86,215,218,219,272,273,274,275,276,277,278,279,280,281,282,283,284,285,286],$Vp=[6,38,39,51,61,68,71,79,81,83],$Vq=[6,13,16,28,38,39,51,61,68,71,79,81,83,286],$Vr=[6,13,16,28,29,31,32,38,39,41,51,61,68,71,79,80,81,83,86,92,108,111,124,125,127,132,159,160,162,165,166,183,187,208,213,215,216,218,219,223,227,231,246,251,268,272,273,274,275,276,277,278,279,280,281,282,283,284,285,286,293,304,306,307,309,310,311,312,313,314,315,316],$Vs=[1,107],$Vt=[1,108],$Vu=[6,13,16,28,29,39,41,80,83,86,111,159,160,162,165,166,215,218,219,272,273,274,275,276,277,278,279,280,281,282,283,284,285,286,304],$Vv=[2,295],$Vw=[1,125],$Vx=[1,123],$Vy=[6,183],$Vz=[2,312],$VA=[2,300],$VB=[38,127],$VC=[6,41,68,71,79,81,83],$VD=[2,238],$VE=[1,139],$VF=[1,141],$VG=[1,151],$VH=[1,157],$VI=[1,160],$VJ=[1,156],$VK=[1,158],$VL=[1,154],$VM=[1,155],$VN=[1,161],$VO=[1,162],$VP=[1,165],$VQ=[1,166],$VR=[1,167],$VS=[1,168],$VT=[1,169],$VU=[1,170],$VV=[1,171],$VW=[1,172],$VX=[1,173],$VY=[1,174],$VZ=[1,175],$V_=[1,176],$V$=[6,61,68,71,79,81,83],$V01=[28,29,38,39,51],$V11=[13,16,28,29,80,248,249,250,252,254,255,257,258,261,263,272,273,274,275,276,277,278,279,280,281,282,283,284,285,286,316,317,318,319,320,321],$V21=[2,409],$V31=[1,189],$V41=[1,190],$V51=[1,191],$V61=[13,16,41,80,92,272,273,274,275,276,277,278,279,280,281,282,283,284,285,286],$V71=[41,86],$V81=[28,32],$V91=[6,108,183],$Va1=[41,111],$Vb1=[6,41,71,79,81,83],$Vc1=[2,324],$Vd1=[2,316],$Ve1=[1,226],$Vf1=[1,228],$Vg1=[41,111,304],$Vh1=[13,16,28,29,32,39,41,80,83,86,111,159,160,162,165,166,183,187,208,213,215,216,218,219,251,272,273,274,275,276,277,278,279,280,281,282,283,284,285,286,304],$Vi1=[13,16,28,29,31,32,39,41,80,83,86,92,111,159,160,162,165,166,183,187,208,213,215,216,218,219,223,227,231,246,251,268,272,273,274,275,276,277,278,279,280,281,282,283,284,285,286,293,304,307,310,311,312,313,314,315,316],$Vj1=[13,16,28,29,31,32,39,41,80,83,86,92,111,159,160,162,165,166,183,187,208,213,215,216,218,219,223,227,231,246,251,268,270,271,272,273,274,275,276,277,278,279,280,281,282,283,284,285,286,293,304,307,310,311,312,313,314,315,316],$Vk1=[31,32,183,223,251],$Vl1=[31,32,183,223,227,251],$Vm1=[31,32,183,223,227,231,246,251,268,280,281,282,283,284,285,310,311,312,313,314,315,316],$Vn1=[31,32,183,223,227,231,246,251,268,280,281,282,283,284,285,293,307,310,311,312,313,314,315,316],$Vo1=[1,260],$Vp1=[1,261],$Vq1=[1,263],$Vr1=[1,264],$Vs1=[1,265],$Vt1=[1,266],$Vu1=[1,268],$Vv1=[1,269],$Vw1=[2,416],$Vx1=[1,271],$Vy1=[1,272],$Vz1=[1,273],$VA1=[1,279],$VB1=[1,274],$VC1=[1,275],$VD1=[1,276],$VE1=[1,277],$VF1=[1,278],$VG1=[1,286],$VH1=[1,299],$VI1=[6,41,79,81,83],$VJ1=[1,316],$VK1=[1,315],$VL1=[39,41,83,111,159,160,162,165,166],$VM1=[1,324],$VN1=[1,325],$VO1=[41,111,183,216,304],$VP1=[2,354],$VQ1=[13,16,28,29,32,80,86,215,218,219,272,273,274,275,276,277,278,279,280,281,282,283,284,285,286],$VR1=[13,16,28,29,32,39,41,80,83,86,111,159,160,162,165,166,183,215,216,218,219,251,272,273,274,275,276,277,278,279,280,281,282,283,284,285,286,304],$VS1=[13,16,28,29,80,208,246,248,249,250,252,254,255,257,258,261,263,272,273,274,275,276,277,278,279,280,281,282,283,284,285,286,310,316,317,318,319,320,321],$VT1=[1,349],$VU1=[1,350],$VV1=[1,352],$VW1=[1,351],$VX1=[6,13,16,28,29,31,32,39,41,68,71,74,76,79,80,81,83,86,111,159,160,162,165,166,183,215,218,219,223,227,231,246,248,249,250,251,252,254,255,257,258,261,263,268,272,273,274,275,276,277,278,279,280,281,282,283,284,285,286,293,304,307,310,311,312,313,314,315,316,317,318,319,320,321],$VY1=[1,360],$VZ1=[1,359],$V_1=[29,86],$V$1=[13,16,32,41,80,92,272,273,274,275,276,277,278,279,280,281,282,283,284,285,286],$V02=[29,41],$V12=[2,315],$V22=[6,41,83],$V32=[6,13,16,29,41,71,79,81,83,248,249,250,252,254,255,257,258,261,263,286,316,317,318,319,320,321],$V42=[6,13,16,28,29,39,41,71,74,76,79,80,81,83,86,111,159,160,162,165,166,215,218,219,248,249,250,252,254,255,257,258,261,263,272,273,274,275,276,277,278,279,280,281,282,283,284,285,286,304,316,317,318,319,320,321],$V52=[6,13,16,28,29,41,68,71,79,81,83,248,249,250,252,254,255,257,258,261,263,286,316,317,318,319,320,321],$V62=[6,13,16,28,29,31,32,39,41,61,68,71,74,76,79,80,81,83,86,111,159,160,162,165,166,183,215,218,219,223,227,231,246,248,249,250,251,252,254,255,257,258,261,263,268,272,273,274,275,276,277,278,279,280,281,282,283,284,285,286,293,304,305,307,310,311,312,313,314,315,316,317,318,319,320,321],$V72=[13,16,29,187,208,213,286],$V82=[2,366],$V92=[1,401],$Va2=[39,41,83,111,159,160,162,165,166,304],$Vb2=[13,16,28,29,32,39,41,80,83,86,111,159,160,162,165,166,183,187,215,216,218,219,251,272,273,274,275,276,277,278,279,280,281,282,283,284,285,286,304],$Vc2=[13,16,28,29,80,208,246,248,249,250,252,254,255,257,258,261,263,272,273,274,275,276,277,278,279,280,281,282,283,284,285,286,293,310,316,317,318,319,320,321],$Vd2=[1,450],$Ve2=[1,447],$Vf2=[1,448],$Vg2=[13,16,28,29,39,41,80,83,86,111,159,160,162,165,166,215,218,219,272,273,274,275,276,277,278,279,280,281,282,283,284,285,286],$Vh2=[13,16,28,286],$Vi2=[13,16,28,29,39,41,80,83,86,111,159,160,162,165,166,215,218,219,272,273,274,275,276,277,278,279,280,281,282,283,284,285,286,304],$Vj2=[2,327],$Vk2=[39,41,83,111,159,160,162,165,166,183,216,304],$Vl2=[6,13,16,28,29,41,74,76,79,81,83,248,249,250,252,254,255,257,258,261,263,286,316,317,318,319,320,321],$Vm2=[2,322],$Vn2=[13,16,29,187,208,286],$Vo2=[13,16,32,80,92,272,273,274,275,276,277,278,279,280,281,282,283,284,285,286],$Vp2=[13,16,28,29,41,80,86,111,215,218,219,272,273,274,275,276,277,278,279,280,281,282,283,284,285,286],$Vq2=[13,16,28,29,32,80,86,215,218,219,272,273,274,275,276,277,278,279,280,281,282,283,284,285,286,306,307],$Vr2=[13,16,28,29,32,80,86,215,218,219,272,273,274,275,276,277,278,279,280,281,282,283,284,285,286,293,306,307,309,310],$Vs2=[1,561],$Vt2=[1,562],$Vu2=[2,310],$Vv2=[13,16,32,187,213,286];
 var parser = {trace: function trace () { },
 yy: {},
-symbols_: {"error":2,"QueryOrUpdate":3,"Prologue":4,"QueryOrUpdate_group0":5,"EOF":6,"Prologue_repetition0":7,"Query":8,"Query_group0":9,"Query_option0":10,"BaseDecl":11,"BASE":12,"IRIREF":13,"PrefixDecl":14,"PREFIX":15,"PNAME_NS":16,"SelectQuery":17,"SelectClause":18,"SelectQuery_repetition0":19,"WhereClause":20,"SolutionModifier":21,"SubSelect":22,"SubSelect_option0":23,"SELECT":24,"SelectClause_option0":25,"SelectClause_group0":26,"SelectClauseItem":27,"VAR":28,"(":29,"Expression":30,"AS":31,")":32,"ConstructQuery":33,"CONSTRUCT":34,"ConstructTemplate":35,"ConstructQuery_repetition0":36,"ConstructQuery_repetition1":37,"WHERE":38,"{":39,"ConstructQuery_option0":40,"}":41,"DescribeQuery":42,"DESCRIBE":43,"DescribeQuery_group0":44,"DescribeQuery_repetition0":45,"DescribeQuery_option0":46,"AskQuery":47,"ASK":48,"AskQuery_repetition0":49,"DatasetClause":50,"FROM":51,"DatasetClause_option0":52,"iri":53,"WhereClause_option0":54,"GroupGraphPattern":55,"SolutionModifier_option0":56,"SolutionModifier_option1":57,"SolutionModifier_option2":58,"SolutionModifier_option3":59,"GroupClause":60,"GROUP":61,"BY":62,"GroupClause_repetition_plus0":63,"GroupCondition":64,"BuiltInCall":65,"FunctionCall":66,"HavingClause":67,"HAVING":68,"HavingClause_repetition_plus0":69,"OrderClause":70,"ORDER":71,"OrderClause_repetition_plus0":72,"OrderCondition":73,"ASC":74,"BrackettedExpression":75,"DESC":76,"Constraint":77,"LimitOffsetClauses":78,"LIMIT":79,"INTEGER":80,"OFFSET":81,"ValuesClause":82,"VALUES":83,"InlineData":84,"InlineData_repetition0":85,"InlineData_repetition1":86,"InlineData_repetition2":87,"DataBlockValue":88,"Literal":89,"UNDEF":90,"DataBlockValueList":91,"DataBlockValueList_repetition0":92,"Update":93,"Update_repetition0":94,"Update1":95,"Update_option0":96,"LOAD":97,"Update1_option0":98,"Update1_option1":99,"Update1_group0":100,"Update1_option2":101,"GraphRefAll":102,"Update1_group1":103,"Update1_option3":104,"GraphOrDefault":105,"TO":106,"CREATE":107,"Update1_option4":108,"GRAPH":109,"INSERTDATA":110,"QuadPattern":111,"DELETEDATA":112,"DELETEWHERE":113,"Update1_option5":114,"InsertClause":115,"Update1_option6":116,"Update1_repetition0":117,"Update1_option7":118,"DeleteClause":119,"Update1_option8":120,"Update1_repetition1":121,"DELETE":122,"INSERT":123,"UsingClause":124,"USING":125,"UsingClause_option0":126,"WithClause":127,"WITH":128,"IntoGraphClause":129,"INTO":130,"DEFAULT":131,"GraphOrDefault_option0":132,"GraphRefAll_group0":133,"QuadPattern_option0":134,"QuadPattern_repetition0":135,"QuadsNotTriples":136,"QuadsNotTriples_group0":137,"QuadsNotTriples_option0":138,"QuadsNotTriples_option1":139,"QuadsNotTriples_option2":140,"TriplesTemplate":141,"TriplesTemplate_repetition0":142,"TriplesSameSubject":143,"TriplesTemplate_option0":144,"GroupGraphPatternSub":145,"GroupGraphPatternSub_option0":146,"GroupGraphPatternSub_repetition0":147,"GroupGraphPatternSubTail":148,"GraphPatternNotTriples":149,"GroupGraphPatternSubTail_option0":150,"GroupGraphPatternSubTail_option1":151,"TriplesBlock":152,"TriplesBlock_repetition0":153,"TriplesSameSubjectPath":154,"TriplesBlock_option0":155,"GraphPatternNotTriples_repetition0":156,"OPTIONAL":157,"MINUS":158,"GraphPatternNotTriples_group0":159,"SERVICE":160,"GraphPatternNotTriples_option0":161,"GraphPatternNotTriples_group1":162,"FILTER":163,"BIND":164,"NIL":165,"FunctionCall_option0":166,"FunctionCall_repetition0":167,"ExpressionList":168,"ExpressionList_repetition0":169,"ConstructTemplate_option0":170,"ConstructTriples":171,"ConstructTriples_repetition0":172,"ConstructTriples_option0":173,"VarOrTerm":174,"PropertyListNotEmpty":175,"TriplesNode":176,"PropertyList":177,"PropertyList_option0":178,"VerbObjectList":179,"PropertyListNotEmpty_repetition0":180,"SemiOptionalVerbObjectList":181,";":182,"SemiOptionalVerbObjectList_option0":183,"Verb":184,"ObjectList":185,"a":186,"ObjectList_repetition0":187,"GraphNode":188,"PropertyListPathNotEmpty":189,"TriplesNodePath":190,"TriplesSameSubjectPath_option0":191,"PropertyListPathNotEmpty_group0":192,"PropertyListPathNotEmpty_repetition0":193,"GraphNodePath":194,"PropertyListPathNotEmpty_repetition1":195,"PropertyListPathNotEmptyTail":196,"PropertyListPathNotEmptyTail_group0":197,"Path":198,"Path_repetition0":199,"PathSequence":200,"PathSequence_repetition0":201,"PathEltOrInverse":202,"PathElt":203,"PathPrimary":204,"PathElt_option0":205,"PathEltOrInverse_option0":206,"!":207,"PathNegatedPropertySet":208,"PathOneInPropertySet":209,"PathNegatedPropertySet_repetition0":210,"PathNegatedPropertySet_option0":211,"^":212,"TriplesNode_repetition_plus0":213,"[":214,"]":215,"TriplesNodePath_repetition_plus0":216,"BLANK_NODE_LABEL":217,"ANON":218,"ConditionalAndExpression":219,"Expression_repetition0":220,"ExpressionTail":221,"||":222,"RelationalExpression":223,"ConditionalAndExpression_repetition0":224,"ConditionalAndExpressionTail":225,"&&":226,"AdditiveExpression":227,"RelationalExpression_group0":228,"RelationalExpression_option0":229,"IN":230,"MultiplicativeExpression":231,"AdditiveExpression_repetition0":232,"AdditiveExpressionTail":233,"AdditiveExpressionTail_group0":234,"NumericLiteralPositive":235,"AdditiveExpressionTail_repetition0":236,"NumericLiteralNegative":237,"AdditiveExpressionTail_repetition1":238,"UnaryExpression":239,"MultiplicativeExpression_repetition0":240,"MultiplicativeExpressionTail":241,"MultiplicativeExpressionTail_group0":242,"UnaryExpression_option0":243,"PrimaryExpression":244,"-":245,"Aggregate":246,"FUNC_ARITY0":247,"FUNC_ARITY1":248,"FUNC_ARITY2":249,",":250,"IF":251,"BuiltInCall_group0":252,"BOUND":253,"BNODE":254,"BuiltInCall_option0":255,"EXISTS":256,"COUNT":257,"Aggregate_option0":258,"Aggregate_group0":259,"FUNC_AGGREGATE":260,"Aggregate_option1":261,"GROUP_CONCAT":262,"Aggregate_option2":263,"Aggregate_option3":264,"GroupConcatSeparator":265,"SEPARATOR":266,"=":267,"String":268,"LANGTAG":269,"^^":270,"DECIMAL":271,"DOUBLE":272,"true":273,"false":274,"STRING_LITERAL1":275,"STRING_LITERAL2":276,"STRING_LITERAL_LONG1":277,"STRING_LITERAL_LONG2":278,"INTEGER_POSITIVE":279,"DECIMAL_POSITIVE":280,"DOUBLE_POSITIVE":281,"INTEGER_NEGATIVE":282,"DECIMAL_NEGATIVE":283,"DOUBLE_NEGATIVE":284,"PNAME_LN":285,"QueryOrUpdate_group0_option0":286,"Prologue_repetition0_group0":287,"SelectClause_option0_group0":288,"DISTINCT":289,"REDUCED":290,"SelectClause_group0_repetition_plus0":291,"*":292,"DescribeQuery_group0_repetition_plus0_group0":293,"DescribeQuery_group0_repetition_plus0":294,"NAMED":295,"SILENT":296,"CLEAR":297,"DROP":298,"ADD":299,"MOVE":300,"COPY":301,"ALL":302,".":303,"UNION":304,"|":305,"/":306,"PathElt_option0_group0":307,"?":308,"+":309,"!=":310,"<":311,">":312,"<=":313,">=":314,"NOT":315,"CONCAT":316,"COALESCE":317,"SUBSTR":318,"REGEX":319,"REPLACE":320,"$accept":0,"$end":1},
-terminals_: {2:"error",6:"EOF",12:"BASE",13:"IRIREF",15:"PREFIX",16:"PNAME_NS",24:"SELECT",28:"VAR",29:"(",31:"AS",32:")",34:"CONSTRUCT",38:"WHERE",39:"{",41:"}",43:"DESCRIBE",48:"ASK",51:"FROM",61:"GROUP",62:"BY",68:"HAVING",71:"ORDER",74:"ASC",76:"DESC",79:"LIMIT",80:"INTEGER",81:"OFFSET",83:"VALUES",90:"UNDEF",97:"LOAD",106:"TO",107:"CREATE",109:"GRAPH",110:"INSERTDATA",112:"DELETEDATA",113:"DELETEWHERE",122:"DELETE",123:"INSERT",125:"USING",128:"WITH",130:"INTO",131:"DEFAULT",157:"OPTIONAL",158:"MINUS",160:"SERVICE",163:"FILTER",164:"BIND",165:"NIL",182:";",186:"a",207:"!",212:"^",214:"[",215:"]",217:"BLANK_NODE_LABEL",218:"ANON",222:"||",226:"&&",230:"IN",245:"-",247:"FUNC_ARITY0",248:"FUNC_ARITY1",249:"FUNC_ARITY2",250:",",251:"IF",253:"BOUND",254:"BNODE",256:"EXISTS",257:"COUNT",260:"FUNC_AGGREGATE",262:"GROUP_CONCAT",266:"SEPARATOR",267:"=",269:"LANGTAG",270:"^^",271:"DECIMAL",272:"DOUBLE",273:"true",274:"false",275:"STRING_LITERAL1",276:"STRING_LITERAL2",277:"STRING_LITERAL_LONG1",278:"STRING_LITERAL_LONG2",279:"INTEGER_POSITIVE",280:"DECIMAL_POSITIVE",281:"DOUBLE_POSITIVE",282:"INTEGER_NEGATIVE",283:"DECIMAL_NEGATIVE",284:"DOUBLE_NEGATIVE",285:"PNAME_LN",289:"DISTINCT",290:"REDUCED",292:"*",295:"NAMED",296:"SILENT",297:"CLEAR",298:"DROP",299:"ADD",300:"MOVE",301:"COPY",302:"ALL",303:".",304:"UNION",305:"|",306:"/",308:"?",309:"+",310:"!=",311:"<",312:">",313:"<=",314:">=",315:"NOT",316:"CONCAT",317:"COALESCE",318:"SUBSTR",319:"REGEX",320:"REPLACE"},
-productions_: [0,[3,3],[4,1],[8,2],[11,2],[14,3],[17,4],[22,4],[18,3],[27,1],[27,5],[33,5],[33,7],[42,5],[47,4],[50,3],[20,2],[21,4],[60,3],[64,1],[64,1],[64,3],[64,5],[64,1],[67,2],[70,3],[73,2],[73,2],[73,1],[73,1],[78,2],[78,2],[78,4],[78,4],[82,2],[84,4],[84,6],[88,1],[88,1],[88,1],[91,3],[93,3],[95,4],[95,3],[95,5],[95,4],[95,2],[95,2],[95,2],[95,6],[95,6],[119,2],[115,2],[124,3],[127,2],[129,3],[105,1],[105,2],[102,2],[102,1],[111,4],[136,7],[141,3],[55,3],[55,3],[145,2],[148,3],[152,3],[149,2],[149,2],[149,2],[149,3],[149,4],[149,2],[149,6],[149,1],[77,1],[77,1],[77,1],[66,2],[66,6],[168,1],[168,4],[35,3],[171,3],[143,2],[143,2],[177,1],[175,2],[181,2],[179,2],[184,1],[184,1],[184,1],[185,2],[154,2],[154,2],[189,4],[196,1],[196,3],[198,2],[200,2],[203,2],[202,2],[204,1],[204,1],[204,2],[204,3],[208,1],[208,1],[208,4],[209,1],[209,1],[209,2],[209,2],[176,3],[176,3],[190,3],[190,3],[188,1],[188,1],[194,1],[194,1],[174,1],[174,1],[174,1],[174,1],[174,1],[174,1],[30,2],[221,2],[219,2],[225,2],[223,1],[223,3],[223,4],[227,2],[233,2],[233,2],[233,2],[231,2],[241,2],[239,2],[239,2],[239,2],[244,1],[244,1],[244,1],[244,1],[244,1],[244,1],[75,3],[65,1],[65,2],[65,4],[65,6],[65,8],[65,2],[65,4],[65,2],[65,4],[65,3],[246,5],[246,5],[246,6],[265,4],[89,1],[89,2],[89,3],[89,1],[89,1],[89,1],[89,1],[89,1],[89,1],[89,1],[268,1],[268,1],[268,1],[268,1],[235,1],[235,1],[235,1],[237,1],[237,1],[237,1],[53,1],[53,1],[53,1],[286,0],[286,1],[5,1],[5,1],[287,1],[287,1],[7,0],[7,2],[9,1],[9,1],[9,1],[9,1],[10,0],[10,1],[19,0],[19,2],[23,0],[23,1],[288,1],[288,1],[25,0],[25,1],[291,1],[291,2],[26,1],[26,1],[36,0],[36,2],[37,0],[37,2],[40,0],[40,1],[293,1],[293,1],[294,1],[294,2],[44,1],[44,1],[45,0],[45,2],[46,0],[46,1],[49,0],[49,2],[52,0],[52,1],[54,0],[54,1],[56,0],[56,1],[57,0],[57,1],[58,0],[58,1],[59,0],[59,1],[63,1],[63,2],[69,1],[69,2],[72,1],[72,2],[85,0],[85,2],[86,0],[86,2],[87,0],[87,2],[92,0],[92,2],[94,0],[94,4],[96,0],[96,2],[98,0],[98,1],[99,0],[99,1],[100,1],[100,1],[101,0],[101,1],[103,1],[103,1],[103,1],[104,0],[104,1],[108,0],[108,1],[114,0],[114,1],[116,0],[116,1],[117,0],[117,2],[118,0],[118,1],[120,0],[120,1],[121,0],[121,2],[126,0],[126,1],[132,0],[132,1],[133,1],[133,1],[133,1],[134,0],[134,1],[135,0],[135,2],[137,1],[137,1],[138,0],[138,1],[139,0],[139,1],[140,0],[140,1],[142,0],[142,3],[144,0],[144,1],[146,0],[146,1],[147,0],[147,2],[150,0],[150,1],[151,0],[151,1],[153,0],[153,3],[155,0],[155,1],[156,0],[156,3],[159,1],[159,1],[161,0],[161,1],[162,1],[162,1],[166,0],[166,1],[167,0],[167,3],[169,0],[169,3],[170,0],[170,1],[172,0],[172,3],[173,0],[173,1],[178,0],[178,1],[180,0],[180,2],[183,0],[183,1],[187,0],[187,3],[191,0],[191,1],[192,1],[192,1],[193,0],[193,3],[195,0],[195,2],[197,1],[197,1],[199,0],[199,3],[201,0],[201,3],[307,1],[307,1],[307,1],[205,0],[205,1],[206,0],[206,1],[210,0],[210,3],[211,0],[211,1],[213,1],[213,2],[216,1],[216,2],[220,0],[220,2],[224,0],[224,2],[228,1],[228,1],[228,1],[228,1],[228,1],[228,1],[229,0],[229,1],[232,0],[232,2],[234,1],[234,1],[236,0],[236,2],[238,0],[238,2],[240,0],[240,2],[242,1],[242,1],[243,0],[243,1],[252,1],[252,1],[252,1],[252,1],[252,1],[255,0],[255,1],[258,0],[258,1],[259,1],[259,1],[261,0],[261,1],[263,0],[263,1],[264,0],[264,1]],
+symbols_: {"error":2,"QueryOrUpdate":3,"Prologue":4,"QueryOrUpdate_group0":5,"EOF":6,"Prologue_repetition0":7,"Query":8,"Query_group0":9,"Query_option0":10,"BaseDecl":11,"BASE":12,"IRIREF":13,"PrefixDecl":14,"PREFIX":15,"PNAME_NS":16,"SelectQuery":17,"SelectClause":18,"SelectQuery_repetition0":19,"WhereClause":20,"SolutionModifier":21,"SubSelect":22,"SubSelect_option0":23,"SELECT":24,"SelectClause_option0":25,"SelectClause_group0":26,"SelectClauseItem":27,"VAR":28,"(":29,"Expression":30,"AS":31,")":32,"ConstructQuery":33,"CONSTRUCT":34,"ConstructTemplate":35,"ConstructQuery_repetition0":36,"ConstructQuery_repetition1":37,"WHERE":38,"{":39,"ConstructQuery_option0":40,"}":41,"DescribeQuery":42,"DESCRIBE":43,"DescribeQuery_group0":44,"DescribeQuery_repetition0":45,"DescribeQuery_option0":46,"AskQuery":47,"ASK":48,"AskQuery_repetition0":49,"DatasetClause":50,"FROM":51,"DatasetClause_option0":52,"iri":53,"WhereClause_option0":54,"GroupGraphPattern":55,"SolutionModifier_option0":56,"SolutionModifier_option1":57,"SolutionModifier_option2":58,"SolutionModifier_option3":59,"GroupClause":60,"GROUP":61,"BY":62,"GroupClause_repetition_plus0":63,"GroupCondition":64,"BuiltInCall":65,"FunctionCall":66,"HavingClause":67,"HAVING":68,"HavingClause_repetition_plus0":69,"OrderClause":70,"ORDER":71,"OrderClause_repetition_plus0":72,"OrderCondition":73,"ASC":74,"BrackettedExpression":75,"DESC":76,"Constraint":77,"LimitOffsetClauses":78,"LIMIT":79,"INTEGER":80,"OFFSET":81,"ValuesClause":82,"VALUES":83,"InlineData":84,"InlineData_repetition0":85,"NIL":86,"InlineData_repetition1":87,"InlineData_repetition_plus2":88,"InlineData_repetition3":89,"DataBlockValue":90,"Literal":91,"UNDEF":92,"DataBlockValueList":93,"DataBlockValueList_repetition_plus0":94,"Update":95,"Update_repetition0":96,"Update1":97,"Update_option0":98,"LOAD":99,"Update1_option0":100,"Update1_option1":101,"Update1_group0":102,"Update1_option2":103,"GraphRefAll":104,"Update1_group1":105,"Update1_option3":106,"GraphOrDefault":107,"TO":108,"CREATE":109,"Update1_option4":110,"GRAPH":111,"INSERTDATA":112,"QuadPattern":113,"DELETEDATA":114,"DELETEWHERE":115,"Update1_option5":116,"InsertClause":117,"Update1_option6":118,"Update1_repetition0":119,"Update1_option7":120,"DeleteClause":121,"Update1_option8":122,"Update1_repetition1":123,"DELETE":124,"INSERT":125,"UsingClause":126,"USING":127,"UsingClause_option0":128,"WithClause":129,"WITH":130,"IntoGraphClause":131,"INTO":132,"DEFAULT":133,"GraphOrDefault_option0":134,"GraphRefAll_group0":135,"QuadPattern_option0":136,"QuadPattern_repetition0":137,"QuadsNotTriples":138,"QuadsNotTriples_group0":139,"QuadsNotTriples_option0":140,"QuadsNotTriples_option1":141,"QuadsNotTriples_option2":142,"TriplesTemplate":143,"TriplesTemplate_repetition0":144,"TriplesSameSubject":145,"TriplesTemplate_option0":146,"GroupGraphPatternSub":147,"GroupGraphPatternSub_option0":148,"GroupGraphPatternSub_repetition0":149,"GroupGraphPatternSubTail":150,"GraphPatternNotTriples":151,"GroupGraphPatternSubTail_option0":152,"GroupGraphPatternSubTail_option1":153,"TriplesBlock":154,"TriplesBlock_repetition0":155,"TriplesSameSubjectPath":156,"TriplesBlock_option0":157,"GraphPatternNotTriples_repetition0":158,"OPTIONAL":159,"MINUS":160,"GraphPatternNotTriples_group0":161,"SERVICE":162,"GraphPatternNotTriples_option0":163,"GraphPatternNotTriples_group1":164,"FILTER":165,"BIND":166,"FunctionCall_option0":167,"FunctionCall_repetition0":168,"ExpressionList":169,"ExpressionList_repetition0":170,"ConstructTemplate_option0":171,"ConstructTriples":172,"ConstructTriples_repetition0":173,"ConstructTriples_option0":174,"VarOrTerm":175,"PropertyListNotEmpty":176,"TriplesNode":177,"PropertyList":178,"PropertyList_option0":179,"VerbObjectList":180,"PropertyListNotEmpty_repetition0":181,"SemiOptionalVerbObjectList":182,";":183,"SemiOptionalVerbObjectList_option0":184,"Verb":185,"ObjectList":186,"a":187,"ObjectList_repetition0":188,"GraphNode":189,"PropertyListPathNotEmpty":190,"TriplesNodePath":191,"TriplesSameSubjectPath_option0":192,"PropertyListPathNotEmpty_group0":193,"PropertyListPathNotEmpty_repetition0":194,"GraphNodePath":195,"PropertyListPathNotEmpty_repetition1":196,"PropertyListPathNotEmptyTail":197,"PropertyListPathNotEmptyTail_group0":198,"Path":199,"Path_repetition0":200,"PathSequence":201,"PathSequence_repetition0":202,"PathEltOrInverse":203,"PathElt":204,"PathPrimary":205,"PathElt_option0":206,"PathEltOrInverse_option0":207,"!":208,"PathNegatedPropertySet":209,"PathOneInPropertySet":210,"PathNegatedPropertySet_repetition0":211,"PathNegatedPropertySet_option0":212,"^":213,"TriplesNode_repetition_plus0":214,"[":215,"]":216,"TriplesNodePath_repetition_plus0":217,"BLANK_NODE_LABEL":218,"ANON":219,"ConditionalAndExpression":220,"Expression_repetition0":221,"ExpressionTail":222,"||":223,"RelationalExpression":224,"ConditionalAndExpression_repetition0":225,"ConditionalAndExpressionTail":226,"&&":227,"AdditiveExpression":228,"RelationalExpression_group0":229,"RelationalExpression_option0":230,"IN":231,"MultiplicativeExpression":232,"AdditiveExpression_repetition0":233,"AdditiveExpressionTail":234,"AdditiveExpressionTail_group0":235,"NumericLiteralPositive":236,"AdditiveExpressionTail_repetition0":237,"NumericLiteralNegative":238,"AdditiveExpressionTail_repetition1":239,"UnaryExpression":240,"MultiplicativeExpression_repetition0":241,"MultiplicativeExpressionTail":242,"MultiplicativeExpressionTail_group0":243,"UnaryExpression_option0":244,"PrimaryExpression":245,"-":246,"Aggregate":247,"FUNC_ARITY0":248,"FUNC_ARITY1":249,"FUNC_ARITY2":250,",":251,"IF":252,"BuiltInCall_group0":253,"BOUND":254,"BNODE":255,"BuiltInCall_option0":256,"EXISTS":257,"COUNT":258,"Aggregate_option0":259,"Aggregate_group0":260,"FUNC_AGGREGATE":261,"Aggregate_option1":262,"GROUP_CONCAT":263,"Aggregate_option2":264,"Aggregate_option3":265,"GroupConcatSeparator":266,"SEPARATOR":267,"=":268,"String":269,"LANGTAG":270,"^^":271,"DECIMAL":272,"DOUBLE":273,"true":274,"false":275,"STRING_LITERAL1":276,"STRING_LITERAL2":277,"STRING_LITERAL_LONG1":278,"STRING_LITERAL_LONG2":279,"INTEGER_POSITIVE":280,"DECIMAL_POSITIVE":281,"DOUBLE_POSITIVE":282,"INTEGER_NEGATIVE":283,"DECIMAL_NEGATIVE":284,"DOUBLE_NEGATIVE":285,"PNAME_LN":286,"QueryOrUpdate_group0_option0":287,"Prologue_repetition0_group0":288,"SelectClause_option0_group0":289,"DISTINCT":290,"REDUCED":291,"SelectClause_group0_repetition_plus0":292,"*":293,"DescribeQuery_group0_repetition_plus0_group0":294,"DescribeQuery_group0_repetition_plus0":295,"NAMED":296,"SILENT":297,"CLEAR":298,"DROP":299,"ADD":300,"MOVE":301,"COPY":302,"ALL":303,".":304,"UNION":305,"|":306,"/":307,"PathElt_option0_group0":308,"?":309,"+":310,"!=":311,"<":312,">":313,"<=":314,">=":315,"NOT":316,"CONCAT":317,"COALESCE":318,"SUBSTR":319,"REGEX":320,"REPLACE":321,"$accept":0,"$end":1},
+terminals_: {2:"error",6:"EOF",12:"BASE",13:"IRIREF",15:"PREFIX",16:"PNAME_NS",24:"SELECT",28:"VAR",29:"(",31:"AS",32:")",34:"CONSTRUCT",38:"WHERE",39:"{",41:"}",43:"DESCRIBE",48:"ASK",51:"FROM",61:"GROUP",62:"BY",68:"HAVING",71:"ORDER",74:"ASC",76:"DESC",79:"LIMIT",80:"INTEGER",81:"OFFSET",83:"VALUES",86:"NIL",92:"UNDEF",99:"LOAD",108:"TO",109:"CREATE",111:"GRAPH",112:"INSERTDATA",114:"DELETEDATA",115:"DELETEWHERE",124:"DELETE",125:"INSERT",127:"USING",130:"WITH",132:"INTO",133:"DEFAULT",159:"OPTIONAL",160:"MINUS",162:"SERVICE",165:"FILTER",166:"BIND",183:";",187:"a",208:"!",213:"^",215:"[",216:"]",218:"BLANK_NODE_LABEL",219:"ANON",223:"||",227:"&&",231:"IN",246:"-",248:"FUNC_ARITY0",249:"FUNC_ARITY1",250:"FUNC_ARITY2",251:",",252:"IF",254:"BOUND",255:"BNODE",257:"EXISTS",258:"COUNT",261:"FUNC_AGGREGATE",263:"GROUP_CONCAT",267:"SEPARATOR",268:"=",270:"LANGTAG",271:"^^",272:"DECIMAL",273:"DOUBLE",274:"true",275:"false",276:"STRING_LITERAL1",277:"STRING_LITERAL2",278:"STRING_LITERAL_LONG1",279:"STRING_LITERAL_LONG2",280:"INTEGER_POSITIVE",281:"DECIMAL_POSITIVE",282:"DOUBLE_POSITIVE",283:"INTEGER_NEGATIVE",284:"DECIMAL_NEGATIVE",285:"DOUBLE_NEGATIVE",286:"PNAME_LN",290:"DISTINCT",291:"REDUCED",293:"*",296:"NAMED",297:"SILENT",298:"CLEAR",299:"DROP",300:"ADD",301:"MOVE",302:"COPY",303:"ALL",304:".",305:"UNION",306:"|",307:"/",309:"?",310:"+",311:"!=",312:"<",313:">",314:"<=",315:">=",316:"NOT",317:"CONCAT",318:"COALESCE",319:"SUBSTR",320:"REGEX",321:"REPLACE"},
+productions_: [0,[3,3],[4,1],[8,2],[11,2],[14,3],[17,4],[22,4],[18,3],[27,1],[27,5],[33,5],[33,7],[42,5],[47,4],[50,3],[20,2],[21,4],[60,3],[64,1],[64,1],[64,3],[64,5],[64,1],[67,2],[70,3],[73,2],[73,2],[73,1],[73,1],[78,2],[78,2],[78,4],[78,4],[82,2],[84,4],[84,4],[84,6],[90,1],[90,1],[90,1],[93,3],[95,3],[97,4],[97,3],[97,5],[97,4],[97,2],[97,2],[97,2],[97,6],[97,6],[121,2],[117,2],[126,3],[129,2],[131,3],[107,1],[107,2],[104,2],[104,1],[113,4],[138,7],[143,3],[55,3],[55,3],[147,2],[150,3],[154,3],[151,2],[151,2],[151,2],[151,3],[151,4],[151,2],[151,6],[151,1],[77,1],[77,1],[77,1],[66,2],[66,6],[169,1],[169,4],[35,3],[172,3],[145,2],[145,2],[178,1],[176,2],[182,2],[180,2],[185,1],[185,1],[185,1],[186,2],[156,2],[156,2],[190,4],[197,1],[197,3],[199,2],[201,2],[204,2],[203,2],[205,1],[205,1],[205,2],[205,3],[209,1],[209,1],[209,4],[210,1],[210,1],[210,2],[210,2],[177,3],[177,3],[191,3],[191,3],[189,1],[189,1],[195,1],[195,1],[175,1],[175,1],[175,1],[175,1],[175,1],[175,1],[30,2],[222,2],[220,2],[226,2],[224,1],[224,3],[224,4],[228,2],[234,2],[234,2],[234,2],[232,2],[242,2],[240,2],[240,2],[240,2],[245,1],[245,1],[245,1],[245,1],[245,1],[245,1],[75,3],[65,1],[65,2],[65,4],[65,6],[65,8],[65,2],[65,4],[65,2],[65,4],[65,3],[247,5],[247,5],[247,6],[266,4],[91,1],[91,2],[91,3],[91,1],[91,1],[91,1],[91,1],[91,1],[91,1],[91,1],[269,1],[269,1],[269,1],[269,1],[236,1],[236,1],[236,1],[238,1],[238,1],[238,1],[53,1],[53,1],[53,1],[287,0],[287,1],[5,1],[5,1],[288,1],[288,1],[7,0],[7,2],[9,1],[9,1],[9,1],[9,1],[10,0],[10,1],[19,0],[19,2],[23,0],[23,1],[289,1],[289,1],[25,0],[25,1],[292,1],[292,2],[26,1],[26,1],[36,0],[36,2],[37,0],[37,2],[40,0],[40,1],[294,1],[294,1],[295,1],[295,2],[44,1],[44,1],[45,0],[45,2],[46,0],[46,1],[49,0],[49,2],[52,0],[52,1],[54,0],[54,1],[56,0],[56,1],[57,0],[57,1],[58,0],[58,1],[59,0],[59,1],[63,1],[63,2],[69,1],[69,2],[72,1],[72,2],[85,0],[85,2],[87,0],[87,2],[88,1],[88,2],[89,0],[89,2],[94,1],[94,2],[96,0],[96,4],[98,0],[98,2],[100,0],[100,1],[101,0],[101,1],[102,1],[102,1],[103,0],[103,1],[105,1],[105,1],[105,1],[106,0],[106,1],[110,0],[110,1],[116,0],[116,1],[118,0],[118,1],[119,0],[119,2],[120,0],[120,1],[122,0],[122,1],[123,0],[123,2],[128,0],[128,1],[134,0],[134,1],[135,1],[135,1],[135,1],[136,0],[136,1],[137,0],[137,2],[139,1],[139,1],[140,0],[140,1],[141,0],[141,1],[142,0],[142,1],[144,0],[144,3],[146,0],[146,1],[148,0],[148,1],[149,0],[149,2],[152,0],[152,1],[153,0],[153,1],[155,0],[155,3],[157,0],[157,1],[158,0],[158,3],[161,1],[161,1],[163,0],[163,1],[164,1],[164,1],[167,0],[167,1],[168,0],[168,3],[170,0],[170,3],[171,0],[171,1],[173,0],[173,3],[174,0],[174,1],[179,0],[179,1],[181,0],[181,2],[184,0],[184,1],[188,0],[188,3],[192,0],[192,1],[193,1],[193,1],[194,0],[194,3],[196,0],[196,2],[198,1],[198,1],[200,0],[200,3],[202,0],[202,3],[308,1],[308,1],[308,1],[206,0],[206,1],[207,0],[207,1],[211,0],[211,3],[212,0],[212,1],[214,1],[214,2],[217,1],[217,2],[221,0],[221,2],[225,0],[225,2],[229,1],[229,1],[229,1],[229,1],[229,1],[229,1],[230,0],[230,1],[233,0],[233,2],[235,1],[235,1],[237,0],[237,2],[239,0],[239,2],[241,0],[241,2],[243,1],[243,1],[244,0],[244,1],[253,1],[253,1],[253,1],[253,1],[253,1],[256,0],[256,1],[259,0],[259,1],[260,1],[260,1],[262,0],[262,1],[264,0],[264,1],[265,0],[265,1]],
 performAction: function anonymous(yytext, yyleng, yylineno, yy, yystate /* action[1] */, $$ /* vstack */, _$ /* lstack */) {
 /* this == yyval */
 
@@ -102782,7 +107445,7 @@ break;
 case 8:
 this.$ = extend({ queryType: 'SELECT', variables: $$[$0] === '*' ? ['*'] : $$[$0] }, $$[$0-1] && ($$[$0-2] = lowercase($$[$0-1]), $$[$0-1] = {}, $$[$0-1][$$[$0-2]] = true, $$[$0-1]));
 break;
-case 9: case 91: case 123: case 150:
+case 9: case 92: case 124: case 151:
 this.$ = toVar($$[$0]);
 break;
 case 10: case 22:
@@ -102800,7 +107463,7 @@ break;
 case 14:
 this.$ = extend({ queryType: 'ASK' }, groupDatasets($$[$0-2]), $$[$0-1], $$[$0]);
 break;
-case 15: case 53:
+case 15: case 54:
 this.$ = { iri: $$[$0], named: !!$$[$0-1] };
 break;
 case 16:
@@ -102853,6 +107516,11 @@ case 35:
 break;
 case 36:
 
+      this.$ = $$[$0-1].map(function() { return {}; })
+    
+break;
+case 37:
+
       var length = $$[$0-4].length;
       $$[$0-4] = $$[$0-4].map(toVar);
       this.$ = $$[$0-1].map(function (values) {
@@ -102865,82 +107533,82 @@ case 36:
       });
     
 break;
-case 39:
+case 40:
 this.$ = undefined;
 break;
-case 40: case 83: case 107: case 151:
+case 41: case 84: case 108: case 152:
 this.$ = $$[$0-1];
 break;
-case 41:
+case 42:
 this.$ = { type: 'update', updates: appendTo($$[$0-2], $$[$0-1]) };
 break;
-case 42:
+case 43:
 this.$ = extend({ type: 'load', silent: !!$$[$0-2], source: $$[$0-1] }, $$[$0] && { destination: $$[$0] });
 break;
-case 43:
+case 44:
 this.$ = { type: lowercase($$[$0-2]), silent: !!$$[$0-1], graph: $$[$0] };
 break;
-case 44:
+case 45:
 this.$ = { type: lowercase($$[$0-4]), silent: !!$$[$0-3], source: $$[$0-2], destination: $$[$0] };
 break;
-case 45:
+case 46:
 this.$ = { type: 'create', silent: !!$$[$0-2], graph: $$[$0-1] };
 break;
-case 46:
+case 47:
 this.$ = { updateType: 'insert',      insert: $$[$0] };
 break;
-case 47:
+case 48:
 this.$ = { updateType: 'delete',      delete: $$[$0] };
 break;
-case 48:
+case 49:
 this.$ = { updateType: 'deletewhere', delete: $$[$0] };
 break;
-case 49:
+case 50:
 this.$ = extend({ updateType: 'insertdelete' }, $$[$0-5], { insert: $$[$0-4] || [] }, { delete: $$[$0-3] || [] }, groupDatasets($$[$0-2]), { where: $$[$0].patterns });
 break;
-case 50:
+case 51:
 this.$ = extend({ updateType: 'insertdelete' }, $$[$0-5], { delete: $$[$0-4] || [] }, { insert: $$[$0-3] || [] }, groupDatasets($$[$0-2]), { where: $$[$0].patterns });
 break;
-case 51: case 52: case 55: case 142:
+case 52: case 53: case 56: case 143:
 this.$ = $$[$0];
 break;
-case 54:
+case 55:
 this.$ = { graph: $$[$0] };
 break;
-case 56:
+case 57:
 this.$ = { type: 'graph', default: true };
 break;
-case 57: case 58:
+case 58: case 59:
 this.$ = { type: 'graph', name: $$[$0] };
 break;
-case 59:
+case 60:
  this.$ = {}; this.$[lowercase($$[$0])] = true; 
 break;
-case 60:
+case 61:
 this.$ = $$[$0-2] ? unionAll($$[$0-1], [$$[$0-2]]) : unionAll($$[$0-1]);
 break;
-case 61:
+case 62:
 
       var graph = extend($$[$0-3] || { triples: [] }, { type: 'graph', name: toVar($$[$0-5]) });
       this.$ = $$[$0] ? [graph, $$[$0]] : [graph];
     
 break;
-case 62: case 67:
+case 63: case 68:
 this.$ = { type: 'bgp', triples: unionAll($$[$0-2], [$$[$0-1]]) };
 break;
-case 63:
+case 64:
 this.$ = { type: 'group', patterns: [ $$[$0-1] ] };
 break;
-case 64:
+case 65:
 this.$ = { type: 'group', patterns: $$[$0-1] };
 break;
-case 65:
+case 66:
 this.$ = $$[$0-1] ? unionAll([$$[$0-1]], $$[$0]) : unionAll($$[$0]);
 break;
-case 66:
+case 67:
 this.$ = $$[$0] ? [$$[$0-2], $$[$0]] : $$[$0-2];
 break;
-case 68:
+case 69:
 
       if ($$[$0-1].length)
         this.$ = { type: 'union', patterns: unionAll($$[$0-1].map(degroupSingle), [degroupSingle($$[$0])]) };
@@ -102948,214 +107616,214 @@ case 68:
         this.$ = $$[$0];
     
 break;
-case 69:
+case 70:
 this.$ = extend($$[$0], { type: 'optional' });
 break;
-case 70:
+case 71:
 this.$ = extend($$[$0], { type: 'minus' });
 break;
-case 71:
+case 72:
 this.$ = extend($$[$0], { type: 'graph', name: toVar($$[$0-1]) });
 break;
-case 72:
+case 73:
 this.$ = extend($$[$0], { type: 'service', name: toVar($$[$0-1]), silent: !!$$[$0-2] });
 break;
-case 73:
+case 74:
 this.$ = { type: 'filter', expression: $$[$0] };
 break;
-case 74:
+case 75:
 this.$ = { type: 'bind', variable: toVar($$[$0-1]), expression: $$[$0-3] };
 break;
-case 79:
+case 80:
 this.$ = { type: 'functionCall', function: $$[$0-1], args: [] };
 break;
-case 80:
+case 81:
 this.$ = { type: 'functionCall', function: $$[$0-5], args: appendTo($$[$0-2], $$[$0-1]), distinct: !!$$[$0-3] };
 break;
-case 81: case 98: case 109: case 195: case 203: case 215: case 217: case 227: case 231: case 251: case 253: case 255: case 257: case 259: case 282: case 288: case 299: case 309: case 315: case 321: case 325: case 335: case 337: case 341: case 347: case 351: case 357: case 359: case 363: case 365: case 374: case 382: case 384: case 394: case 398: case 400: case 402:
+case 82: case 99: case 110: case 196: case 204: case 216: case 218: case 228: case 232: case 252: case 254: case 258: case 262: case 285: case 291: case 302: case 312: case 318: case 324: case 328: case 338: case 340: case 344: case 350: case 354: case 360: case 362: case 366: case 368: case 377: case 385: case 387: case 397: case 401: case 403: case 405:
 this.$ = [];
 break;
-case 82:
+case 83:
 this.$ = appendTo($$[$0-2], $$[$0-1]);
 break;
-case 84:
+case 85:
 this.$ = unionAll($$[$0-2], [$$[$0-1]]);
 break;
-case 85: case 95:
+case 86: case 96:
 this.$ = $$[$0].map(function (t) { return extend(triple($$[$0-1]), t); });
 break;
-case 86:
+case 87:
 this.$ = appendAllTo($$[$0].map(function (t) { return extend(triple($$[$0-1].entity), t); }), $$[$0-1].triples) /* the subject is a blank node, possibly with more triples */;
 break;
-case 88:
+case 89:
 this.$ = unionAll([$$[$0-1]], $$[$0]);
 break;
-case 89:
+case 90:
 this.$ = unionAll($$[$0]);
 break;
-case 90:
+case 91:
 this.$ = objectListToTriples($$[$0-1], $$[$0]);
 break;
-case 93: case 105: case 112:
+case 94: case 106: case 113:
 this.$ = RDF_TYPE;
 break;
-case 94:
+case 95:
 this.$ = appendTo($$[$0-1], $$[$0]);
 break;
-case 96:
+case 97:
 this.$ = !$$[$0] ? $$[$0-1].triples : appendAllTo($$[$0].map(function (t) { return extend(triple($$[$0-1].entity), t); }), $$[$0-1].triples) /* the subject is a blank node, possibly with more triples */;
 break;
-case 97:
+case 98:
 this.$ = objectListToTriples(toVar($$[$0-3]), appendTo($$[$0-2], $$[$0-1]), $$[$0]);
 break;
-case 99:
+case 100:
 this.$ = objectListToTriples(toVar($$[$0-1]), $$[$0]);
 break;
-case 100:
+case 101:
 this.$ = $$[$0-1].length ? path('|',appendTo($$[$0-1], $$[$0])) : $$[$0];
 break;
-case 101:
+case 102:
 this.$ = $$[$0-1].length ? path('/', appendTo($$[$0-1], $$[$0])) : $$[$0];
 break;
-case 102:
+case 103:
 this.$ = $$[$0] ? path($$[$0], [$$[$0-1]]) : $$[$0-1];
 break;
-case 103:
+case 104:
 this.$ = $$[$0-1] ? path($$[$0-1], [$$[$0]]) : $$[$0];;
 break;
-case 106: case 113:
+case 107: case 114:
 this.$ = path($$[$0-1], [$$[$0]]);
 break;
-case 110:
+case 111:
 this.$ = path('|', appendTo($$[$0-2], $$[$0-1]));
 break;
-case 114:
+case 115:
 this.$ = path($$[$0-1], [RDF_TYPE]);
 break;
-case 115: case 117:
+case 116: case 118:
 this.$ = createList($$[$0-1]);
 break;
-case 116: case 118:
+case 117: case 119:
 this.$ = createAnonymousObject($$[$0-1]);
 break;
-case 119:
+case 120:
 this.$ = { entity: $$[$0], triples: [] } /* for consistency with TriplesNode */;
 break;
-case 121:
+case 122:
 this.$ = { entity: $$[$0], triples: [] } /* for consistency with TriplesNodePath */;
 break;
-case 127:
+case 128:
 this.$ = blank();
 break;
-case 128:
+case 129:
 this.$ = RDF_NIL;
 break;
-case 129: case 131: case 136: case 140:
+case 130: case 132: case 137: case 141:
 this.$ = createOperationTree($$[$0-1], $$[$0]);
 break;
-case 130:
+case 131:
 this.$ = ['||', $$[$0]];
 break;
-case 132:
+case 133:
 this.$ = ['&&', $$[$0]];
 break;
-case 134:
+case 135:
 this.$ = operation($$[$0-1], [$$[$0-2], $$[$0]]);
 break;
-case 135:
+case 136:
 this.$ = operation($$[$0-2] ? 'notin' : 'in', [$$[$0-3], $$[$0]]);
 break;
-case 137: case 141:
+case 138: case 142:
 this.$ = [$$[$0-1], $$[$0]];
 break;
-case 138:
+case 139:
 this.$ = ['+', createOperationTree($$[$0-1], $$[$0])];
 break;
-case 139:
+case 140:
 this.$ = ['-', createOperationTree($$[$0-1].replace('-', ''), $$[$0])];
 break;
-case 143:
+case 144:
 this.$ = operation($$[$0-1], [$$[$0]]);
 break;
-case 144:
+case 145:
 this.$ = operation('UMINUS', [$$[$0]]);
 break;
-case 153:
+case 154:
 this.$ = operation(lowercase($$[$0-1]));
 break;
-case 154:
+case 155:
 this.$ = operation(lowercase($$[$0-3]), [$$[$0-1]]);
 break;
-case 155:
+case 156:
 this.$ = operation(lowercase($$[$0-5]), [$$[$0-3], $$[$0-1]]);
 break;
-case 156:
+case 157:
 this.$ = operation(lowercase($$[$0-7]), [$$[$0-5], $$[$0-3], $$[$0-1]]);
 break;
-case 157:
+case 158:
 this.$ = operation(lowercase($$[$0-1]), $$[$0]);
 break;
-case 158:
+case 159:
 this.$ = operation('bound', [toVar($$[$0-1])]);
 break;
-case 159:
+case 160:
 this.$ = operation($$[$0-1], []);
 break;
-case 160:
+case 161:
 this.$ = operation($$[$0-3], [$$[$0-1]]);
 break;
-case 161:
+case 162:
 this.$ = operation($$[$0-2] ? 'notexists' :'exists', [degroupSingle($$[$0])]);
 break;
-case 162: case 163:
+case 163: case 164:
 this.$ = expression($$[$0-1], { type: 'aggregate', aggregation: lowercase($$[$0-4]), distinct: !!$$[$0-2] });
 break;
-case 164:
+case 165:
 this.$ = expression($$[$0-2], { type: 'aggregate', aggregation: lowercase($$[$0-5]), distinct: !!$$[$0-3], separator: $$[$0-1] || ' ' });
 break;
-case 165:
+case 166:
 this.$ = $$[$0].substr(1, $$[$0].length - 2);
 break;
-case 167:
+case 168:
 this.$ = $$[$0-1] + lowercase($$[$0]);
 break;
-case 168:
+case 169:
 this.$ = $$[$0-2] + '^^' + $$[$0];
 break;
-case 169: case 183:
+case 170: case 184:
 this.$ = createLiteral($$[$0], XSD_INTEGER);
 break;
-case 170: case 184:
+case 171: case 185:
 this.$ = createLiteral($$[$0], XSD_DECIMAL);
 break;
-case 171: case 185:
+case 172: case 186:
 this.$ = createLiteral(lowercase($$[$0]), XSD_DOUBLE);
 break;
-case 174:
+case 175:
 this.$ = XSD_TRUE;
 break;
-case 175:
+case 176:
 this.$ = XSD_FALSE;
 break;
-case 176: case 177:
+case 177: case 178:
 this.$ = unescapeString($$[$0], 1);
 break;
-case 178: case 179:
+case 179: case 180:
 this.$ = unescapeString($$[$0], 3);
 break;
-case 180:
+case 181:
 this.$ = createLiteral($$[$0].substr(1), XSD_INTEGER);
 break;
-case 181:
+case 182:
 this.$ = createLiteral($$[$0].substr(1), XSD_DECIMAL);
 break;
-case 182:
+case 183:
 this.$ = createLiteral($$[$0].substr(1).toLowerCase(), XSD_DOUBLE);
 break;
-case 186:
+case 187:
 this.$ = resolveIRI($$[$0]);
 break;
-case 187:
+case 188:
 
       var namePos = $$[$0].indexOf(':'),
           prefix = $$[$0].substr(0, namePos),
@@ -103164,29 +107832,29 @@ case 187:
       this.$ = resolveIRI(expansion + $$[$0].substr(namePos + 1));
     
 break;
-case 188:
+case 189:
 
       $$[$0] = $$[$0].substr(0, $$[$0].length - 1);
       if (!($$[$0] in Parser.prefixes)) throw new Error('Unknown prefix: ' + $$[$0]);
       this.$ = resolveIRI(Parser.prefixes[$$[$0]]);
     
 break;
-case 196: case 204: case 212: case 216: case 218: case 224: case 228: case 232: case 246: case 248: case 250: case 252: case 254: case 256: case 258: case 283: case 289: case 300: case 316: case 348: case 360: case 379: case 381: case 383: case 385: case 395: case 399: case 401: case 403:
+case 197: case 205: case 213: case 217: case 219: case 225: case 229: case 233: case 247: case 249: case 251: case 253: case 255: case 257: case 259: case 261: case 286: case 292: case 303: case 319: case 351: case 363: case 382: case 384: case 386: case 388: case 398: case 402: case 404: case 406:
 $$[$0-1].push($$[$0]);
 break;
-case 211: case 223: case 245: case 247: case 249: case 378: case 380:
+case 212: case 224: case 246: case 248: case 250: case 256: case 260: case 381: case 383:
 this.$ = [$$[$0]];
 break;
-case 260:
+case 263:
 $$[$0-3].push($$[$0-2]);
 break;
-case 310: case 322: case 326: case 336: case 338: case 342: case 352: case 358: case 364: case 366: case 375:
+case 313: case 325: case 329: case 339: case 341: case 345: case 355: case 361: case 367: case 369: case 378:
 $$[$0-2].push($$[$0-1]);
 break;
 }
 },
-table: [o($V0,$V1,{3:1,4:2,7:3}),{1:[3]},o($V2,[2,259],{5:4,8:5,286:6,9:7,93:8,17:9,33:10,42:11,47:12,94:13,18:14,6:[2,189],24:$V3,34:[1,15],43:[1,16],48:[1,17]}),o([6,24,34,43,48,97,107,110,112,113,122,123,128,297,298,299,300,301],[2,2],{287:19,11:20,14:21,12:[1,22],15:[1,23]}),{6:[1,24]},{6:[2,191]},{6:[2,192]},{6:[2,201],10:25,82:26,83:$V4},{6:[2,190]},o($V5,[2,197]),o($V5,[2,198]),o($V5,[2,199]),o($V5,[2,200]),{95:28,97:[1,29],100:30,103:31,107:[1,32],110:[1,33],112:[1,34],113:[1,35],114:36,118:37,122:[2,284],123:[2,278],127:43,128:[1,44],297:[1,38],298:[1,39],299:[1,40],300:[1,41],301:[1,42]},o($V6,[2,203],{19:45}),o($V7,[2,217],{35:46,37:47,39:[1,48]}),{13:$V8,16:$V9,28:$Va,44:49,53:54,285:$Vb,292:[1,51],293:52,294:50},o($V6,[2,231],{49:58}),o($Vc,[2,209],{25:59,288:60,289:[1,61],290:[1,62]}),o($V0,[2,196]),o($V0,[2,193]),o($V0,[2,194]),{13:[1,63]},{16:[1,64]},{1:[2,1]},{6:[2,3]},{6:[2,202]},{28:[1,66],29:[1,67],84:65},{6:[2,261],96:68,182:[1,69]},o($Vd,[2,263],{98:70,296:[1,71]}),o($Ve,[2,269],{101:72,296:[1,73]}),o($Vf,[2,274],{104:74,296:[1,75]}),{108:76,109:[2,276],296:[1,77]},{39:$Vg,111:78},{39:$Vg,111:80},{39:$Vg,111:81},{115:82,123:$Vh},{119:84,122:$Vi},o($Vj,[2,267]),o($Vj,[2,268]),o($Vk,[2,271]),o($Vk,[2,272]),o($Vk,[2,273]),{122:[2,285],123:[2,279]},{13:$V8,16:$V9,53:86,285:$Vb},{20:87,38:$Vl,39:$Vm,50:88,51:$Vn,54:89},o($V6,[2,215],{36:92}),{38:[1,93],50:94,51:$Vn},o($Vo,[2,341],{170:95,171:96,172:97,41:[2,339]}),o($Vp,[2,227],{45:98}),o($Vp,[2,225],{53:54,293:99,13:$V8,16:$V9,28:$Va,285:$Vb}),o($Vp,[2,226]),o($Vq,[2,223]),o($Vq,[2,221]),o($Vq,[2,222]),o($Vr,[2,186]),o($Vr,[2,187]),o($Vr,[2,188]),{20:100,38:$Vl,39:$Vm,50:101,51:$Vn,54:89},{26:102,27:105,28:$Vs,29:$Vt,291:103,292:[1,104]},o($Vc,[2,210]),o($Vc,[2,207]),o($Vc,[2,208]),o($V0,[2,4]),{13:[1,108]},o($Vu,[2,34]),{39:[1,109]},o($Vv,[2,253],{86:110}),{6:[2,41]},o($V0,$V1,{7:3,4:111}),{13:$V8,16:$V9,53:112,285:$Vb},o($Vd,[2,264]),{102:113,109:[1,114],131:[1,116],133:115,295:[1,117],302:[1,118]},o($Ve,[2,270]),o($Vd,$Vw,{105:119,132:121,109:$Vx,131:$Vy}),o($Vf,[2,275]),{109:[1,123]},{109:[2,277]},o($Vz,[2,46]),o($Vo,$VA,{134:124,141:125,142:126,41:$VB,109:$VB}),o($Vz,[2,47]),o($Vz,[2,48]),o($VC,[2,280],{116:127,119:128,122:$Vi}),{39:$Vg,111:129},o($VC,[2,286],{120:130,115:131,123:$Vh}),{39:$Vg,111:132},o([122,123],[2,54]),o($VD,$VE,{21:133,56:134,60:135,61:$VF}),o($V6,[2,204]),{39:$VG,55:137},o($Vd,[2,233],{52:139,295:[1,140]}),{39:[2,236]},{20:141,38:$Vl,39:$Vm,50:142,51:$Vn,54:89},{39:[1,143]},o($V7,[2,218]),{41:[1,144]},{41:[2,340]},{13:$V8,16:$V9,28:$VH,29:$VI,53:149,80:$VJ,89:150,143:145,165:$VK,174:146,176:147,214:$VL,217:$VM,218:$VN,235:160,237:161,268:156,271:$VO,272:$VP,273:$VQ,274:$VR,275:$VS,276:$VT,277:$VU,278:$VV,279:$VW,280:$VX,281:$VY,282:$VZ,283:$V_,284:$V$,285:$Vb},o($V01,[2,229],{54:89,46:174,50:175,20:176,38:$Vl,39:$Vm,51:$Vn}),o($Vq,[2,224]),o($VD,$VE,{56:134,60:135,21:177,61:$VF}),o($V6,[2,232]),o($V6,[2,8]),o($V6,[2,213],{27:178,28:$Vs,29:$Vt}),o($V6,[2,214]),o($V11,[2,211]),o($V11,[2,9]),o($V21,$V31,{30:179,219:180,223:181,227:182,231:183,239:184,243:185,207:$V41,245:$V51,309:$V61}),o($V0,[2,5]),o($V71,[2,251],{85:189}),{28:[1,191],32:[1,190]},o($V2,[2,260],{6:[2,262]}),o($Vz,[2,265],{99:192,129:193,130:[1,194]}),o($Vz,[2,43]),{13:$V8,16:$V9,53:195,285:$Vb},o($Vz,[2,59]),o($Vz,[2,294]),o($Vz,[2,295]),o($Vz,[2,296]),{106:[1,196]},o($V81,[2,56]),{13:$V8,16:$V9,53:197,285:$Vb},o($Vd,[2,293]),{13:$V8,16:$V9,53:198,285:$Vb},o($V91,[2,299],{135:199}),o($V91,[2,298]),{13:$V8,16:$V9,28:$VH,29:$VI,53:149,80:$VJ,89:150,143:200,165:$VK,174:146,176:147,214:$VL,217:$VM,218:$VN,235:160,237:161,268:156,271:$VO,272:$VP,273:$VQ,274:$VR,275:$VS,276:$VT,277:$VU,278:$VV,279:$VW,280:$VX,281:$VY,282:$VZ,283:$V_,284:$V$,285:$Vb},o($VC,[2,282],{117:201}),o($VC,[2,281]),o([38,122,125],[2,52]),o($VC,[2,288],{121:202}),o($VC,[2,287]),o([38,123,125],[2,51]),o($V5,[2,6]),o($Va1,[2,239],{57:203,67:204,68:[1,205]}),o($VD,[2,238]),{62:[1,206]},o([6,41,61,68,71,79,81,83],[2,16]),o($Vo,$Vb1,{22:207,145:208,18:209,146:210,152:211,153:212,24:$V3,39:$Vc1,41:$Vc1,83:$Vc1,109:$Vc1,157:$Vc1,158:$Vc1,160:$Vc1,163:$Vc1,164:$Vc1}),{13:$V8,16:$V9,53:213,285:$Vb},o($Vd,[2,234]),o($VD,$VE,{56:134,60:135,21:214,61:$VF}),o($V6,[2,216]),o($Vo,$VA,{142:126,40:215,141:216,41:[2,219]}),o($V6,[2,83]),{41:[2,343],173:217,303:[1,218]},{13:$V8,16:$V9,28:$Vd1,53:223,175:219,179:220,184:221,186:$Ve1,285:$Vb},o($Vf1,[2,345],{179:220,184:221,53:223,177:225,178:226,175:227,13:$V8,16:$V9,28:$Vd1,186:$Ve1,285:$Vb}),o($Vg1,[2,123]),o($Vg1,[2,124]),o($Vg1,[2,125]),o($Vg1,[2,126]),o($Vg1,[2,127]),o($Vg1,[2,128]),{13:$V8,16:$V9,28:$VH,29:$VI,53:149,80:$VJ,89:150,165:$VK,174:230,176:231,188:229,213:228,214:$VL,217:$VM,218:$VN,235:160,237:161,268:156,271:$VO,272:$VP,273:$VQ,274:$VR,275:$VS,276:$VT,277:$VU,278:$VV,279:$VW,280:$VX,281:$VY,282:$VZ,283:$V_,284:$V$,285:$Vb},{13:$V8,16:$V9,28:$Vd1,53:223,175:232,179:220,184:221,186:$Ve1,285:$Vb},o($Vh1,[2,166],{269:[1,233],270:[1,234]}),o($Vh1,[2,169]),o($Vh1,[2,170]),o($Vh1,[2,171]),o($Vh1,[2,172]),o($Vh1,[2,173]),o($Vh1,[2,174]),o($Vh1,[2,175]),o($Vi1,[2,176]),o($Vi1,[2,177]),o($Vi1,[2,178]),o($Vi1,[2,179]),o($Vh1,[2,180]),o($Vh1,[2,181]),o($Vh1,[2,182]),o($Vh1,[2,183]),o($Vh1,[2,184]),o($Vh1,[2,185]),o($VD,$VE,{56:134,60:135,21:235,61:$VF}),o($Vp,[2,228]),o($V01,[2,230]),o($V5,[2,14]),o($V11,[2,212]),{31:[1,236]},o($Vj1,[2,382],{220:237}),o($Vk1,[2,384],{224:238}),o($Vk1,[2,133],{228:239,229:240,230:[2,392],267:[1,241],310:[1,242],311:[1,243],312:[1,244],313:[1,245],314:[1,246],315:[1,247]}),o($Vl1,[2,394],{232:248}),o($Vm1,[2,402],{240:249}),{13:$V8,16:$V9,28:$Vn1,29:$Vo1,53:253,65:252,66:254,75:251,80:$VJ,89:255,235:160,237:161,244:250,246:258,247:$Vp1,248:$Vq1,249:$Vr1,251:$Vs1,252:263,253:$Vt1,254:$Vu1,255:266,256:$Vv1,257:$Vw1,260:$Vx1,262:$Vy1,268:156,271:$VO,272:$VP,273:$VQ,274:$VR,275:$VS,276:$VT,277:$VU,278:$VV,279:$VW,280:$VX,281:$VY,282:$VZ,283:$V_,284:$V$,285:$Vb,315:$Vz1,316:$VA1,317:$VB1,318:$VC1,319:$VD1,320:$VE1},{13:$V8,16:$V9,28:$Vn1,29:$Vo1,53:253,65:252,66:254,75:251,80:$VJ,89:255,235:160,237:161,244:276,246:258,247:$Vp1,248:$Vq1,249:$Vr1,251:$Vs1,252:263,253:$Vt1,254:$Vu1,255:266,256:$Vv1,257:$Vw1,260:$Vx1,262:$Vy1,268:156,271:$VO,272:$VP,273:$VQ,274:$VR,275:$VS,276:$VT,277:$VU,278:$VV,279:$VW,280:$VX,281:$VY,282:$VZ,283:$V_,284:$V$,285:$Vb,315:$Vz1,316:$VA1,317:$VB1,318:$VC1,319:$VD1,320:$VE1},{13:$V8,16:$V9,28:$Vn1,29:$Vo1,53:253,65:252,66:254,75:251,80:$VJ,89:255,235:160,237:161,244:277,246:258,247:$Vp1,248:$Vq1,249:$Vr1,251:$Vs1,252:263,253:$Vt1,254:$Vu1,255:266,256:$Vv1,257:$Vw1,260:$Vx1,262:$Vy1,268:156,271:$VO,272:$VP,273:$VQ,274:$VR,275:$VS,276:$VT,277:$VU,278:$VV,279:$VW,280:$VX,281:$VY,282:$VZ,283:$V_,284:$V$,285:$Vb,315:$Vz1,316:$VA1,317:$VB1,318:$VC1,319:$VD1,320:$VE1},o($V21,[2,407]),{13:$V8,16:$V9,41:[1,278],53:280,80:$VJ,88:279,89:281,90:$VF1,235:160,237:161,268:156,271:$VO,272:$VP,273:$VQ,274:$VR,275:$VS,276:$VT,277:$VU,278:$VV,279:$VW,280:$VX,281:$VY,282:$VZ,283:$V_,284:$V$,285:$Vb},{39:[1,283]},o($Vv,[2,254]),o($Vz,[2,42]),o($Vz,[2,266]),{109:[1,284]},o($Vz,[2,58]),o($Vd,$Vw,{132:121,105:285,109:$Vx,131:$Vy}),o($V81,[2,57]),o($Vz,[2,45]),{41:[1,286],109:[1,288],136:287},o($V91,[2,311],{144:289,303:[1,290]}),{38:[1,291],124:292,125:$VG1},{38:[1,294],124:295,125:$VG1},o($VH1,[2,241],{58:296,70:297,71:[1,298]}),o($Va1,[2,240]),{13:$V8,16:$V9,29:$Vo1,53:304,65:302,66:303,69:299,75:301,77:300,246:258,247:$Vp1,248:$Vq1,249:$Vr1,251:$Vs1,252:263,253:$Vt1,254:$Vu1,255:266,256:$Vv1,257:$Vw1,260:$Vx1,262:$Vy1,285:$Vb,315:$Vz1,316:$VA1,317:$VB1,318:$VC1,319:$VD1,320:$VE1},{13:$V8,16:$V9,28:$VI1,29:$VJ1,53:304,63:305,64:306,65:307,66:308,246:258,247:$Vp1,248:$Vq1,249:$Vr1,251:$Vs1,252:263,253:$Vt1,254:$Vu1,255:266,256:$Vv1,257:$Vw1,260:$Vx1,262:$Vy1,285:$Vb,315:$Vz1,316:$VA1,317:$VB1,318:$VC1,319:$VD1,320:$VE1},{41:[1,311]},{41:[1,312]},{20:313,38:$Vl,39:$Vm,54:89},o($VK1,[2,315],{147:314}),o($VK1,[2,314]),{13:$V8,16:$V9,28:$VH,29:$VL1,53:149,80:$VJ,89:150,154:315,165:$VK,174:316,190:317,214:$VM1,217:$VM,218:$VN,235:160,237:161,268:156,271:$VO,272:$VP,273:$VQ,274:$VR,275:$VS,276:$VT,277:$VU,278:$VV,279:$VW,280:$VX,281:$VY,282:$VZ,283:$V_,284:$V$,285:$Vb},o($Vp,[2,15]),o($V5,[2,11]),{41:[1,320]},{41:[2,220]},{41:[2,84]},o($Vo,[2,342],{41:[2,344]}),o($Vf1,[2,85]),o($VN1,[2,347],{180:321}),o($Vo,$VO1,{185:322,187:323}),o($Vo,[2,91]),o($Vo,[2,92]),o($Vo,[2,93]),o($Vf1,[2,86]),o($Vf1,[2,87]),o($Vf1,[2,346]),{13:$V8,16:$V9,28:$VH,29:$VI,32:[1,324],53:149,80:$VJ,89:150,165:$VK,174:230,176:231,188:325,214:$VL,217:$VM,218:$VN,235:160,237:161,268:156,271:$VO,272:$VP,273:$VQ,274:$VR,275:$VS,276:$VT,277:$VU,278:$VV,279:$VW,280:$VX,281:$VY,282:$VZ,283:$V_,284:$V$,285:$Vb},o($VP1,[2,378]),o($VQ1,[2,119]),o($VQ1,[2,120]),{215:[1,326]},o($Vh1,[2,167]),{13:$V8,16:$V9,53:327,285:$Vb},o($V5,[2,13]),{28:[1,328]},o([31,32,182,250],[2,129],{221:329,222:[1,330]}),o($Vj1,[2,131],{225:331,226:[1,332]}),o($V21,$V31,{231:183,239:184,243:185,227:333,207:$V41,245:$V51,309:$V61}),{230:[1,334]},o($VR1,[2,386]),o($VR1,[2,387]),o($VR1,[2,388]),o($VR1,[2,389]),o($VR1,[2,390]),o($VR1,[2,391]),{230:[2,393]},o([31,32,182,222,226,230,250,267,310,311,312,313,314,315],[2,136],{233:335,234:336,235:337,237:338,245:[1,340],279:$VW,280:$VX,281:$VY,282:$VZ,283:$V_,284:$V$,309:[1,339]}),o($Vl1,[2,140],{241:341,242:342,292:$VS1,306:$VT1}),o($Vm1,[2,142]),o($Vm1,[2,145]),o($Vm1,[2,146]),o($Vm1,[2,147],{29:$VU1,165:$VV1}),o($Vm1,[2,148]),o($Vm1,[2,149]),o($Vm1,[2,150]),o($V21,$V31,{219:180,223:181,227:182,231:183,239:184,243:185,30:347,207:$V41,245:$V51,309:$V61}),o($VW1,[2,152]),{165:[1,348]},{29:[1,349]},{29:[1,350]},{29:[1,351]},{29:$VX1,165:$VY1,168:352},{29:[1,355]},{29:[1,357],165:[1,356]},{256:[1,358]},{29:[1,359]},{29:[1,360]},{29:[1,361]},o($VZ1,[2,408]),o($VZ1,[2,409]),o($VZ1,[2,410]),o($VZ1,[2,411]),o($VZ1,[2,412]),{256:[2,414]},o($Vm1,[2,143]),o($Vm1,[2,144]),o($Vu,[2,35]),o($V71,[2,252]),o($V_1,[2,37]),o($V_1,[2,38]),o($V_1,[2,39]),o($V$1,[2,255],{87:362}),{13:$V8,16:$V9,53:363,285:$Vb},o($Vz,[2,44]),o([6,38,122,123,125,182],[2,60]),o($V91,[2,300]),{13:$V8,16:$V9,28:[1,365],53:366,137:364,285:$Vb},o($V91,[2,62]),o($Vo,[2,310],{41:$V02,109:$V02}),{39:$VG,55:367},o($VC,[2,283]),o($Vd,[2,290],{126:368,295:[1,369]}),{39:$VG,55:370},o($VC,[2,289]),o($V12,[2,243],{59:371,78:372,79:[1,373],81:[1,374]}),o($VH1,[2,242]),{62:[1,375]},o($Va1,[2,24],{246:258,252:263,255:266,75:301,65:302,66:303,53:304,77:376,13:$V8,16:$V9,29:$Vo1,247:$Vp1,248:$Vq1,249:$Vr1,251:$Vs1,253:$Vt1,254:$Vu1,256:$Vv1,257:$Vw1,260:$Vx1,262:$Vy1,285:$Vb,315:$Vz1,316:$VA1,317:$VB1,318:$VC1,319:$VD1,320:$VE1}),o($V22,[2,247]),o($V32,[2,76]),o($V32,[2,77]),o($V32,[2,78]),{29:$VU1,165:$VV1},o($VD,[2,18],{246:258,252:263,255:266,53:304,65:307,66:308,64:377,13:$V8,16:$V9,28:$VI1,29:$VJ1,247:$Vp1,248:$Vq1,249:$Vr1,251:$Vs1,253:$Vt1,254:$Vu1,256:$Vv1,257:$Vw1,260:$Vx1,262:$Vy1,285:$Vb,315:$Vz1,316:$VA1,317:$VB1,318:$VC1,319:$VD1,320:$VE1}),o($V42,[2,245]),o($V42,[2,19]),o($V42,[2,20]),o($V21,$V31,{219:180,223:181,227:182,231:183,239:184,243:185,30:378,207:$V41,245:$V51,309:$V61}),o($V42,[2,23]),o($V52,[2,63]),o($V52,[2,64]),o($VD,$VE,{56:134,60:135,21:379,61:$VF}),{39:[2,325],41:[2,65],82:389,83:$V4,109:[1,385],148:380,149:381,156:382,157:[1,383],158:[1,384],160:[1,386],163:[1,387],164:[1,388]},o($VK1,[2,323],{155:390,303:[1,391]}),o($V62,$V72,{189:392,192:393,198:394,199:396,28:$V82}),o($V92,[2,353],{192:393,198:394,199:396,191:397,189:398,13:$V72,16:$V72,29:$V72,186:$V72,207:$V72,212:$V72,285:$V72,28:$V82}),{13:$V8,16:$V9,28:$VH,29:$VL1,53:149,80:$VJ,89:150,165:$VK,174:401,190:402,194:400,214:$VM1,216:399,217:$VM,218:$VN,235:160,237:161,268:156,271:$VO,272:$VP,273:$VQ,274:$VR,275:$VS,276:$VT,277:$VU,278:$VV,279:$VW,280:$VX,281:$VY,282:$VZ,283:$V_,284:$V$,285:$Vb},o($V62,$V72,{192:393,198:394,199:396,189:403,28:$V82}),o($VD,$VE,{56:134,60:135,21:404,61:$VF}),o([41,109,215,303],[2,88],{181:405,182:[1,406]}),o($VN1,[2,90]),{13:$V8,16:$V9,28:$VH,29:$VI,53:149,80:$VJ,89:150,165:$VK,174:230,176:231,188:407,214:$VL,217:$VM,218:$VN,235:160,237:161,268:156,271:$VO,272:$VP,273:$VQ,274:$VR,275:$VS,276:$VT,277:$VU,278:$VV,279:$VW,280:$VX,281:$VY,282:$VZ,283:$V_,284:$V$,285:$Vb},o($Va2,[2,115]),o($VP1,[2,379]),o($Va2,[2,116]),o($Vh1,[2,168]),{32:[1,408]},o($Vj1,[2,383]),o($V21,$V31,{223:181,227:182,231:183,239:184,243:185,219:409,207:$V41,245:$V51,309:$V61}),o($Vk1,[2,385]),o($V21,$V31,{227:182,231:183,239:184,243:185,223:410,207:$V41,245:$V51,309:$V61}),o($Vk1,[2,134]),{29:$VX1,165:$VY1,168:411},o($Vl1,[2,395]),o($V21,$V31,{239:184,243:185,231:412,207:$V41,245:$V51,309:$V61}),o($Vm1,[2,398],{236:413}),o($Vm1,[2,400],{238:414}),o($VR1,[2,396]),o($VR1,[2,397]),o($Vm1,[2,403]),o($V21,$V31,{243:185,239:415,207:$V41,245:$V51,309:$V61}),o($VR1,[2,404]),o($VR1,[2,405]),o($VW1,[2,79]),o($VR1,[2,333],{166:416,289:[1,417]}),{32:[1,418]},o($VW1,[2,153]),o($V21,$V31,{219:180,223:181,227:182,231:183,239:184,243:185,30:419,207:$V41,245:$V51,309:$V61}),o($V21,$V31,{219:180,223:181,227:182,231:183,239:184,243:185,30:420,207:$V41,245:$V51,309:$V61}),o($V21,$V31,{219:180,223:181,227:182,231:183,239:184,243:185,30:421,207:$V41,245:$V51,309:$V61}),o($VW1,[2,157]),o($VW1,[2,81]),o($VR1,[2,337],{169:422}),{28:[1,423]},o($VW1,[2,159]),o($V21,$V31,{219:180,223:181,227:182,231:183,239:184,243:185,30:424,207:$V41,245:$V51,309:$V61}),{39:$VG,55:425},o($Vb2,[2,415],{258:426,289:[1,427]}),o($VR1,[2,419],{261:428,289:[1,429]}),o($VR1,[2,421],{263:430,289:[1,431]}),{29:[1,434],41:[1,432],91:433},o($Vz,[2,55]),{39:[1,435]},{39:[2,301]},{39:[2,302]},o($Vz,[2,49]),{13:$V8,16:$V9,53:436,285:$Vb},o($Vd,[2,291]),o($Vz,[2,50]),o($V12,[2,17]),o($V12,[2,244]),{80:[1,437]},{80:[1,438]},{13:$V8,16:$V9,28:$Vc2,29:$Vo1,53:304,65:302,66:303,72:439,73:440,74:$Vd2,75:301,76:$Ve2,77:443,246:258,247:$Vp1,248:$Vq1,249:$Vr1,251:$Vs1,252:263,253:$Vt1,254:$Vu1,255:266,256:$Vv1,257:$Vw1,260:$Vx1,262:$Vy1,285:$Vb,315:$Vz1,316:$VA1,317:$VB1,318:$VC1,319:$VD1,320:$VE1},o($V22,[2,248]),o($V42,[2,246]),{31:[1,446],32:[1,445]},{23:447,41:[2,205],82:448,83:$V4},o($VK1,[2,316]),o($Vf2,[2,317],{150:449,303:[1,450]}),{39:$VG,55:451},{39:$VG,55:452},{39:$VG,55:453},{13:$V8,16:$V9,28:[1,455],53:456,159:454,285:$Vb},o($Vg2,[2,329],{161:457,296:[1,458]}),{13:$V8,16:$V9,29:$Vo1,53:304,65:302,66:303,75:301,77:459,246:258,247:$Vp1,248:$Vq1,249:$Vr1,251:$Vs1,252:263,253:$Vt1,254:$Vu1,255:266,256:$Vv1,257:$Vw1,260:$Vx1,262:$Vy1,285:$Vb,315:$Vz1,316:$VA1,317:$VB1,318:$VC1,319:$VD1,320:$VE1},{29:[1,460]},o($Vh2,[2,75]),o($VK1,[2,67]),o($Vo,[2,322],{39:$Vi2,41:$Vi2,83:$Vi2,109:$Vi2,157:$Vi2,158:$Vi2,160:$Vi2,163:$Vi2,164:$Vi2}),o($V92,[2,95]),o($Vo,[2,357],{193:461}),o($Vo,[2,355]),o($Vo,[2,356]),o($V62,[2,365],{200:462,201:463}),o($V92,[2,96]),o($V92,[2,354]),{13:$V8,16:$V9,28:$VH,29:$VL1,32:[1,464],53:149,80:$VJ,89:150,165:$VK,174:401,190:402,194:465,214:$VM1,217:$VM,218:$VN,235:160,237:161,268:156,271:$VO,272:$VP,273:$VQ,274:$VR,275:$VS,276:$VT,277:$VU,278:$VV,279:$VW,280:$VX,281:$VY,282:$VZ,283:$V_,284:$V$,285:$Vb},o($VP1,[2,380]),o($VQ1,[2,121]),o($VQ1,[2,122]),{215:[1,466]},o($V5,[2,12]),o($VN1,[2,348]),o($VN1,[2,349],{184:221,53:223,183:467,179:468,13:$V8,16:$V9,28:$Vd1,186:$Ve1,285:$Vb}),o($Vj2,[2,94],{250:[1,469]}),o($V11,[2,10]),o($Vj1,[2,130]),o($Vk1,[2,132]),o($Vk1,[2,135]),o($Vl1,[2,137]),o($Vl1,[2,138],{242:342,241:470,292:$VS1,306:$VT1}),o($Vl1,[2,139],{242:342,241:471,292:$VS1,306:$VT1}),o($Vm1,[2,141]),o($VR1,[2,335],{167:472}),o($VR1,[2,334]),o([6,13,16,28,29,31,32,39,41,71,74,76,79,80,81,83,109,157,158,160,163,164,165,182,214,217,218,222,226,230,245,247,248,249,250,251,253,254,256,257,260,262,267,271,272,273,274,275,276,277,278,279,280,281,282,283,284,285,292,303,306,309,310,311,312,313,314,315,316,317,318,319,320],[2,151]),{32:[1,473]},{250:[1,474]},{250:[1,475]},o($V21,$V31,{219:180,223:181,227:182,231:183,239:184,243:185,30:476,207:$V41,245:$V51,309:$V61}),{32:[1,477]},{32:[1,478]},o($VW1,[2,161]),o($V21,$V31,{219:180,223:181,227:182,231:183,239:184,243:185,259:479,30:481,207:$V41,245:$V51,292:[1,480],309:$V61}),o($Vb2,[2,416]),o($V21,$V31,{219:180,223:181,227:182,231:183,239:184,243:185,30:482,207:$V41,245:$V51,309:$V61}),o($VR1,[2,420]),o($V21,$V31,{219:180,223:181,227:182,231:183,239:184,243:185,30:483,207:$V41,245:$V51,309:$V61}),o($VR1,[2,422]),o($Vu,[2,36]),o($V$1,[2,256]),o($Vk2,[2,257],{92:484}),o($Vo,$VA,{142:126,138:485,141:486,41:[2,303]}),o($VC,[2,53]),o($V12,[2,30],{81:[1,487]}),o($V12,[2,31],{79:[1,488]}),o($VH1,[2,25],{246:258,252:263,255:266,75:301,65:302,66:303,53:304,77:443,73:489,13:$V8,16:$V9,28:$Vc2,29:$Vo1,74:$Vd2,76:$Ve2,247:$Vp1,248:$Vq1,249:$Vr1,251:$Vs1,253:$Vt1,254:$Vu1,256:$Vv1,257:$Vw1,260:$Vx1,262:$Vy1,285:$Vb,315:$Vz1,316:$VA1,317:$VB1,318:$VC1,319:$VD1,320:$VE1}),o($Vl2,[2,249]),{29:$Vo1,75:490},{29:$Vo1,75:491},o($Vl2,[2,28]),o($Vl2,[2,29]),o($V42,[2,21]),{28:[1,492]},{41:[2,7]},{41:[2,206]},o($Vo,$Vb1,{153:212,151:493,152:494,39:$Vm2,41:$Vm2,83:$Vm2,109:$Vm2,157:$Vm2,158:$Vm2,160:$Vm2,163:$Vm2,164:$Vm2}),o($Vf2,[2,318]),o($Vh2,[2,68],{304:[1,495]}),o($Vh2,[2,69]),o($Vh2,[2,70]),{39:$VG,55:496},{39:[2,327]},{39:[2,328]},{13:$V8,16:$V9,28:[1,498],53:499,162:497,285:$Vb},o($Vg2,[2,330]),o($Vh2,[2,73]),o($V21,$V31,{219:180,223:181,227:182,231:183,239:184,243:185,30:500,207:$V41,245:$V51,309:$V61}),{13:$V8,16:$V9,28:$VH,29:$VL1,53:149,80:$VJ,89:150,165:$VK,174:401,190:402,194:501,214:$VM1,217:$VM,218:$VN,235:160,237:161,268:156,271:$VO,272:$VP,273:$VQ,274:$VR,275:$VS,276:$VT,277:$VU,278:$VV,279:$VW,280:$VX,281:$VY,282:$VZ,283:$V_,284:$V$,285:$Vb},o($VP1,[2,100],{305:[1,502]}),o($Vn2,[2,372],{202:503,206:504,212:[1,505]}),o($Vg1,[2,117]),o($VP1,[2,381]),o($Vg1,[2,118]),o($VN1,[2,89]),o($VN1,[2,350]),o($Vo,[2,352]),o($Vm1,[2,399]),o($Vm1,[2,401]),o($V21,$V31,{219:180,223:181,227:182,231:183,239:184,243:185,30:506,207:$V41,245:$V51,309:$V61}),o($VW1,[2,154]),o($V21,$V31,{219:180,223:181,227:182,231:183,239:184,243:185,30:507,207:$V41,245:$V51,309:$V61}),o($V21,$V31,{219:180,223:181,227:182,231:183,239:184,243:185,30:508,207:$V41,245:$V51,309:$V61}),{32:[1,509],250:[1,510]},o($VW1,[2,158]),o($VW1,[2,160]),{32:[1,511]},{32:[2,417]},{32:[2,418]},{32:[1,512]},{32:[2,423],182:[1,515],264:513,265:514},{13:$V8,16:$V9,32:[1,516],53:280,80:$VJ,88:517,89:281,90:$VF1,235:160,237:161,268:156,271:$VO,272:$VP,273:$VQ,274:$VR,275:$VS,276:$VT,277:$VU,278:$VV,279:$VW,280:$VX,281:$VY,282:$VZ,283:$V_,284:$V$,285:$Vb},{41:[1,518]},{41:[2,304]},{80:[1,519]},{80:[1,520]},o($Vl2,[2,250]),o($Vl2,[2,26]),o($Vl2,[2,27]),{32:[1,521]},o($VK1,[2,66]),o($VK1,[2,320]),{39:[2,326]},o($Vh2,[2,71]),{39:$VG,55:522},{39:[2,331]},{39:[2,332]},{31:[1,523]},o($Vj2,[2,359],{195:524,250:[1,525]}),o($V62,[2,364]),o([13,16,28,29,32,80,165,214,217,218,271,272,273,274,275,276,277,278,279,280,281,282,283,284,285,305],[2,101],{306:[1,526]}),{13:$V8,16:$V9,29:[1,532],53:529,186:[1,530],203:527,204:528,207:[1,531],285:$Vb},o($Vn2,[2,373]),{32:[1,533],250:[1,534]},{32:[1,535]},{250:[1,536]},o($VW1,[2,82]),o($VR1,[2,338]),o($VW1,[2,162]),o($VW1,[2,163]),{32:[1,537]},{32:[2,424]},{266:[1,538]},o($V$1,[2,40]),o($Vk2,[2,258]),o($Vo2,[2,305],{139:539,303:[1,540]}),o($V12,[2,32]),o($V12,[2,33]),o($V42,[2,22]),o($Vh2,[2,72]),{28:[1,541]},o([39,41,83,109,157,158,160,163,164,215,303],[2,97],{196:542,182:[1,543]}),o($Vo,[2,358]),o($V62,[2,366]),o($Vp2,[2,103]),o($Vp2,[2,370],{205:544,307:545,292:[1,547],308:[1,546],309:[1,548]}),o($Vq2,[2,104]),o($Vq2,[2,105]),{13:$V8,16:$V9,29:[1,552],53:553,165:[1,551],186:$Vr2,208:549,209:550,212:$Vs2,285:$Vb},o($V62,$V72,{199:396,198:556}),o($VW1,[2,80]),o($VR1,[2,336]),o($VW1,[2,155]),o($V21,$V31,{219:180,223:181,227:182,231:183,239:184,243:185,30:557,207:$V41,245:$V51,309:$V61}),o($VW1,[2,164]),{267:[1,558]},o($Vo,$VA,{142:126,140:559,141:560,41:$Vt2,109:$Vt2}),o($Vo2,[2,306]),{32:[1,561]},o($Vj2,[2,360]),o($Vj2,[2,98],{199:396,197:562,198:563,13:$V72,16:$V72,29:$V72,186:$V72,207:$V72,212:$V72,285:$V72,28:[1,564]}),o($Vp2,[2,102]),o($Vp2,[2,371]),o($Vp2,[2,367]),o($Vp2,[2,368]),o($Vp2,[2,369]),o($Vq2,[2,106]),o($Vq2,[2,108]),o($Vq2,[2,109]),o($Vu2,[2,374],{210:565}),o($Vq2,[2,111]),o($Vq2,[2,112]),{13:$V8,16:$V9,53:566,186:[1,567],285:$Vb},{32:[1,568]},{32:[1,569]},{268:570,275:$VS,276:$VT,277:$VU,278:$VV},o($V91,[2,61]),o($V91,[2,308]),o($Vh2,[2,74]),o($Vo,$VO1,{187:323,185:571}),o($Vo,[2,361]),o($Vo,[2,362]),{13:$V8,16:$V9,32:[2,376],53:553,186:$Vr2,209:573,211:572,212:$Vs2,285:$Vb},o($Vq2,[2,113]),o($Vq2,[2,114]),o($Vq2,[2,107]),o($VW1,[2,156]),{32:[2,165]},o($Vj2,[2,99]),{32:[1,574]},{32:[2,377],305:[1,575]},o($Vq2,[2,110]),o($Vu2,[2,375])],
-defaultActions: {5:[2,191],6:[2,192],8:[2,190],24:[2,1],25:[2,3],26:[2,202],68:[2,41],77:[2,277],91:[2,236],96:[2,340],216:[2,220],217:[2,84],247:[2,393],275:[2,414],365:[2,301],366:[2,302],447:[2,7],448:[2,206],455:[2,327],456:[2,328],480:[2,417],481:[2,418],486:[2,304],495:[2,326],498:[2,331],499:[2,332],514:[2,424],570:[2,165]},
+table: [o($V0,$V1,{3:1,4:2,7:3}),{1:[3]},o($V2,[2,262],{5:4,8:5,287:6,9:7,95:8,17:9,33:10,42:11,47:12,96:13,18:14,6:[2,190],24:$V3,34:[1,15],43:[1,16],48:[1,17]}),o([6,24,34,43,48,99,109,112,114,115,124,125,130,298,299,300,301,302],[2,2],{288:19,11:20,14:21,12:[1,22],15:[1,23]}),{6:[1,24]},{6:[2,192]},{6:[2,193]},{6:[2,202],10:25,82:26,83:$V4},{6:[2,191]},o($V5,[2,198]),o($V5,[2,199]),o($V5,[2,200]),o($V5,[2,201]),{97:28,99:[1,29],102:30,105:31,109:[1,32],112:[1,33],114:[1,34],115:[1,35],116:36,120:37,124:[2,287],125:[2,281],129:43,130:[1,44],298:[1,38],299:[1,39],300:[1,40],301:[1,41],302:[1,42]},o($V6,[2,204],{19:45}),o($V7,[2,218],{35:46,37:47,39:[1,48]}),{13:$V8,16:$V9,28:$Va,44:49,53:54,286:$Vb,293:[1,51],294:52,295:50},o($V6,[2,232],{49:58}),o($Vc,[2,210],{25:59,289:60,290:[1,61],291:[1,62]}),o($V0,[2,197]),o($V0,[2,194]),o($V0,[2,195]),{13:[1,63]},{16:[1,64]},{1:[2,1]},{6:[2,3]},{6:[2,203]},{28:[1,66],29:[1,68],84:65,86:[1,67]},{6:[2,264],98:69,183:[1,70]},o($Vd,[2,266],{100:71,297:[1,72]}),o($Ve,[2,272],{103:73,297:[1,74]}),o($Vf,[2,277],{106:75,297:[1,76]}),{110:77,111:[2,279],297:[1,78]},{39:$Vg,113:79},{39:$Vg,113:81},{39:$Vg,113:82},{117:83,125:$Vh},{121:85,124:$Vi},o($Vj,[2,270]),o($Vj,[2,271]),o($Vk,[2,274]),o($Vk,[2,275]),o($Vk,[2,276]),{124:[2,288],125:[2,282]},{13:$V8,16:$V9,53:87,286:$Vb},{20:88,38:$Vl,39:$Vm,50:89,51:$Vn,54:90},o($V6,[2,216],{36:93}),{38:[1,94],50:95,51:$Vn},o($Vo,[2,344],{171:96,172:97,173:98,41:[2,342]}),o($Vp,[2,228],{45:99}),o($Vp,[2,226],{53:54,294:100,13:$V8,16:$V9,28:$Va,286:$Vb}),o($Vp,[2,227]),o($Vq,[2,224]),o($Vq,[2,222]),o($Vq,[2,223]),o($Vr,[2,187]),o($Vr,[2,188]),o($Vr,[2,189]),{20:101,38:$Vl,39:$Vm,50:102,51:$Vn,54:90},{26:103,27:106,28:$Vs,29:$Vt,292:104,293:[1,105]},o($Vc,[2,211]),o($Vc,[2,208]),o($Vc,[2,209]),o($V0,[2,4]),{13:[1,109]},o($Vu,[2,34]),{39:[1,110]},{39:[1,111]},{28:[1,113],88:112},{6:[2,42]},o($V0,$V1,{7:3,4:114}),{13:$V8,16:$V9,53:115,286:$Vb},o($Vd,[2,267]),{104:116,111:[1,117],133:[1,119],135:118,296:[1,120],303:[1,121]},o($Ve,[2,273]),o($Vd,$Vv,{107:122,134:124,111:$Vw,133:$Vx}),o($Vf,[2,278]),{111:[1,126]},{111:[2,280]},o($Vy,[2,47]),o($Vo,$Vz,{136:127,143:128,144:129,41:$VA,111:$VA}),o($Vy,[2,48]),o($Vy,[2,49]),o($VB,[2,283],{118:130,121:131,124:$Vi}),{39:$Vg,113:132},o($VB,[2,289],{122:133,117:134,125:$Vh}),{39:$Vg,113:135},o([124,125],[2,55]),o($VC,$VD,{21:136,56:137,60:138,61:$VE}),o($V6,[2,205]),{39:$VF,55:140},o($Vd,[2,234],{52:142,296:[1,143]}),{39:[2,237]},{20:144,38:$Vl,39:$Vm,50:145,51:$Vn,54:90},{39:[1,146]},o($V7,[2,219]),{41:[1,147]},{41:[2,343]},{13:$V8,16:$V9,28:$VG,29:$VH,53:152,80:$VI,86:$VJ,91:153,145:148,175:149,177:150,215:$VK,218:$VL,219:$VM,236:163,238:164,269:159,272:$VN,273:$VO,274:$VP,275:$VQ,276:$VR,277:$VS,278:$VT,279:$VU,280:$VV,281:$VW,282:$VX,283:$VY,284:$VZ,285:$V_,286:$Vb},o($V$,[2,230],{54:90,46:177,50:178,20:179,38:$Vl,39:$Vm,51:$Vn}),o($Vq,[2,225]),o($VC,$VD,{56:137,60:138,21:180,61:$VE}),o($V6,[2,233]),o($V6,[2,8]),o($V6,[2,214],{27:181,28:$Vs,29:$Vt}),o($V6,[2,215]),o($V01,[2,212]),o($V01,[2,9]),o($V11,$V21,{30:182,220:183,224:184,228:185,232:186,240:187,244:188,208:$V31,246:$V41,310:$V51}),o($V0,[2,5]),o($V61,[2,252],{85:192}),o($V71,[2,254],{87:193}),{28:[1,195],32:[1,194]},o($V81,[2,256]),o($V2,[2,263],{6:[2,265]}),o($Vy,[2,268],{101:196,131:197,132:[1,198]}),o($Vy,[2,44]),{13:$V8,16:$V9,53:199,286:$Vb},o($Vy,[2,60]),o($Vy,[2,297]),o($Vy,[2,298]),o($Vy,[2,299]),{108:[1,200]},o($V91,[2,57]),{13:$V8,16:$V9,53:201,286:$Vb},o($Vd,[2,296]),{13:$V8,16:$V9,53:202,286:$Vb},o($Va1,[2,302],{137:203}),o($Va1,[2,301]),{13:$V8,16:$V9,28:$VG,29:$VH,53:152,80:$VI,86:$VJ,91:153,145:204,175:149,177:150,215:$VK,218:$VL,219:$VM,236:163,238:164,269:159,272:$VN,273:$VO,274:$VP,275:$VQ,276:$VR,277:$VS,278:$VT,279:$VU,280:$VV,281:$VW,282:$VX,283:$VY,284:$VZ,285:$V_,286:$Vb},o($VB,[2,285],{119:205}),o($VB,[2,284]),o([38,124,127],[2,53]),o($VB,[2,291],{123:206}),o($VB,[2,290]),o([38,125,127],[2,52]),o($V5,[2,6]),o($Vb1,[2,240],{57:207,67:208,68:[1,209]}),o($VC,[2,239]),{62:[1,210]},o([6,41,61,68,71,79,81,83],[2,16]),o($Vo,$Vc1,{22:211,147:212,18:213,148:214,154:215,155:216,24:$V3,39:$Vd1,41:$Vd1,83:$Vd1,111:$Vd1,159:$Vd1,160:$Vd1,162:$Vd1,165:$Vd1,166:$Vd1}),{13:$V8,16:$V9,53:217,286:$Vb},o($Vd,[2,235]),o($VC,$VD,{56:137,60:138,21:218,61:$VE}),o($V6,[2,217]),o($Vo,$Vz,{144:129,40:219,143:220,41:[2,220]}),o($V6,[2,84]),{41:[2,346],174:221,304:[1,222]},{13:$V8,16:$V9,28:$Ve1,53:227,176:223,180:224,185:225,187:$Vf1,286:$Vb},o($Vg1,[2,348],{180:224,185:225,53:227,178:229,179:230,176:231,13:$V8,16:$V9,28:$Ve1,187:$Vf1,286:$Vb}),o($Vh1,[2,124]),o($Vh1,[2,125]),o($Vh1,[2,126]),o($Vh1,[2,127]),o($Vh1,[2,128]),o($Vh1,[2,129]),{13:$V8,16:$V9,28:$VG,29:$VH,53:152,80:$VI,86:$VJ,91:153,175:234,177:235,189:233,214:232,215:$VK,218:$VL,219:$VM,236:163,238:164,269:159,272:$VN,273:$VO,274:$VP,275:$VQ,276:$VR,277:$VS,278:$VT,279:$VU,280:$VV,281:$VW,282:$VX,283:$VY,284:$VZ,285:$V_,286:$Vb},{13:$V8,16:$V9,28:$Ve1,53:227,176:236,180:224,185:225,187:$Vf1,286:$Vb},o($Vi1,[2,167],{270:[1,237],271:[1,238]}),o($Vi1,[2,170]),o($Vi1,[2,171]),o($Vi1,[2,172]),o($Vi1,[2,173]),o($Vi1,[2,174]),o($Vi1,[2,175]),o($Vi1,[2,176]),o($Vj1,[2,177]),o($Vj1,[2,178]),o($Vj1,[2,179]),o($Vj1,[2,180]),o($Vi1,[2,181]),o($Vi1,[2,182]),o($Vi1,[2,183]),o($Vi1,[2,184]),o($Vi1,[2,185]),o($Vi1,[2,186]),o($VC,$VD,{56:137,60:138,21:239,61:$VE}),o($Vp,[2,229]),o($V$,[2,231]),o($V5,[2,14]),o($V01,[2,213]),{31:[1,240]},o($Vk1,[2,385],{221:241}),o($Vl1,[2,387],{225:242}),o($Vl1,[2,134],{229:243,230:244,231:[2,395],268:[1,245],311:[1,246],312:[1,247],313:[1,248],314:[1,249],315:[1,250],316:[1,251]}),o($Vm1,[2,397],{233:252}),o($Vn1,[2,405],{241:253}),{13:$V8,16:$V9,28:$Vo1,29:$Vp1,53:257,65:256,66:258,75:255,80:$VI,91:259,236:163,238:164,245:254,247:262,248:$Vq1,249:$Vr1,250:$Vs1,252:$Vt1,253:267,254:$Vu1,255:$Vv1,256:270,257:$Vw1,258:$Vx1,261:$Vy1,263:$Vz1,269:159,272:$VN,273:$VO,274:$VP,275:$VQ,276:$VR,277:$VS,278:$VT,279:$VU,280:$VV,281:$VW,282:$VX,283:$VY,284:$VZ,285:$V_,286:$Vb,316:$VA1,317:$VB1,318:$VC1,319:$VD1,320:$VE1,321:$VF1},{13:$V8,16:$V9,28:$Vo1,29:$Vp1,53:257,65:256,66:258,75:255,80:$VI,91:259,236:163,238:164,245:280,247:262,248:$Vq1,249:$Vr1,250:$Vs1,252:$Vt1,253:267,254:$Vu1,255:$Vv1,256:270,257:$Vw1,258:$Vx1,261:$Vy1,263:$Vz1,269:159,272:$VN,273:$VO,274:$VP,275:$VQ,276:$VR,277:$VS,278:$VT,279:$VU,280:$VV,281:$VW,282:$VX,283:$VY,284:$VZ,285:$V_,286:$Vb,316:$VA1,317:$VB1,318:$VC1,319:$VD1,320:$VE1,321:$VF1},{13:$V8,16:$V9,28:$Vo1,29:$Vp1,53:257,65:256,66:258,75:255,80:$VI,91:259,236:163,238:164,245:281,247:262,248:$Vq1,249:$Vr1,250:$Vs1,252:$Vt1,253:267,254:$Vu1,255:$Vv1,256:270,257:$Vw1,258:$Vx1,261:$Vy1,263:$Vz1,269:159,272:$VN,273:$VO,274:$VP,275:$VQ,276:$VR,277:$VS,278:$VT,279:$VU,280:$VV,281:$VW,282:$VX,283:$VY,284:$VZ,285:$V_,286:$Vb,316:$VA1,317:$VB1,318:$VC1,319:$VD1,320:$VE1,321:$VF1},o($V11,[2,410]),{13:$V8,16:$V9,41:[1,282],53:284,80:$VI,90:283,91:285,92:$VG1,236:163,238:164,269:159,272:$VN,273:$VO,274:$VP,275:$VQ,276:$VR,277:$VS,278:$VT,279:$VU,280:$VV,281:$VW,282:$VX,283:$VY,284:$VZ,285:$V_,286:$Vb},{41:[1,287],86:[1,288]},{39:[1,289]},o($V81,[2,257]),o($Vy,[2,43]),o($Vy,[2,269]),{111:[1,290]},o($Vy,[2,59]),o($Vd,$Vv,{134:124,107:291,111:$Vw,133:$Vx}),o($V91,[2,58]),o($Vy,[2,46]),{41:[1,292],111:[1,294],138:293},o($Va1,[2,314],{146:295,304:[1,296]}),{38:[1,297],126:298,127:$VH1},{38:[1,300],126:301,127:$VH1},o($VI1,[2,242],{58:302,70:303,71:[1,304]}),o($Vb1,[2,241]),{13:$V8,16:$V9,29:$Vp1,53:310,65:308,66:309,69:305,75:307,77:306,247:262,248:$Vq1,249:$Vr1,250:$Vs1,252:$Vt1,253:267,254:$Vu1,255:$Vv1,256:270,257:$Vw1,258:$Vx1,261:$Vy1,263:$Vz1,286:$Vb,316:$VA1,317:$VB1,318:$VC1,319:$VD1,320:$VE1,321:$VF1},{13:$V8,16:$V9,28:$VJ1,29:$VK1,53:310,63:311,64:312,65:313,66:314,247:262,248:$Vq1,249:$Vr1,250:$Vs1,252:$Vt1,253:267,254:$Vu1,255:$Vv1,256:270,257:$Vw1,258:$Vx1,261:$Vy1,263:$Vz1,286:$Vb,316:$VA1,317:$VB1,318:$VC1,319:$VD1,320:$VE1,321:$VF1},{41:[1,317]},{41:[1,318]},{20:319,38:$Vl,39:$Vm,54:90},o($VL1,[2,318],{149:320}),o($VL1,[2,317]),{13:$V8,16:$V9,28:$VG,29:$VM1,53:152,80:$VI,86:$VJ,91:153,156:321,175:322,191:323,215:$VN1,218:$VL,219:$VM,236:163,238:164,269:159,272:$VN,273:$VO,274:$VP,275:$VQ,276:$VR,277:$VS,278:$VT,279:$VU,280:$VV,281:$VW,282:$VX,283:$VY,284:$VZ,285:$V_,286:$Vb},o($Vp,[2,15]),o($V5,[2,11]),{41:[1,326]},{41:[2,221]},{41:[2,85]},o($Vo,[2,345],{41:[2,347]}),o($Vg1,[2,86]),o($VO1,[2,350],{181:327}),o($Vo,$VP1,{186:328,188:329}),o($Vo,[2,92]),o($Vo,[2,93]),o($Vo,[2,94]),o($Vg1,[2,87]),o($Vg1,[2,88]),o($Vg1,[2,349]),{13:$V8,16:$V9,28:$VG,29:$VH,32:[1,330],53:152,80:$VI,86:$VJ,91:153,175:234,177:235,189:331,215:$VK,218:$VL,219:$VM,236:163,238:164,269:159,272:$VN,273:$VO,274:$VP,275:$VQ,276:$VR,277:$VS,278:$VT,279:$VU,280:$VV,281:$VW,282:$VX,283:$VY,284:$VZ,285:$V_,286:$Vb},o($VQ1,[2,381]),o($VR1,[2,120]),o($VR1,[2,121]),{216:[1,332]},o($Vi1,[2,168]),{13:$V8,16:$V9,53:333,286:$Vb},o($V5,[2,13]),{28:[1,334]},o([31,32,183,251],[2,130],{222:335,223:[1,336]}),o($Vk1,[2,132],{226:337,227:[1,338]}),o($V11,$V21,{232:186,240:187,244:188,228:339,208:$V31,246:$V41,310:$V51}),{231:[1,340]},o($VS1,[2,389]),o($VS1,[2,390]),o($VS1,[2,391]),o($VS1,[2,392]),o($VS1,[2,393]),o($VS1,[2,394]),{231:[2,396]},o([31,32,183,223,227,231,251,268,311,312,313,314,315,316],[2,137],{234:341,235:342,236:343,238:344,246:[1,346],280:$VV,281:$VW,282:$VX,283:$VY,284:$VZ,285:$V_,310:[1,345]}),o($Vm1,[2,141],{242:347,243:348,293:$VT1,307:$VU1}),o($Vn1,[2,143]),o($Vn1,[2,146]),o($Vn1,[2,147]),o($Vn1,[2,148],{29:$VV1,86:$VW1}),o($Vn1,[2,149]),o($Vn1,[2,150]),o($Vn1,[2,151]),o($V11,$V21,{220:183,224:184,228:185,232:186,240:187,244:188,30:353,208:$V31,246:$V41,310:$V51}),o($VX1,[2,153]),{86:[1,354]},{29:[1,355]},{29:[1,356]},{29:[1,357]},{29:$VY1,86:$VZ1,169:358},{29:[1,361]},{29:[1,363],86:[1,362]},{257:[1,364]},{29:[1,365]},{29:[1,366]},{29:[1,367]},o($V_1,[2,411]),o($V_1,[2,412]),o($V_1,[2,413]),o($V_1,[2,414]),o($V_1,[2,415]),{257:[2,417]},o($Vn1,[2,144]),o($Vn1,[2,145]),o($Vu,[2,35]),o($V61,[2,253]),o($V$1,[2,38]),o($V$1,[2,39]),o($V$1,[2,40]),o($Vu,[2,36]),o($V71,[2,255]),o($V02,[2,258],{89:368}),{13:$V8,16:$V9,53:369,286:$Vb},o($Vy,[2,45]),o([6,38,124,125,127,183],[2,61]),o($Va1,[2,303]),{13:$V8,16:$V9,28:[1,371],53:372,139:370,286:$Vb},o($Va1,[2,63]),o($Vo,[2,313],{41:$V12,111:$V12}),{39:$VF,55:373},o($VB,[2,286]),o($Vd,[2,293],{128:374,296:[1,375]}),{39:$VF,55:376},o($VB,[2,292]),o($V22,[2,244],{59:377,78:378,79:[1,379],81:[1,380]}),o($VI1,[2,243]),{62:[1,381]},o($Vb1,[2,24],{247:262,253:267,256:270,75:307,65:308,66:309,53:310,77:382,13:$V8,16:$V9,29:$Vp1,248:$Vq1,249:$Vr1,250:$Vs1,252:$Vt1,254:$Vu1,255:$Vv1,257:$Vw1,258:$Vx1,261:$Vy1,263:$Vz1,286:$Vb,316:$VA1,317:$VB1,318:$VC1,319:$VD1,320:$VE1,321:$VF1}),o($V32,[2,248]),o($V42,[2,77]),o($V42,[2,78]),o($V42,[2,79]),{29:$VV1,86:$VW1},o($VC,[2,18],{247:262,253:267,256:270,53:310,65:313,66:314,64:383,13:$V8,16:$V9,28:$VJ1,29:$VK1,248:$Vq1,249:$Vr1,250:$Vs1,252:$Vt1,254:$Vu1,255:$Vv1,257:$Vw1,258:$Vx1,261:$Vy1,263:$Vz1,286:$Vb,316:$VA1,317:$VB1,318:$VC1,319:$VD1,320:$VE1,321:$VF1}),o($V52,[2,246]),o($V52,[2,19]),o($V52,[2,20]),o($V11,$V21,{220:183,224:184,228:185,232:186,240:187,244:188,30:384,208:$V31,246:$V41,310:$V51}),o($V52,[2,23]),o($V62,[2,64]),o($V62,[2,65]),o($VC,$VD,{56:137,60:138,21:385,61:$VE}),{39:[2,328],41:[2,66],82:395,83:$V4,111:[1,391],150:386,151:387,158:388,159:[1,389],160:[1,390],162:[1,392],165:[1,393],166:[1,394]},o($VL1,[2,326],{157:396,304:[1,397]}),o($V72,$V82,{190:398,193:399,199:400,200:402,28:$V92}),o($Va2,[2,356],{193:399,199:400,200:402,192:403,190:404,13:$V82,16:$V82,29:$V82,187:$V82,208:$V82,213:$V82,286:$V82,28:$V92}),{13:$V8,16:$V9,28:$VG,29:$VM1,53:152,80:$VI,86:$VJ,91:153,175:407,191:408,195:406,215:$VN1,217:405,218:$VL,219:$VM,236:163,238:164,269:159,272:$VN,273:$VO,274:$VP,275:$VQ,276:$VR,277:$VS,278:$VT,279:$VU,280:$VV,281:$VW,282:$VX,283:$VY,284:$VZ,285:$V_,286:$Vb},o($V72,$V82,{193:399,199:400,200:402,190:409,28:$V92}),o($VC,$VD,{56:137,60:138,21:410,61:$VE}),o([41,111,216,304],[2,89],{182:411,183:[1,412]}),o($VO1,[2,91]),{13:$V8,16:$V9,28:$VG,29:$VH,53:152,80:$VI,86:$VJ,91:153,175:234,177:235,189:413,215:$VK,218:$VL,219:$VM,236:163,238:164,269:159,272:$VN,273:$VO,274:$VP,275:$VQ,276:$VR,277:$VS,278:$VT,279:$VU,280:$VV,281:$VW,282:$VX,283:$VY,284:$VZ,285:$V_,286:$Vb},o($Vb2,[2,116]),o($VQ1,[2,382]),o($Vb2,[2,117]),o($Vi1,[2,169]),{32:[1,414]},o($Vk1,[2,386]),o($V11,$V21,{224:184,228:185,232:186,240:187,244:188,220:415,208:$V31,246:$V41,310:$V51}),o($Vl1,[2,388]),o($V11,$V21,{228:185,232:186,240:187,244:188,224:416,208:$V31,246:$V41,310:$V51}),o($Vl1,[2,135]),{29:$VY1,86:$VZ1,169:417},o($Vm1,[2,398]),o($V11,$V21,{240:187,244:188,232:418,208:$V31,246:$V41,310:$V51}),o($Vn1,[2,401],{237:419}),o($Vn1,[2,403],{239:420}),o($VS1,[2,399]),o($VS1,[2,400]),o($Vn1,[2,406]),o($V11,$V21,{244:188,240:421,208:$V31,246:$V41,310:$V51}),o($VS1,[2,407]),o($VS1,[2,408]),o($VX1,[2,80]),o($VS1,[2,336],{167:422,290:[1,423]}),{32:[1,424]},o($VX1,[2,154]),o($V11,$V21,{220:183,224:184,228:185,232:186,240:187,244:188,30:425,208:$V31,246:$V41,310:$V51}),o($V11,$V21,{220:183,224:184,228:185,232:186,240:187,244:188,30:426,208:$V31,246:$V41,310:$V51}),o($V11,$V21,{220:183,224:184,228:185,232:186,240:187,244:188,30:427,208:$V31,246:$V41,310:$V51}),o($VX1,[2,158]),o($VX1,[2,82]),o($VS1,[2,340],{170:428}),{28:[1,429]},o($VX1,[2,160]),o($V11,$V21,{220:183,224:184,228:185,232:186,240:187,244:188,30:430,208:$V31,246:$V41,310:$V51}),{39:$VF,55:431},o($Vc2,[2,418],{259:432,290:[1,433]}),o($VS1,[2,422],{262:434,290:[1,435]}),o($VS1,[2,424],{264:436,290:[1,437]}),{29:[1,440],41:[1,438],93:439},o($Vy,[2,56]),{39:[1,441]},{39:[2,304]},{39:[2,305]},o($Vy,[2,50]),{13:$V8,16:$V9,53:442,286:$Vb},o($Vd,[2,294]),o($Vy,[2,51]),o($V22,[2,17]),o($V22,[2,245]),{80:[1,443]},{80:[1,444]},{13:$V8,16:$V9,28:$Vd2,29:$Vp1,53:310,65:308,66:309,72:445,73:446,74:$Ve2,75:307,76:$Vf2,77:449,247:262,248:$Vq1,249:$Vr1,250:$Vs1,252:$Vt1,253:267,254:$Vu1,255:$Vv1,256:270,257:$Vw1,258:$Vx1,261:$Vy1,263:$Vz1,286:$Vb,316:$VA1,317:$VB1,318:$VC1,319:$VD1,320:$VE1,321:$VF1},o($V32,[2,249]),o($V52,[2,247]),{31:[1,452],32:[1,451]},{23:453,41:[2,206],82:454,83:$V4},o($VL1,[2,319]),o($Vg2,[2,320],{152:455,304:[1,456]}),{39:$VF,55:457},{39:$VF,55:458},{39:$VF,55:459},{13:$V8,16:$V9,28:[1,461],53:462,161:460,286:$Vb},o($Vh2,[2,332],{163:463,297:[1,464]}),{13:$V8,16:$V9,29:$Vp1,53:310,65:308,66:309,75:307,77:465,247:262,248:$Vq1,249:$Vr1,250:$Vs1,252:$Vt1,253:267,254:$Vu1,255:$Vv1,256:270,257:$Vw1,258:$Vx1,261:$Vy1,263:$Vz1,286:$Vb,316:$VA1,317:$VB1,318:$VC1,319:$VD1,320:$VE1,321:$VF1},{29:[1,466]},o($Vi2,[2,76]),o($VL1,[2,68]),o($Vo,[2,325],{39:$Vj2,41:$Vj2,83:$Vj2,111:$Vj2,159:$Vj2,160:$Vj2,162:$Vj2,165:$Vj2,166:$Vj2}),o($Va2,[2,96]),o($Vo,[2,360],{194:467}),o($Vo,[2,358]),o($Vo,[2,359]),o($V72,[2,368],{201:468,202:469}),o($Va2,[2,97]),o($Va2,[2,357]),{13:$V8,16:$V9,28:$VG,29:$VM1,32:[1,470],53:152,80:$VI,86:$VJ,91:153,175:407,191:408,195:471,215:$VN1,218:$VL,219:$VM,236:163,238:164,269:159,272:$VN,273:$VO,274:$VP,275:$VQ,276:$VR,277:$VS,278:$VT,279:$VU,280:$VV,281:$VW,282:$VX,283:$VY,284:$VZ,285:$V_,286:$Vb},o($VQ1,[2,383]),o($VR1,[2,122]),o($VR1,[2,123]),{216:[1,472]},o($V5,[2,12]),o($VO1,[2,351]),o($VO1,[2,352],{185:225,53:227,184:473,180:474,13:$V8,16:$V9,28:$Ve1,187:$Vf1,286:$Vb}),o($Vk2,[2,95],{251:[1,475]}),o($V01,[2,10]),o($Vk1,[2,131]),o($Vl1,[2,133]),o($Vl1,[2,136]),o($Vm1,[2,138]),o($Vm1,[2,139],{243:348,242:476,293:$VT1,307:$VU1}),o($Vm1,[2,140],{243:348,242:477,293:$VT1,307:$VU1}),o($Vn1,[2,142]),o($VS1,[2,338],{168:478}),o($VS1,[2,337]),o([6,13,16,28,29,31,32,39,41,71,74,76,79,80,81,83,86,111,159,160,162,165,166,183,215,218,219,223,227,231,246,248,249,250,251,252,254,255,257,258,261,263,268,272,273,274,275,276,277,278,279,280,281,282,283,284,285,286,293,304,307,310,311,312,313,314,315,316,317,318,319,320,321],[2,152]),{32:[1,479]},{251:[1,480]},{251:[1,481]},o($V11,$V21,{220:183,224:184,228:185,232:186,240:187,244:188,30:482,208:$V31,246:$V41,310:$V51}),{32:[1,483]},{32:[1,484]},o($VX1,[2,162]),o($V11,$V21,{220:183,224:184,228:185,232:186,240:187,244:188,260:485,30:487,208:$V31,246:$V41,293:[1,486],310:$V51}),o($Vc2,[2,419]),o($V11,$V21,{220:183,224:184,228:185,232:186,240:187,244:188,30:488,208:$V31,246:$V41,310:$V51}),o($VS1,[2,423]),o($V11,$V21,{220:183,224:184,228:185,232:186,240:187,244:188,30:489,208:$V31,246:$V41,310:$V51}),o($VS1,[2,425]),o($Vu,[2,37]),o($V02,[2,259]),{13:$V8,16:$V9,53:284,80:$VI,90:491,91:285,92:$VG1,94:490,236:163,238:164,269:159,272:$VN,273:$VO,274:$VP,275:$VQ,276:$VR,277:$VS,278:$VT,279:$VU,280:$VV,281:$VW,282:$VX,283:$VY,284:$VZ,285:$V_,286:$Vb},o($Vo,$Vz,{144:129,140:492,143:493,41:[2,306]}),o($VB,[2,54]),o($V22,[2,30],{81:[1,494]}),o($V22,[2,31],{79:[1,495]}),o($VI1,[2,25],{247:262,253:267,256:270,75:307,65:308,66:309,53:310,77:449,73:496,13:$V8,16:$V9,28:$Vd2,29:$Vp1,74:$Ve2,76:$Vf2,248:$Vq1,249:$Vr1,250:$Vs1,252:$Vt1,254:$Vu1,255:$Vv1,257:$Vw1,258:$Vx1,261:$Vy1,263:$Vz1,286:$Vb,316:$VA1,317:$VB1,318:$VC1,319:$VD1,320:$VE1,321:$VF1}),o($Vl2,[2,250]),{29:$Vp1,75:497},{29:$Vp1,75:498},o($Vl2,[2,28]),o($Vl2,[2,29]),o($V52,[2,21]),{28:[1,499]},{41:[2,7]},{41:[2,207]},o($Vo,$Vc1,{155:216,153:500,154:501,39:$Vm2,41:$Vm2,83:$Vm2,111:$Vm2,159:$Vm2,160:$Vm2,162:$Vm2,165:$Vm2,166:$Vm2}),o($Vg2,[2,321]),o($Vi2,[2,69],{305:[1,502]}),o($Vi2,[2,70]),o($Vi2,[2,71]),{39:$VF,55:503},{39:[2,330]},{39:[2,331]},{13:$V8,16:$V9,28:[1,505],53:506,164:504,286:$Vb},o($Vh2,[2,333]),o($Vi2,[2,74]),o($V11,$V21,{220:183,224:184,228:185,232:186,240:187,244:188,30:507,208:$V31,246:$V41,310:$V51}),{13:$V8,16:$V9,28:$VG,29:$VM1,53:152,80:$VI,86:$VJ,91:153,175:407,191:408,195:508,215:$VN1,218:$VL,219:$VM,236:163,238:164,269:159,272:$VN,273:$VO,274:$VP,275:$VQ,276:$VR,277:$VS,278:$VT,279:$VU,280:$VV,281:$VW,282:$VX,283:$VY,284:$VZ,285:$V_,286:$Vb},o($VQ1,[2,101],{306:[1,509]}),o($Vn2,[2,375],{203:510,207:511,213:[1,512]}),o($Vh1,[2,118]),o($VQ1,[2,384]),o($Vh1,[2,119]),o($VO1,[2,90]),o($VO1,[2,353]),o($Vo,[2,355]),o($Vn1,[2,402]),o($Vn1,[2,404]),o($V11,$V21,{220:183,224:184,228:185,232:186,240:187,244:188,30:513,208:$V31,246:$V41,310:$V51}),o($VX1,[2,155]),o($V11,$V21,{220:183,224:184,228:185,232:186,240:187,244:188,30:514,208:$V31,246:$V41,310:$V51}),o($V11,$V21,{220:183,224:184,228:185,232:186,240:187,244:188,30:515,208:$V31,246:$V41,310:$V51}),{32:[1,516],251:[1,517]},o($VX1,[2,159]),o($VX1,[2,161]),{32:[1,518]},{32:[2,420]},{32:[2,421]},{32:[1,519]},{32:[2,426],183:[1,522],265:520,266:521},{13:$V8,16:$V9,32:[1,523],53:284,80:$VI,90:524,91:285,92:$VG1,236:163,238:164,269:159,272:$VN,273:$VO,274:$VP,275:$VQ,276:$VR,277:$VS,278:$VT,279:$VU,280:$VV,281:$VW,282:$VX,283:$VY,284:$VZ,285:$V_,286:$Vb},o($Vo2,[2,260]),{41:[1,525]},{41:[2,307]},{80:[1,526]},{80:[1,527]},o($Vl2,[2,251]),o($Vl2,[2,26]),o($Vl2,[2,27]),{32:[1,528]},o($VL1,[2,67]),o($VL1,[2,323]),{39:[2,329]},o($Vi2,[2,72]),{39:$VF,55:529},{39:[2,334]},{39:[2,335]},{31:[1,530]},o($Vk2,[2,362],{196:531,251:[1,532]}),o($V72,[2,367]),o([13,16,28,29,32,80,86,215,218,219,272,273,274,275,276,277,278,279,280,281,282,283,284,285,286,306],[2,102],{307:[1,533]}),{13:$V8,16:$V9,29:[1,539],53:536,187:[1,537],204:534,205:535,208:[1,538],286:$Vb},o($Vn2,[2,376]),{32:[1,540],251:[1,541]},{32:[1,542]},{251:[1,543]},o($VX1,[2,83]),o($VS1,[2,341]),o($VX1,[2,163]),o($VX1,[2,164]),{32:[1,544]},{32:[2,427]},{267:[1,545]},o($V02,[2,41]),o($Vo2,[2,261]),o($Vp2,[2,308],{141:546,304:[1,547]}),o($V22,[2,32]),o($V22,[2,33]),o($V52,[2,22]),o($Vi2,[2,73]),{28:[1,548]},o([39,41,83,111,159,160,162,165,166,216,304],[2,98],{197:549,183:[1,550]}),o($Vo,[2,361]),o($V72,[2,369]),o($Vq2,[2,104]),o($Vq2,[2,373],{206:551,308:552,293:[1,554],309:[1,553],310:[1,555]}),o($Vr2,[2,105]),o($Vr2,[2,106]),{13:$V8,16:$V9,29:[1,559],53:560,86:[1,558],187:$Vs2,209:556,210:557,213:$Vt2,286:$Vb},o($V72,$V82,{200:402,199:563}),o($VX1,[2,81]),o($VS1,[2,339]),o($VX1,[2,156]),o($V11,$V21,{220:183,224:184,228:185,232:186,240:187,244:188,30:564,208:$V31,246:$V41,310:$V51}),o($VX1,[2,165]),{268:[1,565]},o($Vo,$Vz,{144:129,142:566,143:567,41:$Vu2,111:$Vu2}),o($Vp2,[2,309]),{32:[1,568]},o($Vk2,[2,363]),o($Vk2,[2,99],{200:402,198:569,199:570,13:$V82,16:$V82,29:$V82,187:$V82,208:$V82,213:$V82,286:$V82,28:[1,571]}),o($Vq2,[2,103]),o($Vq2,[2,374]),o($Vq2,[2,370]),o($Vq2,[2,371]),o($Vq2,[2,372]),o($Vr2,[2,107]),o($Vr2,[2,109]),o($Vr2,[2,110]),o($Vv2,[2,377],{211:572}),o($Vr2,[2,112]),o($Vr2,[2,113]),{13:$V8,16:$V9,53:573,187:[1,574],286:$Vb},{32:[1,575]},{32:[1,576]},{269:577,276:$VR,277:$VS,278:$VT,279:$VU},o($Va1,[2,62]),o($Va1,[2,311]),o($Vi2,[2,75]),o($Vo,$VP1,{188:329,186:578}),o($Vo,[2,364]),o($Vo,[2,365]),{13:$V8,16:$V9,32:[2,379],53:560,187:$Vs2,210:580,212:579,213:$Vt2,286:$Vb},o($Vr2,[2,114]),o($Vr2,[2,115]),o($Vr2,[2,108]),o($VX1,[2,157]),{32:[2,166]},o($Vk2,[2,100]),{32:[1,581]},{32:[2,380],306:[1,582]},o($Vr2,[2,111]),o($Vv2,[2,378])],
+defaultActions: {5:[2,192],6:[2,193],8:[2,191],24:[2,1],25:[2,3],26:[2,203],69:[2,42],78:[2,280],92:[2,237],97:[2,343],220:[2,221],221:[2,85],251:[2,396],279:[2,417],371:[2,304],372:[2,305],453:[2,7],454:[2,207],461:[2,330],462:[2,331],486:[2,420],487:[2,421],493:[2,307],502:[2,329],505:[2,334],506:[2,335],521:[2,427],577:[2,166]},
 parseError: function parseError (str, hash) {
     if (hash.recoverable) {
         this.trace(str);
@@ -103923,9 +108591,9 @@ case 2:return 15
 break;
 case 3:return 24
 break;
-case 4:return 289
+case 4:return 290
 break;
-case 5:return 290
+case 5:return 291
 break;
 case 6:return 29
 break;
@@ -103933,7 +108601,7 @@ case 7:return 31
 break;
 case 8:return 32
 break;
-case 9:return 292
+case 9:return 293
 break;
 case 10:return 34
 break;
@@ -103949,7 +108617,7 @@ case 15:return 48
 break;
 case 16:return 51
 break;
-case 17:return 295
+case 17:return 296
 break;
 case 18:return 61
 break;
@@ -103969,187 +108637,187 @@ case 25:return 81
 break;
 case 26:return 83
 break;
-case 27:return 182
+case 27:return 183
 break;
-case 28:return 97
+case 28:return 99
 break;
-case 29:return 296
+case 29:return 297
 break;
-case 30:return 130
+case 30:return 132
 break;
-case 31:return 297
+case 31:return 298
 break;
-case 32:return 298
+case 32:return 299
 break;
-case 33:return 107
+case 33:return 109
 break;
-case 34:return 299
+case 34:return 300
 break;
-case 35:return 106
+case 35:return 108
 break;
-case 36:return 300
+case 36:return 301
 break;
-case 37:return 301
+case 37:return 302
 break;
-case 38:return 110
+case 38:return 112
 break;
-case 39:return 112
+case 39:return 114
 break;
-case 40:return 113
+case 40:return 115
 break;
-case 41:return 128
+case 41:return 130
 break;
-case 42:return 122
+case 42:return 124
 break;
-case 43:return 123
+case 43:return 125
 break;
-case 44:return 125
+case 44:return 127
 break;
-case 45:return 131
+case 45:return 133
 break;
-case 46:return 109
+case 46:return 111
 break;
-case 47:return 302
+case 47:return 303
 break;
-case 48:return 303
+case 48:return 304
 break;
-case 49:return 157
+case 49:return 159
 break;
-case 50:return 160
+case 50:return 162
 break;
-case 51:return 164
+case 51:return 166
 break;
-case 52:return 90
+case 52:return 92
 break;
-case 53:return 158
+case 53:return 160
 break;
-case 54:return 304
+case 54:return 305
 break;
-case 55:return 163
+case 55:return 165
 break;
-case 56:return 250
+case 56:return 251
 break;
-case 57:return 186
+case 57:return 187
 break;
-case 58:return 305
+case 58:return 306
 break;
-case 59:return 306
+case 59:return 307
 break;
-case 60:return 212
+case 60:return 213
 break;
-case 61:return 308
+case 61:return 309
 break;
-case 62:return 309
+case 62:return 310
 break;
-case 63:return 207
+case 63:return 208
 break;
-case 64:return 214
+case 64:return 215
 break;
-case 65:return 215
+case 65:return 216
 break;
-case 66:return 222
+case 66:return 223
 break;
-case 67:return 226
+case 67:return 227
 break;
-case 68:return 267
+case 68:return 268
 break;
-case 69:return 310
+case 69:return 311
 break;
-case 70:return 311
+case 70:return 312
 break;
-case 71:return 312
+case 71:return 313
 break;
-case 72:return 313
+case 72:return 314
 break;
-case 73:return 314
+case 73:return 315
 break;
-case 74:return 230
+case 74:return 231
 break;
-case 75:return 315
+case 75:return 316
 break;
-case 76:return 245
+case 76:return 246
 break;
-case 77:return 253
+case 77:return 254
 break;
-case 78:return 254
+case 78:return 255
 break;
-case 79:return 247
+case 79:return 248
 break;
-case 80:return 248
+case 80:return 249
 break;
-case 81:return 249
+case 81:return 250
 break;
-case 82:return 316
+case 82:return 317
 break;
-case 83:return 317
+case 83:return 318
 break;
-case 84:return 251
+case 84:return 252
 break;
-case 85:return 319
+case 85:return 320
 break;
-case 86:return 318
+case 86:return 319
 break;
-case 87:return 320
+case 87:return 321
 break;
-case 88:return 256
+case 88:return 257
 break;
-case 89:return 257
+case 89:return 258
 break;
-case 90:return 260
+case 90:return 261
 break;
-case 91:return 262
+case 91:return 263
 break;
-case 92:return 266
+case 92:return 267
 break;
-case 93:return 270
+case 93:return 271
 break;
-case 94:return 273
+case 94:return 274
 break;
-case 95:return 274
+case 95:return 275
 break;
 case 96:return 13
 break;
 case 97:return 16
 break;
-case 98:return 285
+case 98:return 286
 break;
-case 99:return 217
+case 99:return 218
 break;
 case 100:return 28
 break;
-case 101:return 269
+case 101:return 270
 break;
 case 102:return 80
 break;
-case 103:return 271
+case 103:return 272
 break;
-case 104:return 272
+case 104:return 273
 break;
-case 105:return 279
+case 105:return 280
 break;
-case 106:return 280
+case 106:return 281
 break;
-case 107:return 281
+case 107:return 282
 break;
-case 108:return 282
+case 108:return 283
 break;
-case 109:return 283
+case 109:return 284
 break;
-case 110:return 284
+case 110:return 285
 break;
 case 111:return 'EXPONENT'
 break;
-case 112:return 275
+case 112:return 276
 break;
-case 113:return 276
+case 113:return 277
 break;
-case 114:return 277
+case 114:return 278
 break;
-case 115:return 278
+case 115:return 279
 break;
-case 116:return 165
+case 116:return 86
 break;
-case 117:return 218
+case 117:return 219
 break;
 case 118:return 6
 break;
@@ -104863,26 +109531,44 @@ module.exports = function (stream, enc, cb) {
 
 /***/ }),
 
-/***/ "./node_modules/streamify-array/index.js":
-/*!***********************************************!*\
-  !*** ./node_modules/streamify-array/index.js ***!
-  \***********************************************/
+/***/ "./node_modules/streamify-string/index.js":
+/*!************************************************!*\
+  !*** ./node_modules/streamify-string/index.js ***!
+  \************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = function(array) {
-  var readable = new (__webpack_require__(/*! stream */ "./node_modules/stream-browserify/index.js").Readable)({ objectMode: true });
-  readable._read = function(size) {
-    if (array.length) {
-      readable.push(array.shift(size));
-    }
-    if (!array.length) {
-      readable.push(null);
-    }
-  };
-  return readable;
+const Readable = __webpack_require__(/*! stream */ "./node_modules/stream-browserify/index.js").Readable;
+const util     = __webpack_require__(/*! util */ "./node_modules/util/util.js");
+
+function Streamify(str, options) {
+
+  if (! (this instanceof Streamify)) {
+    return new Streamify(str, options);
+  }
+
+  Readable.call(this, options);
+  this.str = str;
+}
+
+util.inherits(Streamify, Readable);
+
+Streamify.prototype._read = function (size) {
+
+  var chunk = this.str.slice(0, size);
+
+  if (chunk) {
+    this.str = this.str.slice(size);
+    this.push(chunk);
+  }
+
+  else {
+    this.push(null);
+  }
+
 };
 
+module.exports = Streamify;
 
 
 /***/ }),
@@ -108974,384 +113660,85 @@ function extend() {
 
 /***/ }),
 
-/***/ "./node_modules/yallist/yallist.js":
-/*!*****************************************!*\
-  !*** ./node_modules/yallist/yallist.js ***!
-  \*****************************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
+/***/ "./src/ComunicaUpdateEngine.js":
+/*!*************************************!*\
+  !*** ./src/ComunicaUpdateEngine.js ***!
+  \*************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
 
-module.exports = Yallist
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return ComunicaUpdateEngine; });
+/* harmony import */ var ldflex_comunica__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ldflex-comunica */ "./node_modules/ldflex-comunica/lib/index.js");
+/* harmony import */ var ldflex_comunica__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(ldflex_comunica__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var solid_auth_client__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! solid-auth-client */ "solid-auth-client");
+/* harmony import */ var solid_auth_client__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(solid_auth_client__WEBPACK_IMPORTED_MODULE_1__);
 
-Yallist.Node = Node
-Yallist.create = Yallist
 
-function Yallist (list) {
-  var self = this
-  if (!(self instanceof Yallist)) {
-    self = new Yallist()
+/**
+ * An extension of ComunicaEngine that delegates
+ * SPARQL UPDATE queries directly to the documents
+ * using authenticated request.
+ */
+
+class ComunicaUpdateEngine extends ldflex_comunica__WEBPACK_IMPORTED_MODULE_0___default.a {
+  constructor(subject) {
+    super(subject);
+  }
+  /**
+   * Delegates SPARQL UPDATE queries directly to the document.
+   */
+
+
+  executeUpdate(sparql) {
+    let executed = false;
+
+    const next = async () => {
+      if (!executed) {
+        executed = true; // Send authenticated PATCH request to the document
+
+        const document = this.getDocument((await this._subject));
+        const response = await solid_auth_client__WEBPACK_IMPORTED_MODULE_1___default.a.fetch(document, {
+          method: 'PATCH',
+          headers: {
+            'Content-Type': 'application/sparql-update'
+          },
+          body: sparql
+        }); // Error if the server response was not ok
+
+        if (!response.ok) throw new Error(`Update query failed (${response.status}): ${response.statusText}`); // Mock Comunica's response for bindings as a Immutable.js object.
+
+        return {
+          value: {
+            size: 1,
+            values: () => ({
+              next: () => ({
+                value: {
+                  ok: true
+                }
+              })
+            })
+          }
+        };
+      }
+
+      return {
+        done: true
+      };
+    };
+
+    return {
+      next,
+
+      [Symbol.asyncIterator]() {
+        return this;
+      }
+
+    };
   }
 
-  self.tail = null
-  self.head = null
-  self.length = 0
-
-  if (list && typeof list.forEach === 'function') {
-    list.forEach(function (item) {
-      self.push(item)
-    })
-  } else if (arguments.length > 0) {
-    for (var i = 0, l = arguments.length; i < l; i++) {
-      self.push(arguments[i])
-    }
-  }
-
-  return self
 }
-
-Yallist.prototype.removeNode = function (node) {
-  if (node.list !== this) {
-    throw new Error('removing node which does not belong to this list')
-  }
-
-  var next = node.next
-  var prev = node.prev
-
-  if (next) {
-    next.prev = prev
-  }
-
-  if (prev) {
-    prev.next = next
-  }
-
-  if (node === this.head) {
-    this.head = next
-  }
-  if (node === this.tail) {
-    this.tail = prev
-  }
-
-  node.list.length--
-  node.next = null
-  node.prev = null
-  node.list = null
-}
-
-Yallist.prototype.unshiftNode = function (node) {
-  if (node === this.head) {
-    return
-  }
-
-  if (node.list) {
-    node.list.removeNode(node)
-  }
-
-  var head = this.head
-  node.list = this
-  node.next = head
-  if (head) {
-    head.prev = node
-  }
-
-  this.head = node
-  if (!this.tail) {
-    this.tail = node
-  }
-  this.length++
-}
-
-Yallist.prototype.pushNode = function (node) {
-  if (node === this.tail) {
-    return
-  }
-
-  if (node.list) {
-    node.list.removeNode(node)
-  }
-
-  var tail = this.tail
-  node.list = this
-  node.prev = tail
-  if (tail) {
-    tail.next = node
-  }
-
-  this.tail = node
-  if (!this.head) {
-    this.head = node
-  }
-  this.length++
-}
-
-Yallist.prototype.push = function () {
-  for (var i = 0, l = arguments.length; i < l; i++) {
-    push(this, arguments[i])
-  }
-  return this.length
-}
-
-Yallist.prototype.unshift = function () {
-  for (var i = 0, l = arguments.length; i < l; i++) {
-    unshift(this, arguments[i])
-  }
-  return this.length
-}
-
-Yallist.prototype.pop = function () {
-  if (!this.tail) {
-    return undefined
-  }
-
-  var res = this.tail.value
-  this.tail = this.tail.prev
-  if (this.tail) {
-    this.tail.next = null
-  } else {
-    this.head = null
-  }
-  this.length--
-  return res
-}
-
-Yallist.prototype.shift = function () {
-  if (!this.head) {
-    return undefined
-  }
-
-  var res = this.head.value
-  this.head = this.head.next
-  if (this.head) {
-    this.head.prev = null
-  } else {
-    this.tail = null
-  }
-  this.length--
-  return res
-}
-
-Yallist.prototype.forEach = function (fn, thisp) {
-  thisp = thisp || this
-  for (var walker = this.head, i = 0; walker !== null; i++) {
-    fn.call(thisp, walker.value, i, this)
-    walker = walker.next
-  }
-}
-
-Yallist.prototype.forEachReverse = function (fn, thisp) {
-  thisp = thisp || this
-  for (var walker = this.tail, i = this.length - 1; walker !== null; i--) {
-    fn.call(thisp, walker.value, i, this)
-    walker = walker.prev
-  }
-}
-
-Yallist.prototype.get = function (n) {
-  for (var i = 0, walker = this.head; walker !== null && i < n; i++) {
-    // abort out of the list early if we hit a cycle
-    walker = walker.next
-  }
-  if (i === n && walker !== null) {
-    return walker.value
-  }
-}
-
-Yallist.prototype.getReverse = function (n) {
-  for (var i = 0, walker = this.tail; walker !== null && i < n; i++) {
-    // abort out of the list early if we hit a cycle
-    walker = walker.prev
-  }
-  if (i === n && walker !== null) {
-    return walker.value
-  }
-}
-
-Yallist.prototype.map = function (fn, thisp) {
-  thisp = thisp || this
-  var res = new Yallist()
-  for (var walker = this.head; walker !== null;) {
-    res.push(fn.call(thisp, walker.value, this))
-    walker = walker.next
-  }
-  return res
-}
-
-Yallist.prototype.mapReverse = function (fn, thisp) {
-  thisp = thisp || this
-  var res = new Yallist()
-  for (var walker = this.tail; walker !== null;) {
-    res.push(fn.call(thisp, walker.value, this))
-    walker = walker.prev
-  }
-  return res
-}
-
-Yallist.prototype.reduce = function (fn, initial) {
-  var acc
-  var walker = this.head
-  if (arguments.length > 1) {
-    acc = initial
-  } else if (this.head) {
-    walker = this.head.next
-    acc = this.head.value
-  } else {
-    throw new TypeError('Reduce of empty list with no initial value')
-  }
-
-  for (var i = 0; walker !== null; i++) {
-    acc = fn(acc, walker.value, i)
-    walker = walker.next
-  }
-
-  return acc
-}
-
-Yallist.prototype.reduceReverse = function (fn, initial) {
-  var acc
-  var walker = this.tail
-  if (arguments.length > 1) {
-    acc = initial
-  } else if (this.tail) {
-    walker = this.tail.prev
-    acc = this.tail.value
-  } else {
-    throw new TypeError('Reduce of empty list with no initial value')
-  }
-
-  for (var i = this.length - 1; walker !== null; i--) {
-    acc = fn(acc, walker.value, i)
-    walker = walker.prev
-  }
-
-  return acc
-}
-
-Yallist.prototype.toArray = function () {
-  var arr = new Array(this.length)
-  for (var i = 0, walker = this.head; walker !== null; i++) {
-    arr[i] = walker.value
-    walker = walker.next
-  }
-  return arr
-}
-
-Yallist.prototype.toArrayReverse = function () {
-  var arr = new Array(this.length)
-  for (var i = 0, walker = this.tail; walker !== null; i++) {
-    arr[i] = walker.value
-    walker = walker.prev
-  }
-  return arr
-}
-
-Yallist.prototype.slice = function (from, to) {
-  to = to || this.length
-  if (to < 0) {
-    to += this.length
-  }
-  from = from || 0
-  if (from < 0) {
-    from += this.length
-  }
-  var ret = new Yallist()
-  if (to < from || to < 0) {
-    return ret
-  }
-  if (from < 0) {
-    from = 0
-  }
-  if (to > this.length) {
-    to = this.length
-  }
-  for (var i = 0, walker = this.head; walker !== null && i < from; i++) {
-    walker = walker.next
-  }
-  for (; walker !== null && i < to; i++, walker = walker.next) {
-    ret.push(walker.value)
-  }
-  return ret
-}
-
-Yallist.prototype.sliceReverse = function (from, to) {
-  to = to || this.length
-  if (to < 0) {
-    to += this.length
-  }
-  from = from || 0
-  if (from < 0) {
-    from += this.length
-  }
-  var ret = new Yallist()
-  if (to < from || to < 0) {
-    return ret
-  }
-  if (from < 0) {
-    from = 0
-  }
-  if (to > this.length) {
-    to = this.length
-  }
-  for (var i = this.length, walker = this.tail; walker !== null && i > to; i--) {
-    walker = walker.prev
-  }
-  for (; walker !== null && i > from; i--, walker = walker.prev) {
-    ret.push(walker.value)
-  }
-  return ret
-}
-
-Yallist.prototype.reverse = function () {
-  var head = this.head
-  var tail = this.tail
-  for (var walker = head; walker !== null; walker = walker.prev) {
-    var p = walker.prev
-    walker.prev = walker.next
-    walker.next = p
-  }
-  this.head = tail
-  this.tail = head
-  return this
-}
-
-function push (self, item) {
-  self.tail = new Node(item, self.tail, null, self)
-  if (!self.head) {
-    self.head = self.tail
-  }
-  self.length++
-}
-
-function unshift (self, item) {
-  self.head = new Node(item, null, self.head, self)
-  if (!self.tail) {
-    self.tail = self.head
-  }
-  self.length++
-}
-
-function Node (value, prev, next, list) {
-  if (!(this instanceof Node)) {
-    return new Node(value, prev, next, list)
-  }
-
-  this.list = list
-  this.value = value
-
-  if (prev) {
-    prev.next = this
-    this.prev = prev
-  } else {
-    this.prev = null
-  }
-
-  if (next) {
-    next.prev = this
-    this.next = next
-  } else {
-    this.next = null
-  }
-}
-
 
 /***/ }),
 
@@ -109517,8 +113904,7 @@ class CreateActivityHandler {
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return SubjectPathResolver; });
-/* harmony import */ var ldflex_comunica__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ldflex-comunica */ "./node_modules/ldflex-comunica/lib/index.js");
-/* harmony import */ var ldflex_comunica__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(ldflex_comunica__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _ComunicaUpdateEngine__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./ComunicaUpdateEngine */ "./src/ComunicaUpdateEngine.js");
 
 /**
  * LDflex property resolver that returns a new path
@@ -109536,7 +113922,7 @@ class SubjectPathResolver {
   }
 
   resolve(subject) {
-    const queryEngine = new ldflex_comunica__WEBPACK_IMPORTED_MODULE_0___default.a(subject);
+    const queryEngine = new _ComunicaUpdateEngine__WEBPACK_IMPORTED_MODULE_0__["default"](subject);
     return this._paths.create({
       queryEngine
     }, {
