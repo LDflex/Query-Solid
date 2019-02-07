@@ -114274,14 +114274,9 @@ __webpack_require__.r(__webpack_exports__);
  */
 
 class ComunicaUpdateEngine extends ldflex_comunica__WEBPACK_IMPORTED_MODULE_0___default.a {
-  constructor(subject) {
-    super(subject);
-  }
   /**
    * Delegates SPARQL UPDATE queries directly to the document.
    */
-
-
   executeUpdate(sparql) {
     let executed = false;
 
@@ -114561,10 +114556,6 @@ __webpack_require__.r(__webpack_exports__);
  */
 
 class UserPathHandler extends _SubjectPathResolver__WEBPACK_IMPORTED_MODULE_0__["default"] {
-  constructor(pathFactory) {
-    super(pathFactory);
-  }
-
   handle() {
     const subject = this.getWebId().then(_rdfjs_data_model__WEBPACK_IMPORTED_MODULE_2__["namedNode"]);
     return this._createSubjectPath(subject);
