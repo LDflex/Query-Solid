@@ -7,10 +7,6 @@ import auth from 'solid-auth-client';
  * using authenticated request.
  */
 export default class ComunicaUpdateEngine extends ComunicaEngine {
-  constructor(subject) {
-    super(subject);
-  }
-
   /**
    * Delegates SPARQL UPDATE queries directly to the document.
    */

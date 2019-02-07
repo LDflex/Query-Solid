@@ -20,8 +20,8 @@ export default class CreateActivityHandler {
 
   handle(path, proxy) {
     const self = this;
-    const root = proxy.root;
-    const user = root.user;
+    const { root } = proxy;
+    const { user } = root;
 
     // Return an iterator over the new activity URLs
     return () => toIterablePromise(async function* () {
