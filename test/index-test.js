@@ -1,7 +1,11 @@
 import data from '../src';
 import auth from 'solid-auth-client';
-import ComunicaEngine from 'ldflex-comunica';
+import ComunicaUpdateEngine from '../src/ComunicaUpdateEngine';
 import { namedNode } from '@rdfjs/data-model';
+
+jest.mock('../src/ComunicaUpdateEngine');
+async function* noResults() { /* empty */ }
+ComunicaUpdateEngine.prototype.execute = jest.fn(noResults);
 
 describe('The @solid/ldflex module', () => {
   it('is an ES6 module with a default export', () => {
@@ -19,7 +23,7 @@ describe('The @solid/ldflex module', () => {
     });
 
     it('executes the query', () => {
-      const { constructor, execute } = ComunicaEngine.prototype;
+      const { constructor, execute } = ComunicaUpdateEngine.prototype;
       expect(constructor).toHaveBeenCalledTimes(1);
       expect(constructor.mock.calls[0][0]).toEqual(namedNode(url));
       expect(execute).toHaveBeenCalledTimes(1);
@@ -43,7 +47,7 @@ describe('The @solid/ldflex module', () => {
       });
 
       it('executes the query', async () => {
-        const { constructor, execute } = ComunicaEngine.prototype;
+        const { constructor, execute } = ComunicaUpdateEngine.prototype;
         expect(constructor).toHaveBeenCalledTimes(1);
         await expect(constructor.mock.calls[0][0]).resolves.toEqual(namedNode(webId));
         expect(execute).toHaveBeenCalledTimes(1);

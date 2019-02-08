@@ -3,6 +3,7 @@ import context from './context.json';
 import UserPathHandler from './UserPathHandler';
 import SubjectPathResolver from './SubjectPathResolver';
 import CreateActivityHandler from './CreateActivityHandler';
+import SourcePathHandler from './SourcePathHandler';
 
 const { as } = context['@context'];
 
@@ -27,6 +28,8 @@ export default rootPath = new PathFactory({
   // Handlers of specific named properties
   handlers: {
     ...defaultHandlers,
+    // The `from` property takes a source URI as input
+    from: new SourcePathHandler(subjectPathFactory),
     // The `user` property starts a path with the current user as subject
     user: new UserPathHandler(subjectPathFactory),
   },
