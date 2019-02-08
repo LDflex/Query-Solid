@@ -5,6 +5,13 @@ describe('a ComunicaUpdateEngine instance', () => {
   let engine;
   beforeEach(() => (engine = new ComunicaUpdateEngine('http://example.org')));
 
+  it('does not yet support source objects', () => {
+    engine = new ComunicaUpdateEngine('http://example.org', { dummy: 'source' });
+    // parameter doesn't get added due to mocks
+    engine._source = { dummy: 'source' };
+    expect(() => engine.executeUpdate('')).toThrow();
+  });
+
   describe('Inserting a triple', () => {
     beforeEach(async () => {
       for await (const bindings of engine.executeUpdate('INSERT DATA { <> <> <> }')) {

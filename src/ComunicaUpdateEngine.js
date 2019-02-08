@@ -11,6 +11,9 @@ export default class ComunicaUpdateEngine extends ComunicaEngine {
    * Delegates SPARQL UPDATE queries directly to the document.
    */
   executeUpdate(sparql) {
+    if (this._source)
+      throw new Error('Updates on non-subject sources not yet supported.');
+
     let executed = false;
     const next = async () => {
       if (!executed) {
