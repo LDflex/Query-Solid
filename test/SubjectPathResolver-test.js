@@ -3,6 +3,7 @@ import SubjectPathResolver from '../src/SubjectPathResolver';
 import ComunicaUpdateEngine from '../src/ComunicaUpdateEngine';
 
 jest.mock('ldflex');
+jest.mock('../src/ComunicaUpdateEngine');
 
 describe('a SubjectPathResolver', () => {
   const source = {};

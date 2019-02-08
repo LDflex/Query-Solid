@@ -1,6 +1,9 @@
-const ComunicaEngine = jest.genMockFromModule('ldflex-comunica').default;
+export default class ComunicaEngineMock {
+  constructor(subject, source) {
+    this._source = source;
+  }
 
-async function* noResults() { /* empty */ }
-ComunicaEngine.prototype.execute.mockReturnValue(noResults());
-
-export default ComunicaEngine;
+  getDocument() {
+    return 'https://example.org/';
+  }
+}

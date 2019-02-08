@@ -7,8 +7,6 @@ describe('a ComunicaUpdateEngine instance', () => {
 
   it('does not yet support source objects', () => {
     engine = new ComunicaUpdateEngine('http://example.org', { dummy: 'source' });
-    // parameter doesn't get added due to mocks
-    engine._source = { dummy: 'source' };
     expect(() => engine.executeUpdate('')).toThrow();
   });
 
