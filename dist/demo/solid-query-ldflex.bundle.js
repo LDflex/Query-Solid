@@ -749,46 +749,64 @@ class ActorContextPreprocessRdfSourceIdentifier extends bus_context_preprocess_1
         return true;
     }
     async run(action) {
-        if (action.context && action.context.get(bus_rdf_resolve_quad_pattern_1.KEY_CONTEXT_SOURCES)) {
-            const subContext = action.context.delete(bus_rdf_resolve_quad_pattern_1.KEY_CONTEXT_SOURCES);
-            const endSource = () => {
-                if (--remainingSources === 0) {
-                    newSources.push(null);
-                }
-            };
-            const sources = action.context.get(bus_rdf_resolve_quad_pattern_1.KEY_CONTEXT_SOURCES);
-            const newSources = asyncreiterable_1.AsyncReiterableArray.fromInitialEmpty();
-            const identificationPromises = [];
-            let remainingSources = 1;
-            const it = sources.iterator();
-            it.on('data', (source) => {
-                remainingSources++;
+        if (action.context) {
+            if (action.context.get(bus_rdf_resolve_quad_pattern_1.KEY_CONTEXT_SOURCE)) {
+                let source = action.context.get(bus_rdf_resolve_quad_pattern_1.KEY_CONTEXT_SOURCE);
+                let context = action.context;
                 if (source.type === 'auto') {
-                    identificationPromises.push(this.mediatorRdfSourceIdentifier.mediate({ sourceValue: source.value, context: subContext })
-                        .then((sourceIdentificationResult) => {
-                        if (sourceIdentificationResult.sourceType) {
-                            source.type = sourceIdentificationResult.sourceType;
-                        }
+                    context = action.context.delete(bus_rdf_resolve_quad_pattern_1.KEY_CONTEXT_SOURCE);
+                    source = await this.identifySource(source, context);
+                    context = context.set(bus_rdf_resolve_quad_pattern_1.KEY_CONTEXT_SOURCE, source);
+                }
+                return { context };
+            }
+            else if (action.context.get(bus_rdf_resolve_quad_pattern_1.KEY_CONTEXT_SOURCES)) {
+                const subContext = action.context.delete(bus_rdf_resolve_quad_pattern_1.KEY_CONTEXT_SOURCES);
+                const endSource = () => {
+                    if (--remainingSources === 0) {
+                        newSources.push(null);
+                    }
+                };
+                const sources = action.context.get(bus_rdf_resolve_quad_pattern_1.KEY_CONTEXT_SOURCES);
+                const newSources = asyncreiterable_1.AsyncReiterableArray.fromInitialEmpty();
+                const identificationPromises = [];
+                let remainingSources = 1;
+                const it = sources.iterator();
+                it.on('data', (source) => {
+                    remainingSources++;
+                    if (source.type === 'auto') {
+                        identificationPromises.push(this.identifySource(source, subContext)
+                            .then((identifiedSource) => {
+                            newSources.push(identifiedSource);
+                            endSource();
+                        }));
+                    }
+                    else {
                         newSources.push(source);
                         endSource();
-                    }));
-                }
-                else {
-                    newSources.push(source);
+                    }
+                });
+                it.on('end', () => {
                     endSource();
+                });
+                // If the sources are fixed, block until all sources are transformed.
+                if (sources.isEnded()) {
+                    await new Promise((resolve) => it.on('end', resolve));
+                    await Promise.all(identificationPromises);
                 }
-            });
-            it.on('end', () => {
-                endSource();
-            });
-            // If the sources are fixed, block until all sources are transformed.
-            if (sources.isEnded()) {
-                await new Promise((resolve) => it.on('end', resolve));
-                await Promise.all(identificationPromises);
+                return { context: action.context.set(bus_rdf_resolve_quad_pattern_1.KEY_CONTEXT_SOURCES, newSources) };
             }
-            return { context: action.context.set(bus_rdf_resolve_quad_pattern_1.KEY_CONTEXT_SOURCES, newSources) };
         }
         return action;
+    }
+    async identifySource(source, context) {
+        return this.mediatorRdfSourceIdentifier.mediate({ sourceValue: source.value, context })
+            .then((sourceIdentificationResult) => {
+            if (sourceIdentificationResult.sourceType) {
+                source.type = sourceIdentificationResult.sourceType;
+            }
+            return source;
+        });
     }
 }
 exports.ActorContextPreprocessRdfSourceIdentifier = ActorContextPreprocessRdfSourceIdentifier;
@@ -1146,7 +1164,7 @@ exports.ActorHttpSolidAuthFetch = ActorHttpSolidAuthFetch;
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-const __b14bnode108 = new (__webpack_require__(/*! @comunica/logger-void */ "./node_modules/@comunica/logger-void/index.js").LoggerVoid)({});
+const __b15bnode110 = new (__webpack_require__(/*! @comunica/logger-void */ "./node_modules/@comunica/logger-void/index.js").LoggerVoid)({});
 const https___linkedsoftwaredependencies_org_bundles_npm__comunica_bus_init_Bus_Init = new (__webpack_require__(/*! @comunica/core */ "./node_modules/@comunica/core/index.js").Bus)({
   'name': 'https://linkedsoftwaredependencies.org/bundles/npm/@comunica/bus-init/Bus/Init'
 });
@@ -1174,6 +1192,12 @@ const https___linkedsoftwaredependencies_org_bundles_npm__comunica_bus_context_p
 const https___linkedsoftwaredependencies_org_bundles_npm__comunica_bus_rdf_resolve_quad_pattern_Bus_RdfResolveQuadPattern = new (__webpack_require__(/*! @comunica/core */ "./node_modules/@comunica/core/index.js").Bus)({
   'name': 'https://linkedsoftwaredependencies.org/bundles/npm/@comunica/bus-rdf-resolve-quad-pattern/Bus/RdfResolveQuadPattern'
 });
+const https___linkedsoftwaredependencies_org_bundles_npm__comunica_bus_http_invalidate_Bus_HttpInvalidate = new (__webpack_require__(/*! @comunica/core */ "./node_modules/@comunica/core/index.js").Bus)({
+  'name': 'https://linkedsoftwaredependencies.org/bundles/npm/@comunica/bus-http-invalidate/Bus/HttpInvalidate'
+});
+const https___linkedsoftwaredependencies_org_bundles_npm__comunica_bus_query_operation_Bus_QueryOperation = new (__webpack_require__(/*! @comunica/core */ "./node_modules/@comunica/core/index.js").Bus)({
+  'name': 'https://linkedsoftwaredependencies.org/bundles/npm/@comunica/bus-query-operation/Bus/QueryOperation'
+});
 const https___linkedsoftwaredependencies_org_bundles_npm__comunica_bus_rdf_resolve_hypermedia_Bus_RdfResolveHypermedia = new (__webpack_require__(/*! @comunica/core */ "./node_modules/@comunica/core/index.js").Bus)({
   'name': 'https://linkedsoftwaredependencies.org/bundles/npm/@comunica/bus-rdf-resolve-hypermedia/Bus/RdfResolveHypermedia'
 });
@@ -1185,9 +1209,6 @@ const https___linkedsoftwaredependencies_org_bundles_npm__comunica_bus_rdf_metad
 });
 const https___linkedsoftwaredependencies_org_bundles_npm__comunica_bus_rdf_metadata_extract_Bus_RdfMetadataExtract = new (__webpack_require__(/*! @comunica/core */ "./node_modules/@comunica/core/index.js").Bus)({
   'name': 'https://linkedsoftwaredependencies.org/bundles/npm/@comunica/bus-rdf-metadata-extract/Bus/RdfMetadataExtract'
-});
-const https___linkedsoftwaredependencies_org_bundles_npm__comunica_bus_query_operation_Bus_QueryOperation = new (__webpack_require__(/*! @comunica/core */ "./node_modules/@comunica/core/index.js").Bus)({
-  'name': 'https://linkedsoftwaredependencies.org/bundles/npm/@comunica/bus-query-operation/Bus/QueryOperation'
 });
 const https___linkedsoftwaredependencies_org_bundles_npm__comunica_bus_optimize_query_operation_Bus_OptimizeQueryOperation = new (__webpack_require__(/*! @comunica/core */ "./node_modules/@comunica/core/index.js").Bus)({
   'name': 'https://linkedsoftwaredependencies.org/bundles/npm/@comunica/bus-optimize-query-operation/Bus/OptimizeQueryOperation'
@@ -1218,8 +1239,13 @@ const https___linkedsoftwaredependencies_org_bundles_npm__comunica_actor_init_sp
   'name': 'https://linkedsoftwaredependencies.org/bundles/npm/@comunica/actor-init-sparql/^1.0.0/config/sets/sparql-queryoperators.json#mediatorRdfJoin',
   'bus': https___linkedsoftwaredependencies_org_bundles_npm__comunica_bus_rdf_join_Bus_RdfJoin
 });
-const https___linkedsoftwaredependencies_org_bundles_npm__comunica_actor_init_sparql__1_0_0_config_sets_rdf_dereference_json_mediatorRdfParse = new (__webpack_require__(/*! @comunica/mediator-race */ "./node_modules/@comunica/mediator-race/index.js").MediatorRace)({
-  'name': 'https://linkedsoftwaredependencies.org/bundles/npm/@comunica/actor-init-sparql/^1.0.0/config/sets/rdf-dereference.json#mediatorRdfParse',
+const https___linkedsoftwaredependencies_org_bundles_npm__comunica_actor_init_sparql__1_0_0_config_sets_rdf_dereference_json_mediatorRdfParseMediatypes = new (__webpack_require__(/*! @comunica/mediator-combine-union */ "./node_modules/@comunica/mediator-combine-union/index.js").MediatorCombineUnion)({
+  'field': 'mediaTypes',
+  'name': 'https://linkedsoftwaredependencies.org/bundles/npm/@comunica/actor-init-sparql/^1.0.0/config/sets/rdf-dereference.json#mediatorRdfParseMediatypes',
+  'bus': https___linkedsoftwaredependencies_org_bundles_npm__comunica_bus_rdf_parse_Bus_RdfParse
+});
+const https___linkedsoftwaredependencies_org_bundles_npm__comunica_actor_init_sparql__1_0_0_config_sets_rdf_dereference_json_mediatorRdfParseHandle = new (__webpack_require__(/*! @comunica/mediator-race */ "./node_modules/@comunica/mediator-race/index.js").MediatorRace)({
+  'name': 'https://linkedsoftwaredependencies.org/bundles/npm/@comunica/actor-init-sparql/^1.0.0/config/sets/rdf-dereference.json#mediatorRdfParseHandle',
   'bus': https___linkedsoftwaredependencies_org_bundles_npm__comunica_bus_rdf_parse_Bus_RdfParse
 });
 const https___linkedsoftwaredependencies_org_bundles_npm__comunica_actor_init_sparql__1_0_0_config_sets_rdf_parsers_json_myRdfParserN3 = new (__webpack_require__(/*! @comunica/actor-rdf-parse-n3 */ "./node_modules/@comunica/actor-rdf-parse-n3/index.js").ActorRdfParseN3)({
@@ -1238,6 +1264,7 @@ const https___linkedsoftwaredependencies_org_bundles_npm__comunica_actor_init_sp
     'application/ld+json': '1.0',
     'application/json': '0.1'
   },
+  'priorityScale': '9.0E-1',
   'name': 'https://linkedsoftwaredependencies.org/bundles/npm/@comunica/actor-init-sparql/^1.0.0/config/sets/rdf-parsers.json#myRdfParserJsonLd',
   'bus': https___linkedsoftwaredependencies_org_bundles_npm__comunica_bus_rdf_parse_Bus_RdfParse
 });
@@ -1245,6 +1272,7 @@ const https___linkedsoftwaredependencies_org_bundles_npm__comunica_actor_init_sp
   'mediaTypes': {
     'application/rdf+xml': '1.0'
   },
+  'priorityScale': '9.5E-1',
   'name': 'https://linkedsoftwaredependencies.org/bundles/npm/@comunica/actor-init-sparql/^1.0.0/config/sets/rdf-parsers.json#myRdfParserRdfXml',
   'bus': https___linkedsoftwaredependencies_org_bundles_npm__comunica_bus_rdf_parse_Bus_RdfParse
 });
@@ -1272,6 +1300,7 @@ const https___linkedsoftwaredependencies_org_bundles_npm__comunica_actor_init_sp
   'mediaTypes': {
     'application/ld+json': '1.0'
   },
+  'priorityScale': '9.0E-1',
   'name': 'https://linkedsoftwaredependencies.org/bundles/npm/@comunica/actor-init-sparql/^1.0.0/config/sets/rdf-serializers.json#myRdfSerializeJsonLd',
   'bus': https___linkedsoftwaredependencies_org_bundles_npm__comunica_bus_rdf_serialize_Bus_RdfSerialize
 });
@@ -1279,9 +1308,9 @@ const https___linkedsoftwaredependencies_org_bundles_npm__comunica_actor_init_sp
   'name': 'https://linkedsoftwaredependencies.org/bundles/npm/@comunica/actor-init-sparql/^1.0.0/config/sets/sparql-serializers.json#mediatorRdfSerialize',
   'bus': https___linkedsoftwaredependencies_org_bundles_npm__comunica_bus_rdf_serialize_Bus_RdfSerialize
 });
-const __b0bnode269 = new (__webpack_require__(/*! @comunica/mediator-combine-union */ "./node_modules/@comunica/mediator-combine-union/index.js").MediatorCombineUnion)({
+const __b0bnode275 = new (__webpack_require__(/*! @comunica/mediator-combine-union */ "./node_modules/@comunica/mediator-combine-union/index.js").MediatorCombineUnion)({
   'field': 'mediaTypes',
-  'name': '_:b0bnode269',
+  'name': '_:b0bnode275',
   'bus': https___linkedsoftwaredependencies_org_bundles_npm__comunica_bus_rdf_serialize_Bus_RdfSerialize
 });
 const https___linkedsoftwaredependencies_org_bundles_npm__comunica_actor_init_sparql__1_0_0_config_sets_context_preprocess_rdf_source_identifiers_json_mediatorRdfSourceIdentifier = new (__webpack_require__(/*! @comunica/mediator-number */ "./node_modules/@comunica/mediator-number/index.js").MediatorNumber)({
@@ -1298,6 +1327,33 @@ const https___linkedsoftwaredependencies_org_bundles_npm__comunica_actor_init_sp
 const https___linkedsoftwaredependencies_org_bundles_npm__comunica_actor_init_sparql__1_0_0_config_sets_sparql_queryoperators_json_mediatorResolveQuadPattern = new (__webpack_require__(/*! @comunica/mediator-race */ "./node_modules/@comunica/mediator-race/index.js").MediatorRace)({
   'name': 'https://linkedsoftwaredependencies.org/bundles/npm/@comunica/actor-init-sparql/^1.0.0/config/sets/sparql-queryoperators.json#mediatorResolveQuadPattern',
   'bus': https___linkedsoftwaredependencies_org_bundles_npm__comunica_bus_rdf_resolve_quad_pattern_Bus_RdfResolveQuadPattern
+});
+const https___linkedsoftwaredependencies_org_bundles_npm__comunica_bus_rdf_resolve_quad_pattern_Actor_RdfResolveQuadPattern_httpInvalidator_default = new (__webpack_require__(/*! @comunica/bus-http-invalidate */ "./node_modules/@comunica/bus-http-invalidate/index.js").ActorHttpInvalidateListenable)({
+  'name': 'https://linkedsoftwaredependencies.org/bundles/npm/@comunica/bus-rdf-resolve-quad-pattern/Actor/RdfResolveQuadPattern/httpInvalidator#default',
+  'bus': https___linkedsoftwaredependencies_org_bundles_npm__comunica_bus_http_invalidate_Bus_HttpInvalidate
+});
+const cbrrqp_Actor_RdfResolveQuadPattern_httpInvalidator_default = new (__webpack_require__(/*! @comunica/bus-http-invalidate */ "./node_modules/@comunica/bus-http-invalidate/index.js").ActorHttpInvalidateListenable)({
+  'name': 'cbrrqp:Actor/RdfResolveQuadPattern/httpInvalidator#default',
+  'bus': https___linkedsoftwaredependencies_org_bundles_npm__comunica_bus_http_invalidate_Bus_HttpInvalidate
+});
+const https___linkedsoftwaredependencies_org_bundles_npm__comunica_actor_init_sparql__1_0_0_config_sets_sparql_init_json_mediatorHttpInvalidate = new (__webpack_require__(/*! @comunica/mediator-all */ "./node_modules/@comunica/mediator-all/index.js").MediatorAll)({
+  'name': 'https://linkedsoftwaredependencies.org/bundles/npm/@comunica/actor-init-sparql/^1.0.0/config/sets/sparql-init.json#mediatorHttpInvalidate',
+  'bus': https___linkedsoftwaredependencies_org_bundles_npm__comunica_bus_http_invalidate_Bus_HttpInvalidate
+});
+const https___linkedsoftwaredependencies_org_bundles_npm__comunica_actor_init_sparql__1_0_0_config_sets_sparql_queryoperators_json_mediatorQueryOperation = new (__webpack_require__(/*! @comunica/mediator-number */ "./node_modules/@comunica/mediator-number/index.js").MediatorNumber)({
+  'field': 'httpRequests',
+  'type': 'https://linkedsoftwaredependencies.org/bundles/npm/@comunica/mediator-number/Mediator/Number/type/TypeMin',
+  'ignoreErrors': true,
+  'name': 'https://linkedsoftwaredependencies.org/bundles/npm/@comunica/actor-init-sparql/^1.0.0/config/sets/sparql-queryoperators.json#mediatorQueryOperation',
+  'bus': https___linkedsoftwaredependencies_org_bundles_npm__comunica_bus_query_operation_Bus_QueryOperation
+});
+const https___linkedsoftwaredependencies_org_bundles_npm__comunica_actor_init_sparql__1_0_0_config_sets_sparql_queryoperators_json_myEmptyBgpQueryOperator = new (__webpack_require__(/*! @comunica/actor-query-operation-bgp-empty */ "./node_modules/@comunica/actor-query-operation-bgp-empty/index.js").ActorQueryOperationBgpEmpty)({
+  'name': 'https://linkedsoftwaredependencies.org/bundles/npm/@comunica/actor-init-sparql/^1.0.0/config/sets/sparql-queryoperators.json#myEmptyBgpQueryOperator',
+  'bus': https___linkedsoftwaredependencies_org_bundles_npm__comunica_bus_query_operation_Bus_QueryOperation
+});
+const https___linkedsoftwaredependencies_org_bundles_npm__comunica_actor_init_sparql__1_0_0_config_sets_sparql_queryoperators_json_myValuesQueryOperator = new (__webpack_require__(/*! @comunica/actor-query-operation-values */ "./node_modules/@comunica/actor-query-operation-values/index.js").ActorQueryOperationValues)({
+  'name': 'https://linkedsoftwaredependencies.org/bundles/npm/@comunica/actor-init-sparql/^1.0.0/config/sets/sparql-queryoperators.json#myValuesQueryOperator',
+  'bus': https___linkedsoftwaredependencies_org_bundles_npm__comunica_bus_query_operation_Bus_QueryOperation
 });
 const https___linkedsoftwaredependencies_org_bundles_npm__comunica_actor_init_sparql__1_0_0_config_sets_resolve_hypermedia_json_myHypermediaQpfResolver = new (__webpack_require__(/*! @comunica/actor-rdf-resolve-hypermedia-qpf */ "./node_modules/@comunica/actor-rdf-resolve-hypermedia-qpf/index.js").ActorRdfResolveHypermediaQpf)({
   'subjectUri': 'http://www.w3.org/1999/02/22-rdf-syntax-ns#subject',
@@ -1347,21 +1403,6 @@ const https___linkedsoftwaredependencies_org_bundles_npm__comunica_actor_init_sp
   'name': 'https://linkedsoftwaredependencies.org/bundles/npm/@comunica/actor-init-sparql/^1.0.0/config/sets/resolve-hypermedia.json#myRdfMetadataExtractHydraCount',
   'bus': https___linkedsoftwaredependencies_org_bundles_npm__comunica_bus_rdf_metadata_extract_Bus_RdfMetadataExtract
 });
-const https___linkedsoftwaredependencies_org_bundles_npm__comunica_actor_init_sparql__1_0_0_config_sets_sparql_queryoperators_json_mediatorQueryOperation = new (__webpack_require__(/*! @comunica/mediator-number */ "./node_modules/@comunica/mediator-number/index.js").MediatorNumber)({
-  'field': 'httpRequests',
-  'type': 'https://linkedsoftwaredependencies.org/bundles/npm/@comunica/mediator-number/Mediator/Number/type/TypeMin',
-  'ignoreErrors': true,
-  'name': 'https://linkedsoftwaredependencies.org/bundles/npm/@comunica/actor-init-sparql/^1.0.0/config/sets/sparql-queryoperators.json#mediatorQueryOperation',
-  'bus': https___linkedsoftwaredependencies_org_bundles_npm__comunica_bus_query_operation_Bus_QueryOperation
-});
-const https___linkedsoftwaredependencies_org_bundles_npm__comunica_actor_init_sparql__1_0_0_config_sets_sparql_queryoperators_json_myEmptyBgpQueryOperator = new (__webpack_require__(/*! @comunica/actor-query-operation-bgp-empty */ "./node_modules/@comunica/actor-query-operation-bgp-empty/index.js").ActorQueryOperationBgpEmpty)({
-  'name': 'https://linkedsoftwaredependencies.org/bundles/npm/@comunica/actor-init-sparql/^1.0.0/config/sets/sparql-queryoperators.json#myEmptyBgpQueryOperator',
-  'bus': https___linkedsoftwaredependencies_org_bundles_npm__comunica_bus_query_operation_Bus_QueryOperation
-});
-const https___linkedsoftwaredependencies_org_bundles_npm__comunica_actor_init_sparql__1_0_0_config_sets_sparql_queryoperators_json_myValuesQueryOperator = new (__webpack_require__(/*! @comunica/actor-query-operation-values */ "./node_modules/@comunica/actor-query-operation-values/index.js").ActorQueryOperationValues)({
-  'name': 'https://linkedsoftwaredependencies.org/bundles/npm/@comunica/actor-init-sparql/^1.0.0/config/sets/sparql-queryoperators.json#myValuesQueryOperator',
-  'bus': https___linkedsoftwaredependencies_org_bundles_npm__comunica_bus_query_operation_Bus_QueryOperation
-});
 const https___linkedsoftwaredependencies_org_bundles_npm__comunica_actor_init_sparql__1_0_0_config_sets_sparql_init_json_mediatorOptimizeQueryOperation = new (__webpack_require__(/*! @comunica/mediator-combine-pipeline */ "./node_modules/@comunica/mediator-combine-pipeline/index.js").MediatorCombinePipeline)({
   'name': 'https://linkedsoftwaredependencies.org/bundles/npm/@comunica/actor-init-sparql/^1.0.0/config/sets/sparql-init.json#mediatorOptimizeQueryOperation',
   'bus': https___linkedsoftwaredependencies_org_bundles_npm__comunica_bus_optimize_query_operation_Bus_OptimizeQueryOperation
@@ -1402,9 +1443,9 @@ const https___linkedsoftwaredependencies_org_bundles_npm__comunica_actor_init_sp
   'name': 'https://linkedsoftwaredependencies.org/bundles/npm/@comunica/actor-init-sparql/^1.0.0/config/sets/sparql-init.json#mediatorSparqlSerialize',
   'bus': https___linkedsoftwaredependencies_org_bundles_npm__comunica_bus_sparql_serialize_Bus_SparqlSerialize
 });
-const __b0bnode263 = new (__webpack_require__(/*! @comunica/mediator-combine-union */ "./node_modules/@comunica/mediator-combine-union/index.js").MediatorCombineUnion)({
+const __b0bnode269 = new (__webpack_require__(/*! @comunica/mediator-combine-union */ "./node_modules/@comunica/mediator-combine-union/index.js").MediatorCombineUnion)({
   'field': 'mediaTypes',
-  'name': '_:b0bnode263',
+  'name': '_:b0bnode269',
   'bus': https___linkedsoftwaredependencies_org_bundles_npm__comunica_bus_sparql_serialize_Bus_SparqlSerialize
 });
 const https___linkedsoftwaredependencies_org_bundles_npm__comunica_actor_init_sparql__1_0_0_config_sets_sparql_serializers_json_myJsonSparqlSerializer = new (__webpack_require__(/*! @comunica/actor-sparql-serialize-json */ "./node_modules/@comunica/actor-sparql-serialize-json/index.js").ActorSparqlSerializeJson)({
@@ -1511,7 +1552,8 @@ const https___linkedsoftwaredependencies_org_bundles_npm__comunica_actor_init_sp
 });
 const https___linkedsoftwaredependencies_org_bundles_npm__comunica_actor_init_sparql__1_0_0_config_sets_rdf_dereference_json_myRdfDereferencer = new (__webpack_require__(/*! @comunica/actor-rdf-dereference-http-parse */ "./node_modules/@comunica/actor-rdf-dereference-http-parse/index.js").ActorRdfDereferenceHttpParse)({
   'mediatorHttp': https___linkedsoftwaredependencies_org_bundles_npm__comunica_actor_init_sparql__1_0_0_config_sets_http_json_mediatorHttp,
-  'mediatorRdfParse': https___linkedsoftwaredependencies_org_bundles_npm__comunica_actor_init_sparql__1_0_0_config_sets_rdf_dereference_json_mediatorRdfParse,
+  'mediatorRdfParseMediatypes': https___linkedsoftwaredependencies_org_bundles_npm__comunica_actor_init_sparql__1_0_0_config_sets_rdf_dereference_json_mediatorRdfParseMediatypes,
+  'mediatorRdfParseHandle': https___linkedsoftwaredependencies_org_bundles_npm__comunica_actor_init_sparql__1_0_0_config_sets_rdf_dereference_json_mediatorRdfParseHandle,
   'mediaMappings': {
     'ttl': 'text/turtle',
     'turtle': 'text/turtle',
@@ -1530,14 +1572,9 @@ const https___linkedsoftwaredependencies_org_bundles_npm__comunica_actor_init_sp
   'name': 'https://linkedsoftwaredependencies.org/bundles/npm/@comunica/actor-init-sparql/^1.0.0/config/sets/rdf-dereference.json#myRdfDereferencer',
   'bus': https___linkedsoftwaredependencies_org_bundles_npm__comunica_bus_rdf_dereference_Bus_RdfDereference
 });
-const https___linkedsoftwaredependencies_org_bundles_npm__comunica_actor_init_sparql__1_0_0_config_sets_resolve_file_json_myQuadPatternFileResolver = new (__webpack_require__(/*! @comunica/actor-rdf-resolve-quad-pattern-file */ "./node_modules/@comunica/actor-rdf-resolve-quad-pattern-file/index.js").ActorRdfResolveQuadPatternFile)({
-  'mediatorRdfDereference': https___linkedsoftwaredependencies_org_bundles_npm__comunica_actor_init_sparql__1_0_0_config_sets_resolve_file_json_mediatorRdfDereference,
-  'name': 'https://linkedsoftwaredependencies.org/bundles/npm/@comunica/actor-init-sparql/^1.0.0/config/sets/resolve-file.json#myQuadPatternFileResolver',
-  'bus': https___linkedsoftwaredependencies_org_bundles_npm__comunica_bus_rdf_resolve_quad_pattern_Bus_RdfResolveQuadPattern
-});
 const https___linkedsoftwaredependencies_org_bundles_npm__comunica_actor_init_sparql__1_0_0_config_sets_sparql_serializers_json_myRdfSparqlSerializer = new (__webpack_require__(/*! @comunica/actor-sparql-serialize-rdf */ "./node_modules/@comunica/actor-sparql-serialize-rdf/index.js").ActorSparqlSerializeRdf)({
   'mediatorRdfSerialize': https___linkedsoftwaredependencies_org_bundles_npm__comunica_actor_init_sparql__1_0_0_config_sets_sparql_serializers_json_mediatorRdfSerialize,
-  'mediatorMediaTypeCombiner': __b0bnode269,
+  'mediatorMediaTypeCombiner': __b0bnode275,
   'name': 'https://linkedsoftwaredependencies.org/bundles/npm/@comunica/actor-init-sparql/^1.0.0/config/sets/sparql-serializers.json#myRdfSparqlSerializer',
   'bus': https___linkedsoftwaredependencies_org_bundles_npm__comunica_bus_sparql_serialize_Bus_SparqlSerialize
 });
@@ -1557,23 +1594,12 @@ const https___linkedsoftwaredependencies_org_bundles_npm__comunica_actor_init_sp
   'name': 'https://linkedsoftwaredependencies.org/bundles/npm/@comunica/actor-init-sparql/^1.0.0/config/sets/sparql-queryoperators.json#myQuadPatternQueryOperator',
   'bus': https___linkedsoftwaredependencies_org_bundles_npm__comunica_bus_query_operation_Bus_QueryOperation
 });
-const https___linkedsoftwaredependencies_org_bundles_npm__comunica_actor_init_sparql__1_0_0_config_sets_resolve_hypermedia_json_myQuadPatternHypermediaResolver = new (__webpack_require__(/*! @comunica/actor-rdf-resolve-quad-pattern-hypermedia */ "./node_modules/@comunica/actor-rdf-resolve-quad-pattern-hypermedia/index.js").ActorRdfResolveQuadPatternHypermedia)({
-  'mediatorRdfDereferencePaged': https___linkedsoftwaredependencies_org_bundles_npm__comunica_actor_init_sparql__1_0_0_config_sets_resolve_hypermedia_json_mediatorRdfDereferencePaged,
-  'mediatorRdfResolveHypermedia': https___linkedsoftwaredependencies_org_bundles_npm__comunica_actor_init_sparql__1_0_0_config_sets_resolve_hypermedia_json_mediatorRdfResolveHypermedia,
-  'subjectUri': 'http://www.w3.org/1999/02/22-rdf-syntax-ns#subject',
-  'predicateUri': 'http://www.w3.org/1999/02/22-rdf-syntax-ns#predicate',
-  'objectUri': 'http://www.w3.org/1999/02/22-rdf-syntax-ns#object',
-  'graphUri': 'http://www.w3.org/ns/sparql-service-description#graph',
-  'name': 'https://linkedsoftwaredependencies.org/bundles/npm/@comunica/actor-init-sparql/^1.0.0/config/sets/resolve-hypermedia.json#myQuadPatternHypermediaResolver',
-  'bus': https___linkedsoftwaredependencies_org_bundles_npm__comunica_bus_rdf_resolve_quad_pattern_Bus_RdfResolveQuadPattern
-});
-const https___linkedsoftwaredependencies_org_bundles_npm__comunica_actor_init_sparql__1_0_0_config_sets_resolve_hypermedia_json_myRdfPagedDereferencer = new (__webpack_require__(/*! @comunica/actor-rdf-dereference-paged-next */ "./node_modules/@comunica/actor-rdf-dereference-paged-next/index.js").ActorRdfDereferencePagedNext)({
-  'mediatorRdfDereference': https___linkedsoftwaredependencies_org_bundles_npm__comunica_actor_init_sparql__1_0_0_config_sets_resolve_hypermedia_json_mediatorRdfDereference,
-  'mediatorMetadata': https___linkedsoftwaredependencies_org_bundles_npm__comunica_actor_init_sparql__1_0_0_config_sets_resolve_hypermedia_json_mediatorMetadata,
-  'mediatorMetadataExtract': https___linkedsoftwaredependencies_org_bundles_npm__comunica_actor_init_sparql__1_0_0_config_sets_resolve_hypermedia_json_mediatorMetadataExtract,
+const https___linkedsoftwaredependencies_org_bundles_npm__comunica_actor_init_sparql__1_0_0_config_sets_resolve_file_json_myQuadPatternFileResolver = new (__webpack_require__(/*! @comunica/actor-rdf-resolve-quad-pattern-file */ "./node_modules/@comunica/actor-rdf-resolve-quad-pattern-file/index.js").ActorRdfResolveQuadPatternFile)({
+  'mediatorRdfDereference': https___linkedsoftwaredependencies_org_bundles_npm__comunica_actor_init_sparql__1_0_0_config_sets_resolve_file_json_mediatorRdfDereference,
   'cacheSize': 100,
-  'name': 'https://linkedsoftwaredependencies.org/bundles/npm/@comunica/actor-init-sparql/^1.0.0/config/sets/resolve-hypermedia.json#myRdfPagedDereferencer',
-  'bus': https___linkedsoftwaredependencies_org_bundles_npm__comunica_bus_rdf_dereference_paged_Bus_RdfDereferencePaged
+  'httpInvalidator': https___linkedsoftwaredependencies_org_bundles_npm__comunica_bus_rdf_resolve_quad_pattern_Actor_RdfResolveQuadPattern_httpInvalidator_default,
+  'name': 'https://linkedsoftwaredependencies.org/bundles/npm/@comunica/actor-init-sparql/^1.0.0/config/sets/resolve-file.json#myQuadPatternFileResolver',
+  'bus': https___linkedsoftwaredependencies_org_bundles_npm__comunica_bus_rdf_resolve_quad_pattern_Bus_RdfResolveQuadPattern
 });
 const https___linkedsoftwaredependencies_org_bundles_npm__comunica_actor_init_sparql__1_0_0_config_sets_sparql_queryoperators_json_myAskQueryOperator = new (__webpack_require__(/*! @comunica/actor-query-operation-ask */ "./node_modules/@comunica/actor-query-operation-ask/index.js").ActorQueryOperationAsk)({
   'mediatorQueryOperation': https___linkedsoftwaredependencies_org_bundles_npm__comunica_actor_init_sparql__1_0_0_config_sets_sparql_queryoperators_json_mediatorQueryOperation,
@@ -1717,14 +1743,34 @@ const https___linkedsoftwaredependencies_org_bundles_npm__comunica_actor_init_sp
   'name': 'https://linkedsoftwaredependencies.org/bundles/npm/@comunica/actor-init-sparql/^1.0.0/config/sets/sparql-queryoperator-path.json#myZeroOrOnePathOperator',
   'bus': https___linkedsoftwaredependencies_org_bundles_npm__comunica_bus_query_operation_Bus_QueryOperation
 });
+const https___linkedsoftwaredependencies_org_bundles_npm__comunica_actor_init_sparql__1_0_0_config_sets_resolve_hypermedia_json_myQuadPatternHypermediaResolver = new (__webpack_require__(/*! @comunica/actor-rdf-resolve-quad-pattern-hypermedia */ "./node_modules/@comunica/actor-rdf-resolve-quad-pattern-hypermedia/index.js").ActorRdfResolveQuadPatternHypermedia)({
+  'mediatorRdfDereferencePaged': https___linkedsoftwaredependencies_org_bundles_npm__comunica_actor_init_sparql__1_0_0_config_sets_resolve_hypermedia_json_mediatorRdfDereferencePaged,
+  'mediatorRdfResolveHypermedia': https___linkedsoftwaredependencies_org_bundles_npm__comunica_actor_init_sparql__1_0_0_config_sets_resolve_hypermedia_json_mediatorRdfResolveHypermedia,
+  'subjectUri': 'http://www.w3.org/1999/02/22-rdf-syntax-ns#subject',
+  'predicateUri': 'http://www.w3.org/1999/02/22-rdf-syntax-ns#predicate',
+  'objectUri': 'http://www.w3.org/1999/02/22-rdf-syntax-ns#object',
+  'graphUri': 'http://www.w3.org/ns/sparql-service-description#graph',
+  'name': 'https://linkedsoftwaredependencies.org/bundles/npm/@comunica/actor-init-sparql/^1.0.0/config/sets/resolve-hypermedia.json#myQuadPatternHypermediaResolver',
+  'bus': https___linkedsoftwaredependencies_org_bundles_npm__comunica_bus_rdf_resolve_quad_pattern_Bus_RdfResolveQuadPattern
+});
+const https___linkedsoftwaredependencies_org_bundles_npm__comunica_actor_init_sparql__1_0_0_config_sets_resolve_hypermedia_json_myRdfPagedDereferencer = new (__webpack_require__(/*! @comunica/actor-rdf-dereference-paged-next */ "./node_modules/@comunica/actor-rdf-dereference-paged-next/index.js").ActorRdfDereferencePagedNext)({
+  'mediatorRdfDereference': https___linkedsoftwaredependencies_org_bundles_npm__comunica_actor_init_sparql__1_0_0_config_sets_resolve_hypermedia_json_mediatorRdfDereference,
+  'mediatorMetadata': https___linkedsoftwaredependencies_org_bundles_npm__comunica_actor_init_sparql__1_0_0_config_sets_resolve_hypermedia_json_mediatorMetadata,
+  'mediatorMetadataExtract': https___linkedsoftwaredependencies_org_bundles_npm__comunica_actor_init_sparql__1_0_0_config_sets_resolve_hypermedia_json_mediatorMetadataExtract,
+  'cacheSize': 100,
+  'httpInvalidator': cbrrqp_Actor_RdfResolveQuadPattern_httpInvalidator_default,
+  'name': 'https://linkedsoftwaredependencies.org/bundles/npm/@comunica/actor-init-sparql/^1.0.0/config/sets/resolve-hypermedia.json#myRdfPagedDereferencer',
+  'bus': https___linkedsoftwaredependencies_org_bundles_npm__comunica_bus_rdf_dereference_paged_Bus_RdfDereferencePaged
+});
 const urn_comunica_sparqlinit = new (__webpack_require__(/*! ./index.js */ "./node_modules/@comunica/actor-init-sparql/index-browser.js").ActorInitSparql)({
   'mediatorOptimizeQueryOperation': https___linkedsoftwaredependencies_org_bundles_npm__comunica_actor_init_sparql__1_0_0_config_sets_sparql_init_json_mediatorOptimizeQueryOperation,
   'mediatorQueryOperation': https___linkedsoftwaredependencies_org_bundles_npm__comunica_actor_init_sparql__1_0_0_config_sets_sparql_queryoperators_json_mediatorQueryOperation,
   'mediatorSparqlParse': https___linkedsoftwaredependencies_org_bundles_npm__comunica_actor_init_sparql__1_0_0_config_sets_sparql_init_json_mediatorSparqlParse,
   'mediatorSparqlSerialize': https___linkedsoftwaredependencies_org_bundles_npm__comunica_actor_init_sparql__1_0_0_config_sets_sparql_init_json_mediatorSparqlSerialize,
-  'mediatorSparqlSerializeMediaTypeCombiner': __b0bnode263,
+  'mediatorSparqlSerializeMediaTypeCombiner': __b0bnode269,
   'mediatorContextPreprocess': https___linkedsoftwaredependencies_org_bundles_npm__comunica_actor_init_sparql__1_0_0_config_sets_sparql_init_json_mediatorContextPreprocess,
-  'logger': __b14bnode108,
+  'mediatorHttpInvalidate': https___linkedsoftwaredependencies_org_bundles_npm__comunica_actor_init_sparql__1_0_0_config_sets_sparql_init_json_mediatorHttpInvalidate,
+  'logger': __b15bnode110,
   'contextKeyShortcuts': {
     'source': '@comunica/bus-rdf-resolve-quad-pattern:source',
     'sources': '@comunica/bus-rdf-resolve-quad-pattern:sources',
@@ -1748,12 +1794,14 @@ const urn_comunica_my = ({
     https___linkedsoftwaredependencies_org_bundles_npm__comunica_actor_init_sparql__1_0_0_config_sets_rdf_parsers_json_myRdfParserRdfXml,
     https___linkedsoftwaredependencies_org_bundles_npm__comunica_actor_init_sparql__1_0_0_config_sets_rdf_serializers_json_myRdfSerializerN3,
     https___linkedsoftwaredependencies_org_bundles_npm__comunica_actor_init_sparql__1_0_0_config_sets_rdf_serializers_json_myRdfSerializeJsonLd,
-    https___linkedsoftwaredependencies_org_bundles_npm__comunica_actor_init_sparql__1_0_0_config_sets_context_preprocess_rdf_source_identifiers_json_myContextPreprocessRdfSourceIdentifier,
     https___linkedsoftwaredependencies_org_bundles_npm__comunica_actor_init_sparql__1_0_0_config_sets_rdf_source_identifiers_json_myActorRdfSourceIdentifierHypermediaQpf,
     https___linkedsoftwaredependencies_org_bundles_npm__comunica_actor_init_sparql__1_0_0_config_sets_rdf_source_identifiers_json_myActorRdfSourceIdentifierSparql,
     https___linkedsoftwaredependencies_org_bundles_npm__comunica_actor_init_sparql__1_0_0_config_sets_rdf_source_identifiers_json_myActorRdfSourceIdentifierFileContentType,
+    https___linkedsoftwaredependencies_org_bundles_npm__comunica_actor_init_sparql__1_0_0_config_sets_context_preprocess_rdf_source_identifiers_json_myContextPreprocessRdfSourceIdentifier,
     https___linkedsoftwaredependencies_org_bundles_npm__comunica_actor_init_sparql__1_0_0_config_sets_resolve_federated_json_myFederatedQuadPatternResolver,
     https___linkedsoftwaredependencies_org_bundles_npm__comunica_actor_init_sparql__1_0_0_config_sets_resolve_file_json_myQuadPatternFileResolver,
+    https___linkedsoftwaredependencies_org_bundles_npm__comunica_actor_init_sparql__1_0_0_config_sets_resolve_sparql_json_mySparqlQuadPatternResolver,
+    https___linkedsoftwaredependencies_org_bundles_npm__comunica_actor_init_sparql__1_0_0_config_sets_resolve_sparql_json_mySparqlEndpointResolver,
     https___linkedsoftwaredependencies_org_bundles_npm__comunica_actor_init_sparql__1_0_0_config_sets_resolve_hypermedia_json_myHypermediaQpfResolver,
     https___linkedsoftwaredependencies_org_bundles_npm__comunica_actor_init_sparql__1_0_0_config_sets_resolve_hypermedia_json_myQuadPatternHypermediaResolver,
     https___linkedsoftwaredependencies_org_bundles_npm__comunica_actor_init_sparql__1_0_0_config_sets_resolve_hypermedia_json_myRdfPagedDereferencer,
@@ -1761,8 +1809,6 @@ const urn_comunica_my = ({
     https___linkedsoftwaredependencies_org_bundles_npm__comunica_actor_init_sparql__1_0_0_config_sets_resolve_hypermedia_json_myRdfMetadataTriplePredicate,
     https___linkedsoftwaredependencies_org_bundles_npm__comunica_actor_init_sparql__1_0_0_config_sets_resolve_hypermedia_json_myRdfMetadataExtractHydraControls,
     https___linkedsoftwaredependencies_org_bundles_npm__comunica_actor_init_sparql__1_0_0_config_sets_resolve_hypermedia_json_myRdfMetadataExtractHydraCount,
-    https___linkedsoftwaredependencies_org_bundles_npm__comunica_actor_init_sparql__1_0_0_config_sets_resolve_sparql_json_mySparqlQuadPatternResolver,
-    https___linkedsoftwaredependencies_org_bundles_npm__comunica_actor_init_sparql__1_0_0_config_sets_resolve_sparql_json_mySparqlEndpointResolver,
     urn_comunica_sparqlinit,
     https___linkedsoftwaredependencies_org_bundles_npm__comunica_actor_init_sparql__1_0_0_config_sets_graphql_parsers_json_myGraphqlParser,
     https___linkedsoftwaredependencies_org_bundles_npm__comunica_actor_init_sparql__1_0_0_config_sets_sparql_optimize_json_myJoinBgpOptimizer,
@@ -1990,6 +2036,15 @@ class ActorInitSparql extends bus_init_1.ActorInit {
         const handle = queryResult;
         handle.context = context;
         return (await this.mediatorSparqlSerialize.mediate({ context, handle, handleMediaType: mediaType })).handle;
+    }
+    /**
+     * Invalidate all internal caches related to the given page URL.
+     * If no page URL is given, then all pages will be invalidated.
+     * @param {string} pageUrl The page URL to invalidate.
+     * @return {Promise<any>} A promise resolving when the caches have been invalidated.
+     */
+    invalidateHttpCache(pageUrl) {
+        return this.mediatorHttpInvalidate.mediate({ pageUrl });
     }
     async run(action) {
         throw new Error('ActorInitSparql#run is not supported in the browser.');
@@ -2384,14 +2439,16 @@ class ActorQueryOperationBgpLeftDeepSmallest extends bus_query_operation_1.Actor
         const smallestPattern = patternOutputs.slice(smallestId)[0];
         const remainingPatterns = pattern.patterns.concat([]);
         remainingPatterns.splice(smallestId, 1);
+        const remainingMetadatas = metadatas.concat([]);
+        remainingMetadatas.splice(smallestId, 1);
         // Check if the output type is correct
         bus_query_operation_1.ActorQueryOperation.validateQueryOutput(smallestPattern, 'bindings');
         // Materialize the remaining patterns for each binding in the stream.
+        const subContext = context && context.set(bus_query_operation_1.KEY_CONTEXT_BGP_PARENTMETADATA, remainingMetadatas);
         const bindingsStream = ActorQueryOperationBgpLeftDeepSmallest.createLeftDeepStream(smallestPattern.bindingsStream, remainingPatterns, async (patterns) => {
             // Send the materialized patterns to the mediator for recursive BGP evaluation.
             const operation = { type: 'bgp', patterns };
-            return bus_query_operation_1.ActorQueryOperation.getSafeBindings(await this.mediatorQueryOperation.mediate({ operation, context }))
-                .bindingsStream;
+            return bus_query_operation_1.ActorQueryOperation.getSafeBindings(await this.mediatorQueryOperation.mediate({ operation, context: subContext })).bindingsStream;
         });
         // Prepare variables and metadata
         const variables = ActorQueryOperationBgpLeftDeepSmallest.getCombinedVariables(patternOutputs);
@@ -2449,6 +2506,12 @@ class ActorQueryOperationBgpSingle extends bus_query_operation_1.ActorQueryOpera
         return true;
     }
     runOperation(pattern, context) {
+        // If we have parent metadata, extract the single parent metadata entry.
+        if (context && context.has(bus_query_operation_1.KEY_CONTEXT_BGP_PARENTMETADATA)) {
+            const metadatas = context.get(bus_query_operation_1.KEY_CONTEXT_BGP_PARENTMETADATA);
+            context = context.delete(bus_query_operation_1.KEY_CONTEXT_BGP_PARENTMETADATA);
+            context = context.set(bus_query_operation_1.KEY_CONTEXT_PATTERN_PARENTMETADATA, metadatas[0]);
+        }
         return this.mediatorQueryOperation.mediate({ operation: pattern.patterns[0], context });
     }
 }
@@ -4817,7 +4880,7 @@ class ActorRdfDereferenceHttpParse extends bus_rdf_dereference_1.ActorRdfDerefer
     }
     async run(action) {
         // Define accept header based on available media types.
-        const mediaTypes = (await this.mediatorRdfParse.mediate({ context: action.context, mediaTypes: true }))
+        const mediaTypes = (await this.mediatorRdfParseMediatypes.mediate({ context: action.context, mediaTypes: true }))
             .mediaTypes;
         const acceptHeader = this.mediaTypesToAcceptString(mediaTypes);
         // Resolve HTTP URL using appropriate accept header
@@ -4840,7 +4903,7 @@ class ActorRdfDereferenceHttpParse extends bus_rdf_dereference_1.ActorRdfDerefer
             mediaType = this.getMediaTypeFromExtension(httpResponse.url);
         }
         const parseAction = { input: responseStream, baseIRI: httpResponse.url };
-        const parseOutput = (await this.mediatorRdfParse.mediate({ context: action.context, handle: parseAction, handleMediaType: mediaType })).handle;
+        const parseOutput = (await this.mediatorRdfParseHandle.mediate({ context: action.context, handle: parseAction, handleMediaType: mediaType })).handle;
         // Return the parsed quad stream and whether or not only triples are supported
         return { pageUrl: httpResponse.url, quads: parseOutput.quads, triples: parseOutput.triples };
     }
@@ -4900,6 +4963,9 @@ class ActorRdfDereferencePagedNext extends bus_rdf_dereference_paged_1.ActorRdfD
     constructor(args) {
         super(args);
         this.cache = this.cacheSize ? new LRU({ max: this.cacheSize }) : null;
+        if (this.cache) {
+            this.httpInvalidator.addInvalidateListener(({ pageUrl }) => pageUrl ? this.cache.del(pageUrl) : this.cache.reset());
+        }
     }
     test(action) {
         // Try to determine an actor in the RDF dereference bus to see if we can handle the given URL.
@@ -5958,24 +6024,32 @@ class FederatedQuadSource {
         // Counters for our metadata
         const metadata = { totalItems: 0 };
         let remainingSources = 1;
+        let sourcesCount = 0;
+        // Anonymous function to handle totalItems from metadata
+        const checkEmitMetadata = (currentTotalItems, source, pattern, lastMetadata) => {
+            if (this.skipEmptyPatterns && !currentTotalItems) {
+                // Because another call may have added more information in the meantime
+                if (!this.isSourceEmpty(source, pattern)) {
+                    this.emptyPatterns.get(source).push(pattern);
+                }
+            }
+            if (!remainingSources) {
+                if (lastMetadata && sourcesCount === 1) {
+                    // If we only had one source, emit the metadata as-is.
+                    it.emit('metadata', lastMetadata);
+                }
+                else {
+                    it.emit('metadata', metadata);
+                }
+            }
+        };
         const sourcesIt = this.sources.iterator();
         const it = new asynciterator_union_1.RoundRobinUnionIterator(sourcesIt.map((source) => {
             remainingSources++;
+            sourcesCount++;
             // If we can predict that the given source will have no bindings for the given pattern,
             // return an empty iterator.
             const pattern = data_model_1.quad(FederatedQuadSource.nullToVariable(subject), FederatedQuadSource.nullToVariable(predicate), FederatedQuadSource.nullToVariable(object), FederatedQuadSource.nullToVariable(graph));
-            // Anonymous function to handle totalItems from metadata
-            const checkEmitMetadata = (currentTotalItems) => {
-                if (this.skipEmptyPatterns && !currentTotalItems) {
-                    // Because another call may have added more information in the meantime
-                    if (!this.isSourceEmpty(source, pattern)) {
-                        this.emptyPatterns.get(source).push(pattern);
-                    }
-                }
-                if (!remainingSources) {
-                    it.emit('metadata', metadata);
-                }
-            };
             // Prepare the context for this specific source
             const context = this.contextDefault.set(bus_rdf_resolve_quad_pattern_1.KEY_CONTEXT_SOURCE, { type: source.type, value: source.value });
             return new asynciterator_promiseproxy_1.PromiseProxyIterator(async () => {
@@ -5991,19 +6065,19 @@ class FederatedQuadSource {
                         if ((!subMetadata.totalItems && subMetadata.totalItems !== 0) || !isFinite(subMetadata.totalItems)) {
                             metadata.totalItems = Infinity;
                             remainingSources = 0; // We're already at infinite, so ignore any later metadata
-                            checkEmitMetadata(Infinity);
+                            checkEmitMetadata(Infinity, source, pattern, subMetadata);
                         }
                         else {
                             metadata.totalItems += subMetadata.totalItems;
                             remainingSources--;
-                            checkEmitMetadata(subMetadata.totalItems);
+                            checkEmitMetadata(subMetadata.totalItems, source, pattern, subMetadata);
                         }
                     });
                 }
                 else {
                     metadata.totalItems = Infinity;
                     remainingSources = 0; // We're already at infinite, so ignore any later metadata
-                    checkEmitMetadata(Infinity);
+                    checkEmitMetadata(Infinity, source, pattern);
                 }
                 return output.data;
             });
@@ -6060,6 +6134,7 @@ __export(__webpack_require__(/*! ./lib/ActorRdfResolveQuadPatternFile */ "./node
 
 Object.defineProperty(exports, "__esModule", { value: true });
 const bus_rdf_resolve_quad_pattern_1 = __webpack_require__(/*! @comunica/bus-rdf-resolve-quad-pattern */ "./node_modules/@comunica/bus-rdf-resolve-quad-pattern/index.js");
+const LRU = __webpack_require__(/*! lru-cache */ "./node_modules/lru-cache/index.js");
 const n3_1 = __webpack_require__(/*! n3 */ "./node_modules/n3/N3.js");
 const N3StoreIterator_1 = __webpack_require__(/*! ./N3StoreIterator */ "./node_modules/@comunica/actor-rdf-resolve-quad-pattern-file/lib/N3StoreIterator.js");
 const N3StoreQuadSource_1 = __webpack_require__(/*! ./N3StoreQuadSource */ "./node_modules/@comunica/actor-rdf-resolve-quad-pattern-file/lib/N3StoreQuadSource.js");
@@ -6069,16 +6144,19 @@ const N3StoreQuadSource_1 = __webpack_require__(/*! ./N3StoreQuadSource */ "./no
 class ActorRdfResolveQuadPatternFile extends bus_rdf_resolve_quad_pattern_1.ActorRdfResolveQuadPatternSource {
     constructor(args) {
         super(args);
-        this.stores = {};
+        this.cache = new LRU({ max: this.cacheSize });
+        this.httpInvalidator.addInvalidateListener(({ pageUrl }) => pageUrl ? this.cache.del(pageUrl) : this.cache.reset());
     }
     initializeFile(file, context) {
-        return this.stores[file] = this.mediatorRdfDereference.mediate({ context, url: file })
+        const storePromise = this.mediatorRdfDereference.mediate({ context, url: file })
             .then((page) => new Promise((resolve, reject) => {
             const store = new n3_1.Store();
             page.quads.on('data', (quad) => store.addQuad(quad));
             page.quads.on('error', reject);
             page.quads.on('end', () => resolve(store));
         }));
+        this.cache.set(file, storePromise);
+        return storePromise;
     }
     async initialize() {
         (this.files || []).forEach((file) => this.initializeFile(file, null));
@@ -6092,17 +6170,17 @@ class ActorRdfResolveQuadPatternFile extends bus_rdf_resolve_quad_pattern_1.Acto
     }
     async getSource(context) {
         const file = this.getContextSource(context).value;
-        if (!this.stores[file]) {
+        if (!this.cache.has(file)) {
             await this.initializeFile(file, context);
         }
-        return new N3StoreQuadSource_1.N3StoreQuadSource(await this.stores[file]);
+        return new N3StoreQuadSource_1.N3StoreQuadSource(await this.cache.get(file));
     }
     async getOutput(source, pattern, context) {
         // Attach totalItems to the output
         const output = await super.getOutput(source, pattern, context);
         output.metadata = () => new Promise((resolve, reject) => {
             const file = this.getContextSource(context).value;
-            this.stores[file].then((store) => {
+            this.cache.get(file).then((store) => {
                 const totalItems = store.countQuads(N3StoreIterator_1.N3StoreIterator.nullifyVariables(pattern.subject), N3StoreIterator_1.N3StoreIterator.nullifyVariables(pattern.predicate), N3StoreIterator_1.N3StoreIterator.nullifyVariables(pattern.object), N3StoreIterator_1.N3StoreIterator.nullifyVariables(pattern.graph));
                 resolve({ totalItems });
             }, reject);
@@ -7965,6 +8043,96 @@ exports.ActorContextPreprocess = ActorContextPreprocess;
 
 /***/ }),
 
+/***/ "./node_modules/@comunica/bus-http-invalidate/index.js":
+/*!*************************************************************!*\
+  !*** ./node_modules/@comunica/bus-http-invalidate/index.js ***!
+  \*************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+function __export(m) {
+    for (var p in m) if (!exports.hasOwnProperty(p)) exports[p] = m[p];
+}
+Object.defineProperty(exports, "__esModule", { value: true });
+__export(__webpack_require__(/*! ./lib/ActorHttpInvalidate */ "./node_modules/@comunica/bus-http-invalidate/lib/ActorHttpInvalidate.js"));
+__export(__webpack_require__(/*! ./lib/ActorHttpInvalidateListenable */ "./node_modules/@comunica/bus-http-invalidate/lib/ActorHttpInvalidateListenable.js"));
+//# sourceMappingURL=index.js.map
+
+/***/ }),
+
+/***/ "./node_modules/@comunica/bus-http-invalidate/lib/ActorHttpInvalidate.js":
+/*!*******************************************************************************!*\
+  !*** ./node_modules/@comunica/bus-http-invalidate/lib/ActorHttpInvalidate.js ***!
+  \*******************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+Object.defineProperty(exports, "__esModule", { value: true });
+const core_1 = __webpack_require__(/*! @comunica/core */ "./node_modules/@comunica/core/index.js");
+/**
+ * A comunica actor for http-invalidate events.
+ *
+ * Actor types:
+ * * Input:  IActionHttpInvalidate:      An action for invalidating the cached contents of given URL.
+ * * Test:   <none>
+ * * Output: IActorHttpInvalidateOutput: An empty response.
+ *
+ * @see IActionHttpInvalidate
+ * @see IActorHttpInvalidateOutput
+ */
+class ActorHttpInvalidate extends core_1.Actor {
+    constructor(args) {
+        super(args);
+    }
+}
+exports.ActorHttpInvalidate = ActorHttpInvalidate;
+//# sourceMappingURL=ActorHttpInvalidate.js.map
+
+/***/ }),
+
+/***/ "./node_modules/@comunica/bus-http-invalidate/lib/ActorHttpInvalidateListenable.js":
+/*!*****************************************************************************************!*\
+  !*** ./node_modules/@comunica/bus-http-invalidate/lib/ActorHttpInvalidateListenable.js ***!
+  \*****************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+Object.defineProperty(exports, "__esModule", { value: true });
+const ActorHttpInvalidate_1 = __webpack_require__(/*! ./ActorHttpInvalidate */ "./node_modules/@comunica/bus-http-invalidate/lib/ActorHttpInvalidate.js");
+/**
+ * An ActorHttpInvalidate actor that allows listeners to be attached.
+ *
+ * @see ActorHttpInvalidate
+ */
+class ActorHttpInvalidateListenable extends ActorHttpInvalidate_1.ActorHttpInvalidate {
+    constructor(args) {
+        super(args);
+        this.invalidateListeners = [];
+    }
+    addInvalidateListener(listener) {
+        this.invalidateListeners.push(listener);
+    }
+    async test(action) {
+        return true;
+    }
+    async run(action) {
+        for (const listener of this.invalidateListeners) {
+            listener(action);
+        }
+        return true;
+    }
+}
+exports.ActorHttpInvalidateListenable = ActorHttpInvalidateListenable;
+//# sourceMappingURL=ActorHttpInvalidateListenable.js.map
+
+/***/ }),
+
 /***/ "./node_modules/@comunica/bus-http/index.js":
 /*!**************************************************!*\
   !*** ./node_modules/@comunica/bus-http/index.js ***!
@@ -8224,6 +8392,21 @@ class ActorQueryOperation extends core_1.Actor {
     }
 }
 exports.ActorQueryOperation = ActorQueryOperation;
+/**
+ * @type {string} Context entry for an array of parent metadata.
+ *                I.e., an array of the metadata that was present before materializing the current BGP operations.
+ *                This can be passed in 'bgp' actions.
+ *                The array entries should correspond to the pattern entries in the BGP.
+ * @value {any} A metadata hash.
+ */
+exports.KEY_CONTEXT_BGP_PARENTMETADATA = '@comunica/bus-query-operation:bgpParentMetadata';
+/**
+ * @type {string} Context entry for parent metadata.
+ *                I.e., the metadata that was present before materializing the current operation.
+ *                This can be passed in 'pattern' actions.
+ * @value {any} A metadata hash.
+ */
+exports.KEY_CONTEXT_PATTERN_PARENTMETADATA = '@comunica/bus-query-operation:patternParentMetadata';
 //# sourceMappingURL=ActorQueryOperation.js.map
 
 /***/ }),
@@ -9885,6 +10068,75 @@ class LoggerVoid extends core_1.Logger {
 }
 exports.LoggerVoid = LoggerVoid;
 //# sourceMappingURL=LoggerVoid.js.map
+
+/***/ }),
+
+/***/ "./node_modules/@comunica/mediator-all/index.js":
+/*!******************************************************!*\
+  !*** ./node_modules/@comunica/mediator-all/index.js ***!
+  \******************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+function __export(m) {
+    for (var p in m) if (!exports.hasOwnProperty(p)) exports[p] = m[p];
+}
+Object.defineProperty(exports, "__esModule", { value: true });
+__export(__webpack_require__(/*! ./lib/MediatorAll */ "./node_modules/@comunica/mediator-all/lib/MediatorAll.js"));
+//# sourceMappingURL=index.js.map
+
+/***/ }),
+
+/***/ "./node_modules/@comunica/mediator-all/lib/MediatorAll.js":
+/*!****************************************************************!*\
+  !*** ./node_modules/@comunica/mediator-all/lib/MediatorAll.js ***!
+  \****************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+Object.defineProperty(exports, "__esModule", { value: true });
+const core_1 = __webpack_require__(/*! @comunica/core */ "./node_modules/@comunica/core/index.js");
+/**
+ * A comunica mediator that runs all actors that resolve their test.
+ * This mediator will always resolve to `null`.
+ */
+class MediatorAll extends core_1.Mediator {
+    constructor(args) {
+        super(args);
+    }
+    async mediate(action) {
+        // Collect all actors that resolve their test
+        const validActors = [];
+        let testResults;
+        try {
+            testResults = this.publish(action);
+        }
+        catch (e) {
+            testResults = [];
+        }
+        for (const testResult of testResults) {
+            try {
+                await testResult.reply;
+                validActors.push(testResult.actor);
+            }
+            catch (e) {
+                // Ignore errors
+            }
+        }
+        // Send action to all valid actors
+        await Promise.all(validActors.map((actor) => actor.runObservable(action)));
+        return null;
+    }
+    async mediateWith(action, testResults) {
+        return null;
+    }
+}
+exports.MediatorAll = MediatorAll;
+//# sourceMappingURL=MediatorAll.js.map
 
 /***/ }),
 
@@ -57702,6 +57954,7 @@ const {
 
 const {
   addValue: _addValue,
+  asArray: _asArray,
   compareShortestLeast: _compareShortestLeast
 } = __webpack_require__(/*! ./util */ "./node_modules/jsonld/lib/util.js");
 
@@ -57837,7 +58090,7 @@ api.compact = ({
 
       // compact @id and @type(s)
       if(expandedProperty === '@id' || expandedProperty === '@type') {
-        let compactedValue = [].concat(expandedValue).map(
+        let compactedValue = _asArray(expandedValue).map(
           expandedIri => api.compactIri({
             activeCtx,
             iri: expandedIri,
@@ -58161,17 +58414,17 @@ api.compact = ({
               vocab: true
             });
             let types;
-            [key, ...types] = [].concat(compactedItem[typeKey] || []);
+            [key, ...types] = _asArray(compactedItem[typeKey] || []);
             switch(types.length) {
-            case 0:
-              delete compactedItem[typeKey];
-              break;
-            case 1:
-              compactedItem[typeKey] = types[0];
-              break;
-            default:
-              compactedItem[typeKey] = types;
-              break;
+              case 0:
+                delete compactedItem[typeKey];
+                break;
+              case 1:
+                compactedItem[typeKey] = types[0];
+                break;
+              default:
+                compactedItem[typeKey] = types;
+                break;
             }
           }
 
@@ -58808,6 +59061,11 @@ const {
   parse: parseUrl
 } = __webpack_require__(/*! ./url */ "./node_modules/jsonld/lib/url.js");
 
+const {
+  asArray: _asArray,
+  compareShortestLeast: _compareShortestLeast
+} = __webpack_require__(/*! ./util */ "./node_modules/jsonld/lib/util.js");
+
 const MAX_CONTEXT_URLS = 10;
 
 const INITIAL_CONTEXT_CACHE = new Map();
@@ -58997,7 +59255,7 @@ api.createTermDefinition = (activeCtx, localCtx, term, defined) => {
     throw new JsonLdError(
       'Cyclical context definition detected.',
       'jsonld.CyclicalContext',
-      {code: 'cyclic IRI mapping', context: localCtx, term: term});
+      {code: 'cyclic IRI mapping', context: localCtx, term});
   }
 
   // now defining term
@@ -59007,7 +59265,7 @@ api.createTermDefinition = (activeCtx, localCtx, term, defined) => {
     throw new JsonLdError(
       'Invalid JSON-LD syntax; keywords cannot be overridden.',
       'jsonld.SyntaxError',
-      {code: 'keyword redefinition', context: localCtx, term: term});
+      {code: 'keyword redefinition', context: localCtx, term});
   }
 
   if(term === '') {
@@ -59154,7 +59412,7 @@ api.createTermDefinition = (activeCtx, localCtx, term, defined) => {
         throw new JsonLdError(
           'Invalid JSON-LD syntax; @context terms must define an @id.',
           'jsonld.SyntaxError',
-          {code: 'invalid IRI mapping', context: localCtx, term: term});
+          {code: 'invalid IRI mapping', context: localCtx, term});
       }
       // prepend vocab to term
       mapping['@id'] = activeCtx['@vocab'] + term;
@@ -59418,7 +59676,7 @@ api.expandIri = (activeCtx, value, relativeTo, localCtx, defined) => {
  *
  * @return the initial context.
  */
-api.getInitialContext = (options) => {
+api.getInitialContext = options => {
   const base = parseUrl(options.base || '');
   const key = JSON.stringify({base, processingMode: options.processingMode});
   const cached = INITIAL_CONTEXT_CACHE.get(key);
@@ -59468,7 +59726,7 @@ api.getInitialContext = (options) => {
     // create term selections for each mapping in the context, ordered by
     // shortest and then lexicographically least
     const mappings = activeCtx.mappings;
-    const terms = Object.keys(mappings).sort(util.compareShortestLeast);
+    const terms = Object.keys(mappings).sort(_compareShortestLeast);
     for(let i = 0; i < terms.length; ++i) {
       const term = terms[i];
       const mapping = mappings[term];
@@ -59480,7 +59738,7 @@ api.getInitialContext = (options) => {
       container = [].concat(container).sort().join('');
 
       // iterate over every IRI in the mapping
-      const ids = [].concat(mapping['@id']);
+      const ids = _asArray(mapping['@id']);
       for(let ii = 0; ii < ids.length; ++ii) {
         const iri = ids[ii];
         let entry = inverse[iri];
@@ -59493,7 +59751,7 @@ api.getInitialContext = (options) => {
           if(!isKeyword && !mapping._termHasColon) {
             // init IRI to term map and fast CURIE prefixes
             irisToTerms[iri] = [term];
-            const fastCurieEntry = {iri: iri, terms: irisToTerms[iri]};
+            const fastCurieEntry = {iri, terms: irisToTerms[iri]};
             if(iri[0] in fastCurieMap) {
               fastCurieMap[iri[0]].push(fastCurieEntry);
             } else {
@@ -59701,30 +59959,30 @@ api.isKeyword = v => {
     return false;
   }
   switch(v) {
-  case '@base':
-  case '@container':
-  case '@context':
-  case '@default':
-  case '@embed':
-  case '@explicit':
-  case '@graph':
-  case '@id':
-  case '@index':
-  case '@language':
-  case '@list':
-  case '@nest':
-  case '@none':
-  case '@omitDefault':
-  case '@prefix':
-  case '@preserve':
-  case '@requireAll':
-  case '@reverse':
-  case '@set':
-  case '@type':
-  case '@value':
-  case '@version':
-  case '@vocab':
-    return true;
+    case '@base':
+    case '@container':
+    case '@context':
+    case '@default':
+    case '@embed':
+    case '@explicit':
+    case '@graph':
+    case '@id':
+    case '@index':
+    case '@language':
+    case '@list':
+    case '@nest':
+    case '@none':
+    case '@omitDefault':
+    case '@prefix':
+    case '@preserve':
+    case '@requireAll':
+    case '@reverse':
+    case '@set':
+    case '@type':
+    case '@value':
+    case '@version':
+    case '@vocab':
+      return true;
   }
   return false;
 };
@@ -59749,6 +60007,9 @@ async function _retrieveContextUrls(input, options) {
     // find all URLs in the given document
     const urls = new Map();
     _findContextUrls(doc, urls, false, options.base);
+    if(urls.size === 0) {
+      return;
+    }
 
     // queue all unretrieved URLs
     const queue = [...urls.keys()].filter(u => urls.get(u) === false);
@@ -59973,13 +60234,13 @@ module.exports = ({
       throw new JsonLdError(
         'URL could not be dereferenced; only "http" and "https" URLs are ' +
         'supported.',
-        'jsonld.InvalidUrl', {code: 'loading document failed', url: url});
+        'jsonld.InvalidUrl', {code: 'loading document failed', url});
     }
     if(secure && url.indexOf('https') !== 0) {
       throw new JsonLdError(
         'URL could not be dereferenced; secure mode is enabled and ' +
         'the URL\'s scheme is not "https".',
-        'jsonld.InvalidUrl', {code: 'loading document failed', url: url});
+        'jsonld.InvalidUrl', {code: 'loading document failed', url});
     }
     // TODO: disable cache until HTTP caching implemented
     let doc = null;//cache.get(url);
@@ -59990,16 +60251,16 @@ module.exports = ({
     let result;
     try {
       result = await _request(request, {
-        url: url,
-        headers: headers,
-        strictSSL: strictSSL,
+        url,
+        headers,
+        strictSSL,
         followRedirect: false
       });
     } catch(e) {
       throw new JsonLdError(
         'URL could not be dereferenced, an error occurred.',
         'jsonld.LoadDocumentError',
-        {code: 'loading document failed', url: url, cause: e});
+        {code: 'loading document failed', url, cause: e});
     }
 
     const {res, body} = result;
@@ -60013,7 +60274,7 @@ module.exports = ({
         'URL could not be dereferenced: ' + statusText,
         'jsonld.InvalidUrl', {
           code: 'loading document failed',
-          url: url,
+          url,
           httpStatusCode: res.statusCode
         });
     }
@@ -60028,7 +60289,7 @@ module.exports = ({
           'URL could not be dereferenced, it has more than one associated ' +
           'HTTP Link Header.',
           'jsonld.InvalidUrl',
-          {code: 'multiple context link headers', url: url});
+          {code: 'multiple context link headers', url});
       }
       if(linkHeader) {
         doc.contextUrl = linkHeader.target;
@@ -60042,9 +60303,9 @@ module.exports = ({
           'URL could not be dereferenced; there were too many redirects.',
           'jsonld.TooManyRedirects', {
             code: 'loading document failed',
-            url: url,
+            url,
             httpStatusCode: res.statusCode,
-            redirects: redirects
+            redirects
           });
       }
       if(redirects.indexOf(url) !== -1) {
@@ -60052,9 +60313,9 @@ module.exports = ({
           'URL could not be dereferenced; infinite redirection was detected.',
           'jsonld.InfiniteRedirectDetected', {
             code: 'recursive context inclusion',
-            url: url,
+            url,
             httpStatusCode: res.statusCode,
-            redirects: redirects
+            redirects
           });
       }
       redirects.push(url);
@@ -60082,7 +60343,7 @@ function _request(request, options) {
       if(err) {
         reject(err);
       } else {
-        resolve({res: res, body: body});
+        resolve({res, body});
       }
     });
   });
@@ -60136,13 +60397,13 @@ module.exports = ({
       throw new JsonLdError(
         'URL could not be dereferenced; only "http" and "https" URLs are ' +
         'supported.',
-        'jsonld.InvalidUrl', {code: 'loading document failed', url: url});
+        'jsonld.InvalidUrl', {code: 'loading document failed', url});
     }
     if(secure && url.indexOf('https') !== 0) {
       throw new JsonLdError(
         'URL could not be dereferenced; secure mode is enabled and ' +
         'the URL\'s scheme is not "https".',
-        'jsonld.InvalidUrl', {code: 'loading document failed', url: url});
+        'jsonld.InvalidUrl', {code: 'loading document failed', url});
     }
 
     let req;
@@ -60152,7 +60413,7 @@ module.exports = ({
       throw new JsonLdError(
         'URL could not be dereferenced, an error occurred.',
         'jsonld.LoadDocumentError',
-        {code: 'loading document failed', url: url, cause: e});
+        {code: 'loading document failed', url, cause: e});
     }
 
     if(req.status >= 400) {
@@ -60160,7 +60421,7 @@ module.exports = ({
         'URL could not be dereferenced: ' + req.statusText,
         'jsonld.LoadDocumentError', {
           code: 'loading document failed',
-          url: url,
+          url,
           httpStatusCode: req.status
         });
     }
@@ -60181,7 +60442,7 @@ module.exports = ({
           'URL could not be dereferenced, it has more than one ' +
           'associated HTTP Link Header.',
           'jsonld.InvalidUrl',
-          {code: 'multiple context link headers', url: url});
+          {code: 'multiple context link headers', url});
       }
       if(linkHeader) {
         doc.contextUrl = linkHeader.target;
@@ -60250,8 +60511,9 @@ const {
 
 const {
   addValue: _addValue,
-  validateTypeValue: _validateTypeValue,
-  getValues: _getValues
+  asArray: _asArray,
+  getValues: _getValues,
+  validateTypeValue: _validateTypeValue
 } = __webpack_require__(/*! ./util */ "./node_modules/jsonld/lib/util.js");
 
 const api = {};
@@ -60376,7 +60638,11 @@ api.expand = ({
     const expandedProperty = _expandIri(activeCtx, key, {vocab: true});
     if(expandedProperty === '@type') {
       // set scopped contexts from @type
-      const types = [].concat(element[key]).sort();
+      // avoid sorting if possible
+      const value = element[key];
+      const types =
+        Array.isArray(value) ?
+          (value.length > 1 ? value.slice().sort() : value) : [value];
       for(const type of types) {
         const ctx = _getContextValue(activeCtx, type, '@context');
         if(ctx) {
@@ -60431,7 +60697,7 @@ api.expand = ({
         'which can be "@type" or "@language".',
         'jsonld.SyntaxError', {code: 'invalid value object', element: rval});
     }
-    const values = rval['@value'] === null ? [] : [].concat(rval['@value']);
+    const values = rval['@value'] === null ? [] : _asArray(rval['@value']);
     const types = _getValues(rval, '@type');
 
     // drop null @values unless custom mapped
@@ -60592,7 +60858,7 @@ function _expandObject({
         throw new JsonLdError(
           'Invalid JSON-LD syntax; a keyword cannot be used as a @reverse ' +
           'property.', 'jsonld.SyntaxError',
-          {code: 'invalid reverse property map', value: value});
+          {code: 'invalid reverse property map', value});
       }
       if(expandedProperty in expandedParent) {
         throw new JsonLdError(
@@ -60608,7 +60874,7 @@ function _expandObject({
         if(!options.isFrame) {
           throw new JsonLdError(
             'Invalid JSON-LD syntax; "@id" value must a string.',
-            'jsonld.SyntaxError', {code: 'invalid @id value', value: value});
+            'jsonld.SyntaxError', {code: 'invalid @id value', value});
         }
         if(_isObject(value)) {
           // empty object is a wildcard
@@ -60616,26 +60882,26 @@ function _expandObject({
             throw new JsonLdError(
               'Invalid JSON-LD syntax; "@id" value an empty object or array ' +
               'of strings, if framing',
-              'jsonld.SyntaxError', {code: 'invalid @id value', value: value});
+              'jsonld.SyntaxError', {code: 'invalid @id value', value});
           }
         } else if(_isArray(value)) {
           if(!value.every(v => _isString(v))) {
             throw new JsonLdError(
               'Invalid JSON-LD syntax; "@id" value an empty object or array ' +
               'of strings, if framing',
-              'jsonld.SyntaxError', {code: 'invalid @id value', value: value});
+              'jsonld.SyntaxError', {code: 'invalid @id value', value});
           }
         } else {
           throw new JsonLdError(
             'Invalid JSON-LD syntax; "@id" value an empty object or array ' +
             'of strings, if framing',
-            'jsonld.SyntaxError', {code: 'invalid @id value', value: value});
+            'jsonld.SyntaxError', {code: 'invalid @id value', value});
         }
       }
 
       _addValue(
         expandedParent, '@id',
-        [].concat(value).map(v =>
+        _asArray(value).map(v =>
           _isString(v) ? _expandIri(activeCtx, v, {base: true}) : v),
         {propertyIsArray: options.isFrame});
       continue;
@@ -60645,7 +60911,7 @@ function _expandObject({
       _validateTypeValue(value);
       _addValue(
         expandedParent, '@type',
-        [].concat(value).map(v =>
+        _asArray(value).map(v =>
           _isString(v) ?
             _expandIri(activeCtx, v, {base: true, vocab: true}) : v),
         {propertyIsArray: options.isFrame});
@@ -60658,7 +60924,7 @@ function _expandObject({
       throw new JsonLdError(
         'Invalid JSON-LD syntax; "@graph" value must not be an ' +
         'object or an array.',
-        'jsonld.SyntaxError', {code: 'invalid @graph value', value: value});
+        'jsonld.SyntaxError', {code: 'invalid @graph value', value});
     }
 
     // @value must not be an object or an array (unless framing)
@@ -60668,7 +60934,7 @@ function _expandObject({
           'Invalid JSON-LD syntax; "@value" value must not be an ' +
           'object or an array.',
           'jsonld.SyntaxError',
-          {code: 'invalid value object value', value: value});
+          {code: 'invalid value object value', value});
       }
 
       _addValue(
@@ -60686,10 +60952,10 @@ function _expandObject({
         throw new JsonLdError(
           'Invalid JSON-LD syntax; "@language" value must be a string.',
           'jsonld.SyntaxError',
-          {code: 'invalid language-tagged string', value: value});
+          {code: 'invalid language-tagged string', value});
       }
       // ensure language value is lowercase
-      value = [].concat(value).map(v => _isString(v) ? v.toLowerCase() : v);
+      value = _asArray(value).map(v => _isString(v) ? v.toLowerCase() : v);
 
       _addValue(
         expandedParent, '@language', value, {propertyIsArray: options.isFrame});
@@ -60702,7 +60968,7 @@ function _expandObject({
         throw new JsonLdError(
           'Invalid JSON-LD syntax; "@index" value must be a string.',
           'jsonld.SyntaxError',
-          {code: 'invalid @index value', value: value});
+          {code: 'invalid @index value', value});
       }
       _addValue(expandedParent, '@index', value);
       continue;
@@ -60713,7 +60979,7 @@ function _expandObject({
       if(!_isObject(value)) {
         throw new JsonLdError(
           'Invalid JSON-LD syntax; "@reverse" value must be an object.',
-          'jsonld.SyntaxError', {code: 'invalid @reverse value', value: value});
+          'jsonld.SyntaxError', {code: 'invalid @reverse value', value});
       }
 
       expandedValue = api.expand({
@@ -60858,7 +61124,7 @@ function _expandObject({
         parent: element,
         options,
         insideList,
-        key: key,
+        key,
         expandedParent
       });
       if(expandedValue === undefined) {
@@ -60869,10 +61135,8 @@ function _expandObject({
     // convert expanded value to @list if container specifies it
     if(expandedProperty !== '@list' && !_isList(expandedValue) &&
       container.includes('@list')) {
-      // ensure expanded value is an array
-      expandedValue = (_isArray(expandedValue) ?
-        expandedValue : [expandedValue]);
-      expandedValue = {'@list': expandedValue};
+      // ensure expanded value in @list is an array
+      expandedValue = {'@list': _asArray(expandedValue)};
     }
 
     // convert expanded value to @graph if container specifies it
@@ -60881,8 +61145,8 @@ function _expandObject({
     if(container.includes('@graph') &&
       !container.some(key => key === '@id' || key === '@index')) {
       // ensure expanded values are arrays
-      expandedValue = [].concat(expandedValue)
-        .map(v => _isGraph(v) ? v : {'@graph': [].concat(v)});
+      expandedValue = _asArray(expandedValue)
+        .map(v => _isGraph(v) ? v : {'@graph': _asArray(v)});
     }
 
     // FIXME: can this be merged with code above to simplify?
@@ -60890,9 +61154,7 @@ function _expandObject({
     if(termCtx.mappings[key] && termCtx.mappings[key].reverse) {
       const reverseMap =
         expandedParent['@reverse'] = expandedParent['@reverse'] || {};
-      if(!_isArray(expandedValue)) {
-        expandedValue = [expandedValue];
-      }
+      expandedValue = _asArray(expandedValue);
       for(let ii = 0; ii < expandedValue.length; ++ii) {
         const item = expandedValue[ii];
         if(_isValue(item) || _isList(item)) {
@@ -61028,7 +61290,7 @@ function _expandLanguageMap(activeCtx, languageMap) {
         throw new JsonLdError(
           'Invalid JSON-LD syntax; language map values must be strings.',
           'jsonld.SyntaxError',
-          {code: 'invalid language map value', languageMap: languageMap});
+          {code: 'invalid language map value', languageMap});
       }
       const val = {'@value': item};
       if(expandedKey !== '@none') {
@@ -61187,7 +61449,7 @@ module.exports = api;
 api.frameMergedOrDefault = (input, frame, options) => {
   // create framing state
   const state = {
-    options: options,
+    options,
     graph: '@default',
     graphMap: {'@default': {}},
     graphStack: [],
@@ -61294,11 +61556,11 @@ api.frame = (state, subjects, frame, parent, property = null) => {
         _removeEmbed(state, id);
       }
       state.uniqueEmbeds[state.graph][id] =
-        {parent: parent, property: property};
+        {parent, property};
     }
 
     // push matching subject onto stack to enable circular embed checks
-    state.subjectStack.push({subject: subject, graph: state.graph});
+    state.subjectStack.push({subject, graph: state.graph});
 
     // subject is also the name of a graph
     if(id in state.graphMap) {
@@ -61517,7 +61779,7 @@ function _validateFrame(frame) {
   if(!types.isArray(frame) || frame.length !== 1 || !types.isObject(frame[0])) {
     throw new JsonLdError(
       'Invalid JSON-LD syntax; a JSON-LD frame must be a single object.',
-      'jsonld.SyntaxError', {frame: frame});
+      'jsonld.SyntaxError', {frame});
   }
 }
 
@@ -61916,9 +62178,9 @@ api.fromRDF = async (
           object.usages = [];
         }
         object.usages.push({
-          node: node,
+          node,
           property: p,
-          value: value
+          value
         });
       } else if(o.value in referencedOnce) {
         // object referenced more than once
@@ -61926,9 +62188,9 @@ api.fromRDF = async (
       } else {
         // keep track of single reference
         referencedOnce[o.value] = {
-          node: node,
+          node,
           property: p,
-          value: value
+          value
         };
       }
     }
@@ -62383,6 +62645,7 @@ const _nodejs = (
 const _browser = !_nodejs &&
   (typeof window !== 'undefined' || typeof self !== 'undefined');
 
+/* eslint-disable indent */
 // attaches jsonld API to the given object
 const wrapper = function(jsonld) {
 
@@ -62397,8 +62660,8 @@ const wrapper = function(jsonld) {
  *          [base] the base IRI to use.
  *          [compactArrays] true to compact arrays to single values when
  *            appropriate, false not to (default: true).
- *          [compactToRelative] true to compact IRIs to be relative to document base,
- *            false to keep absolute (default: true)
+ *          [compactToRelative] true to compact IRIs to be relative to document
+ *            base, false to keep absolute (default: true)
  *          [graph] true to always output a top-level graph (default: false).
  *          [expandContext] a context to expand with.
  *          [skipExpansion] true to assume the input is expanded and skip
@@ -62514,7 +62777,9 @@ jsonld.compact = util.callbackify(async function(input, ctx, options) {
   // add context and/or @graph
   if(_isArray(compacted)) {
     // use '@graph' keyword
-    const graphAlias = _compactIri({activeCtx, iri: '@graph', relativeTo: {vocab: true}});
+    const graphAlias = _compactIri({
+      activeCtx, iri: '@graph', relativeTo: {vocab: true}
+    });
     const graph = compacted;
     compacted = {};
     if(hasContext) {
@@ -62525,14 +62790,16 @@ jsonld.compact = util.callbackify(async function(input, ctx, options) {
     // reorder keys so @context is first
     const graph = compacted;
     compacted = {'@context': ctx};
-    for(let key in graph) {
+    for(const key in graph) {
       compacted[key] = graph[key];
     }
   }
 
   if(options.framing) {
     // get graph alias
-    const graph = _compactIri({activeCtx, iri: '@graph', relativeTo: {vocab: true}});
+    const graph = _compactIri({
+      activeCtx, iri: '@graph', relativeTo: {vocab: true}
+    });
     // remove @preserve from results
     options.link = {};
     compacted[graph] = _removePreserve(activeCtx, compacted[graph], options);
@@ -62746,7 +63013,7 @@ jsonld.frame = util.callbackify(async function(input, frame, options) {
     }
   }
 
-  let frameContext = frame ? frame['@context'] || {} : {};
+  const frameContext = frame ? frame['@context'] || {} : {};
 
   // expand input
   const expanded = await jsonld.expand(input, options);
@@ -62757,7 +63024,8 @@ jsonld.frame = util.callbackify(async function(input, frame, options) {
   opts.keepFreeFloatingNodes = true;
   const expandedFrame = await jsonld.expand(frame, opts);
 
-  // if the unexpanded frame includes a key expanding to @graph, frame the default graph, otherwise, the merged graph
+  // if the unexpanded frame includes a key expanding to @graph, frame the
+  // default graph, otherwise, the merged graph
   let framed;
   // FIXME should look for aliases of @graph
   opts.merged = !('@graph' in frame);
@@ -63083,14 +63351,14 @@ jsonld.merge = util.callbackify(async function(docs, ctx, options) {
 
     if(_graphs !== graphs) {
       // merge document graphs but don't merge existing nodes
-      for(let graphName in _graphs) {
+      for(const graphName in _graphs) {
         const _nodeMap = _graphs[graphName];
         if(!(graphName in graphs)) {
           graphs[graphName] = _nodeMap;
           continue;
         }
         const nodeMap = graphs[graphName];
-        for(let key in _nodeMap) {
+        for(const key in _nodeMap) {
           if(!(key in nodeMap)) {
             nodeMap[key] = _nodeMap[key];
           }
@@ -63145,7 +63413,7 @@ jsonld.documentLoader = async url => {
   throw new JsonLdError(
     'Could not retrieve a JSON-LD document from the URL. URL ' +
     'dereferencing not implemented.', 'jsonld.LoadDocumentError',
-    {code: 'loading document failed', url: url});
+    {code: 'loading document failed', url});
 };
 
 /**
@@ -63192,7 +63460,7 @@ jsonld.get = util.callbackify(async function(url, options) {
       'jsonld.LoadDocumentError', {
         code: 'loading document failed',
         cause: e,
-        remoteDoc: remoteDoc
+        remoteDoc
       });
   }
 
@@ -63228,7 +63496,7 @@ jsonld.processContext = util.callbackify(async function(
   if(!(_isObject(localCtx) && '@context' in localCtx)) {
     localCtx = {'@context': localCtx};
   }
-  let ctx = await _getAllContexts(localCtx, options);
+  const ctx = await _getAllContexts(localCtx, options);
 
   return _processContext({activeCtx, localCtx: ctx, options});
 });
@@ -63255,7 +63523,7 @@ jsonld.useDocumentLoader = function(type) {
     throw new JsonLdError(
       'Unknown document loader type: "' + type + '"',
       'jsonld.UnknownDocumentLoader',
-      {type: type});
+      {type});
   }
 
   // set document loader
@@ -63347,10 +63615,6 @@ function _setDefaults(options, {
   documentLoader = jsonld.documentLoader,
   ...defaults
 }) {
-  if(typeof options === 'function') {
-    options = {};
-  }
-  options = options || {};
   return Object.assign({}, {documentLoader}, defaults, options);
 }
 
@@ -63538,7 +63802,7 @@ api.createNodeMap = (input, graphs, graph, issuer, name, list) => {
         throw new JsonLdError(
           'Invalid JSON-LD syntax; conflicting @index property detected.',
           'jsonld.SyntaxError',
-          {code: 'conflicting indexes', subject: subject});
+          {code: 'conflicting indexes', subject});
       }
       subject[property] = input[property];
       continue;
@@ -63812,9 +64076,9 @@ function _graphToRDF(dataset, graph, graphTerm, issuer, options) {
           // skip null objects (they are relative IRIs)
           if(object) {
             dataset.push({
-              subject: subject,
-              predicate: predicate,
-              object: object,
+              subject,
+              predicate,
+              object,
               graph: graphTerm
             });
           }
@@ -63843,8 +64107,8 @@ function _listToRDF(list, issuer, subject, predicate, dataset, graphTerm) {
   for(const item of list) {
     const blankNode = {termType: 'BlankNode', value: issuer.getId()};
     dataset.push({
-      subject: subject,
-      predicate: predicate,
+      subject,
+      predicate,
       object: blankNode,
       graph: graphTerm
     });
@@ -63856,9 +64120,9 @@ function _listToRDF(list, issuer, subject, predicate, dataset, graphTerm) {
     // skip null objects (they are relative IRIs)
     if(object) {
       dataset.push({
-        subject: subject,
-        predicate: predicate,
-        object: object,
+        subject,
+        predicate,
+        object,
         graph: graphTerm
       });
     }
@@ -63867,8 +64131,8 @@ function _listToRDF(list, issuer, subject, predicate, dataset, graphTerm) {
   }
 
   dataset.push({
-    subject: subject,
-    predicate: predicate,
+    subject,
+    predicate,
     object: nil,
     graph: graphTerm
   });
@@ -64433,6 +64697,18 @@ api.clone = function(value) {
 };
 
 /**
+ * Ensure a value is an array. If the value is an array, it is returned.
+ * Otherwise, it is wrapped in an array.
+ *
+ * @param value the value to return as an array.
+ *
+ * @return the value as an array.
+ */
+api.asArray = function(value) {
+  return Array.isArray(value) ? value : [value];
+};
+
+/**
  * Builds an HTTP headers object for making a JSON-LD request from custom
  * headers and asserts the `accept` header isn't overridden.
  *
@@ -64451,7 +64727,7 @@ api.buildHeaders = (headers = {}) => {
       DEFAULTS.headers.accept + '" is supported.');
   }
 
-  return Object.assign({'Accept': DEFAULTS.headers.accept}, headers);
+  return Object.assign({Accept: DEFAULTS.headers.accept}, headers);
 };
 
 /**
@@ -65393,7 +65669,7 @@ exports.default = ComunicaEngine;
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-const __b14bnode105 = new (__webpack_require__(/*! @comunica/logger-void */ "./node_modules/@comunica/logger-void/index.js").LoggerVoid)({});
+const __b15bnode106 = new (__webpack_require__(/*! @comunica/logger-void */ "./node_modules/@comunica/logger-void/index.js").LoggerVoid)({});
 const https___linkedsoftwaredependencies_org_bundles_npm__comunica_bus_init_Bus_Init = new (__webpack_require__(/*! @comunica/core */ "./node_modules/@comunica/core/index.js").Bus)({
   'name': 'https://linkedsoftwaredependencies.org/bundles/npm/@comunica/bus-init/Bus/Init'
 });
@@ -65409,14 +65685,17 @@ const https___linkedsoftwaredependencies_org_bundles_npm__comunica_bus_rdf_deref
 const https___linkedsoftwaredependencies_org_bundles_npm__comunica_bus_rdf_join_Bus_RdfJoin = new (__webpack_require__(/*! @comunica/core */ "./node_modules/@comunica/core/index.js").Bus)({
   'name': 'https://linkedsoftwaredependencies.org/bundles/npm/@comunica/bus-rdf-join/Bus/RdfJoin'
 });
+const https___linkedsoftwaredependencies_org_bundles_npm__comunica_bus_rdf_resolve_quad_pattern_Bus_RdfResolveQuadPattern = new (__webpack_require__(/*! @comunica/core */ "./node_modules/@comunica/core/index.js").Bus)({
+  'name': 'https://linkedsoftwaredependencies.org/bundles/npm/@comunica/bus-rdf-resolve-quad-pattern/Bus/RdfResolveQuadPattern'
+});
+const https___linkedsoftwaredependencies_org_bundles_npm__comunica_bus_http_invalidate_Bus_HttpInvalidate = new (__webpack_require__(/*! @comunica/core */ "./node_modules/@comunica/core/index.js").Bus)({
+  'name': 'https://linkedsoftwaredependencies.org/bundles/npm/@comunica/bus-http-invalidate/Bus/HttpInvalidate'
+});
 const https___linkedsoftwaredependencies_org_bundles_npm__comunica_bus_rdf_source_identifier_Bus_RdfSourceIdentifier = new (__webpack_require__(/*! @comunica/core */ "./node_modules/@comunica/core/index.js").Bus)({
   'name': 'https://linkedsoftwaredependencies.org/bundles/npm/@comunica/bus-rdf-source-identifier/Bus/RdfSourceIdentifier'
 });
 const https___linkedsoftwaredependencies_org_bundles_npm__comunica_bus_context_preprocess_Bus_ContextPreprocess = new (__webpack_require__(/*! @comunica/core */ "./node_modules/@comunica/core/index.js").Bus)({
   'name': 'https://linkedsoftwaredependencies.org/bundles/npm/@comunica/bus-context-preprocess/Bus/ContextPreprocess'
-});
-const https___linkedsoftwaredependencies_org_bundles_npm__comunica_bus_rdf_resolve_quad_pattern_Bus_RdfResolveQuadPattern = new (__webpack_require__(/*! @comunica/core */ "./node_modules/@comunica/core/index.js").Bus)({
-  'name': 'https://linkedsoftwaredependencies.org/bundles/npm/@comunica/bus-rdf-resolve-quad-pattern/Bus/RdfResolveQuadPattern'
 });
 const https___linkedsoftwaredependencies_org_bundles_npm__comunica_bus_query_operation_Bus_QueryOperation = new (__webpack_require__(/*! @comunica/core */ "./node_modules/@comunica/core/index.js").Bus)({
   'name': 'https://linkedsoftwaredependencies.org/bundles/npm/@comunica/bus-query-operation/Bus/QueryOperation'
@@ -65430,6 +65709,10 @@ const https___linkedsoftwaredependencies_org_bundles_npm__comunica_bus_sparql_pa
 const https___linkedsoftwaredependencies_org_bundles_npm__comunica_bus_sparql_serialize_Bus_SparqlSerialize = new (__webpack_require__(/*! @comunica/core */ "./node_modules/@comunica/core/index.js").Bus)({
   'name': 'https://linkedsoftwaredependencies.org/bundles/npm/@comunica/bus-sparql-serialize/Bus/SparqlSerialize'
 });
+const https___linkedsoftwaredependencies_org_bundles_npm__comunica_actor_init_sparql__1_0_0_config_sets_http_json_myHttpFetcher = new (__webpack_require__(/*! @comunica/actor-http-solid-auth-fetch */ "./node_modules/@comunica/actor-http-solid-auth-fetch/index.js").ActorHttpSolidAuthFetch)({
+  'name': 'https://linkedsoftwaredependencies.org/bundles/npm/@comunica/actor-init-sparql/^1.0.0/config/sets/http.json#myHttpFetcher',
+  'bus': https___linkedsoftwaredependencies_org_bundles_npm__comunica_bus_http_Bus_Http
+});
 const https___linkedsoftwaredependencies_org_bundles_npm__comunica_actor_init_sparql__1_0_0_config_sets_http_json_mediatorHttp = new (__webpack_require__(/*! @comunica/mediator-number */ "./node_modules/@comunica/mediator-number/index.js").MediatorNumber)({
   'field': 'time',
   'type': 'https://linkedsoftwaredependencies.org/bundles/npm/@comunica/mediator-number/Mediator/Number/type/TypeMin',
@@ -65437,12 +65720,13 @@ const https___linkedsoftwaredependencies_org_bundles_npm__comunica_actor_init_sp
   'name': 'https://linkedsoftwaredependencies.org/bundles/npm/@comunica/actor-init-sparql/^1.0.0/config/sets/http.json#mediatorHttp',
   'bus': https___linkedsoftwaredependencies_org_bundles_npm__comunica_bus_http_Bus_Http
 });
-const https___linkedsoftwaredependencies_org_bundles_npm__comunica_actor_init_sparql__1_0_0_config_sets_http_json_myHttpFetcher = new (__webpack_require__(/*! @comunica/actor-http-solid-auth-fetch */ "./node_modules/@comunica/actor-http-solid-auth-fetch/index.js").ActorHttpSolidAuthFetch)({
-  'name': 'https://linkedsoftwaredependencies.org/bundles/npm/@comunica/actor-init-sparql/^1.0.0/config/sets/http.json#myHttpFetcher',
-  'bus': https___linkedsoftwaredependencies_org_bundles_npm__comunica_bus_http_Bus_Http
+const https___linkedsoftwaredependencies_org_bundles_npm__comunica_actor_init_sparql__1_0_0_config_sets_rdf_dereference_json_mediatorRdfParseMediatypes = new (__webpack_require__(/*! @comunica/mediator-combine-union */ "./node_modules/@comunica/mediator-combine-union/index.js").MediatorCombineUnion)({
+  'field': 'mediaTypes',
+  'name': 'https://linkedsoftwaredependencies.org/bundles/npm/@comunica/actor-init-sparql/^1.0.0/config/sets/rdf-dereference.json#mediatorRdfParseMediatypes',
+  'bus': https___linkedsoftwaredependencies_org_bundles_npm__comunica_bus_rdf_parse_Bus_RdfParse
 });
-const https___linkedsoftwaredependencies_org_bundles_npm__comunica_actor_init_sparql__1_0_0_config_sets_rdf_dereference_json_mediatorRdfParse = new (__webpack_require__(/*! @comunica/mediator-race */ "./node_modules/@comunica/mediator-race/index.js").MediatorRace)({
-  'name': 'https://linkedsoftwaredependencies.org/bundles/npm/@comunica/actor-init-sparql/^1.0.0/config/sets/rdf-dereference.json#mediatorRdfParse',
+const https___linkedsoftwaredependencies_org_bundles_npm__comunica_actor_init_sparql__1_0_0_config_sets_rdf_dereference_json_mediatorRdfParseHandle = new (__webpack_require__(/*! @comunica/mediator-race */ "./node_modules/@comunica/mediator-race/index.js").MediatorRace)({
+  'name': 'https://linkedsoftwaredependencies.org/bundles/npm/@comunica/actor-init-sparql/^1.0.0/config/sets/rdf-dereference.json#mediatorRdfParseHandle',
   'bus': https___linkedsoftwaredependencies_org_bundles_npm__comunica_bus_rdf_parse_Bus_RdfParse
 });
 const https___linkedsoftwaredependencies_org_bundles_npm__comunica_actor_init_sparql__1_0_0_config_sets_rdf_parsers_json_myRdfParserN3 = new (__webpack_require__(/*! @comunica/actor-rdf-parse-n3 */ "./node_modules/@comunica/actor-rdf-parse-n3/index.js").ActorRdfParseN3)({
@@ -65461,6 +65745,7 @@ const https___linkedsoftwaredependencies_org_bundles_npm__comunica_actor_init_sp
     'application/ld+json': '1.0',
     'application/json': '0.1'
   },
+  'priorityScale': '9.0E-1',
   'name': 'https://linkedsoftwaredependencies.org/bundles/npm/@comunica/actor-init-sparql/^1.0.0/config/sets/rdf-parsers.json#myRdfParserJsonLd',
   'bus': https___linkedsoftwaredependencies_org_bundles_npm__comunica_bus_rdf_parse_Bus_RdfParse
 });
@@ -65468,6 +65753,7 @@ const https___linkedsoftwaredependencies_org_bundles_npm__comunica_actor_init_sp
   'mediaTypes': {
     'application/rdf+xml': '1.0'
   },
+  'priorityScale': '9.5E-1',
   'name': 'https://linkedsoftwaredependencies.org/bundles/npm/@comunica/actor-init-sparql/^1.0.0/config/sets/rdf-parsers.json#myRdfParserRdfXml',
   'bus': https___linkedsoftwaredependencies_org_bundles_npm__comunica_bus_rdf_parse_Bus_RdfParse
 });
@@ -65483,6 +65769,22 @@ const https___linkedsoftwaredependencies_org_bundles_npm__comunica_actor_init_sp
   'name': 'https://linkedsoftwaredependencies.org/bundles/npm/@comunica/actor-init-sparql/^1.0.0/config/sets/sparql-queryoperators.json#mediatorRdfJoin',
   'bus': https___linkedsoftwaredependencies_org_bundles_npm__comunica_bus_rdf_join_Bus_RdfJoin
 });
+const https___linkedsoftwaredependencies_org_bundles_npm__comunica_actor_init_sparql__1_0_0_config_sets_sparql_queryoperators_json_mediatorResolveQuadPattern = new (__webpack_require__(/*! @comunica/mediator-race */ "./node_modules/@comunica/mediator-race/index.js").MediatorRace)({
+  'name': 'https://linkedsoftwaredependencies.org/bundles/npm/@comunica/actor-init-sparql/^1.0.0/config/sets/sparql-queryoperators.json#mediatorResolveQuadPattern',
+  'bus': https___linkedsoftwaredependencies_org_bundles_npm__comunica_bus_rdf_resolve_quad_pattern_Bus_RdfResolveQuadPattern
+});
+const https___linkedsoftwaredependencies_org_bundles_npm_ldflex_comunica__2_0_0_config_sets_resolve_rdfjssource_json_myQuadPatternRdfJsSourceResolver = new (__webpack_require__(/*! @comunica/actor-rdf-resolve-quad-pattern-rdfjs-source */ "./node_modules/@comunica/actor-rdf-resolve-quad-pattern-rdfjs-source/index.js").ActorRdfResolveQuadPatternRdfJsSource)({
+  'name': 'https://linkedsoftwaredependencies.org/bundles/npm/ldflex-comunica/^2.0.0/config/sets/resolve-rdfjssource.json#myQuadPatternRdfJsSourceResolver',
+  'bus': https___linkedsoftwaredependencies_org_bundles_npm__comunica_bus_rdf_resolve_quad_pattern_Bus_RdfResolveQuadPattern
+});
+const https___linkedsoftwaredependencies_org_bundles_npm__comunica_bus_rdf_resolve_quad_pattern_Actor_RdfResolveQuadPattern_httpInvalidator_default = new (__webpack_require__(/*! @comunica/bus-http-invalidate */ "./node_modules/@comunica/bus-http-invalidate/index.js").ActorHttpInvalidateListenable)({
+  'name': 'https://linkedsoftwaredependencies.org/bundles/npm/@comunica/bus-rdf-resolve-quad-pattern/Actor/RdfResolveQuadPattern/httpInvalidator#default',
+  'bus': https___linkedsoftwaredependencies_org_bundles_npm__comunica_bus_http_invalidate_Bus_HttpInvalidate
+});
+const https___linkedsoftwaredependencies_org_bundles_npm__comunica_actor_init_sparql__1_0_0_config_sets_sparql_init_json_mediatorHttpInvalidate = new (__webpack_require__(/*! @comunica/mediator-all */ "./node_modules/@comunica/mediator-all/index.js").MediatorAll)({
+  'name': 'https://linkedsoftwaredependencies.org/bundles/npm/@comunica/actor-init-sparql/^1.0.0/config/sets/sparql-init.json#mediatorHttpInvalidate',
+  'bus': https___linkedsoftwaredependencies_org_bundles_npm__comunica_bus_http_invalidate_Bus_HttpInvalidate
+});
 const https___linkedsoftwaredependencies_org_bundles_npm__comunica_actor_init_sparql__1_0_0_config_sets_context_preprocess_rdf_source_identifiers_json_mediatorRdfSourceIdentifier = new (__webpack_require__(/*! @comunica/mediator-number */ "./node_modules/@comunica/mediator-number/index.js").MediatorNumber)({
   'field': 'priority',
   'type': 'https://linkedsoftwaredependencies.org/bundles/npm/@comunica/mediator-number/Mediator/Number/type/TypeMax',
@@ -65493,14 +65795,6 @@ const https___linkedsoftwaredependencies_org_bundles_npm__comunica_actor_init_sp
 const https___linkedsoftwaredependencies_org_bundles_npm__comunica_actor_init_sparql__1_0_0_config_sets_sparql_init_json_mediatorContextPreprocess = new (__webpack_require__(/*! @comunica/mediator-combine-pipeline */ "./node_modules/@comunica/mediator-combine-pipeline/index.js").MediatorCombinePipeline)({
   'name': 'https://linkedsoftwaredependencies.org/bundles/npm/@comunica/actor-init-sparql/^1.0.0/config/sets/sparql-init.json#mediatorContextPreprocess',
   'bus': https___linkedsoftwaredependencies_org_bundles_npm__comunica_bus_context_preprocess_Bus_ContextPreprocess
-});
-const https___linkedsoftwaredependencies_org_bundles_npm__comunica_actor_init_sparql__1_0_0_config_sets_sparql_queryoperators_json_mediatorResolveQuadPattern = new (__webpack_require__(/*! @comunica/mediator-race */ "./node_modules/@comunica/mediator-race/index.js").MediatorRace)({
-  'name': 'https://linkedsoftwaredependencies.org/bundles/npm/@comunica/actor-init-sparql/^1.0.0/config/sets/sparql-queryoperators.json#mediatorResolveQuadPattern',
-  'bus': https___linkedsoftwaredependencies_org_bundles_npm__comunica_bus_rdf_resolve_quad_pattern_Bus_RdfResolveQuadPattern
-});
-const https___linkedsoftwaredependencies_org_bundles_npm_ldflex_comunica__2_0_0_config_sets_resolve_rdfjssource_json_myQuadPatternRdfJsSourceResolver = new (__webpack_require__(/*! @comunica/actor-rdf-resolve-quad-pattern-rdfjs-source */ "./node_modules/@comunica/actor-rdf-resolve-quad-pattern-rdfjs-source/index.js").ActorRdfResolveQuadPatternRdfJsSource)({
-  'name': 'https://linkedsoftwaredependencies.org/bundles/npm/ldflex-comunica/^2.0.0/config/sets/resolve-rdfjssource.json#myQuadPatternRdfJsSourceResolver',
-  'bus': https___linkedsoftwaredependencies_org_bundles_npm__comunica_bus_rdf_resolve_quad_pattern_Bus_RdfResolveQuadPattern
 });
 const https___linkedsoftwaredependencies_org_bundles_npm__comunica_actor_init_sparql__1_0_0_config_sets_sparql_queryoperators_json_mediatorQueryOperation = new (__webpack_require__(/*! @comunica/mediator-number */ "./node_modules/@comunica/mediator-number/index.js").MediatorNumber)({
   'field': 'httpRequests',
@@ -65553,9 +65847,9 @@ const https___linkedsoftwaredependencies_org_bundles_npm__comunica_actor_init_sp
   'name': 'https://linkedsoftwaredependencies.org/bundles/npm/@comunica/actor-init-sparql/^1.0.0/config/sets/sparql-init.json#mediatorSparqlSerialize',
   'bus': https___linkedsoftwaredependencies_org_bundles_npm__comunica_bus_sparql_serialize_Bus_SparqlSerialize
 });
-const __b0bnode231 = new (__webpack_require__(/*! @comunica/mediator-combine-union */ "./node_modules/@comunica/mediator-combine-union/index.js").MediatorCombineUnion)({
+const __b0bnode237 = new (__webpack_require__(/*! @comunica/mediator-combine-union */ "./node_modules/@comunica/mediator-combine-union/index.js").MediatorCombineUnion)({
   'field': 'mediaTypes',
-  'name': '_:b0bnode231',
+  'name': '_:b0bnode237',
   'bus': https___linkedsoftwaredependencies_org_bundles_npm__comunica_bus_sparql_serialize_Bus_SparqlSerialize
 });
 const https___linkedsoftwaredependencies_org_bundles_npm__comunica_actor_init_sparql__1_0_0_config_sets_rdf_source_identifiers_json_myActorRdfSourceIdentifierHypermediaQpf = new (__webpack_require__(/*! @comunica/actor-rdf-source-identifier-hypermedia-qpf */ "./node_modules/@comunica/actor-rdf-source-identifier-hypermedia-qpf/index.js").ActorRdfSourceIdentifierHypermediaQpf)({
@@ -65607,7 +65901,8 @@ const https___linkedsoftwaredependencies_org_bundles_npm__comunica_actor_init_sp
 });
 const https___linkedsoftwaredependencies_org_bundles_npm__comunica_actor_init_sparql__1_0_0_config_sets_rdf_dereference_json_myRdfDereferencer = new (__webpack_require__(/*! @comunica/actor-rdf-dereference-http-parse */ "./node_modules/@comunica/actor-rdf-dereference-http-parse/index.js").ActorRdfDereferenceHttpParse)({
   'mediatorHttp': https___linkedsoftwaredependencies_org_bundles_npm__comunica_actor_init_sparql__1_0_0_config_sets_http_json_mediatorHttp,
-  'mediatorRdfParse': https___linkedsoftwaredependencies_org_bundles_npm__comunica_actor_init_sparql__1_0_0_config_sets_rdf_dereference_json_mediatorRdfParse,
+  'mediatorRdfParseMediatypes': https___linkedsoftwaredependencies_org_bundles_npm__comunica_actor_init_sparql__1_0_0_config_sets_rdf_dereference_json_mediatorRdfParseMediatypes,
+  'mediatorRdfParseHandle': https___linkedsoftwaredependencies_org_bundles_npm__comunica_actor_init_sparql__1_0_0_config_sets_rdf_dereference_json_mediatorRdfParseHandle,
   'mediaMappings': {
     'ttl': 'text/turtle',
     'turtle': 'text/turtle',
@@ -65626,16 +65921,6 @@ const https___linkedsoftwaredependencies_org_bundles_npm__comunica_actor_init_sp
   'name': 'https://linkedsoftwaredependencies.org/bundles/npm/@comunica/actor-init-sparql/^1.0.0/config/sets/rdf-dereference.json#myRdfDereferencer',
   'bus': https___linkedsoftwaredependencies_org_bundles_npm__comunica_bus_rdf_dereference_Bus_RdfDereference
 });
-const https___linkedsoftwaredependencies_org_bundles_npm__comunica_actor_init_sparql__1_0_0_config_sets_resolve_file_json_myQuadPatternFileResolver = new (__webpack_require__(/*! @comunica/actor-rdf-resolve-quad-pattern-file */ "./node_modules/@comunica/actor-rdf-resolve-quad-pattern-file/index.js").ActorRdfResolveQuadPatternFile)({
-  'mediatorRdfDereference': https___linkedsoftwaredependencies_org_bundles_npm__comunica_actor_init_sparql__1_0_0_config_sets_resolve_file_json_mediatorRdfDereference,
-  'name': 'https://linkedsoftwaredependencies.org/bundles/npm/@comunica/actor-init-sparql/^1.0.0/config/sets/resolve-file.json#myQuadPatternFileResolver',
-  'bus': https___linkedsoftwaredependencies_org_bundles_npm__comunica_bus_rdf_resolve_quad_pattern_Bus_RdfResolveQuadPattern
-});
-const https___linkedsoftwaredependencies_org_bundles_npm__comunica_actor_init_sparql__1_0_0_config_sets_context_preprocess_rdf_source_identifiers_json_myContextPreprocessRdfSourceIdentifier = new (__webpack_require__(/*! @comunica/actor-context-preprocess-rdf-source-identifier */ "./node_modules/@comunica/actor-context-preprocess-rdf-source-identifier/index.js").ActorContextPreprocessRdfSourceIdentifier)({
-  'mediatorRdfSourceIdentifier': https___linkedsoftwaredependencies_org_bundles_npm__comunica_actor_init_sparql__1_0_0_config_sets_context_preprocess_rdf_source_identifiers_json_mediatorRdfSourceIdentifier,
-  'name': 'https://linkedsoftwaredependencies.org/bundles/npm/@comunica/actor-init-sparql/^1.0.0/config/sets/context-preprocess-rdf-source-identifiers.json#myContextPreprocessRdfSourceIdentifier',
-  'bus': https___linkedsoftwaredependencies_org_bundles_npm__comunica_bus_context_preprocess_Bus_ContextPreprocess
-});
 const https___linkedsoftwaredependencies_org_bundles_npm__comunica_actor_init_sparql__1_0_0_config_sets_resolve_federated_json_myFederatedQuadPatternResolver = new (__webpack_require__(/*! @comunica/actor-rdf-resolve-quad-pattern-federated */ "./node_modules/@comunica/actor-rdf-resolve-quad-pattern-federated/index.js").ActorRdfResolveQuadPatternFederated)({
   'mediatorResolveQuadPattern': https___linkedsoftwaredependencies_org_bundles_npm__comunica_actor_init_sparql__1_0_0_config_sets_sparql_queryoperators_json_mediatorResolveQuadPattern,
   'skipEmptyPatterns': 'true',
@@ -65647,45 +65932,17 @@ const https___linkedsoftwaredependencies_org_bundles_npm__comunica_actor_init_sp
   'name': 'https://linkedsoftwaredependencies.org/bundles/npm/@comunica/actor-init-sparql/^1.0.0/config/sets/sparql-queryoperators.json#myQuadPatternQueryOperator',
   'bus': https___linkedsoftwaredependencies_org_bundles_npm__comunica_bus_query_operation_Bus_QueryOperation
 });
-const https___linkedsoftwaredependencies_org_bundles_npm__comunica_actor_init_sparql__1_0_0_config_sets_sparql_queryoperator_path_json_myAltPathOperator = new (__webpack_require__(/*! @comunica/actor-query-operation-path-alt */ "./node_modules/@comunica/actor-query-operation-path-alt/index.js").ActorQueryOperationPathAlt)({
-  'mediatorQueryOperation': https___linkedsoftwaredependencies_org_bundles_npm__comunica_actor_init_sparql__1_0_0_config_sets_sparql_queryoperators_json_mediatorQueryOperation,
-  'name': 'https://linkedsoftwaredependencies.org/bundles/npm/@comunica/actor-init-sparql/^1.0.0/config/sets/sparql-queryoperator-path.json#myAltPathOperator',
-  'bus': https___linkedsoftwaredependencies_org_bundles_npm__comunica_bus_query_operation_Bus_QueryOperation
+const https___linkedsoftwaredependencies_org_bundles_npm__comunica_actor_init_sparql__1_0_0_config_sets_resolve_file_json_myQuadPatternFileResolver = new (__webpack_require__(/*! @comunica/actor-rdf-resolve-quad-pattern-file */ "./node_modules/@comunica/actor-rdf-resolve-quad-pattern-file/index.js").ActorRdfResolveQuadPatternFile)({
+  'mediatorRdfDereference': https___linkedsoftwaredependencies_org_bundles_npm__comunica_actor_init_sparql__1_0_0_config_sets_resolve_file_json_mediatorRdfDereference,
+  'cacheSize': 100,
+  'httpInvalidator': https___linkedsoftwaredependencies_org_bundles_npm__comunica_bus_rdf_resolve_quad_pattern_Actor_RdfResolveQuadPattern_httpInvalidator_default,
+  'name': 'https://linkedsoftwaredependencies.org/bundles/npm/@comunica/actor-init-sparql/^1.0.0/config/sets/resolve-file.json#myQuadPatternFileResolver',
+  'bus': https___linkedsoftwaredependencies_org_bundles_npm__comunica_bus_rdf_resolve_quad_pattern_Bus_RdfResolveQuadPattern
 });
-const https___linkedsoftwaredependencies_org_bundles_npm__comunica_actor_init_sparql__1_0_0_config_sets_sparql_queryoperator_path_json_myInvPathOperator = new (__webpack_require__(/*! @comunica/actor-query-operation-path-inv */ "./node_modules/@comunica/actor-query-operation-path-inv/index.js").ActorQueryOperationPathInv)({
-  'mediatorQueryOperation': https___linkedsoftwaredependencies_org_bundles_npm__comunica_actor_init_sparql__1_0_0_config_sets_sparql_queryoperators_json_mediatorQueryOperation,
-  'name': 'https://linkedsoftwaredependencies.org/bundles/npm/@comunica/actor-init-sparql/^1.0.0/config/sets/sparql-queryoperator-path.json#myInvPathOperator',
-  'bus': https___linkedsoftwaredependencies_org_bundles_npm__comunica_bus_query_operation_Bus_QueryOperation
-});
-const https___linkedsoftwaredependencies_org_bundles_npm__comunica_actor_init_sparql__1_0_0_config_sets_sparql_queryoperator_path_json_myLinkPathOperator = new (__webpack_require__(/*! @comunica/actor-query-operation-path-link */ "./node_modules/@comunica/actor-query-operation-path-link/index.js").ActorQueryOperationPathLink)({
-  'mediatorQueryOperation': https___linkedsoftwaredependencies_org_bundles_npm__comunica_actor_init_sparql__1_0_0_config_sets_sparql_queryoperators_json_mediatorQueryOperation,
-  'name': 'https://linkedsoftwaredependencies.org/bundles/npm/@comunica/actor-init-sparql/^1.0.0/config/sets/sparql-queryoperator-path.json#myLinkPathOperator',
-  'bus': https___linkedsoftwaredependencies_org_bundles_npm__comunica_bus_query_operation_Bus_QueryOperation
-});
-const https___linkedsoftwaredependencies_org_bundles_npm__comunica_actor_init_sparql__1_0_0_config_sets_sparql_queryoperator_path_json_myNpsPathOperator = new (__webpack_require__(/*! @comunica/actor-query-operation-path-nps */ "./node_modules/@comunica/actor-query-operation-path-nps/index.js").ActorQueryOperationPathNps)({
-  'mediatorQueryOperation': https___linkedsoftwaredependencies_org_bundles_npm__comunica_actor_init_sparql__1_0_0_config_sets_sparql_queryoperators_json_mediatorQueryOperation,
-  'name': 'https://linkedsoftwaredependencies.org/bundles/npm/@comunica/actor-init-sparql/^1.0.0/config/sets/sparql-queryoperator-path.json#myNpsPathOperator',
-  'bus': https___linkedsoftwaredependencies_org_bundles_npm__comunica_bus_query_operation_Bus_QueryOperation
-});
-const https___linkedsoftwaredependencies_org_bundles_npm__comunica_actor_init_sparql__1_0_0_config_sets_sparql_queryoperator_path_json_myOneOrMorePathOperator = new (__webpack_require__(/*! @comunica/actor-query-operation-path-one-or-more */ "./node_modules/@comunica/actor-query-operation-path-one-or-more/index.js").ActorQueryOperationPathOneOrMore)({
-  'mediatorQueryOperation': https___linkedsoftwaredependencies_org_bundles_npm__comunica_actor_init_sparql__1_0_0_config_sets_sparql_queryoperators_json_mediatorQueryOperation,
-  'name': 'https://linkedsoftwaredependencies.org/bundles/npm/@comunica/actor-init-sparql/^1.0.0/config/sets/sparql-queryoperator-path.json#myOneOrMorePathOperator',
-  'bus': https___linkedsoftwaredependencies_org_bundles_npm__comunica_bus_query_operation_Bus_QueryOperation
-});
-const https___linkedsoftwaredependencies_org_bundles_npm__comunica_actor_init_sparql__1_0_0_config_sets_sparql_queryoperator_path_json_mySeqPathOperator = new (__webpack_require__(/*! @comunica/actor-query-operation-path-seq */ "./node_modules/@comunica/actor-query-operation-path-seq/index.js").ActorQueryOperationPathSeq)({
-  'mediatorQueryOperation': https___linkedsoftwaredependencies_org_bundles_npm__comunica_actor_init_sparql__1_0_0_config_sets_sparql_queryoperators_json_mediatorQueryOperation,
-  'name': 'https://linkedsoftwaredependencies.org/bundles/npm/@comunica/actor-init-sparql/^1.0.0/config/sets/sparql-queryoperator-path.json#mySeqPathOperator',
-  'bus': https___linkedsoftwaredependencies_org_bundles_npm__comunica_bus_query_operation_Bus_QueryOperation
-});
-const https___linkedsoftwaredependencies_org_bundles_npm__comunica_actor_init_sparql__1_0_0_config_sets_sparql_queryoperator_path_json_myZeroOrMorePathOperator = new (__webpack_require__(/*! @comunica/actor-query-operation-path-zero-or-more */ "./node_modules/@comunica/actor-query-operation-path-zero-or-more/index.js").ActorQueryOperationPathZeroOrMore)({
-  'mediatorQueryOperation': https___linkedsoftwaredependencies_org_bundles_npm__comunica_actor_init_sparql__1_0_0_config_sets_sparql_queryoperators_json_mediatorQueryOperation,
-  'name': 'https://linkedsoftwaredependencies.org/bundles/npm/@comunica/actor-init-sparql/^1.0.0/config/sets/sparql-queryoperator-path.json#myZeroOrMorePathOperator',
-  'bus': https___linkedsoftwaredependencies_org_bundles_npm__comunica_bus_query_operation_Bus_QueryOperation
-});
-const https___linkedsoftwaredependencies_org_bundles_npm__comunica_actor_init_sparql__1_0_0_config_sets_sparql_queryoperator_path_json_myZeroOrOnePathOperator = new (__webpack_require__(/*! @comunica/actor-query-operation-path-zero-or-one */ "./node_modules/@comunica/actor-query-operation-path-zero-or-one/index.js").ActorQueryOperationPathZeroOrOne)({
-  'mediatorQueryOperation': https___linkedsoftwaredependencies_org_bundles_npm__comunica_actor_init_sparql__1_0_0_config_sets_sparql_queryoperators_json_mediatorQueryOperation,
-  'name': 'https://linkedsoftwaredependencies.org/bundles/npm/@comunica/actor-init-sparql/^1.0.0/config/sets/sparql-queryoperator-path.json#myZeroOrOnePathOperator',
-  'bus': https___linkedsoftwaredependencies_org_bundles_npm__comunica_bus_query_operation_Bus_QueryOperation
+const https___linkedsoftwaredependencies_org_bundles_npm__comunica_actor_init_sparql__1_0_0_config_sets_context_preprocess_rdf_source_identifiers_json_myContextPreprocessRdfSourceIdentifier = new (__webpack_require__(/*! @comunica/actor-context-preprocess-rdf-source-identifier */ "./node_modules/@comunica/actor-context-preprocess-rdf-source-identifier/index.js").ActorContextPreprocessRdfSourceIdentifier)({
+  'mediatorRdfSourceIdentifier': https___linkedsoftwaredependencies_org_bundles_npm__comunica_actor_init_sparql__1_0_0_config_sets_context_preprocess_rdf_source_identifiers_json_mediatorRdfSourceIdentifier,
+  'name': 'https://linkedsoftwaredependencies.org/bundles/npm/@comunica/actor-init-sparql/^1.0.0/config/sets/context-preprocess-rdf-source-identifiers.json#myContextPreprocessRdfSourceIdentifier',
+  'bus': https___linkedsoftwaredependencies_org_bundles_npm__comunica_bus_context_preprocess_Bus_ContextPreprocess
 });
 const https___linkedsoftwaredependencies_org_bundles_npm__comunica_actor_init_sparql__1_0_0_config_sets_sparql_queryoperators_json_myAskQueryOperator = new (__webpack_require__(/*! @comunica/actor-query-operation-ask */ "./node_modules/@comunica/actor-query-operation-ask/index.js").ActorQueryOperationAsk)({
   'mediatorQueryOperation': https___linkedsoftwaredependencies_org_bundles_npm__comunica_actor_init_sparql__1_0_0_config_sets_sparql_queryoperators_json_mediatorQueryOperation,
@@ -65789,14 +66046,55 @@ const https___linkedsoftwaredependencies_org_bundles_npm__comunica_actor_init_sp
   'name': 'https://linkedsoftwaredependencies.org/bundles/npm/@comunica/actor-init-sparql/^1.0.0/config/sets/sparql-queryoperators.json#myMinusQueryOperator',
   'bus': https___linkedsoftwaredependencies_org_bundles_npm__comunica_bus_query_operation_Bus_QueryOperation
 });
+const https___linkedsoftwaredependencies_org_bundles_npm__comunica_actor_init_sparql__1_0_0_config_sets_sparql_queryoperator_path_json_myAltPathOperator = new (__webpack_require__(/*! @comunica/actor-query-operation-path-alt */ "./node_modules/@comunica/actor-query-operation-path-alt/index.js").ActorQueryOperationPathAlt)({
+  'mediatorQueryOperation': https___linkedsoftwaredependencies_org_bundles_npm__comunica_actor_init_sparql__1_0_0_config_sets_sparql_queryoperators_json_mediatorQueryOperation,
+  'name': 'https://linkedsoftwaredependencies.org/bundles/npm/@comunica/actor-init-sparql/^1.0.0/config/sets/sparql-queryoperator-path.json#myAltPathOperator',
+  'bus': https___linkedsoftwaredependencies_org_bundles_npm__comunica_bus_query_operation_Bus_QueryOperation
+});
+const https___linkedsoftwaredependencies_org_bundles_npm__comunica_actor_init_sparql__1_0_0_config_sets_sparql_queryoperator_path_json_myInvPathOperator = new (__webpack_require__(/*! @comunica/actor-query-operation-path-inv */ "./node_modules/@comunica/actor-query-operation-path-inv/index.js").ActorQueryOperationPathInv)({
+  'mediatorQueryOperation': https___linkedsoftwaredependencies_org_bundles_npm__comunica_actor_init_sparql__1_0_0_config_sets_sparql_queryoperators_json_mediatorQueryOperation,
+  'name': 'https://linkedsoftwaredependencies.org/bundles/npm/@comunica/actor-init-sparql/^1.0.0/config/sets/sparql-queryoperator-path.json#myInvPathOperator',
+  'bus': https___linkedsoftwaredependencies_org_bundles_npm__comunica_bus_query_operation_Bus_QueryOperation
+});
+const https___linkedsoftwaredependencies_org_bundles_npm__comunica_actor_init_sparql__1_0_0_config_sets_sparql_queryoperator_path_json_myLinkPathOperator = new (__webpack_require__(/*! @comunica/actor-query-operation-path-link */ "./node_modules/@comunica/actor-query-operation-path-link/index.js").ActorQueryOperationPathLink)({
+  'mediatorQueryOperation': https___linkedsoftwaredependencies_org_bundles_npm__comunica_actor_init_sparql__1_0_0_config_sets_sparql_queryoperators_json_mediatorQueryOperation,
+  'name': 'https://linkedsoftwaredependencies.org/bundles/npm/@comunica/actor-init-sparql/^1.0.0/config/sets/sparql-queryoperator-path.json#myLinkPathOperator',
+  'bus': https___linkedsoftwaredependencies_org_bundles_npm__comunica_bus_query_operation_Bus_QueryOperation
+});
+const https___linkedsoftwaredependencies_org_bundles_npm__comunica_actor_init_sparql__1_0_0_config_sets_sparql_queryoperator_path_json_myNpsPathOperator = new (__webpack_require__(/*! @comunica/actor-query-operation-path-nps */ "./node_modules/@comunica/actor-query-operation-path-nps/index.js").ActorQueryOperationPathNps)({
+  'mediatorQueryOperation': https___linkedsoftwaredependencies_org_bundles_npm__comunica_actor_init_sparql__1_0_0_config_sets_sparql_queryoperators_json_mediatorQueryOperation,
+  'name': 'https://linkedsoftwaredependencies.org/bundles/npm/@comunica/actor-init-sparql/^1.0.0/config/sets/sparql-queryoperator-path.json#myNpsPathOperator',
+  'bus': https___linkedsoftwaredependencies_org_bundles_npm__comunica_bus_query_operation_Bus_QueryOperation
+});
+const https___linkedsoftwaredependencies_org_bundles_npm__comunica_actor_init_sparql__1_0_0_config_sets_sparql_queryoperator_path_json_myOneOrMorePathOperator = new (__webpack_require__(/*! @comunica/actor-query-operation-path-one-or-more */ "./node_modules/@comunica/actor-query-operation-path-one-or-more/index.js").ActorQueryOperationPathOneOrMore)({
+  'mediatorQueryOperation': https___linkedsoftwaredependencies_org_bundles_npm__comunica_actor_init_sparql__1_0_0_config_sets_sparql_queryoperators_json_mediatorQueryOperation,
+  'name': 'https://linkedsoftwaredependencies.org/bundles/npm/@comunica/actor-init-sparql/^1.0.0/config/sets/sparql-queryoperator-path.json#myOneOrMorePathOperator',
+  'bus': https___linkedsoftwaredependencies_org_bundles_npm__comunica_bus_query_operation_Bus_QueryOperation
+});
+const https___linkedsoftwaredependencies_org_bundles_npm__comunica_actor_init_sparql__1_0_0_config_sets_sparql_queryoperator_path_json_mySeqPathOperator = new (__webpack_require__(/*! @comunica/actor-query-operation-path-seq */ "./node_modules/@comunica/actor-query-operation-path-seq/index.js").ActorQueryOperationPathSeq)({
+  'mediatorQueryOperation': https___linkedsoftwaredependencies_org_bundles_npm__comunica_actor_init_sparql__1_0_0_config_sets_sparql_queryoperators_json_mediatorQueryOperation,
+  'name': 'https://linkedsoftwaredependencies.org/bundles/npm/@comunica/actor-init-sparql/^1.0.0/config/sets/sparql-queryoperator-path.json#mySeqPathOperator',
+  'bus': https___linkedsoftwaredependencies_org_bundles_npm__comunica_bus_query_operation_Bus_QueryOperation
+});
+const https___linkedsoftwaredependencies_org_bundles_npm__comunica_actor_init_sparql__1_0_0_config_sets_sparql_queryoperator_path_json_myZeroOrMorePathOperator = new (__webpack_require__(/*! @comunica/actor-query-operation-path-zero-or-more */ "./node_modules/@comunica/actor-query-operation-path-zero-or-more/index.js").ActorQueryOperationPathZeroOrMore)({
+  'mediatorQueryOperation': https___linkedsoftwaredependencies_org_bundles_npm__comunica_actor_init_sparql__1_0_0_config_sets_sparql_queryoperators_json_mediatorQueryOperation,
+  'name': 'https://linkedsoftwaredependencies.org/bundles/npm/@comunica/actor-init-sparql/^1.0.0/config/sets/sparql-queryoperator-path.json#myZeroOrMorePathOperator',
+  'bus': https___linkedsoftwaredependencies_org_bundles_npm__comunica_bus_query_operation_Bus_QueryOperation
+});
+const https___linkedsoftwaredependencies_org_bundles_npm__comunica_actor_init_sparql__1_0_0_config_sets_sparql_queryoperator_path_json_myZeroOrOnePathOperator = new (__webpack_require__(/*! @comunica/actor-query-operation-path-zero-or-one */ "./node_modules/@comunica/actor-query-operation-path-zero-or-one/index.js").ActorQueryOperationPathZeroOrOne)({
+  'mediatorQueryOperation': https___linkedsoftwaredependencies_org_bundles_npm__comunica_actor_init_sparql__1_0_0_config_sets_sparql_queryoperators_json_mediatorQueryOperation,
+  'name': 'https://linkedsoftwaredependencies.org/bundles/npm/@comunica/actor-init-sparql/^1.0.0/config/sets/sparql-queryoperator-path.json#myZeroOrOnePathOperator',
+  'bus': https___linkedsoftwaredependencies_org_bundles_npm__comunica_bus_query_operation_Bus_QueryOperation
+});
 const urn_comunica_sparqlinit = new (__webpack_require__(/*! @comunica/actor-init-sparql */ "./node_modules/@comunica/actor-init-sparql/index-browser.js").ActorInitSparql)({
   'mediatorOptimizeQueryOperation': https___linkedsoftwaredependencies_org_bundles_npm__comunica_actor_init_sparql__1_0_0_config_sets_sparql_init_json_mediatorOptimizeQueryOperation,
   'mediatorQueryOperation': https___linkedsoftwaredependencies_org_bundles_npm__comunica_actor_init_sparql__1_0_0_config_sets_sparql_queryoperators_json_mediatorQueryOperation,
   'mediatorSparqlParse': https___linkedsoftwaredependencies_org_bundles_npm__comunica_actor_init_sparql__1_0_0_config_sets_sparql_init_json_mediatorSparqlParse,
   'mediatorSparqlSerialize': https___linkedsoftwaredependencies_org_bundles_npm__comunica_actor_init_sparql__1_0_0_config_sets_sparql_init_json_mediatorSparqlSerialize,
-  'mediatorSparqlSerializeMediaTypeCombiner': __b0bnode231,
+  'mediatorSparqlSerializeMediaTypeCombiner': __b0bnode237,
   'mediatorContextPreprocess': https___linkedsoftwaredependencies_org_bundles_npm__comunica_actor_init_sparql__1_0_0_config_sets_sparql_init_json_mediatorContextPreprocess,
-  'logger': __b14bnode105,
+  'mediatorHttpInvalidate': https___linkedsoftwaredependencies_org_bundles_npm__comunica_actor_init_sparql__1_0_0_config_sets_sparql_init_json_mediatorHttpInvalidate,
+  'logger': __b15bnode106,
   'contextKeyShortcuts': {
     'source': '@comunica/bus-rdf-resolve-quad-pattern:source',
     'sources': '@comunica/bus-rdf-resolve-quad-pattern:sources',
@@ -65811,32 +66109,23 @@ const urn_comunica_sparqlinit = new (__webpack_require__(/*! @comunica/actor-ini
 const urn_comunica_my = ({
   'busInit': https___linkedsoftwaredependencies_org_bundles_npm__comunica_bus_init_Bus_Init,
   'actors': [
-    https___linkedsoftwaredependencies_org_bundles_npm__comunica_actor_init_sparql__1_0_0_config_sets_rdf_dereference_json_myRdfDereferencer,
     https___linkedsoftwaredependencies_org_bundles_npm__comunica_actor_init_sparql__1_0_0_config_sets_http_json_myHttpFetcher,
+    https___linkedsoftwaredependencies_org_bundles_npm__comunica_actor_init_sparql__1_0_0_config_sets_rdf_dereference_json_myRdfDereferencer,
     https___linkedsoftwaredependencies_org_bundles_npm__comunica_actor_init_sparql__1_0_0_config_sets_join_json_myRdfJoinActor,
     https___linkedsoftwaredependencies_org_bundles_npm__comunica_actor_init_sparql__1_0_0_config_sets_rdf_parsers_json_myRdfParserN3,
     https___linkedsoftwaredependencies_org_bundles_npm__comunica_actor_init_sparql__1_0_0_config_sets_rdf_parsers_json_myRdfParserJsonLd,
     https___linkedsoftwaredependencies_org_bundles_npm__comunica_actor_init_sparql__1_0_0_config_sets_rdf_parsers_json_myRdfParserRdfXml,
-    https___linkedsoftwaredependencies_org_bundles_npm__comunica_actor_init_sparql__1_0_0_config_sets_context_preprocess_rdf_source_identifiers_json_myContextPreprocessRdfSourceIdentifier,
+    https___linkedsoftwaredependencies_org_bundles_npm__comunica_actor_init_sparql__1_0_0_config_sets_resolve_federated_json_myFederatedQuadPatternResolver,
+    https___linkedsoftwaredependencies_org_bundles_npm__comunica_actor_init_sparql__1_0_0_config_sets_resolve_file_json_myQuadPatternFileResolver,
     https___linkedsoftwaredependencies_org_bundles_npm__comunica_actor_init_sparql__1_0_0_config_sets_rdf_source_identifiers_json_myActorRdfSourceIdentifierHypermediaQpf,
     https___linkedsoftwaredependencies_org_bundles_npm__comunica_actor_init_sparql__1_0_0_config_sets_rdf_source_identifiers_json_myActorRdfSourceIdentifierSparql,
     https___linkedsoftwaredependencies_org_bundles_npm__comunica_actor_init_sparql__1_0_0_config_sets_rdf_source_identifiers_json_myActorRdfSourceIdentifierFileContentType,
-    https___linkedsoftwaredependencies_org_bundles_npm__comunica_actor_init_sparql__1_0_0_config_sets_resolve_federated_json_myFederatedQuadPatternResolver,
-    https___linkedsoftwaredependencies_org_bundles_npm__comunica_actor_init_sparql__1_0_0_config_sets_resolve_file_json_myQuadPatternFileResolver,
+    https___linkedsoftwaredependencies_org_bundles_npm__comunica_actor_init_sparql__1_0_0_config_sets_context_preprocess_rdf_source_identifiers_json_myContextPreprocessRdfSourceIdentifier,
+    https___linkedsoftwaredependencies_org_bundles_npm_ldflex_comunica__2_0_0_config_sets_resolve_rdfjssource_json_myQuadPatternRdfJsSourceResolver,
     https___linkedsoftwaredependencies_org_bundles_npm__comunica_actor_init_sparql__1_0_0_config_sets_resolve_sparql_json_mySparqlQuadPatternResolver,
     https___linkedsoftwaredependencies_org_bundles_npm__comunica_actor_init_sparql__1_0_0_config_sets_resolve_sparql_json_mySparqlEndpointResolver,
     urn_comunica_sparqlinit,
-    https___linkedsoftwaredependencies_org_bundles_npm_ldflex_comunica__2_0_0_config_sets_resolve_rdfjssource_json_myQuadPatternRdfJsSourceResolver,
-    https___linkedsoftwaredependencies_org_bundles_npm__comunica_actor_init_sparql__1_0_0_config_sets_sparql_parsers_json_mySparqlParser,
     https___linkedsoftwaredependencies_org_bundles_npm__comunica_actor_init_sparql__1_0_0_config_sets_sparql_optimize_json_myJoinBgpOptimizer,
-    https___linkedsoftwaredependencies_org_bundles_npm__comunica_actor_init_sparql__1_0_0_config_sets_sparql_queryoperator_path_json_myAltPathOperator,
-    https___linkedsoftwaredependencies_org_bundles_npm__comunica_actor_init_sparql__1_0_0_config_sets_sparql_queryoperator_path_json_myInvPathOperator,
-    https___linkedsoftwaredependencies_org_bundles_npm__comunica_actor_init_sparql__1_0_0_config_sets_sparql_queryoperator_path_json_myLinkPathOperator,
-    https___linkedsoftwaredependencies_org_bundles_npm__comunica_actor_init_sparql__1_0_0_config_sets_sparql_queryoperator_path_json_myNpsPathOperator,
-    https___linkedsoftwaredependencies_org_bundles_npm__comunica_actor_init_sparql__1_0_0_config_sets_sparql_queryoperator_path_json_myOneOrMorePathOperator,
-    https___linkedsoftwaredependencies_org_bundles_npm__comunica_actor_init_sparql__1_0_0_config_sets_sparql_queryoperator_path_json_mySeqPathOperator,
-    https___linkedsoftwaredependencies_org_bundles_npm__comunica_actor_init_sparql__1_0_0_config_sets_sparql_queryoperator_path_json_myZeroOrMorePathOperator,
-    https___linkedsoftwaredependencies_org_bundles_npm__comunica_actor_init_sparql__1_0_0_config_sets_sparql_queryoperator_path_json_myZeroOrOnePathOperator,
     https___linkedsoftwaredependencies_org_bundles_npm__comunica_actor_init_sparql__1_0_0_config_sets_sparql_queryoperators_json_myAskQueryOperator,
     https___linkedsoftwaredependencies_org_bundles_npm__comunica_actor_init_sparql__1_0_0_config_sets_sparql_queryoperators_json_myServiceQueryOperator,
     https___linkedsoftwaredependencies_org_bundles_npm__comunica_actor_init_sparql__1_0_0_config_sets_sparql_queryoperators_json_mySliceQueryOperator,
@@ -65857,7 +66146,16 @@ const urn_comunica_my = ({
     https___linkedsoftwaredependencies_org_bundles_npm__comunica_actor_init_sparql__1_0_0_config_sets_sparql_queryoperators_json_myUnionQueryOperator,
     https___linkedsoftwaredependencies_org_bundles_npm__comunica_actor_init_sparql__1_0_0_config_sets_sparql_queryoperators_json_myMinusQueryOperator,
     https___linkedsoftwaredependencies_org_bundles_npm__comunica_actor_init_sparql__1_0_0_config_sets_sparql_queryoperators_json_myValuesQueryOperator,
-    https___linkedsoftwaredependencies_org_bundles_npm__comunica_actor_init_sparql__1_0_0_config_sets_sparql_queryoperators_json_myQuadPatternQueryOperator
+    https___linkedsoftwaredependencies_org_bundles_npm__comunica_actor_init_sparql__1_0_0_config_sets_sparql_queryoperators_json_myQuadPatternQueryOperator,
+    https___linkedsoftwaredependencies_org_bundles_npm__comunica_actor_init_sparql__1_0_0_config_sets_sparql_parsers_json_mySparqlParser,
+    https___linkedsoftwaredependencies_org_bundles_npm__comunica_actor_init_sparql__1_0_0_config_sets_sparql_queryoperator_path_json_myAltPathOperator,
+    https___linkedsoftwaredependencies_org_bundles_npm__comunica_actor_init_sparql__1_0_0_config_sets_sparql_queryoperator_path_json_myInvPathOperator,
+    https___linkedsoftwaredependencies_org_bundles_npm__comunica_actor_init_sparql__1_0_0_config_sets_sparql_queryoperator_path_json_myLinkPathOperator,
+    https___linkedsoftwaredependencies_org_bundles_npm__comunica_actor_init_sparql__1_0_0_config_sets_sparql_queryoperator_path_json_myNpsPathOperator,
+    https___linkedsoftwaredependencies_org_bundles_npm__comunica_actor_init_sparql__1_0_0_config_sets_sparql_queryoperator_path_json_myOneOrMorePathOperator,
+    https___linkedsoftwaredependencies_org_bundles_npm__comunica_actor_init_sparql__1_0_0_config_sets_sparql_queryoperator_path_json_mySeqPathOperator,
+    https___linkedsoftwaredependencies_org_bundles_npm__comunica_actor_init_sparql__1_0_0_config_sets_sparql_queryoperator_path_json_myZeroOrMorePathOperator,
+    https___linkedsoftwaredependencies_org_bundles_npm__comunica_actor_init_sparql__1_0_0_config_sets_sparql_queryoperator_path_json_myZeroOrOnePathOperator
   ]
 });
 module.exports = urn_comunica_sparqlinit;
@@ -83394,7 +83692,10 @@ function Term(id) {
 Term.subclass = function subclass(Type, name) {
   Type.prototype = Object.create(this.prototype, {
     constructor: { value: Type },
-    termType:    { value: name || Type.name },
+    termType: {
+      enumerable: true,
+      value: name,
+    },
   });
   Type.subclass = subclass;
 };
@@ -83478,6 +83779,7 @@ Term.subclass(NamedNode, 'NamedNode');
 
 // ### The IRI of this named node
 Object.defineProperty(NamedNode.prototype, 'value', {
+  enumerable: true,
   get: function () { return this.id; },
 });
 
@@ -83492,6 +83794,7 @@ Term.subclass(BlankNode, 'BlankNode');
 
 // ### The name of this blank node
 Object.defineProperty(BlankNode.prototype, 'value', {
+  enumerable: true,
   get: function () { return this.id.substr(2); },
 });
 
@@ -83506,6 +83809,7 @@ Term.subclass(Variable, 'Variable');
 
 // ### The name of this variable
 Object.defineProperty(Variable.prototype, 'value', {
+  enumerable: true,
   get: function () { return this.id.substr(1); },
 });
 
@@ -83520,6 +83824,7 @@ Term.subclass(Literal, 'Literal');
 
 // ### The text value of this literal
 Object.defineProperty(Literal.prototype, 'value', {
+  enumerable: true,
   get: function () {
     return this.id.substring(1, this.id.lastIndexOf('"'));
   },
@@ -83527,6 +83832,7 @@ Object.defineProperty(Literal.prototype, 'value', {
 
 // ### The language of this literal
 Object.defineProperty(Literal.prototype, 'language', {
+  enumerable: true,
   get: function () {
     // Find the last quotation mark (e.g., '"abc"@en-us')
     var id = this.id, atPos = id.lastIndexOf('"') + 1;
@@ -83537,6 +83843,7 @@ Object.defineProperty(Literal.prototype, 'language', {
 
 // ### The datatype IRI of this literal
 Object.defineProperty(Literal.prototype, 'datatype', {
+  enumerable: true,
   get: function () {
     return new NamedNode(this.datatypeString);
   },
@@ -83544,6 +83851,7 @@ Object.defineProperty(Literal.prototype, 'datatype', {
 
 // ### The datatype string of this literal
 Object.defineProperty(Literal.prototype, 'datatypeString', {
+  enumerable: true,
   get: function () {
     // Find the last quotation mark (e.g., '"abc"^^http://ex.org/types#t')
     var id = this.id, dtPos = id.lastIndexOf('"') + 1, ch;
@@ -83590,7 +83898,10 @@ DEFAULTGRAPH = new DefaultGraph();
 DEFAULTGRAPH.id = '';
 
 // ### The empty string
-Object.defineProperty(DefaultGraph.prototype, 'value', { value: '' });
+Object.defineProperty(DefaultGraph.prototype, 'value', {
+  enumerable: true,
+  value: '',
+});
 
 // ### Returns whether this object represents the same term as the other
 DefaultGraph.prototype.equals = function (other) {
@@ -93124,8 +93435,8 @@ module.exports = class IdentifierIssuer {
    *
    * @param old the old identifier to check.
    *
-   * @return true if the old identifier has been assigned a new identifier, false
-   *   if not.
+   * @return true if the old identifier has been assigned a new identifier,
+   *   false if not.
    */
   hasId(old) {
     return (old in this.existing);
@@ -93509,7 +93820,7 @@ function _compareTriples(t1, t2) {
       return false;
     }
   }
-  if(t1.termType !== 'Literal') {
+  if(t1.object.termType !== 'Literal') {
     return true;
   }
   return (
@@ -93683,7 +93994,7 @@ const Permutator = __webpack_require__(/*! ./Permutator */ "./node_modules/rdf-c
 const NQuads = __webpack_require__(/*! ./NQuads */ "./node_modules/rdf-canonize/lib/NQuads.js");
 const util = __webpack_require__(/*! ./util */ "./node_modules/rdf-canonize/lib/util.js");
 
-const POSITIONS = {'subject': 's', 'object': 'o', 'graph': 'g'};
+const POSITIONS = {subject: 's', object: 'o', graph: 'g'};
 
 module.exports = class URDNA2015 extends AsyncAlgorithm {
   constructor(options) {
@@ -93859,7 +94170,7 @@ module.exports = class URDNA2015 extends AsyncAlgorithm {
                 // in result, issue a canonical identifier, in the same order,
                 // using the Issue Identifier algorithm, passing canonical
                 // issuer and existing identifier.
-                for(let existing in result.issuer.existing) {
+                for(const existing in result.issuer.existing) {
                   self.canonicalIssuer.getId(existing);
                 }
                 callback();
@@ -94156,7 +94467,7 @@ module.exports = class URDNA2015 extends AsyncAlgorithm {
     ], err => {
       // 6) Return issuer and the hash that results from passing data to hash
       // through the hash algorithm.
-      callback(err, {hash: md.digest(), issuer: issuer});
+      callback(err, {hash: md.digest(), issuer});
     });
   }
 
@@ -94225,7 +94536,7 @@ module.exports = class URDNA2015 extends AsyncAlgorithm {
 
   // helper that iterates over quad components (skips predicate)
   forEachComponent(quad, op) {
-    for(let key in quad) {
+    for(const key in quad) {
       // skip `predicate`
       if(key === 'predicate') {
         continue;
@@ -94257,7 +94568,7 @@ const Permutator = __webpack_require__(/*! ./Permutator */ "./node_modules/rdf-c
 const NQuads = __webpack_require__(/*! ./NQuads */ "./node_modules/rdf-canonize/lib/NQuads.js");
 const util = __webpack_require__(/*! ./util */ "./node_modules/rdf-canonize/lib/util.js");
 
-const POSITIONS = {'subject': 's', 'object': 'o', 'graph': 'g'};
+const POSITIONS = {subject: 's', object: 'o', graph: 'g'};
 
 module.exports = class URDNA2015Sync {
   constructor() {
@@ -94316,7 +94627,7 @@ module.exports = class URDNA2015Sync {
 
       // 5.3) For each blank node identifier identifier in non-normalized
       // identifiers:
-      for(let id in nonNormalized) {
+      for(const id in nonNormalized) {
         // 5.3.1) Create a hash, hash, according to the Hash First Degree
         // Quads algorithm.
         const hash = self.hashFirstDegreeQuads(id);
@@ -94407,7 +94718,7 @@ module.exports = class URDNA2015Sync {
         // using the Issue Identifier algorithm, passing canonical
         // issuer and existing identifier.
         const result = hashPathList[j];
-        for(let existing in result.issuer.existing) {
+        for(const existing in result.issuer.existing) {
           self.canonicalIssuer.getId(existing);
         }
       }
@@ -94660,7 +94971,7 @@ module.exports = class URDNA2015Sync {
 
     // 6) Return issuer and the hash that results from passing data to hash
     // through the hash algorithm.
-    return {hash: md.digest(), issuer: issuer};
+    return {hash: md.digest(), issuer};
   }
 
   // helper for modifying component during Hash First Degree Quads
@@ -94696,7 +95007,7 @@ module.exports = class URDNA2015Sync {
       // and graph name and it is a blank node that is not identified by
       // identifier:
       const quad = quads[i];
-      for(let key in quad) {
+      for(const key in quad) {
         const component = quad[key];
         if(key === 'predicate' ||
           !(component.termType === 'BlankNode' && component.value !== id)) {
@@ -94727,7 +95038,7 @@ module.exports = class URDNA2015Sync {
 
   // helper that iterates over quad components (skips predicate)
   forEachComponent(quad, op) {
-    for(let key in quad) {
+    for(const key in quad) {
       // skip `predicate`
       if(key === 'predicate') {
         continue;
@@ -95010,7 +95321,7 @@ api._rdfCanonizeNative = function(api) {
     rdfCanonizeNative = api;
   }
   return rdfCanonizeNative;
-}
+};
 
 /**
  * Asynchronously canonizes an RDF dataset.
@@ -95160,7 +95471,7 @@ api.clone = function(value) {
       }
     } else if(api.isObject(value)) {
       rval = {};
-      for(let key in value) {
+      for(const key in value) {
         rval[key] = api.clone(value[key]);
       }
     } else {
@@ -104493,7 +104804,7 @@ function transformTerm(term) {
     }
     switch (term.term.termType) {
         case 'Variable': return new E.Variable(RDFString.termToString(term.term));
-        case 'Literal': return tranformLiteral(term.term);
+        case 'Literal': return transformLiteral(term.term);
         case 'NamedNode': return new E.NamedNode(term.term.value);
         case 'BlankNode': return new E.BlankNode(term.term.value);
         default: throw new Err.InvalidTermType(term);
@@ -104502,7 +104813,7 @@ function transformTerm(term) {
 exports.transformTerm = transformTerm;
 // TODO: Maybe do this with a map?
 // tslint:disable-next-line:no-any
-function tranformLiteral(lit) {
+function transformLiteral(lit) {
     if (!lit.datatype) {
         return (lit.language)
             ? new E.LangStringLiteral(lit.value, lit.language)
@@ -104523,13 +104834,13 @@ function tranformLiteral(lit) {
         case Consts_1.TypeURL.XSD_DATE_TIME: {
             const val = new Date(lit.value);
             if (isNaN(val.getTime())) {
-                return new E.NonLexicalLiteral(undefined, lit.value, lit.datatype);
+                return new E.NonLexicalLiteral(undefined, lit.datatype, lit.value);
             }
             return new E.DateTimeLiteral(new Date(lit.value), lit.value);
         }
         case Consts_1.TypeURL.XSD_BOOLEAN: {
             if (lit.value !== 'true' && lit.value !== 'false') {
-                return new E.NonLexicalLiteral(undefined, lit.value, lit.datatype);
+                return new E.NonLexicalLiteral(undefined, lit.datatype, lit.value);
             }
             return new E.BooleanLiteral(lit.value === 'true', lit.value);
         }
@@ -104550,22 +104861,22 @@ function tranformLiteral(lit) {
         case Consts_1.TypeURL.XSD_INT: {
             const val = P.parseXSDDecimal(lit.value);
             if (val === undefined) {
-                return new E.NonLexicalLiteral(undefined, lit.value, lit.datatype);
+                return new E.NonLexicalLiteral(undefined, lit.datatype, lit.value);
             }
-            return new E.NumericLiteral(val, lit.value, lit.datatype);
+            return new E.NumericLiteral(val, lit.datatype, lit.value);
         }
         case Consts_1.TypeURL.XSD_FLOAT:
         case Consts_1.TypeURL.XSD_DOUBLE: {
             const val = P.parseXSDFloat(lit.value);
             if (val === undefined) {
-                return new E.NonLexicalLiteral(undefined, lit.value, lit.datatype);
+                return new E.NonLexicalLiteral(undefined, lit.datatype, lit.value);
             }
-            return new E.NumericLiteral(val, lit.value, lit.datatype);
+            return new E.NumericLiteral(val, lit.datatype, lit.value);
         }
-        default: return new E.Literal(lit.value, lit.value, lit.datatype);
+        default: return new E.Literal(lit.value, lit.datatype, lit.value);
     }
 }
-exports.tranformLiteral = tranformLiteral;
+exports.transformLiteral = transformLiteral;
 function transformOperator(expr) {
     if (C.SpecialOperators.contains(expr.operator)) {
         const op = expr.operator;
@@ -105043,11 +105354,11 @@ class BlankNode extends Term {
 BlankNode._nextID = 0;
 exports.BlankNode = BlankNode;
 class Literal extends Term {
-    constructor(typedValue, strValue, typeURL, language) {
+    constructor(typedValue, typeURL, strValue, language) {
         super();
         this.typedValue = typedValue;
-        this.strValue = strValue;
         this.typeURL = typeURL;
+        this.strValue = strValue;
         this.language = language;
         this.termType = 'literal';
         this.type = C.type(typeURL.value);
@@ -105075,7 +105386,7 @@ class NumericLiteral extends Literal {
 exports.NumericLiteral = NumericLiteral;
 class BooleanLiteral extends Literal {
     constructor(typedValue, strValue) {
-        super(typedValue, strValue, C.make(C.TypeURL.XSD_BOOLEAN));
+        super(typedValue, C.make(C.TypeURL.XSD_BOOLEAN), strValue);
         this.typedValue = typedValue;
         this.strValue = strValue;
     }
@@ -105088,7 +105399,7 @@ class DateTimeLiteral extends Literal {
     // strValue is mandatory here because toISOString will always add
     // milliseconds, even if they were not present.
     constructor(typedValue, strValue) {
-        super(typedValue, strValue, C.make(C.TypeURL.XSD_DATE_TIME));
+        super(typedValue, C.make(C.TypeURL.XSD_DATE_TIME), strValue);
         this.typedValue = typedValue;
         this.strValue = strValue;
     }
@@ -105096,7 +105407,7 @@ class DateTimeLiteral extends Literal {
 exports.DateTimeLiteral = DateTimeLiteral;
 class LangStringLiteral extends Literal {
     constructor(typedValue, language) {
-        super(typedValue, typedValue, C.make(C.TypeURL.RDF_LANG_STRING), language);
+        super(typedValue, C.make(C.TypeURL.RDF_LANG_STRING), typedValue, language);
         this.typedValue = typedValue;
         this.language = language;
     }
@@ -105111,7 +105422,7 @@ exports.LangStringLiteral = LangStringLiteral;
 // This does not include language tagged literals
 class StringLiteral extends Literal {
     constructor(typedValue) {
-        super(typedValue, typedValue, C.make(C.TypeURL.XSD_STRING));
+        super(typedValue, C.make(C.TypeURL.XSD_STRING), typedValue);
         this.typedValue = typedValue;
     }
     coerceEBV() {
@@ -105137,11 +105448,11 @@ exports.StringLiteral = StringLiteral;
  *  - ... some other more precise thing i can't find...
  */
 class NonLexicalLiteral extends Literal {
-    constructor(typedValue, strValue, dataType, language) {
-        super(typedValue, strValue, dataType, language);
+    constructor(typedValue, typeURL, strValue, language) {
+        super(typedValue, typeURL, strValue, language);
         this.typedValue = undefined;
         this.type = 'nonlexical';
-        this.shouldBeCategory = C.type(dataType.value);
+        this.shouldBeCategory = C.type(typeURL.value);
     }
     coerceEBV() {
         const isNumericOrBool = C.NumericTypeCategories.contains(this.shouldBeCategory)
@@ -105400,22 +105711,27 @@ class Builder {
         }
         throw new Err.UnexpectedError('Tried to copy implementation, but types not found', { from, to });
     }
-    setUnary(type, op) {
+    onUnary(type, op) {
         return this.set([type], ([val]) => {
             return op(val);
         });
     }
-    setLitUnary(type, op) {
+    onUnaryTyped(type, op) {
         return this.set([type], ([val]) => {
             return op(val.typedValue);
         });
     }
-    setLitBinary(types, op) {
+    onBinary(types, op) {
+        return this.set(types, ([left, right]) => {
+            return op(left, right);
+        });
+    }
+    onBinaryTyped(types, op) {
         return this.set(types, ([left, right]) => {
             return op(left.typedValue, right.typedValue);
         });
     }
-    setLitTernary(types, op) {
+    onTernaryTyped(types, op) {
         return this.set(types, ([a1, a2, a3]) => {
             return op(a1.typedValue, a2.typedValue, a3.typedValue);
         });
@@ -105434,7 +105750,23 @@ class Builder {
     onLiteral1(op) {
         return this.set(['literal'], ([term]) => op(term));
     }
+    onBoolean1(op) {
+        return this
+            .set(['boolean'], ([lit]) => op(lit));
+    }
+    onBoolean1Typed(op) {
+        return this
+            .set(['boolean'], ([lit]) => op(lit.typedValue));
+    }
     onString1(op) {
+        return this
+            .set(['string'], ([lit]) => op(lit));
+    }
+    onString1Typed(op) {
+        return this
+            .set(['string'], ([lit]) => op(lit.typedValue));
+    }
+    onStringly1(op) {
         return this
             .set(['string'], ([lit]) => op(lit))
             .set(['langString'], ([lit]) => op(lit));
@@ -105445,6 +105777,11 @@ class Builder {
             .set(['decimal'], ([val]) => op(val))
             .set(['float'], ([val]) => op(val))
             .set(['double'], ([val]) => op(val))
+            .invalidLexicalForm(['nonlexical'], 1);
+    }
+    onDateTime1(op) {
+        return this
+            .set(['date'], ([val]) => op(val))
             .invalidLexicalForm(['nonlexical'], 1);
     }
     /*
@@ -105558,9 +105895,14 @@ function bool(val) {
 }
 exports.bool = bool;
 function number(num, dt) {
-    return new E.NumericLiteral(num, undefined, C.make(dt || Consts_1.TypeURL.XSD_FLOAT));
+    return new E.NumericLiteral(num, C.make(dt || Consts_1.TypeURL.XSD_FLOAT), undefined);
 }
 exports.number = number;
+function numberFromString(str, dt) {
+    const num = Number(str);
+    return new E.NumericLiteral(num, C.make(dt || Consts_1.TypeURL.XSD_FLOAT), undefined);
+}
+exports.numberFromString = numberFromString;
 function string(s) {
     return new E.StringLiteral(s);
 }
@@ -105594,7 +105936,8 @@ const Helpers_1 = __webpack_require__(/*! ./Helpers */ "./node_modules/sparqlee/
 // Begin definitions.
 // ----------------------------------------------------------------------------
 // XPath Constructor functions
-// https://www.w3.org/TR/sparql11-query/#FunctionMapping
+// https://www.w3.org/TR/sparql11-query/#
+// https://www.w3.org/TR/xpath-functions/#casting-from-primitive-to-primitive
 // ----------------------------------------------------------------------------
 const toString = {
     arity: 1,
@@ -105606,8 +105949,8 @@ const toFloat = {
     arity: 1,
     overloads: Helpers_1.declare()
         .onNumeric1((val) => Helpers_1.number(val.typedValue))
-        .setLitUnary('boolean', (val) => Helpers_1.number(val ? 1 : 0))
-        .setUnary('string', (val) => {
+        .onBoolean1Typed((val) => Helpers_1.number(val ? 1 : 0))
+        .onUnary('string', (val) => {
         const result = Parsing_1.parseXSDFloat(val.str());
         if (!result) {
             throw new Err.CastError(val, Consts_1.TypeURL.XSD_FLOAT);
@@ -105621,8 +105964,8 @@ const toDouble = {
     arity: 1,
     overloads: Helpers_1.declare()
         .onNumeric1((val) => Helpers_1.number(val.typedValue, Consts_1.TypeURL.XSD_DOUBLE))
-        .setLitUnary('boolean', (val) => Helpers_1.number(val ? 1 : 0, Consts_1.TypeURL.XSD_DOUBLE))
-        .setUnary('string', (val) => {
+        .onBoolean1Typed((val) => Helpers_1.number(val ? 1 : 0, Consts_1.TypeURL.XSD_DOUBLE))
+        .onUnary('string', (val) => {
         const result = Parsing_1.parseXSDFloat(val.str());
         if (!result) {
             throw new Err.CastError(val, Consts_1.TypeURL.XSD_DOUBLE);
@@ -105644,13 +105987,13 @@ const toDecimal = {
     })
         .copy({ from: ['integer'], to: ['string'] })
         .copy({ from: ['integer'], to: ['nonlexical'] })
-        .setLitUnary('boolean', (val) => Helpers_1.number(val ? 1 : 0, Consts_1.TypeURL.XSD_DECIMAL))
+        .onBoolean1Typed((val) => Helpers_1.number(val ? 1 : 0, Consts_1.TypeURL.XSD_DECIMAL))
         .collect(),
 };
 const toInteger = {
     arity: 1,
     overloads: Helpers_1.declare()
-        .setLitUnary('boolean', (val) => Helpers_1.number(val ? 1 : 0, Consts_1.TypeURL.XSD_INTEGER))
+        .onBoolean1Typed((val) => Helpers_1.number(val ? 1 : 0, Consts_1.TypeURL.XSD_INTEGER))
         .onNumeric1((val) => {
         const result = Parsing_1.parseXSDInteger(val.str());
         if (!result) {
@@ -105665,8 +106008,8 @@ const toInteger = {
 const toDatetime = {
     arity: 1,
     overloads: Helpers_1.declare()
-        .setUnary('date', (val) => val)
-        .setUnary('string', (val) => {
+        .onUnary('date', (val) => val)
+        .onUnary('string', (val) => {
         const date = new Date(val.str());
         if (isNaN(date.getTime())) {
             throw new Err.CastError(val, Consts_1.TypeURL.XSD_DATE_TIME);
@@ -105680,8 +106023,8 @@ const toBoolean = {
     arity: 1,
     overloads: Helpers_1.declare()
         .onNumeric1((val) => Helpers_1.bool(val.coerceEBV()))
-        .setUnary('boolean', (val) => val)
-        .setUnary('string', (val) => {
+        .onUnary('boolean', (val) => val)
+        .onUnary('string', (val) => {
         const str = val.str();
         if (str !== 'true' && str !== 'false') {
             throw new Err.CastError(val, Consts_1.TypeURL.XSD_BOOLEAN);
@@ -105723,11 +106066,17 @@ exports.namedDefinitions = immutable_1.Map(_definitions);
 "use strict";
 
 Object.defineProperty(exports, "__esModule", { value: true });
+const RDFDM = __webpack_require__(/*! @rdfjs/data-model */ "./node_modules/@rdfjs/data-model/index.js");
+const hash = __webpack_require__(/*! create-hash */ "./node_modules/create-hash/browser.js");
+const uuid = __webpack_require__(/*! uuid */ "./node_modules/uuid/index.js");
 const immutable_1 = __webpack_require__(/*! immutable */ "./node_modules/immutable/dist/immutable.js");
 const E = __webpack_require__(/*! ../expressions */ "./node_modules/sparqlee/dist/lib/expressions/index.js");
+const C = __webpack_require__(/*! ../util/Consts */ "./node_modules/sparqlee/dist/lib/util/Consts.js");
 const Err = __webpack_require__(/*! ../util/Errors */ "./node_modules/sparqlee/dist/lib/util/Errors.js");
+const P = __webpack_require__(/*! ../util/Parsing */ "./node_modules/sparqlee/dist/lib/util/Parsing.js");
 const X = __webpack_require__(/*! ./XPathFunctions */ "./node_modules/sparqlee/dist/lib/functions/XPathFunctions.js");
 const Consts_1 = __webpack_require__(/*! ../util/Consts */ "./node_modules/sparqlee/dist/lib/util/Consts.js");
+const Transformation_1 = __webpack_require__(/*! ../Transformation */ "./node_modules/sparqlee/dist/lib/Transformation.js");
 const Helpers_1 = __webpack_require__(/*! ./Helpers */ "./node_modules/sparqlee/dist/lib/functions/Helpers.js");
 // ----------------------------------------------------------------------------
 // ----------------------------------------------------------------------------
@@ -105769,7 +106118,7 @@ const division = {
     arity: 2,
     overloads: Helpers_1.declare()
         .arithmetic((left, right) => left / right)
-        .setLitBinary(['integer', 'integer'], (left, right) => {
+        .onBinaryTyped(['integer', 'integer'], (left, right) => {
         if (right === 0) {
             throw new Err.ExpressionError('Integer division by 0');
         }
@@ -105861,19 +106210,28 @@ const greaterThanEqual = {
 // ----------------------------------------------------------------------------
 const isIRI = {
     arity: 1,
-    overloads: Helpers_1.declare().unimplemented('isIRI').collect(),
+    overloads: Helpers_1.declare()
+        .onTerm1((term) => Helpers_1.bool(term.termType === 'namedNode'))
+        .collect(),
 };
 const isBlank = {
     arity: 1,
-    overloads: Helpers_1.declare().unimplemented('isBlank').collect(),
+    overloads: Helpers_1.declare()
+        .onTerm1((term) => Helpers_1.bool(term.termType === 'blankNode'))
+        .collect(),
 };
 const isLiteral = {
     arity: 1,
-    overloads: Helpers_1.declare().unimplemented('isLiteral').collect(),
+    overloads: Helpers_1.declare()
+        .onTerm1((term) => Helpers_1.bool(term.termType === 'literal'))
+        .collect(),
 };
 const isNumeric = {
     arity: 1,
-    overloads: Helpers_1.declare().unimplemented('isNumeric').collect(),
+    overloads: Helpers_1.declare()
+        .onNumeric1((term) => Helpers_1.bool(true))
+        .set(['nonlexical'], (term) => Helpers_1.bool(false))
+        .collect(),
 };
 const toString = {
     arity: 1,
@@ -105883,12 +106241,17 @@ const toString = {
 };
 const lang = {
     arity: 1,
-    overloads: Helpers_1.declare().onLiteral1((lit) => Helpers_1.string(lit.language || '')).collect(),
+    overloads: Helpers_1.declare()
+        .onLiteral1((lit) => Helpers_1.string(lit.language || ''))
+        .collect(),
 };
 const datatype = {
     arity: 1,
-    overloads: Helpers_1.declare().onLiteral1((lit) => Helpers_1.string((lit.typeURL) ? lit.typeURL.value : Consts_1.TypeURL.XSD_STRING)).collect(),
+    overloads: Helpers_1.declare()
+        .onLiteral1((lit) => new E.NamedNode(lit.typeURL.value))
+        .collect(),
 };
+// https://www.w3.org/TR/sparql11-query/#func-iri
 const IRI = {
     arity: 1,
     overloads: Helpers_1.declare().unimplemented('IRI').collect(),
@@ -105899,24 +106262,35 @@ const BNODE = {
     arity: [0, 1],
     overloads: Helpers_1.declare()
         // .set([], () => new E.BlankNode()) // TODO
-        .setLitUnary('string', (val) => new E.BlankNode(val))
+        .onString1Typed((val) => new E.BlankNode(val))
         .collect(),
 };
 const STRDT = {
     arity: 2,
-    overloads: Helpers_1.declare().unimplemented('STRDT').collect(),
+    overloads: Helpers_1.declare()
+        .onBinary(['string', 'namedNode'], (str, iri) => {
+        const lit = RDFDM.literal(str.typedValue, RDFDM.namedNode(iri.value));
+        return Transformation_1.transformLiteral(lit);
+    })
+        .collect(),
 };
 const STRLANG = {
     arity: 2,
-    overloads: Helpers_1.declare().unimplemented('STRLANG').collect(),
+    overloads: Helpers_1.declare()
+        .onBinaryTyped(['string', 'string'], (val, language) => new E.LangStringLiteral(val, language))
+        .collect(),
 };
 const UUID = {
     arity: 0,
-    overloads: Helpers_1.declare().unimplemented('UUID').collect(),
+    overloads: Helpers_1.declare()
+        .set([], () => new E.NamedNode(`urn:uuid:${uuid.v4()}`))
+        .collect(),
 };
 const STRUUID = {
     arity: 0,
-    overloads: Helpers_1.declare().unimplemented('STRUUID').collect(),
+    overloads: Helpers_1.declare()
+        .set([], () => Helpers_1.string(uuid.v4()))
+        .collect(),
 };
 // ----------------------------------------------------------------------------
 // Functions on strings
@@ -105971,17 +106345,17 @@ const CONCAT = {
 const langmatches = {
     arity: 2,
     overloads: Helpers_1.declare()
-        .setLitBinary(['string', 'string'], (tag, range) => Helpers_1.bool(X.langMatches(tag, range))).collect(),
+        .onBinaryTyped(['string', 'string'], (tag, range) => Helpers_1.bool(X.langMatches(tag, range))).collect(),
 };
 const regex2 = (text, pattern) => Helpers_1.bool(X.matches(text, pattern));
 const regex3 = (text, pattern, flags) => Helpers_1.bool(X.matches(text, pattern, flags));
 const REGEX = {
     arity: [2, 3],
     overloads: Helpers_1.declare()
-        .setLitBinary(['string', 'string'], regex2)
-        .setLitBinary(['langString', 'langString'], regex2)
-        .setLitTernary(['string', 'string', 'string'], regex3)
-        .setLitTernary(['langString', 'string', 'string'], regex3)
+        .onBinaryTyped(['string', 'string'], regex2)
+        .onBinaryTyped(['langString', 'langString'], regex2)
+        .onTernaryTyped(['string', 'string', 'string'], regex3)
+        .onTernaryTyped(['langString', 'string', 'string'], regex3)
         .collect(),
 };
 const REPLACE = {
@@ -105994,63 +106368,99 @@ const REPLACE = {
 // ----------------------------------------------------------------------------
 const abs = {
     arity: 1,
-    overloads: Helpers_1.declare().unimplemented('abs').collect(),
+    overloads: Helpers_1.declare()
+        .onNumeric1((num) => Helpers_1.number(Math.abs(num.typedValue), num.typeURL.value))
+        .collect(),
 };
 const round = {
     arity: 1,
-    overloads: Helpers_1.declare().unimplemented('round').collect(),
+    overloads: Helpers_1.declare()
+        .onNumeric1((num) => Helpers_1.number(Math.round(num.typedValue), num.typeURL.value))
+        .collect(),
 };
 const ceil = {
     arity: 1,
-    overloads: Helpers_1.declare().unimplemented('ceil').collect(),
+    overloads: Helpers_1.declare()
+        .onNumeric1((num) => Helpers_1.number(Math.ceil(num.typedValue), num.typeURL.value))
+        .collect(),
 };
 const floor = {
     arity: 1,
-    overloads: Helpers_1.declare().unimplemented('floor').collect(),
+    overloads: Helpers_1.declare()
+        .onNumeric1((num) => Helpers_1.number(Math.floor(num.typedValue), num.typeURL.value))
+        .collect(),
 };
-const RAND = {
-    arity: 1,
-    overloads: Helpers_1.declare().unimplemented('RAND').collect(),
+const rand = {
+    arity: 0,
+    overloads: Helpers_1.declare()
+        .set([], () => Helpers_1.number(Math.random(), Consts_1.TypeURL.XSD_DOUBLE))
+        .collect(),
 };
 // ----------------------------------------------------------------------------
 // Functions on Dates and Times
 // https://www.w3.org/TR/sparql11-query/#func-date-time
 // ----------------------------------------------------------------------------
+function parseDate(dateLit) {
+    // TODO: This is assuming datelits always have a string
+    return P.parseXSDDateTime(dateLit.strValue);
+}
 const now = {
     arity: 0,
     overloads: Helpers_1.declare().unimplemented('now').collect(),
 };
 const year = {
     arity: 1,
-    overloads: Helpers_1.declare().unimplemented('year').collect(),
+    overloads: Helpers_1.declare()
+        .onDateTime1((date) => Helpers_1.number(Number(parseDate(date).year), Consts_1.TypeURL.XSD_INTEGER))
+        .collect(),
 };
 const month = {
     arity: 1,
-    overloads: Helpers_1.declare().unimplemented('month').collect(),
+    overloads: Helpers_1.declare()
+        .onDateTime1((date) => Helpers_1.number(Number(parseDate(date).month), Consts_1.TypeURL.XSD_INTEGER))
+        .collect(),
 };
 const day = {
     arity: 1,
-    overloads: Helpers_1.declare().unimplemented('day').collect(),
+    overloads: Helpers_1.declare()
+        .onDateTime1((date) => Helpers_1.number(Number(parseDate(date).day), Consts_1.TypeURL.XSD_INTEGER))
+        .collect(),
 };
 const hours = {
     arity: 1,
-    overloads: Helpers_1.declare().unimplemented('hours').collect(),
+    overloads: Helpers_1.declare()
+        .onDateTime1((date) => Helpers_1.number(Number(parseDate(date).hours), Consts_1.TypeURL.XSD_INTEGER))
+        .collect(),
 };
 const minutes = {
     arity: 1,
-    overloads: Helpers_1.declare().unimplemented('minutes').collect(),
+    overloads: Helpers_1.declare()
+        .onDateTime1((date) => Helpers_1.number(Number(parseDate(date).minutes), Consts_1.TypeURL.XSD_INTEGER))
+        .collect(),
 };
 const seconds = {
     arity: 1,
-    overloads: Helpers_1.declare().unimplemented('seconds').collect(),
+    overloads: Helpers_1.declare()
+        .onDateTime1((date) => Helpers_1.number(Number(parseDate(date).seconds), Consts_1.TypeURL.XSD_DECIMAL))
+        .collect(),
 };
 const timezone = {
     arity: 1,
-    overloads: Helpers_1.declare().unimplemented('timezone').collect(),
+    overloads: Helpers_1.declare()
+        .onDateTime1((date) => {
+        const duration = X.formatDayTimeDuration(parseDate(date).timezone);
+        if (!duration) {
+            throw new Err.InvalidTimezoneCall(date.strValue);
+        }
+        return new E.Literal(duration, C.make(Consts_1.TypeURL.XSD_DAYTIME_DURATION), duration);
+    })
+        .collect(),
 };
 const tz = {
     arity: 1,
-    overloads: Helpers_1.declare().unimplemented('tz').collect(),
+    overloads: Helpers_1.declare()
+        .onDateTime1((date) => Helpers_1.string(parseDate(date).timezone))
+        .collect(),
 };
 // ----------------------------------------------------------------------------
 // Hash functions
@@ -106058,23 +106468,33 @@ const tz = {
 // ----------------------------------------------------------------------------
 const MD5 = {
     arity: 1,
-    overloads: Helpers_1.declare().unimplemented('MD5').collect(),
+    overloads: Helpers_1.declare()
+        .onString1Typed((str) => Helpers_1.string(hash('md5').update(str).digest('hex')))
+        .collect(),
 };
 const SHA1 = {
     arity: 1,
-    overloads: Helpers_1.declare().unimplemented('SHA1').collect(),
+    overloads: Helpers_1.declare()
+        .onString1Typed((str) => Helpers_1.string(hash('sha1').update(str).digest('hex')))
+        .collect(),
 };
 const SHA256 = {
     arity: 1,
-    overloads: Helpers_1.declare().unimplemented('SHA256').collect(),
+    overloads: Helpers_1.declare()
+        .onString1Typed((str) => Helpers_1.string(hash('sha256').update(str).digest('hex')))
+        .collect(),
 };
 const SHA384 = {
     arity: 1,
-    overloads: Helpers_1.declare().unimplemented('SHA384').collect(),
+    overloads: Helpers_1.declare()
+        .onString1Typed((str) => Helpers_1.string(hash('sha384').update(str).digest('hex')))
+        .collect(),
 };
 const SHA512 = {
     arity: 1,
-    overloads: Helpers_1.declare().unimplemented('SHA512').collect(),
+    overloads: Helpers_1.declare()
+        .onString1Typed((str) => Helpers_1.string(hash('sha512').update(str).digest('hex')))
+        .collect(),
 };
 // End definitions.
 // ----------------------------------------------------------------------------
@@ -106105,37 +106525,38 @@ const _definitions = {
     // Functions on RDF Terms
     // https://www.w3.org/TR/sparql11-query/#func-rdfTerms
     // --------------------------------------------------------------------------
-    'isIRI': isIRI,
-    'isBlank': isBlank,
-    'isLiteral': isLiteral,
-    'isNumeric': isNumeric,
+    'isiri': isIRI,
+    'isblank': isBlank,
+    'isliteral': isLiteral,
+    'isnumeric': isNumeric,
     'str': toString,
     'lang': lang,
     'datatype': datatype,
-    'IRI': IRI,
+    'iri': IRI,
+    'uri': IRI,
     'BNODE': BNODE,
-    'STRDT': STRDT,
-    'STRLANG': STRLANG,
-    'UUID': UUID,
-    'STRUUID': STRUUID,
+    'strdt': STRDT,
+    'strlang': STRLANG,
+    'uuid': UUID,
+    'struuid': STRUUID,
     // --------------------------------------------------------------------------
     // Functions on strings
     // https://www.w3.org/TR/sparql11-query/#func-forms
     // --------------------------------------------------------------------------
     'strlen': STRLEN,
-    'SUBSTR': SUBSTR,
-    'UCASE': UCASE,
-    'LCASE': LCASE,
-    'STRSTARTS': STRSTARTS,
-    'STRENDS': STRENDS,
-    'CONTAINS': CONTAINS,
-    'STRBEFORE': STRBEFORE,
-    'STRAFTER': STRAFTER,
-    'ENCODE_FOR_URI': ENCODE_FOR_URI,
-    'CONCAT': CONCAT,
+    'substr': SUBSTR,
+    'ucase': UCASE,
+    'lcase': LCASE,
+    'strstarts': STRSTARTS,
+    'strends': STRENDS,
+    'contains': CONTAINS,
+    'strbefore': STRBEFORE,
+    'strafter': STRAFTER,
+    'encode_for_uri': ENCODE_FOR_URI,
+    'concat': CONCAT,
     'langmatches': langmatches,
     'regex': REGEX,
-    'REPLACE': REPLACE,
+    'replace': REPLACE,
     // --------------------------------------------------------------------------
     // Functions on numerics
     // https://www.w3.org/TR/sparql11-query/#func-numerics
@@ -106144,7 +106565,7 @@ const _definitions = {
     'round': round,
     'ceil': ceil,
     'floor': floor,
-    'RAND': RAND,
+    'rand': rand,
     // --------------------------------------------------------------------------
     // Functions on Dates and Times
     // https://www.w3.org/TR/sparql11-query/#func-date-time
@@ -106162,11 +106583,11 @@ const _definitions = {
     // Hash functions
     // https://www.w3.org/TR/sparql11-query/#func-hash
     // --------------------------------------------------------------------------
-    'MD5': MD5,
-    'SHA1': SHA1,
-    'SHA256': SHA256,
-    'SHA384': SHA384,
-    'SHA512': SHA512,
+    'md5': MD5,
+    'sha1': SHA1,
+    'sha256': SHA256,
+    'sha384': SHA384,
+    'sha512': SHA512,
 };
 exports.definitions = immutable_1.Map(_definitions);
 //# sourceMappingURL=RegularFunctions.js.map
@@ -106513,6 +106934,38 @@ function _matchLangTag(left, right) {
     const matchInitial = new RegExp(`/${left}/`, 'i');
     return matchInitial.test(`/${right}/`);
 }
+/**
+ * Formats a timezone string into a XML DayTimeDuration
+ *
+ * TODO: Test
+ * Used in fn:timezone
+ * http://www.datypic.com/sc/xsd/t-xsd_dayTimeDuration.html
+ */
+function formatDayTimeDuration(timezone) {
+    if (!timezone) {
+        return undefined;
+    }
+    if (timezone[0] === 'Z') {
+        return 'PT0S';
+    }
+    else {
+        // Split string
+        const [sign, h1Raw, h2Raw, _, m1Raw, m2Raw] = timezone;
+        // Cut of leading zero, set to empty string if 0, and append H;
+        const h1 = (h1Raw !== '0') ? h1Raw : '';
+        const h2 = (h1 || h2Raw !== '0') ? h2Raw : '';
+        const hours = (h1 + h2) ? h1 + h2 + 'H' : '';
+        // Same as in hours
+        const m1 = (m1Raw !== '0') ? m1Raw : '';
+        const m2 = (m1 || m2Raw !== '0') ? m2Raw : '';
+        const minutes = (m1 + m2) ? m1 + m2 + 'M' : '';
+        // Concat sign and time and mandatory separators
+        const time = `${hours}${minutes}`;
+        const signNoPlus = (sign === '-') ? '-' : '';
+        return `${signNoPlus}PT${time}`;
+    }
+}
+exports.formatDayTimeDuration = formatDayTimeDuration;
 //# sourceMappingURL=XPathFunctions.js.map
 
 /***/ }),
@@ -106588,6 +107041,8 @@ var TypeURL;
     TypeURL["XSD_UNSIGNED_SHORT"] = "http://www.w3.org/2001/XMLSchema#unsignedShort";
     TypeURL["XSD_UNSIGNED_BYTE"] = "http://www.w3.org/2001/XMLSchema#unsignedByte";
     TypeURL["XSD_POSITIVE_INTEGER"] = "http://www.w3.org/2001/XMLSchema#positiveInteger";
+    // Other types
+    TypeURL["XSD_DAYTIME_DURATION"] = "http://www.w3.org/2001/XMLSchema#dayTimeDuration";
 })(TypeURL = exports.TypeURL || (exports.TypeURL = {}));
 function make(dt) {
     return RDFDM.namedNode(dt);
@@ -106685,42 +107140,43 @@ var RegularOperator;
     // See SpecialOperators
     // Functions on RDF Terms
     // https://www.w3.org/TR/sparql11-query/#func-rdfTerms
-    RegularOperator["IS_IRI"] = "isIRI";
-    RegularOperator["IS_BLANK"] = "isBlank";
-    RegularOperator["IS_LITERAL"] = "isLiteral";
-    RegularOperator["IS_NUMERIC"] = "isNumeric";
+    RegularOperator["IS_IRI"] = "isiri";
+    RegularOperator["IS_BLANK"] = "isblank";
+    RegularOperator["IS_LITERAL"] = "isliteral";
+    RegularOperator["IS_NUMERIC"] = "isnumeric";
     RegularOperator["STR"] = "str";
     RegularOperator["LANG"] = "lang";
     RegularOperator["DATATYPE"] = "datatype";
-    RegularOperator["IRI"] = "IRI";
+    RegularOperator["IRI"] = "iri";
+    RegularOperator["URI"] = "uri";
     RegularOperator["BNODE"] = "BNODE";
-    RegularOperator["STRDT"] = "STRDT";
-    RegularOperator["STRLANG"] = "STRLANG";
-    RegularOperator["UUID"] = "UUID";
-    RegularOperator["STRUUID"] = "STRUUID";
+    RegularOperator["STRDT"] = "strdt";
+    RegularOperator["STRLANG"] = "strlang";
+    RegularOperator["UUID"] = "uuid";
+    RegularOperator["STRUUID"] = "struuid";
     // Functions on strings
     // https://www.w3.org/TR/sparql11-query/#func-strings
     RegularOperator["STRLEN"] = "strlen";
-    RegularOperator["SUBSTR"] = "SUBSTR";
-    RegularOperator["UCASE"] = "UCASE";
-    RegularOperator["LCASE"] = "LCASE";
-    RegularOperator["STRSTARTS"] = "STRSTARTS";
-    RegularOperator["STRENDS"] = "STRENDS";
-    RegularOperator["CONTAINS"] = "CONTAINS";
-    RegularOperator["STRBEFORE"] = "STRBEFORE";
-    RegularOperator["STRAFTER"] = "STRAFTER";
-    RegularOperator["ENCODE_FOR_URI"] = "ENCODE_FOR_URI";
-    RegularOperator["CONCAT"] = "CONCAT";
+    RegularOperator["SUBSTR"] = "substr";
+    RegularOperator["UCASE"] = "ucase";
+    RegularOperator["LCASE"] = "lcase";
+    RegularOperator["STRSTARTS"] = "strstarts";
+    RegularOperator["STRENDS"] = "strends";
+    RegularOperator["CONTAINS"] = "contains";
+    RegularOperator["STRBEFORE"] = "strbefore";
+    RegularOperator["STRAFTER"] = "strafter";
+    RegularOperator["ENCODE_FOR_URI"] = "encode_for_uri";
+    RegularOperator["CONCAT"] = "concat";
     RegularOperator["LANG_MATCHES"] = "langmatches";
     RegularOperator["REGEX"] = "regex";
-    RegularOperator["REPLACE"] = "REPLACE";
+    RegularOperator["REPLACE"] = "replace";
     // Functions on numerics
     // https://www.w3.org/TR/sparql11-query/#func-numerics
     RegularOperator["ABS"] = "abs";
     RegularOperator["ROUND"] = "round";
     RegularOperator["CEIL"] = "ceil";
     RegularOperator["FLOOR"] = "floor";
-    RegularOperator["RAND"] = "RAND";
+    RegularOperator["RAND"] = "rand";
     // Functions on Dates and Times
     // https://www.w3.org/TR/sparql11-query/#func-date-time
     RegularOperator["NOW"] = "now";
@@ -106734,11 +107190,11 @@ var RegularOperator;
     RegularOperator["TZ"] = "tz";
     // Hash functions
     // https://www.w3.org/TR/sparql11-query/#func-hash
-    RegularOperator["MD5"] = "MD5";
-    RegularOperator["SHA1"] = "SHA1";
-    RegularOperator["SHA256"] = "SHA256";
-    RegularOperator["SHA384"] = "SHA384";
-    RegularOperator["SHA512"] = "SHA512";
+    RegularOperator["MD5"] = "md5";
+    RegularOperator["SHA1"] = "sha1";
+    RegularOperator["SHA256"] = "sha256";
+    RegularOperator["SHA384"] = "sha384";
+    RegularOperator["SHA512"] = "sha512";
     // XPath Constructor functions
     // https://www.w3.org/TR/sparql11-query/#FunctionMapping
     // See Named Operators
@@ -106901,6 +107357,13 @@ class CastError extends ExpressionError {
     }
 }
 exports.CastError = CastError;
+class InvalidTimezoneCall extends ExpressionError {
+    constructor(dateString) {
+        super(`TIMEZONE call on ${dateString} which has no timezone`);
+        this.dateString = dateString;
+    }
+}
+exports.InvalidTimezoneCall = InvalidTimezoneCall;
 // Non Expression Errors ------------------------------------------------------
 /**
  * An error that arises when we detect a 'should-be-impossible' state.
@@ -107050,6 +107513,28 @@ function parseXSDInteger(value) {
     return undefined;
 }
 exports.parseXSDInteger = parseXSDInteger;
+/**
+ * Parses ISO date time strings into it's parts.
+ * I found no lib providing this functionality online, but it's needed heavily
+ * by the spec (functions on dates), using any form of JS DateTime will lose the
+ * original timezone notation.
+ *
+ * Example strings:
+ *  - "2011-01-10T14:45:13.815-05:00"
+ *  - "2011-01-10T14:45:13.815Z"
+ *  - "2011-01-10T14:45:13Z"
+ * @param value the ISO date time string
+ */
+function parseXSDDateTime(value) {
+    const [date, timeAndTimeZone] = value.split('T');
+    const [year, month, day] = date.split('-');
+    const [time, _timeZoneChopped] = timeAndTimeZone.split(/[\+\-Z]/);
+    const [hours, minutes, seconds] = time.split(':');
+    const timezoneOrNull = new RegExp(/([\+\-Z].*)/).exec(timeAndTimeZone);
+    const timezone = (timezoneOrNull) ? timezoneOrNull[0] : '';
+    return { year, month, day, hours, minutes, seconds, timezone };
+}
+exports.parseXSDDateTime = parseXSDDateTime;
 //# sourceMappingURL=Parsing.js.map
 
 /***/ }),
@@ -112670,6 +113155,25 @@ exports.callbackify = callbackify;
 
 /***/ }),
 
+/***/ "./node_modules/uuid/index.js":
+/*!************************************!*\
+  !*** ./node_modules/uuid/index.js ***!
+  \************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+var v1 = __webpack_require__(/*! ./v1 */ "./node_modules/uuid/v1.js");
+var v4 = __webpack_require__(/*! ./v4 */ "./node_modules/uuid/v4.js");
+
+var uuid = v4;
+uuid.v1 = v1;
+uuid.v4 = v4;
+
+module.exports = uuid;
+
+
+/***/ }),
+
 /***/ "./node_modules/uuid/lib/bytesToUuid.js":
 /*!**********************************************!*\
   !*** ./node_modules/uuid/lib/bytesToUuid.js ***!
@@ -112746,6 +113250,126 @@ if (getRandomValues) {
     return rnds;
   };
 }
+
+
+/***/ }),
+
+/***/ "./node_modules/uuid/v1.js":
+/*!*********************************!*\
+  !*** ./node_modules/uuid/v1.js ***!
+  \*********************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+var rng = __webpack_require__(/*! ./lib/rng */ "./node_modules/uuid/lib/rng-browser.js");
+var bytesToUuid = __webpack_require__(/*! ./lib/bytesToUuid */ "./node_modules/uuid/lib/bytesToUuid.js");
+
+// **`v1()` - Generate time-based UUID**
+//
+// Inspired by https://github.com/LiosK/UUID.js
+// and http://docs.python.org/library/uuid.html
+
+var _nodeId;
+var _clockseq;
+
+// Previous uuid creation time
+var _lastMSecs = 0;
+var _lastNSecs = 0;
+
+// See https://github.com/broofa/node-uuid for API details
+function v1(options, buf, offset) {
+  var i = buf && offset || 0;
+  var b = buf || [];
+
+  options = options || {};
+  var node = options.node || _nodeId;
+  var clockseq = options.clockseq !== undefined ? options.clockseq : _clockseq;
+
+  // node and clockseq need to be initialized to random values if they're not
+  // specified.  We do this lazily to minimize issues related to insufficient
+  // system entropy.  See #189
+  if (node == null || clockseq == null) {
+    var seedBytes = rng();
+    if (node == null) {
+      // Per 4.5, create and 48-bit node id, (47 random bits + multicast bit = 1)
+      node = _nodeId = [
+        seedBytes[0] | 0x01,
+        seedBytes[1], seedBytes[2], seedBytes[3], seedBytes[4], seedBytes[5]
+      ];
+    }
+    if (clockseq == null) {
+      // Per 4.2.2, randomize (14 bit) clockseq
+      clockseq = _clockseq = (seedBytes[6] << 8 | seedBytes[7]) & 0x3fff;
+    }
+  }
+
+  // UUID timestamps are 100 nano-second units since the Gregorian epoch,
+  // (1582-10-15 00:00).  JSNumbers aren't precise enough for this, so
+  // time is handled internally as 'msecs' (integer milliseconds) and 'nsecs'
+  // (100-nanoseconds offset from msecs) since unix epoch, 1970-01-01 00:00.
+  var msecs = options.msecs !== undefined ? options.msecs : new Date().getTime();
+
+  // Per 4.2.1.2, use count of uuid's generated during the current clock
+  // cycle to simulate higher resolution clock
+  var nsecs = options.nsecs !== undefined ? options.nsecs : _lastNSecs + 1;
+
+  // Time since last uuid creation (in msecs)
+  var dt = (msecs - _lastMSecs) + (nsecs - _lastNSecs)/10000;
+
+  // Per 4.2.1.2, Bump clockseq on clock regression
+  if (dt < 0 && options.clockseq === undefined) {
+    clockseq = clockseq + 1 & 0x3fff;
+  }
+
+  // Reset nsecs if clock regresses (new clockseq) or we've moved onto a new
+  // time interval
+  if ((dt < 0 || msecs > _lastMSecs) && options.nsecs === undefined) {
+    nsecs = 0;
+  }
+
+  // Per 4.2.1.2 Throw error if too many uuids are requested
+  if (nsecs >= 10000) {
+    throw new Error('uuid.v1(): Can\'t create more than 10M uuids/sec');
+  }
+
+  _lastMSecs = msecs;
+  _lastNSecs = nsecs;
+  _clockseq = clockseq;
+
+  // Per 4.1.4 - Convert from unix epoch to Gregorian epoch
+  msecs += 12219292800000;
+
+  // `time_low`
+  var tl = ((msecs & 0xfffffff) * 10000 + nsecs) % 0x100000000;
+  b[i++] = tl >>> 24 & 0xff;
+  b[i++] = tl >>> 16 & 0xff;
+  b[i++] = tl >>> 8 & 0xff;
+  b[i++] = tl & 0xff;
+
+  // `time_mid`
+  var tmh = (msecs / 0x100000000 * 10000) & 0xfffffff;
+  b[i++] = tmh >>> 8 & 0xff;
+  b[i++] = tmh & 0xff;
+
+  // `time_high_and_version`
+  b[i++] = tmh >>> 24 & 0xf | 0x10; // include version
+  b[i++] = tmh >>> 16 & 0xff;
+
+  // `clock_seq_hi_and_reserved` (Per 4.2.2 - include variant)
+  b[i++] = clockseq >>> 8 | 0x80;
+
+  // `clock_seq_low`
+  b[i++] = clockseq & 0xff;
+
+  // `node`
+  for (var n = 0; n < 6; ++n) {
+    b[i + n] = node[n];
+  }
+
+  return buf ? buf : bytesToUuid(b);
+}
+
+module.exports = v1;
 
 
 /***/ }),
