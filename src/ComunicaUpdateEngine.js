@@ -33,6 +33,9 @@ export default class ComunicaUpdateEngine extends ComunicaEngine {
         if (!response.ok)
           throw new Error(`Update query failed (${response.status}): ${response.statusText}`);
 
+        // Invalidate Comunica's internal caches, as they may have changed because of the update
+        await this._engine.invalidateHttpCache(document);
+
         // Mock Comunica's response for bindings as a Immutable.js object.
         return { value: { size: 1, values: () => ({ next: () => ({ value: { ok: true } }) }) } };
       }

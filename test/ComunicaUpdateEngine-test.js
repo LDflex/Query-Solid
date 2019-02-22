@@ -37,6 +37,12 @@ describe('a ComunicaUpdateEngine instance', () => {
       expect(args[1]).toHaveProperty('body');
       expect(args[1].body).toEqual('INSERT DATA { <> <> <> }');
     });
+
+    it('invalidates the document cache', () => {
+      expect(engine._engine.invalidateHttpCache).toHaveBeenCalledTimes(1);
+      const args = engine._engine.invalidateHttpCache.mock.calls[0];
+      expect(args[0]).toEqual('https://example.org/');
+    });
   });
 
   describe('Inserting an invalid query', () => {
