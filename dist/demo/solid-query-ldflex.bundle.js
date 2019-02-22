@@ -114355,7 +114355,9 @@ class ComunicaUpdateEngine extends ldflex_comunica__WEBPACK_IMPORTED_MODULE_0___
           body: sparql
         }); // Error if the server response was not ok
 
-        if (!response.ok) throw new Error(`Update query failed (${response.status}): ${response.statusText}`); // Mock Comunica's response for bindings as a Immutable.js object.
+        if (!response.ok) throw new Error(`Update query failed (${response.status}): ${response.statusText}`); // Invalidate Comunica's internal caches, as they may have changed because of the update
+
+        await this._engine.invalidateHttpCache(document); // Mock Comunica's response for bindings as a Immutable.js object.
 
         return {
           value: {
