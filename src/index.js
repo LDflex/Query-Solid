@@ -1,9 +1,10 @@
 import { PathFactory, defaultHandlers } from 'ldflex';
 import context from './context.json';
-import UserPathHandler from './UserPathHandler';
-import SubjectPathResolver from './SubjectPathResolver';
+import SolidDeleteFunctionHandler from './SolidDeleteFunctionHandler';
 import CreateActivityHandler from './CreateActivityHandler';
 import SourcePathHandler from './SourcePathHandler';
+import UserPathHandler from './UserPathHandler';
+import SubjectPathResolver from './SubjectPathResolver';
 
 const { as } = context['@context'];
 
@@ -14,10 +15,15 @@ const subjectPathFactory = new PathFactory({
   context,
   handlers: {
     ...defaultHandlers,
+
+    // Custom delete handler to match node-solid-server behavior
+    delete: new SolidDeleteFunctionHandler(),
+
     // Activities on paths
     like: new CreateActivityHandler({ type: `${as}Like` }),
     dislike: new CreateActivityHandler({ type: `${as}Dislike` }),
     follow: new CreateActivityHandler({ type: `${as}Follow` }),
+
     // The `root` property restarts the path from the root
     root: () => rootPath,
   },
