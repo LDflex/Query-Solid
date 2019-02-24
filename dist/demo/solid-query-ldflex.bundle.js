@@ -66557,10 +66557,14 @@ exports.default = MutationExpressionsHandler;
 "use strict";
 
 
+var _interopRequireDefault = __webpack_require__(/*! @babel/runtime/helpers/interopRequireDefault */ "./node_modules/@babel/runtime/helpers/interopRequireDefault.js");
+
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
 exports.default = void 0;
+
+var _asyncIterator2 = _interopRequireDefault(__webpack_require__(/*! @babel/runtime/helpers/asyncIterator */ "./node_modules/@babel/runtime/helpers/asyncIterator.js"));
 
 var _dataModel = __webpack_require__(/*! @rdfjs/data-model */ "./node_modules/@rdfjs/data-model/index.js");
 
@@ -66599,50 +66603,78 @@ class MutationFunctionHandler {
 
   async createMutationExpressions(pathData, path, args) {
     // Check if we have a valid path
-    const domainExpression = await path.pathExpression;
-    if (!Array.isArray(domainExpression)) throw new Error(`${pathData} has no pathExpression property`); // Require at least a subject and a link
+    const conditions = await path.pathExpression;
+    if (!Array.isArray(conditions)) throw new Error(`${pathData} has no pathExpression property`);
+    if (conditions.length < 2) throw new Error(`${pathData} should at least contain a subject and a predicate`); // The arguments are the affected objects
 
-    if (domainExpression.length < 2) throw new Error(`${pathData} should at least contain a subject and a predicate`); // If we have args, each arg defines a mutation expression with a certain range expression.
+    const objects = await this.extractObjects(pathData, path, args); // If no objects were specified, mutate all objects in the domain
 
-    if (args.length) {
-      // The last path segment represents the predicate of the triple to insert
-      const {
-        predicate
-      } = domainExpression.pop();
-      if (!predicate) throw new Error(`Expected predicate in ${pathData}`); // Determine right variables and patterns
+    const mutationType = this._mutationType;
+    if (!objects) return [{
+      mutationType,
+      conditions
+    }]; // If no objects are affected, do not perform any mutations
 
-      const mutationExpressions = [];
+    if (objects.length === 0) return []; // Otherwise, mutate the affected objects
 
-      for (let argument of args) {
-        // If an argument does not expose a pathExpression, we consider it a raw value.
-        let rangeExpression = await argument.pathExpression;
-
-        if (!Array.isArray(rangeExpression)) {
-          // If the argument is not an RDFJS term, assume it is a literal
-          if (!argument.termType) argument = (0, _dataModel.literal)(argument);
-          rangeExpression = [{
-            subject: argument
-          }];
-        } // Store the domain, predicate and range in the insert expression.
-
-
-        mutationExpressions.push({
-          mutationType: this._mutationType,
-          domainExpression,
-          predicate,
-          rangeExpression
-        });
-      }
-
-      return mutationExpressions;
-    } // If we don't have args, the range simply corresponds to the domain,
-    // so we don't store the range and predicate explicitly.
-
-
+    const {
+      predicate
+    } = conditions.pop();
+    if (!predicate) throw new Error(`Expected predicate in ${pathData}`);
     return [{
-      mutationType: this._mutationType,
-      domainExpression
+      mutationType,
+      conditions,
+      predicate,
+      objects
     }];
+  }
+
+  async extractObjects(pathData, path, args) {
+    // No arguments means a wildcard
+    if (args.length === 0) return null; // Expand strings, promises, and paths
+
+    const objects = [];
+
+    for (const arg of args) {
+      // Process an asynchronously iterable argument
+      if (arg && arg[Symbol.asyncIterator]) {
+        var _iteratorNormalCompletion = true;
+        var _didIteratorError = false;
+
+        var _iteratorError;
+
+        try {
+          for (var _iterator = (0, _asyncIterator2.default)(arg), _step, _value; _step = await _iterator.next(), _iteratorNormalCompletion = _step.done, _value = await _step.value, !_iteratorNormalCompletion; _iteratorNormalCompletion = true) {
+            const item = _value;
+            objects.push(this.extractObject(pathData, path, item));
+          }
+        } catch (err) {
+          _didIteratorError = true;
+          _iteratorError = err;
+        } finally {
+          try {
+            if (!_iteratorNormalCompletion && _iterator.return != null) {
+              await _iterator.return();
+            }
+          } finally {
+            if (_didIteratorError) {
+              throw _iteratorError;
+            }
+          }
+        }
+      } else {
+        // Process a (promise to) a string or term
+        objects.push(this.extractObject(pathData, path, (await arg)));
+      }
+    }
+
+    return objects;
+  }
+
+  extractObject(pathData, path, arg) {
+    if (typeof arg === 'string') return (0, _dataModel.literal)(arg);
+    if (arg && arg.termType) return arg;
+    throw new Error(`Invalid object: ${arg}`);
   }
 
 }
@@ -67000,113 +67032,80 @@ class SparqlHandler {
   async handle(pathData, path) {
     // First check if we have a mutation expression
     const mutationExpressions = await path.mutationExpressions;
-    if (Array.isArray(mutationExpressions) && mutationExpressions.length) return this.evaluateMutationExpression(pathData, path, mutationExpressions); // Otherwise, fall back to checking for a path expression
+    if (Array.isArray(mutationExpressions) && mutationExpressions.length) return mutationExpressions.map(e => this.mutationExpressionToQuery(e)).join('\n;\n'); // Otherwise, fall back to checking for a path expression
 
     const pathExpression = await path.pathExpression;
     if (!Array.isArray(pathExpression)) throw new Error(`${pathData} has no pathExpression property`);
-    return this.evaluatePathExpression(pathData, path, pathExpression);
+    return this.pathExpressionToQuery(pathData, path, pathExpression);
   }
 
-  evaluatePathExpression(pathData, path, pathExpression) {
-    // Require at least a subject and a link
-    if (pathExpression.length < 2) throw new Error(`${pathData} should at least contain a subject and a predicate`); // Determine the query variable name
+  pathExpressionToQuery(pathData, path, pathExpression) {
+    if (pathExpression.length < 2) throw new Error(`${pathData} should at least contain a subject and a predicate`); // Embed the basic graph pattern into a SPARQL query
 
-    const queryVar = pathData.property.match(/[a-z0-9]*$/i)[0] || 'result'; // Build basic graph pattern
-
-    const clauses = this.expressionToTriplePatterns(pathExpression, queryVar); // Embed the basic graph pattern into a SPARQL query
-
-    const joinedClauses = clauses.join('\n  ');
-    return `SELECT ?${queryVar} WHERE {\n  ${joinedClauses}\n}`;
-  }
-
-  evaluateMutationExpression(pathData, path, mutationExpressions) {
-    return mutationExpressions.map(mutationExpression => this.mutationExpressionToQuery(mutationExpression)).join('\n;\n');
-  }
-
-  expressionToTriplePatterns([root, ...pathExpression], queryVar, variableScope = {}) {
-    const last = pathExpression.length - 1;
-    let object = this.termToQueryString(root.subject);
-    return pathExpression.map((segment, index) => {
-      // Obtain triple pattern components
-      const subject = object;
-      const {
-        predicate
-      } = segment;
-      object = index !== last ? `?${this.getQueryVar(`v${index}`, variableScope)}` : `?${queryVar}`; // Generate triple pattern
-
-      return `${subject} ${this.termToQueryString(predicate)} ${object}.`;
-    });
+    const queryVar = this.createVar(pathData.property);
+    const clauses = this.expressionToTriplePatterns(pathExpression, queryVar);
+    return `SELECT ${queryVar} WHERE {\n  ${clauses.join('\n  ')}\n}`;
   }
 
   mutationExpressionToQuery({
     mutationType,
-    domainExpression,
+    conditions,
     predicate,
-    rangeExpression
+    objects
   }) {
-    // Determine the patterns that should appear in the WHERE clause
-    const variableScope = {};
-    let clauses = [];
-    let insertPattern;
-    const {
-      queryVar: domainQueryVar,
-      clauses: domainClauses
-    } = this.getQueryVarAndClauses(domainExpression, variableScope);
-    if (domainClauses.length) clauses = domainClauses;
+    // If the only condition is a subject, we need no WHERE clause
+    const scope = {};
+    let subject, where;
 
-    if (rangeExpression) {
-      const {
-        queryVar: rangeQueryVar,
-        clauses: rangeClauses
-      } = this.getQueryVarAndClauses(rangeExpression, variableScope);
-
-      if (rangeClauses.length) {
-        if (clauses.length) clauses = clauses.concat(rangeClauses);else clauses = rangeClauses;
-      } // If we have a range, the mutation is on <domainVar> <predicate> <rangeVar>
+    if (conditions.length === 1) {
+      subject = this.termToString(conditions[0].subject);
+      where = [];
+    } // Otherwise, create a WHERE clause from all conditions
+    else {
+        const lastPredicate = conditions[conditions.length - 1].predicate;
+        subject = this.createVar(lastPredicate.value, scope);
+        where = this.expressionToTriplePatterns(conditions, subject, scope);
+      } // If a list of objects was specified, the mutation is "<s> <p> objects"
 
 
-      insertPattern = `${domainQueryVar} ${this.termToQueryString(predicate)} ${rangeQueryVar}`;
-    } else {
-      // If we don't have a range, assume that the mutation is on the last segment of the domain
-      insertPattern = domainClauses[domainClauses.length - 1].slice(0, -1);
-    } // If we don't have any WHERE clauses, we just insert raw data
-
-
-    if (!clauses.length) return `${mutationType} DATA {\n  ${insertPattern}\n}`; // Otherwise, return an INSERT ... WHERE ... query
-
-    return `${mutationType} {\n  ${insertPattern}\n} WHERE {\n  ${clauses.join('\n  ')}\n}`;
+    const objectList = objects && objects.map(o => this.termToString(o)).join(', ');
+    const mutationPattern = objectList ? `${subject} ${this.termToString(predicate)} ${objectList}.` : // Otherwise, the mutation is the unconstrained last segment
+    where[where.length - 1];
+    return where.length === 0 ? // If there are no WHERE clauses, just mutate raw data
+    `${mutationType} DATA {\n  ${mutationPattern}\n}` : // Otherwise, return a DELETE/INSERT ... WHERE ... query
+    `${mutationType} {\n  ${mutationPattern}\n} WHERE {\n  ${where.join('\n  ')}\n}`;
   }
 
-  getQueryVarAndClauses(expression, variableScope) {
-    const lastSegment = expression[expression.length - 1];
+  expressionToTriplePatterns([root, ...pathExpression], queryVar, scope = {}) {
+    const last = pathExpression.length - 1;
+    let object = this.termToString(root.subject);
+    return pathExpression.map((segment, index) => {
+      // Obtain components and generate triple pattern
+      const subject = object;
+      const {
+        predicate
+      } = segment;
+      object = index < last ? this.createVar(`v${index}`, scope) : queryVar;
+      return `${subject} ${this.termToString(predicate)} ${object}.`;
+    });
+  } // Creates a unique query variable within the given scope, based on the suggestion
 
-    if (expression.length === 1) {
-      return {
-        queryVar: this.termToQueryString(lastSegment.subject),
-        clauses: []
-      };
+
+  createVar(suggestion, scope) {
+    let counter = 0;
+    let label = `?${suggestion.match(/[a-z0-9]*$/i)[0] || 'result'}`;
+
+    if (scope) {
+      while (scope[label]) label = `?${suggestion}_${counter++}`;
+
+      scope[label] = true;
     }
 
-    const queryVar = this.getQueryVar(lastSegment.predicate.value.match(/[a-z0-9]*$/i)[0] || 'result', variableScope);
-    return {
-      queryVar: `?${queryVar}`,
-      clauses: this.expressionToTriplePatterns(expression, queryVar, variableScope)
-    };
-  } // Creates a unique query variable label within the given scope based on the given suggestion
-
-
-  getQueryVar(labelSuggestion, variableScope) {
-    let label = labelSuggestion;
-    let counter = 0;
-
-    while (variableScope[label]) label = `${labelSuggestion}_${counter++}`;
-
-    variableScope[label] = true;
     return label;
   } // Converts an RDFJS term to a string that we can use in a query
 
 
-  termToQueryString(term) {
+  termToString(term) {
     switch (term.termType) {
       case 'NamedNode':
         return `<${term.value}>`;
@@ -115169,6 +115168,70 @@ class CreateActivityHandler {
 
 /***/ }),
 
+/***/ "./src/SolidDeleteFunctionHandler.js":
+/*!*******************************************!*\
+  !*** ./src/SolidDeleteFunctionHandler.js ***!
+  \*******************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return SolidDeleteFunctionHandler; });
+/* harmony import */ var ldflex__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ldflex */ "./node_modules/ldflex/lib/index.js");
+/* harmony import */ var ldflex__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(ldflex__WEBPACK_IMPORTED_MODULE_0__);
+function _asyncIterator(iterable) { var method; if (typeof Symbol === "function") { if (Symbol.asyncIterator) { method = iterable[Symbol.asyncIterator]; if (method != null) return method.call(iterable); } if (Symbol.iterator) { method = iterable[Symbol.iterator]; if (method != null) return method.call(iterable); } } throw new TypeError("Object is not async iterable"); }
+
+
+/**
+ * node-solid-server deviates from the SPARQL UPDATE spec:
+ * whereas the spec asks for DELETE on non-existing triples to silently succeed,
+ * node-solid-server will only DELETE if exactly one triple matches.
+ *
+ * This delete handler works around that limitation
+ * by first requesting all existing values for a path,
+ * and then only issuing DELETE statements for those that exist.
+ */
+
+class SolidDeleteFunctionHandler extends ldflex__WEBPACK_IMPORTED_MODULE_0__["DeleteFunctionHandler"] {
+  async extractObjects(pathData, path, args) {
+    // Obtain all values whose deletion was requested
+    const objects = await super.extractObjects(pathData, path, args); // Obtain all values that currently exist
+
+    const existing = [];
+    var _iteratorNormalCompletion = true;
+    var _didIteratorError = false;
+
+    var _iteratorError;
+
+    try {
+      for (var _iterator = _asyncIterator(path), _step, _value; _step = await _iterator.next(), _iteratorNormalCompletion = _step.done, _value = await _step.value, !_iteratorNormalCompletion; _iteratorNormalCompletion = true) {
+        const term = _value;
+        if (term.termType !== 'BlankNode') existing.push(term);
+      } // Perform deletions only for values that exist
+
+    } catch (err) {
+      _didIteratorError = true;
+      _iteratorError = err;
+    } finally {
+      try {
+        if (!_iteratorNormalCompletion && _iterator.return != null) {
+          await _iterator.return();
+        }
+      } finally {
+        if (_didIteratorError) {
+          throw _iteratorError;
+        }
+      }
+    }
+
+    return !objects ? existing : existing.filter(e => objects.some(o => o.equals(e)));
+  }
+
+}
+
+/***/ }),
+
 /***/ "./src/SourcePathHandler.js":
 /*!**********************************!*\
   !*** ./src/SourcePathHandler.js ***!
@@ -115328,13 +115391,15 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var ldflex__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(ldflex__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var _context_json__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./context.json */ "./src/context.json");
 var _context_json__WEBPACK_IMPORTED_MODULE_1___namespace = /*#__PURE__*/__webpack_require__.t(/*! ./context.json */ "./src/context.json", 1);
-/* harmony import */ var _UserPathHandler__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./UserPathHandler */ "./src/UserPathHandler.js");
-/* harmony import */ var _SubjectPathResolver__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./SubjectPathResolver */ "./src/SubjectPathResolver.js");
-/* harmony import */ var _CreateActivityHandler__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./CreateActivityHandler */ "./src/CreateActivityHandler.js");
-/* harmony import */ var _SourcePathHandler__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./SourcePathHandler */ "./src/SourcePathHandler.js");
+/* harmony import */ var _SolidDeleteFunctionHandler__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./SolidDeleteFunctionHandler */ "./src/SolidDeleteFunctionHandler.js");
+/* harmony import */ var _CreateActivityHandler__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./CreateActivityHandler */ "./src/CreateActivityHandler.js");
+/* harmony import */ var _SourcePathHandler__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./SourcePathHandler */ "./src/SourcePathHandler.js");
+/* harmony import */ var _UserPathHandler__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./UserPathHandler */ "./src/UserPathHandler.js");
+/* harmony import */ var _SubjectPathResolver__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./SubjectPathResolver */ "./src/SubjectPathResolver.js");
 function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; var ownKeys = Object.keys(source); if (typeof Object.getOwnPropertySymbols === 'function') { ownKeys = ownKeys.concat(Object.getOwnPropertySymbols(source).filter(function (sym) { return Object.getOwnPropertyDescriptor(source, sym).enumerable; })); } ownKeys.forEach(function (key) { _defineProperty(target, key, source[key]); }); } return target; }
 
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
 
 
 
@@ -115348,14 +115413,16 @@ let rootPath; // Creates data paths that start from a given subject
 const subjectPathFactory = new ldflex__WEBPACK_IMPORTED_MODULE_0__["PathFactory"]({
   context: _context_json__WEBPACK_IMPORTED_MODULE_1__,
   handlers: _objectSpread({}, ldflex__WEBPACK_IMPORTED_MODULE_0__["defaultHandlers"], {
+    // Custom delete handler to match node-solid-server behavior
+    delete: new _SolidDeleteFunctionHandler__WEBPACK_IMPORTED_MODULE_2__["default"](),
     // Activities on paths
-    like: new _CreateActivityHandler__WEBPACK_IMPORTED_MODULE_4__["default"]({
+    like: new _CreateActivityHandler__WEBPACK_IMPORTED_MODULE_3__["default"]({
       type: `${as}Like`
     }),
-    dislike: new _CreateActivityHandler__WEBPACK_IMPORTED_MODULE_4__["default"]({
+    dislike: new _CreateActivityHandler__WEBPACK_IMPORTED_MODULE_3__["default"]({
       type: `${as}Dislike`
     }),
-    follow: new _CreateActivityHandler__WEBPACK_IMPORTED_MODULE_4__["default"]({
+    follow: new _CreateActivityHandler__WEBPACK_IMPORTED_MODULE_3__["default"]({
       type: `${as}Follow`
     }),
     // The `root` property restarts the path from the root
@@ -115367,13 +115434,13 @@ const subjectPathFactory = new ldflex__WEBPACK_IMPORTED_MODULE_0__["PathFactory"
   // Handlers of specific named properties
   handlers: _objectSpread({}, ldflex__WEBPACK_IMPORTED_MODULE_0__["defaultHandlers"], {
     // The `from` property takes a source URI as input
-    from: new _SourcePathHandler__WEBPACK_IMPORTED_MODULE_5__["default"](subjectPathFactory),
+    from: new _SourcePathHandler__WEBPACK_IMPORTED_MODULE_4__["default"](subjectPathFactory),
     // The `user` property starts a path with the current user as subject
-    user: new _UserPathHandler__WEBPACK_IMPORTED_MODULE_2__["default"](subjectPathFactory)
+    user: new _UserPathHandler__WEBPACK_IMPORTED_MODULE_5__["default"](subjectPathFactory)
   }),
   // Handlers of all remaining properties
   resolvers: [// `data[url]` starts a path with the property as subject
-  new _SubjectPathResolver__WEBPACK_IMPORTED_MODULE_3__["default"](subjectPathFactory)]
+  new _SubjectPathResolver__WEBPACK_IMPORTED_MODULE_6__["default"](subjectPathFactory)]
 }).create());
 
 /***/ }),
