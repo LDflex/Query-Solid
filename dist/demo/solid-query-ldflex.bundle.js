@@ -114961,7 +114961,7 @@ class ComunicaUpdateEngine extends ldflex_comunica__WEBPACK_IMPORTED_MODULE_0___
   /**
    * Delegates SPARQL UPDATE queries directly to the document.
    */
-  executeUpdate(sparql) {
+  executeUpdate(sparql, document) {
     if (this._source) throw new Error('Updates on non-subject sources not yet supported.');
     let executed = false;
 
@@ -114969,7 +114969,7 @@ class ComunicaUpdateEngine extends ldflex_comunica__WEBPACK_IMPORTED_MODULE_0___
       if (!executed) {
         executed = true; // Send authenticated PATCH request to the document
 
-        const document = this.getDocument((await this._subject));
+        document = document || this.getDocument((await this._subject));
         const response = await solid_auth_client__WEBPACK_IMPORTED_MODULE_1___default.a.fetch(document, {
           method: 'PATCH',
           headers: {
@@ -114978,9 +114978,9 @@ class ComunicaUpdateEngine extends ldflex_comunica__WEBPACK_IMPORTED_MODULE_0___
           body: sparql
         }); // Error if the server response was not ok
 
-        if (!response.ok) throw new Error(`Update query failed (${response.status}): ${response.statusText}`); // Invalidate Comunica's internal caches, as they may have changed because of the update
+        if (!response.ok) throw new Error(`Update query failed (${response.status}): ${response.statusText}`); // Clear stale cached versions of the document
 
-        await this._engine.invalidateHttpCache(document); // Mock Comunica's response for bindings as a Immutable.js object.
+        await this.clearCache(document); // Mock Comunica's response for bindings as a Immutable.js object.
 
         return {
           value: {
@@ -115010,6 +115010,15 @@ class ComunicaUpdateEngine extends ldflex_comunica__WEBPACK_IMPORTED_MODULE_0___
 
     };
   }
+  /**
+   * Removes the given document (or all, if not specified) from the query engine cache,
+   * such that fresh results are obtained the next time.
+   */
+
+
+  async clearCache(document) {
+    await this._engine.invalidateHttpCache(document);
+  }
 
 }
 
@@ -115025,14 +115034,12 @@ class ComunicaUpdateEngine extends ldflex_comunica__WEBPACK_IMPORTED_MODULE_0___
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return CreateActivityHandler; });
-/* harmony import */ var solid_auth_client__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! solid-auth-client */ "solid-auth-client");
-/* harmony import */ var solid_auth_client__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(solid_auth_client__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var uuid_v4__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! uuid/v4 */ "./node_modules/uuid/v4.js");
-/* harmony import */ var uuid_v4__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(uuid_v4__WEBPACK_IMPORTED_MODULE_1__);
-/* harmony import */ var _context_json__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./context.json */ "./src/context.json");
-var _context_json__WEBPACK_IMPORTED_MODULE_2___namespace = /*#__PURE__*/__webpack_require__.t(/*! ./context.json */ "./src/context.json", 1);
-/* harmony import */ var ldflex__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ldflex */ "./node_modules/ldflex/lib/index.js");
-/* harmony import */ var ldflex__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(ldflex__WEBPACK_IMPORTED_MODULE_3__);
+/* harmony import */ var uuid_v4__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! uuid/v4 */ "./node_modules/uuid/v4.js");
+/* harmony import */ var uuid_v4__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(uuid_v4__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _context_json__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./context.json */ "./src/context.json");
+var _context_json__WEBPACK_IMPORTED_MODULE_1___namespace = /*#__PURE__*/__webpack_require__.t(/*! ./context.json */ "./src/context.json", 1);
+/* harmony import */ var ldflex__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ldflex */ "./node_modules/ldflex/lib/index.js");
+/* harmony import */ var ldflex__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(ldflex__WEBPACK_IMPORTED_MODULE_2__);
 function _awaitAsyncGenerator(value) { return new _AwaitValue(value); }
 
 function _wrapAsyncGenerator(fn) { return function () { return new _AsyncGenerator(fn.apply(this, arguments)); }; }
@@ -115055,10 +115062,9 @@ function _asyncIterator(iterable) { var method; if (typeof Symbol === "function"
 
 
 
-
 /* babel-plugin-inline-import './activity.ttl' */
 const activityTemplate = "_:activity a _:type;\n    <https://www.w3.org/ns/activitystreams#actor> _:actor;\n    <https://www.w3.org/ns/activitystreams#object> _:object;\n    <https://www.w3.org/ns/activitystreams#published> _:published.\n";
-const _context$Context = _context_json__WEBPACK_IMPORTED_MODULE_2__['@context'],
+const _context$Context = _context_json__WEBPACK_IMPORTED_MODULE_1__['@context'],
       as = _context$Context.as,
       xsd = _context$Context.xsd;
 /**
@@ -115066,26 +115072,29 @@ const _context$Context = _context_json__WEBPACK_IMPORTED_MODULE_2__['@context'],
  * Requires:
  * - the `root.user` handler
  * - the `root[...]` resolver
+ * - a queryEngine property in the path settings
  */
 
 class CreateActivityHandler {
   constructor() {
     let _ref2 = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {},
         _ref2$type = _ref2.type,
-        type = _ref2$type === void 0 ? `${as}#Like` : _ref2$type,
-        _ref2$path = _ref2.path,
-        path = _ref2$path === void 0 ? '/public/activities' : _ref2$path;
+        type = _ref2$type === void 0 ? `${as}Like` : _ref2$type,
+        _ref2$activitiesPath = _ref2.activitiesPath,
+        activitiesPath = _ref2$activitiesPath === void 0 ? '/public/activities' : _ref2$activitiesPath;
 
     this._type = type;
-    this._path = path;
+    this._activitiesPath = activitiesPath;
   }
 
-  handle(path, proxy) {
+  handle(_ref3, path) {
+    let settings = _ref3.settings;
     const self = this;
-    const root = proxy.root;
-    const user = root.user; // Return an iterator over the new activity URLs
+    const root = path.root;
+    const user = root.user;
+    const queryEngine = settings.queryEngine; // Return an iterator over the new activity URLs
 
-    return () => Object(ldflex__WEBPACK_IMPORTED_MODULE_3__["toIterablePromise"])(
+    return () => Object(ldflex__WEBPACK_IMPORTED_MODULE_2__["toIterablePromise"])(
     /*#__PURE__*/
     _wrapAsyncGenerator(function* () {
       // Create an activity for each object on the path
@@ -115100,11 +115109,11 @@ class CreateActivityHandler {
       var _iteratorError;
 
       try {
-        for (var _iterator = _asyncIterator(proxy), _step, _value; _step = yield _awaitAsyncGenerator(_iterator.next()), _iteratorNormalCompletion = _step.done, _value = yield _awaitAsyncGenerator(_step.value), !_iteratorNormalCompletion; _iteratorNormalCompletion = true) {
+        for (var _iterator = _asyncIterator(path), _step, _value; _step = yield _awaitAsyncGenerator(_iterator.next()), _iteratorNormalCompletion = _step.done, _value = yield _awaitAsyncGenerator(_step.value), !_iteratorNormalCompletion; _iteratorNormalCompletion = true) {
           const object = _value;
 
           if (typeof object === 'string' || object.termType === 'NamedNode') {
-            const id = `#${uuid_v4__WEBPACK_IMPORTED_MODULE_1___default()()}`;
+            const id = `#${uuid_v4__WEBPACK_IMPORTED_MODULE_0___default()()}`;
             const props = {
               id,
               type,
@@ -115115,7 +115124,7 @@ class CreateActivityHandler {
             activities.push(id);
             inserts.push(self._createActivity(props));
           }
-        } // Send the activity as a patch
+        } // Insert the activities into the document
 
       } catch (err) {
         _didIteratorError = true;
@@ -115132,36 +115141,22 @@ class CreateActivityHandler {
         }
       }
 
-      const location = new URL(self._path, (yield _awaitAsyncGenerator(user.pim_storage)));
-      yield _awaitAsyncGenerator(self._sendPatch(location, {
-        insert: inserts.join('')
-      })); // Return the URLs of the new activities
+      const document = new URL(self._activitiesPath, (yield _awaitAsyncGenerator(user.pim_storage)));
+      const sparql = `INSERT {\n${inserts.join('')}}`;
+      yield _awaitAsyncGenerator(queryEngine.executeUpdate(sparql, document).next()); // Return the URLs of the new activities
 
-      for (const id of activities) yield root[new URL(id, location)];
+      for (const id of activities) yield root[new URL(id, document)];
     }));
   } // Creates a Turtle snippet representing the activity
 
 
-  _createActivity(_ref3) {
-    let id = _ref3.id,
-        type = _ref3.type,
-        actor = _ref3.actor,
-        object = _ref3.object,
-        time = _ref3.time;
-    return activityTemplate.replace(/_:activity/, `<${id}>`).replace(/_:type/, `<${type}>`).replace(/_:actor/g, `<${actor}>`).replace(/_:object/g, `<${object}>`).replace(/_:published/g, `"${time}"^^<${xsd}dateTime>`);
-  } // Sends a PATCH request to create the activity
-
-
-  _sendPatch(resource, _ref4) {
-    let insert = _ref4.insert;
-    const patch = `INSERT {\n${insert}\n}`;
-    return solid_auth_client__WEBPACK_IMPORTED_MODULE_0___default.a.fetch(resource, {
-      method: 'PATCH',
-      headers: {
-        'Content-Type': 'application/sparql-update'
-      },
-      body: patch
-    });
+  _createActivity(_ref4) {
+    let id = _ref4.id,
+        type = _ref4.type,
+        actor = _ref4.actor,
+        object = _ref4.object,
+        time = _ref4.time;
+    return activityTemplate.replace(/_:activity/, `<${id}>`).replace(/_:type/, `<${type}>`).replace(/_:actor/g, `<${actor}>`).replace(/_:object/g, `<${object.value || object}>`).replace(/_:published/g, `"${time}"^^<${xsd}dateTime>`);
   }
 
 }
