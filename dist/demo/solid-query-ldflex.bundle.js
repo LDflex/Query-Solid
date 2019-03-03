@@ -115391,9 +115391,11 @@ var _context_json__WEBPACK_IMPORTED_MODULE_1___namespace = /*#__PURE__*/__webpac
 /* harmony import */ var _SourcePathHandler__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./SourcePathHandler */ "./src/SourcePathHandler.js");
 /* harmony import */ var _UserPathHandler__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./UserPathHandler */ "./src/UserPathHandler.js");
 /* harmony import */ var _SubjectPathResolver__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./SubjectPathResolver */ "./src/SubjectPathResolver.js");
+/* harmony import */ var _ComunicaUpdateEngine__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./ComunicaUpdateEngine */ "./src/ComunicaUpdateEngine.js");
 function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; var ownKeys = Object.keys(source); if (typeof Object.getOwnPropertySymbols === 'function') { ownKeys = ownKeys.concat(Object.getOwnPropertySymbols(source).filter(function (sym) { return Object.getOwnPropertyDescriptor(source, sym).enumerable; })); } ownKeys.forEach(function (key) { _defineProperty(target, key, source[key]); }); } return target; }
 
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
 
 
 
@@ -115431,11 +115433,18 @@ const subjectPathFactory = new ldflex__WEBPACK_IMPORTED_MODULE_0__["PathFactory"
     // The `from` property takes a source URI as input
     from: new _SourcePathHandler__WEBPACK_IMPORTED_MODULE_4__["default"](subjectPathFactory),
     // The `user` property starts a path with the current user as subject
-    user: new _UserPathHandler__WEBPACK_IMPORTED_MODULE_5__["default"](subjectPathFactory)
+    user: new _UserPathHandler__WEBPACK_IMPORTED_MODULE_5__["default"](subjectPathFactory),
+    // Clears the cache for the given document (or everything, if undefined)
+    clearCache: (_ref) => {
+      let settings = _ref.settings;
+      return doc => settings.queryEngine.clearCache(doc);
+    }
   }),
   // Handlers of all remaining properties
   resolvers: [// `data[url]` starts a path with the property as subject
-  new _SubjectPathResolver__WEBPACK_IMPORTED_MODULE_6__["default"](subjectPathFactory)]
+  new _SubjectPathResolver__WEBPACK_IMPORTED_MODULE_6__["default"](subjectPathFactory)],
+  // Global query engine (currently only used for clearing the cache)
+  queryEngine: new _ComunicaUpdateEngine__WEBPACK_IMPORTED_MODULE_7__["default"]()
 }).create());
 
 /***/ }),
