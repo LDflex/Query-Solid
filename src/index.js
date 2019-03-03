@@ -5,6 +5,7 @@ import CreateActivityHandler from './CreateActivityHandler';
 import SourcePathHandler from './SourcePathHandler';
 import UserPathHandler from './UserPathHandler';
 import SubjectPathResolver from './SubjectPathResolver';
+import ComunicaUpdateEngine from './ComunicaUpdateEngine';
 
 const { as } = context['@context'];
 
@@ -34,14 +35,20 @@ export default rootPath = new PathFactory({
   // Handlers of specific named properties
   handlers: {
     ...defaultHandlers,
+
     // The `from` property takes a source URI as input
     from: new SourcePathHandler(subjectPathFactory),
     // The `user` property starts a path with the current user as subject
     user: new UserPathHandler(subjectPathFactory),
+
+    // Clears the cache for the given document (or everything, if undefined)
+    clearCache: ({ settings }) => doc => settings.queryEngine.clearCache(doc),
   },
   // Handlers of all remaining properties
   resolvers: [
     // `data[url]` starts a path with the property as subject
     new SubjectPathResolver(subjectPathFactory),
   ],
+  // Global query engine (currently only used for clearing the cache)
+  queryEngine: new ComunicaUpdateEngine(),
 }).create();

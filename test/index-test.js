@@ -67,6 +67,15 @@ describe('The @solid/ldflex module', () => {
       expect(data.user.root.root.user.root).toBe(data);
     });
   });
+
+  describe('the clearCache path', () => {
+    it('returns a function to clear the cache', () => {
+      const document = {};
+      data.clearCache(document);
+      expect(ComunicaUpdateEngine.prototype.clearCache).toHaveBeenCalledTimes(1);
+      expect(ComunicaUpdateEngine.prototype.clearCache).toHaveBeenCalledWith(document);
+    });
+  });
 });
 
 const urlQuery = `SELECT ?firstName WHERE {
