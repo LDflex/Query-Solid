@@ -1,4 +1,3 @@
-import auth from 'solid-auth-client';
 import uuid from 'uuid/v4';
 import context from './context.json';
 import { toIterablePromise } from 'ldflex';
@@ -11,17 +10,19 @@ const { as, xsd } = context['@context'];
  * Requires:
  * - the `root.user` handler
  * - the `root[...]` resolver
+ * - a queryEngine property in the path settings
  */
 export default class CreateActivityHandler {
-  constructor({ type = `${as}#Like`, path = '/public/activities' } = {}) {
+  constructor({ type = `${as}Like`, activitiesPath = '/public/activities' } = {}) {
     this._type = type;
-    this._path = path;
+    this._activitiesPath = activitiesPath;
   }
 
-  handle(path, proxy) {
+  handle({ settings }, path) {
     const self = this;
-    const { root } = proxy;
+    const { root } = path;
     const { user } = root;
+    const { queryEngine } = settings;
 
     // Return an iterator over the new activity URLs
     return () => toIterablePromise(async function* () {
@@ -31,7 +32,7 @@ export default class CreateActivityHandler {
       const type = self._type;
       const actor = await user;
       const time = new Date().toISOString();
-      for await (const object of proxy) {
+      for await (const object of path) {
         if (typeof object === 'string' || object.termType === 'NamedNode') {
           const id = `#${uuid()}`;
           const props = { id, type, actor, object, time };
@@ -40,13 +41,14 @@ export default class CreateActivityHandler {
         }
       }
 
-      // Send the activity as a patch
-      const location = new URL(self._path, await user.pim_storage);
-      await self._sendPatch(location, { insert: inserts.join('') });
+      // Insert the activities into the document
+      const document = new URL(self._activitiesPath, await user.pim_storage);
+      const sparql = `INSERT {\n${inserts.join('')}}`;
+      await queryEngine.executeUpdate(sparql, document).next();
 
       // Return the URLs of the new activities
       for (const id of activities)
-        yield root[new URL(id, location)];
+        yield root[new URL(id, document)];
     });
   }
 
@@ -56,19 +58,7 @@ export default class CreateActivityHandler {
       .replace(/_:activity/, `<${id}>`)
       .replace(/_:type/, `<${type}>`)
       .replace(/_:actor/g, `<${actor}>`)
-      .replace(/_:object/g, `<${object}>`)
+      .replace(/_:object/g, `<${object.value || object}>`)
       .replace(/_:published/g, `"${time}"^^<${xsd}dateTime>`);
-  }
-
-  // Sends a PATCH request to create the activity
-  _sendPatch(resource, { insert }) {
-    const patch = `INSERT {\n${insert}\n}`;
-    return auth.fetch(resource, {
-      method: 'PATCH',
-      headers: {
-        'Content-Type': 'application/sparql-update',
-      },
-      body: patch,
-    });
   }
 }

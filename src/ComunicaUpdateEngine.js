@@ -10,7 +10,7 @@ export default class ComunicaUpdateEngine extends ComunicaEngine {
   /**
    * Delegates SPARQL UPDATE queries directly to the document.
    */
-  executeUpdate(sparql) {
+  executeUpdate(sparql, document) {
     if (this._source)
       throw new Error('Updates on non-subject sources not yet supported.');
 
@@ -20,7 +20,7 @@ export default class ComunicaUpdateEngine extends ComunicaEngine {
         executed = true;
 
         // Send authenticated PATCH request to the document
-        const document = this.getDocument(await this._subject);
+        document = document || this.getDocument(await this._subject);
         const response = await auth.fetch(document, {
           method: 'PATCH',
           headers: {
