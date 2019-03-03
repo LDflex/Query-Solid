@@ -33,8 +33,8 @@ export default class ComunicaUpdateEngine extends ComunicaEngine {
         if (!response.ok)
           throw new Error(`Update query failed (${response.status}): ${response.statusText}`);
 
-        // Invalidate Comunica's internal caches, as they may have changed because of the update
-        await this._engine.invalidateHttpCache(document);
+        // Clear stale cached versions of the document
+        await this.clearCache(document);
 
         // Mock Comunica's response for bindings as a Immutable.js object.
         return { value: { size: 1, values: () => ({ next: () => ({ value: { ok: true } }) }) } };
@@ -45,5 +45,13 @@ export default class ComunicaUpdateEngine extends ComunicaEngine {
       next,
       [Symbol.asyncIterator]() { return this; },
     };
+  }
+
+  /**
+   * Removes the given document (or all, if not specified) from the query engine cache,
+   * such that fresh results are obtained the next time.
+   */
+  async clearCache(document) {
+    await this._engine.invalidateHttpCache(document);
   }
 }
