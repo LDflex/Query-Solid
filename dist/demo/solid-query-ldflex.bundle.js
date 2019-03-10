@@ -114988,6 +114988,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var ldflex_comunica__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(ldflex_comunica__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var solid_auth_client__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! solid-auth-client */ "solid-auth-client");
 /* harmony import */ var solid_auth_client__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(solid_auth_client__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var _util__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./util */ "./src/util.js");
 function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _nonIterableRest(); }
 
 function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance"); }
@@ -114995,6 +114996,7 @@ function _nonIterableRest() { throw new TypeError("Invalid attempt to destructur
 function _iterableToArrayLimit(arr, i) { var _arr = []; var _n = true; var _d = false; var _e = undefined; try { for (var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"] != null) _i["return"](); } finally { if (_d) throw _e; } } return _arr; }
 
 function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
+
 
 
 
@@ -115039,20 +115041,11 @@ class ComunicaUpdateEngine extends ldflex_comunica__WEBPACK_IMPORTED_MODULE_0___
 
       if (!ok) throw new Error(`Update query failed (${status}): ${statusText}`); // Clear stale cached versions of the document
 
-      await this.clearCache(document); // Mock Comunica's response for bindings as a Immutable.js object.
-
-      const value = {
-        size: 1,
-        values: () => ({
-          next: () => ({
-            value: {
-              ok
-            }
-          })
-        })
-      };
+      await this.clearCache(document);
       return {
-        value
+        value: Object(_util__WEBPACK_IMPORTED_MODULE_2__["createBindings"])({
+          ok
+        })
       };
     };
 
@@ -115091,13 +115084,13 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return CreateActivityHandler; });
 /* harmony import */ var uuid_v4__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! uuid/v4 */ "./node_modules/uuid/v4.js");
 /* harmony import */ var uuid_v4__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(uuid_v4__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _context_json__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./context.json */ "./src/context.json");
-var _context_json__WEBPACK_IMPORTED_MODULE_1___namespace = /*#__PURE__*/__webpack_require__.t(/*! ./context.json */ "./src/context.json", 1);
-/* harmony import */ var ldflex__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ldflex */ "./node_modules/ldflex/lib/index.js");
-/* harmony import */ var ldflex__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(ldflex__WEBPACK_IMPORTED_MODULE_2__);
-/* harmony import */ var _util__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./util */ "./src/util.js");
-/* harmony import */ var _rdfjs_data_model__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @rdfjs/data-model */ "./node_modules/@rdfjs/data-model/index.js");
-/* harmony import */ var _rdfjs_data_model__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(_rdfjs_data_model__WEBPACK_IMPORTED_MODULE_4__);
+/* harmony import */ var ldflex__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ldflex */ "./node_modules/ldflex/lib/index.js");
+/* harmony import */ var ldflex__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(ldflex__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var _util__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./util */ "./src/util.js");
+/* harmony import */ var _rdfjs_data_model__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @rdfjs/data-model */ "./node_modules/@rdfjs/data-model/index.js");
+/* harmony import */ var _rdfjs_data_model__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(_rdfjs_data_model__WEBPACK_IMPORTED_MODULE_3__);
+/* harmony import */ var _context_json__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./context.json */ "./src/context.json");
+var _context_json__WEBPACK_IMPORTED_MODULE_4___namespace = /*#__PURE__*/__webpack_require__.t(/*! ./context.json */ "./src/context.json", 1);
 function _awaitAsyncGenerator(value) { return new _AwaitValue(value); }
 
 function _wrapAsyncGenerator(fn) { return function () { return new _AsyncGenerator(fn.apply(this, arguments)); }; }
@@ -115124,7 +115117,7 @@ function _asyncIterator(iterable) { var method; if (typeof Symbol === "function"
 
 /* babel-plugin-inline-import './activity.ttl' */
 const activityTemplate = "_:activity a _:type;\n    <https://www.w3.org/ns/activitystreams#actor> _:actor;\n    <https://www.w3.org/ns/activitystreams#object> _:object;\n    <https://www.w3.org/ns/activitystreams#published> _:published.\n";
-const _context$Context = _context_json__WEBPACK_IMPORTED_MODULE_1__['@context'],
+const _context$Context = _context_json__WEBPACK_IMPORTED_MODULE_4__['@context'],
       as = _context$Context.as,
       xsd = _context$Context.xsd;
 /**
@@ -115141,23 +115134,24 @@ class CreateActivityHandler {
         _ref2$type = _ref2.type,
         type = _ref2$type === void 0 ? `${as}Like` : _ref2$type,
         _ref2$activitiesPath = _ref2.activitiesPath,
-        activitiesPath = _ref2$activitiesPath === void 0 ? _util__WEBPACK_IMPORTED_MODULE_3__["defaultActivitiesPath"] : _ref2$activitiesPath;
+        activitiesPath = _ref2$activitiesPath === void 0 ? _util__WEBPACK_IMPORTED_MODULE_2__["defaultActivitiesPath"] : _ref2$activitiesPath;
 
     this._type = type;
     this._activitiesPath = activitiesPath;
   }
 
-  handle(_ref3, path) {
-    let settings = _ref3.settings;
+  handle(pathData, path) {
     const self = this;
     const root = path.root;
     const user = root.user;
-    const queryEngine = settings.queryEngine; // Return an iterator over the new activity URLs
+    const queryEngine = pathData.settings.queryEngine; // Return an iterator over the new activity paths
 
-    return () => Object(ldflex__WEBPACK_IMPORTED_MODULE_2__["toIterablePromise"])(
+    return () => Object(ldflex__WEBPACK_IMPORTED_MODULE_1__["toIterablePromise"])(
     /*#__PURE__*/
     _wrapAsyncGenerator(function* () {
-      // Create an activity for each object on the path
+      // Determine the storage location
+      const document = new URL(self._activitiesPath, (yield _awaitAsyncGenerator(user.pim_storage))); // Create an activity for each object on the path
+
       const activities = [];
       const inserts = [];
       const type = self._type;
@@ -115172,8 +115166,8 @@ class CreateActivityHandler {
         for (var _iterator = _asyncIterator(path), _step, _value; _step = yield _awaitAsyncGenerator(_iterator.next()), _iteratorNormalCompletion = _step.done, _value = yield _awaitAsyncGenerator(_step.value), !_iteratorNormalCompletion; _iteratorNormalCompletion = true) {
           const object = _value;
 
-          if (typeof object === 'string' || object.termType === 'NamedNode') {
-            const id = `#${uuid_v4__WEBPACK_IMPORTED_MODULE_0___default()()}`;
+          if (object.termType === 'NamedNode') {
+            const id = new URL(`#${uuid_v4__WEBPACK_IMPORTED_MODULE_0___default()()}`, document).toString();
             const props = {
               id,
               type,
@@ -115201,27 +115195,180 @@ class CreateActivityHandler {
         }
       }
 
-      const document = new URL(self._activitiesPath, (yield _awaitAsyncGenerator(user.pim_storage)));
       const sparql = `INSERT {\n${inserts.join('')}}`;
-      yield _awaitAsyncGenerator(queryEngine.executeUpdate(sparql, document).next()); // Return the URLs of the new activities
+      yield _awaitAsyncGenerator(queryEngine.executeUpdate(sparql, document).next()); // Return paths to the new activities
 
-      for (const id of activities) yield root[new URL(id, document)];
+      for (const id of activities) yield root[id];
     }));
   } // Creates a Turtle snippet representing the activity
 
 
-  _createActivity(_ref4) {
-    let id = _ref4.id,
-        type = _ref4.type,
-        actor = _ref4.actor,
-        object = _ref4.object,
-        time = _ref4.time;
-    return Object(_util__WEBPACK_IMPORTED_MODULE_3__["replaceVariables"])(activityTemplate, {
-      activity: Object(_rdfjs_data_model__WEBPACK_IMPORTED_MODULE_4__["namedNode"])(id),
-      type: Object(_rdfjs_data_model__WEBPACK_IMPORTED_MODULE_4__["namedNode"])(type),
-      actor: Object(_rdfjs_data_model__WEBPACK_IMPORTED_MODULE_4__["namedNode"])(actor),
-      object: Object(_rdfjs_data_model__WEBPACK_IMPORTED_MODULE_4__["namedNode"])(object.value || object),
-      published: Object(_rdfjs_data_model__WEBPACK_IMPORTED_MODULE_4__["literal"])(time, `${xsd}dateTime`)
+  _createActivity(_ref3) {
+    let id = _ref3.id,
+        type = _ref3.type,
+        actor = _ref3.actor,
+        object = _ref3.object,
+        time = _ref3.time;
+    return Object(_util__WEBPACK_IMPORTED_MODULE_2__["replaceVariables"])(activityTemplate, {
+      activity: Object(_rdfjs_data_model__WEBPACK_IMPORTED_MODULE_3__["namedNode"])(id),
+      type: Object(_rdfjs_data_model__WEBPACK_IMPORTED_MODULE_3__["namedNode"])(type),
+      actor: Object(_rdfjs_data_model__WEBPACK_IMPORTED_MODULE_3__["namedNode"])(actor),
+      object,
+      published: Object(_rdfjs_data_model__WEBPACK_IMPORTED_MODULE_3__["literal"])(time, `${xsd}dateTime`)
+    });
+  }
+
+}
+
+/***/ }),
+
+/***/ "./src/FindActivityHandler.js":
+/*!************************************!*\
+  !*** ./src/FindActivityHandler.js ***!
+  \************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return FindActivityHandler; });
+/* harmony import */ var ldflex__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ldflex */ "./node_modules/ldflex/lib/index.js");
+/* harmony import */ var ldflex__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(ldflex__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _util__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./util */ "./src/util.js");
+/* harmony import */ var _rdfjs_data_model__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @rdfjs/data-model */ "./node_modules/@rdfjs/data-model/index.js");
+/* harmony import */ var _rdfjs_data_model__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_rdfjs_data_model__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var _context_json__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./context.json */ "./src/context.json");
+var _context_json__WEBPACK_IMPORTED_MODULE_3___namespace = /*#__PURE__*/__webpack_require__.t(/*! ./context.json */ "./src/context.json", 1);
+function _awaitAsyncGenerator(value) { return new _AwaitValue(value); }
+
+function _wrapAsyncGenerator(fn) { return function () { return new _AsyncGenerator(fn.apply(this, arguments)); }; }
+
+function _AsyncGenerator(gen) { var front, back; function send(key, arg) { return new Promise(function (resolve, reject) { var request = { key: key, arg: arg, resolve: resolve, reject: reject, next: null }; if (back) { back = back.next = request; } else { front = back = request; resume(key, arg); } }); } function resume(key, arg) { try { var result = gen[key](arg); var value = result.value; var wrappedAwait = value instanceof _AwaitValue; Promise.resolve(wrappedAwait ? value.wrapped : value).then(function (arg) { if (wrappedAwait) { resume("next", arg); return; } settle(result.done ? "return" : "normal", arg); }, function (err) { resume("throw", err); }); } catch (err) { settle("throw", err); } } function settle(type, value) { switch (type) { case "return": front.resolve({ value: value, done: true }); break; case "throw": front.reject(value); break; default: front.resolve({ value: value, done: false }); break; } front = front.next; if (front) { resume(front.key, front.arg); } else { back = null; } } this._invoke = send; if (typeof gen.return !== "function") { this.return = undefined; } }
+
+if (typeof Symbol === "function" && Symbol.asyncIterator) { _AsyncGenerator.prototype[Symbol.asyncIterator] = function () { return this; }; }
+
+_AsyncGenerator.prototype.next = function (arg) { return this._invoke("next", arg); };
+
+_AsyncGenerator.prototype.throw = function (arg) { return this._invoke("throw", arg); };
+
+_AsyncGenerator.prototype.return = function (arg) { return this._invoke("return", arg); };
+
+function _AwaitValue(value) { this.wrapped = value; }
+
+function _asyncIterator(iterable) { var method; if (typeof Symbol === "function") { if (Symbol.asyncIterator) { method = iterable[Symbol.asyncIterator]; if (method != null) return method.call(iterable); } if (Symbol.iterator) { method = iterable[Symbol.iterator]; if (method != null) return method.call(iterable); } } throw new TypeError("Object is not async iterable"); }
+
+
+
+
+
+
+/* babel-plugin-inline-import './activity.sparql' */
+const queryTemplate = "SELECT ?activity WHERE {\n  ?activity a _:type;\n      <https://www.w3.org/ns/activitystreams#actor> _:actor;\n      <https://www.w3.org/ns/activitystreams#object> _:object.\n}\n";
+const as = _context_json__WEBPACK_IMPORTED_MODULE_3__['@context'].as;
+/**
+ * Handler that finds an activity in the user's data pod
+ * Requires:
+ * - the `root.user` handler
+ * - the `root[...]` resolver
+ * - a queryEngine property in the path settings
+ */
+
+class FindActivityHandler {
+  constructor() {
+    let _ref2 = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {},
+        _ref2$type = _ref2.type,
+        type = _ref2$type === void 0 ? `${as}Like` : _ref2$type,
+        _ref2$activitiesPath = _ref2.activitiesPath,
+        activitiesPath = _ref2$activitiesPath === void 0 ? _util__WEBPACK_IMPORTED_MODULE_1__["defaultActivitiesPath"] : _ref2$activitiesPath;
+
+    this._type = type;
+    this._activitiesPath = activitiesPath;
+  }
+
+  handle(pathData, path) {
+    const self = this;
+    const root = path.root;
+    const user = root.user;
+    const queryEngine = pathData.settings.queryEngine; // Return an iterator over the activity paths
+
+    return Object(ldflex__WEBPACK_IMPORTED_MODULE_0__["toIterablePromise"])(
+    /*#__PURE__*/
+    _wrapAsyncGenerator(function* () {
+      // Determine the storage location
+      const document = new URL(self._activitiesPath, (yield _awaitAsyncGenerator(user.pim_storage)));
+      const type = self._type;
+      const actor = yield _awaitAsyncGenerator(user); // Find activities for each object on the path
+
+      var _iteratorNormalCompletion = true;
+      var _didIteratorError = false;
+
+      var _iteratorError;
+
+      try {
+        for (var _iterator = _asyncIterator(path), _step, _value; _step = yield _awaitAsyncGenerator(_iterator.next()), _iteratorNormalCompletion = _step.done, _value = yield _awaitAsyncGenerator(_step.value), !_iteratorNormalCompletion; _iteratorNormalCompletion = true) {
+          const object = _value;
+
+          if (object.termType === 'NamedNode') {
+            const query = self._findActivity({
+              type,
+              actor,
+              object
+            }); // Create a path for each of the query results
+
+
+            var _iteratorNormalCompletion2 = true;
+            var _didIteratorError2 = false;
+
+            var _iteratorError2;
+
+            try {
+              for (var _iterator2 = _asyncIterator(queryEngine.execute(query, `${document}`)), _step2, _value2; _step2 = yield _awaitAsyncGenerator(_iterator2.next()), _iteratorNormalCompletion2 = _step2.done, _value2 = yield _awaitAsyncGenerator(_step2.value), !_iteratorNormalCompletion2; _iteratorNormalCompletion2 = true) {
+                const binding = _value2;
+                const term = binding.values().next().value;
+                yield root[term.value];
+              }
+            } catch (err) {
+              _didIteratorError2 = true;
+              _iteratorError2 = err;
+            } finally {
+              try {
+                if (!_iteratorNormalCompletion2 && _iterator2.return != null) {
+                  yield _awaitAsyncGenerator(_iterator2.return());
+                }
+              } finally {
+                if (_didIteratorError2) {
+                  throw _iteratorError2;
+                }
+              }
+            }
+          }
+        }
+      } catch (err) {
+        _didIteratorError = true;
+        _iteratorError = err;
+      } finally {
+        try {
+          if (!_iteratorNormalCompletion && _iterator.return != null) {
+            yield _awaitAsyncGenerator(_iterator.return());
+          }
+        } finally {
+          if (_didIteratorError) {
+            throw _iteratorError;
+          }
+        }
+      }
+    }));
+  } // Creates a Turtle snippet representing the activity
+
+
+  _findActivity(_ref3) {
+    let type = _ref3.type,
+        actor = _ref3.actor,
+        object = _ref3.object;
+    return Object(_util__WEBPACK_IMPORTED_MODULE_1__["replaceVariables"])(queryTemplate, {
+      type: Object(_rdfjs_data_model__WEBPACK_IMPORTED_MODULE_2__["namedNode"])(type),
+      actor: Object(_rdfjs_data_model__WEBPACK_IMPORTED_MODULE_2__["namedNode"])(actor),
+      object
     });
   }
 
@@ -115453,14 +115600,16 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _context_json__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./context.json */ "./src/context.json");
 var _context_json__WEBPACK_IMPORTED_MODULE_1___namespace = /*#__PURE__*/__webpack_require__.t(/*! ./context.json */ "./src/context.json", 1);
 /* harmony import */ var _SolidDeleteFunctionHandler__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./SolidDeleteFunctionHandler */ "./src/SolidDeleteFunctionHandler.js");
-/* harmony import */ var _CreateActivityHandler__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./CreateActivityHandler */ "./src/CreateActivityHandler.js");
-/* harmony import */ var _SourcePathHandler__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./SourcePathHandler */ "./src/SourcePathHandler.js");
-/* harmony import */ var _UserPathHandler__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./UserPathHandler */ "./src/UserPathHandler.js");
-/* harmony import */ var _SubjectPathResolver__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./SubjectPathResolver */ "./src/SubjectPathResolver.js");
-/* harmony import */ var _ComunicaUpdateEngine__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./ComunicaUpdateEngine */ "./src/ComunicaUpdateEngine.js");
+/* harmony import */ var _FindActivityHandler__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./FindActivityHandler */ "./src/FindActivityHandler.js");
+/* harmony import */ var _CreateActivityHandler__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./CreateActivityHandler */ "./src/CreateActivityHandler.js");
+/* harmony import */ var _SourcePathHandler__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./SourcePathHandler */ "./src/SourcePathHandler.js");
+/* harmony import */ var _UserPathHandler__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./UserPathHandler */ "./src/UserPathHandler.js");
+/* harmony import */ var _SubjectPathResolver__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./SubjectPathResolver */ "./src/SubjectPathResolver.js");
+/* harmony import */ var _ComunicaUpdateEngine__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./ComunicaUpdateEngine */ "./src/ComunicaUpdateEngine.js");
 function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; var ownKeys = Object.keys(source); if (typeof Object.getOwnPropertySymbols === 'function') { ownKeys = ownKeys.concat(Object.getOwnPropertySymbols(source).filter(function (sym) { return Object.getOwnPropertyDescriptor(source, sym).enumerable; })); } ownKeys.forEach(function (key) { _defineProperty(target, key, source[key]); }); } return target; }
 
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
 
 
 
@@ -115478,14 +115627,24 @@ const subjectPathFactory = new ldflex__WEBPACK_IMPORTED_MODULE_0__["PathFactory"
   handlers: _objectSpread({}, ldflex__WEBPACK_IMPORTED_MODULE_0__["defaultHandlers"], {
     // Custom delete handler to match node-solid-server behavior
     delete: new _SolidDeleteFunctionHandler__WEBPACK_IMPORTED_MODULE_2__["default"](),
-    // Activities on paths
-    like: new _CreateActivityHandler__WEBPACK_IMPORTED_MODULE_3__["default"]({
+    // Find activities
+    likes: new _FindActivityHandler__WEBPACK_IMPORTED_MODULE_3__["default"]({
       type: `${as}Like`
     }),
-    dislike: new _CreateActivityHandler__WEBPACK_IMPORTED_MODULE_3__["default"]({
+    dislikes: new _FindActivityHandler__WEBPACK_IMPORTED_MODULE_3__["default"]({
       type: `${as}Dislike`
     }),
-    follow: new _CreateActivityHandler__WEBPACK_IMPORTED_MODULE_3__["default"]({
+    follows: new _FindActivityHandler__WEBPACK_IMPORTED_MODULE_3__["default"]({
+      type: `${as}Follow`
+    }),
+    // Create activities
+    like: new _CreateActivityHandler__WEBPACK_IMPORTED_MODULE_4__["default"]({
+      type: `${as}Like`
+    }),
+    dislike: new _CreateActivityHandler__WEBPACK_IMPORTED_MODULE_4__["default"]({
+      type: `${as}Dislike`
+    }),
+    follow: new _CreateActivityHandler__WEBPACK_IMPORTED_MODULE_4__["default"]({
       type: `${as}Follow`
     }),
     // The `root` property restarts the path from the root
@@ -115497,9 +115656,9 @@ const subjectPathFactory = new ldflex__WEBPACK_IMPORTED_MODULE_0__["PathFactory"
   // Handlers of specific named properties
   handlers: _objectSpread({}, ldflex__WEBPACK_IMPORTED_MODULE_0__["defaultHandlers"], {
     // The `from` property takes a source URI as input
-    from: new _SourcePathHandler__WEBPACK_IMPORTED_MODULE_4__["default"](subjectPathFactory),
+    from: new _SourcePathHandler__WEBPACK_IMPORTED_MODULE_5__["default"](subjectPathFactory),
     // The `user` property starts a path with the current user as subject
-    user: new _UserPathHandler__WEBPACK_IMPORTED_MODULE_5__["default"](subjectPathFactory),
+    user: new _UserPathHandler__WEBPACK_IMPORTED_MODULE_6__["default"](subjectPathFactory),
     // Clears the cache for the given document (or everything, if undefined)
     clearCache: (_ref) => {
       let settings = _ref.settings;
@@ -115508,9 +115667,9 @@ const subjectPathFactory = new ldflex__WEBPACK_IMPORTED_MODULE_0__["PathFactory"
   }),
   // Handlers of all remaining properties
   resolvers: [// `data[url]` starts a path with the property as subject
-  new _SubjectPathResolver__WEBPACK_IMPORTED_MODULE_6__["default"](subjectPathFactory)],
+  new _SubjectPathResolver__WEBPACK_IMPORTED_MODULE_7__["default"](subjectPathFactory)],
   // Global query engine (currently only used for clearing the cache)
-  queryEngine: new _ComunicaUpdateEngine__WEBPACK_IMPORTED_MODULE_7__["default"]()
+  queryEngine: new _ComunicaUpdateEngine__WEBPACK_IMPORTED_MODULE_8__["default"]()
 }).create());
 
 /***/ }),
@@ -115519,7 +115678,7 @@ const subjectPathFactory = new ldflex__WEBPACK_IMPORTED_MODULE_0__["PathFactory"
 /*!*********************!*\
   !*** ./src/util.js ***!
   \*********************/
-/*! exports provided: defaultActivitiesPath, replaceVariables, serializeTerm */
+/*! exports provided: defaultActivitiesPath, replaceVariables, serializeTerm, createBindings */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -115527,6 +115686,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "defaultActivitiesPath", function() { return defaultActivitiesPath; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "replaceVariables", function() { return replaceVariables; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "serializeTerm", function() { return serializeTerm; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "createBindings", function() { return createBindings; });
 const defaultActivitiesPath = '/public/activities';
 function replaceVariables(template, terms) {
   for (const name in terms) template = template.replace(new RegExp(`_:${name}`, 'g'), serializeTerm(terms[name]));
@@ -115546,6 +115706,21 @@ function serializeTerm(term) {
     default:
       throw new Error(`Unknown term type: ${term.termType}`);
   }
+} // Imitate Comunica's response for bindings as a Immutable.js object.
+
+function createBindings() {
+  for (var _len = arguments.length, items = new Array(_len), _key = 0; _key < _len; _key++) {
+    items[_key] = arguments[_key];
+  }
+
+  return {
+    size: items.length,
+    values: () => ({
+      next: () => ({
+        value: items.shift()
+      })
+    })
+  };
 }
 
 /***/ }),
