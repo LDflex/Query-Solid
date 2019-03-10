@@ -1,6 +1,7 @@
 import { PathFactory, defaultHandlers } from 'ldflex';
 import context from './context.json';
 import SolidDeleteFunctionHandler from './SolidDeleteFunctionHandler';
+import FindActivityHandler from './FindActivityHandler';
 import CreateActivityHandler from './CreateActivityHandler';
 import SourcePathHandler from './SourcePathHandler';
 import UserPathHandler from './UserPathHandler';
@@ -20,7 +21,12 @@ const subjectPathFactory = new PathFactory({
     // Custom delete handler to match node-solid-server behavior
     delete: new SolidDeleteFunctionHandler(),
 
-    // Activities on paths
+    // Find activities
+    likes: new FindActivityHandler({ type: `${as}Like` }),
+    dislikes: new FindActivityHandler({ type: `${as}Dislike` }),
+    follows: new FindActivityHandler({ type: `${as}Follow` }),
+
+    // Create activities
     like: new CreateActivityHandler({ type: `${as}Like` }),
     dislike: new CreateActivityHandler({ type: `${as}Dislike` }),
     follow: new CreateActivityHandler({ type: `${as}Follow` }),

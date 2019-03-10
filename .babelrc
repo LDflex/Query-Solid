@@ -6,6 +6,7 @@
     ["babel-plugin-inline-import", {
       extensions: [
         ".ttl",
+        ".sparql",
       ],
     }],
   ],
