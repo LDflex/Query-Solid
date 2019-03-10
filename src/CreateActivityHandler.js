@@ -1,8 +1,8 @@
 import uuid from 'uuid/v4';
-import context from './context.json';
 import { toIterablePromise } from 'ldflex';
 import { defaultActivitiesPath, replaceVariables } from './util';
 import { namedNode, literal } from '@rdfjs/data-model';
+import context from './context.json';
 import activityTemplate from './activity.ttl';
 
 const { as, xsd } = context['@context'];
@@ -20,14 +20,17 @@ export default class CreateActivityHandler {
     this._activitiesPath = activitiesPath;
   }
 
-  handle({ settings }, path) {
+  handle(pathData, path) {
     const self = this;
     const { root } = path;
     const { user } = root;
-    const { queryEngine } = settings;
+    const { queryEngine } = pathData.settings;
 
-    // Return an iterator over the new activity URLs
+    // Return an iterator over the new activity paths
     return () => toIterablePromise(async function* () {
+      // Determine the storage location
+      const document = new URL(self._activitiesPath, await user.pim_storage);
+
       // Create an activity for each object on the path
       const activities = [];
       const inserts = [];
@@ -35,8 +38,8 @@ export default class CreateActivityHandler {
       const actor = await user;
       const time = new Date().toISOString();
       for await (const object of path) {
-        if (typeof object === 'string' || object.termType === 'NamedNode') {
-          const id = `#${uuid()}`;
+        if (object.termType === 'NamedNode') {
+          const id = new URL(`#${uuid()}`, document).toString();
           const props = { id, type, actor, object, time };
           activities.push(id);
           inserts.push(self._createActivity(props));
@@ -44,13 +47,12 @@ export default class CreateActivityHandler {
       }
 
       // Insert the activities into the document
-      const document = new URL(self._activitiesPath, await user.pim_storage);
       const sparql = `INSERT {\n${inserts.join('')}}`;
       await queryEngine.executeUpdate(sparql, document).next();
 
-      // Return the URLs of the new activities
+      // Return paths to the new activities
       for (const id of activities)
-        yield root[new URL(id, document)];
+        yield root[id];
     });
   }
 
@@ -60,7 +62,7 @@ export default class CreateActivityHandler {
       activity: namedNode(id),
       type: namedNode(type),
       actor: namedNode(actor),
-      object: namedNode(object.value || object),
+      object,
       published: literal(time, `${xsd}dateTime`),
     });
   }

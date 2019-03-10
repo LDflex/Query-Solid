@@ -3,6 +3,7 @@
   rules: {
     camelcase: off,
     global-require: off,
+    no-extend-native: off,
     no-use-before-define: off,
   },
 }
