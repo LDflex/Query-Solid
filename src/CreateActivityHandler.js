@@ -1,6 +1,8 @@
 import uuid from 'uuid/v4';
 import context from './context.json';
 import { toIterablePromise } from 'ldflex';
+import { defaultActivitiesPath, replaceVariables } from './util';
+import { namedNode, literal } from '@rdfjs/data-model';
 import activityTemplate from './activity.ttl';
 
 const { as, xsd } = context['@context'];
@@ -13,7 +15,7 @@ const { as, xsd } = context['@context'];
  * - a queryEngine property in the path settings
  */
 export default class CreateActivityHandler {
-  constructor({ type = `${as}Like`, activitiesPath = '/public/activities' } = {}) {
+  constructor({ type = `${as}Like`, activitiesPath = defaultActivitiesPath } = {}) {
     this._type = type;
     this._activitiesPath = activitiesPath;
   }
@@ -54,11 +56,12 @@ export default class CreateActivityHandler {
 
   // Creates a Turtle snippet representing the activity
   _createActivity({ id, type, actor, object, time }) {
-    return activityTemplate
-      .replace(/_:activity/, `<${id}>`)
-      .replace(/_:type/, `<${type}>`)
-      .replace(/_:actor/g, `<${actor}>`)
-      .replace(/_:object/g, `<${object.value || object}>`)
-      .replace(/_:published/g, `"${time}"^^<${xsd}dateTime>`);
+    return replaceVariables(activityTemplate, {
+      activity: namedNode(id),
+      type: namedNode(type),
+      actor: namedNode(actor),
+      object: namedNode(object.value || object),
+      published: literal(time, `${xsd}dateTime`),
+    });
   }
 }
