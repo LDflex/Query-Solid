@@ -115095,6 +115095,9 @@ __webpack_require__.r(__webpack_exports__);
 var _context_json__WEBPACK_IMPORTED_MODULE_1___namespace = /*#__PURE__*/__webpack_require__.t(/*! ./context.json */ "./src/context.json", 1);
 /* harmony import */ var ldflex__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ldflex */ "./node_modules/ldflex/lib/index.js");
 /* harmony import */ var ldflex__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(ldflex__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var _util__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./util */ "./src/util.js");
+/* harmony import */ var _rdfjs_data_model__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @rdfjs/data-model */ "./node_modules/@rdfjs/data-model/index.js");
+/* harmony import */ var _rdfjs_data_model__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(_rdfjs_data_model__WEBPACK_IMPORTED_MODULE_4__);
 function _awaitAsyncGenerator(value) { return new _AwaitValue(value); }
 
 function _wrapAsyncGenerator(fn) { return function () { return new _AsyncGenerator(fn.apply(this, arguments)); }; }
@@ -115112,6 +115115,8 @@ _AsyncGenerator.prototype.return = function (arg) { return this._invoke("return"
 function _AwaitValue(value) { this.wrapped = value; }
 
 function _asyncIterator(iterable) { var method; if (typeof Symbol === "function") { if (Symbol.asyncIterator) { method = iterable[Symbol.asyncIterator]; if (method != null) return method.call(iterable); } if (Symbol.iterator) { method = iterable[Symbol.iterator]; if (method != null) return method.call(iterable); } } throw new TypeError("Object is not async iterable"); }
+
+
 
 
 
@@ -115136,7 +115141,7 @@ class CreateActivityHandler {
         _ref2$type = _ref2.type,
         type = _ref2$type === void 0 ? `${as}Like` : _ref2$type,
         _ref2$activitiesPath = _ref2.activitiesPath,
-        activitiesPath = _ref2$activitiesPath === void 0 ? '/public/activities' : _ref2$activitiesPath;
+        activitiesPath = _ref2$activitiesPath === void 0 ? _util__WEBPACK_IMPORTED_MODULE_3__["defaultActivitiesPath"] : _ref2$activitiesPath;
 
     this._type = type;
     this._activitiesPath = activitiesPath;
@@ -115211,7 +115216,13 @@ class CreateActivityHandler {
         actor = _ref4.actor,
         object = _ref4.object,
         time = _ref4.time;
-    return activityTemplate.replace(/_:activity/, `<${id}>`).replace(/_:type/, `<${type}>`).replace(/_:actor/g, `<${actor}>`).replace(/_:object/g, `<${object.value || object}>`).replace(/_:published/g, `"${time}"^^<${xsd}dateTime>`);
+    return Object(_util__WEBPACK_IMPORTED_MODULE_3__["replaceVariables"])(activityTemplate, {
+      activity: Object(_rdfjs_data_model__WEBPACK_IMPORTED_MODULE_4__["namedNode"])(id),
+      type: Object(_rdfjs_data_model__WEBPACK_IMPORTED_MODULE_4__["namedNode"])(type),
+      actor: Object(_rdfjs_data_model__WEBPACK_IMPORTED_MODULE_4__["namedNode"])(actor),
+      object: Object(_rdfjs_data_model__WEBPACK_IMPORTED_MODULE_4__["namedNode"])(object.value || object),
+      published: Object(_rdfjs_data_model__WEBPACK_IMPORTED_MODULE_4__["literal"])(time, `${xsd}dateTime`)
+    });
   }
 
 }
@@ -115501,6 +115512,41 @@ const subjectPathFactory = new ldflex__WEBPACK_IMPORTED_MODULE_0__["PathFactory"
   // Global query engine (currently only used for clearing the cache)
   queryEngine: new _ComunicaUpdateEngine__WEBPACK_IMPORTED_MODULE_7__["default"]()
 }).create());
+
+/***/ }),
+
+/***/ "./src/util.js":
+/*!*********************!*\
+  !*** ./src/util.js ***!
+  \*********************/
+/*! exports provided: defaultActivitiesPath, replaceVariables, serializeTerm */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "defaultActivitiesPath", function() { return defaultActivitiesPath; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "replaceVariables", function() { return replaceVariables; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "serializeTerm", function() { return serializeTerm; });
+const defaultActivitiesPath = '/public/activities';
+function replaceVariables(template, terms) {
+  for (const name in terms) template = template.replace(new RegExp(`_:${name}`, 'g'), serializeTerm(terms[name]));
+
+  return template;
+}
+function serializeTerm(term) {
+  switch (term.termType) {
+    case 'NamedNode':
+      return `<${term.value}>`;
+
+    case 'Literal':
+      // TODO: escaping
+      return `"${term.value}"^^<${term.datatype.value}>`;
+    // TODO: other types
+
+    default:
+      throw new Error(`Unknown term type: ${term.termType}`);
+  }
+}
 
 /***/ }),
 
