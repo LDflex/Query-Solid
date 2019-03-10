@@ -28,7 +28,7 @@ export default class SubjectPathResolver {
   }
 
   _createSubjectPath(subject) {
-    const queryEngine = new ComunicaUpdateEngine(subject, this._source);
+    const queryEngine = new ComunicaUpdateEngine(this._source || subject);
     return this._paths.create({ queryEngine }, { subject });
   }
 }

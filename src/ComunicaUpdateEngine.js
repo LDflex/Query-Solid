@@ -8,38 +8,45 @@ import auth from 'solid-auth-client';
  */
 export default class ComunicaUpdateEngine extends ComunicaEngine {
   /**
-   * Delegates SPARQL UPDATE queries directly to the document.
+   * Executes a SPARQL UPDATE query on the source.
    */
-  executeUpdate(sparql, document) {
-    if (this._source)
-      throw new Error('Updates on non-subject sources not yet supported.');
-
-    let executed = false;
+  executeUpdate(sparql, source) {
+    let done = false;
     const next = async () => {
-      if (!executed) {
-        executed = true;
+      if (done)
+        return { done };
+      done = true;
 
-        // Send authenticated PATCH request to the document
-        document = document || this.getDocument(await this._subject);
-        const response = await auth.fetch(document, {
-          method: 'PATCH',
-          headers: {
-            'Content-Type': 'application/sparql-update',
-          },
-          body: sparql,
-        });
+      // Find the document to update
+      const sources = await (source ? this.toComunicaSources(source) : this._sources);
+      if (!sources || sources.length !== 1)
+        throw new Error('Can only update a single source.');
+      const [{ value: document }] = sources;
+      if (!/^https?:\/\//.test(document))
+        throw new Error('Can only update an HTTP(s) document.');
 
-        // Error if the server response was not ok
-        if (!response.ok)
-          throw new Error(`Update query failed (${response.status}): ${response.statusText}`);
+      // Send authenticated PATCH request to the document
+      const { ok, status, statusText } = await auth.fetch(document, {
+        method: 'PATCH',
+        headers: {
+          'Content-Type': 'application/sparql-update',
+        },
+        body: sparql,
+      });
 
-        // Clear stale cached versions of the document
-        await this.clearCache(document);
+      // Error if the server response was not ok
+      if (!ok)
+        throw new Error(`Update query failed (${status}): ${statusText}`);
 
-        // Mock Comunica's response for bindings as a Immutable.js object.
-        return { value: { size: 1, values: () => ({ next: () => ({ value: { ok: true } }) }) } };
-      }
-      return { done: true };
+      // Clear stale cached versions of the document
+      await this.clearCache(document);
+
+      // Mock Comunica's response for bindings as a Immutable.js object.
+      const value = {
+        size: 1,
+        values: () => ({ next: () => ({ value: { ok } }) }),
+      };
+      return { value };
     };
     return {
       next,

@@ -200,7 +200,7 @@
     switch-colon-spacing: error,
     template-tag-spacing: error,
     unicode-bom: error,
-    wrap-regex: error,
+    wrap-regex: off,
 
     // ECMAScript 6
     arrow-body-style: error,

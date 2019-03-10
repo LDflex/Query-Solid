@@ -24,8 +24,7 @@ describe('a SubjectPathResolver', () => {
   it('resolves to a path that uses the given source', () => {
     resolver.resolve('apple');
     expect(ComunicaUpdateEngine).toHaveBeenCalledTimes(1);
-    expect(ComunicaUpdateEngine.mock.calls[0][0].value).toBe('apple');
-    expect(ComunicaUpdateEngine.mock.calls[0][1]).toBe(source);
+    expect(ComunicaUpdateEngine.mock.calls[0][0]).toBe(source);
 
     const { create } = PathFactory.mock.instances[0];
     expect(create).toHaveBeenCalledTimes(1);
