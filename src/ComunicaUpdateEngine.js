@@ -1,5 +1,6 @@
 import ComunicaEngine from 'ldflex-comunica';
 import auth from 'solid-auth-client';
+import { createBindings } from './util';
 
 /**
  * An extension of ComunicaEngine that delegates
@@ -41,12 +42,7 @@ export default class ComunicaUpdateEngine extends ComunicaEngine {
       // Clear stale cached versions of the document
       await this.clearCache(document);
 
-      // Mock Comunica's response for bindings as a Immutable.js object.
-      const value = {
-        size: 1,
-        values: () => ({ next: () => ({ value: { ok } }) }),
-      };
-      return { value };
+      return { value: createBindings({ ok }) };
     };
     return {
       next,

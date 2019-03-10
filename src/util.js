@@ -18,3 +18,13 @@ export function serializeTerm(term) {
     throw new Error(`Unknown term type: ${term.termType}`);
   }
 }
+
+// Imitate Comunica's response for bindings as a Immutable.js object.
+export function createBindings(...items) {
+  return {
+    size: items.length,
+    values: () => ({
+      next: () => ({ value: items.shift() }),
+    }),
+  };
+}
