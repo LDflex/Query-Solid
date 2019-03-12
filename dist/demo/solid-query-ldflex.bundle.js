@@ -15435,7 +15435,7 @@ function fromByteArray (uint8) {
 
   var Buffer;
   try {
-    Buffer = __webpack_require__(/*! buffer */ 6).Buffer;
+    Buffer = __webpack_require__(/*! buffer */ 8).Buffer;
   } catch (e) {
   }
 
@@ -18877,7 +18877,7 @@ if (typeof self === 'object') {
 } else {
   // Node.js or Web worker with no crypto support
   try {
-    var crypto = __webpack_require__(/*! crypto */ 7);
+    var crypto = __webpack_require__(/*! crypto */ 9);
     if (typeof crypto.randomBytes !== 'function')
       throw new Error('Not supported');
 
@@ -90642,17 +90642,6 @@ util.estimateCores = function(options, callback) {
 
 /***/ }),
 
-/***/ "./node_modules/node-libs-browser/mock/empty.js":
-/*!******************************************************!*\
-  !*** ./node_modules/node-libs-browser/mock/empty.js ***!
-  \******************************************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-
-
-/***/ }),
-
 /***/ "./node_modules/node-libs-browser/node_modules/punycode/punycode.js":
 /*!**************************************************************************!*\
   !*** ./node_modules/node-libs-browser/node_modules/punycode/punycode.js ***!
@@ -109498,7 +109487,7 @@ exports.main = function commonjsMain (args) {
         console.log('Usage: '+args[0]+' FILE');
         process.exit(1);
     }
-    var source = __webpack_require__(/*! fs */ "./node_modules/node-libs-browser/mock/empty.js").readFileSync(__webpack_require__(/*! path */ "./node_modules/node-libs-browser/mock/empty.js").normalize(args[1]), "utf8");
+    var source = __webpack_require__(/*! fs */ 6).readFileSync(__webpack_require__(/*! path */ 7).normalize(args[1]), "utf8");
     return exports.parser.parse(source);
 };
 if ( true && __webpack_require__.c[__webpack_require__.s] === module) {
@@ -115792,6 +115781,28 @@ function createBindings() {
 /***/ }),
 
 /***/ 6:
+/*!********************!*\
+  !*** fs (ignored) ***!
+  \********************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+/* (ignored) */
+
+/***/ }),
+
+/***/ 7:
+/*!**********************!*\
+  !*** path (ignored) ***!
+  \**********************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+/* (ignored) */
+
+/***/ }),
+
+/***/ 8:
 /*!************************!*\
   !*** buffer (ignored) ***!
   \************************/
@@ -115802,7 +115813,7 @@ function createBindings() {
 
 /***/ }),
 
-/***/ 7:
+/***/ 9:
 /*!************************!*\
   !*** crypto (ignored) ***!
   \************************/
