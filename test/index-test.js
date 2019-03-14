@@ -1,11 +1,16 @@
 import data from '../src';
 import auth from 'solid-auth-client';
 import ComunicaUpdateEngine from '../src/ComunicaUpdateEngine';
+import FindActivityHandler from '../src/FindActivityHandler';
+import CreateActivityHandler from '../src/CreateActivityHandler';
 import { namedNode } from '@rdfjs/data-model';
 
 jest.mock('../src/ComunicaUpdateEngine');
 async function* noResults() { /* empty */ }
 ComunicaUpdateEngine.prototype.execute = jest.fn(noResults);
+
+FindActivityHandler.prototype.handle = jest.fn(() => jest.fn());
+CreateActivityHandler.prototype.handle = jest.fn(() => jest.fn());
 
 describe('The @solid/ldflex module', () => {
   it('is an ES6 module with a default export', () => {
@@ -18,16 +23,68 @@ describe('The @solid/ldflex module', () => {
 
   describe('an URL path', () => {
     const url = 'https://ex.org/#this';
-    beforeEach(async () => {
-      await data[url].firstName;
-    });
 
-    it('executes the query', () => {
+    it('executes the query', async () => {
+      await data[url].firstName;
       const { constructor, execute } = ComunicaUpdateEngine.prototype;
       expect(constructor).toHaveBeenCalledTimes(1);
       expect(constructor.mock.calls[0][0]).toEqual(namedNode(url));
       expect(execute).toHaveBeenCalledTimes(1);
       expect(execute).toHaveBeenCalledWith(urlQuery);
+    });
+
+    it('can retrieve likes', async () => {
+      const activity = 'https://www.w3.org/ns/activitystreams#Like';
+      const { handle } = FindActivityHandler.prototype;
+      await data[url].likes;
+      expect(handle).toHaveBeenCalledTimes(1);
+      expect(handle.mock.results[0].value).toHaveBeenCalledTimes(1);
+      expect(handle.mock.results[0].value).toHaveBeenCalledWith(activity);
+    });
+
+    it('can retrieve dislikes', async () => {
+      const activity = 'https://www.w3.org/ns/activitystreams#Dislike';
+      const { handle } = FindActivityHandler.prototype;
+      await data[url].dislikes;
+      expect(handle).toHaveBeenCalledTimes(1);
+      expect(handle.mock.results[0].value).toHaveBeenCalledTimes(1);
+      expect(handle.mock.results[0].value).toHaveBeenCalledWith(activity);
+    });
+
+    it('can retrieve follows', async () => {
+      const activity = 'https://www.w3.org/ns/activitystreams#Follow';
+      const { handle } = FindActivityHandler.prototype;
+      await data[url].follows;
+      expect(handle).toHaveBeenCalledTimes(1);
+      expect(handle.mock.results[0].value).toHaveBeenCalledTimes(1);
+      expect(handle.mock.results[0].value).toHaveBeenCalledWith(activity);
+    });
+
+    it('can create likes', async () => {
+      const activity = 'https://www.w3.org/ns/activitystreams#Like';
+      const { handle } = CreateActivityHandler.prototype;
+      await data[url].like();
+      expect(handle).toHaveBeenCalledTimes(1);
+      expect(handle.mock.results[0].value).toHaveBeenCalledTimes(1);
+      expect(handle.mock.results[0].value).toHaveBeenCalledWith(activity);
+    });
+
+    it('can create dislikes', async () => {
+      const activity = 'https://www.w3.org/ns/activitystreams#Dislike';
+      const { handle } = CreateActivityHandler.prototype;
+      await data[url].dislike();
+      expect(handle).toHaveBeenCalledTimes(1);
+      expect(handle.mock.results[0].value).toHaveBeenCalledTimes(1);
+      expect(handle.mock.results[0].value).toHaveBeenCalledWith(activity);
+    });
+
+    it('can create follows', async () => {
+      const activity = 'https://www.w3.org/ns/activitystreams#Follow';
+      const { handle } = CreateActivityHandler.prototype;
+      await data[url].follow();
+      expect(handle).toHaveBeenCalledTimes(1);
+      expect(handle.mock.results[0].value).toHaveBeenCalledTimes(1);
+      expect(handle.mock.results[0].value).toHaveBeenCalledWith(activity);
     });
   });
 

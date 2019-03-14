@@ -14,8 +14,7 @@ const { as } = context['@context'];
  * - a queryEngine property in the path settings
  */
 export default class FindActivityHandler {
-  constructor({ type = `${as}Like`, activitiesPath = defaultActivitiesPath } = {}) {
-    this._type = type;
+  constructor({ activitiesPath = defaultActivitiesPath } = {}) {
     this._activitiesPath = activitiesPath;
   }
 
@@ -26,10 +25,9 @@ export default class FindActivityHandler {
     const { queryEngine } = pathData.settings;
 
     // Return an iterator over the activity paths
-    return toIterablePromise(async function* () {
+    return (type = `${as}Like`) => toIterablePromise(async function* () {
       // Determine the storage location
       const document = new URL(self._activitiesPath, await user.pim_storage);
-      const type = self._type;
       const actor = await user;
 
       // Find activities for each object on the path

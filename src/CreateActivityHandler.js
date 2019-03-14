@@ -15,8 +15,7 @@ const { as, xsd } = context['@context'];
  * - a queryEngine property in the path settings
  */
 export default class CreateActivityHandler {
-  constructor({ type = `${as}Like`, activitiesPath = defaultActivitiesPath } = {}) {
-    this._type = type;
+  constructor({ activitiesPath = defaultActivitiesPath } = {}) {
     this._activitiesPath = activitiesPath;
   }
 
@@ -27,14 +26,13 @@ export default class CreateActivityHandler {
     const { queryEngine } = pathData.settings;
 
     // Return an iterator over the new activity paths
-    return () => toIterablePromise(async function* () {
+    return (type = `${as}Like`) => toIterablePromise(async function* () {
       // Determine the storage location
       const document = new URL(self._activitiesPath, await user.pim_storage);
 
       // Create an activity for each object on the path
       const activities = [];
       const inserts = [];
-      const type = self._type;
       const actor = await user;
       const time = new Date().toISOString();
       for await (const object of path) {

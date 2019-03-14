@@ -22,14 +22,16 @@ const subjectPathFactory = new PathFactory({
     delete: new SolidDeleteFunctionHandler(),
 
     // Find activities
-    likes: new FindActivityHandler({ type: `${as}Like` }),
-    dislikes: new FindActivityHandler({ type: `${as}Dislike` }),
-    follows: new FindActivityHandler({ type: `${as}Follow` }),
+    findActivity: new FindActivityHandler(),
+    likes: (_, path) => path.findActivity(`${as}Like`),
+    dislikes: (_, path) => path.findActivity(`${as}Dislike`),
+    follows: (_, path) => path.findActivity(`${as}Follow`),
 
     // Create activities
-    like: new CreateActivityHandler({ type: `${as}Like` }),
-    dislike: new CreateActivityHandler({ type: `${as}Dislike` }),
-    follow: new CreateActivityHandler({ type: `${as}Follow` }),
+    createActivity: new CreateActivityHandler(),
+    like: (_, path) => () => path.createActivity(`${as}Like`),
+    dislike: (_, path) => () => path.createActivity(`${as}Dislike`),
+    follow: (_, path) => () => path.createActivity(`${as}Follow`),
 
     // The `root` property restarts the path from the root
     root: () => rootPath,

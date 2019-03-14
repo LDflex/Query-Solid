@@ -29,7 +29,7 @@ describe('a FindActivityHandler instance', () => {
       };
 
       // perform the activity
-      const iterator = handler.handle({ settings: { queryEngine } }, path);
+      const iterator = handler.handle({ settings: { queryEngine } }, path)();
       results = [];
       for await (const result of iterator)
         results.push(result);
