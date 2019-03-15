@@ -115120,12 +115120,9 @@ const _context$Context = _context_json__WEBPACK_IMPORTED_MODULE_4__['@context'],
 class CreateActivityHandler {
   constructor() {
     let _ref2 = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {},
-        _ref2$type = _ref2.type,
-        type = _ref2$type === void 0 ? `${as}Like` : _ref2$type,
         _ref2$activitiesPath = _ref2.activitiesPath,
         activitiesPath = _ref2$activitiesPath === void 0 ? _util__WEBPACK_IMPORTED_MODULE_2__["defaultActivitiesPath"] : _ref2$activitiesPath;
 
-    this._type = type;
     this._activitiesPath = activitiesPath;
   }
 
@@ -115135,60 +115132,62 @@ class CreateActivityHandler {
     const user = root.user;
     const queryEngine = pathData.settings.queryEngine; // Return an iterator over the new activity paths
 
-    return () => Object(ldflex__WEBPACK_IMPORTED_MODULE_1__["toIterablePromise"])(
-    /*#__PURE__*/
-    _wrapAsyncGenerator(function* () {
-      // Determine the storage location
-      const document = new URL(self._activitiesPath, (yield _awaitAsyncGenerator(user.pim_storage))); // Create an activity for each object on the path
+    return function () {
+      let type = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : `${as}Like`;
+      return Object(ldflex__WEBPACK_IMPORTED_MODULE_1__["toIterablePromise"])(
+      /*#__PURE__*/
+      _wrapAsyncGenerator(function* () {
+        // Determine the storage location
+        const document = new URL(self._activitiesPath, (yield _awaitAsyncGenerator(user.pim_storage))); // Create an activity for each object on the path
 
-      const activities = [];
-      const inserts = [];
-      const type = self._type;
-      const actor = yield _awaitAsyncGenerator(user);
-      const time = new Date().toISOString();
-      var _iteratorNormalCompletion = true;
-      var _didIteratorError = false;
+        const activities = [];
+        const inserts = [];
+        const actor = yield _awaitAsyncGenerator(user);
+        const time = new Date().toISOString();
+        var _iteratorNormalCompletion = true;
+        var _didIteratorError = false;
 
-      var _iteratorError;
+        var _iteratorError;
 
-      try {
-        for (var _iterator = _asyncIterator(path), _step, _value; _step = yield _awaitAsyncGenerator(_iterator.next()), _iteratorNormalCompletion = _step.done, _value = yield _awaitAsyncGenerator(_step.value), !_iteratorNormalCompletion; _iteratorNormalCompletion = true) {
-          const object = _value;
-
-          if (object.termType === 'NamedNode') {
-            const id = new URL(`#${uuid_v4__WEBPACK_IMPORTED_MODULE_0___default()()}`, document).toString();
-            const props = {
-              id,
-              type,
-              actor,
-              object,
-              time
-            };
-            activities.push(id);
-            inserts.push(self._createActivity(props));
-          }
-        } // Insert the activities into the document
-
-      } catch (err) {
-        _didIteratorError = true;
-        _iteratorError = err;
-      } finally {
         try {
-          if (!_iteratorNormalCompletion && _iterator.return != null) {
-            yield _awaitAsyncGenerator(_iterator.return());
-          }
+          for (var _iterator = _asyncIterator(path), _step, _value; _step = yield _awaitAsyncGenerator(_iterator.next()), _iteratorNormalCompletion = _step.done, _value = yield _awaitAsyncGenerator(_step.value), !_iteratorNormalCompletion; _iteratorNormalCompletion = true) {
+            const object = _value;
+
+            if (object.termType === 'NamedNode') {
+              const id = new URL(`#${uuid_v4__WEBPACK_IMPORTED_MODULE_0___default()()}`, document).toString();
+              const props = {
+                id,
+                type,
+                actor,
+                object,
+                time
+              };
+              activities.push(id);
+              inserts.push(self._createActivity(props));
+            }
+          } // Insert the activities into the document
+
+        } catch (err) {
+          _didIteratorError = true;
+          _iteratorError = err;
         } finally {
-          if (_didIteratorError) {
-            throw _iteratorError;
+          try {
+            if (!_iteratorNormalCompletion && _iterator.return != null) {
+              yield _awaitAsyncGenerator(_iterator.return());
+            }
+          } finally {
+            if (_didIteratorError) {
+              throw _iteratorError;
+            }
           }
         }
-      }
 
-      const sparql = `INSERT {\n${inserts.join('')}}`;
-      yield _awaitAsyncGenerator(queryEngine.executeUpdate(sparql, document).next()); // Return paths to the new activities
+        const sparql = `INSERT {\n${inserts.join('')}}`;
+        yield _awaitAsyncGenerator(queryEngine.executeUpdate(sparql, document).next()); // Return paths to the new activities
 
-      for (const id of activities) yield root[id];
-    }));
+        for (const id of activities) yield root[id];
+      }));
+    };
   } // Creates a Turtle snippet representing the activity
 
 
@@ -115265,12 +115264,9 @@ const as = _context_json__WEBPACK_IMPORTED_MODULE_3__['@context'].as;
 class FindActivityHandler {
   constructor() {
     let _ref2 = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {},
-        _ref2$type = _ref2.type,
-        type = _ref2$type === void 0 ? `${as}Like` : _ref2$type,
         _ref2$activitiesPath = _ref2.activitiesPath,
         activitiesPath = _ref2$activitiesPath === void 0 ? _util__WEBPACK_IMPORTED_MODULE_1__["defaultActivitiesPath"] : _ref2$activitiesPath;
 
-    this._type = type;
     this._activitiesPath = activitiesPath;
   }
 
@@ -115280,73 +115276,75 @@ class FindActivityHandler {
     const user = root.user;
     const queryEngine = pathData.settings.queryEngine; // Return an iterator over the activity paths
 
-    return Object(ldflex__WEBPACK_IMPORTED_MODULE_0__["toIterablePromise"])(
-    /*#__PURE__*/
-    _wrapAsyncGenerator(function* () {
-      // Determine the storage location
-      const document = new URL(self._activitiesPath, (yield _awaitAsyncGenerator(user.pim_storage)));
-      const type = self._type;
-      const actor = yield _awaitAsyncGenerator(user); // Find activities for each object on the path
+    return function () {
+      let type = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : `${as}Like`;
+      return Object(ldflex__WEBPACK_IMPORTED_MODULE_0__["toIterablePromise"])(
+      /*#__PURE__*/
+      _wrapAsyncGenerator(function* () {
+        // Determine the storage location
+        const document = new URL(self._activitiesPath, (yield _awaitAsyncGenerator(user.pim_storage)));
+        const actor = yield _awaitAsyncGenerator(user); // Find activities for each object on the path
 
-      var _iteratorNormalCompletion = true;
-      var _didIteratorError = false;
+        var _iteratorNormalCompletion = true;
+        var _didIteratorError = false;
 
-      var _iteratorError;
+        var _iteratorError;
 
-      try {
-        for (var _iterator = _asyncIterator(path), _step, _value; _step = yield _awaitAsyncGenerator(_iterator.next()), _iteratorNormalCompletion = _step.done, _value = yield _awaitAsyncGenerator(_step.value), !_iteratorNormalCompletion; _iteratorNormalCompletion = true) {
-          const object = _value;
+        try {
+          for (var _iterator = _asyncIterator(path), _step, _value; _step = yield _awaitAsyncGenerator(_iterator.next()), _iteratorNormalCompletion = _step.done, _value = yield _awaitAsyncGenerator(_step.value), !_iteratorNormalCompletion; _iteratorNormalCompletion = true) {
+            const object = _value;
 
-          if (object.termType === 'NamedNode') {
-            const query = self._findActivity({
-              type,
-              actor,
-              object
-            }); // Create a path for each of the query results
+            if (object.termType === 'NamedNode') {
+              const query = self._findActivity({
+                type,
+                actor,
+                object
+              }); // Create a path for each of the query results
 
 
-            var _iteratorNormalCompletion2 = true;
-            var _didIteratorError2 = false;
+              var _iteratorNormalCompletion2 = true;
+              var _didIteratorError2 = false;
 
-            var _iteratorError2;
+              var _iteratorError2;
 
-            try {
-              for (var _iterator2 = _asyncIterator(queryEngine.execute(query, `${document}`)), _step2, _value2; _step2 = yield _awaitAsyncGenerator(_iterator2.next()), _iteratorNormalCompletion2 = _step2.done, _value2 = yield _awaitAsyncGenerator(_step2.value), !_iteratorNormalCompletion2; _iteratorNormalCompletion2 = true) {
-                const binding = _value2;
-                const term = binding.values().next().value;
-                yield root[term.value];
-              }
-            } catch (err) {
-              _didIteratorError2 = true;
-              _iteratorError2 = err;
-            } finally {
               try {
-                if (!_iteratorNormalCompletion2 && _iterator2.return != null) {
-                  yield _awaitAsyncGenerator(_iterator2.return());
+                for (var _iterator2 = _asyncIterator(queryEngine.execute(query, `${document}`)), _step2, _value2; _step2 = yield _awaitAsyncGenerator(_iterator2.next()), _iteratorNormalCompletion2 = _step2.done, _value2 = yield _awaitAsyncGenerator(_step2.value), !_iteratorNormalCompletion2; _iteratorNormalCompletion2 = true) {
+                  const binding = _value2;
+                  const term = binding.values().next().value;
+                  yield root[term.value];
                 }
+              } catch (err) {
+                _didIteratorError2 = true;
+                _iteratorError2 = err;
               } finally {
-                if (_didIteratorError2) {
-                  throw _iteratorError2;
+                try {
+                  if (!_iteratorNormalCompletion2 && _iterator2.return != null) {
+                    yield _awaitAsyncGenerator(_iterator2.return());
+                  }
+                } finally {
+                  if (_didIteratorError2) {
+                    throw _iteratorError2;
+                  }
                 }
               }
             }
           }
-        }
-      } catch (err) {
-        _didIteratorError = true;
-        _iteratorError = err;
-      } finally {
-        try {
-          if (!_iteratorNormalCompletion && _iterator.return != null) {
-            yield _awaitAsyncGenerator(_iterator.return());
-          }
+        } catch (err) {
+          _didIteratorError = true;
+          _iteratorError = err;
         } finally {
-          if (_didIteratorError) {
-            throw _iteratorError;
+          try {
+            if (!_iteratorNormalCompletion && _iterator.return != null) {
+              yield _awaitAsyncGenerator(_iterator.return());
+            }
+          } finally {
+            if (_didIteratorError) {
+              throw _iteratorError;
+            }
           }
         }
-      }
-    }));
+      }));
+    };
   } // Creates a Turtle snippet representing the activity
 
 
@@ -115617,25 +115615,15 @@ const subjectPathFactory = new ldflex__WEBPACK_IMPORTED_MODULE_0__["PathFactory"
     // Custom delete handler to match node-solid-server behavior
     delete: new _SolidDeleteFunctionHandler__WEBPACK_IMPORTED_MODULE_2__["default"](),
     // Find activities
-    likes: new _FindActivityHandler__WEBPACK_IMPORTED_MODULE_3__["default"]({
-      type: `${as}Like`
-    }),
-    dislikes: new _FindActivityHandler__WEBPACK_IMPORTED_MODULE_3__["default"]({
-      type: `${as}Dislike`
-    }),
-    follows: new _FindActivityHandler__WEBPACK_IMPORTED_MODULE_3__["default"]({
-      type: `${as}Follow`
-    }),
+    findActivity: new _FindActivityHandler__WEBPACK_IMPORTED_MODULE_3__["default"](),
+    likes: (_, path) => path.findActivity(`${as}Like`),
+    dislikes: (_, path) => path.findActivity(`${as}Dislike`),
+    follows: (_, path) => path.findActivity(`${as}Follow`),
     // Create activities
-    like: new _CreateActivityHandler__WEBPACK_IMPORTED_MODULE_4__["default"]({
-      type: `${as}Like`
-    }),
-    dislike: new _CreateActivityHandler__WEBPACK_IMPORTED_MODULE_4__["default"]({
-      type: `${as}Dislike`
-    }),
-    follow: new _CreateActivityHandler__WEBPACK_IMPORTED_MODULE_4__["default"]({
-      type: `${as}Follow`
-    }),
+    createActivity: new _CreateActivityHandler__WEBPACK_IMPORTED_MODULE_4__["default"](),
+    like: (_, path) => () => path.createActivity(`${as}Like`),
+    dislike: (_, path) => () => path.createActivity(`${as}Dislike`),
+    follow: (_, path) => () => path.createActivity(`${as}Follow`),
     // The `root` property restarts the path from the root
     root: () => rootPath
   })
