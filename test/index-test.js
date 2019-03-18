@@ -19,8 +19,12 @@ describe('The @solid/ldflex module', () => {
     expect(require('../src').default).toBe(data);
   });
 
-  it('the default export itself does not identify as an ES6 module', () => {
+  test('its default export does not identify as an ES6 module', () => {
     expect(data.__esModule).toBeUndefined();
+  });
+
+  it('exposes the JSON-LD context', () => {
+    expect(data.context).toHaveProperty('as', 'https://www.w3.org/ns/activitystreams#');
   });
 
   describe('an URL path', () => {

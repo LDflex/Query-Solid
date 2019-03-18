@@ -1,5 +1,5 @@
 import { PathFactory, defaultHandlers } from 'ldflex';
-import context from './context.json';
+import contextDocument from './context.json';
 import SolidDeleteFunctionHandler from './SolidDeleteFunctionHandler';
 import FindActivityHandler from './FindActivityHandler';
 import CreateActivityHandler from './CreateActivityHandler';
@@ -9,7 +9,8 @@ import UserPathHandler from './UserPathHandler';
 import SubjectPathResolver from './SubjectPathResolver';
 import ComunicaUpdateEngine from './ComunicaUpdateEngine';
 
-const { as } = context['@context'];
+const context = contextDocument['@context'];
+const { as } = context;
 
 let rootPath;
 
@@ -58,6 +59,9 @@ export default rootPath = new PathFactory({
 
     // Clears the cache for the given document (or everything, if undefined)
     clearCache: ({ settings }) => doc => settings.queryEngine.clearCache(doc),
+
+    // Expose the JSON-LD context
+    context: () => context,
   },
   // Handlers of all remaining properties
   resolvers: [
