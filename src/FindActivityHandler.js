@@ -27,8 +27,8 @@ export default class FindActivityHandler {
     // Return an iterator over the activity paths
     return (type = `${as}Like`) => toIterablePromise(async function* () {
       // Determine the storage location
-      const document = new URL(self._activitiesPath, await user.pim_storage);
       const actor = await user;
+      const document = new URL(self._activitiesPath, await user.pim$storage || actor);
 
       // Find activities for each object on the path
       for await (const object of path) {

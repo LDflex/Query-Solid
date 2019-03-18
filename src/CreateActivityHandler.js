@@ -28,12 +28,12 @@ export default class CreateActivityHandler {
     // Return an iterator over the new activity paths
     return (type = `${as}Like`) => toIterablePromise(async function* () {
       // Determine the storage location
-      const document = new URL(self._activitiesPath, await user.pim_storage);
+      const actor = await user;
+      const document = new URL(self._activitiesPath, await user.pim$storage || actor);
 
       // Create an activity for each object on the path
       const activities = [];
       const inserts = [];
-      const actor = await user;
       const time = new Date().toISOString();
       for await (const object of path) {
         if (object.termType === 'NamedNode') {
