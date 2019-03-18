@@ -115138,11 +115138,11 @@ class CreateActivityHandler {
       /*#__PURE__*/
       _wrapAsyncGenerator(function* () {
         // Determine the storage location
-        const document = new URL(self._activitiesPath, (yield _awaitAsyncGenerator(user.pim_storage))); // Create an activity for each object on the path
+        const actor = yield _awaitAsyncGenerator(user);
+        const document = new URL(self._activitiesPath, (yield _awaitAsyncGenerator(user.pim$storage)) || actor); // Create an activity for each object on the path
 
         const activities = [];
         const inserts = [];
-        const actor = yield _awaitAsyncGenerator(user);
         const time = new Date().toISOString();
         var _iteratorNormalCompletion = true;
         var _didIteratorError = false;
@@ -115282,8 +115282,8 @@ class FindActivityHandler {
       /*#__PURE__*/
       _wrapAsyncGenerator(function* () {
         // Determine the storage location
-        const document = new URL(self._activitiesPath, (yield _awaitAsyncGenerator(user.pim_storage)));
-        const actor = yield _awaitAsyncGenerator(user); // Find activities for each object on the path
+        const actor = yield _awaitAsyncGenerator(user);
+        const document = new URL(self._activitiesPath, (yield _awaitAsyncGenerator(user.pim$storage)) || actor); // Find activities for each object on the path
 
         var _iteratorNormalCompletion = true;
         var _didIteratorError = false;
@@ -115606,11 +115606,12 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 
 
 
-const as = _context_json__WEBPACK_IMPORTED_MODULE_1__['@context'].as;
+const _context = _context_json__WEBPACK_IMPORTED_MODULE_1__['@context'];
+const as = _context.as;
 let rootPath; // Creates data paths that start from a given subject
 
 const subjectPathFactory = new ldflex__WEBPACK_IMPORTED_MODULE_0__["PathFactory"]({
-  context: _context_json__WEBPACK_IMPORTED_MODULE_1__,
+  context: _context,
   handlers: _objectSpread({}, ldflex__WEBPACK_IMPORTED_MODULE_0__["defaultHandlers"], {
     // Custom delete handler to match node-solid-server behavior
     delete: new _SolidDeleteFunctionHandler__WEBPACK_IMPORTED_MODULE_2__["default"](),
@@ -115640,7 +115641,9 @@ const subjectPathFactory = new ldflex__WEBPACK_IMPORTED_MODULE_0__["PathFactory"
     clearCache: (_ref) => {
       let settings = _ref.settings;
       return doc => settings.queryEngine.clearCache(doc);
-    }
+    },
+    // Expose the JSON-LD context
+    context: () => _context
   }),
   // Handlers of all remaining properties
   resolvers: [// `data[url]` starts a path with the property as subject
@@ -115664,7 +115667,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "replaceVariables", function() { return replaceVariables; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "serializeTerm", function() { return serializeTerm; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "createBindings", function() { return createBindings; });
-const defaultActivitiesPath = '/public/activities';
+const defaultActivitiesPath = './public/activities';
 function replaceVariables(template, terms) {
   for (const name in terms) template = template.replace(new RegExp(`_:${name}`, 'g'), serializeTerm(terms[name]));
 
