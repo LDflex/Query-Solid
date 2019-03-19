@@ -115667,7 +115667,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "replaceVariables", function() { return replaceVariables; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "serializeTerm", function() { return serializeTerm; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "createBindings", function() { return createBindings; });
-const defaultActivitiesPath = './public/activities';
+const defaultActivitiesPath = '/public/activities';
 function replaceVariables(template, terms) {
   for (const name in terms) template = template.replace(new RegExp(`_:${name}`, 'g'), serializeTerm(terms[name]));
 
