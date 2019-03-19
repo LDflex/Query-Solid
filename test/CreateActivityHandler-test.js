@@ -53,7 +53,7 @@ INSERT {
     <https://www.w3.org/ns/activitystreams#object> <http://example.org/#thing2>;
     <https://www.w3.org/ns/activitystreams#published> "2019-01-01T20:00:00.000Z"^^<http://www.w3.org/2001/XMLSchema#dateTime>.
 }`.trim());
-      expect(args[1]).toEqual(new URL('http://user.storage/public/activities'));
+      expect(args[1]).toBe('http://user.storage/public/activities');
 
       // assert that it calls the `next` function to execute the query
       const [{ value: { next } }] = queryEngine.executeUpdate.mock.results;
@@ -110,7 +110,7 @@ INSERT {
     <https://www.w3.org/ns/activitystreams#object> <http://example.org/#thing2>;
     <https://www.w3.org/ns/activitystreams#published> "2019-01-01T20:00:00.000Z"^^<http://www.w3.org/2001/XMLSchema#dateTime>.
 }`.trim());
-      expect(args[1]).toEqual(new URL('http://user.example/public/activities'));
+      expect(args[1]).toBe('http://user.example/public/activities');
 
       // assert that it calls the `next` function to execute the query
       const [{ value: { next } }] = queryEngine.executeUpdate.mock.results;

@@ -52,7 +52,7 @@ SELECT ?subject ?predicate ?object WHERE {
   ?subject ?predicate ?object.
 }
 `.trim());
-      expect(args[0][1]).toEqual('http://user.storage/public/activities');
+      expect(args[0][1]).toBe('http://user.storage/public/activities');
       expect(args[1][0].trim()).toBe(`
 SELECT ?subject ?predicate ?object WHERE {
   ?subject a <https://www.w3.org/ns/activitystreams#Like>;
@@ -61,7 +61,7 @@ SELECT ?subject ?predicate ?object WHERE {
   ?subject ?predicate ?object.
 }
 `.trim());
-      expect(args[1][1]).toEqual('http://user.storage/public/activities');
+      expect(args[1][1]).toBe('http://user.storage/public/activities');
     });
 
     it('deletes the activities', () => {
@@ -73,7 +73,7 @@ DELETE {
 <http://ex.org/likes/#1> <http://ex.org/#prop> "abc"^^<http://www.w3.org/2001/XMLSchema#string>.
 }
 `.trim());
-      expect(args[0][1]).toEqual('http://user.storage/public/activities');
+      expect(args[0][1]).toBe('http://user.storage/public/activities');
     });
 
     it('returns no results', () => {
@@ -116,7 +116,7 @@ SELECT ?subject ?predicate ?object WHERE {
   ?subject ?predicate ?object.
 }
 `.trim());
-      expect(args[0][1]).toEqual('http://user.example/public/activities');
+      expect(args[0][1]).toBe('http://user.example/public/activities');
       expect(args[1][0].trim()).toBe(`
 SELECT ?subject ?predicate ?object WHERE {
   ?subject a <https://www.w3.org/ns/activitystreams#Follow>;
@@ -125,7 +125,7 @@ SELECT ?subject ?predicate ?object WHERE {
   ?subject ?predicate ?object.
 }
 `.trim());
-      expect(args[1][1]).toEqual('http://user.example/public/activities');
+      expect(args[1][1]).toBe('http://user.example/public/activities');
     });
 
     it('deletes the activities', () => {
@@ -137,7 +137,7 @@ DELETE {
 <http://ex.org/likes/#1> <http://ex.org/#prop> "abc"^^<http://www.w3.org/2001/XMLSchema#string>.
 }
 `.trim());
-      expect(args[0][1]).toEqual('http://user.example/public/activities');
+      expect(args[0][1]).toBe('http://user.example/public/activities');
     });
 
     it('returns no results', () => {

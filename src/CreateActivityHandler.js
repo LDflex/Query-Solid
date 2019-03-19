@@ -1,11 +1,11 @@
-import uuid from 'uuid/v4';
-import { toIterablePromise } from 'ldflex';
-import { defaultActivitiesPath, replaceVariables } from './util';
-import { namedNode, literal } from '@rdfjs/data-model';
-import context from './context.json';
+import ActivityHandler from './ActivityHandler';
 import activityTemplate from './activity.ttl';
+import { replaceVariables } from './util';
+import { namedNode, literal } from '@rdfjs/data-model';
+import uuid from 'uuid/v4';
+import context from './context.json';
 
-const { as, xsd } = context['@context'];
+const { xsd } = context['@context'];
 
 /**
  * Handler that creates an activity in the user's data pod
@@ -14,54 +14,21 @@ const { as, xsd } = context['@context'];
  * - the `root[...]` resolver
  * - a queryEngine property in the path settings
  */
-export default class CreateActivityHandler {
-  constructor({ activitiesPath = defaultActivitiesPath } = {}) {
-    this._activitiesPath = activitiesPath;
+export default class CreateActivityHandler extends ActivityHandler {
+  // Creates an activity for insertion in the given document
+  async* createResults(activity, document) {
+    const id = namedNode(new URL(`#${uuid()}`, document).href);
+    const published = literal(new Date().toISOString(), `${xsd}dateTime`);
+    activity = { id, published, ...activity };
+
+    const insert = replaceVariables(activityTemplate, activity);
+    yield { id, insert };
   }
 
-  handle(pathData, path) {
-    const self = this;
-    const { root } = path;
-    const { user } = root;
-    const { queryEngine } = pathData.settings;
-
-    // Return an iterator over the new activity paths
-    return (type = `${as}Like`) => toIterablePromise(async function* () {
-      // Determine the storage location
-      const actor = await user;
-      const document = new URL(self._activitiesPath, await user.pim$storage || actor);
-
-      // Create an activity for each object on the path
-      const activities = [];
-      const inserts = [];
-      const time = new Date().toISOString();
-      for await (const object of path) {
-        if (object.termType === 'NamedNode') {
-          const id = new URL(`#${uuid()}`, document).toString();
-          const props = { id, type, actor, object, time };
-          activities.push(id);
-          inserts.push(self._createActivity(props));
-        }
-      }
-
-      // Insert the activities into the document
-      const sparql = `INSERT {\n${inserts.join('')}}`;
-      await queryEngine.executeUpdate(sparql, document).next();
-
-      // Return paths to the new activities
-      for (const id of activities)
-        yield root[id];
-    });
-  }
-
-  // Creates a Turtle snippet representing the activity
-  _createActivity({ id, type, actor, object, time }) {
-    return replaceVariables(activityTemplate, {
-      activity: namedNode(id),
-      type: namedNode(type),
-      actor: namedNode(actor),
-      object,
-      published: literal(time, `${xsd}dateTime`),
-    });
+  // Inserts the activities into the document
+  async processResults(results, document, queryEngine) {
+    const sparql = `INSERT {\n${results.map(r => r.insert).join('')}}`;
+    await queryEngine.executeUpdate(sparql, document).next();
+    return results.map(r => r.id);
   }
 }

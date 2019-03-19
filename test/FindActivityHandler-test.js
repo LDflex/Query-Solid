@@ -46,7 +46,7 @@ SELECT ?activity WHERE {
       <https://www.w3.org/ns/activitystreams#object> <http://example.org/#thing1>.
 }
 `.trim());
-      expect(args[0][1]).toEqual('http://user.storage/public/activities');
+      expect(args[0][1]).toBe('http://user.storage/public/activities');
       expect(args[1][0].trim()).toBe(`
 SELECT ?activity WHERE {
   ?activity a <https://www.w3.org/ns/activitystreams#Like>;
@@ -54,7 +54,7 @@ SELECT ?activity WHERE {
       <https://www.w3.org/ns/activitystreams#object> <http://example.org/#thing2>.
 }
 `.trim());
-      expect(args[1][1]).toEqual('http://user.storage/public/activities');
+      expect(args[1][1]).toBe('http://user.storage/public/activities');
     });
 
     it('returns result paths', () => {
@@ -99,7 +99,7 @@ SELECT ?activity WHERE {
       <https://www.w3.org/ns/activitystreams#object> <http://example.org/#thing1>.
 }
 `.trim());
-      expect(args[0][1]).toEqual('http://user.example/public/activities');
+      expect(args[0][1]).toBe('http://user.example/public/activities');
       expect(args[1][0].trim()).toBe(`
 SELECT ?activity WHERE {
   ?activity a <https://www.w3.org/ns/activitystreams#Follow>;
@@ -107,7 +107,7 @@ SELECT ?activity WHERE {
       <https://www.w3.org/ns/activitystreams#object> <http://example.org/#thing2>.
 }
 `.trim());
-      expect(args[1][1]).toEqual('http://user.example/public/activities');
+      expect(args[1][1]).toBe('http://user.example/public/activities');
     });
 
     it('returns result paths', () => {

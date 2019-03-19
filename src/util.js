@@ -1,5 +1,3 @@
-export const defaultActivitiesPath = '/public/activities';
-
 export function replaceVariables(template, terms) {
   for (const name in terms)
     template = template.replace(new RegExp(`_:${name}`, 'g'), serializeTerm(terms[name]));
