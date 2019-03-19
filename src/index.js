@@ -3,6 +3,7 @@ import context from './context.json';
 import SolidDeleteFunctionHandler from './SolidDeleteFunctionHandler';
 import FindActivityHandler from './FindActivityHandler';
 import CreateActivityHandler from './CreateActivityHandler';
+import DeleteActivityHandler from './DeleteActivityHandler';
 import SourcePathHandler from './SourcePathHandler';
 import UserPathHandler from './UserPathHandler';
 import SubjectPathResolver from './SubjectPathResolver';
@@ -32,6 +33,12 @@ const subjectPathFactory = new PathFactory({
     like: (_, path) => () => path.createActivity(`${as}Like`),
     dislike: (_, path) => () => path.createActivity(`${as}Dislike`),
     follow: (_, path) => () => path.createActivity(`${as}Follow`),
+
+    // Delete activities
+    deleteActivity: new DeleteActivityHandler(),
+    unlike: (_, path) => () => path.deleteActivity(`${as}Like`),
+    undislike: (_, path) => () => path.deleteActivity(`${as}Dislike`),
+    unfollow: (_, path) => () => path.deleteActivity(`${as}Follow`),
 
     // The `root` property restarts the path from the root
     root: () => rootPath,

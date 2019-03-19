@@ -1,19 +1,19 @@
 import { toIterablePromise } from 'ldflex';
-import { defaultActivitiesPath, replaceVariables } from './util';
+import { defaultActivitiesPath, replaceVariables, serializeTerm } from './util';
 import { namedNode } from '@rdfjs/data-model';
 import context from './context.json';
-import queryTemplate from './activity.sparql';
+import queryTemplate from './activity-triples.sparql';
 
 const { as } = context['@context'];
 
 /**
- * Handler that finds an activity in the user's data pod
+ * Handler that deletes an activity in the user's data pod
  * Requires:
  * - the `root.user` handler
  * - the `root[...]` resolver
  * - a queryEngine property in the path settings
  */
-export default class FindActivityHandler {
+export default class DeleteActivityHandler {
   constructor({ activitiesPath = defaultActivitiesPath } = {}) {
     this._activitiesPath = activitiesPath;
   }
@@ -30,26 +30,35 @@ export default class FindActivityHandler {
       const actor = await user;
       const document = new URL(self._activitiesPath, await user.pim$storage || actor);
 
-      // Find activities for each object on the path
+      // Find activity triples for each object on the path
+      const triples = [];
       for await (const object of path) {
         if (object.termType === 'NamedNode') {
-          const query = self._findActivity({ type, actor, object });
-          // Create a path for each of the query results
-          for await (const binding of queryEngine.execute(query, `${document}`)) {
-            const term = binding.values().next().value;
-            yield root[term.value];
-          }
+          const query = self._findActivityTriples({ type, actor, object });
+          for await (const binding of queryEngine.execute(query, `${document}`))
+            triples.push(self._serializeTriple(binding));
         }
       }
+
+      // Delete the activity triples from the document
+      const sparql = `DELETE {\n${triples.join('\n')}\n}`;
+      await queryEngine.executeUpdate(sparql, `${document}`).next();
     });
   }
 
-  // Creates a SPARQL query for the activity
-  _findActivity({ type, actor, object }) {
+  // Creates a SPARQL query for all triples of the activity
+  _findActivityTriples({ type, actor, object }) {
     return replaceVariables(queryTemplate, {
       type: namedNode(type),
       actor: namedNode(actor),
       object,
     });
+  }
+
+  // Serializes a triple into a string
+  _serializeTriple(components) {
+    const terms = ['?subject', '?predicate', '?object']
+      .map(c => serializeTerm(components.get(c)));
+    return `${terms.join(' ')}.`;
   }
 }

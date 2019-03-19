@@ -3,6 +3,7 @@ import auth from 'solid-auth-client';
 import ComunicaUpdateEngine from '../src/ComunicaUpdateEngine';
 import FindActivityHandler from '../src/FindActivityHandler';
 import CreateActivityHandler from '../src/CreateActivityHandler';
+import DeleteActivityHandler from '../src/DeleteActivityHandler';
 import { namedNode } from '@rdfjs/data-model';
 
 jest.mock('../src/ComunicaUpdateEngine');
@@ -11,6 +12,7 @@ ComunicaUpdateEngine.prototype.execute = jest.fn(noResults);
 
 FindActivityHandler.prototype.handle = jest.fn(() => jest.fn());
 CreateActivityHandler.prototype.handle = jest.fn(() => jest.fn());
+DeleteActivityHandler.prototype.handle = jest.fn(() => jest.fn());
 
 describe('The @solid/ldflex module', () => {
   it('is an ES6 module with a default export', () => {
@@ -82,6 +84,33 @@ describe('The @solid/ldflex module', () => {
       const activity = 'https://www.w3.org/ns/activitystreams#Follow';
       const { handle } = CreateActivityHandler.prototype;
       await data[url].follow();
+      expect(handle).toHaveBeenCalledTimes(1);
+      expect(handle.mock.results[0].value).toHaveBeenCalledTimes(1);
+      expect(handle.mock.results[0].value).toHaveBeenCalledWith(activity);
+    });
+
+    it('can delete likes', async () => {
+      const activity = 'https://www.w3.org/ns/activitystreams#Like';
+      const { handle } = DeleteActivityHandler.prototype;
+      await data[url].unlike();
+      expect(handle).toHaveBeenCalledTimes(1);
+      expect(handle.mock.results[0].value).toHaveBeenCalledTimes(1);
+      expect(handle.mock.results[0].value).toHaveBeenCalledWith(activity);
+    });
+
+    it('can delete dislikes', async () => {
+      const activity = 'https://www.w3.org/ns/activitystreams#Dislike';
+      const { handle } = DeleteActivityHandler.prototype;
+      await data[url].undislike();
+      expect(handle).toHaveBeenCalledTimes(1);
+      expect(handle.mock.results[0].value).toHaveBeenCalledTimes(1);
+      expect(handle.mock.results[0].value).toHaveBeenCalledWith(activity);
+    });
+
+    it('can delete follows', async () => {
+      const activity = 'https://www.w3.org/ns/activitystreams#Follow';
+      const { handle } = DeleteActivityHandler.prototype;
+      await data[url].unfollow();
       expect(handle).toHaveBeenCalledTimes(1);
       expect(handle.mock.results[0].value).toHaveBeenCalledTimes(1);
       expect(handle.mock.results[0].value).toHaveBeenCalledWith(activity);

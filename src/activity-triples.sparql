@@ -1,0 +1,6 @@
+SELECT ?subject ?predicate ?object WHERE {
+  ?subject a _:type;
+      <https://www.w3.org/ns/activitystreams#actor> _:actor;
+      <https://www.w3.org/ns/activitystreams#object> _:object.
+  ?subject ?predicate ?object.
+}

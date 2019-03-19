@@ -228,7 +228,7 @@
     prefer-rest-params: error,
     prefer-spread: error,
     prefer-template: error,
-    require-yield: error,
+    require-yield: off,
     rest-spread-spacing: error,
     sort-imports: off,
     symbol-description: error,
