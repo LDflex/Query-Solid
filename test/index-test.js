@@ -34,7 +34,8 @@ describe('The @solid/ldflex module', () => {
       await data[url].firstName;
       const { constructor, execute } = ComunicaUpdateEngine.prototype;
       expect(constructor).toHaveBeenCalledTimes(1);
-      expect(constructor.mock.calls[0][0]).toEqual(namedNode(url));
+      const args = constructor.mock.calls[0];
+      await expect(args[0]).resolves.toEqual(namedNode(url));
       expect(execute).toHaveBeenCalledTimes(1);
       expect(execute).toHaveBeenCalledWith(urlQuery);
     });

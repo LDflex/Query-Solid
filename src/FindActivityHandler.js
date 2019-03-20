@@ -10,6 +10,8 @@ import { replaceVariables } from './util';
  * - a queryEngine property in the path settings
  */
 export default class FindActivityHandler extends ActivityHandler {
+  requireUser = false;
+
   // Finds all activities in the document matching the given pattern
   async* createResults(activity, document, queryEngine) {
     const query = replaceVariables(queryTemplate, activity);

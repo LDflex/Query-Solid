@@ -12,28 +12,41 @@ const { as } = context['@context'];
  * - a queryEngine property in the path settings
  */
 export default class ActivityHandler {
+  requireUser = true;
+
   constructor({ activitiesPath = '/public/activities' } = {}) {
     this.activitiesPath = activitiesPath;
   }
 
   handle(pathData, path) {
     const self = this;
-    const { root, root: { user } } = path;
+    const { root } = path;
     const { settings: { queryEngine } } = pathData;
 
     // Return an iterator over the activity paths
     return (type = `${as}Like`) => toIterablePromise(async function* () {
+      // Only process activities if a user is logged in
+      let user;
+      try {
+        user = await root.user;
+      }
+      catch (error) {
+        if (self.requireUser)
+          throw error;
+        return;
+      }
+
       // Determine the storage location
-      const actor = namedNode(await user);
-      const storage = await user.pim$storage;
-      const document = new URL(self.activitiesPath, storage || actor.value).href;
+      const storage = await root.user.pim$storage;
+      const document = new URL(self.activitiesPath, storage || user).href;
 
       // Obtain results for every activity on the path
       const results = [];
+      const actor = namedNode(user);
       type = namedNode(type);
       for await (const object of path) {
         if (object.termType === 'NamedNode') {
-          const activity = { type, actor, object };
+          const activity = { actor, type, object };
           for await (const result of self.createResults(activity, document, queryEngine))
             results.push(result);
         }
