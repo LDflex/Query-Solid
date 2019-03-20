@@ -115021,8 +115021,7 @@ class ActivityHandler {
 
   handle(pathData, path) {
     const self = this;
-    const root = path.root,
-          user = path.root.user;
+    const root = path.root;
     const queryEngine = pathData.settings.queryEngine; // Return an iterator over the activity paths
 
     return function () {
@@ -115030,12 +115029,21 @@ class ActivityHandler {
       return Object(ldflex__WEBPACK_IMPORTED_MODULE_0__["toIterablePromise"])(
       /*#__PURE__*/
       _wrapAsyncGenerator(function* () {
-        // Determine the storage location
-        const actor = Object(_rdfjs_data_model__WEBPACK_IMPORTED_MODULE_1__["namedNode"])((yield _awaitAsyncGenerator(user)));
-        const storage = yield _awaitAsyncGenerator(user.pim$storage);
-        const document = new URL(self.activitiesPath, storage || actor.value).href; // Obtain results for every activity on the path
+        // Only process activities if a user is logged in
+        let user;
+
+        try {
+          user = yield _awaitAsyncGenerator(root.user);
+        } catch (error) {
+          return;
+        } // Determine the storage location
+
+
+        const storage = yield _awaitAsyncGenerator(root.user.pim$storage);
+        const document = new URL(self.activitiesPath, storage || user).href; // Obtain results for every activity on the path
 
         const results = [];
+        const actor = Object(_rdfjs_data_model__WEBPACK_IMPORTED_MODULE_1__["namedNode"])(user);
         type = Object(_rdfjs_data_model__WEBPACK_IMPORTED_MODULE_1__["namedNode"])(type);
         var _iteratorNormalCompletion = true;
         var _didIteratorError = false;
@@ -115048,8 +115056,8 @@ class ActivityHandler {
 
             if (object.termType === 'NamedNode') {
               const activity = {
-                type,
                 actor,
+                type,
                 object
               };
               var _iteratorNormalCompletion2 = true;
@@ -115603,7 +115611,8 @@ class SubjectPathResolver {
   }
 
   _createSubjectPath(subject) {
-    const queryEngine = new _ComunicaUpdateEngine__WEBPACK_IMPORTED_MODULE_1__["default"](this._source || subject);
+    const source = this._source || Promise.resolve(subject).catch(() => null);
+    const queryEngine = new _ComunicaUpdateEngine__WEBPACK_IMPORTED_MODULE_1__["default"](source);
     return this._paths.create({
       queryEngine
     }, {
