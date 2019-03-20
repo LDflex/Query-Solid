@@ -148,11 +148,14 @@ For example:
 
 For convenience, the starting dot
 and quotes inside of brackets can be omitted.
+If the path is a single URL,
+quotes and brackets can be omitted.
 The following strings will all resolve:
 - `'.user.firstName'`
 - `'user.firstName'`
 - `'["https://example.org/"].label'`
 - `'[https://example.org/].label'`
+- `https://example.org/`
 
 ## License
 ©2018–present [Ruben Verborgh](https://ruben.verborgh.org/),
