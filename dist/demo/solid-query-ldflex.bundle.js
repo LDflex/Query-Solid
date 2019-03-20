@@ -114980,6 +114980,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _rdfjs_data_model__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_rdfjs_data_model__WEBPACK_IMPORTED_MODULE_1__);
 /* harmony import */ var _context_json__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./context.json */ "./src/context.json");
 var _context_json__WEBPACK_IMPORTED_MODULE_2___namespace = /*#__PURE__*/__webpack_require__.t(/*! ./context.json */ "./src/context.json", 1);
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
 function _awaitAsyncGenerator(value) { return new _AwaitValue(value); }
 
 function _wrapAsyncGenerator(fn) { return function () { return new _AsyncGenerator(fn.apply(this, arguments)); }; }
@@ -115016,6 +115018,8 @@ class ActivityHandler {
         _ref2$activitiesPath = _ref2.activitiesPath,
         activitiesPath = _ref2$activitiesPath === void 0 ? '/public/activities' : _ref2$activitiesPath;
 
+    _defineProperty(this, "requireUser", true);
+
     this.activitiesPath = activitiesPath;
   }
 
@@ -115035,6 +115039,7 @@ class ActivityHandler {
         try {
           user = yield _awaitAsyncGenerator(root.user);
         } catch (error) {
+          if (self.requireUser) throw error;
           return;
         } // Determine the storage location
 
@@ -115397,6 +115402,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return FindActivityHandler; });
 /* harmony import */ var _ActivityHandler__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./ActivityHandler */ "./src/ActivityHandler.js");
 /* harmony import */ var _util__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./util */ "./src/util.js");
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
 function _awaitAsyncGenerator(value) { return new _AwaitValue(value); }
 
 function _wrapAsyncGenerator(fn) { return function () { return new _AsyncGenerator(fn.apply(this, arguments)); }; }
@@ -115429,6 +115436,12 @@ const queryTemplate = "SELECT ?activity WHERE {\n  ?activity a _:type;\n      <h
  */
 
 class FindActivityHandler extends _ActivityHandler__WEBPACK_IMPORTED_MODULE_0__["default"] {
+  constructor() {
+    super(...arguments);
+
+    _defineProperty(this, "requireUser", false);
+  }
+
   // Finds all activities in the document matching the given pattern
   createResults(activity, document, queryEngine) {
     return _wrapAsyncGenerator(function* () {
