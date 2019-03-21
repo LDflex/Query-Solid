@@ -17,7 +17,7 @@
   ],
   "dependencies": {
     "@rdfjs/data-model": "^1.1.1",
-    "ldflex": "^2.2.0",
+    "ldflex": "^2.2.1",
     "ldflex-comunica": "^3.0.0",
     "solid-auth-client": "^2.2.14",
     "uuid": "^3.3.2"

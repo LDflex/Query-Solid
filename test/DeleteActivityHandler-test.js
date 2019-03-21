@@ -69,8 +69,8 @@ SELECT ?subject ?predicate ?object WHERE {
       const args = queryEngine.executeUpdate.mock.calls;
       expect(args[0][0].trim()).toBe(`
 DELETE {
-<http://ex.org/likes/#1> <http://ex.org/#prop> "abc"^^<http://www.w3.org/2001/XMLSchema#string>.
-<http://ex.org/likes/#1> <http://ex.org/#prop> "abc"^^<http://www.w3.org/2001/XMLSchema#string>.
+<http://ex.org/likes/#1> <http://ex.org/#prop> "abc".
+<http://ex.org/likes/#1> <http://ex.org/#prop> "abc".
 }
 `.trim());
       expect(args[0][1]).toBe('http://user.storage/public/activities');
@@ -133,8 +133,8 @@ SELECT ?subject ?predicate ?object WHERE {
       const args = queryEngine.executeUpdate.mock.calls;
       expect(args[0][0].trim()).toBe(`
 DELETE {
-<http://ex.org/likes/#1> <http://ex.org/#prop> "abc"^^<http://www.w3.org/2001/XMLSchema#string>.
-<http://ex.org/likes/#1> <http://ex.org/#prop> "abc"^^<http://www.w3.org/2001/XMLSchema#string>.
+<http://ex.org/likes/#1> <http://ex.org/#prop> "abc".
+<http://ex.org/likes/#1> <http://ex.org/#prop> "abc".
 }
 `.trim());
       expect(args[0][1]).toBe('http://user.example/public/activities');

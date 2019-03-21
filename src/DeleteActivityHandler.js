@@ -1,6 +1,6 @@
 import ActivityHandler from './ActivityHandler';
 import queryTemplate from './activity-triples.sparql';
-import { replaceVariables, serializeTerm } from './util';
+import { replaceVariables, termToString } from './util';
 
 const components = ['?subject', '?predicate', '?object'];
 
@@ -16,7 +16,7 @@ export default class DeleteActivityHandler extends ActivityHandler {
   async* createResults(activity, document, queryEngine) {
     const query = replaceVariables(queryTemplate, activity);
     for await (const triple of queryEngine.execute(query, document)) {
-      const terms = components.map(c => serializeTerm(triple.get(c)));
+      const terms = components.map(c => termToString(triple.get(c)));
       yield `${terms.join(' ')}.\n`;
     }
   }
