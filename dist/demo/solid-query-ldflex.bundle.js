@@ -67127,7 +67127,9 @@ class SparqlHandler {
         return `_:${term.value}`;
 
       case 'Literal':
-        return `"${term.value.replace(/"/g, '\\"')}"`;
+        let suffix = '';
+        if (term.language) suffix = `@${term.language}`;else if (term.datatype.value !== 'http://www.w3.org/2001/XMLSchema#string') suffix = `^^<${term.datatype.value}>`;
+        return `"${term.value.replace(/"/g, '\\"')}"${suffix}`;
 
       default:
         throw new Error(`Could not convert a term of type ${term.termType}`);
@@ -115359,7 +115361,7 @@ class DeleteActivityHandler extends _ActivityHandler__WEBPACK_IMPORTED_MODULE_0_
       try {
         for (var _iterator = _asyncIterator(queryEngine.execute(query, document)), _step, _value; _step = yield _awaitAsyncGenerator(_iterator.next()), _iteratorNormalCompletion = _step.done, _value = yield _awaitAsyncGenerator(_step.value), !_iteratorNormalCompletion; _iteratorNormalCompletion = true) {
           const triple = _value;
-          const terms = components.map(c => Object(_util__WEBPACK_IMPORTED_MODULE_1__["serializeTerm"])(triple.get(c)));
+          const terms = components.map(c => Object(_util__WEBPACK_IMPORTED_MODULE_1__["termToString"])(triple.get(c)));
           yield `${terms.join(' ')}.\n`;
         }
       } catch (err) {
@@ -115780,32 +115782,23 @@ const subjectPathFactory = new ldflex__WEBPACK_IMPORTED_MODULE_0__["PathFactory"
 /*!*********************!*\
   !*** ./src/util.js ***!
   \*********************/
-/*! exports provided: replaceVariables, serializeTerm, createBindings */
+/*! exports provided: termToString, replaceVariables, createBindings */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "termToString", function() { return termToString; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "replaceVariables", function() { return replaceVariables; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "serializeTerm", function() { return serializeTerm; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "createBindings", function() { return createBindings; });
+/* harmony import */ var ldflex__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ldflex */ "./node_modules/ldflex/lib/index.js");
+/* harmony import */ var ldflex__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(ldflex__WEBPACK_IMPORTED_MODULE_0__);
+
+const termToString = ldflex__WEBPACK_IMPORTED_MODULE_0__["SparqlHandler"].prototype.termToString;
+
 function replaceVariables(template, terms) {
-  for (const name in terms) template = template.replace(new RegExp(`_:${name}`, 'g'), serializeTerm(terms[name]));
+  for (const name in terms) template = template.replace(new RegExp(`_:${name}`, 'g'), termToString(terms[name]));
 
   return template;
-}
-function serializeTerm(term) {
-  switch (term.termType) {
-    case 'NamedNode':
-      return `<${term.value}>`;
-
-    case 'Literal':
-      // TODO: escaping
-      return `"${term.value}"^^<${term.datatype.value}>`;
-    // TODO: other types
-
-    default:
-      throw new Error(`Unknown term type: ${term.termType}`);
-  }
 } // Imitate Comunica's response for bindings as a Immutable.js object.
 
 function createBindings() {
