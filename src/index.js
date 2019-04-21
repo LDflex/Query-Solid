@@ -47,27 +47,31 @@ const subjectPathFactory = new PathFactory({
 });
 
 // Export the root path that resolves the first property access
-export default rootPath = new PathFactory({
-  // Handlers of specific named properties
-  handlers: {
-    ...defaultHandlers,
+export default rootPath = withCustomContext(context);
 
-    // The `from` property takes a source URI as input
-    from: new SourcePathHandler(subjectPathFactory),
-    // The `user` property starts a path with the current user as subject
-    user: new UserPathHandler(subjectPathFactory),
+export function withCustomContext(customContext) {
+  return new PathFactory({
+    // Handlers of specific named properties
+    handlers: {
+      ...defaultHandlers,
 
-    // Clears the cache for the given document (or everything, if undefined)
-    clearCache: ({ settings }) => doc => settings.queryEngine.clearCache(doc),
+      // The `from` property takes a source URI as input
+      from: new SourcePathHandler(subjectPathFactory),
+      // The `user` property starts a path with the current user as subject
+      user: new UserPathHandler(subjectPathFactory),
 
-    // Expose the JSON-LD context
-    context: () => context,
-  },
-  // Handlers of all remaining properties
-  resolvers: [
-    // `data[url]` starts a path with the property as subject
-    new SubjectPathResolver(subjectPathFactory),
-  ],
-  // Global query engine (currently only used for clearing the cache)
-  queryEngine: new ComunicaUpdateEngine(),
-}).create();
+      // Clears the cache for the given document (or everything, if undefined)
+      clearCache: ({ settings }) => doc => settings.queryEngine.clearCache(doc),
+
+      // Expose the JSON-LD context
+      context: () => customContext,
+    },
+    // Handlers of all remaining properties
+    resolvers: [
+      // `data[url]` starts a path with the property as subject
+      new SubjectPathResolver(subjectPathFactory),
+    ],
+    // Global query engine (currently only used for clearing the cache)
+    queryEngine: new ComunicaUpdateEngine(),
+  }).create();
+}

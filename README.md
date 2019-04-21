@@ -119,6 +119,20 @@ async function showProfile(person) {
 
 ```
 
+#### With a custom context
+```javascript
+const { withCustomContext } = require('@solid/query-ldflex);
+
+const context = {
+  "@context": {
+    "@vocab": "http://xmlns.com/foaf/0.1/",
+    "friends": "knows",
+    "label": "http://www.w3.org/2000/01/rdf-schema#label",
+  }
+};
+const data = withCustomContext(context);
+```
+
 ### In the browser
 ```html
 <script src="solid-auth-client.bundle.js"></script>
