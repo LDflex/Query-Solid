@@ -301,38 +301,6 @@ module.exports = _interopRequireDefault;
 
 /***/ }),
 
-/***/ "./node_modules/@babel/runtime/helpers/objectSpread.js":
-/*!*************************************************************!*\
-  !*** ./node_modules/@babel/runtime/helpers/objectSpread.js ***!
-  \*************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-var defineProperty = __webpack_require__(/*! ./defineProperty */ "./node_modules/@babel/runtime/helpers/defineProperty.js");
-
-function _objectSpread(target) {
-  for (var i = 1; i < arguments.length; i++) {
-    var source = arguments[i] != null ? arguments[i] : {};
-    var ownKeys = Object.keys(source);
-
-    if (typeof Object.getOwnPropertySymbols === 'function') {
-      ownKeys = ownKeys.concat(Object.getOwnPropertySymbols(source).filter(function (sym) {
-        return Object.getOwnPropertyDescriptor(source, sym).enumerable;
-      }));
-    }
-
-    ownKeys.forEach(function (key) {
-      defineProperty(target, key, source[key]);
-    });
-  }
-
-  return target;
-}
-
-module.exports = _objectSpread;
-
-/***/ }),
-
 /***/ "./node_modules/@babel/runtime/helpers/wrapAsyncGenerator.js":
 /*!*******************************************************************!*\
   !*** ./node_modules/@babel/runtime/helpers/wrapAsyncGenerator.js ***!
@@ -57220,6 +57188,45 @@ class ContextParser {
         return term;
     }
     /**
+     * Compact the given term using @base, @vocab, an aliased term, or a prefixed term.
+     * @param {string} iri An IRI to compact.
+     * @param {IJsonLdContextNormalized} context The context to compact with.
+     * @param {boolean} vocab If the term is a predicate or type and should be compacted based on @vocab,
+     *                        otherwise it is considered a regular term that is compacted based on @base.
+     * @return {string} The compacted term or the IRI as-is.
+     */
+    static compactIri(iri, context, vocab) {
+        // Try @vocab compacting
+        if (vocab && context['@vocab'] && iri.startsWith(context['@vocab'])) {
+            return iri.substr(context['@vocab'].length);
+        }
+        // Try @base compacting
+        if (!vocab && context['@base'] && iri.startsWith(context['@base'])) {
+            return iri.substr(context['@base'].length);
+        }
+        // Loop over all terms in the context
+        for (const key in context) {
+            const value = context[key];
+            if (value && !key.startsWith('@')) {
+                const contextIri = this.getContextValueId(value);
+                if (iri.startsWith(contextIri)) {
+                    const suffix = iri.substr(contextIri.length);
+                    if (!suffix) {
+                        if (vocab) {
+                            // Compact aliased term
+                            return key;
+                        }
+                    }
+                    else {
+                        // Compact prefixed term
+                        return key + ':' + suffix;
+                    }
+                }
+            }
+        }
+        return iri;
+    }
+    /**
      * Check if the given context value can be a prefix value.
      * @param value A context value.
      * @return {boolean} If it can be a prefix value.
@@ -66766,7 +66773,7 @@ exports.toHandler = toHandler;
 exports.toResolver = toResolver;
 exports.default = void 0;
 
-var _objectSpread2 = _interopRequireDefault(__webpack_require__(/*! @babel/runtime/helpers/objectSpread */ "./node_modules/@babel/runtime/helpers/objectSpread.js"));
+var _defineProperty2 = _interopRequireDefault(__webpack_require__(/*! @babel/runtime/helpers/defineProperty */ "./node_modules/@babel/runtime/helpers/defineProperty.js"));
 
 var _PathProxy = _interopRequireDefault(__webpack_require__(/*! ./PathProxy */ "./node_modules/ldflex/lib/PathProxy.js"));
 
@@ -66774,14 +66781,20 @@ var _JSONLDResolver = _interopRequireDefault(__webpack_require__(/*! ./JSONLDRes
 
 var _defaultHandlers = _interopRequireDefault(__webpack_require__(/*! ./defaultHandlers */ "./node_modules/ldflex/lib/defaultHandlers.js"));
 
+var _jsonldContextParser = __webpack_require__(/*! jsonld-context-parser */ "./node_modules/jsonld-context-parser/index.js");
+
+function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { keys.push.apply(keys, Object.getOwnPropertySymbols(object)); } if (enumerableOnly) keys = keys.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); return keys; }
+
+function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(source, true).forEach(function (key) { (0, _defineProperty2.default)(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(source).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
+
 /**
  * A PathFactory creates paths with default settings.
  */
 class PathFactory {
   constructor(settings, data) {
     // Store settings and data
-    this._settings = settings = (0, _objectSpread2.default)({}, settings);
-    this._data = data = (0, _objectSpread2.default)({}, data); // Prepare the handlers
+    this._settings = settings = _objectSpread({}, settings);
+    this._data = data = _objectSpread({}, data); // Prepare the handlers
 
     const handlers = settings.handlers || _defaultHandlers.default;
 
@@ -66791,7 +66804,14 @@ class PathFactory {
 
 
     const resolvers = (settings.resolvers || []).map(toResolver);
-    if (settings.context) resolvers.push(new _JSONLDResolver.default(settings.context)); // Instantiate PathProxy that will create the paths
+
+    if (settings.context) {
+      resolvers.push(new _JSONLDResolver.default(settings.context));
+      settings.parsedContext = new _jsonldContextParser.ContextParser().parse(settings.context);
+    } else {
+      settings.context = settings.parsedContext = {};
+    } // Instantiate PathProxy that will create the paths
+
 
     this._pathProxy = new _PathProxy.default({
       handlers,
@@ -66800,7 +66820,6 @@ class PathFactory {
 
     delete settings.handlers;
     delete settings.resolvers;
-    delete settings.context;
   }
   /**
    * Creates a path with the given (optional) settings and data.
@@ -66863,7 +66882,11 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.default = void 0;
 
-var _objectSpread2 = _interopRequireDefault(__webpack_require__(/*! @babel/runtime/helpers/objectSpread */ "./node_modules/@babel/runtime/helpers/objectSpread.js"));
+var _defineProperty2 = _interopRequireDefault(__webpack_require__(/*! @babel/runtime/helpers/defineProperty */ "./node_modules/@babel/runtime/helpers/defineProperty.js"));
+
+function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { keys.push.apply(keys, Object.getOwnPropertySymbols(object)); } if (enumerableOnly) keys = keys.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); return keys; }
+
+function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(source, true).forEach(function (key) { (0, _defineProperty2.default)(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(source).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
 
 const EMPTY = Object.create(null);
 /**
@@ -66904,16 +66927,17 @@ class PathProxy {
     // The settings parameter is optional
     if (data === undefined) [data, settings] = [settings, {}]; // Create the path's internal data object and the proxy that wraps it
 
-    const path = (0, _objectSpread2.default)({
+    const path = _objectSpread({
       settings
     }, data);
+
     const proxy = path.proxy = new Proxy(path, this); // Add an extendPath method to create child paths
 
     if (!path.extendPath) {
       const pathProxy = this;
 
       path.extendPath = function extendPath(newData, parent = this) {
-        return pathProxy.createPath(settings, (0, _objectSpread2.default)({
+        return pathProxy.createPath(settings, _objectSpread({
           parent,
           extendPath
         }, newData));
@@ -66946,6 +66970,105 @@ class PathProxy {
 }
 
 exports.default = PathProxy;
+
+/***/ }),
+
+/***/ "./node_modules/ldflex/lib/PredicatesHandler.js":
+/*!******************************************************!*\
+  !*** ./node_modules/ldflex/lib/PredicatesHandler.js ***!
+  \******************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+
+/**
+ * Queries for all predicates of a path subject
+ */
+class PredicatesHandler {
+  handle(pathData) {
+    return pathData.extendPath({
+      distinct: true,
+      select: '?predicate',
+      finalClause: queryVar => `${queryVar} ?predicate ?object.`,
+      property: pathData.property
+    });
+  }
+
+}
+
+exports.default = PredicatesHandler;
+
+/***/ }),
+
+/***/ "./node_modules/ldflex/lib/PropertiesHandler.js":
+/*!******************************************************!*\
+  !*** ./node_modules/ldflex/lib/PropertiesHandler.js ***!
+  \******************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+var _interopRequireDefault = __webpack_require__(/*! @babel/runtime/helpers/interopRequireDefault */ "./node_modules/@babel/runtime/helpers/interopRequireDefault.js");
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+
+var _awaitAsyncGenerator2 = _interopRequireDefault(__webpack_require__(/*! @babel/runtime/helpers/awaitAsyncGenerator */ "./node_modules/@babel/runtime/helpers/awaitAsyncGenerator.js"));
+
+var _wrapAsyncGenerator2 = _interopRequireDefault(__webpack_require__(/*! @babel/runtime/helpers/wrapAsyncGenerator */ "./node_modules/@babel/runtime/helpers/wrapAsyncGenerator.js"));
+
+var _asyncIterator2 = _interopRequireDefault(__webpack_require__(/*! @babel/runtime/helpers/asyncIterator */ "./node_modules/@babel/runtime/helpers/asyncIterator.js"));
+
+var _jsonldContextParser = __webpack_require__(/*! jsonld-context-parser */ "./node_modules/jsonld-context-parser/index.js");
+
+/**
+ * Queries for all compacted predicates of a path subject
+ */
+class PropertiesHandler {
+  handle(pathData, path) {
+    return (0, _wrapAsyncGenerator2.default)(function* () {
+      const context = (yield (0, _awaitAsyncGenerator2.default)(pathData.settings.parsedContext)) || {};
+      var _iteratorNormalCompletion = true;
+      var _didIteratorError = false;
+
+      var _iteratorError;
+
+      try {
+        for (var _iterator = (0, _asyncIterator2.default)(path.predicates), _step, _value; _step = yield (0, _awaitAsyncGenerator2.default)(_iterator.next()), _iteratorNormalCompletion = _step.done, _value = yield (0, _awaitAsyncGenerator2.default)(_step.value), !_iteratorNormalCompletion; _iteratorNormalCompletion = true) {
+          const predicate = _value;
+          yield _jsonldContextParser.ContextParser.compactIri(`${yield (0, _awaitAsyncGenerator2.default)(predicate)}`, context, true);
+        }
+      } catch (err) {
+        _didIteratorError = true;
+        _iteratorError = err;
+      } finally {
+        try {
+          if (!_iteratorNormalCompletion && _iterator.return != null) {
+            yield (0, _awaitAsyncGenerator2.default)(_iterator.return());
+          }
+        } finally {
+          if (_didIteratorError) {
+            throw _iteratorError;
+          }
+        }
+      }
+    })();
+  }
+
+}
+
+exports.default = PropertiesHandler;
 
 /***/ }),
 
@@ -67034,13 +67157,24 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 exports.default = void 0;
-
+const NEEDS_ESCAPE = /["\\\t\n\r\b\f\u0000-\u0019\ud800-\udbff]/,
+      ESCAPE_ALL = /["\\\t\n\r\b\f\u0000-\u0019]|[\ud800-\udbff][\udc00-\udfff]/g,
+      ESCAPED_CHARS = {
+  '\\': '\\\\',
+  '"': '\\"',
+  '\t': '\\t',
+  '\n': '\\n',
+  '\r': '\\r',
+  '\b': '\\b',
+  '\f': '\\f'
+};
 /**
  * Expresses a path or mutation as a SPARQL query.
  *
  * Requires:
  * - a mutationExpressions or pathExpression property on the path proxy
  */
+
 class SparqlHandler {
   async handle(pathData, path) {
     // First check if we have a mutation expression
@@ -67053,11 +67187,22 @@ class SparqlHandler {
   }
 
   pathExpressionToQuery(pathData, path, pathExpression) {
-    if (pathExpression.length < 2) throw new Error(`${pathData} should at least contain a subject and a predicate`); // Embed the basic graph pattern into a SPARQL query
+    if (pathExpression.length < 2 && !pathData.finalClause) throw new Error(`${pathData} should at least contain a subject and a predicate`); // Create triple patterns
 
-    const queryVar = this.createVar(pathData.property);
-    const clauses = this.expressionToTriplePatterns(pathExpression, queryVar);
-    return `SELECT ${queryVar} WHERE {\n  ${clauses.join('\n  ')}\n}`;
+    let queryVar = '?subject';
+    const clauses = [];
+
+    if (pathExpression.length > 1) {
+      queryVar = this.createVar(pathData.property);
+      clauses.push(...this.expressionToTriplePatterns(pathExpression, queryVar));
+    }
+
+    if (pathData.finalClause) clauses.push(pathData.finalClause(queryVar)); // Create SPARQL query body
+
+    const distinct = pathData.distinct ? 'DISTINCT ' : '';
+    const select = `SELECT ${distinct}${pathData.select ? pathData.select : queryVar}`;
+    const where = `WHERE {\n  ${clauses.join('\n  ')}\n}`;
+    return `${select} ${where}`;
   }
 
   mutationExpressionToQuery({
@@ -67104,7 +67249,7 @@ class SparqlHandler {
   } // Creates a unique query variable within the given scope, based on the suggestion
 
 
-  createVar(suggestion, scope) {
+  createVar(suggestion = '', scope) {
     let counter = 0;
     let label = `?${suggestion.match(/[a-z0-9]*$/i)[0] || 'result'}`;
 
@@ -67119,26 +67264,54 @@ class SparqlHandler {
 
 
   termToString(term) {
+    // Determine escaped value
+    let {
+      value
+    } = term;
+    if (NEEDS_ESCAPE.test(value)) value = value.replace(ESCAPE_ALL, escapeCharacter);
+
     switch (term.termType) {
       case 'NamedNode':
-        return `<${term.value}>`;
+        return `<${value}>`;
 
       case 'BlankNode':
-        return `_:${term.value}`;
+        return `_:${value}`;
 
       case 'Literal':
+        // Determine optional language or datatype
         let suffix = '';
         if (term.language) suffix = `@${term.language}`;else if (term.datatype.value !== 'http://www.w3.org/2001/XMLSchema#string') suffix = `^^<${term.datatype.value}>`;
-        return `"${term.value.replace(/"/g, '\\"')}"${suffix}`;
+        return `"${value}"${suffix}`;
 
       default:
         throw new Error(`Could not convert a term of type ${term.termType}`);
     }
   }
 
-}
+} // Replaces a character by its escaped version
+// (borrowed from https://www.npmjs.com/package/n3)
+
 
 exports.default = SparqlHandler;
+
+function escapeCharacter(character) {
+  // Replace a single character by its escaped version
+  let result = ESCAPED_CHARS[character];
+
+  if (result === undefined) {
+    // Replace a single character with its 4-bit unicode escape sequence
+    if (character.length === 1) {
+      result = character.charCodeAt(0).toString(16);
+      result = '\\u0000'.substr(0, 6 - result.length) + result;
+    } // Replace a surrogate pair with its 8-bit unicode escape sequence
+    else {
+        result = ((character.charCodeAt(0) - 0xD800) * 0x400 + character.charCodeAt(1) + 0x2400).toString(16);
+        result = '\\U00000000'.substr(0, 10 - result.length) + result;
+      }
+  }
+
+  return result;
+}
 
 /***/ }),
 
@@ -67241,6 +67414,40 @@ exports.default = SubjectHandler;
 
 /***/ }),
 
+/***/ "./node_modules/ldflex/lib/SubjectsHandler.js":
+/*!****************************************************!*\
+  !*** ./node_modules/ldflex/lib/SubjectsHandler.js ***!
+  \****************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+
+/**
+ * Queries for all predicates of a path subject
+ */
+class SubjectsHandler {
+  handle(pathData) {
+    return pathData.extendPath({
+      distinct: true,
+      select: '?subject',
+      finalClause: () => '?subject ?predicate ?object.',
+      property: pathData.property
+    });
+  }
+
+}
+
+exports.default = SubjectsHandler;
+
+/***/ }),
+
 /***/ "./node_modules/ldflex/lib/defaultHandlers.js":
 /*!****************************************************!*\
   !*** ./node_modules/ldflex/lib/defaultHandlers.js ***!
@@ -67262,6 +67469,10 @@ var _DataHandler = _interopRequireDefault(__webpack_require__(/*! ./DataHandler 
 
 var _SubjectHandler = _interopRequireDefault(__webpack_require__(/*! ./SubjectHandler */ "./node_modules/ldflex/lib/SubjectHandler.js"));
 
+var _PredicatesHandler = _interopRequireDefault(__webpack_require__(/*! ./PredicatesHandler */ "./node_modules/ldflex/lib/PredicatesHandler.js"));
+
+var _PropertiesHandler = _interopRequireDefault(__webpack_require__(/*! ./PropertiesHandler */ "./node_modules/ldflex/lib/PropertiesHandler.js"));
+
 var _PathExpressionHandler = _interopRequireDefault(__webpack_require__(/*! ./PathExpressionHandler */ "./node_modules/ldflex/lib/PathExpressionHandler.js"));
 
 var _SparqlHandler = _interopRequireDefault(__webpack_require__(/*! ./SparqlHandler */ "./node_modules/ldflex/lib/SparqlHandler.js"));
@@ -67275,6 +67486,8 @@ var _InsertFunctionHandler = _interopRequireDefault(__webpack_require__(/*! ./In
 var _SetFunctionHandler = _interopRequireDefault(__webpack_require__(/*! ./SetFunctionHandler */ "./node_modules/ldflex/lib/SetFunctionHandler.js"));
 
 var _ReplaceFunctionHandler = _interopRequireDefault(__webpack_require__(/*! ./ReplaceFunctionHandler */ "./node_modules/ldflex/lib/ReplaceFunctionHandler.js"));
+
+var _SubjectsHandler = _interopRequireDefault(__webpack_require__(/*! ./SubjectsHandler */ "./node_modules/ldflex/lib/SubjectsHandler.js"));
 
 var _DeleteFunctionHandler = _interopRequireDefault(__webpack_require__(/*! ./DeleteFunctionHandler */ "./node_modules/ldflex/lib/DeleteFunctionHandler.js"));
 
@@ -67310,8 +67523,11 @@ var _default = {
   () => subject ? (0, _iterableUtils.iteratorFor)(pathProxy.subject) : pathProxy.results[Symbol.asyncIterator](),
   // Add read and query functionality
   subject: new _SubjectHandler.default(),
+  properties: new _PropertiesHandler.default(),
+  predicates: new _PredicatesHandler.default(),
   pathExpression: new _PathExpressionHandler.default(),
   sparql: new _SparqlHandler.default(),
+  subjects: new _SubjectsHandler.default(),
   results: new _ExecuteQueryHandler.default(),
   // Add write functionality
   mutationExpressions: new _MutationExpressionsHandler.default(),
