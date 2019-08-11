@@ -1,5 +1,6 @@
 import { PathFactory, defaultHandlers } from 'ldflex';
-import contextDocument from './context.json';
+import context from './context.json';
+import ContextResolver from './ContextResolver';
 import SolidDeleteFunctionHandler from './SolidDeleteFunctionHandler';
 import FindActivityHandler from './FindActivityHandler';
 import CreateActivityHandler from './CreateActivityHandler';
@@ -9,14 +10,13 @@ import UserPathHandler from './UserPathHandler';
 import SubjectPathResolver from './SubjectPathResolver';
 import ComunicaUpdateEngine from './ComunicaUpdateEngine';
 
-const context = contextDocument['@context'];
-const { as } = context;
+const { as } = context['@context'];
+const contextResolver = new ContextResolver(context);
 
 let rootPath;
 
 // Creates data paths that start from a given subject
 const subjectPathFactory = new PathFactory({
-  context,
   handlers: {
     ...defaultHandlers,
 
@@ -44,6 +44,10 @@ const subjectPathFactory = new PathFactory({
     // The `root` property restarts the path from the root
     root: () => rootPath,
   },
+
+  resolvers: [
+    contextResolver,
+  ],
 });
 
 // Export the root path that resolves the first property access
@@ -61,7 +65,7 @@ export default rootPath = new PathFactory({
     clearCache: ({ settings }) => doc => settings.queryEngine.clearCache(doc),
 
     // Expose the JSON-LD context
-    context: () => context,
+    context: contextResolver,
   },
   // Handlers of all remaining properties
   resolvers: [

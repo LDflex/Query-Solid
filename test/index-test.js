@@ -23,8 +23,26 @@ describe('The @solid/ldflex module', () => {
     expect(data.__esModule).toBeUndefined();
   });
 
-  it('exposes the JSON-LD context', () => {
+  it('exposes the original JSON-LD context', () => {
     expect(data.context).toHaveProperty('as', 'https://www.w3.org/ns/activitystreams#');
+  });
+
+  it('exposes the expanded JSON-LD context', async () => {
+    expect(data.context).toHaveProperty('friend', 'foaf:knows');
+    expect(await data.context).toHaveProperty('friend', 'http://xmlns.com/foaf/0.1/knows');
+  });
+
+  it('allows extending the JSON-LD context', async () => {
+    const before = await data['https://foo.bar/#me']['ex:test'].sparql;
+    expect(before).toContain('<ex:test>');
+
+    await data.context.extend({
+      ex: 'https://example.org/foo#',
+    });
+
+    const after = await data['https://foo.bar/#me']['ex:test'].sparql;
+    expect(after).not.toContain('<ex:test>');
+    expect(after).toContain('https://example.org/foo#test');
   });
 
   describe('an URL path', () => {
