@@ -146,8 +146,9 @@ await solid.data.context.extend({      // add new JSON-LD context
 console.log(await solid.data.context); // the expanded JSON-LD context
 
 // Now we can use both existing and new properties
-console.log(await solid.data[ruben].name);
-console.log(await solid.data[ruben].preferred);
+const ruben = solid.data['https://ruben.verborgh.org/profile/#me'];
+console.log(await ruben.name);
+console.log(await ruben.preferred);
 ```
 
 Be aware though that this leads to expressions that are less portable,
