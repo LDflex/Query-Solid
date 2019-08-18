@@ -6131,7 +6131,7 @@ __export(__webpack_require__(/*! ./lib/ActorRdfParseN3 */ "./node_modules/@comun
 
 Object.defineProperty(exports, "__esModule", { value: true });
 const bus_rdf_parse_1 = __webpack_require__(/*! @comunica/bus-rdf-parse */ "./node_modules/@comunica/bus-rdf-parse/index.js");
-const n3_1 = __webpack_require__(/*! n3 */ "./node_modules/n3/N3.js");
+const n3_1 = __webpack_require__(/*! n3 */ "./node_modules/n3/src/index.js");
 /**
  * An N3 RDF Parse actor that listens on the 'rdf-parse' bus.
  *
@@ -7688,7 +7688,7 @@ __export(__webpack_require__(/*! ./lib/ActorRdfSerializeN3 */ "./node_modules/@c
 
 Object.defineProperty(exports, "__esModule", { value: true });
 const bus_rdf_serialize_1 = __webpack_require__(/*! @comunica/bus-rdf-serialize */ "./node_modules/@comunica/bus-rdf-serialize/index.js");
-const n3_1 = __webpack_require__(/*! n3 */ "./node_modules/n3/N3.js");
+const n3_1 = __webpack_require__(/*! n3 */ "./node_modules/n3/src/index.js");
 const stream_1 = __webpack_require__(/*! stream */ "./node_modules/stream-browserify/index.js");
 /**
  * A comunica N3 RDF Serialize Actor.
@@ -35184,7 +35184,7 @@ const sparqljs_1 = __webpack_require__(/*! sparqljs */ "./node_modules/sparqljs/
 const sparqljson_parse_1 = __webpack_require__(/*! sparqljson-parse */ "./node_modules/sparqljson-parse/index.js");
 const sparqlxml_parse_1 = __webpack_require__(/*! sparqlxml-parse */ "./node_modules/sparqlxml-parse/index.js");
 // tslint:disable-next-line:no-var-requires
-const n3 = __webpack_require__(/*! n3 */ "./node_modules/n3/N3.js");
+const n3 = __webpack_require__(/*! n3 */ "./node_modules/n3/src/index.js");
 /**
  * A SparqlEndpointFetcher can send queries to SPARQL endpoints,
  * and retrieve and parse the results.
@@ -62737,7 +62737,7 @@ class JSONLDResolver {
     // JavaScript requires keys containing colons to be quoted,
     // so prefixed names would need to written as path['foaf:knows'].
     // We thus allow writing path.foaf_knows or path.foaf$knows instead.
-    property = property.replace(/[_$]/, ':'); // Expand the property to a full IRI
+    property = property.replace(/^([a-z][a-z0-9]*)[_$]/i, '$1:'); // Expand the property to a full IRI
 
     const expandedProperty = _jsonldContextParser.ContextParser.expandTerm(property, (await this._context), true);
 
@@ -76852,39 +76852,20 @@ utils.encode = function encode(arr, enc) {
 
 /***/ }),
 
-/***/ "./node_modules/n3/N3.js":
-/*!*******************************!*\
-  !*** ./node_modules/n3/N3.js ***!
-  \*******************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-module.exports = {
-  DataFactory:  __webpack_require__(/*! ./lib/N3DataFactory */ "./node_modules/n3/lib/N3DataFactory.js"),
-  Lexer:        __webpack_require__(/*! ./lib/N3Lexer */ "./node_modules/n3/lib/N3Lexer.js"),
-  Parser:       __webpack_require__(/*! ./lib/N3Parser */ "./node_modules/n3/lib/N3Parser.js"),
-  Writer:       __webpack_require__(/*! ./lib/N3Writer */ "./node_modules/n3/lib/N3Writer.js"),
-  Store:        __webpack_require__(/*! ./lib/N3Store */ "./node_modules/n3/lib/N3Store.js"),
-  StreamParser: __webpack_require__(/*! ./lib/N3StreamParser */ "./node_modules/n3/lib/N3StreamParser.js"),
-  StreamWriter: __webpack_require__(/*! ./lib/N3StreamWriter */ "./node_modules/n3/lib/N3StreamWriter.js"),
-  Util:         __webpack_require__(/*! ./lib/N3Util */ "./node_modules/n3/lib/N3Util.js"),
-};
-
-
-/***/ }),
-
-/***/ "./node_modules/n3/lib/IRIs.js":
+/***/ "./node_modules/n3/src/IRIs.js":
 /*!*************************************!*\
-  !*** ./node_modules/n3/lib/IRIs.js ***!
+  !*** ./node_modules/n3/src/IRIs.js ***!
   \*************************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
 
+"use strict";
+__webpack_require__.r(__webpack_exports__);
 var RDF  = 'http://www.w3.org/1999/02/22-rdf-syntax-ns#',
     XSD  = 'http://www.w3.org/2001/XMLSchema#',
     SWAP = 'http://www.w3.org/2000/10/swap/';
 
-module.exports = {
+/* harmony default export */ __webpack_exports__["default"] = ({
   xsd: {
     decimal: XSD + 'decimal',
     boolean: XSD + 'boolean',
@@ -76909,29 +76890,32 @@ module.exports = {
   log: {
     implies: SWAP + 'log#implies',
   },
-};
+});
 
 
 /***/ }),
 
-/***/ "./node_modules/n3/lib/N3DataFactory.js":
+/***/ "./node_modules/n3/src/N3DataFactory.js":
 /*!**********************************************!*\
-  !*** ./node_modules/n3/lib/N3DataFactory.js ***!
+  !*** ./node_modules/n3/src/N3DataFactory.js ***!
   \**********************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
 
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _IRIs__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./IRIs */ "./node_modules/n3/src/IRIs.js");
 // N3.js implementations of the RDF/JS core data types
 // See https://github.com/rdfjs/representation-task-force/blob/master/interface-spec.md
 
-var namespaces = __webpack_require__(/*! ./IRIs */ "./node_modules/n3/lib/IRIs.js");
-var rdf = namespaces.rdf,
-    xsd = namespaces.xsd;
+
+const { rdf, xsd } = _IRIs__WEBPACK_IMPORTED_MODULE_0__["default"];
 
 var DataFactory, DEFAULTGRAPH;
 
 var _blankNodeCounter = 0;
 
+// ## Term constructor
 class Term {
   constructor(id) {
     this.id = id;
@@ -77168,7 +77152,32 @@ class Quad {
 }
 
 
-// ## DataFactory functions
+// ## DataFactory singleton
+DataFactory = {
+  // ### Public factory functions
+  namedNode,
+  blankNode,
+  variable,
+  literal,
+  defaultGraph,
+  quad,
+  triple: quad,
+
+  // ### Internal datatype constructors
+  internal: {
+    Term,
+    NamedNode,
+    BlankNode,
+    Variable,
+    Literal,
+    DefaultGraph,
+    Quad,
+    Triple: Quad,
+    fromId,
+    toId,
+  },
+};
+/* harmony default export */ __webpack_exports__["default"] = (DataFactory);
 
 // ### Creates an IRI
 function namedNode(iri) {
@@ -77230,48 +77239,24 @@ function quad(subject, predicate, object, graph) {
 }
 
 
-// ## Module exports
-module.exports = DataFactory = {
-  // ### Public factory functions
-  namedNode: namedNode,
-  blankNode: blankNode,
-  variable:  variable,
-  literal:   literal,
-  defaultGraph: defaultGraph,
-  quad:      quad,
-  triple:    quad,
-
-  // ### Internal datatype constructors
-  internal: {
-    Term:      Term,
-    NamedNode: NamedNode,
-    BlankNode: BlankNode,
-    Variable:  Variable,
-    Literal:   Literal,
-    DefaultGraph: DefaultGraph,
-    Quad:      Quad,
-    Triple:    Quad,
-    fromId:    fromId,
-    toId:      toId,
-  },
-};
-
-
 /***/ }),
 
-/***/ "./node_modules/n3/lib/N3Lexer.js":
+/***/ "./node_modules/n3/src/N3Lexer.js":
 /*!****************************************!*\
-  !*** ./node_modules/n3/lib/N3Lexer.js ***!
+  !*** ./node_modules/n3/src/N3Lexer.js ***!
   \****************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
 
-/* WEBPACK VAR INJECTION */(function(setImmediate, Buffer) {// **N3Lexer** tokenizes N3 documents.
-var xsd = __webpack_require__(/*! ./IRIs */ "./node_modules/n3/lib/IRIs.js").xsd;
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* WEBPACK VAR INJECTION */(function(setImmediate, Buffer) {/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return N3Lexer; });
+/* harmony import */ var _IRIs__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./IRIs */ "./node_modules/n3/src/IRIs.js");
+// **N3Lexer** tokenizes N3 documents.
 
-var fromCharCode = String.fromCharCode;
-var immediately = typeof setImmediate === 'function' ? setImmediate :
-                  function setImmediate(func) { setTimeout(func, 0); };
+const { xsd } = _IRIs__WEBPACK_IMPORTED_MODULE_0__["default"];
+
+const { fromCharCode } = String;
 
 // Regular expression and replacement string to escape N3 strings.
 // Note how we catch invalid unicode sequences separately (they will trigger an error).
@@ -77684,7 +77669,7 @@ class N3Lexer {
       this._input = input;
       // If a callback was passed, asynchronously call it
       if (typeof callback === 'function')
-        immediately(function () { self._tokenizeToEnd(callback, true); });
+        setImmediate(function () { self._tokenizeToEnd(callback, true); });
       // If no callback was passed, tokenize synchronously and return
       else {
         var tokens = [], error;
@@ -77728,25 +77713,27 @@ class N3Lexer {
   }
 }
 
-
-// ## Exports
-module.exports = N3Lexer;
-
 /* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./../../timers-browserify/main.js */ "./node_modules/timers-browserify/main.js").setImmediate, __webpack_require__(/*! ./../../buffer/index.js */ "./node_modules/buffer/index.js").Buffer))
 
 /***/ }),
 
-/***/ "./node_modules/n3/lib/N3Parser.js":
+/***/ "./node_modules/n3/src/N3Parser.js":
 /*!*****************************************!*\
-  !*** ./node_modules/n3/lib/N3Parser.js ***!
+  !*** ./node_modules/n3/src/N3Parser.js ***!
   \*****************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
 
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return N3Parser; });
+/* harmony import */ var _N3Lexer__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./N3Lexer */ "./node_modules/n3/src/N3Lexer.js");
+/* harmony import */ var _N3DataFactory__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./N3DataFactory */ "./node_modules/n3/src/N3DataFactory.js");
+/* harmony import */ var _IRIs__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./IRIs */ "./node_modules/n3/src/IRIs.js");
 // **N3Parser** parses N3 documents.
-var Lexer = __webpack_require__(/*! ./N3Lexer */ "./node_modules/n3/lib/N3Lexer.js"),
-    DataFactory = __webpack_require__(/*! ./N3DataFactory */ "./node_modules/n3/lib/N3DataFactory.js"),
-    namespaces = __webpack_require__(/*! ./IRIs */ "./node_modules/n3/lib/IRIs.js");
+
+
+
 
 // The next ID for new blank nodes
 var blankNodePrefix = 0, blankNodeCount = 0;
@@ -77777,7 +77764,7 @@ class N3Parser {
       this._resolveRelativeIRI = function (iri) { return ''; };
     this._blankNodePrefix = typeof options.blankNodePrefix !== 'string' ? '' :
                               options.blankNodePrefix.replace(/^(?!_:)/, '_:');
-    this._lexer = options.lexer || new Lexer({ lineMode: isLineMode, n3: isN3 });
+    this._lexer = options.lexer || new _N3Lexer__WEBPACK_IMPORTED_MODULE_0__["default"]({ lineMode: isLineMode, n3: isN3 });
     // Disable explicit quantifiers by default
     this._explicitQuantifiers = !!options.explicitQuantifiers;
   }
@@ -78690,39 +78677,41 @@ function initDataFactory(parser, factory) {
   parser.DEFAULTGRAPH = factory.defaultGraph();
 
   // Set common named nodes
-  parser.RDF_FIRST  = namedNode(namespaces.rdf.first);
-  parser.RDF_REST   = namedNode(namespaces.rdf.rest);
-  parser.RDF_NIL    = namedNode(namespaces.rdf.nil);
-  parser.N3_FORALL  = namedNode(namespaces.r.forAll);
-  parser.N3_FORSOME = namedNode(namespaces.r.forSome);
+  parser.RDF_FIRST  = namedNode(_IRIs__WEBPACK_IMPORTED_MODULE_2__["default"].rdf.first);
+  parser.RDF_REST   = namedNode(_IRIs__WEBPACK_IMPORTED_MODULE_2__["default"].rdf.rest);
+  parser.RDF_NIL    = namedNode(_IRIs__WEBPACK_IMPORTED_MODULE_2__["default"].rdf.nil);
+  parser.N3_FORALL  = namedNode(_IRIs__WEBPACK_IMPORTED_MODULE_2__["default"].r.forAll);
+  parser.N3_FORSOME = namedNode(_IRIs__WEBPACK_IMPORTED_MODULE_2__["default"].r.forSome);
   parser.ABBREVIATIONS = {
-    'a': namedNode(namespaces.rdf.type),
-    '=': namedNode(namespaces.owl.sameAs),
-    '>': namedNode(namespaces.log.implies),
+    'a': namedNode(_IRIs__WEBPACK_IMPORTED_MODULE_2__["default"].rdf.type),
+    '=': namedNode(_IRIs__WEBPACK_IMPORTED_MODULE_2__["default"].owl.sameAs),
+    '>': namedNode(_IRIs__WEBPACK_IMPORTED_MODULE_2__["default"].log.implies),
   };
   parser.QUANTIFIERS_GRAPH = namedNode('urn:n3:quantifiers');
 }
-initDataFactory(N3Parser.prototype, DataFactory);
-
-// ## Exports
-module.exports = N3Parser;
+initDataFactory(N3Parser.prototype, _N3DataFactory__WEBPACK_IMPORTED_MODULE_1__["default"]);
 
 
 /***/ }),
 
-/***/ "./node_modules/n3/lib/N3Store.js":
+/***/ "./node_modules/n3/src/N3Store.js":
 /*!****************************************!*\
-  !*** ./node_modules/n3/lib/N3Store.js ***!
+  !*** ./node_modules/n3/src/N3Store.js ***!
   \****************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
 
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return N3Store; });
+/* harmony import */ var _N3DataFactory__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./N3DataFactory */ "./node_modules/n3/src/N3DataFactory.js");
+/* harmony import */ var stream__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! stream */ "./node_modules/stream-browserify/index.js");
+/* harmony import */ var stream__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(stream__WEBPACK_IMPORTED_MODULE_1__);
 // **N3Store** objects store N3 quads by graph in memory.
 
-var DataFactory = __webpack_require__(/*! ./N3DataFactory */ "./node_modules/n3/lib/N3DataFactory.js"),
-    Readable = __webpack_require__(/*! stream */ "./node_modules/stream-browserify/index.js").Readable;
-var toId = DataFactory.internal.toId,
-    fromId = DataFactory.internal.fromId;
+
+
+const { toId, fromId } = _N3DataFactory__WEBPACK_IMPORTED_MODULE_0__["default"].internal;
 
 // ## Constructor
 class N3Store {
@@ -78744,7 +78733,7 @@ class N3Store {
     if (!options && quads && !quads[0])
       options = quads, quads = null;
     options = options || {};
-    this._factory = options.factory || DataFactory;
+    this._factory = options.factory || _N3DataFactory__WEBPACK_IMPORTED_MODULE_0__["default"];
 
     // Add quads if passed
     if (quads)
@@ -79097,7 +79086,7 @@ class N3Store {
   // Setting any field to `undefined` or `null` indicates a wildcard.
   match(subject, predicate, object, graph) {
     var self = this;
-    var stream = new Readable({ objectMode: true });
+    var stream = new stream__WEBPACK_IMPORTED_MODULE_1__["Readable"]({ objectMode: true });
 
     // Initialize stream once it is being read
     stream._read = function () {
@@ -79420,31 +79409,34 @@ function isString(s) {
   return typeof s === 'string' || s instanceof String;
 }
 
-// ## Exports
-module.exports = N3Store;
-
 
 /***/ }),
 
-/***/ "./node_modules/n3/lib/N3StreamParser.js":
+/***/ "./node_modules/n3/src/N3StreamParser.js":
 /*!***********************************************!*\
-  !*** ./node_modules/n3/lib/N3StreamParser.js ***!
+  !*** ./node_modules/n3/src/N3StreamParser.js ***!
   \***********************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
 
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return N3StreamParser; });
+/* harmony import */ var _N3Parser__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./N3Parser */ "./node_modules/n3/src/N3Parser.js");
+/* harmony import */ var stream__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! stream */ "./node_modules/stream-browserify/index.js");
+/* harmony import */ var stream__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(stream__WEBPACK_IMPORTED_MODULE_1__);
 // **N3StreamParser** parses a text stream into a quad stream.
-var Transform = __webpack_require__(/*! stream */ "./node_modules/stream-browserify/index.js").Transform,
-    N3Parser = __webpack_require__(/*! ./N3Parser.js */ "./node_modules/n3/lib/N3Parser.js");
+
+
 
 // ## Constructor
-class N3StreamParser extends Transform {
+class N3StreamParser extends stream__WEBPACK_IMPORTED_MODULE_1__["Transform"] {
   constructor(options) {
     super({ decodeStrings: true });
     this._readableState.objectMode = true;
 
     // Set up parser with dummy stream to obtain `data` and `end` callbacks
-    var self = this, parser = new N3Parser(options), onData, onEnd;
+    var self = this, parser = new _N3Parser__WEBPACK_IMPORTED_MODULE_0__["default"](options), onData, onEnd;
     parser.parse({
       on: function (event, callback) {
         switch (event) {
@@ -79474,32 +79466,35 @@ class N3StreamParser extends Transform {
   }
 }
 
-// ## Exports
-module.exports = N3StreamParser;
-
 
 /***/ }),
 
-/***/ "./node_modules/n3/lib/N3StreamWriter.js":
+/***/ "./node_modules/n3/src/N3StreamWriter.js":
 /*!***********************************************!*\
-  !*** ./node_modules/n3/lib/N3StreamWriter.js ***!
+  !*** ./node_modules/n3/src/N3StreamWriter.js ***!
   \***********************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
 
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return N3StreamWriter; });
+/* harmony import */ var stream__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! stream */ "./node_modules/stream-browserify/index.js");
+/* harmony import */ var stream__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(stream__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _N3Writer__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./N3Writer */ "./node_modules/n3/src/N3Writer.js");
 // **N3StreamWriter** serializes a quad stream into a text stream.
-var Transform = __webpack_require__(/*! stream */ "./node_modules/stream-browserify/index.js").Transform,
-    N3Writer = __webpack_require__(/*! ./N3Writer.js */ "./node_modules/n3/lib/N3Writer.js");
+
+
 
 // ## Constructor
-class N3StreamWriter extends Transform {
+class N3StreamWriter extends stream__WEBPACK_IMPORTED_MODULE_0__["Transform"] {
   constructor(options) {
     super({ encoding: 'utf8' });
     this._writableState.objectMode = true;
 
     // Set up writer with a dummy stream object
     var self = this;
-    var writer = this._writer = new N3Writer({
+    var writer = this._writer = new _N3Writer__WEBPACK_IMPORTED_MODULE_1__["default"]({
       write: function (quad, encoding, callback) { self.push(quad); callback && callback(); },
       end: function (callback) { self.push(null); callback && callback(); },
     }, options);
@@ -79521,111 +79516,115 @@ class N3StreamWriter extends Transform {
 }
 
 
-
-// ## Exports
-module.exports = N3StreamWriter;
-
-
 /***/ }),
 
-/***/ "./node_modules/n3/lib/N3Util.js":
+/***/ "./node_modules/n3/src/N3Util.js":
 /*!***************************************!*\
-  !*** ./node_modules/n3/lib/N3Util.js ***!
+  !*** ./node_modules/n3/src/N3Util.js ***!
   \***************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
+/*! exports provided: isNamedNode, isBlankNode, isLiteral, isVariable, isDefaultGraph, inDefaultGraph, prefix, prefixes */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
 
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "isNamedNode", function() { return isNamedNode; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "isBlankNode", function() { return isBlankNode; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "isLiteral", function() { return isLiteral; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "isVariable", function() { return isVariable; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "isDefaultGraph", function() { return isDefaultGraph; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "inDefaultGraph", function() { return inDefaultGraph; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "prefix", function() { return prefix; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "prefixes", function() { return prefixes; });
+/* harmony import */ var _N3DataFactory__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./N3DataFactory */ "./node_modules/n3/src/N3DataFactory.js");
 // **N3Util** provides N3 utility functions.
 
-var DataFactory = __webpack_require__(/*! ./N3DataFactory */ "./node_modules/n3/lib/N3DataFactory.js");
 
-var N3Util = {
-  // Tests whether the given term represents an IRI
-  isNamedNode: function (term) {
-    return !!term && term.termType === 'NamedNode';
-  },
 
-  // Tests whether the given term represents a blank node
-  isBlankNode: function (term) {
-    return !!term && term.termType === 'BlankNode';
-  },
+// Tests whether the given term represents an IRI
+function isNamedNode(term) {
+  return !!term && term.termType === 'NamedNode';
+}
 
-  // Tests whether the given term represents a literal
-  isLiteral: function (term) {
-    return !!term && term.termType === 'Literal';
-  },
+// Tests whether the given term represents a blank node
+function isBlankNode(term) {
+  return !!term && term.termType === 'BlankNode';
+}
 
-  // Tests whether the given term represents a variable
-  isVariable: function (term) {
-    return !!term && term.termType === 'Variable';
-  },
+// Tests whether the given term represents a literal
+function isLiteral(term) {
+  return !!term && term.termType === 'Literal';
+}
 
-  // Tests whether the given term represents the default graph
-  isDefaultGraph: function (term) {
-    return !!term && term.termType === 'DefaultGraph';
-  },
+// Tests whether the given term represents a variable
+function isVariable(term) {
+  return !!term && term.termType === 'Variable';
+}
 
-  // Tests whether the given quad is in the default graph
-  inDefaultGraph: function (quad) {
-    return N3Util.isDefaultGraph(quad.graph);
-  },
+// Tests whether the given term represents the default graph
+function isDefaultGraph(term) {
+  return !!term && term.termType === 'DefaultGraph';
+}
 
-  // Creates a function that prepends the given IRI to a local name
-  prefix: function (iri, factory) {
-    return N3Util.prefixes({ '': iri }, factory)('');
-  },
+// Tests whether the given quad is in the default graph
+function inDefaultGraph(quad) {
+  return isDefaultGraph(quad.graph);
+}
 
-  // Creates a function that allows registering and expanding prefixes
-  prefixes: function (defaultPrefixes, factory) {
-    // Add all of the default prefixes
-    var prefixes = Object.create(null);
-    for (var prefix in defaultPrefixes)
-      processPrefix(prefix, defaultPrefixes[prefix]);
-    // Set the default factory if none was specified
-    factory = factory || DataFactory;
+// Creates a function that prepends the given IRI to a local name
+function prefix(iri, factory) {
+  return prefixes({ '': iri }, factory)('');
+}
 
-    // Registers a new prefix (if an IRI was specified)
-    // or retrieves a function that expands an existing prefix (if no IRI was specified)
-    function processPrefix(prefix, iri) {
-      // Create a new prefix if an IRI is specified or the prefix doesn't exist
-      if (typeof iri === 'string') {
-        // Create a function that expands the prefix
-        var cache = Object.create(null);
-        prefixes[prefix] = function (local) {
-          return cache[local] || (cache[local] = factory.namedNode(iri + local));
-        };
-      }
-      else if (!(prefix in prefixes)) {
-        throw new Error('Unknown prefix: ' + prefix);
-      }
-      return prefixes[prefix];
+// Creates a function that allows registering and expanding prefixes
+function prefixes(defaultPrefixes, factory) {
+  // Add all of the default prefixes
+  var prefixes = Object.create(null);
+  for (var prefix in defaultPrefixes)
+    processPrefix(prefix, defaultPrefixes[prefix]);
+  // Set the default factory if none was specified
+  factory = factory || _N3DataFactory__WEBPACK_IMPORTED_MODULE_0__["default"];
+
+  // Registers a new prefix (if an IRI was specified)
+  // or retrieves a function that expands an existing prefix (if no IRI was specified)
+  function processPrefix(prefix, iri) {
+    // Create a new prefix if an IRI is specified or the prefix doesn't exist
+    if (typeof iri === 'string') {
+      // Create a function that expands the prefix
+      var cache = Object.create(null);
+      prefixes[prefix] = function (local) {
+        return cache[local] || (cache[local] = factory.namedNode(iri + local));
+      };
     }
-    return processPrefix;
-  },
-};
-
-// ## Exports
-module.exports = N3Util;
+    else if (!(prefix in prefixes)) {
+      throw new Error('Unknown prefix: ' + prefix);
+    }
+    return prefixes[prefix];
+  }
+  return processPrefix;
+}
 
 
 /***/ }),
 
-/***/ "./node_modules/n3/lib/N3Writer.js":
+/***/ "./node_modules/n3/src/N3Writer.js":
 /*!*****************************************!*\
-  !*** ./node_modules/n3/lib/N3Writer.js ***!
+  !*** ./node_modules/n3/src/N3Writer.js ***!
   \*****************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
 
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return N3Writer; });
+/* harmony import */ var _IRIs__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./IRIs */ "./node_modules/n3/src/IRIs.js");
+/* harmony import */ var _N3DataFactory__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./N3DataFactory */ "./node_modules/n3/src/N3DataFactory.js");
 // **N3Writer** writes N3 documents.
 
-var namespaces = __webpack_require__(/*! ./IRIs */ "./node_modules/n3/lib/IRIs.js"),
-    DataFactory = __webpack_require__(/*! ./N3DataFactory */ "./node_modules/n3/lib/N3DataFactory.js");
 
-var DEFAULTGRAPH = DataFactory.defaultGraph();
 
-var rdf = namespaces.rdf,
-    xsd = namespaces.xsd;
+const DEFAULTGRAPH = _N3DataFactory__WEBPACK_IMPORTED_MODULE_1__["default"].defaultGraph();
+
+const { rdf, xsd } = _IRIs__WEBPACK_IMPORTED_MODULE_0__["default"];
 
 // Characters in literals that require escaping
 var escape    = /["\\\t\n\r\b\f\u0000-\u0019\ud800-\udbff]/,
@@ -79636,7 +79635,7 @@ var escape    = /["\\\t\n\r\b\f\u0000-\u0019\ud800-\udbff]/,
     };
 
 // ## Placeholder class to represent already pretty-printed terms
-class SerializedTerm extends DataFactory.internal.Term {
+class SerializedTerm extends _N3DataFactory__WEBPACK_IMPORTED_MODULE_1__["default"].internal.Term {
   // Pretty-printed nodes are not equal to any other node
   // (e.g., [] does not equal [])
   equals() {
@@ -79946,8 +79945,51 @@ function characterReplacer(character) {
   return result;
 }
 
-// ## Exports
-module.exports = N3Writer;
+
+/***/ }),
+
+/***/ "./node_modules/n3/src/index.js":
+/*!**************************************!*\
+  !*** ./node_modules/n3/src/index.js ***!
+  \**************************************/
+/*! exports provided: DataFactory, Lexer, Parser, Writer, Store, StreamParser, StreamWriter, Util */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _N3DataFactory__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./N3DataFactory */ "./node_modules/n3/src/N3DataFactory.js");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "DataFactory", function() { return _N3DataFactory__WEBPACK_IMPORTED_MODULE_0__["default"]; });
+
+/* harmony import */ var _N3Lexer__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./N3Lexer */ "./node_modules/n3/src/N3Lexer.js");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "Lexer", function() { return _N3Lexer__WEBPACK_IMPORTED_MODULE_1__["default"]; });
+
+/* harmony import */ var _N3Parser__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./N3Parser */ "./node_modules/n3/src/N3Parser.js");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "Parser", function() { return _N3Parser__WEBPACK_IMPORTED_MODULE_2__["default"]; });
+
+/* harmony import */ var _N3Writer__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./N3Writer */ "./node_modules/n3/src/N3Writer.js");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "Writer", function() { return _N3Writer__WEBPACK_IMPORTED_MODULE_3__["default"]; });
+
+/* harmony import */ var _N3Store__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./N3Store */ "./node_modules/n3/src/N3Store.js");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "Store", function() { return _N3Store__WEBPACK_IMPORTED_MODULE_4__["default"]; });
+
+/* harmony import */ var _N3StreamParser__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./N3StreamParser */ "./node_modules/n3/src/N3StreamParser.js");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "StreamParser", function() { return _N3StreamParser__WEBPACK_IMPORTED_MODULE_5__["default"]; });
+
+/* harmony import */ var _N3StreamWriter__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./N3StreamWriter */ "./node_modules/n3/src/N3StreamWriter.js");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "StreamWriter", function() { return _N3StreamWriter__WEBPACK_IMPORTED_MODULE_6__["default"]; });
+
+/* harmony import */ var _N3Util__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./N3Util */ "./node_modules/n3/src/N3Util.js");
+/* harmony reexport (module object) */ __webpack_require__.d(__webpack_exports__, "Util", function() { return _N3Util__WEBPACK_IMPORTED_MODULE_7__; });
+
+
+
+
+
+
+
+
+
+
 
 
 /***/ }),
@@ -84794,7 +84836,7 @@ __export(__webpack_require__(/*! ./TypeHandlerString */ "./node_modules/rdf-lite
 "use strict";
 
 Object.defineProperty(exports, "__esModule", { value: true });
-const n3_1 = __webpack_require__(/*! n3 */ "./node_modules/n3/N3.js");
+const n3_1 = __webpack_require__(/*! n3 */ "./node_modules/n3/src/index.js");
 /**
  * Import all quads in the given stream into a new RDF store.
  *
