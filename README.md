@@ -10,7 +10,7 @@ through [LDflex](https://github.com/RubenVerborgh/LDflex) expressions
 This library brings the [LDflex](https://github.com/RubenVerborgh/LDflex) language
 to Solid by:
 
-1. providing a [JSON-LD context for Solid](https://github.com/solid/query-ldflex/blob/master/src/context.json)
+1. setting a [JSON-LD context for Solid](https://github.com/solid/context)
 2. binding a query engine ([Comunica](https://github.com/RubenVerborgh/LDflex-Comunica))
 3. exposing useful [data paths](#data-paths)
 
@@ -57,7 +57,7 @@ which can be:
   such as `http://xmlns.com/foaf/0.1/givenName`
 
 The abbreviations and prefixed names are expanded
-using the [JSON-LD context](https://github.com/solid/query-ldflex/blob/master/src/context.json).
+using a [JSON-LD context](https://github.com/solid/context/blob/master/context.json).
 You can find some inspiration about what to ask for in this context.
 
 You can access data using any vocabulary you want
@@ -134,7 +134,7 @@ document.addEventListener('DOMContentLoaded', async () => {
 ```
 
 ### Adding a custom JSON-LD context
-In addition to the built-in [Solid properties](https://github.com/solid/query-ldflex/blob/master/src/context.json),
+In addition to the [default properties](https://github.com/solid/context/blob/master/context.json),
 you might want to support your own:
 
 ```javascript

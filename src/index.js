@@ -1,5 +1,5 @@
 import { PathFactory, defaultHandlers } from 'ldflex';
-import context from './context.json';
+import context from '@solid/context';
 import ContextResolver from './ContextResolver';
 import SolidDeleteFunctionHandler from './SolidDeleteFunctionHandler';
 import FindActivityHandler from './FindActivityHandler';

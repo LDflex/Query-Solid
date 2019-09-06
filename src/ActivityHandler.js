@@ -1,6 +1,6 @@
 import { toIterablePromise } from 'ldflex';
 import { namedNode } from '@rdfjs/data-model';
-import context from './context.json';
+import context from '@solid/context';
 
 const { as } = context['@context'];
 
