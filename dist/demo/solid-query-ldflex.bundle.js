@@ -11705,6 +11705,17 @@ module.exports = Variable
 
 /***/ }),
 
+/***/ "./node_modules/@solid/context/context.json":
+/*!**************************************************!*\
+  !*** ./node_modules/@solid/context/context.json ***!
+  \**************************************************/
+/*! exports provided: @context, default */
+/***/ (function(module) {
+
+module.exports = JSON.parse("{\"@context\":{\"acl\":\"http://www.w3.org/ns/auth/acl#\",\"app\":\"http://www.w3.org/ns/solid/app#\",\"as\":\"https://www.w3.org/ns/activitystreams#\",\"cert\":\"http://www.w3.org/ns/auth/cert#\",\"dc\":\"http://purl.org/dc/elements/1.1/\",\"dct\":\"http://purl.org/dc/terms/\",\"foaf\":\"http://xmlns.com/foaf/0.1/\",\"ldp\":\"http://www.w3.org/ns/ldp#\",\"owl\":\"http://www.w3.org/2002/07/owl#\",\"pim\":\"http://www.w3.org/ns/pim/space#\",\"rdf\":\"http://www.w3.org/1999/02/22-rdf-syntax-ns#\",\"rdfs\":\"http://www.w3.org/2000/01/rdf-schema#\",\"schema\":\"http://schema.org/\",\"sioc\":\"http://rdfs.org/sioc/ns#\",\"solid\":\"http://www.w3.org/ns/solid/terms#\",\"stat\":\"http://www.w3.org/ns/posix/stat#\",\"vcard\":\"http://www.w3.org/2006/vcard/ns#\",\"xsd\":\"http://www.w3.org/2001/XMLSchema#\",\"accessControl\":\"acl:accessControl\",\"accessTo\":\"acl:accessTo\",\"accessToClass\":\"acl:accessToClass\",\"agent\":\"acl:agent\",\"agents\":\"acl:agent\",\"agentClass\":\"acl:agentClass\",\"agentClasses\":\"acl:agentClass\",\"agentGroup\":\"acl:agentGroup\",\"agentGroups\":\"acl:agentGroup\",\"defaultAcl\":\"acl:default\",\"defaultAclForNew\":\"acl:defaultForNew\",\"delegates\":\"acl:delegates\",\"mode\":\"acl:mode\",\"modes\":\"acl:mode\",\"origin\":\"acl:origin\",\"origins\":\"acl:origin\",\"actor\":\"as:actor\",\"attachment\":\"as:attachment\",\"attributedTo\":\"as:attributedTo\",\"author\":\"as:author\",\"bcc\":\"as:bcc\",\"bto\":\"as:bto\",\"cc\":\"as:cc\",\"inReplyTo\":\"as:inReplyTo\",\"object\":\"as:object\",\"publicationDate\":\"as:published\",\"subject\":\"as:subject\",\"summary\":\"as:summary\",\"target\":\"as:target\",\"to\":\"as:to\",\"abstract\":\"dc:abstract\",\"abstracts\":\"dc:abstract\",\"created\":\"dc:created\",\"license\":\"dc:license\",\"modified\":\"dc:modified\",\"title\":\"dc:title\",\"titles\":\"dc:title\",\"account\":\"foaf:account\",\"accounts\":\"foaf:account\",\"age\":\"foaf:age\",\"basedNear\":\"foaf:based_near\",\"birthday\":\"foaf:birthday\",\"blog\":\"foaf:weblog\",\"depiction\":\"foaf:depiction\",\"depicts\":\"foaf:depicts\",\"email\":\"foaf:mbox\",\"familyName\":\"foaf:familyName\",\"firstName\":\"foaf:givenName\",\"friend\":\"foaf:knows\",\"friends\":\"foaf:knows\",\"gender\":\"foaf:gender\",\"givenName\":\"foaf:givenName\",\"homepage\":\"foaf:homepage\",\"image\":\"foaf:img\",\"images\":\"foaf:img\",\"interest\":\"foaf:topic_interest\",\"interests\":\"foaf:topic_interest\",\"knows\":\"foaf:knows\",\"lastName\":\"foaf:familyName\",\"logo\":\"foaf:logo\",\"made\":\"foaf:made\",\"maker\":\"foaf:maker\",\"member\":\"foaf:member\",\"name\":\"foaf:name\",\"nick\":\"foaf:nick\",\"page\":\"foaf:page\",\"pages\":\"foaf:page\",\"primaryTopic\":\"foaf:primaryTopic\",\"primaryTopicOf\":\"foaf:primaryTopicOf\",\"publication\":\"foaf:publications\",\"publications\":\"foaf:publications\",\"thumbnail\":\"foaf:thumbnail\",\"thumbnails\":\"foaf:thumbnail\",\"topic\":\"foaf:topic\",\"topics\":\"foaf:topic\",\"inbox\":\"ldp:inbox\",\"inboxes\":\"ldp:inbox\",\"storage\":\"pim:storage\",\"preferences\":\"pim:preferencesFile\",\"workspace\":\"pim:workspace\",\"type\":\"rdf:type\",\"types\":\"rdf:type\",\"comment\":\"rdfs:comment\",\"comments\":\"rdfs:comment\",\"label\":\"rdfs:label\",\"labels\":\"rdfs:label\",\"seeAlso\":\"rdfs:seeAlso\",\"definedBy\":\"rdfs:isDefinedBy\",\"oidcIssuer\":\"solid:oidcIssuer\",\"publicTypeIndex\":\"solid:publicTypeIndex\",\"publicTypeIndexes\":\"solid:publicTypeIndex\",\"privateTypeIndex\":\"solid:privateTypeIndex\",\"privateTypeIndexes\":\"solid:privateTypeIndex\"}}");
+
+/***/ }),
+
 /***/ "./node_modules/JSONStream/index.js":
 /*!******************************************!*\
   !*** ./node_modules/JSONStream/index.js ***!
@@ -31054,8 +31065,9 @@ Point.prototype.getY = function getY() {
 
 Point.prototype.mul = function mul(k) {
   k = new BN(k, 16);
-
-  if (this._hasDoubles(k))
+  if (this.isInfinity())
+    return this;
+  else if (this._hasDoubles(k))
     return this.curve._fixedNafMul(this, k);
   else if (this.curve.endo)
     return this.curve._endoWnafMulAdd([ this ], [ k ]);
@@ -33562,7 +33574,7 @@ utils.intFromLE = intFromLE;
 /*! exports provided: name, version, description, main, files, scripts, repository, keywords, author, license, bugs, homepage, devDependencies, dependencies, _resolved, _integrity, _from, default */
 /***/ (function(module) {
 
-module.exports = JSON.parse("{\"name\":\"elliptic\",\"version\":\"6.5.0\",\"description\":\"EC cryptography\",\"main\":\"lib/elliptic.js\",\"files\":[\"lib\"],\"scripts\":{\"jscs\":\"jscs benchmarks/*.js lib/*.js lib/**/*.js lib/**/**/*.js test/index.js\",\"jshint\":\"jscs benchmarks/*.js lib/*.js lib/**/*.js lib/**/**/*.js test/index.js\",\"lint\":\"npm run jscs && npm run jshint\",\"unit\":\"istanbul test _mocha --reporter=spec test/index.js\",\"test\":\"npm run lint && npm run unit\",\"version\":\"grunt dist && git add dist/\"},\"repository\":{\"type\":\"git\",\"url\":\"git@github.com:indutny/elliptic\"},\"keywords\":[\"EC\",\"Elliptic\",\"curve\",\"Cryptography\"],\"author\":\"Fedor Indutny <fedor@indutny.com>\",\"license\":\"MIT\",\"bugs\":{\"url\":\"https://github.com/indutny/elliptic/issues\"},\"homepage\":\"https://github.com/indutny/elliptic\",\"devDependencies\":{\"brfs\":\"^1.4.3\",\"coveralls\":\"^2.11.3\",\"grunt\":\"^0.4.5\",\"grunt-browserify\":\"^5.0.0\",\"grunt-cli\":\"^1.2.0\",\"grunt-contrib-connect\":\"^1.0.0\",\"grunt-contrib-copy\":\"^1.0.0\",\"grunt-contrib-uglify\":\"^1.0.1\",\"grunt-mocha-istanbul\":\"^3.0.1\",\"grunt-saucelabs\":\"^8.6.2\",\"istanbul\":\"^0.4.2\",\"jscs\":\"^2.9.0\",\"jshint\":\"^2.6.0\",\"mocha\":\"^2.1.0\"},\"dependencies\":{\"bn.js\":\"^4.4.0\",\"brorand\":\"^1.0.1\",\"hash.js\":\"^1.0.0\",\"hmac-drbg\":\"^1.0.0\",\"inherits\":\"^2.0.1\",\"minimalistic-assert\":\"^1.0.0\",\"minimalistic-crypto-utils\":\"^1.0.0\"},\"_resolved\":\"https://registry.npmjs.org/elliptic/-/elliptic-6.5.0.tgz\",\"_integrity\":\"sha512-eFOJTMyCYb7xtE/caJ6JJu+bhi67WCYNbkGSknu20pmM8Ke/bqOfdnZWxyoGN26JgfxTbXrsCkEw4KheCT/KGg==\",\"_from\":\"elliptic@6.5.0\"}");
+module.exports = JSON.parse("{\"name\":\"elliptic\",\"version\":\"6.5.1\",\"description\":\"EC cryptography\",\"main\":\"lib/elliptic.js\",\"files\":[\"lib\"],\"scripts\":{\"jscs\":\"jscs benchmarks/*.js lib/*.js lib/**/*.js lib/**/**/*.js test/index.js\",\"jshint\":\"jscs benchmarks/*.js lib/*.js lib/**/*.js lib/**/**/*.js test/index.js\",\"lint\":\"npm run jscs && npm run jshint\",\"unit\":\"istanbul test _mocha --reporter=spec test/index.js\",\"test\":\"npm run lint && npm run unit\",\"version\":\"grunt dist && git add dist/\"},\"repository\":{\"type\":\"git\",\"url\":\"git@github.com:indutny/elliptic\"},\"keywords\":[\"EC\",\"Elliptic\",\"curve\",\"Cryptography\"],\"author\":\"Fedor Indutny <fedor@indutny.com>\",\"license\":\"MIT\",\"bugs\":{\"url\":\"https://github.com/indutny/elliptic/issues\"},\"homepage\":\"https://github.com/indutny/elliptic\",\"devDependencies\":{\"brfs\":\"^1.4.3\",\"coveralls\":\"^3.0.4\",\"grunt\":\"^1.0.4\",\"grunt-browserify\":\"^5.0.0\",\"grunt-cli\":\"^1.2.0\",\"grunt-contrib-connect\":\"^1.0.0\",\"grunt-contrib-copy\":\"^1.0.0\",\"grunt-contrib-uglify\":\"^1.0.1\",\"grunt-mocha-istanbul\":\"^3.0.1\",\"grunt-saucelabs\":\"^9.0.1\",\"istanbul\":\"^0.4.2\",\"jscs\":\"^3.0.7\",\"jshint\":\"^2.6.0\",\"mocha\":\"^6.1.4\"},\"dependencies\":{\"bn.js\":\"^4.4.0\",\"brorand\":\"^1.0.1\",\"hash.js\":\"^1.0.0\",\"hmac-drbg\":\"^1.0.0\",\"inherits\":\"^2.0.1\",\"minimalistic-assert\":\"^1.0.0\",\"minimalistic-crypto-utils\":\"^1.0.0\"},\"_resolved\":\"https://registry.npmjs.org/elliptic/-/elliptic-6.5.1.tgz\",\"_integrity\":\"sha512-xvJINNLbTeWQjrl6X+7eQCrIy/YPv5XCpKW6kB5mKvtnGILoLDcySuwomfdzt0BMdLNVnuRNTuzKNHj0bva1Cg==\",\"_from\":\"elliptic@6.5.1\"}");
 
 /***/ }),
 
@@ -37382,55 +37394,17 @@ function printError(error) {
   var output = error.message;
 
   if (error.nodes) {
-    var _iteratorNormalCompletion = true;
-    var _didIteratorError = false;
-    var _iteratorError = undefined;
+    for (var _i2 = 0, _error$nodes2 = error.nodes; _i2 < _error$nodes2.length; _i2++) {
+      var node = _error$nodes2[_i2];
 
-    try {
-      for (var _iterator = error.nodes[Symbol.iterator](), _step; !(_iteratorNormalCompletion = (_step = _iterator.next()).done); _iteratorNormalCompletion = true) {
-        var node = _step.value;
-
-        if (node.loc) {
-          output += '\n\n' + Object(_language_printLocation__WEBPACK_IMPORTED_MODULE_2__["printLocation"])(node.loc);
-        }
-      }
-    } catch (err) {
-      _didIteratorError = true;
-      _iteratorError = err;
-    } finally {
-      try {
-        if (!_iteratorNormalCompletion && _iterator.return != null) {
-          _iterator.return();
-        }
-      } finally {
-        if (_didIteratorError) {
-          throw _iteratorError;
-        }
+      if (node.loc) {
+        output += '\n\n' + Object(_language_printLocation__WEBPACK_IMPORTED_MODULE_2__["printLocation"])(node.loc);
       }
     }
   } else if (error.source && error.locations) {
-    var _iteratorNormalCompletion2 = true;
-    var _didIteratorError2 = false;
-    var _iteratorError2 = undefined;
-
-    try {
-      for (var _iterator2 = error.locations[Symbol.iterator](), _step2; !(_iteratorNormalCompletion2 = (_step2 = _iterator2.next()).done); _iteratorNormalCompletion2 = true) {
-        var location = _step2.value;
-        output += '\n\n' + Object(_language_printLocation__WEBPACK_IMPORTED_MODULE_2__["printSourceLocation"])(error.source, location);
-      }
-    } catch (err) {
-      _didIteratorError2 = true;
-      _iteratorError2 = err;
-    } finally {
-      try {
-        if (!_iteratorNormalCompletion2 && _iterator2.return != null) {
-          _iterator2.return();
-        }
-      } finally {
-        if (_didIteratorError2) {
-          throw _iteratorError2;
-        }
-      }
+    for (var _i4 = 0, _error$locations2 = error.locations; _i4 < _error$locations2.length; _i4++) {
+      var location = _error$locations2[_i4];
+      output += '\n\n' + Object(_language_printLocation__WEBPACK_IMPORTED_MODULE_2__["printSourceLocation"])(error.source, location);
     }
   }
 
@@ -37524,6 +37498,27 @@ function defineToStringTag(classObject) {
         return this.constructor.name;
       }
     });
+  }
+}
+
+
+/***/ }),
+
+/***/ "./node_modules/graphql/jsutils/devAssert.mjs":
+/*!****************************************************!*\
+  !*** ./node_modules/graphql/jsutils/devAssert.mjs ***!
+  \****************************************************/
+/*! exports provided: default */
+/***/ (function(__webpack_module__, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return devAssert; });
+function devAssert(condition, message) {
+  var booleanCondition = Boolean(condition);
+
+  if (!booleanCondition) {
+    throw new Error(message);
   }
 }
 
@@ -37658,34 +37653,12 @@ function getObjectTag(object) {
   if (tag === 'Object' && typeof object.constructor === 'function') {
     var name = object.constructor.name;
 
-    if (typeof name === 'string') {
+    if (typeof name === 'string' && name !== '') {
       return name;
     }
   }
 
   return tag;
-}
-
-
-/***/ }),
-
-/***/ "./node_modules/graphql/jsutils/invariant.mjs":
-/*!****************************************************!*\
-  !*** ./node_modules/graphql/jsutils/invariant.mjs ***!
-  \****************************************************/
-/*! exports provided: default */
-/***/ (function(__webpack_module__, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return invariant; });
-function invariant(condition, message) {
-  var booleanCondition = Boolean(condition);
-  /* istanbul ignore else */
-
-  if (!booleanCondition) {
-    throw new Error(message);
-  }
 }
 
 
@@ -38050,18 +38023,17 @@ var Kind = Object.freeze({
 /*!*************************************************!*\
   !*** ./node_modules/graphql/language/lexer.mjs ***!
   \*************************************************/
-/*! exports provided: createLexer, isPunctuatorToken, getTokenDesc */
+/*! exports provided: createLexer, isPunctuatorToken */
 /***/ (function(__webpack_module__, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "createLexer", function() { return createLexer; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "isPunctuatorToken", function() { return isPunctuatorToken; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "getTokenDesc", function() { return getTokenDesc; });
 /* harmony import */ var _jsutils_defineToJSON__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../jsutils/defineToJSON */ "./node_modules/graphql/jsutils/defineToJSON.mjs");
-/* harmony import */ var _tokenKind__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./tokenKind */ "./node_modules/graphql/language/tokenKind.mjs");
-/* harmony import */ var _error_syntaxError__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../error/syntaxError */ "./node_modules/graphql/error/syntaxError.mjs");
-/* harmony import */ var _blockString__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./blockString */ "./node_modules/graphql/language/blockString.mjs");
+/* harmony import */ var _error_syntaxError__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../error/syntaxError */ "./node_modules/graphql/error/syntaxError.mjs");
+/* harmony import */ var _blockString__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./blockString */ "./node_modules/graphql/language/blockString.mjs");
+/* harmony import */ var _tokenKind__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./tokenKind */ "./node_modules/graphql/language/tokenKind.mjs");
 
 
 
@@ -38076,7 +38048,7 @@ __webpack_require__.r(__webpack_exports__);
  */
 
 function createLexer(source, options) {
-  var startOfFileToken = new Tok(_tokenKind__WEBPACK_IMPORTED_MODULE_1__["TokenKind"].SOF, 0, 0, 0, 0, null);
+  var startOfFileToken = new Tok(_tokenKind__WEBPACK_IMPORTED_MODULE_3__["TokenKind"].SOF, 0, 0, 0, 0, null);
   var lexer = {
     source: source,
     options: options,
@@ -38099,11 +38071,11 @@ function advanceLexer() {
 function lookahead() {
   var token = this.token;
 
-  if (token.kind !== _tokenKind__WEBPACK_IMPORTED_MODULE_1__["TokenKind"].EOF) {
+  if (token.kind !== _tokenKind__WEBPACK_IMPORTED_MODULE_3__["TokenKind"].EOF) {
     do {
       // Note: next is only mutable during parsing, so we cast to allow this.
       token = token.next || (token.next = readToken(this, token));
-    } while (token.kind === _tokenKind__WEBPACK_IMPORTED_MODULE_1__["TokenKind"].COMMENT);
+    } while (token.kind === _tokenKind__WEBPACK_IMPORTED_MODULE_3__["TokenKind"].COMMENT);
   }
 
   return token;
@@ -38116,15 +38088,7 @@ function lookahead() {
 // @internal
 function isPunctuatorToken(token) {
   var kind = token.kind;
-  return kind === _tokenKind__WEBPACK_IMPORTED_MODULE_1__["TokenKind"].BANG || kind === _tokenKind__WEBPACK_IMPORTED_MODULE_1__["TokenKind"].DOLLAR || kind === _tokenKind__WEBPACK_IMPORTED_MODULE_1__["TokenKind"].AMP || kind === _tokenKind__WEBPACK_IMPORTED_MODULE_1__["TokenKind"].PAREN_L || kind === _tokenKind__WEBPACK_IMPORTED_MODULE_1__["TokenKind"].PAREN_R || kind === _tokenKind__WEBPACK_IMPORTED_MODULE_1__["TokenKind"].SPREAD || kind === _tokenKind__WEBPACK_IMPORTED_MODULE_1__["TokenKind"].COLON || kind === _tokenKind__WEBPACK_IMPORTED_MODULE_1__["TokenKind"].EQUALS || kind === _tokenKind__WEBPACK_IMPORTED_MODULE_1__["TokenKind"].AT || kind === _tokenKind__WEBPACK_IMPORTED_MODULE_1__["TokenKind"].BRACKET_L || kind === _tokenKind__WEBPACK_IMPORTED_MODULE_1__["TokenKind"].BRACKET_R || kind === _tokenKind__WEBPACK_IMPORTED_MODULE_1__["TokenKind"].BRACE_L || kind === _tokenKind__WEBPACK_IMPORTED_MODULE_1__["TokenKind"].PIPE || kind === _tokenKind__WEBPACK_IMPORTED_MODULE_1__["TokenKind"].BRACE_R;
-}
-/**
- * A helper function to describe a token as a string for debugging
- */
-
-function getTokenDesc(token) {
-  var value = token.value;
-  return value ? "".concat(token.kind, " \"").concat(value, "\"") : token.kind;
+  return kind === _tokenKind__WEBPACK_IMPORTED_MODULE_3__["TokenKind"].BANG || kind === _tokenKind__WEBPACK_IMPORTED_MODULE_3__["TokenKind"].DOLLAR || kind === _tokenKind__WEBPACK_IMPORTED_MODULE_3__["TokenKind"].AMP || kind === _tokenKind__WEBPACK_IMPORTED_MODULE_3__["TokenKind"].PAREN_L || kind === _tokenKind__WEBPACK_IMPORTED_MODULE_3__["TokenKind"].PAREN_R || kind === _tokenKind__WEBPACK_IMPORTED_MODULE_3__["TokenKind"].SPREAD || kind === _tokenKind__WEBPACK_IMPORTED_MODULE_3__["TokenKind"].COLON || kind === _tokenKind__WEBPACK_IMPORTED_MODULE_3__["TokenKind"].EQUALS || kind === _tokenKind__WEBPACK_IMPORTED_MODULE_3__["TokenKind"].AT || kind === _tokenKind__WEBPACK_IMPORTED_MODULE_3__["TokenKind"].BRACKET_L || kind === _tokenKind__WEBPACK_IMPORTED_MODULE_3__["TokenKind"].BRACKET_R || kind === _tokenKind__WEBPACK_IMPORTED_MODULE_3__["TokenKind"].BRACE_L || kind === _tokenKind__WEBPACK_IMPORTED_MODULE_3__["TokenKind"].PIPE || kind === _tokenKind__WEBPACK_IMPORTED_MODULE_3__["TokenKind"].BRACE_R;
 }
 /**
  * Helper function for constructing the Token object.
@@ -38153,7 +38117,7 @@ Object(_jsutils_defineToJSON__WEBPACK_IMPORTED_MODULE_0__["default"])(Tok, funct
 
 function printCharCode(code) {
   return (// NaN/undefined represents access beyond the end of the file.
-    isNaN(code) ? _tokenKind__WEBPACK_IMPORTED_MODULE_1__["TokenKind"].EOF : // Trust JSON for ASCII.
+    isNaN(code) ? _tokenKind__WEBPACK_IMPORTED_MODULE_3__["TokenKind"].EOF : // Trust JSON for ASCII.
     code < 0x007f ? JSON.stringify(String.fromCharCode(code)) : // Otherwise print the escaped form.
     "\"\\u".concat(('00' + code.toString(16).toUpperCase()).slice(-4), "\"")
   );
@@ -38176,7 +38140,7 @@ function readToken(lexer, prev) {
   var col = 1 + pos - lexer.lineStart;
 
   if (pos >= bodyLength) {
-    return new Tok(_tokenKind__WEBPACK_IMPORTED_MODULE_1__["TokenKind"].EOF, bodyLength, bodyLength, line, col, prev);
+    return new Tok(_tokenKind__WEBPACK_IMPORTED_MODULE_3__["TokenKind"].EOF, bodyLength, bodyLength, line, col, prev);
   }
 
   var code = body.charCodeAt(pos); // SourceCharacter
@@ -38184,7 +38148,7 @@ function readToken(lexer, prev) {
   switch (code) {
     // !
     case 33:
-      return new Tok(_tokenKind__WEBPACK_IMPORTED_MODULE_1__["TokenKind"].BANG, pos, pos + 1, line, col, prev);
+      return new Tok(_tokenKind__WEBPACK_IMPORTED_MODULE_3__["TokenKind"].BANG, pos, pos + 1, line, col, prev);
     // #
 
     case 35:
@@ -38192,59 +38156,59 @@ function readToken(lexer, prev) {
     // $
 
     case 36:
-      return new Tok(_tokenKind__WEBPACK_IMPORTED_MODULE_1__["TokenKind"].DOLLAR, pos, pos + 1, line, col, prev);
+      return new Tok(_tokenKind__WEBPACK_IMPORTED_MODULE_3__["TokenKind"].DOLLAR, pos, pos + 1, line, col, prev);
     // &
 
     case 38:
-      return new Tok(_tokenKind__WEBPACK_IMPORTED_MODULE_1__["TokenKind"].AMP, pos, pos + 1, line, col, prev);
+      return new Tok(_tokenKind__WEBPACK_IMPORTED_MODULE_3__["TokenKind"].AMP, pos, pos + 1, line, col, prev);
     // (
 
     case 40:
-      return new Tok(_tokenKind__WEBPACK_IMPORTED_MODULE_1__["TokenKind"].PAREN_L, pos, pos + 1, line, col, prev);
+      return new Tok(_tokenKind__WEBPACK_IMPORTED_MODULE_3__["TokenKind"].PAREN_L, pos, pos + 1, line, col, prev);
     // )
 
     case 41:
-      return new Tok(_tokenKind__WEBPACK_IMPORTED_MODULE_1__["TokenKind"].PAREN_R, pos, pos + 1, line, col, prev);
+      return new Tok(_tokenKind__WEBPACK_IMPORTED_MODULE_3__["TokenKind"].PAREN_R, pos, pos + 1, line, col, prev);
     // .
 
     case 46:
       if (body.charCodeAt(pos + 1) === 46 && body.charCodeAt(pos + 2) === 46) {
-        return new Tok(_tokenKind__WEBPACK_IMPORTED_MODULE_1__["TokenKind"].SPREAD, pos, pos + 3, line, col, prev);
+        return new Tok(_tokenKind__WEBPACK_IMPORTED_MODULE_3__["TokenKind"].SPREAD, pos, pos + 3, line, col, prev);
       }
 
       break;
     // :
 
     case 58:
-      return new Tok(_tokenKind__WEBPACK_IMPORTED_MODULE_1__["TokenKind"].COLON, pos, pos + 1, line, col, prev);
+      return new Tok(_tokenKind__WEBPACK_IMPORTED_MODULE_3__["TokenKind"].COLON, pos, pos + 1, line, col, prev);
     // =
 
     case 61:
-      return new Tok(_tokenKind__WEBPACK_IMPORTED_MODULE_1__["TokenKind"].EQUALS, pos, pos + 1, line, col, prev);
+      return new Tok(_tokenKind__WEBPACK_IMPORTED_MODULE_3__["TokenKind"].EQUALS, pos, pos + 1, line, col, prev);
     // @
 
     case 64:
-      return new Tok(_tokenKind__WEBPACK_IMPORTED_MODULE_1__["TokenKind"].AT, pos, pos + 1, line, col, prev);
+      return new Tok(_tokenKind__WEBPACK_IMPORTED_MODULE_3__["TokenKind"].AT, pos, pos + 1, line, col, prev);
     // [
 
     case 91:
-      return new Tok(_tokenKind__WEBPACK_IMPORTED_MODULE_1__["TokenKind"].BRACKET_L, pos, pos + 1, line, col, prev);
+      return new Tok(_tokenKind__WEBPACK_IMPORTED_MODULE_3__["TokenKind"].BRACKET_L, pos, pos + 1, line, col, prev);
     // ]
 
     case 93:
-      return new Tok(_tokenKind__WEBPACK_IMPORTED_MODULE_1__["TokenKind"].BRACKET_R, pos, pos + 1, line, col, prev);
+      return new Tok(_tokenKind__WEBPACK_IMPORTED_MODULE_3__["TokenKind"].BRACKET_R, pos, pos + 1, line, col, prev);
     // {
 
     case 123:
-      return new Tok(_tokenKind__WEBPACK_IMPORTED_MODULE_1__["TokenKind"].BRACE_L, pos, pos + 1, line, col, prev);
+      return new Tok(_tokenKind__WEBPACK_IMPORTED_MODULE_3__["TokenKind"].BRACE_L, pos, pos + 1, line, col, prev);
     // |
 
     case 124:
-      return new Tok(_tokenKind__WEBPACK_IMPORTED_MODULE_1__["TokenKind"].PIPE, pos, pos + 1, line, col, prev);
+      return new Tok(_tokenKind__WEBPACK_IMPORTED_MODULE_3__["TokenKind"].PIPE, pos, pos + 1, line, col, prev);
     // }
 
     case 125:
-      return new Tok(_tokenKind__WEBPACK_IMPORTED_MODULE_1__["TokenKind"].BRACE_R, pos, pos + 1, line, col, prev);
+      return new Tok(_tokenKind__WEBPACK_IMPORTED_MODULE_3__["TokenKind"].BRACE_R, pos, pos + 1, line, col, prev);
     // A-Z _ a-z
 
     case 65:
@@ -38325,7 +38289,7 @@ function readToken(lexer, prev) {
       return readString(source, pos, line, col, prev);
   }
 
-  throw Object(_error_syntaxError__WEBPACK_IMPORTED_MODULE_2__["syntaxError"])(source, pos, unexpectedCharacterMessage(code));
+  throw Object(_error_syntaxError__WEBPACK_IMPORTED_MODULE_1__["syntaxError"])(source, pos, unexpectedCharacterMessage(code));
 }
 /**
  * Report a message that an unexpected character was encountered.
@@ -38398,7 +38362,7 @@ function readComment(source, start, line, col, prev) {
   } while (!isNaN(code) && ( // SourceCharacter but not LineTerminator
   code > 0x001f || code === 0x0009));
 
-  return new Tok(_tokenKind__WEBPACK_IMPORTED_MODULE_1__["TokenKind"].COMMENT, start, position, line, col, prev, body.slice(start + 1, position));
+  return new Tok(_tokenKind__WEBPACK_IMPORTED_MODULE_3__["TokenKind"].COMMENT, start, position, line, col, prev, body.slice(start + 1, position));
 }
 /**
  * Reads a number token from the source file, either a float
@@ -38425,7 +38389,7 @@ function readNumber(source, start, firstCode, line, col, prev) {
     code = body.charCodeAt(++position);
 
     if (code >= 48 && code <= 57) {
-      throw Object(_error_syntaxError__WEBPACK_IMPORTED_MODULE_2__["syntaxError"])(source, position, "Invalid number, unexpected digit after 0: ".concat(printCharCode(code), "."));
+      throw Object(_error_syntaxError__WEBPACK_IMPORTED_MODULE_1__["syntaxError"])(source, position, "Invalid number, unexpected digit after 0: ".concat(printCharCode(code), "."));
     }
   } else {
     position = readDigits(source, position, code);
@@ -38453,7 +38417,7 @@ function readNumber(source, start, firstCode, line, col, prev) {
     position = readDigits(source, position, code);
   }
 
-  return new Tok(isFloat ? _tokenKind__WEBPACK_IMPORTED_MODULE_1__["TokenKind"].FLOAT : _tokenKind__WEBPACK_IMPORTED_MODULE_1__["TokenKind"].INT, start, position, line, col, prev, body.slice(start, position));
+  return new Tok(isFloat ? _tokenKind__WEBPACK_IMPORTED_MODULE_3__["TokenKind"].FLOAT : _tokenKind__WEBPACK_IMPORTED_MODULE_3__["TokenKind"].INT, start, position, line, col, prev, body.slice(start, position));
 }
 /**
  * Returns the new position in the source after reading digits.
@@ -38475,7 +38439,7 @@ function readDigits(source, start, firstCode) {
     return position;
   }
 
-  throw Object(_error_syntaxError__WEBPACK_IMPORTED_MODULE_2__["syntaxError"])(source, position, "Invalid number, expected digit but got: ".concat(printCharCode(code), "."));
+  throw Object(_error_syntaxError__WEBPACK_IMPORTED_MODULE_1__["syntaxError"])(source, position, "Invalid number, expected digit but got: ".concat(printCharCode(code), "."));
 }
 /**
  * Reads a string token from the source file.
@@ -38496,12 +38460,12 @@ function readString(source, start, line, col, prev) {
     // Closing Quote (")
     if (code === 34) {
       value += body.slice(chunkStart, position);
-      return new Tok(_tokenKind__WEBPACK_IMPORTED_MODULE_1__["TokenKind"].STRING, start, position + 1, line, col, prev, value);
+      return new Tok(_tokenKind__WEBPACK_IMPORTED_MODULE_3__["TokenKind"].STRING, start, position + 1, line, col, prev, value);
     } // SourceCharacter
 
 
     if (code < 0x0020 && code !== 0x0009) {
-      throw Object(_error_syntaxError__WEBPACK_IMPORTED_MODULE_2__["syntaxError"])(source, position, "Invalid character within String: ".concat(printCharCode(code), "."));
+      throw Object(_error_syntaxError__WEBPACK_IMPORTED_MODULE_1__["syntaxError"])(source, position, "Invalid character within String: ".concat(printCharCode(code), "."));
     }
 
     ++position;
@@ -38551,7 +38515,7 @@ function readString(source, start, line, col, prev) {
 
             if (charCode < 0) {
               var invalidSequence = body.slice(position + 1, position + 5);
-              throw Object(_error_syntaxError__WEBPACK_IMPORTED_MODULE_2__["syntaxError"])(source, position, "Invalid character escape sequence: \\u".concat(invalidSequence, "."));
+              throw Object(_error_syntaxError__WEBPACK_IMPORTED_MODULE_1__["syntaxError"])(source, position, "Invalid character escape sequence: \\u".concat(invalidSequence, "."));
             }
 
             value += String.fromCharCode(charCode);
@@ -38560,7 +38524,7 @@ function readString(source, start, line, col, prev) {
           }
 
         default:
-          throw Object(_error_syntaxError__WEBPACK_IMPORTED_MODULE_2__["syntaxError"])(source, position, "Invalid character escape sequence: \\".concat(String.fromCharCode(code), "."));
+          throw Object(_error_syntaxError__WEBPACK_IMPORTED_MODULE_1__["syntaxError"])(source, position, "Invalid character escape sequence: \\".concat(String.fromCharCode(code), "."));
       }
 
       ++position;
@@ -38568,7 +38532,7 @@ function readString(source, start, line, col, prev) {
     }
   }
 
-  throw Object(_error_syntaxError__WEBPACK_IMPORTED_MODULE_2__["syntaxError"])(source, position, 'Unterminated string.');
+  throw Object(_error_syntaxError__WEBPACK_IMPORTED_MODULE_1__["syntaxError"])(source, position, 'Unterminated string.');
 }
 /**
  * Reads a block string token from the source file.
@@ -38588,12 +38552,12 @@ function readBlockString(source, start, line, col, prev, lexer) {
     // Closing Triple-Quote (""")
     if (code === 34 && body.charCodeAt(position + 1) === 34 && body.charCodeAt(position + 2) === 34) {
       rawValue += body.slice(chunkStart, position);
-      return new Tok(_tokenKind__WEBPACK_IMPORTED_MODULE_1__["TokenKind"].BLOCK_STRING, start, position + 3, line, col, prev, Object(_blockString__WEBPACK_IMPORTED_MODULE_3__["dedentBlockStringValue"])(rawValue));
+      return new Tok(_tokenKind__WEBPACK_IMPORTED_MODULE_3__["TokenKind"].BLOCK_STRING, start, position + 3, line, col, prev, Object(_blockString__WEBPACK_IMPORTED_MODULE_2__["dedentBlockStringValue"])(rawValue));
     } // SourceCharacter
 
 
     if (code < 0x0020 && code !== 0x0009 && code !== 0x000a && code !== 0x000d) {
-      throw Object(_error_syntaxError__WEBPACK_IMPORTED_MODULE_2__["syntaxError"])(source, position, "Invalid character within String: ".concat(printCharCode(code), "."));
+      throw Object(_error_syntaxError__WEBPACK_IMPORTED_MODULE_1__["syntaxError"])(source, position, "Invalid character within String: ".concat(printCharCode(code), "."));
     }
 
     if (code === 10) {
@@ -38621,7 +38585,7 @@ function readBlockString(source, start, line, col, prev, lexer) {
     }
   }
 
-  throw Object(_error_syntaxError__WEBPACK_IMPORTED_MODULE_2__["syntaxError"])(source, position, 'Unterminated string.');
+  throw Object(_error_syntaxError__WEBPACK_IMPORTED_MODULE_1__["syntaxError"])(source, position, 'Unterminated string.');
 }
 /**
  * Converts four hexadecimal chars to the integer that the
@@ -38675,7 +38639,7 @@ function readName(source, start, line, col, prev) {
     ++position;
   }
 
-  return new Tok(_tokenKind__WEBPACK_IMPORTED_MODULE_1__["TokenKind"].NAME, start, position, line, col, prev, body.slice(start, position));
+  return new Tok(_tokenKind__WEBPACK_IMPORTED_MODULE_3__["TokenKind"].NAME, start, position, line, col, prev, body.slice(start, position));
 }
 
 
@@ -38723,7 +38687,7 @@ function getLocation(source, position) {
 /*!**************************************************!*\
   !*** ./node_modules/graphql/language/parser.mjs ***!
   \**************************************************/
-/*! exports provided: parse, parseValue, parseType, parseConstValue, parseTypeReference, parseNamedType */
+/*! exports provided: parse, parseValue, parseType */
 /***/ (function(__webpack_module__, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -38731,17 +38695,15 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "parse", function() { return parse; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "parseValue", function() { return parseValue; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "parseType", function() { return parseType; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "parseConstValue", function() { return parseConstValue; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "parseTypeReference", function() { return parseTypeReference; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "parseNamedType", function() { return parseNamedType; });
 /* harmony import */ var _jsutils_inspect__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../jsutils/inspect */ "./node_modules/graphql/jsutils/inspect.mjs");
-/* harmony import */ var _jsutils_defineToJSON__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../jsutils/defineToJSON */ "./node_modules/graphql/jsutils/defineToJSON.mjs");
-/* harmony import */ var _source__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./source */ "./node_modules/graphql/language/source.mjs");
+/* harmony import */ var _jsutils_devAssert__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../jsutils/devAssert */ "./node_modules/graphql/jsutils/devAssert.mjs");
+/* harmony import */ var _jsutils_defineToJSON__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../jsutils/defineToJSON */ "./node_modules/graphql/jsutils/defineToJSON.mjs");
 /* harmony import */ var _error_syntaxError__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../error/syntaxError */ "./node_modules/graphql/error/syntaxError.mjs");
-/* harmony import */ var _tokenKind__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./tokenKind */ "./node_modules/graphql/language/tokenKind.mjs");
-/* harmony import */ var _lexer__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./lexer */ "./node_modules/graphql/language/lexer.mjs");
-/* harmony import */ var _kinds__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./kinds */ "./node_modules/graphql/language/kinds.mjs");
+/* harmony import */ var _kinds__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./kinds */ "./node_modules/graphql/language/kinds.mjs");
+/* harmony import */ var _source__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./source */ "./node_modules/graphql/language/source.mjs");
+/* harmony import */ var _lexer__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./lexer */ "./node_modules/graphql/language/lexer.mjs");
 /* harmony import */ var _directiveLocation__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./directiveLocation */ "./node_modules/graphql/language/directiveLocation.mjs");
+/* harmony import */ var _tokenKind__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./tokenKind */ "./node_modules/graphql/language/tokenKind.mjs");
 
 
 
@@ -38750,23 +38712,15 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-/**
- * Configuration options to control parser behavior
- */
+
 
 /**
  * Given a GraphQL source, parses it into a Document.
  * Throws GraphQLError if a syntax error is encountered.
  */
 function parse(source, options) {
-  var sourceObj = typeof source === 'string' ? new _source__WEBPACK_IMPORTED_MODULE_2__["Source"](source) : source;
-
-  if (!(sourceObj instanceof _source__WEBPACK_IMPORTED_MODULE_2__["Source"])) {
-    throw new TypeError("Must provide Source. Received: ".concat(Object(_jsutils_inspect__WEBPACK_IMPORTED_MODULE_0__["default"])(sourceObj)));
-  }
-
-  var lexer = Object(_lexer__WEBPACK_IMPORTED_MODULE_5__["createLexer"])(sourceObj, options || {});
-  return parseDocument(lexer);
+  var parser = new Parser(source, options);
+  return parser.parseDocument();
 }
 /**
  * Given a string containing a GraphQL value (ex. `[42]`), parse the AST for
@@ -38780,11 +38734,10 @@ function parse(source, options) {
  */
 
 function parseValue(source, options) {
-  var sourceObj = typeof source === 'string' ? new _source__WEBPACK_IMPORTED_MODULE_2__["Source"](source) : source;
-  var lexer = Object(_lexer__WEBPACK_IMPORTED_MODULE_5__["createLexer"])(sourceObj, options || {});
-  expectToken(lexer, _tokenKind__WEBPACK_IMPORTED_MODULE_4__["TokenKind"].SOF);
-  var value = parseValueLiteral(lexer, false);
-  expectToken(lexer, _tokenKind__WEBPACK_IMPORTED_MODULE_4__["TokenKind"].EOF);
+  var parser = new Parser(source, options);
+  parser.expectToken(_tokenKind__WEBPACK_IMPORTED_MODULE_8__["TokenKind"].SOF);
+  var value = parser.parseValueLiteral(false);
+  parser.expectToken(_tokenKind__WEBPACK_IMPORTED_MODULE_8__["TokenKind"].EOF);
   return value;
 }
 /**
@@ -38799,1316 +38752,1462 @@ function parseValue(source, options) {
  */
 
 function parseType(source, options) {
-  var sourceObj = typeof source === 'string' ? new _source__WEBPACK_IMPORTED_MODULE_2__["Source"](source) : source;
-  var lexer = Object(_lexer__WEBPACK_IMPORTED_MODULE_5__["createLexer"])(sourceObj, options || {});
-  expectToken(lexer, _tokenKind__WEBPACK_IMPORTED_MODULE_4__["TokenKind"].SOF);
-  var type = parseTypeReference(lexer);
-  expectToken(lexer, _tokenKind__WEBPACK_IMPORTED_MODULE_4__["TokenKind"].EOF);
+  var parser = new Parser(source, options);
+  parser.expectToken(_tokenKind__WEBPACK_IMPORTED_MODULE_8__["TokenKind"].SOF);
+  var type = parser.parseTypeReference();
+  parser.expectToken(_tokenKind__WEBPACK_IMPORTED_MODULE_8__["TokenKind"].EOF);
   return type;
 }
-/**
- * Converts a name lex token into a name parse node.
- */
 
-function parseName(lexer) {
-  var token = expectToken(lexer, _tokenKind__WEBPACK_IMPORTED_MODULE_4__["TokenKind"].NAME);
-  return {
-    kind: _kinds__WEBPACK_IMPORTED_MODULE_6__["Kind"].NAME,
-    value: token.value,
-    loc: loc(lexer, token)
-  };
-} // Implements the parsing rules in the Document section.
-
-/**
- * Document : Definition+
- */
-
-
-function parseDocument(lexer) {
-  var start = lexer.token;
-  return {
-    kind: _kinds__WEBPACK_IMPORTED_MODULE_6__["Kind"].DOCUMENT,
-    definitions: many(lexer, _tokenKind__WEBPACK_IMPORTED_MODULE_4__["TokenKind"].SOF, parseDefinition, _tokenKind__WEBPACK_IMPORTED_MODULE_4__["TokenKind"].EOF),
-    loc: loc(lexer, start)
-  };
-}
-/**
- * Definition :
- *   - ExecutableDefinition
- *   - TypeSystemDefinition
- *   - TypeSystemExtension
- */
-
-
-function parseDefinition(lexer) {
-  if (peek(lexer, _tokenKind__WEBPACK_IMPORTED_MODULE_4__["TokenKind"].NAME)) {
-    switch (lexer.token.value) {
-      case 'query':
-      case 'mutation':
-      case 'subscription':
-      case 'fragment':
-        return parseExecutableDefinition(lexer);
-
-      case 'schema':
-      case 'scalar':
-      case 'type':
-      case 'interface':
-      case 'union':
-      case 'enum':
-      case 'input':
-      case 'directive':
-        return parseTypeSystemDefinition(lexer);
-
-      case 'extend':
-        return parseTypeSystemExtension(lexer);
-    }
-  } else if (peek(lexer, _tokenKind__WEBPACK_IMPORTED_MODULE_4__["TokenKind"].BRACE_L)) {
-    return parseExecutableDefinition(lexer);
-  } else if (peekDescription(lexer)) {
-    return parseTypeSystemDefinition(lexer);
+var Parser =
+/*#__PURE__*/
+function () {
+  function Parser(source, options) {
+    var sourceObj = typeof source === 'string' ? new _source__WEBPACK_IMPORTED_MODULE_5__["Source"](source) : source;
+    sourceObj instanceof _source__WEBPACK_IMPORTED_MODULE_5__["Source"] || Object(_jsutils_devAssert__WEBPACK_IMPORTED_MODULE_1__["default"])(0, "Must provide Source. Received: ".concat(Object(_jsutils_inspect__WEBPACK_IMPORTED_MODULE_0__["default"])(sourceObj)));
+    this._lexer = Object(_lexer__WEBPACK_IMPORTED_MODULE_6__["createLexer"])(sourceObj);
+    this._options = options || {};
   }
-
-  throw unexpected(lexer);
-}
-/**
- * ExecutableDefinition :
- *   - OperationDefinition
- *   - FragmentDefinition
- */
+  /**
+   * Converts a name lex token into a name parse node.
+   */
 
 
-function parseExecutableDefinition(lexer) {
-  if (peek(lexer, _tokenKind__WEBPACK_IMPORTED_MODULE_4__["TokenKind"].NAME)) {
-    switch (lexer.token.value) {
-      case 'query':
-      case 'mutation':
-      case 'subscription':
-        return parseOperationDefinition(lexer);
+  var _proto = Parser.prototype;
 
-      case 'fragment':
-        return parseFragmentDefinition(lexer);
-    }
-  } else if (peek(lexer, _tokenKind__WEBPACK_IMPORTED_MODULE_4__["TokenKind"].BRACE_L)) {
-    return parseOperationDefinition(lexer);
-  }
-
-  throw unexpected(lexer);
-} // Implements the parsing rules in the Operations section.
-
-/**
- * OperationDefinition :
- *  - SelectionSet
- *  - OperationType Name? VariableDefinitions? Directives? SelectionSet
- */
-
-
-function parseOperationDefinition(lexer) {
-  var start = lexer.token;
-
-  if (peek(lexer, _tokenKind__WEBPACK_IMPORTED_MODULE_4__["TokenKind"].BRACE_L)) {
+  _proto.parseName = function parseName() {
+    var token = this.expectToken(_tokenKind__WEBPACK_IMPORTED_MODULE_8__["TokenKind"].NAME);
     return {
-      kind: _kinds__WEBPACK_IMPORTED_MODULE_6__["Kind"].OPERATION_DEFINITION,
-      operation: 'query',
-      name: undefined,
-      variableDefinitions: [],
-      directives: [],
-      selectionSet: parseSelectionSet(lexer),
-      loc: loc(lexer, start)
+      kind: _kinds__WEBPACK_IMPORTED_MODULE_4__["Kind"].NAME,
+      value: token.value,
+      loc: this.loc(token)
+    };
+  } // Implements the parsing rules in the Document section.
+
+  /**
+   * Document : Definition+
+   */
+  ;
+
+  _proto.parseDocument = function parseDocument() {
+    var start = this._lexer.token;
+    return {
+      kind: _kinds__WEBPACK_IMPORTED_MODULE_4__["Kind"].DOCUMENT,
+      definitions: this.many(_tokenKind__WEBPACK_IMPORTED_MODULE_8__["TokenKind"].SOF, this.parseDefinition, _tokenKind__WEBPACK_IMPORTED_MODULE_8__["TokenKind"].EOF),
+      loc: this.loc(start)
     };
   }
+  /**
+   * Definition :
+   *   - ExecutableDefinition
+   *   - TypeSystemDefinition
+   *   - TypeSystemExtension
+   *
+   * ExecutableDefinition :
+   *   - OperationDefinition
+   *   - FragmentDefinition
+   */
+  ;
 
-  var operation = parseOperationType(lexer);
-  var name;
+  _proto.parseDefinition = function parseDefinition() {
+    if (this.peek(_tokenKind__WEBPACK_IMPORTED_MODULE_8__["TokenKind"].NAME)) {
+      switch (this._lexer.token.value) {
+        case 'query':
+        case 'mutation':
+        case 'subscription':
+          return this.parseOperationDefinition();
 
-  if (peek(lexer, _tokenKind__WEBPACK_IMPORTED_MODULE_4__["TokenKind"].NAME)) {
-    name = parseName(lexer);
-  }
+        case 'fragment':
+          return this.parseFragmentDefinition();
 
-  return {
-    kind: _kinds__WEBPACK_IMPORTED_MODULE_6__["Kind"].OPERATION_DEFINITION,
-    operation: operation,
-    name: name,
-    variableDefinitions: parseVariableDefinitions(lexer),
-    directives: parseDirectives(lexer, false),
-    selectionSet: parseSelectionSet(lexer),
-    loc: loc(lexer, start)
-  };
-}
-/**
- * OperationType : one of query mutation subscription
- */
+        case 'schema':
+        case 'scalar':
+        case 'type':
+        case 'interface':
+        case 'union':
+        case 'enum':
+        case 'input':
+        case 'directive':
+          return this.parseTypeSystemDefinition();
 
-
-function parseOperationType(lexer) {
-  var operationToken = expectToken(lexer, _tokenKind__WEBPACK_IMPORTED_MODULE_4__["TokenKind"].NAME);
-
-  switch (operationToken.value) {
-    case 'query':
-      return 'query';
-
-    case 'mutation':
-      return 'mutation';
-
-    case 'subscription':
-      return 'subscription';
-  }
-
-  throw unexpected(lexer, operationToken);
-}
-/**
- * VariableDefinitions : ( VariableDefinition+ )
- */
-
-
-function parseVariableDefinitions(lexer) {
-  return peek(lexer, _tokenKind__WEBPACK_IMPORTED_MODULE_4__["TokenKind"].PAREN_L) ? many(lexer, _tokenKind__WEBPACK_IMPORTED_MODULE_4__["TokenKind"].PAREN_L, parseVariableDefinition, _tokenKind__WEBPACK_IMPORTED_MODULE_4__["TokenKind"].PAREN_R) : [];
-}
-/**
- * VariableDefinition : Variable : Type DefaultValue? Directives[Const]?
- */
-
-
-function parseVariableDefinition(lexer) {
-  var start = lexer.token;
-  return {
-    kind: _kinds__WEBPACK_IMPORTED_MODULE_6__["Kind"].VARIABLE_DEFINITION,
-    variable: parseVariable(lexer),
-    type: (expectToken(lexer, _tokenKind__WEBPACK_IMPORTED_MODULE_4__["TokenKind"].COLON), parseTypeReference(lexer)),
-    defaultValue: expectOptionalToken(lexer, _tokenKind__WEBPACK_IMPORTED_MODULE_4__["TokenKind"].EQUALS) ? parseValueLiteral(lexer, true) : undefined,
-    directives: parseDirectives(lexer, true),
-    loc: loc(lexer, start)
-  };
-}
-/**
- * Variable : $ Name
- */
-
-
-function parseVariable(lexer) {
-  var start = lexer.token;
-  expectToken(lexer, _tokenKind__WEBPACK_IMPORTED_MODULE_4__["TokenKind"].DOLLAR);
-  return {
-    kind: _kinds__WEBPACK_IMPORTED_MODULE_6__["Kind"].VARIABLE,
-    name: parseName(lexer),
-    loc: loc(lexer, start)
-  };
-}
-/**
- * SelectionSet : { Selection+ }
- */
-
-
-function parseSelectionSet(lexer) {
-  var start = lexer.token;
-  return {
-    kind: _kinds__WEBPACK_IMPORTED_MODULE_6__["Kind"].SELECTION_SET,
-    selections: many(lexer, _tokenKind__WEBPACK_IMPORTED_MODULE_4__["TokenKind"].BRACE_L, parseSelection, _tokenKind__WEBPACK_IMPORTED_MODULE_4__["TokenKind"].BRACE_R),
-    loc: loc(lexer, start)
-  };
-}
-/**
- * Selection :
- *   - Field
- *   - FragmentSpread
- *   - InlineFragment
- */
-
-
-function parseSelection(lexer) {
-  return peek(lexer, _tokenKind__WEBPACK_IMPORTED_MODULE_4__["TokenKind"].SPREAD) ? parseFragment(lexer) : parseField(lexer);
-}
-/**
- * Field : Alias? Name Arguments? Directives? SelectionSet?
- *
- * Alias : Name :
- */
-
-
-function parseField(lexer) {
-  var start = lexer.token;
-  var nameOrAlias = parseName(lexer);
-  var alias;
-  var name;
-
-  if (expectOptionalToken(lexer, _tokenKind__WEBPACK_IMPORTED_MODULE_4__["TokenKind"].COLON)) {
-    alias = nameOrAlias;
-    name = parseName(lexer);
-  } else {
-    name = nameOrAlias;
-  }
-
-  return {
-    kind: _kinds__WEBPACK_IMPORTED_MODULE_6__["Kind"].FIELD,
-    alias: alias,
-    name: name,
-    arguments: parseArguments(lexer, false),
-    directives: parseDirectives(lexer, false),
-    selectionSet: peek(lexer, _tokenKind__WEBPACK_IMPORTED_MODULE_4__["TokenKind"].BRACE_L) ? parseSelectionSet(lexer) : undefined,
-    loc: loc(lexer, start)
-  };
-}
-/**
- * Arguments[Const] : ( Argument[?Const]+ )
- */
-
-
-function parseArguments(lexer, isConst) {
-  var item = isConst ? parseConstArgument : parseArgument;
-  return peek(lexer, _tokenKind__WEBPACK_IMPORTED_MODULE_4__["TokenKind"].PAREN_L) ? many(lexer, _tokenKind__WEBPACK_IMPORTED_MODULE_4__["TokenKind"].PAREN_L, item, _tokenKind__WEBPACK_IMPORTED_MODULE_4__["TokenKind"].PAREN_R) : [];
-}
-/**
- * Argument[Const] : Name : Value[?Const]
- */
-
-
-function parseArgument(lexer) {
-  var start = lexer.token;
-  var name = parseName(lexer);
-  expectToken(lexer, _tokenKind__WEBPACK_IMPORTED_MODULE_4__["TokenKind"].COLON);
-  return {
-    kind: _kinds__WEBPACK_IMPORTED_MODULE_6__["Kind"].ARGUMENT,
-    name: name,
-    value: parseValueLiteral(lexer, false),
-    loc: loc(lexer, start)
-  };
-}
-
-function parseConstArgument(lexer) {
-  var start = lexer.token;
-  return {
-    kind: _kinds__WEBPACK_IMPORTED_MODULE_6__["Kind"].ARGUMENT,
-    name: parseName(lexer),
-    value: (expectToken(lexer, _tokenKind__WEBPACK_IMPORTED_MODULE_4__["TokenKind"].COLON), parseConstValue(lexer)),
-    loc: loc(lexer, start)
-  };
-} // Implements the parsing rules in the Fragments section.
-
-/**
- * Corresponds to both FragmentSpread and InlineFragment in the spec.
- *
- * FragmentSpread : ... FragmentName Directives?
- *
- * InlineFragment : ... TypeCondition? Directives? SelectionSet
- */
-
-
-function parseFragment(lexer) {
-  var start = lexer.token;
-  expectToken(lexer, _tokenKind__WEBPACK_IMPORTED_MODULE_4__["TokenKind"].SPREAD);
-  var hasTypeCondition = expectOptionalKeyword(lexer, 'on');
-
-  if (!hasTypeCondition && peek(lexer, _tokenKind__WEBPACK_IMPORTED_MODULE_4__["TokenKind"].NAME)) {
-    return {
-      kind: _kinds__WEBPACK_IMPORTED_MODULE_6__["Kind"].FRAGMENT_SPREAD,
-      name: parseFragmentName(lexer),
-      directives: parseDirectives(lexer, false),
-      loc: loc(lexer, start)
-    };
-  }
-
-  return {
-    kind: _kinds__WEBPACK_IMPORTED_MODULE_6__["Kind"].INLINE_FRAGMENT,
-    typeCondition: hasTypeCondition ? parseNamedType(lexer) : undefined,
-    directives: parseDirectives(lexer, false),
-    selectionSet: parseSelectionSet(lexer),
-    loc: loc(lexer, start)
-  };
-}
-/**
- * FragmentDefinition :
- *   - fragment FragmentName on TypeCondition Directives? SelectionSet
- *
- * TypeCondition : NamedType
- */
-
-
-function parseFragmentDefinition(lexer) {
-  var start = lexer.token;
-  expectKeyword(lexer, 'fragment'); // Experimental support for defining variables within fragments changes
-  // the grammar of FragmentDefinition:
-  //   - fragment FragmentName VariableDefinitions? on TypeCondition Directives? SelectionSet
-
-  if (lexer.options.experimentalFragmentVariables) {
-    return {
-      kind: _kinds__WEBPACK_IMPORTED_MODULE_6__["Kind"].FRAGMENT_DEFINITION,
-      name: parseFragmentName(lexer),
-      variableDefinitions: parseVariableDefinitions(lexer),
-      typeCondition: (expectKeyword(lexer, 'on'), parseNamedType(lexer)),
-      directives: parseDirectives(lexer, false),
-      selectionSet: parseSelectionSet(lexer),
-      loc: loc(lexer, start)
-    };
-  }
-
-  return {
-    kind: _kinds__WEBPACK_IMPORTED_MODULE_6__["Kind"].FRAGMENT_DEFINITION,
-    name: parseFragmentName(lexer),
-    typeCondition: (expectKeyword(lexer, 'on'), parseNamedType(lexer)),
-    directives: parseDirectives(lexer, false),
-    selectionSet: parseSelectionSet(lexer),
-    loc: loc(lexer, start)
-  };
-}
-/**
- * FragmentName : Name but not `on`
- */
-
-
-function parseFragmentName(lexer) {
-  if (lexer.token.value === 'on') {
-    throw unexpected(lexer);
-  }
-
-  return parseName(lexer);
-} // Implements the parsing rules in the Values section.
-
-/**
- * Value[Const] :
- *   - [~Const] Variable
- *   - IntValue
- *   - FloatValue
- *   - StringValue
- *   - BooleanValue
- *   - NullValue
- *   - EnumValue
- *   - ListValue[?Const]
- *   - ObjectValue[?Const]
- *
- * BooleanValue : one of `true` `false`
- *
- * NullValue : `null`
- *
- * EnumValue : Name but not `true`, `false` or `null`
- */
-
-
-function parseValueLiteral(lexer, isConst) {
-  var token = lexer.token;
-
-  switch (token.kind) {
-    case _tokenKind__WEBPACK_IMPORTED_MODULE_4__["TokenKind"].BRACKET_L:
-      return parseList(lexer, isConst);
-
-    case _tokenKind__WEBPACK_IMPORTED_MODULE_4__["TokenKind"].BRACE_L:
-      return parseObject(lexer, isConst);
-
-    case _tokenKind__WEBPACK_IMPORTED_MODULE_4__["TokenKind"].INT:
-      lexer.advance();
-      return {
-        kind: _kinds__WEBPACK_IMPORTED_MODULE_6__["Kind"].INT,
-        value: token.value,
-        loc: loc(lexer, token)
-      };
-
-    case _tokenKind__WEBPACK_IMPORTED_MODULE_4__["TokenKind"].FLOAT:
-      lexer.advance();
-      return {
-        kind: _kinds__WEBPACK_IMPORTED_MODULE_6__["Kind"].FLOAT,
-        value: token.value,
-        loc: loc(lexer, token)
-      };
-
-    case _tokenKind__WEBPACK_IMPORTED_MODULE_4__["TokenKind"].STRING:
-    case _tokenKind__WEBPACK_IMPORTED_MODULE_4__["TokenKind"].BLOCK_STRING:
-      return parseStringLiteral(lexer);
-
-    case _tokenKind__WEBPACK_IMPORTED_MODULE_4__["TokenKind"].NAME:
-      if (token.value === 'true' || token.value === 'false') {
-        lexer.advance();
-        return {
-          kind: _kinds__WEBPACK_IMPORTED_MODULE_6__["Kind"].BOOLEAN,
-          value: token.value === 'true',
-          loc: loc(lexer, token)
-        };
-      } else if (token.value === 'null') {
-        lexer.advance();
-        return {
-          kind: _kinds__WEBPACK_IMPORTED_MODULE_6__["Kind"].NULL,
-          loc: loc(lexer, token)
-        };
+        case 'extend':
+          return this.parseTypeSystemExtension();
       }
+    } else if (this.peek(_tokenKind__WEBPACK_IMPORTED_MODULE_8__["TokenKind"].BRACE_L)) {
+      return this.parseOperationDefinition();
+    } else if (this.peekDescription()) {
+      return this.parseTypeSystemDefinition();
+    }
 
-      lexer.advance();
+    throw this.unexpected();
+  } // Implements the parsing rules in the Operations section.
+
+  /**
+   * OperationDefinition :
+   *  - SelectionSet
+   *  - OperationType Name? VariableDefinitions? Directives? SelectionSet
+   */
+  ;
+
+  _proto.parseOperationDefinition = function parseOperationDefinition() {
+    var start = this._lexer.token;
+
+    if (this.peek(_tokenKind__WEBPACK_IMPORTED_MODULE_8__["TokenKind"].BRACE_L)) {
       return {
-        kind: _kinds__WEBPACK_IMPORTED_MODULE_6__["Kind"].ENUM,
-        value: token.value,
-        loc: loc(lexer, token)
+        kind: _kinds__WEBPACK_IMPORTED_MODULE_4__["Kind"].OPERATION_DEFINITION,
+        operation: 'query',
+        name: undefined,
+        variableDefinitions: [],
+        directives: [],
+        selectionSet: this.parseSelectionSet(),
+        loc: this.loc(start)
       };
+    }
 
-    case _tokenKind__WEBPACK_IMPORTED_MODULE_4__["TokenKind"].DOLLAR:
-      if (!isConst) {
-        return parseVariable(lexer);
-      }
+    var operation = this.parseOperationType();
+    var name;
 
-      break;
-  }
+    if (this.peek(_tokenKind__WEBPACK_IMPORTED_MODULE_8__["TokenKind"].NAME)) {
+      name = this.parseName();
+    }
 
-  throw unexpected(lexer);
-}
-
-function parseStringLiteral(lexer) {
-  var token = lexer.token;
-  lexer.advance();
-  return {
-    kind: _kinds__WEBPACK_IMPORTED_MODULE_6__["Kind"].STRING,
-    value: token.value,
-    block: token.kind === _tokenKind__WEBPACK_IMPORTED_MODULE_4__["TokenKind"].BLOCK_STRING,
-    loc: loc(lexer, token)
-  };
-}
-
-function parseConstValue(lexer) {
-  return parseValueLiteral(lexer, true);
-}
-
-function parseValueValue(lexer) {
-  return parseValueLiteral(lexer, false);
-}
-/**
- * ListValue[Const] :
- *   - [ ]
- *   - [ Value[?Const]+ ]
- */
-
-
-function parseList(lexer, isConst) {
-  var start = lexer.token;
-  var item = isConst ? parseConstValue : parseValueValue;
-  return {
-    kind: _kinds__WEBPACK_IMPORTED_MODULE_6__["Kind"].LIST,
-    values: any(lexer, _tokenKind__WEBPACK_IMPORTED_MODULE_4__["TokenKind"].BRACKET_L, item, _tokenKind__WEBPACK_IMPORTED_MODULE_4__["TokenKind"].BRACKET_R),
-    loc: loc(lexer, start)
-  };
-}
-/**
- * ObjectValue[Const] :
- *   - { }
- *   - { ObjectField[?Const]+ }
- */
-
-
-function parseObject(lexer, isConst) {
-  var start = lexer.token;
-
-  var item = function item() {
-    return parseObjectField(lexer, isConst);
-  };
-
-  return {
-    kind: _kinds__WEBPACK_IMPORTED_MODULE_6__["Kind"].OBJECT,
-    fields: any(lexer, _tokenKind__WEBPACK_IMPORTED_MODULE_4__["TokenKind"].BRACE_L, item, _tokenKind__WEBPACK_IMPORTED_MODULE_4__["TokenKind"].BRACE_R),
-    loc: loc(lexer, start)
-  };
-}
-/**
- * ObjectField[Const] : Name : Value[?Const]
- */
-
-
-function parseObjectField(lexer, isConst) {
-  var start = lexer.token;
-  var name = parseName(lexer);
-  expectToken(lexer, _tokenKind__WEBPACK_IMPORTED_MODULE_4__["TokenKind"].COLON);
-  return {
-    kind: _kinds__WEBPACK_IMPORTED_MODULE_6__["Kind"].OBJECT_FIELD,
-    name: name,
-    value: parseValueLiteral(lexer, isConst),
-    loc: loc(lexer, start)
-  };
-} // Implements the parsing rules in the Directives section.
-
-/**
- * Directives[Const] : Directive[?Const]+
- */
-
-
-function parseDirectives(lexer, isConst) {
-  var directives = [];
-
-  while (peek(lexer, _tokenKind__WEBPACK_IMPORTED_MODULE_4__["TokenKind"].AT)) {
-    directives.push(parseDirective(lexer, isConst));
-  }
-
-  return directives;
-}
-/**
- * Directive[Const] : @ Name Arguments[?Const]?
- */
-
-
-function parseDirective(lexer, isConst) {
-  var start = lexer.token;
-  expectToken(lexer, _tokenKind__WEBPACK_IMPORTED_MODULE_4__["TokenKind"].AT);
-  return {
-    kind: _kinds__WEBPACK_IMPORTED_MODULE_6__["Kind"].DIRECTIVE,
-    name: parseName(lexer),
-    arguments: parseArguments(lexer, isConst),
-    loc: loc(lexer, start)
-  };
-} // Implements the parsing rules in the Types section.
-
-/**
- * Type :
- *   - NamedType
- *   - ListType
- *   - NonNullType
- */
-
-
-function parseTypeReference(lexer) {
-  var start = lexer.token;
-  var type;
-
-  if (expectOptionalToken(lexer, _tokenKind__WEBPACK_IMPORTED_MODULE_4__["TokenKind"].BRACKET_L)) {
-    type = parseTypeReference(lexer);
-    expectToken(lexer, _tokenKind__WEBPACK_IMPORTED_MODULE_4__["TokenKind"].BRACKET_R);
-    type = {
-      kind: _kinds__WEBPACK_IMPORTED_MODULE_6__["Kind"].LIST_TYPE,
-      type: type,
-      loc: loc(lexer, start)
-    };
-  } else {
-    type = parseNamedType(lexer);
-  }
-
-  if (expectOptionalToken(lexer, _tokenKind__WEBPACK_IMPORTED_MODULE_4__["TokenKind"].BANG)) {
     return {
-      kind: _kinds__WEBPACK_IMPORTED_MODULE_6__["Kind"].NON_NULL_TYPE,
-      type: type,
-      loc: loc(lexer, start)
+      kind: _kinds__WEBPACK_IMPORTED_MODULE_4__["Kind"].OPERATION_DEFINITION,
+      operation: operation,
+      name: name,
+      variableDefinitions: this.parseVariableDefinitions(),
+      directives: this.parseDirectives(false),
+      selectionSet: this.parseSelectionSet(),
+      loc: this.loc(start)
     };
   }
+  /**
+   * OperationType : one of query mutation subscription
+   */
+  ;
 
-  return type;
-}
-/**
- * NamedType : Name
- */
+  _proto.parseOperationType = function parseOperationType() {
+    var operationToken = this.expectToken(_tokenKind__WEBPACK_IMPORTED_MODULE_8__["TokenKind"].NAME);
 
-function parseNamedType(lexer) {
-  var start = lexer.token;
-  return {
-    kind: _kinds__WEBPACK_IMPORTED_MODULE_6__["Kind"].NAMED_TYPE,
-    name: parseName(lexer),
-    loc: loc(lexer, start)
+    switch (operationToken.value) {
+      case 'query':
+        return 'query';
+
+      case 'mutation':
+        return 'mutation';
+
+      case 'subscription':
+        return 'subscription';
+    }
+
+    throw this.unexpected(operationToken);
+  }
+  /**
+   * VariableDefinitions : ( VariableDefinition+ )
+   */
+  ;
+
+  _proto.parseVariableDefinitions = function parseVariableDefinitions() {
+    return this.optionalMany(_tokenKind__WEBPACK_IMPORTED_MODULE_8__["TokenKind"].PAREN_L, this.parseVariableDefinition, _tokenKind__WEBPACK_IMPORTED_MODULE_8__["TokenKind"].PAREN_R);
+  }
+  /**
+   * VariableDefinition : Variable : Type DefaultValue? Directives[Const]?
+   */
+  ;
+
+  _proto.parseVariableDefinition = function parseVariableDefinition() {
+    var start = this._lexer.token;
+    return {
+      kind: _kinds__WEBPACK_IMPORTED_MODULE_4__["Kind"].VARIABLE_DEFINITION,
+      variable: this.parseVariable(),
+      type: (this.expectToken(_tokenKind__WEBPACK_IMPORTED_MODULE_8__["TokenKind"].COLON), this.parseTypeReference()),
+      defaultValue: this.expectOptionalToken(_tokenKind__WEBPACK_IMPORTED_MODULE_8__["TokenKind"].EQUALS) ? this.parseValueLiteral(true) : undefined,
+      directives: this.parseDirectives(true),
+      loc: this.loc(start)
+    };
+  }
+  /**
+   * Variable : $ Name
+   */
+  ;
+
+  _proto.parseVariable = function parseVariable() {
+    var start = this._lexer.token;
+    this.expectToken(_tokenKind__WEBPACK_IMPORTED_MODULE_8__["TokenKind"].DOLLAR);
+    return {
+      kind: _kinds__WEBPACK_IMPORTED_MODULE_4__["Kind"].VARIABLE,
+      name: this.parseName(),
+      loc: this.loc(start)
+    };
+  }
+  /**
+   * SelectionSet : { Selection+ }
+   */
+  ;
+
+  _proto.parseSelectionSet = function parseSelectionSet() {
+    var start = this._lexer.token;
+    return {
+      kind: _kinds__WEBPACK_IMPORTED_MODULE_4__["Kind"].SELECTION_SET,
+      selections: this.many(_tokenKind__WEBPACK_IMPORTED_MODULE_8__["TokenKind"].BRACE_L, this.parseSelection, _tokenKind__WEBPACK_IMPORTED_MODULE_8__["TokenKind"].BRACE_R),
+      loc: this.loc(start)
+    };
+  }
+  /**
+   * Selection :
+   *   - Field
+   *   - FragmentSpread
+   *   - InlineFragment
+   */
+  ;
+
+  _proto.parseSelection = function parseSelection() {
+    return this.peek(_tokenKind__WEBPACK_IMPORTED_MODULE_8__["TokenKind"].SPREAD) ? this.parseFragment() : this.parseField();
+  }
+  /**
+   * Field : Alias? Name Arguments? Directives? SelectionSet?
+   *
+   * Alias : Name :
+   */
+  ;
+
+  _proto.parseField = function parseField() {
+    var start = this._lexer.token;
+    var nameOrAlias = this.parseName();
+    var alias;
+    var name;
+
+    if (this.expectOptionalToken(_tokenKind__WEBPACK_IMPORTED_MODULE_8__["TokenKind"].COLON)) {
+      alias = nameOrAlias;
+      name = this.parseName();
+    } else {
+      name = nameOrAlias;
+    }
+
+    return {
+      kind: _kinds__WEBPACK_IMPORTED_MODULE_4__["Kind"].FIELD,
+      alias: alias,
+      name: name,
+      arguments: this.parseArguments(false),
+      directives: this.parseDirectives(false),
+      selectionSet: this.peek(_tokenKind__WEBPACK_IMPORTED_MODULE_8__["TokenKind"].BRACE_L) ? this.parseSelectionSet() : undefined,
+      loc: this.loc(start)
+    };
+  }
+  /**
+   * Arguments[Const] : ( Argument[?Const]+ )
+   */
+  ;
+
+  _proto.parseArguments = function parseArguments(isConst) {
+    var item = isConst ? this.parseConstArgument : this.parseArgument;
+    return this.optionalMany(_tokenKind__WEBPACK_IMPORTED_MODULE_8__["TokenKind"].PAREN_L, item, _tokenKind__WEBPACK_IMPORTED_MODULE_8__["TokenKind"].PAREN_R);
+  }
+  /**
+   * Argument[Const] : Name : Value[?Const]
+   */
+  ;
+
+  _proto.parseArgument = function parseArgument() {
+    var start = this._lexer.token;
+    var name = this.parseName();
+    this.expectToken(_tokenKind__WEBPACK_IMPORTED_MODULE_8__["TokenKind"].COLON);
+    return {
+      kind: _kinds__WEBPACK_IMPORTED_MODULE_4__["Kind"].ARGUMENT,
+      name: name,
+      value: this.parseValueLiteral(false),
+      loc: this.loc(start)
+    };
   };
-} // Implements the parsing rules in the Type Definition section.
 
-/**
- * TypeSystemDefinition :
- *   - SchemaDefinition
- *   - TypeDefinition
- *   - DirectiveDefinition
- *
- * TypeDefinition :
- *   - ScalarTypeDefinition
- *   - ObjectTypeDefinition
- *   - InterfaceTypeDefinition
- *   - UnionTypeDefinition
- *   - EnumTypeDefinition
- *   - InputObjectTypeDefinition
- */
+  _proto.parseConstArgument = function parseConstArgument() {
+    var start = this._lexer.token;
+    return {
+      kind: _kinds__WEBPACK_IMPORTED_MODULE_4__["Kind"].ARGUMENT,
+      name: this.parseName(),
+      value: (this.expectToken(_tokenKind__WEBPACK_IMPORTED_MODULE_8__["TokenKind"].COLON), this.parseValueLiteral(true)),
+      loc: this.loc(start)
+    };
+  } // Implements the parsing rules in the Fragments section.
 
-function parseTypeSystemDefinition(lexer) {
-  // Many definitions begin with a description and require a lookahead.
-  var keywordToken = peekDescription(lexer) ? lexer.lookahead() : lexer.token;
+  /**
+   * Corresponds to both FragmentSpread and InlineFragment in the spec.
+   *
+   * FragmentSpread : ... FragmentName Directives?
+   *
+   * InlineFragment : ... TypeCondition? Directives? SelectionSet
+   */
+  ;
 
-  if (keywordToken.kind === _tokenKind__WEBPACK_IMPORTED_MODULE_4__["TokenKind"].NAME) {
-    switch (keywordToken.value) {
-      case 'schema':
-        return parseSchemaDefinition(lexer);
+  _proto.parseFragment = function parseFragment() {
+    var start = this._lexer.token;
+    this.expectToken(_tokenKind__WEBPACK_IMPORTED_MODULE_8__["TokenKind"].SPREAD);
+    var hasTypeCondition = this.expectOptionalKeyword('on');
 
-      case 'scalar':
-        return parseScalarTypeDefinition(lexer);
+    if (!hasTypeCondition && this.peek(_tokenKind__WEBPACK_IMPORTED_MODULE_8__["TokenKind"].NAME)) {
+      return {
+        kind: _kinds__WEBPACK_IMPORTED_MODULE_4__["Kind"].FRAGMENT_SPREAD,
+        name: this.parseFragmentName(),
+        directives: this.parseDirectives(false),
+        loc: this.loc(start)
+      };
+    }
 
-      case 'type':
-        return parseObjectTypeDefinition(lexer);
+    return {
+      kind: _kinds__WEBPACK_IMPORTED_MODULE_4__["Kind"].INLINE_FRAGMENT,
+      typeCondition: hasTypeCondition ? this.parseNamedType() : undefined,
+      directives: this.parseDirectives(false),
+      selectionSet: this.parseSelectionSet(),
+      loc: this.loc(start)
+    };
+  }
+  /**
+   * FragmentDefinition :
+   *   - fragment FragmentName on TypeCondition Directives? SelectionSet
+   *
+   * TypeCondition : NamedType
+   */
+  ;
 
-      case 'interface':
-        return parseInterfaceTypeDefinition(lexer);
+  _proto.parseFragmentDefinition = function parseFragmentDefinition() {
+    var start = this._lexer.token;
+    this.expectKeyword('fragment'); // Experimental support for defining variables within fragments changes
+    // the grammar of FragmentDefinition:
+    //   - fragment FragmentName VariableDefinitions? on TypeCondition Directives? SelectionSet
 
-      case 'union':
-        return parseUnionTypeDefinition(lexer);
+    if (this._options.experimentalFragmentVariables) {
+      return {
+        kind: _kinds__WEBPACK_IMPORTED_MODULE_4__["Kind"].FRAGMENT_DEFINITION,
+        name: this.parseFragmentName(),
+        variableDefinitions: this.parseVariableDefinitions(),
+        typeCondition: (this.expectKeyword('on'), this.parseNamedType()),
+        directives: this.parseDirectives(false),
+        selectionSet: this.parseSelectionSet(),
+        loc: this.loc(start)
+      };
+    }
 
-      case 'enum':
-        return parseEnumTypeDefinition(lexer);
+    return {
+      kind: _kinds__WEBPACK_IMPORTED_MODULE_4__["Kind"].FRAGMENT_DEFINITION,
+      name: this.parseFragmentName(),
+      typeCondition: (this.expectKeyword('on'), this.parseNamedType()),
+      directives: this.parseDirectives(false),
+      selectionSet: this.parseSelectionSet(),
+      loc: this.loc(start)
+    };
+  }
+  /**
+   * FragmentName : Name but not `on`
+   */
+  ;
 
-      case 'input':
-        return parseInputObjectTypeDefinition(lexer);
+  _proto.parseFragmentName = function parseFragmentName() {
+    if (this._lexer.token.value === 'on') {
+      throw this.unexpected();
+    }
 
-      case 'directive':
-        return parseDirectiveDefinition(lexer);
+    return this.parseName();
+  } // Implements the parsing rules in the Values section.
+
+  /**
+   * Value[Const] :
+   *   - [~Const] Variable
+   *   - IntValue
+   *   - FloatValue
+   *   - StringValue
+   *   - BooleanValue
+   *   - NullValue
+   *   - EnumValue
+   *   - ListValue[?Const]
+   *   - ObjectValue[?Const]
+   *
+   * BooleanValue : one of `true` `false`
+   *
+   * NullValue : `null`
+   *
+   * EnumValue : Name but not `true`, `false` or `null`
+   */
+  ;
+
+  _proto.parseValueLiteral = function parseValueLiteral(isConst) {
+    var token = this._lexer.token;
+
+    switch (token.kind) {
+      case _tokenKind__WEBPACK_IMPORTED_MODULE_8__["TokenKind"].BRACKET_L:
+        return this.parseList(isConst);
+
+      case _tokenKind__WEBPACK_IMPORTED_MODULE_8__["TokenKind"].BRACE_L:
+        return this.parseObject(isConst);
+
+      case _tokenKind__WEBPACK_IMPORTED_MODULE_8__["TokenKind"].INT:
+        this._lexer.advance();
+
+        return {
+          kind: _kinds__WEBPACK_IMPORTED_MODULE_4__["Kind"].INT,
+          value: token.value,
+          loc: this.loc(token)
+        };
+
+      case _tokenKind__WEBPACK_IMPORTED_MODULE_8__["TokenKind"].FLOAT:
+        this._lexer.advance();
+
+        return {
+          kind: _kinds__WEBPACK_IMPORTED_MODULE_4__["Kind"].FLOAT,
+          value: token.value,
+          loc: this.loc(token)
+        };
+
+      case _tokenKind__WEBPACK_IMPORTED_MODULE_8__["TokenKind"].STRING:
+      case _tokenKind__WEBPACK_IMPORTED_MODULE_8__["TokenKind"].BLOCK_STRING:
+        return this.parseStringLiteral();
+
+      case _tokenKind__WEBPACK_IMPORTED_MODULE_8__["TokenKind"].NAME:
+        if (token.value === 'true' || token.value === 'false') {
+          this._lexer.advance();
+
+          return {
+            kind: _kinds__WEBPACK_IMPORTED_MODULE_4__["Kind"].BOOLEAN,
+            value: token.value === 'true',
+            loc: this.loc(token)
+          };
+        } else if (token.value === 'null') {
+          this._lexer.advance();
+
+          return {
+            kind: _kinds__WEBPACK_IMPORTED_MODULE_4__["Kind"].NULL,
+            loc: this.loc(token)
+          };
+        }
+
+        this._lexer.advance();
+
+        return {
+          kind: _kinds__WEBPACK_IMPORTED_MODULE_4__["Kind"].ENUM,
+          value: token.value,
+          loc: this.loc(token)
+        };
+
+      case _tokenKind__WEBPACK_IMPORTED_MODULE_8__["TokenKind"].DOLLAR:
+        if (!isConst) {
+          return this.parseVariable();
+        }
+
+        break;
+    }
+
+    throw this.unexpected();
+  };
+
+  _proto.parseStringLiteral = function parseStringLiteral() {
+    var token = this._lexer.token;
+
+    this._lexer.advance();
+
+    return {
+      kind: _kinds__WEBPACK_IMPORTED_MODULE_4__["Kind"].STRING,
+      value: token.value,
+      block: token.kind === _tokenKind__WEBPACK_IMPORTED_MODULE_8__["TokenKind"].BLOCK_STRING,
+      loc: this.loc(token)
+    };
+  }
+  /**
+   * ListValue[Const] :
+   *   - [ ]
+   *   - [ Value[?Const]+ ]
+   */
+  ;
+
+  _proto.parseList = function parseList(isConst) {
+    var _this = this;
+
+    var start = this._lexer.token;
+
+    var item = function item() {
+      return _this.parseValueLiteral(isConst);
+    };
+
+    return {
+      kind: _kinds__WEBPACK_IMPORTED_MODULE_4__["Kind"].LIST,
+      values: this.any(_tokenKind__WEBPACK_IMPORTED_MODULE_8__["TokenKind"].BRACKET_L, item, _tokenKind__WEBPACK_IMPORTED_MODULE_8__["TokenKind"].BRACKET_R),
+      loc: this.loc(start)
+    };
+  }
+  /**
+   * ObjectValue[Const] :
+   *   - { }
+   *   - { ObjectField[?Const]+ }
+   */
+  ;
+
+  _proto.parseObject = function parseObject(isConst) {
+    var _this2 = this;
+
+    var start = this._lexer.token;
+
+    var item = function item() {
+      return _this2.parseObjectField(isConst);
+    };
+
+    return {
+      kind: _kinds__WEBPACK_IMPORTED_MODULE_4__["Kind"].OBJECT,
+      fields: this.any(_tokenKind__WEBPACK_IMPORTED_MODULE_8__["TokenKind"].BRACE_L, item, _tokenKind__WEBPACK_IMPORTED_MODULE_8__["TokenKind"].BRACE_R),
+      loc: this.loc(start)
+    };
+  }
+  /**
+   * ObjectField[Const] : Name : Value[?Const]
+   */
+  ;
+
+  _proto.parseObjectField = function parseObjectField(isConst) {
+    var start = this._lexer.token;
+    var name = this.parseName();
+    this.expectToken(_tokenKind__WEBPACK_IMPORTED_MODULE_8__["TokenKind"].COLON);
+    return {
+      kind: _kinds__WEBPACK_IMPORTED_MODULE_4__["Kind"].OBJECT_FIELD,
+      name: name,
+      value: this.parseValueLiteral(isConst),
+      loc: this.loc(start)
+    };
+  } // Implements the parsing rules in the Directives section.
+
+  /**
+   * Directives[Const] : Directive[?Const]+
+   */
+  ;
+
+  _proto.parseDirectives = function parseDirectives(isConst) {
+    var directives = [];
+
+    while (this.peek(_tokenKind__WEBPACK_IMPORTED_MODULE_8__["TokenKind"].AT)) {
+      directives.push(this.parseDirective(isConst));
+    }
+
+    return directives;
+  }
+  /**
+   * Directive[Const] : @ Name Arguments[?Const]?
+   */
+  ;
+
+  _proto.parseDirective = function parseDirective(isConst) {
+    var start = this._lexer.token;
+    this.expectToken(_tokenKind__WEBPACK_IMPORTED_MODULE_8__["TokenKind"].AT);
+    return {
+      kind: _kinds__WEBPACK_IMPORTED_MODULE_4__["Kind"].DIRECTIVE,
+      name: this.parseName(),
+      arguments: this.parseArguments(isConst),
+      loc: this.loc(start)
+    };
+  } // Implements the parsing rules in the Types section.
+
+  /**
+   * Type :
+   *   - NamedType
+   *   - ListType
+   *   - NonNullType
+   */
+  ;
+
+  _proto.parseTypeReference = function parseTypeReference() {
+    var start = this._lexer.token;
+    var type;
+
+    if (this.expectOptionalToken(_tokenKind__WEBPACK_IMPORTED_MODULE_8__["TokenKind"].BRACKET_L)) {
+      type = this.parseTypeReference();
+      this.expectToken(_tokenKind__WEBPACK_IMPORTED_MODULE_8__["TokenKind"].BRACKET_R);
+      type = {
+        kind: _kinds__WEBPACK_IMPORTED_MODULE_4__["Kind"].LIST_TYPE,
+        type: type,
+        loc: this.loc(start)
+      };
+    } else {
+      type = this.parseNamedType();
+    }
+
+    if (this.expectOptionalToken(_tokenKind__WEBPACK_IMPORTED_MODULE_8__["TokenKind"].BANG)) {
+      return {
+        kind: _kinds__WEBPACK_IMPORTED_MODULE_4__["Kind"].NON_NULL_TYPE,
+        type: type,
+        loc: this.loc(start)
+      };
+    }
+
+    return type;
+  }
+  /**
+   * NamedType : Name
+   */
+  ;
+
+  _proto.parseNamedType = function parseNamedType() {
+    var start = this._lexer.token;
+    return {
+      kind: _kinds__WEBPACK_IMPORTED_MODULE_4__["Kind"].NAMED_TYPE,
+      name: this.parseName(),
+      loc: this.loc(start)
+    };
+  } // Implements the parsing rules in the Type Definition section.
+
+  /**
+   * TypeSystemDefinition :
+   *   - SchemaDefinition
+   *   - TypeDefinition
+   *   - DirectiveDefinition
+   *
+   * TypeDefinition :
+   *   - ScalarTypeDefinition
+   *   - ObjectTypeDefinition
+   *   - InterfaceTypeDefinition
+   *   - UnionTypeDefinition
+   *   - EnumTypeDefinition
+   *   - InputObjectTypeDefinition
+   */
+  ;
+
+  _proto.parseTypeSystemDefinition = function parseTypeSystemDefinition() {
+    // Many definitions begin with a description and require a lookahead.
+    var keywordToken = this.peekDescription() ? this._lexer.lookahead() : this._lexer.token;
+
+    if (keywordToken.kind === _tokenKind__WEBPACK_IMPORTED_MODULE_8__["TokenKind"].NAME) {
+      switch (keywordToken.value) {
+        case 'schema':
+          return this.parseSchemaDefinition();
+
+        case 'scalar':
+          return this.parseScalarTypeDefinition();
+
+        case 'type':
+          return this.parseObjectTypeDefinition();
+
+        case 'interface':
+          return this.parseInterfaceTypeDefinition();
+
+        case 'union':
+          return this.parseUnionTypeDefinition();
+
+        case 'enum':
+          return this.parseEnumTypeDefinition();
+
+        case 'input':
+          return this.parseInputObjectTypeDefinition();
+
+        case 'directive':
+          return this.parseDirectiveDefinition();
+      }
+    }
+
+    throw this.unexpected(keywordToken);
+  };
+
+  _proto.peekDescription = function peekDescription() {
+    return this.peek(_tokenKind__WEBPACK_IMPORTED_MODULE_8__["TokenKind"].STRING) || this.peek(_tokenKind__WEBPACK_IMPORTED_MODULE_8__["TokenKind"].BLOCK_STRING);
+  }
+  /**
+   * Description : StringValue
+   */
+  ;
+
+  _proto.parseDescription = function parseDescription() {
+    if (this.peekDescription()) {
+      return this.parseStringLiteral();
     }
   }
+  /**
+   * SchemaDefinition : schema Directives[Const]? { OperationTypeDefinition+ }
+   */
+  ;
 
-  throw unexpected(lexer, keywordToken);
-}
-
-function peekDescription(lexer) {
-  return peek(lexer, _tokenKind__WEBPACK_IMPORTED_MODULE_4__["TokenKind"].STRING) || peek(lexer, _tokenKind__WEBPACK_IMPORTED_MODULE_4__["TokenKind"].BLOCK_STRING);
-}
-/**
- * Description : StringValue
- */
-
-
-function parseDescription(lexer) {
-  if (peekDescription(lexer)) {
-    return parseStringLiteral(lexer);
+  _proto.parseSchemaDefinition = function parseSchemaDefinition() {
+    var start = this._lexer.token;
+    this.expectKeyword('schema');
+    var directives = this.parseDirectives(true);
+    var operationTypes = this.many(_tokenKind__WEBPACK_IMPORTED_MODULE_8__["TokenKind"].BRACE_L, this.parseOperationTypeDefinition, _tokenKind__WEBPACK_IMPORTED_MODULE_8__["TokenKind"].BRACE_R);
+    return {
+      kind: _kinds__WEBPACK_IMPORTED_MODULE_4__["Kind"].SCHEMA_DEFINITION,
+      directives: directives,
+      operationTypes: operationTypes,
+      loc: this.loc(start)
+    };
   }
-}
-/**
- * SchemaDefinition : schema Directives[Const]? { OperationTypeDefinition+ }
- */
+  /**
+   * OperationTypeDefinition : OperationType : NamedType
+   */
+  ;
 
-
-function parseSchemaDefinition(lexer) {
-  var start = lexer.token;
-  expectKeyword(lexer, 'schema');
-  var directives = parseDirectives(lexer, true);
-  var operationTypes = many(lexer, _tokenKind__WEBPACK_IMPORTED_MODULE_4__["TokenKind"].BRACE_L, parseOperationTypeDefinition, _tokenKind__WEBPACK_IMPORTED_MODULE_4__["TokenKind"].BRACE_R);
-  return {
-    kind: _kinds__WEBPACK_IMPORTED_MODULE_6__["Kind"].SCHEMA_DEFINITION,
-    directives: directives,
-    operationTypes: operationTypes,
-    loc: loc(lexer, start)
-  };
-}
-/**
- * OperationTypeDefinition : OperationType : NamedType
- */
-
-
-function parseOperationTypeDefinition(lexer) {
-  var start = lexer.token;
-  var operation = parseOperationType(lexer);
-  expectToken(lexer, _tokenKind__WEBPACK_IMPORTED_MODULE_4__["TokenKind"].COLON);
-  var type = parseNamedType(lexer);
-  return {
-    kind: _kinds__WEBPACK_IMPORTED_MODULE_6__["Kind"].OPERATION_TYPE_DEFINITION,
-    operation: operation,
-    type: type,
-    loc: loc(lexer, start)
-  };
-}
-/**
- * ScalarTypeDefinition : Description? scalar Name Directives[Const]?
- */
-
-
-function parseScalarTypeDefinition(lexer) {
-  var start = lexer.token;
-  var description = parseDescription(lexer);
-  expectKeyword(lexer, 'scalar');
-  var name = parseName(lexer);
-  var directives = parseDirectives(lexer, true);
-  return {
-    kind: _kinds__WEBPACK_IMPORTED_MODULE_6__["Kind"].SCALAR_TYPE_DEFINITION,
-    description: description,
-    name: name,
-    directives: directives,
-    loc: loc(lexer, start)
-  };
-}
-/**
- * ObjectTypeDefinition :
- *   Description?
- *   type Name ImplementsInterfaces? Directives[Const]? FieldsDefinition?
- */
-
-
-function parseObjectTypeDefinition(lexer) {
-  var start = lexer.token;
-  var description = parseDescription(lexer);
-  expectKeyword(lexer, 'type');
-  var name = parseName(lexer);
-  var interfaces = parseImplementsInterfaces(lexer);
-  var directives = parseDirectives(lexer, true);
-  var fields = parseFieldsDefinition(lexer);
-  return {
-    kind: _kinds__WEBPACK_IMPORTED_MODULE_6__["Kind"].OBJECT_TYPE_DEFINITION,
-    description: description,
-    name: name,
-    interfaces: interfaces,
-    directives: directives,
-    fields: fields,
-    loc: loc(lexer, start)
-  };
-}
-/**
- * ImplementsInterfaces :
- *   - implements `&`? NamedType
- *   - ImplementsInterfaces & NamedType
- */
-
-
-function parseImplementsInterfaces(lexer) {
-  var types = [];
-
-  if (expectOptionalKeyword(lexer, 'implements')) {
-    // Optional leading ampersand
-    expectOptionalToken(lexer, _tokenKind__WEBPACK_IMPORTED_MODULE_4__["TokenKind"].AMP);
-
-    do {
-      types.push(parseNamedType(lexer));
-    } while (expectOptionalToken(lexer, _tokenKind__WEBPACK_IMPORTED_MODULE_4__["TokenKind"].AMP) || // Legacy support for the SDL?
-    lexer.options.allowLegacySDLImplementsInterfaces && peek(lexer, _tokenKind__WEBPACK_IMPORTED_MODULE_4__["TokenKind"].NAME));
+  _proto.parseOperationTypeDefinition = function parseOperationTypeDefinition() {
+    var start = this._lexer.token;
+    var operation = this.parseOperationType();
+    this.expectToken(_tokenKind__WEBPACK_IMPORTED_MODULE_8__["TokenKind"].COLON);
+    var type = this.parseNamedType();
+    return {
+      kind: _kinds__WEBPACK_IMPORTED_MODULE_4__["Kind"].OPERATION_TYPE_DEFINITION,
+      operation: operation,
+      type: type,
+      loc: this.loc(start)
+    };
   }
+  /**
+   * ScalarTypeDefinition : Description? scalar Name Directives[Const]?
+   */
+  ;
 
-  return types;
-}
-/**
- * FieldsDefinition : { FieldDefinition+ }
- */
-
-
-function parseFieldsDefinition(lexer) {
-  // Legacy support for the SDL?
-  if (lexer.options.allowLegacySDLEmptyFields && peek(lexer, _tokenKind__WEBPACK_IMPORTED_MODULE_4__["TokenKind"].BRACE_L) && lexer.lookahead().kind === _tokenKind__WEBPACK_IMPORTED_MODULE_4__["TokenKind"].BRACE_R) {
-    lexer.advance();
-    lexer.advance();
-    return [];
+  _proto.parseScalarTypeDefinition = function parseScalarTypeDefinition() {
+    var start = this._lexer.token;
+    var description = this.parseDescription();
+    this.expectKeyword('scalar');
+    var name = this.parseName();
+    var directives = this.parseDirectives(true);
+    return {
+      kind: _kinds__WEBPACK_IMPORTED_MODULE_4__["Kind"].SCALAR_TYPE_DEFINITION,
+      description: description,
+      name: name,
+      directives: directives,
+      loc: this.loc(start)
+    };
   }
+  /**
+   * ObjectTypeDefinition :
+   *   Description?
+   *   type Name ImplementsInterfaces? Directives[Const]? FieldsDefinition?
+   */
+  ;
 
-  return peek(lexer, _tokenKind__WEBPACK_IMPORTED_MODULE_4__["TokenKind"].BRACE_L) ? many(lexer, _tokenKind__WEBPACK_IMPORTED_MODULE_4__["TokenKind"].BRACE_L, parseFieldDefinition, _tokenKind__WEBPACK_IMPORTED_MODULE_4__["TokenKind"].BRACE_R) : [];
-}
-/**
- * FieldDefinition :
- *   - Description? Name ArgumentsDefinition? : Type Directives[Const]?
- */
-
-
-function parseFieldDefinition(lexer) {
-  var start = lexer.token;
-  var description = parseDescription(lexer);
-  var name = parseName(lexer);
-  var args = parseArgumentDefs(lexer);
-  expectToken(lexer, _tokenKind__WEBPACK_IMPORTED_MODULE_4__["TokenKind"].COLON);
-  var type = parseTypeReference(lexer);
-  var directives = parseDirectives(lexer, true);
-  return {
-    kind: _kinds__WEBPACK_IMPORTED_MODULE_6__["Kind"].FIELD_DEFINITION,
-    description: description,
-    name: name,
-    arguments: args,
-    type: type,
-    directives: directives,
-    loc: loc(lexer, start)
-  };
-}
-/**
- * ArgumentsDefinition : ( InputValueDefinition+ )
- */
-
-
-function parseArgumentDefs(lexer) {
-  if (!peek(lexer, _tokenKind__WEBPACK_IMPORTED_MODULE_4__["TokenKind"].PAREN_L)) {
-    return [];
+  _proto.parseObjectTypeDefinition = function parseObjectTypeDefinition() {
+    var start = this._lexer.token;
+    var description = this.parseDescription();
+    this.expectKeyword('type');
+    var name = this.parseName();
+    var interfaces = this.parseImplementsInterfaces();
+    var directives = this.parseDirectives(true);
+    var fields = this.parseFieldsDefinition();
+    return {
+      kind: _kinds__WEBPACK_IMPORTED_MODULE_4__["Kind"].OBJECT_TYPE_DEFINITION,
+      description: description,
+      name: name,
+      interfaces: interfaces,
+      directives: directives,
+      fields: fields,
+      loc: this.loc(start)
+    };
   }
+  /**
+   * ImplementsInterfaces :
+   *   - implements `&`? NamedType
+   *   - ImplementsInterfaces & NamedType
+   */
+  ;
 
-  return many(lexer, _tokenKind__WEBPACK_IMPORTED_MODULE_4__["TokenKind"].PAREN_L, parseInputValueDef, _tokenKind__WEBPACK_IMPORTED_MODULE_4__["TokenKind"].PAREN_R);
-}
-/**
- * InputValueDefinition :
- *   - Description? Name : Type DefaultValue? Directives[Const]?
- */
+  _proto.parseImplementsInterfaces = function parseImplementsInterfaces() {
+    var types = [];
 
+    if (this.expectOptionalKeyword('implements')) {
+      // Optional leading ampersand
+      this.expectOptionalToken(_tokenKind__WEBPACK_IMPORTED_MODULE_8__["TokenKind"].AMP);
 
-function parseInputValueDef(lexer) {
-  var start = lexer.token;
-  var description = parseDescription(lexer);
-  var name = parseName(lexer);
-  expectToken(lexer, _tokenKind__WEBPACK_IMPORTED_MODULE_4__["TokenKind"].COLON);
-  var type = parseTypeReference(lexer);
-  var defaultValue;
+      do {
+        types.push(this.parseNamedType());
+      } while (this.expectOptionalToken(_tokenKind__WEBPACK_IMPORTED_MODULE_8__["TokenKind"].AMP) || // Legacy support for the SDL?
+      this._options.allowLegacySDLImplementsInterfaces && this.peek(_tokenKind__WEBPACK_IMPORTED_MODULE_8__["TokenKind"].NAME));
+    }
 
-  if (expectOptionalToken(lexer, _tokenKind__WEBPACK_IMPORTED_MODULE_4__["TokenKind"].EQUALS)) {
-    defaultValue = parseConstValue(lexer);
+    return types;
   }
+  /**
+   * FieldsDefinition : { FieldDefinition+ }
+   */
+  ;
 
-  var directives = parseDirectives(lexer, true);
-  return {
-    kind: _kinds__WEBPACK_IMPORTED_MODULE_6__["Kind"].INPUT_VALUE_DEFINITION,
-    description: description,
-    name: name,
-    type: type,
-    defaultValue: defaultValue,
-    directives: directives,
-    loc: loc(lexer, start)
-  };
-}
-/**
- * InterfaceTypeDefinition :
- *   - Description? interface Name Directives[Const]? FieldsDefinition?
- */
+  _proto.parseFieldsDefinition = function parseFieldsDefinition() {
+    // Legacy support for the SDL?
+    if (this._options.allowLegacySDLEmptyFields && this.peek(_tokenKind__WEBPACK_IMPORTED_MODULE_8__["TokenKind"].BRACE_L) && this._lexer.lookahead().kind === _tokenKind__WEBPACK_IMPORTED_MODULE_8__["TokenKind"].BRACE_R) {
+      this._lexer.advance();
 
+      this._lexer.advance();
 
-function parseInterfaceTypeDefinition(lexer) {
-  var start = lexer.token;
-  var description = parseDescription(lexer);
-  expectKeyword(lexer, 'interface');
-  var name = parseName(lexer);
-  var directives = parseDirectives(lexer, true);
-  var fields = parseFieldsDefinition(lexer);
-  return {
-    kind: _kinds__WEBPACK_IMPORTED_MODULE_6__["Kind"].INTERFACE_TYPE_DEFINITION,
-    description: description,
-    name: name,
-    directives: directives,
-    fields: fields,
-    loc: loc(lexer, start)
-  };
-}
-/**
- * UnionTypeDefinition :
- *   - Description? union Name Directives[Const]? UnionMemberTypes?
- */
+      return [];
+    }
 
+    return this.optionalMany(_tokenKind__WEBPACK_IMPORTED_MODULE_8__["TokenKind"].BRACE_L, this.parseFieldDefinition, _tokenKind__WEBPACK_IMPORTED_MODULE_8__["TokenKind"].BRACE_R);
+  }
+  /**
+   * FieldDefinition :
+   *   - Description? Name ArgumentsDefinition? : Type Directives[Const]?
+   */
+  ;
 
-function parseUnionTypeDefinition(lexer) {
-  var start = lexer.token;
-  var description = parseDescription(lexer);
-  expectKeyword(lexer, 'union');
-  var name = parseName(lexer);
-  var directives = parseDirectives(lexer, true);
-  var types = parseUnionMemberTypes(lexer);
-  return {
-    kind: _kinds__WEBPACK_IMPORTED_MODULE_6__["Kind"].UNION_TYPE_DEFINITION,
-    description: description,
-    name: name,
-    directives: directives,
-    types: types,
-    loc: loc(lexer, start)
-  };
-}
-/**
- * UnionMemberTypes :
- *   - = `|`? NamedType
- *   - UnionMemberTypes | NamedType
- */
+  _proto.parseFieldDefinition = function parseFieldDefinition() {
+    var start = this._lexer.token;
+    var description = this.parseDescription();
+    var name = this.parseName();
+    var args = this.parseArgumentDefs();
+    this.expectToken(_tokenKind__WEBPACK_IMPORTED_MODULE_8__["TokenKind"].COLON);
+    var type = this.parseTypeReference();
+    var directives = this.parseDirectives(true);
+    return {
+      kind: _kinds__WEBPACK_IMPORTED_MODULE_4__["Kind"].FIELD_DEFINITION,
+      description: description,
+      name: name,
+      arguments: args,
+      type: type,
+      directives: directives,
+      loc: this.loc(start)
+    };
+  }
+  /**
+   * ArgumentsDefinition : ( InputValueDefinition+ )
+   */
+  ;
 
+  _proto.parseArgumentDefs = function parseArgumentDefs() {
+    return this.optionalMany(_tokenKind__WEBPACK_IMPORTED_MODULE_8__["TokenKind"].PAREN_L, this.parseInputValueDef, _tokenKind__WEBPACK_IMPORTED_MODULE_8__["TokenKind"].PAREN_R);
+  }
+  /**
+   * InputValueDefinition :
+   *   - Description? Name : Type DefaultValue? Directives[Const]?
+   */
+  ;
 
-function parseUnionMemberTypes(lexer) {
-  var types = [];
+  _proto.parseInputValueDef = function parseInputValueDef() {
+    var start = this._lexer.token;
+    var description = this.parseDescription();
+    var name = this.parseName();
+    this.expectToken(_tokenKind__WEBPACK_IMPORTED_MODULE_8__["TokenKind"].COLON);
+    var type = this.parseTypeReference();
+    var defaultValue;
 
-  if (expectOptionalToken(lexer, _tokenKind__WEBPACK_IMPORTED_MODULE_4__["TokenKind"].EQUALS)) {
+    if (this.expectOptionalToken(_tokenKind__WEBPACK_IMPORTED_MODULE_8__["TokenKind"].EQUALS)) {
+      defaultValue = this.parseValueLiteral(true);
+    }
+
+    var directives = this.parseDirectives(true);
+    return {
+      kind: _kinds__WEBPACK_IMPORTED_MODULE_4__["Kind"].INPUT_VALUE_DEFINITION,
+      description: description,
+      name: name,
+      type: type,
+      defaultValue: defaultValue,
+      directives: directives,
+      loc: this.loc(start)
+    };
+  }
+  /**
+   * InterfaceTypeDefinition :
+   *   - Description? interface Name Directives[Const]? FieldsDefinition?
+   */
+  ;
+
+  _proto.parseInterfaceTypeDefinition = function parseInterfaceTypeDefinition() {
+    var start = this._lexer.token;
+    var description = this.parseDescription();
+    this.expectKeyword('interface');
+    var name = this.parseName();
+    var directives = this.parseDirectives(true);
+    var fields = this.parseFieldsDefinition();
+    return {
+      kind: _kinds__WEBPACK_IMPORTED_MODULE_4__["Kind"].INTERFACE_TYPE_DEFINITION,
+      description: description,
+      name: name,
+      directives: directives,
+      fields: fields,
+      loc: this.loc(start)
+    };
+  }
+  /**
+   * UnionTypeDefinition :
+   *   - Description? union Name Directives[Const]? UnionMemberTypes?
+   */
+  ;
+
+  _proto.parseUnionTypeDefinition = function parseUnionTypeDefinition() {
+    var start = this._lexer.token;
+    var description = this.parseDescription();
+    this.expectKeyword('union');
+    var name = this.parseName();
+    var directives = this.parseDirectives(true);
+    var types = this.parseUnionMemberTypes();
+    return {
+      kind: _kinds__WEBPACK_IMPORTED_MODULE_4__["Kind"].UNION_TYPE_DEFINITION,
+      description: description,
+      name: name,
+      directives: directives,
+      types: types,
+      loc: this.loc(start)
+    };
+  }
+  /**
+   * UnionMemberTypes :
+   *   - = `|`? NamedType
+   *   - UnionMemberTypes | NamedType
+   */
+  ;
+
+  _proto.parseUnionMemberTypes = function parseUnionMemberTypes() {
+    var types = [];
+
+    if (this.expectOptionalToken(_tokenKind__WEBPACK_IMPORTED_MODULE_8__["TokenKind"].EQUALS)) {
+      // Optional leading pipe
+      this.expectOptionalToken(_tokenKind__WEBPACK_IMPORTED_MODULE_8__["TokenKind"].PIPE);
+
+      do {
+        types.push(this.parseNamedType());
+      } while (this.expectOptionalToken(_tokenKind__WEBPACK_IMPORTED_MODULE_8__["TokenKind"].PIPE));
+    }
+
+    return types;
+  }
+  /**
+   * EnumTypeDefinition :
+   *   - Description? enum Name Directives[Const]? EnumValuesDefinition?
+   */
+  ;
+
+  _proto.parseEnumTypeDefinition = function parseEnumTypeDefinition() {
+    var start = this._lexer.token;
+    var description = this.parseDescription();
+    this.expectKeyword('enum');
+    var name = this.parseName();
+    var directives = this.parseDirectives(true);
+    var values = this.parseEnumValuesDefinition();
+    return {
+      kind: _kinds__WEBPACK_IMPORTED_MODULE_4__["Kind"].ENUM_TYPE_DEFINITION,
+      description: description,
+      name: name,
+      directives: directives,
+      values: values,
+      loc: this.loc(start)
+    };
+  }
+  /**
+   * EnumValuesDefinition : { EnumValueDefinition+ }
+   */
+  ;
+
+  _proto.parseEnumValuesDefinition = function parseEnumValuesDefinition() {
+    return this.optionalMany(_tokenKind__WEBPACK_IMPORTED_MODULE_8__["TokenKind"].BRACE_L, this.parseEnumValueDefinition, _tokenKind__WEBPACK_IMPORTED_MODULE_8__["TokenKind"].BRACE_R);
+  }
+  /**
+   * EnumValueDefinition : Description? EnumValue Directives[Const]?
+   *
+   * EnumValue : Name
+   */
+  ;
+
+  _proto.parseEnumValueDefinition = function parseEnumValueDefinition() {
+    var start = this._lexer.token;
+    var description = this.parseDescription();
+    var name = this.parseName();
+    var directives = this.parseDirectives(true);
+    return {
+      kind: _kinds__WEBPACK_IMPORTED_MODULE_4__["Kind"].ENUM_VALUE_DEFINITION,
+      description: description,
+      name: name,
+      directives: directives,
+      loc: this.loc(start)
+    };
+  }
+  /**
+   * InputObjectTypeDefinition :
+   *   - Description? input Name Directives[Const]? InputFieldsDefinition?
+   */
+  ;
+
+  _proto.parseInputObjectTypeDefinition = function parseInputObjectTypeDefinition() {
+    var start = this._lexer.token;
+    var description = this.parseDescription();
+    this.expectKeyword('input');
+    var name = this.parseName();
+    var directives = this.parseDirectives(true);
+    var fields = this.parseInputFieldsDefinition();
+    return {
+      kind: _kinds__WEBPACK_IMPORTED_MODULE_4__["Kind"].INPUT_OBJECT_TYPE_DEFINITION,
+      description: description,
+      name: name,
+      directives: directives,
+      fields: fields,
+      loc: this.loc(start)
+    };
+  }
+  /**
+   * InputFieldsDefinition : { InputValueDefinition+ }
+   */
+  ;
+
+  _proto.parseInputFieldsDefinition = function parseInputFieldsDefinition() {
+    return this.optionalMany(_tokenKind__WEBPACK_IMPORTED_MODULE_8__["TokenKind"].BRACE_L, this.parseInputValueDef, _tokenKind__WEBPACK_IMPORTED_MODULE_8__["TokenKind"].BRACE_R);
+  }
+  /**
+   * TypeSystemExtension :
+   *   - SchemaExtension
+   *   - TypeExtension
+   *
+   * TypeExtension :
+   *   - ScalarTypeExtension
+   *   - ObjectTypeExtension
+   *   - InterfaceTypeExtension
+   *   - UnionTypeExtension
+   *   - EnumTypeExtension
+   *   - InputObjectTypeDefinition
+   */
+  ;
+
+  _proto.parseTypeSystemExtension = function parseTypeSystemExtension() {
+    var keywordToken = this._lexer.lookahead();
+
+    if (keywordToken.kind === _tokenKind__WEBPACK_IMPORTED_MODULE_8__["TokenKind"].NAME) {
+      switch (keywordToken.value) {
+        case 'schema':
+          return this.parseSchemaExtension();
+
+        case 'scalar':
+          return this.parseScalarTypeExtension();
+
+        case 'type':
+          return this.parseObjectTypeExtension();
+
+        case 'interface':
+          return this.parseInterfaceTypeExtension();
+
+        case 'union':
+          return this.parseUnionTypeExtension();
+
+        case 'enum':
+          return this.parseEnumTypeExtension();
+
+        case 'input':
+          return this.parseInputObjectTypeExtension();
+      }
+    }
+
+    throw this.unexpected(keywordToken);
+  }
+  /**
+   * SchemaExtension :
+   *  - extend schema Directives[Const]? { OperationTypeDefinition+ }
+   *  - extend schema Directives[Const]
+   */
+  ;
+
+  _proto.parseSchemaExtension = function parseSchemaExtension() {
+    var start = this._lexer.token;
+    this.expectKeyword('extend');
+    this.expectKeyword('schema');
+    var directives = this.parseDirectives(true);
+    var operationTypes = this.optionalMany(_tokenKind__WEBPACK_IMPORTED_MODULE_8__["TokenKind"].BRACE_L, this.parseOperationTypeDefinition, _tokenKind__WEBPACK_IMPORTED_MODULE_8__["TokenKind"].BRACE_R);
+
+    if (directives.length === 0 && operationTypes.length === 0) {
+      throw this.unexpected();
+    }
+
+    return {
+      kind: _kinds__WEBPACK_IMPORTED_MODULE_4__["Kind"].SCHEMA_EXTENSION,
+      directives: directives,
+      operationTypes: operationTypes,
+      loc: this.loc(start)
+    };
+  }
+  /**
+   * ScalarTypeExtension :
+   *   - extend scalar Name Directives[Const]
+   */
+  ;
+
+  _proto.parseScalarTypeExtension = function parseScalarTypeExtension() {
+    var start = this._lexer.token;
+    this.expectKeyword('extend');
+    this.expectKeyword('scalar');
+    var name = this.parseName();
+    var directives = this.parseDirectives(true);
+
+    if (directives.length === 0) {
+      throw this.unexpected();
+    }
+
+    return {
+      kind: _kinds__WEBPACK_IMPORTED_MODULE_4__["Kind"].SCALAR_TYPE_EXTENSION,
+      name: name,
+      directives: directives,
+      loc: this.loc(start)
+    };
+  }
+  /**
+   * ObjectTypeExtension :
+   *  - extend type Name ImplementsInterfaces? Directives[Const]? FieldsDefinition
+   *  - extend type Name ImplementsInterfaces? Directives[Const]
+   *  - extend type Name ImplementsInterfaces
+   */
+  ;
+
+  _proto.parseObjectTypeExtension = function parseObjectTypeExtension() {
+    var start = this._lexer.token;
+    this.expectKeyword('extend');
+    this.expectKeyword('type');
+    var name = this.parseName();
+    var interfaces = this.parseImplementsInterfaces();
+    var directives = this.parseDirectives(true);
+    var fields = this.parseFieldsDefinition();
+
+    if (interfaces.length === 0 && directives.length === 0 && fields.length === 0) {
+      throw this.unexpected();
+    }
+
+    return {
+      kind: _kinds__WEBPACK_IMPORTED_MODULE_4__["Kind"].OBJECT_TYPE_EXTENSION,
+      name: name,
+      interfaces: interfaces,
+      directives: directives,
+      fields: fields,
+      loc: this.loc(start)
+    };
+  }
+  /**
+   * InterfaceTypeExtension :
+   *   - extend interface Name Directives[Const]? FieldsDefinition
+   *   - extend interface Name Directives[Const]
+   */
+  ;
+
+  _proto.parseInterfaceTypeExtension = function parseInterfaceTypeExtension() {
+    var start = this._lexer.token;
+    this.expectKeyword('extend');
+    this.expectKeyword('interface');
+    var name = this.parseName();
+    var directives = this.parseDirectives(true);
+    var fields = this.parseFieldsDefinition();
+
+    if (directives.length === 0 && fields.length === 0) {
+      throw this.unexpected();
+    }
+
+    return {
+      kind: _kinds__WEBPACK_IMPORTED_MODULE_4__["Kind"].INTERFACE_TYPE_EXTENSION,
+      name: name,
+      directives: directives,
+      fields: fields,
+      loc: this.loc(start)
+    };
+  }
+  /**
+   * UnionTypeExtension :
+   *   - extend union Name Directives[Const]? UnionMemberTypes
+   *   - extend union Name Directives[Const]
+   */
+  ;
+
+  _proto.parseUnionTypeExtension = function parseUnionTypeExtension() {
+    var start = this._lexer.token;
+    this.expectKeyword('extend');
+    this.expectKeyword('union');
+    var name = this.parseName();
+    var directives = this.parseDirectives(true);
+    var types = this.parseUnionMemberTypes();
+
+    if (directives.length === 0 && types.length === 0) {
+      throw this.unexpected();
+    }
+
+    return {
+      kind: _kinds__WEBPACK_IMPORTED_MODULE_4__["Kind"].UNION_TYPE_EXTENSION,
+      name: name,
+      directives: directives,
+      types: types,
+      loc: this.loc(start)
+    };
+  }
+  /**
+   * EnumTypeExtension :
+   *   - extend enum Name Directives[Const]? EnumValuesDefinition
+   *   - extend enum Name Directives[Const]
+   */
+  ;
+
+  _proto.parseEnumTypeExtension = function parseEnumTypeExtension() {
+    var start = this._lexer.token;
+    this.expectKeyword('extend');
+    this.expectKeyword('enum');
+    var name = this.parseName();
+    var directives = this.parseDirectives(true);
+    var values = this.parseEnumValuesDefinition();
+
+    if (directives.length === 0 && values.length === 0) {
+      throw this.unexpected();
+    }
+
+    return {
+      kind: _kinds__WEBPACK_IMPORTED_MODULE_4__["Kind"].ENUM_TYPE_EXTENSION,
+      name: name,
+      directives: directives,
+      values: values,
+      loc: this.loc(start)
+    };
+  }
+  /**
+   * InputObjectTypeExtension :
+   *   - extend input Name Directives[Const]? InputFieldsDefinition
+   *   - extend input Name Directives[Const]
+   */
+  ;
+
+  _proto.parseInputObjectTypeExtension = function parseInputObjectTypeExtension() {
+    var start = this._lexer.token;
+    this.expectKeyword('extend');
+    this.expectKeyword('input');
+    var name = this.parseName();
+    var directives = this.parseDirectives(true);
+    var fields = this.parseInputFieldsDefinition();
+
+    if (directives.length === 0 && fields.length === 0) {
+      throw this.unexpected();
+    }
+
+    return {
+      kind: _kinds__WEBPACK_IMPORTED_MODULE_4__["Kind"].INPUT_OBJECT_TYPE_EXTENSION,
+      name: name,
+      directives: directives,
+      fields: fields,
+      loc: this.loc(start)
+    };
+  }
+  /**
+   * DirectiveDefinition :
+   *   - Description? directive @ Name ArgumentsDefinition? `repeatable`? on DirectiveLocations
+   */
+  ;
+
+  _proto.parseDirectiveDefinition = function parseDirectiveDefinition() {
+    var start = this._lexer.token;
+    var description = this.parseDescription();
+    this.expectKeyword('directive');
+    this.expectToken(_tokenKind__WEBPACK_IMPORTED_MODULE_8__["TokenKind"].AT);
+    var name = this.parseName();
+    var args = this.parseArgumentDefs();
+    var repeatable = this.expectOptionalKeyword('repeatable');
+    this.expectKeyword('on');
+    var locations = this.parseDirectiveLocations();
+    return {
+      kind: _kinds__WEBPACK_IMPORTED_MODULE_4__["Kind"].DIRECTIVE_DEFINITION,
+      description: description,
+      name: name,
+      arguments: args,
+      repeatable: repeatable,
+      locations: locations,
+      loc: this.loc(start)
+    };
+  }
+  /**
+   * DirectiveLocations :
+   *   - `|`? DirectiveLocation
+   *   - DirectiveLocations | DirectiveLocation
+   */
+  ;
+
+  _proto.parseDirectiveLocations = function parseDirectiveLocations() {
     // Optional leading pipe
-    expectOptionalToken(lexer, _tokenKind__WEBPACK_IMPORTED_MODULE_4__["TokenKind"].PIPE);
+    this.expectOptionalToken(_tokenKind__WEBPACK_IMPORTED_MODULE_8__["TokenKind"].PIPE);
+    var locations = [];
 
     do {
-      types.push(parseNamedType(lexer));
-    } while (expectOptionalToken(lexer, _tokenKind__WEBPACK_IMPORTED_MODULE_4__["TokenKind"].PIPE));
+      locations.push(this.parseDirectiveLocation());
+    } while (this.expectOptionalToken(_tokenKind__WEBPACK_IMPORTED_MODULE_8__["TokenKind"].PIPE));
+
+    return locations;
   }
+  /*
+   * DirectiveLocation :
+   *   - ExecutableDirectiveLocation
+   *   - TypeSystemDirectiveLocation
+   *
+   * ExecutableDirectiveLocation : one of
+   *   `QUERY`
+   *   `MUTATION`
+   *   `SUBSCRIPTION`
+   *   `FIELD`
+   *   `FRAGMENT_DEFINITION`
+   *   `FRAGMENT_SPREAD`
+   *   `INLINE_FRAGMENT`
+   *
+   * TypeSystemDirectiveLocation : one of
+   *   `SCHEMA`
+   *   `SCALAR`
+   *   `OBJECT`
+   *   `FIELD_DEFINITION`
+   *   `ARGUMENT_DEFINITION`
+   *   `INTERFACE`
+   *   `UNION`
+   *   `ENUM`
+   *   `ENUM_VALUE`
+   *   `INPUT_OBJECT`
+   *   `INPUT_FIELD_DEFINITION`
+   */
+  ;
 
-  return types;
-}
-/**
- * EnumTypeDefinition :
- *   - Description? enum Name Directives[Const]? EnumValuesDefinition?
- */
+  _proto.parseDirectiveLocation = function parseDirectiveLocation() {
+    var start = this._lexer.token;
+    var name = this.parseName();
 
+    if (_directiveLocation__WEBPACK_IMPORTED_MODULE_7__["DirectiveLocation"][name.value] !== undefined) {
+      return name;
+    }
 
-function parseEnumTypeDefinition(lexer) {
-  var start = lexer.token;
-  var description = parseDescription(lexer);
-  expectKeyword(lexer, 'enum');
-  var name = parseName(lexer);
-  var directives = parseDirectives(lexer, true);
-  var values = parseEnumValuesDefinition(lexer);
-  return {
-    kind: _kinds__WEBPACK_IMPORTED_MODULE_6__["Kind"].ENUM_TYPE_DEFINITION,
-    description: description,
-    name: name,
-    directives: directives,
-    values: values,
-    loc: loc(lexer, start)
-  };
-}
-/**
- * EnumValuesDefinition : { EnumValueDefinition+ }
- */
+    throw this.unexpected(start);
+  } // Core parsing utility functions
 
+  /**
+   * Returns a location object, used to identify the place in
+   * the source that created a given parsed object.
+   */
+  ;
 
-function parseEnumValuesDefinition(lexer) {
-  return peek(lexer, _tokenKind__WEBPACK_IMPORTED_MODULE_4__["TokenKind"].BRACE_L) ? many(lexer, _tokenKind__WEBPACK_IMPORTED_MODULE_4__["TokenKind"].BRACE_L, parseEnumValueDefinition, _tokenKind__WEBPACK_IMPORTED_MODULE_4__["TokenKind"].BRACE_R) : [];
-}
-/**
- * EnumValueDefinition : Description? EnumValue Directives[Const]?
- *
- * EnumValue : Name
- */
-
-
-function parseEnumValueDefinition(lexer) {
-  var start = lexer.token;
-  var description = parseDescription(lexer);
-  var name = parseName(lexer);
-  var directives = parseDirectives(lexer, true);
-  return {
-    kind: _kinds__WEBPACK_IMPORTED_MODULE_6__["Kind"].ENUM_VALUE_DEFINITION,
-    description: description,
-    name: name,
-    directives: directives,
-    loc: loc(lexer, start)
-  };
-}
-/**
- * InputObjectTypeDefinition :
- *   - Description? input Name Directives[Const]? InputFieldsDefinition?
- */
-
-
-function parseInputObjectTypeDefinition(lexer) {
-  var start = lexer.token;
-  var description = parseDescription(lexer);
-  expectKeyword(lexer, 'input');
-  var name = parseName(lexer);
-  var directives = parseDirectives(lexer, true);
-  var fields = parseInputFieldsDefinition(lexer);
-  return {
-    kind: _kinds__WEBPACK_IMPORTED_MODULE_6__["Kind"].INPUT_OBJECT_TYPE_DEFINITION,
-    description: description,
-    name: name,
-    directives: directives,
-    fields: fields,
-    loc: loc(lexer, start)
-  };
-}
-/**
- * InputFieldsDefinition : { InputValueDefinition+ }
- */
-
-
-function parseInputFieldsDefinition(lexer) {
-  return peek(lexer, _tokenKind__WEBPACK_IMPORTED_MODULE_4__["TokenKind"].BRACE_L) ? many(lexer, _tokenKind__WEBPACK_IMPORTED_MODULE_4__["TokenKind"].BRACE_L, parseInputValueDef, _tokenKind__WEBPACK_IMPORTED_MODULE_4__["TokenKind"].BRACE_R) : [];
-}
-/**
- * TypeSystemExtension :
- *   - SchemaExtension
- *   - TypeExtension
- *
- * TypeExtension :
- *   - ScalarTypeExtension
- *   - ObjectTypeExtension
- *   - InterfaceTypeExtension
- *   - UnionTypeExtension
- *   - EnumTypeExtension
- *   - InputObjectTypeDefinition
- */
-
-
-function parseTypeSystemExtension(lexer) {
-  var keywordToken = lexer.lookahead();
-
-  if (keywordToken.kind === _tokenKind__WEBPACK_IMPORTED_MODULE_4__["TokenKind"].NAME) {
-    switch (keywordToken.value) {
-      case 'schema':
-        return parseSchemaExtension(lexer);
-
-      case 'scalar':
-        return parseScalarTypeExtension(lexer);
-
-      case 'type':
-        return parseObjectTypeExtension(lexer);
-
-      case 'interface':
-        return parseInterfaceTypeExtension(lexer);
-
-      case 'union':
-        return parseUnionTypeExtension(lexer);
-
-      case 'enum':
-        return parseEnumTypeExtension(lexer);
-
-      case 'input':
-        return parseInputObjectTypeExtension(lexer);
+  _proto.loc = function loc(startToken) {
+    if (!this._options.noLocation) {
+      return new Loc(startToken, this._lexer.lastToken, this._lexer.source);
     }
   }
+  /**
+   * Determines if the next token is of a given kind
+   */
+  ;
 
-  throw unexpected(lexer, keywordToken);
-}
-/**
- * SchemaExtension :
- *  - extend schema Directives[Const]? { OperationTypeDefinition+ }
- *  - extend schema Directives[Const]
- */
-
-
-function parseSchemaExtension(lexer) {
-  var start = lexer.token;
-  expectKeyword(lexer, 'extend');
-  expectKeyword(lexer, 'schema');
-  var directives = parseDirectives(lexer, true);
-  var operationTypes = peek(lexer, _tokenKind__WEBPACK_IMPORTED_MODULE_4__["TokenKind"].BRACE_L) ? many(lexer, _tokenKind__WEBPACK_IMPORTED_MODULE_4__["TokenKind"].BRACE_L, parseOperationTypeDefinition, _tokenKind__WEBPACK_IMPORTED_MODULE_4__["TokenKind"].BRACE_R) : [];
-
-  if (directives.length === 0 && operationTypes.length === 0) {
-    throw unexpected(lexer);
+  _proto.peek = function peek(kind) {
+    return this._lexer.token.kind === kind;
   }
+  /**
+   * If the next token is of the given kind, return that token after advancing
+   * the lexer. Otherwise, do not change the parser state and throw an error.
+   */
+  ;
 
-  return {
-    kind: _kinds__WEBPACK_IMPORTED_MODULE_6__["Kind"].SCHEMA_EXTENSION,
-    directives: directives,
-    operationTypes: operationTypes,
-    loc: loc(lexer, start)
+  _proto.expectToken = function expectToken(kind) {
+    var token = this._lexer.token;
+
+    if (token.kind === kind) {
+      this._lexer.advance();
+
+      return token;
+    }
+
+    throw Object(_error_syntaxError__WEBPACK_IMPORTED_MODULE_3__["syntaxError"])(this._lexer.source, token.start, "Expected ".concat(kind, ", found ").concat(getTokenDesc(token)));
+  }
+  /**
+   * If the next token is of the given kind, return that token after advancing
+   * the lexer. Otherwise, do not change the parser state and return undefined.
+   */
+  ;
+
+  _proto.expectOptionalToken = function expectOptionalToken(kind) {
+    var token = this._lexer.token;
+
+    if (token.kind === kind) {
+      this._lexer.advance();
+
+      return token;
+    }
+
+    return undefined;
+  }
+  /**
+   * If the next token is a given keyword, advance the lexer.
+   * Otherwise, do not change the parser state and throw an error.
+   */
+  ;
+
+  _proto.expectKeyword = function expectKeyword(value) {
+    var token = this._lexer.token;
+
+    if (token.kind === _tokenKind__WEBPACK_IMPORTED_MODULE_8__["TokenKind"].NAME && token.value === value) {
+      this._lexer.advance();
+    } else {
+      throw Object(_error_syntaxError__WEBPACK_IMPORTED_MODULE_3__["syntaxError"])(this._lexer.source, token.start, "Expected \"".concat(value, "\", found ").concat(getTokenDesc(token)));
+    }
+  }
+  /**
+   * If the next token is a given keyword, return "true" after advancing
+   * the lexer. Otherwise, do not change the parser state and return "false".
+   */
+  ;
+
+  _proto.expectOptionalKeyword = function expectOptionalKeyword(value) {
+    var token = this._lexer.token;
+
+    if (token.kind === _tokenKind__WEBPACK_IMPORTED_MODULE_8__["TokenKind"].NAME && token.value === value) {
+      this._lexer.advance();
+
+      return true;
+    }
+
+    return false;
+  }
+  /**
+   * Helper function for creating an error when an unexpected lexed token
+   * is encountered.
+   */
+  ;
+
+  _proto.unexpected = function unexpected(atToken) {
+    var token = atToken || this._lexer.token;
+    return Object(_error_syntaxError__WEBPACK_IMPORTED_MODULE_3__["syntaxError"])(this._lexer.source, token.start, "Unexpected ".concat(getTokenDesc(token)));
+  }
+  /**
+   * Returns a possibly empty list of parse nodes, determined by
+   * the parseFn. This list begins with a lex token of openKind
+   * and ends with a lex token of closeKind. Advances the parser
+   * to the next lex token after the closing token.
+   */
+  ;
+
+  _proto.any = function any(openKind, parseFn, closeKind) {
+    this.expectToken(openKind);
+    var nodes = [];
+
+    while (!this.expectOptionalToken(closeKind)) {
+      nodes.push(parseFn.call(this));
+    }
+
+    return nodes;
+  }
+  /**
+   * Returns a list of parse nodes, determined by the parseFn.
+   * It can be empty only if open token is missing otherwise it will always
+   * return non-empty list that begins with a lex token of openKind and ends
+   * with a lex token of closeKind. Advances the parser to the next lex token
+   * after the closing token.
+   */
+  ;
+
+  _proto.optionalMany = function optionalMany(openKind, parseFn, closeKind) {
+    if (this.expectOptionalToken(openKind)) {
+      var nodes = [];
+
+      do {
+        nodes.push(parseFn.call(this));
+      } while (!this.expectOptionalToken(closeKind));
+
+      return nodes;
+    }
+
+    return [];
+  }
+  /**
+   * Returns a non-empty list of parse nodes, determined by
+   * the parseFn. This list begins with a lex token of openKind
+   * and ends with a lex token of closeKind. Advances the parser
+   * to the next lex token after the closing token.
+   */
+  ;
+
+  _proto.many = function many(openKind, parseFn, closeKind) {
+    this.expectToken(openKind);
+    var nodes = [];
+
+    do {
+      nodes.push(parseFn.call(this));
+    } while (!this.expectOptionalToken(closeKind));
+
+    return nodes;
   };
-}
-/**
- * ScalarTypeExtension :
- *   - extend scalar Name Directives[Const]
- */
 
-
-function parseScalarTypeExtension(lexer) {
-  var start = lexer.token;
-  expectKeyword(lexer, 'extend');
-  expectKeyword(lexer, 'scalar');
-  var name = parseName(lexer);
-  var directives = parseDirectives(lexer, true);
-
-  if (directives.length === 0) {
-    throw unexpected(lexer);
-  }
-
-  return {
-    kind: _kinds__WEBPACK_IMPORTED_MODULE_6__["Kind"].SCALAR_TYPE_EXTENSION,
-    name: name,
-    directives: directives,
-    loc: loc(lexer, start)
-  };
-}
-/**
- * ObjectTypeExtension :
- *  - extend type Name ImplementsInterfaces? Directives[Const]? FieldsDefinition
- *  - extend type Name ImplementsInterfaces? Directives[Const]
- *  - extend type Name ImplementsInterfaces
- */
-
-
-function parseObjectTypeExtension(lexer) {
-  var start = lexer.token;
-  expectKeyword(lexer, 'extend');
-  expectKeyword(lexer, 'type');
-  var name = parseName(lexer);
-  var interfaces = parseImplementsInterfaces(lexer);
-  var directives = parseDirectives(lexer, true);
-  var fields = parseFieldsDefinition(lexer);
-
-  if (interfaces.length === 0 && directives.length === 0 && fields.length === 0) {
-    throw unexpected(lexer);
-  }
-
-  return {
-    kind: _kinds__WEBPACK_IMPORTED_MODULE_6__["Kind"].OBJECT_TYPE_EXTENSION,
-    name: name,
-    interfaces: interfaces,
-    directives: directives,
-    fields: fields,
-    loc: loc(lexer, start)
-  };
-}
-/**
- * InterfaceTypeExtension :
- *   - extend interface Name Directives[Const]? FieldsDefinition
- *   - extend interface Name Directives[Const]
- */
-
-
-function parseInterfaceTypeExtension(lexer) {
-  var start = lexer.token;
-  expectKeyword(lexer, 'extend');
-  expectKeyword(lexer, 'interface');
-  var name = parseName(lexer);
-  var directives = parseDirectives(lexer, true);
-  var fields = parseFieldsDefinition(lexer);
-
-  if (directives.length === 0 && fields.length === 0) {
-    throw unexpected(lexer);
-  }
-
-  return {
-    kind: _kinds__WEBPACK_IMPORTED_MODULE_6__["Kind"].INTERFACE_TYPE_EXTENSION,
-    name: name,
-    directives: directives,
-    fields: fields,
-    loc: loc(lexer, start)
-  };
-}
-/**
- * UnionTypeExtension :
- *   - extend union Name Directives[Const]? UnionMemberTypes
- *   - extend union Name Directives[Const]
- */
-
-
-function parseUnionTypeExtension(lexer) {
-  var start = lexer.token;
-  expectKeyword(lexer, 'extend');
-  expectKeyword(lexer, 'union');
-  var name = parseName(lexer);
-  var directives = parseDirectives(lexer, true);
-  var types = parseUnionMemberTypes(lexer);
-
-  if (directives.length === 0 && types.length === 0) {
-    throw unexpected(lexer);
-  }
-
-  return {
-    kind: _kinds__WEBPACK_IMPORTED_MODULE_6__["Kind"].UNION_TYPE_EXTENSION,
-    name: name,
-    directives: directives,
-    types: types,
-    loc: loc(lexer, start)
-  };
-}
-/**
- * EnumTypeExtension :
- *   - extend enum Name Directives[Const]? EnumValuesDefinition
- *   - extend enum Name Directives[Const]
- */
-
-
-function parseEnumTypeExtension(lexer) {
-  var start = lexer.token;
-  expectKeyword(lexer, 'extend');
-  expectKeyword(lexer, 'enum');
-  var name = parseName(lexer);
-  var directives = parseDirectives(lexer, true);
-  var values = parseEnumValuesDefinition(lexer);
-
-  if (directives.length === 0 && values.length === 0) {
-    throw unexpected(lexer);
-  }
-
-  return {
-    kind: _kinds__WEBPACK_IMPORTED_MODULE_6__["Kind"].ENUM_TYPE_EXTENSION,
-    name: name,
-    directives: directives,
-    values: values,
-    loc: loc(lexer, start)
-  };
-}
-/**
- * InputObjectTypeExtension :
- *   - extend input Name Directives[Const]? InputFieldsDefinition
- *   - extend input Name Directives[Const]
- */
-
-
-function parseInputObjectTypeExtension(lexer) {
-  var start = lexer.token;
-  expectKeyword(lexer, 'extend');
-  expectKeyword(lexer, 'input');
-  var name = parseName(lexer);
-  var directives = parseDirectives(lexer, true);
-  var fields = parseInputFieldsDefinition(lexer);
-
-  if (directives.length === 0 && fields.length === 0) {
-    throw unexpected(lexer);
-  }
-
-  return {
-    kind: _kinds__WEBPACK_IMPORTED_MODULE_6__["Kind"].INPUT_OBJECT_TYPE_EXTENSION,
-    name: name,
-    directives: directives,
-    fields: fields,
-    loc: loc(lexer, start)
-  };
-}
-/**
- * DirectiveDefinition :
- *   - Description? directive @ Name ArgumentsDefinition? `repeatable`? on DirectiveLocations
- */
-
-
-function parseDirectiveDefinition(lexer) {
-  var start = lexer.token;
-  var description = parseDescription(lexer);
-  expectKeyword(lexer, 'directive');
-  expectToken(lexer, _tokenKind__WEBPACK_IMPORTED_MODULE_4__["TokenKind"].AT);
-  var name = parseName(lexer);
-  var args = parseArgumentDefs(lexer);
-  var repeatable = expectOptionalKeyword(lexer, 'repeatable');
-  expectKeyword(lexer, 'on');
-  var locations = parseDirectiveLocations(lexer);
-  return {
-    kind: _kinds__WEBPACK_IMPORTED_MODULE_6__["Kind"].DIRECTIVE_DEFINITION,
-    description: description,
-    name: name,
-    arguments: args,
-    repeatable: repeatable,
-    locations: locations,
-    loc: loc(lexer, start)
-  };
-}
-/**
- * DirectiveLocations :
- *   - `|`? DirectiveLocation
- *   - DirectiveLocations | DirectiveLocation
- */
-
-
-function parseDirectiveLocations(lexer) {
-  // Optional leading pipe
-  expectOptionalToken(lexer, _tokenKind__WEBPACK_IMPORTED_MODULE_4__["TokenKind"].PIPE);
-  var locations = [];
-
-  do {
-    locations.push(parseDirectiveLocation(lexer));
-  } while (expectOptionalToken(lexer, _tokenKind__WEBPACK_IMPORTED_MODULE_4__["TokenKind"].PIPE));
-
-  return locations;
-}
-/*
- * DirectiveLocation :
- *   - ExecutableDirectiveLocation
- *   - TypeSystemDirectiveLocation
- *
- * ExecutableDirectiveLocation : one of
- *   `QUERY`
- *   `MUTATION`
- *   `SUBSCRIPTION`
- *   `FIELD`
- *   `FRAGMENT_DEFINITION`
- *   `FRAGMENT_SPREAD`
- *   `INLINE_FRAGMENT`
- *
- * TypeSystemDirectiveLocation : one of
- *   `SCHEMA`
- *   `SCALAR`
- *   `OBJECT`
- *   `FIELD_DEFINITION`
- *   `ARGUMENT_DEFINITION`
- *   `INTERFACE`
- *   `UNION`
- *   `ENUM`
- *   `ENUM_VALUE`
- *   `INPUT_OBJECT`
- *   `INPUT_FIELD_DEFINITION`
- */
-
-
-function parseDirectiveLocation(lexer) {
-  var start = lexer.token;
-  var name = parseName(lexer);
-
-  if (_directiveLocation__WEBPACK_IMPORTED_MODULE_7__["DirectiveLocation"][name.value] !== undefined) {
-    return name;
-  }
-
-  throw unexpected(lexer, start);
-} // Core parsing utility functions
-
-/**
- * Returns a location object, used to identify the place in
- * the source that created a given parsed object.
- */
-
-
-function loc(lexer, startToken) {
-  if (!lexer.options.noLocation) {
-    return new Loc(startToken, lexer.lastToken, lexer.source);
-  }
-}
+  return Parser;
+}();
 
 function Loc(startToken, endToken, source) {
   this.start = startToken.start;
@@ -40119,127 +40218,19 @@ function Loc(startToken, endToken, source) {
 } // Print a simplified form when appearing in JSON/util.inspect.
 
 
-Object(_jsutils_defineToJSON__WEBPACK_IMPORTED_MODULE_1__["default"])(Loc, function () {
+Object(_jsutils_defineToJSON__WEBPACK_IMPORTED_MODULE_2__["default"])(Loc, function () {
   return {
     start: this.start,
     end: this.end
   };
 });
 /**
- * Determines if the next token is of a given kind
+ * A helper function to describe a token as a string for debugging
  */
 
-function peek(lexer, kind) {
-  return lexer.token.kind === kind;
-}
-/**
- * If the next token is of the given kind, return that token after advancing
- * the lexer. Otherwise, do not change the parser state and throw an error.
- */
-
-
-function expectToken(lexer, kind) {
-  var token = lexer.token;
-
-  if (token.kind === kind) {
-    lexer.advance();
-    return token;
-  }
-
-  throw Object(_error_syntaxError__WEBPACK_IMPORTED_MODULE_3__["syntaxError"])(lexer.source, token.start, "Expected ".concat(kind, ", found ").concat(Object(_lexer__WEBPACK_IMPORTED_MODULE_5__["getTokenDesc"])(token)));
-}
-/**
- * If the next token is of the given kind, return that token after advancing
- * the lexer. Otherwise, do not change the parser state and return undefined.
- */
-
-
-function expectOptionalToken(lexer, kind) {
-  var token = lexer.token;
-
-  if (token.kind === kind) {
-    lexer.advance();
-    return token;
-  }
-
-  return undefined;
-}
-/**
- * If the next token is a given keyword, advance the lexer.
- * Otherwise, do not change the parser state and throw an error.
- */
-
-
-function expectKeyword(lexer, value) {
-  var token = lexer.token;
-
-  if (token.kind === _tokenKind__WEBPACK_IMPORTED_MODULE_4__["TokenKind"].NAME && token.value === value) {
-    lexer.advance();
-  } else {
-    throw Object(_error_syntaxError__WEBPACK_IMPORTED_MODULE_3__["syntaxError"])(lexer.source, token.start, "Expected \"".concat(value, "\", found ").concat(Object(_lexer__WEBPACK_IMPORTED_MODULE_5__["getTokenDesc"])(token)));
-  }
-}
-/**
- * If the next token is a given keyword, return "true" after advancing
- * the lexer. Otherwise, do not change the parser state and return "false".
- */
-
-
-function expectOptionalKeyword(lexer, value) {
-  var token = lexer.token;
-
-  if (token.kind === _tokenKind__WEBPACK_IMPORTED_MODULE_4__["TokenKind"].NAME && token.value === value) {
-    lexer.advance();
-    return true;
-  }
-
-  return false;
-}
-/**
- * Helper function for creating an error when an unexpected lexed token
- * is encountered.
- */
-
-
-function unexpected(lexer, atToken) {
-  var token = atToken || lexer.token;
-  return Object(_error_syntaxError__WEBPACK_IMPORTED_MODULE_3__["syntaxError"])(lexer.source, token.start, "Unexpected ".concat(Object(_lexer__WEBPACK_IMPORTED_MODULE_5__["getTokenDesc"])(token)));
-}
-/**
- * Returns a possibly empty list of parse nodes, determined by
- * the parseFn. This list begins with a lex token of openKind
- * and ends with a lex token of closeKind. Advances the parser
- * to the next lex token after the closing token.
- */
-
-
-function any(lexer, openKind, parseFn, closeKind) {
-  expectToken(lexer, openKind);
-  var nodes = [];
-
-  while (!expectOptionalToken(lexer, closeKind)) {
-    nodes.push(parseFn(lexer));
-  }
-
-  return nodes;
-}
-/**
- * Returns a non-empty list of parse nodes, determined by
- * the parseFn. This list begins with a lex token of openKind
- * and ends with a lex token of closeKind. Advances the parser
- * to the next lex token after the closing token.
- */
-
-
-function many(lexer, openKind, parseFn, closeKind) {
-  expectToken(lexer, openKind);
-  var nodes = [parseFn(lexer)];
-
-  while (!expectOptionalToken(lexer, closeKind)) {
-    nodes.push(parseFn(lexer));
-  }
-
-  return nodes;
+function getTokenDesc(token) {
+  var value = token.value;
+  return value ? "".concat(token.kind, " \"").concat(value, "\"") : token.kind;
 }
 
 
@@ -40704,7 +40695,7 @@ function hasMultilineItems(maybeArray) {
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "Source", function() { return Source; });
-/* harmony import */ var _jsutils_invariant__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../jsutils/invariant */ "./node_modules/graphql/jsutils/invariant.mjs");
+/* harmony import */ var _jsutils_devAssert__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../jsutils/devAssert */ "./node_modules/graphql/jsutils/devAssert.mjs");
 /* harmony import */ var _jsutils_defineToStringTag__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../jsutils/defineToStringTag */ "./node_modules/graphql/jsutils/defineToStringTag.mjs");
 
 
@@ -40724,8 +40715,8 @@ var Source = function Source(body, name, locationOffset) {
     line: 1,
     column: 1
   };
-  !(this.locationOffset.line > 0) ? Object(_jsutils_invariant__WEBPACK_IMPORTED_MODULE_0__["default"])(0, 'line in locationOffset is 1-indexed and must be positive') : void 0;
-  !(this.locationOffset.column > 0) ? Object(_jsutils_invariant__WEBPACK_IMPORTED_MODULE_0__["default"])(0, 'column in locationOffset is 1-indexed and must be positive') : void 0;
+  this.locationOffset.line > 0 || Object(_jsutils_devAssert__WEBPACK_IMPORTED_MODULE_0__["default"])(0, 'line in locationOffset is 1-indexed and must be positive');
+  this.locationOffset.column > 0 || Object(_jsutils_devAssert__WEBPACK_IMPORTED_MODULE_0__["default"])(0, 'column in locationOffset is 1-indexed and must be positive');
 }; // Conditionally apply `[Symbol.toStringTag]` if `Symbol`s are supported
 
 Object(_jsutils_defineToStringTag__WEBPACK_IMPORTED_MODULE_1__["default"])(Source);
@@ -40963,8 +40954,8 @@ function visit(root, visitor) {
         } else {
           var clone = {};
 
-          for (var _i = 0, _Object$keys = Object.keys(node); _i < _Object$keys.length; _i++) {
-            var k = _Object$keys[_i];
+          for (var _i2 = 0, _Object$keys2 = Object.keys(node); _i2 < _Object$keys2.length; _i2++) {
+            var k = _Object$keys2[_i2];
             clone[k] = node[k];
           }
 
@@ -50410,6 +50401,8 @@ class ContextParser {
      * Expand the term or prefix of the given term if it has one,
      * otherwise return the term as-is.
      *
+     * This will apply as much compaction iterations as possible to compact the IRI as much as possible.
+     *
      * Iff in vocab-mode, then other references to other terms in the context can be used,
      * such as to `myTerm`:
      * ```
@@ -50425,6 +50418,35 @@ class ContextParser {
      * @return {string} The expanded term, the term as-is, or null if it was explicitly disabled in the context.
      */
     static expandTerm(term, context, vocab) {
+        let termIn;
+        do {
+            termIn = term;
+            term = ContextParser.expandTermSingle(term, context, vocab);
+        } while (term && term !== termIn);
+        return term;
+    }
+    /**
+     * Expand the term or prefix of the given term if it has one,
+     * otherwise return the term as-is.
+     *
+     * This will only perform a single compaction iteration over the context.
+     *
+     * Iff in vocab-mode, then other references to other terms in the context can be used,
+     * such as to `myTerm`:
+     * ```
+     * {
+     *   "myTerm": "http://example.org/myLongTerm"
+     * }
+     * ```
+     *
+     * @param {string} term A term that is an URL or a prefixed URL.
+     * @param {IJsonLdContextNormalized} context A context.
+     * @param {boolean} vocab If the term is a predicate or type and should be expanded based on @vocab,
+     *                        otherwise it is considered a regular term that is expanded based on @base.
+     * @return {string} The expanded term, the term as-is, or null if it was explicitly disabled in the context.
+     */
+    static expandTermSingle(term, context, vocab) {
+        ContextParser.assertNormalized(context);
         const contextValue = context[term];
         // Immediately return if the term was disabled in the context
         if (contextValue === null || (contextValue && contextValue['@id'] === null)) {
@@ -50455,6 +50477,9 @@ class ContextParser {
     }
     /**
      * Compact the given term using @base, @vocab, an aliased term, or a prefixed term.
+     *
+     * This will apply as much compaction iterations as possible to compact the IRI as much as possible.
+     *
      * @param {string} iri An IRI to compact.
      * @param {IJsonLdContextNormalized} context The context to compact with.
      * @param {boolean} vocab If the term is a predicate or type and should be compacted based on @vocab,
@@ -50462,6 +50487,26 @@ class ContextParser {
      * @return {string} The compacted term or the IRI as-is.
      */
     static compactIri(iri, context, vocab) {
+        let iriIn;
+        do {
+            iriIn = iri;
+            iri = ContextParser.compactIriSingle(iri, context, vocab);
+        } while (iri && iri !== iriIn);
+        return iri;
+    }
+    /**
+     * Compact the given term using @base, @vocab, an aliased term, or a prefixed term.
+     *
+     * This will only perform a single compaction iteration over the context.
+     *
+     * @param {string} iri An IRI to compact.
+     * @param {IJsonLdContextNormalized} context The context to compact with.
+     * @param {boolean} vocab If the term is a predicate or type and should be compacted based on @vocab,
+     *                        otherwise it is considered a regular term that is compacted based on @base.
+     * @return {string} The compacted term or the IRI as-is.
+     */
+    static compactIriSingle(iri, context, vocab) {
+        ContextParser.assertNormalized(context);
         // Try @vocab compacting
         if (vocab && context['@vocab'] && iri.startsWith(context['@vocab'])) {
             return iri.substr(context['@vocab'].length);
@@ -50491,6 +50536,16 @@ class ContextParser {
             }
         }
         return iri;
+    }
+    /**
+     * An an assert to check if the given context has been normalized.
+     * An error will be thrown otherwise.
+     * @param {JsonLdContext} context A context.
+     */
+    static assertNormalized(context) {
+        if (typeof context === 'string' || Array.isArray(context) || context['@context']) {
+            throw new Error('The given context is not normalized. Make sure to call ContextParser.parse() first.');
+        }
     }
     /**
      * Check if the given context value can be a prefix value.
@@ -50700,6 +50755,8 @@ must be one of ${ContextParser.CONTAINERS.join(', ')}`);
                 if (context['@context']) {
                     return yield this.parse(context['@context'], { baseIri, parentContext, external });
                 }
+                // Make a deep clone of the given context, to avoid modifying it.
+                context = JSON.parse(JSON.stringify(context)); // No better way in JS at the moment...
                 // We have an actual context object.
                 let newContext = {};
                 // According to the JSON-LD spec, @base must be ignored from external contexts.
@@ -63019,7 +63076,7 @@ var _defaultHandlers = _interopRequireDefault(__webpack_require__(/*! ./defaultH
 
 var _jsonldContextParser = __webpack_require__(/*! jsonld-context-parser */ "./node_modules/jsonld-context-parser/index.js");
 
-function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { keys.push.apply(keys, Object.getOwnPropertySymbols(object)); } if (enumerableOnly) keys = keys.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); return keys; }
+function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
 
 function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(source, true).forEach(function (key) { (0, _defineProperty2.default)(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(source).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
 
@@ -63120,7 +63177,7 @@ exports.default = void 0;
 
 var _defineProperty2 = _interopRequireDefault(__webpack_require__(/*! @babel/runtime/helpers/defineProperty */ "./node_modules/@babel/runtime/helpers/defineProperty.js"));
 
-function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { keys.push.apply(keys, Object.getOwnPropertySymbols(object)); } if (enumerableOnly) keys = keys.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); return keys; }
+function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
 
 function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(source, true).forEach(function (key) { (0, _defineProperty2.default)(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(source).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
 
@@ -63268,11 +63325,17 @@ var _asyncIterator2 = _interopRequireDefault(__webpack_require__(/*! @babel/runt
 
 var _jsonldContextParser = __webpack_require__(/*! jsonld-context-parser */ "./node_modules/jsonld-context-parser/index.js");
 
+var _promiseUtils = __webpack_require__(/*! ./promiseUtils */ "./node_modules/ldflex/lib/promiseUtils.js");
+
 /**
  * Queries for all compacted predicates of a path subject
  */
 class PropertiesHandler {
   handle(pathData, path) {
+    return (0, _promiseUtils.toIterablePromise)(this._handle(pathData, path));
+  }
+
+  _handle(pathData, path) {
     return (0, _wrapAsyncGenerator2.default)(function* () {
       const context = (yield (0, _awaitAsyncGenerator2.default)(pathData.settings.parsedContext)) || {};
       var _iteratorNormalCompletion = true;
@@ -63393,6 +63456,9 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 exports.default = void 0;
+
+var _dataModel = __webpack_require__(/*! @rdfjs/data-model */ "./node_modules/@rdfjs/data-model/index.js");
+
 const NEEDS_ESCAPE = /["\\\t\n\r\b\f\u0000-\u0019\ud800-\udbff]/,
       ESCAPE_ALL = /["\\\t\n\r\b\f\u0000-\u0019]|[\ud800-\udbff][\udc00-\udfff]/g,
       ESCAPED_CHARS = {
@@ -63472,7 +63538,7 @@ class SparqlHandler {
 
   expressionToTriplePatterns([root, ...pathExpression], queryVar, scope = {}) {
     const last = pathExpression.length - 1;
-    let object = this.termToString(root.subject);
+    let object = this.termToString(skolemize(root.subject));
     return pathExpression.map((segment, index) => {
       // Obtain components and generate triple pattern
       const subject = object;
@@ -63547,6 +63613,15 @@ function escapeCharacter(character) {
   }
 
   return result;
+} // Skolemizes the given term if it is a blank node
+
+
+let skolemId = 0;
+
+function skolemize(term) {
+  if (term.termType !== 'BlankNode') return term;
+  if (!term.skolemized) term.skolemized = (0, _dataModel.namedNode)(`urn:ldflex:sk${skolemId++}`);
+  return term.skolemized;
 }
 
 /***/ }),
@@ -63666,7 +63741,7 @@ Object.defineProperty(exports, "__esModule", {
 exports.default = void 0;
 
 /**
- * Queries for all predicates of a path subject
+ * Queries for all subjects of a document
  */
 class SubjectsHandler {
   handle(pathData) {
@@ -63849,16 +63924,28 @@ Object.defineProperty(exports, "PathExpressionHandler", {
     return _PathExpressionHandler.default;
   }
 });
+Object.defineProperty(exports, "PathFactory", {
+  enumerable: true,
+  get: function () {
+    return _PathFactory.default;
+  }
+});
 Object.defineProperty(exports, "PathProxy", {
   enumerable: true,
   get: function () {
     return _PathProxy.default;
   }
 });
-Object.defineProperty(exports, "PathFactory", {
+Object.defineProperty(exports, "PredicatesHandler", {
   enumerable: true,
   get: function () {
-    return _PathFactory.default;
+    return _PredicatesHandler.default;
+  }
+});
+Object.defineProperty(exports, "PropertiesHandler", {
+  enumerable: true,
+  get: function () {
+    return _PropertiesHandler.default;
   }
 });
 Object.defineProperty(exports, "ReplaceFunctionHandler", {
@@ -63883,6 +63970,12 @@ Object.defineProperty(exports, "SubjectHandler", {
   enumerable: true,
   get: function () {
     return _SubjectHandler.default;
+  }
+});
+Object.defineProperty(exports, "SubjectsHandler", {
+  enumerable: true,
+  get: function () {
+    return _SubjectsHandler.default;
   }
 });
 Object.defineProperty(exports, "StringToLDflexHandler", {
@@ -63938,9 +64031,13 @@ var _MutationFunctionHandler = _interopRequireDefault(__webpack_require__(/*! ./
 
 var _PathExpressionHandler = _interopRequireDefault(__webpack_require__(/*! ./PathExpressionHandler */ "./node_modules/ldflex/lib/PathExpressionHandler.js"));
 
+var _PathFactory = _interopRequireDefault(__webpack_require__(/*! ./PathFactory */ "./node_modules/ldflex/lib/PathFactory.js"));
+
 var _PathProxy = _interopRequireDefault(__webpack_require__(/*! ./PathProxy */ "./node_modules/ldflex/lib/PathProxy.js"));
 
-var _PathFactory = _interopRequireDefault(__webpack_require__(/*! ./PathFactory */ "./node_modules/ldflex/lib/PathFactory.js"));
+var _PredicatesHandler = _interopRequireDefault(__webpack_require__(/*! ./PredicatesHandler */ "./node_modules/ldflex/lib/PredicatesHandler.js"));
+
+var _PropertiesHandler = _interopRequireDefault(__webpack_require__(/*! ./PropertiesHandler */ "./node_modules/ldflex/lib/PropertiesHandler.js"));
 
 var _ReplaceFunctionHandler = _interopRequireDefault(__webpack_require__(/*! ./ReplaceFunctionHandler */ "./node_modules/ldflex/lib/ReplaceFunctionHandler.js"));
 
@@ -63949,6 +64046,8 @@ var _SetFunctionHandler = _interopRequireDefault(__webpack_require__(/*! ./SetFu
 var _SparqlHandler = _interopRequireDefault(__webpack_require__(/*! ./SparqlHandler */ "./node_modules/ldflex/lib/SparqlHandler.js"));
 
 var _SubjectHandler = _interopRequireDefault(__webpack_require__(/*! ./SubjectHandler */ "./node_modules/ldflex/lib/SubjectHandler.js"));
+
+var _SubjectsHandler = _interopRequireDefault(__webpack_require__(/*! ./SubjectsHandler */ "./node_modules/ldflex/lib/SubjectsHandler.js"));
 
 var _StringToLDflexHandler = _interopRequireDefault(__webpack_require__(/*! ./StringToLDflexHandler */ "./node_modules/ldflex/lib/StringToLDflexHandler.js"));
 
@@ -110620,8 +110719,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var ldflex__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(ldflex__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var _rdfjs_data_model__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @rdfjs/data-model */ "./node_modules/@rdfjs/data-model/index.js");
 /* harmony import */ var _rdfjs_data_model__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_rdfjs_data_model__WEBPACK_IMPORTED_MODULE_1__);
-/* harmony import */ var _context_json__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./context.json */ "./src/context.json");
-var _context_json__WEBPACK_IMPORTED_MODULE_2___namespace = /*#__PURE__*/__webpack_require__.t(/*! ./context.json */ "./src/context.json", 1);
+/* harmony import */ var _solid_context__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @solid/context */ "./node_modules/@solid/context/context.json");
+var _solid_context__WEBPACK_IMPORTED_MODULE_2___namespace = /*#__PURE__*/__webpack_require__.t(/*! @solid/context */ "./node_modules/@solid/context/context.json", 1);
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
 function _awaitAsyncGenerator(value) { return new _AwaitValue(value); }
@@ -110647,7 +110746,7 @@ function _asyncIterator(iterable) { var method; if (typeof Symbol !== "undefined
 
 const {
   as
-} = _context_json__WEBPACK_IMPORTED_MODULE_2__['@context'];
+} = _solid_context__WEBPACK_IMPORTED_MODULE_2__['@context'];
 /**
  * Base class for handlers that manipulate activities
  * Requires:
@@ -110925,8 +111024,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _rdfjs_data_model__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_rdfjs_data_model__WEBPACK_IMPORTED_MODULE_2__);
 /* harmony import */ var uuid_v4__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! uuid/v4 */ "./node_modules/uuid/v4.js");
 /* harmony import */ var uuid_v4__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(uuid_v4__WEBPACK_IMPORTED_MODULE_3__);
-/* harmony import */ var _context_json__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./context.json */ "./src/context.json");
-var _context_json__WEBPACK_IMPORTED_MODULE_4___namespace = /*#__PURE__*/__webpack_require__.t(/*! ./context.json */ "./src/context.json", 1);
+/* harmony import */ var _solid_context__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @solid/context */ "./node_modules/@solid/context/context.json");
+var _solid_context__WEBPACK_IMPORTED_MODULE_4___namespace = /*#__PURE__*/__webpack_require__.t(/*! @solid/context */ "./node_modules/@solid/context/context.json", 1);
 function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
 
 function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(source, true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(source).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
@@ -110959,7 +111058,7 @@ const activityTemplate = "_:id a _:type;\n    <https://www.w3.org/ns/activitystr
 
 const {
   xsd
-} = _context_json__WEBPACK_IMPORTED_MODULE_4__['@context'];
+} = _solid_context__WEBPACK_IMPORTED_MODULE_4__['@context'];
 /**
  * Handler that creates an activity in the user's data pod
  * Requires:
@@ -111374,17 +111473,6 @@ class UserPathHandler extends _SubjectPathResolver__WEBPACK_IMPORTED_MODULE_0__[
 
 /***/ }),
 
-/***/ "./src/context.json":
-/*!**************************!*\
-  !*** ./src/context.json ***!
-  \**************************/
-/*! exports provided: @context, default */
-/***/ (function(module) {
-
-module.exports = JSON.parse("{\"@context\":{\"acl\":\"http://www.w3.org/ns/auth/acl#\",\"app\":\"http://www.w3.org/ns/solid/app#\",\"as\":\"https://www.w3.org/ns/activitystreams#\",\"cert\":\"http://www.w3.org/ns/auth/cert#\",\"dc\":\"http://purl.org/dc/elements/1.1/\",\"dct\":\"http://purl.org/dc/terms/\",\"foaf\":\"http://xmlns.com/foaf/0.1/\",\"ldp\":\"http://www.w3.org/ns/ldp#\",\"owl\":\"http://www.w3.org/2002/07/owl#\",\"pim\":\"http://www.w3.org/ns/pim/space#\",\"rdf\":\"http://www.w3.org/1999/02/22-rdf-syntax-ns#\",\"rdfs\":\"http://www.w3.org/2000/01/rdf-schema#\",\"schema\":\"http://schema.org/\",\"sioc\":\"http://rdfs.org/sioc/ns#\",\"solid\":\"http://www.w3.org/ns/solid/terms#\",\"stat\":\"http://www.w3.org/ns/posix/stat#\",\"vcard\":\"http://www.w3.org/2006/vcard/ns#\",\"xsd\":\"http://www.w3.org/2001/XMLSchema#\",\"accessControl\":\"acl:accessControl\",\"accessTo\":\"acl:accessTo\",\"accessToClass\":\"acl:accessToClass\",\"agent\":\"acl:agent\",\"agents\":\"acl:agent\",\"agentClass\":\"acl:agentClass\",\"agentClasses\":\"acl:agentClass\",\"agentGroup\":\"acl:agentGroup\",\"agentGroups\":\"acl:agentGroup\",\"defaultAcl\":\"acl:default\",\"defaultAclForNew\":\"acl:defaultForNew\",\"delegates\":\"acl:delegates\",\"mode\":\"acl:mode\",\"modes\":\"acl:mode\",\"origin\":\"acl:origin\",\"origins\":\"acl:origin\",\"actor\":\"as:actor\",\"attachment\":\"as:attachment\",\"attributedTo\":\"as:attributedTo\",\"author\":\"as:author\",\"bcc\":\"as:bcc\",\"bto\":\"as:bto\",\"cc\":\"as:cc\",\"inReplyTo\":\"as:inReplyTo\",\"object\":\"as:object\",\"publicationDate\":\"as:published\",\"subject\":\"as:subject\",\"summary\":\"as:summary\",\"target\":\"as:target\",\"to\":\"as:to\",\"abstract\":\"dc:abstract\",\"abstracts\":\"dc:abstract\",\"created\":\"dc:created\",\"license\":\"dc:license\",\"modified\":\"dc:modified\",\"title\":\"dc:title\",\"titles\":\"dc:title\",\"account\":\"foaf:account\",\"accounts\":\"foaf:account\",\"age\":\"foaf:age\",\"basedNear\":\"foaf:based_near\",\"birthday\":\"foaf:birthday\",\"blog\":\"foaf:weblog\",\"depiction\":\"foaf:depiction\",\"depicts\":\"foaf:depicts\",\"email\":\"foaf:mbox\",\"familyName\":\"foaf:familyName\",\"firstName\":\"foaf:givenName\",\"friend\":\"foaf:knows\",\"friends\":\"foaf:knows\",\"gender\":\"foaf:gender\",\"givenName\":\"foaf:givenName\",\"homepage\":\"foaf:homepage\",\"image\":\"foaf:img\",\"images\":\"foaf:img\",\"interest\":\"foaf:topic_interest\",\"interests\":\"foaf:topic_interest\",\"knows\":\"foaf:knows\",\"lastName\":\"foaf:familyName\",\"logo\":\"foaf:logo\",\"made\":\"foaf:made\",\"maker\":\"foaf:maker\",\"member\":\"foaf:member\",\"name\":\"foaf:name\",\"nick\":\"foaf:nick\",\"page\":\"foaf:page\",\"pages\":\"foaf:page\",\"primaryTopic\":\"foaf:primaryTopic\",\"primaryTopicOf\":\"foaf:primaryTopicOf\",\"publication\":\"foaf:publications\",\"publications\":\"foaf:publications\",\"thumbnail\":\"foaf:thumbnail\",\"thumbnails\":\"foaf:thumbnail\",\"topic\":\"foaf:topic\",\"topics\":\"foaf:topic\",\"inbox\":\"ldp:inbox\",\"inboxes\":\"ldp:inbox\",\"storage\":\"pim:storage\",\"preferences\":\"pim:preferencesFile\",\"workspace\":\"pim:workspace\",\"type\":\"rdf:type\",\"types\":\"rdf:type\",\"comment\":\"rdfs:comment\",\"comments\":\"rdfs:comment\",\"label\":\"rdfs:label\",\"labels\":\"rdfs:label\",\"seeAlso\":\"rdfs:seeAlso\",\"definedBy\":\"rdfs:isDefinedBy\",\"oidcIssuer\":\"solid:oidcIssuer\",\"publicTypeIndex\":\"solid:publicTypeIndex\",\"publicTypeIndexes\":\"solid:publicTypeIndex\",\"privateTypeIndex\":\"solid:privateTypeIndex\",\"privateTypeIndexes\":\"solid:privateTypeIndex\"}}");
-
-/***/ }),
-
 /***/ "./src/index.js":
 /*!**********************!*\
   !*** ./src/index.js ***!
@@ -111396,8 +111484,8 @@ module.exports = JSON.parse("{\"@context\":{\"acl\":\"http://www.w3.org/ns/auth/
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var ldflex__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ldflex */ "./node_modules/ldflex/lib/index.js");
 /* harmony import */ var ldflex__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(ldflex__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _context_json__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./context.json */ "./src/context.json");
-var _context_json__WEBPACK_IMPORTED_MODULE_1___namespace = /*#__PURE__*/__webpack_require__.t(/*! ./context.json */ "./src/context.json", 1);
+/* harmony import */ var _solid_context__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @solid/context */ "./node_modules/@solid/context/context.json");
+var _solid_context__WEBPACK_IMPORTED_MODULE_1___namespace = /*#__PURE__*/__webpack_require__.t(/*! @solid/context */ "./node_modules/@solid/context/context.json", 1);
 /* harmony import */ var _ContextResolver__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./ContextResolver */ "./src/ContextResolver.js");
 /* harmony import */ var _SolidDeleteFunctionHandler__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./SolidDeleteFunctionHandler */ "./src/SolidDeleteFunctionHandler.js");
 /* harmony import */ var _FindActivityHandler__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./FindActivityHandler */ "./src/FindActivityHandler.js");
@@ -111426,8 +111514,8 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 
 const {
   as
-} = _context_json__WEBPACK_IMPORTED_MODULE_1__['@context'];
-const contextResolver = new _ContextResolver__WEBPACK_IMPORTED_MODULE_2__["default"](_context_json__WEBPACK_IMPORTED_MODULE_1__);
+} = _solid_context__WEBPACK_IMPORTED_MODULE_1__['@context'];
+const contextResolver = new _ContextResolver__WEBPACK_IMPORTED_MODULE_2__["default"](_solid_context__WEBPACK_IMPORTED_MODULE_1__);
 let rootPath; // Creates data paths that start from a given subject
 
 const subjectPathFactory = new ldflex__WEBPACK_IMPORTED_MODULE_0__["PathFactory"]({
