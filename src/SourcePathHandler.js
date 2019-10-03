@@ -7,11 +7,7 @@ export default class SourcePathHandler {
   }
 
   handle() {
-    return source => this._createSourcePathFactory(source);
-  }
-
-  _createSourcePathFactory(source) {
-    return new PathFactory({
+    return source => new PathFactory({
       handlers: { ...defaultHandlers },
       resolvers: [new SubjectPathResolver(this._paths, source)],
     }).create();
