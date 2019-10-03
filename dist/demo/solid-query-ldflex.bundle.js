@@ -111362,11 +111362,7 @@ class SourcePathHandler {
   }
 
   handle() {
-    return source => this._createSourcePathFactory(source);
-  }
-
-  _createSourcePathFactory(source) {
-    return new ldflex__WEBPACK_IMPORTED_MODULE_0__["PathFactory"]({
+    return source => new ldflex__WEBPACK_IMPORTED_MODULE_0__["PathFactory"]({
       handlers: _objectSpread({}, ldflex__WEBPACK_IMPORTED_MODULE_0__["defaultHandlers"]),
       resolvers: [new _SubjectPathResolver__WEBPACK_IMPORTED_MODULE_1__["default"](this._paths, source)]
     }).create();
