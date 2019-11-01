@@ -354,7 +354,7 @@ const AbstractFilterHash_1 = __webpack_require__(/*! ./AbstractFilterHash */ "./
 /**
  * A comunica Hash Query Operation Actor.
  */
-class AbstractBindingHash extends bus_query_operation_1.ActorQueryOperationTypedMediated {
+class AbstractBindingsHash extends bus_query_operation_1.ActorQueryOperationTypedMediated {
     constructor(args, operator) {
         super(args, operator);
         if (!AbstractFilterHash_1.AbstractFilterHash.doesHashAlgorithmExist(this.hashAlgorithm)) {
@@ -373,7 +373,7 @@ class AbstractBindingHash extends bus_query_operation_1.ActorQueryOperationTyped
         return { type: 'bindings', bindingsStream, metadata: output.metadata, variables: output.variables };
     }
 }
-exports.AbstractBindingHash = AbstractBindingHash;
+exports.AbstractBindingsHash = AbstractBindingsHash;
 //# sourceMappingURL=AbstractBindingsHash.js.map
 
 /***/ }),
@@ -431,9 +431,6 @@ class AbstractFilterHash extends bus_query_operation_1.ActorQueryOperationTypedM
         const hash = crypto_1.createHash(hashAlgorithm);
         hash.update(__webpack_require__(/*! json-stable-stringify */ "./node_modules/json-stable-stringify/index.js")(bindings.map(rdf_string_1.termToString)));
         return hash.digest(digestAlgorithm);
-    }
-    async testOperation(pattern, context) {
-        return true;
     }
 }
 exports.AbstractFilterHash = AbstractFilterHash;
@@ -642,8 +639,8 @@ class ActorAbstractPath extends bus_query_operation_1.ActorQueryOperationTypedMe
         });
     }
 }
-ActorAbstractPath.FACTORY = new sparqlalgebrajs_1.Factory();
 exports.ActorAbstractPath = ActorAbstractPath;
+ActorAbstractPath.FACTORY = new sparqlalgebrajs_1.Factory();
 //# sourceMappingURL=ActorAbstractPath.js.map
 
 /***/ }),
@@ -1099,7 +1096,7 @@ exports.ActorHttpSolidAuthFetch = ActorHttpSolidAuthFetch;
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-const __b15bnode126 = new (__webpack_require__(/*! @comunica/logger-void */ "./node_modules/@comunica/logger-void/index.js").LoggerVoid)({});
+const __b15bnode129 = new (__webpack_require__(/*! @comunica/logger-void */ "./node_modules/@comunica/logger-void/index.js").LoggerVoid)({});
 const https___linkedsoftwaredependencies_org_bundles_npm__comunica_bus_init_Bus_Init = new (__webpack_require__(/*! @comunica/core */ "./node_modules/@comunica/core/index.js").Bus)({
   'name': 'https://linkedsoftwaredependencies.org/bundles/npm/@comunica/bus-init/Bus/Init'
 });
@@ -1112,11 +1109,11 @@ const https___linkedsoftwaredependencies_org_bundles_npm__comunica_bus_rdf_join_
 const https___linkedsoftwaredependencies_org_bundles_npm__comunica_bus_rdf_parse_Bus_RdfParse = new (__webpack_require__(/*! @comunica/core */ "./node_modules/@comunica/core/index.js").Bus)({
   'name': 'https://linkedsoftwaredependencies.org/bundles/npm/@comunica/bus-rdf-parse/Bus/RdfParse'
 });
-const https___linkedsoftwaredependencies_org_bundles_npm__comunica_bus_rdf_dereference_Bus_RdfDereference = new (__webpack_require__(/*! @comunica/core */ "./node_modules/@comunica/core/index.js").Bus)({
-  'name': 'https://linkedsoftwaredependencies.org/bundles/npm/@comunica/bus-rdf-dereference/Bus/RdfDereference'
-});
 const https___linkedsoftwaredependencies_org_bundles_npm__comunica_bus_rdf_parse_html_Bus_RdfParseHtml = new (__webpack_require__(/*! @comunica/core */ "./node_modules/@comunica/core/index.js").Bus)({
   'name': 'https://linkedsoftwaredependencies.org/bundles/npm/@comunica/bus-rdf-parse-html/Bus/RdfParseHtml'
+});
+const https___linkedsoftwaredependencies_org_bundles_npm__comunica_bus_rdf_dereference_Bus_RdfDereference = new (__webpack_require__(/*! @comunica/core */ "./node_modules/@comunica/core/index.js").Bus)({
+  'name': 'https://linkedsoftwaredependencies.org/bundles/npm/@comunica/bus-rdf-dereference/Bus/RdfDereference'
 });
 const https___linkedsoftwaredependencies_org_bundles_npm__comunica_bus_rdf_serialize_Bus_RdfSerialize = new (__webpack_require__(/*! @comunica/core */ "./node_modules/@comunica/core/index.js").Bus)({
   'name': 'https://linkedsoftwaredependencies.org/bundles/npm/@comunica/bus-rdf-serialize/Bus/RdfSerialize'
@@ -1181,34 +1178,16 @@ const https___linkedsoftwaredependencies_org_bundles_npm__comunica_actor_init_sp
   'name': 'https://linkedsoftwaredependencies.org/bundles/npm/@comunica/actor-init-sparql/^1.0.0/config/sets/sparql-queryoperators.json#mediatorRdfJoin',
   'bus': https___linkedsoftwaredependencies_org_bundles_npm__comunica_bus_rdf_join_Bus_RdfJoin
 });
-const https___linkedsoftwaredependencies_org_bundles_npm__comunica_actor_init_sparql__1_0_0_config_sets_rdf_dereference_json_mediatorRdfParseMediatypes = new (__webpack_require__(/*! @comunica/mediator-combine-union */ "./node_modules/@comunica/mediator-combine-union/index.js").MediatorCombineUnion)({
-  'field': 'mediaTypes',
-  'name': 'https://linkedsoftwaredependencies.org/bundles/npm/@comunica/actor-init-sparql/^1.0.0/config/sets/rdf-dereference.json#mediatorRdfParseMediatypes',
-  'bus': https___linkedsoftwaredependencies_org_bundles_npm__comunica_bus_rdf_parse_Bus_RdfParse
-});
-const https___linkedsoftwaredependencies_org_bundles_npm__comunica_actor_init_sparql__1_0_0_config_sets_rdf_dereference_json_mediatorRdfParseHandle = new (__webpack_require__(/*! @comunica/mediator-race */ "./node_modules/@comunica/mediator-race/index.js").MediatorRace)({
-  'name': 'https://linkedsoftwaredependencies.org/bundles/npm/@comunica/actor-init-sparql/^1.0.0/config/sets/rdf-dereference.json#mediatorRdfParseHandle',
-  'bus': https___linkedsoftwaredependencies_org_bundles_npm__comunica_bus_rdf_parse_Bus_RdfParse
-});
 const https___linkedsoftwaredependencies_org_bundles_npm__comunica_actor_init_sparql__1_0_0_config_sets_rdf_parsers_json_myRdfParserN3 = new (__webpack_require__(/*! @comunica/actor-rdf-parse-n3 */ "./node_modules/@comunica/actor-rdf-parse-n3/index.js").ActorRdfParseN3)({
   'mediaTypes': {
-    'application/trig': '1.0',
-    'application/n-quads': '0.7',
-    'text/turtle': '0.6',
-    'application/n-triples': '0.3',
-    'text/n3': '0.1'
+    'application/n-quads': '1.0',
+    'application/trig': '0.95',
+    'application/n-triples': '0.8',
+    'text/turtle': '0.5',
+    'text/n3': '0.35'
   },
   'priorityScale': '1',
   'name': 'https://linkedsoftwaredependencies.org/bundles/npm/@comunica/actor-init-sparql/^1.0.0/config/sets/rdf-parsers.json#myRdfParserN3',
-  'bus': https___linkedsoftwaredependencies_org_bundles_npm__comunica_bus_rdf_parse_Bus_RdfParse
-});
-const https___linkedsoftwaredependencies_org_bundles_npm__comunica_actor_init_sparql__1_0_0_config_sets_rdf_parsers_json_myRdfParserJsonLd = new (__webpack_require__(/*! @comunica/actor-rdf-parse-jsonld */ "./node_modules/@comunica/actor-rdf-parse-jsonld/index.js").ActorRdfParseJsonLd)({
-  'mediaTypes': {
-    'application/ld+json': '1.0',
-    'application/json': '0.5'
-  },
-  'priorityScale': '9.0E-1',
-  'name': 'https://linkedsoftwaredependencies.org/bundles/npm/@comunica/actor-init-sparql/^1.0.0/config/sets/rdf-parsers.json#myRdfParserJsonLd',
   'bus': https___linkedsoftwaredependencies_org_bundles_npm__comunica_bus_rdf_parse_Bus_RdfParse
 });
 const https___linkedsoftwaredependencies_org_bundles_npm__comunica_actor_init_sparql__1_0_0_config_sets_rdf_parsers_json_myRdfParserRdfXml = new (__webpack_require__(/*! @comunica/actor-rdf-parse-rdfxml */ "./node_modules/@comunica/actor-rdf-parse-rdfxml/index.js").ActorRdfParseRdfXml)({
@@ -1225,7 +1204,7 @@ const https___linkedsoftwaredependencies_org_bundles_npm__comunica_actor_init_sp
     'text/xml': '1.0',
     'image/svg+xml': '1.0'
   },
-  'priorityScale': '5.0E-1',
+  'priorityScale': '3.0E-1',
   'name': 'https://linkedsoftwaredependencies.org/bundles/npm/@comunica/actor-init-sparql/^1.0.0/config/sets/rdf-parsers.json#myRdfParserXmlRdfa',
   'bus': https___linkedsoftwaredependencies_org_bundles_npm__comunica_bus_rdf_parse_Bus_RdfParse
 });
@@ -1238,9 +1217,14 @@ const https___linkedsoftwaredependencies_org_bundles_npm__comunica_actor_init_sp
   'name': 'https://linkedsoftwaredependencies.org/bundles/npm/@comunica/actor-init-sparql/^1.0.0/config/sets/rdf-parsers.json#mediatorRdfParseHandle',
   'bus': https___linkedsoftwaredependencies_org_bundles_npm__comunica_bus_rdf_parse_Bus_RdfParse
 });
-const https___linkedsoftwaredependencies_org_bundles_npm__comunica_actor_init_sparql__1_0_0_config_sets_resolve_hypermedia_json_mediatorRdfDereference = new (__webpack_require__(/*! @comunica/mediator-race */ "./node_modules/@comunica/mediator-race/index.js").MediatorRace)({
-  'name': 'https://linkedsoftwaredependencies.org/bundles/npm/@comunica/actor-init-sparql/^1.0.0/config/sets/resolve-hypermedia.json#mediatorRdfDereference',
-  'bus': https___linkedsoftwaredependencies_org_bundles_npm__comunica_bus_rdf_dereference_Bus_RdfDereference
+const https___linkedsoftwaredependencies_org_bundles_npm__comunica_actor_init_sparql__1_0_0_config_sets_rdf_dereference_json_mediatorRdfParseMediatypes = new (__webpack_require__(/*! @comunica/mediator-combine-union */ "./node_modules/@comunica/mediator-combine-union/index.js").MediatorCombineUnion)({
+  'field': 'mediaTypes',
+  'name': 'https://linkedsoftwaredependencies.org/bundles/npm/@comunica/actor-init-sparql/^1.0.0/config/sets/rdf-dereference.json#mediatorRdfParseMediatypes',
+  'bus': https___linkedsoftwaredependencies_org_bundles_npm__comunica_bus_rdf_parse_Bus_RdfParse
+});
+const https___linkedsoftwaredependencies_org_bundles_npm__comunica_actor_init_sparql__1_0_0_config_sets_rdf_dereference_json_mediatorRdfParseHandle = new (__webpack_require__(/*! @comunica/mediator-race */ "./node_modules/@comunica/mediator-race/index.js").MediatorRace)({
+  'name': 'https://linkedsoftwaredependencies.org/bundles/npm/@comunica/actor-init-sparql/^1.0.0/config/sets/rdf-dereference.json#mediatorRdfParseHandle',
+  'bus': https___linkedsoftwaredependencies_org_bundles_npm__comunica_bus_rdf_parse_Bus_RdfParse
 });
 const https___linkedsoftwaredependencies_org_bundles_npm__comunica_actor_init_sparql__1_0_0_config_sets_rdf_parsers_json_myRdfParserHtml = new (__webpack_require__(/*! @comunica/actor-rdf-parse-html */ "./node_modules/@comunica/actor-rdf-parse-html/index.js").ActorRdfParseHtml)({
   'busRdfParseHtml': https___linkedsoftwaredependencies_org_bundles_npm__comunica_bus_rdf_parse_html_Bus_RdfParseHtml,
@@ -1248,13 +1232,17 @@ const https___linkedsoftwaredependencies_org_bundles_npm__comunica_actor_init_sp
     'text/html': '1.0',
     'application/xhtml+xml': '0.9'
   },
-  'priorityScale': '8.0E-1',
+  'priorityScale': '2.0E-1',
   'name': 'https://linkedsoftwaredependencies.org/bundles/npm/@comunica/actor-init-sparql/^1.0.0/config/sets/rdf-parsers.json#myRdfParserHtml',
   'bus': https___linkedsoftwaredependencies_org_bundles_npm__comunica_bus_rdf_parse_Bus_RdfParse
 });
 const https___linkedsoftwaredependencies_org_bundles_npm__comunica_actor_init_sparql__1_0_0_config_sets_rdf_parsers_json_myRdfParserHtmlRdfa = new (__webpack_require__(/*! @comunica/actor-rdf-parse-html-rdfa */ "./node_modules/@comunica/actor-rdf-parse-html-rdfa/index.js").ActorRdfParseHtmlRdfa)({
   'name': 'https://linkedsoftwaredependencies.org/bundles/npm/@comunica/actor-init-sparql/^1.0.0/config/sets/rdf-parsers.json#myRdfParserHtmlRdfa',
   'bus': https___linkedsoftwaredependencies_org_bundles_npm__comunica_bus_rdf_parse_html_Bus_RdfParseHtml
+});
+const https___linkedsoftwaredependencies_org_bundles_npm__comunica_actor_init_sparql__1_0_0_config_sets_resolve_hypermedia_json_mediatorRdfDereference = new (__webpack_require__(/*! @comunica/mediator-race */ "./node_modules/@comunica/mediator-race/index.js").MediatorRace)({
+  'name': 'https://linkedsoftwaredependencies.org/bundles/npm/@comunica/actor-init-sparql/^1.0.0/config/sets/resolve-hypermedia.json#mediatorRdfDereference',
+  'bus': https___linkedsoftwaredependencies_org_bundles_npm__comunica_bus_rdf_dereference_Bus_RdfDereference
 });
 const https___linkedsoftwaredependencies_org_bundles_npm__comunica_actor_init_sparql__1_0_0_config_sets_rdf_serializers_json_myRdfSerializerN3 = new (__webpack_require__(/*! @comunica/actor-rdf-serialize-n3 */ "./node_modules/@comunica/actor-rdf-serialize-n3/index.js").ActorRdfSerializeN3)({
   'mediaTypes': {
@@ -1280,9 +1268,9 @@ const https___linkedsoftwaredependencies_org_bundles_npm__comunica_actor_init_sp
   'name': 'https://linkedsoftwaredependencies.org/bundles/npm/@comunica/actor-init-sparql/^1.0.0/config/sets/sparql-serializers.json#mediatorRdfSerialize',
   'bus': https___linkedsoftwaredependencies_org_bundles_npm__comunica_bus_rdf_serialize_Bus_RdfSerialize
 });
-const __b0bnode309 = new (__webpack_require__(/*! @comunica/mediator-combine-union */ "./node_modules/@comunica/mediator-combine-union/index.js").MediatorCombineUnion)({
+const __b0bnode311 = new (__webpack_require__(/*! @comunica/mediator-combine-union */ "./node_modules/@comunica/mediator-combine-union/index.js").MediatorCombineUnion)({
   'field': 'mediaTypes',
-  'name': '_:b0bnode309',
+  'name': '_:b0bnode311',
   'bus': https___linkedsoftwaredependencies_org_bundles_npm__comunica_bus_rdf_serialize_Bus_RdfSerialize
 });
 const https___linkedsoftwaredependencies_org_bundles_npm__comunica_actor_init_sparql__1_0_0_config_sets_sparql_queryoperators_json_mediatorResolveQuadPattern = new (__webpack_require__(/*! @comunica/mediator-race */ "./node_modules/@comunica/mediator-race/index.js").MediatorRace)({
@@ -1395,9 +1383,9 @@ const https___linkedsoftwaredependencies_org_bundles_npm__comunica_actor_init_sp
   'name': 'https://linkedsoftwaredependencies.org/bundles/npm/@comunica/actor-init-sparql/^1.0.0/config/sets/sparql-init.json#mediatorSparqlSerialize',
   'bus': https___linkedsoftwaredependencies_org_bundles_npm__comunica_bus_sparql_serialize_Bus_SparqlSerialize
 });
-const __b0bnode303 = new (__webpack_require__(/*! @comunica/mediator-combine-union */ "./node_modules/@comunica/mediator-combine-union/index.js").MediatorCombineUnion)({
+const __b0bnode305 = new (__webpack_require__(/*! @comunica/mediator-combine-union */ "./node_modules/@comunica/mediator-combine-union/index.js").MediatorCombineUnion)({
   'field': 'mediaTypes',
-  'name': '_:b0bnode303',
+  'name': '_:b0bnode305',
   'bus': https___linkedsoftwaredependencies_org_bundles_npm__comunica_bus_sparql_serialize_Bus_SparqlSerialize
 });
 const https___linkedsoftwaredependencies_org_bundles_npm__comunica_actor_init_sparql__1_0_0_config_sets_sparql_serializers_json_myJsonSparqlSerializer = new (__webpack_require__(/*! @comunica/actor-sparql-serialize-json */ "./node_modules/@comunica/actor-sparql-serialize-json/index.js").ActorSparqlSerializeJson)({
@@ -1474,6 +1462,16 @@ const https___linkedsoftwaredependencies_org_bundles_npm__comunica_actor_init_sp
   'name': 'https://linkedsoftwaredependencies.org/bundles/npm/@comunica/actor-init-sparql/^1.0.0/config/sets/http-memento.json#myHttpFetcher',
   'bus': https___linkedsoftwaredependencies_org_bundles_npm__comunica_bus_http_Bus_Http
 });
+const https___linkedsoftwaredependencies_org_bundles_npm__comunica_actor_init_sparql__1_0_0_config_sets_rdf_parsers_json_myRdfParserJsonLd = new (__webpack_require__(/*! @comunica/actor-rdf-parse-jsonld */ "./node_modules/@comunica/actor-rdf-parse-jsonld/index.js").ActorRdfParseJsonLd)({
+  'mediatorHttp': https___linkedsoftwaredependencies_org_bundles_npm__comunica_actor_init_sparql__1_0_0_config_sets_http_json_mediatorHttp,
+  'mediaTypes': {
+    'application/ld+json': '1.0',
+    'application/json': '0.5'
+  },
+  'priorityScale': '9.0E-1',
+  'name': 'https://linkedsoftwaredependencies.org/bundles/npm/@comunica/actor-init-sparql/^1.0.0/config/sets/rdf-parsers.json#myRdfParserJsonLd',
+  'bus': https___linkedsoftwaredependencies_org_bundles_npm__comunica_bus_rdf_parse_Bus_RdfParse
+});
 const https___linkedsoftwaredependencies_org_bundles_npm__comunica_actor_init_sparql__1_0_0_config_sets_resolve_sparql_json_mySparqlQuadPatternResolver = new (__webpack_require__(/*! @comunica/actor-rdf-resolve-hypermedia-sparql */ "./node_modules/@comunica/actor-rdf-resolve-hypermedia-sparql/index.js").ActorRdfResolveHypermediaSparql)({
   'mediatorHttp': https___linkedsoftwaredependencies_org_bundles_npm__comunica_actor_init_sparql__1_0_0_config_sets_http_json_mediatorHttp,
   'name': 'https://linkedsoftwaredependencies.org/bundles/npm/@comunica/actor-init-sparql/^1.0.0/config/sets/resolve-sparql.json#mySparqlQuadPatternResolver',
@@ -1483,6 +1481,12 @@ const https___linkedsoftwaredependencies_org_bundles_npm__comunica_actor_init_sp
   'mediatorHttp': https___linkedsoftwaredependencies_org_bundles_npm__comunica_actor_init_sparql__1_0_0_config_sets_http_json_mediatorHttp,
   'name': 'https://linkedsoftwaredependencies.org/bundles/npm/@comunica/actor-init-sparql/^1.0.0/config/sets/resolve-sparql.json#mySparqlEndpointResolver',
   'bus': https___linkedsoftwaredependencies_org_bundles_npm__comunica_bus_query_operation_Bus_QueryOperation
+});
+const https___linkedsoftwaredependencies_org_bundles_npm__comunica_actor_init_sparql__1_0_0_config_sets_rdf_parsers_json_myRdfParserHtmlScript = new (__webpack_require__(/*! @comunica/actor-rdf-parse-html-script */ "./node_modules/@comunica/actor-rdf-parse-html-script/index.js").ActorRdfParseHtmlScript)({
+  'mediatorRdfParseMediatypes': https___linkedsoftwaredependencies_org_bundles_npm__comunica_actor_init_sparql__1_0_0_config_sets_rdf_parsers_json_mediatorRdfParseMediatypes,
+  'mediatorRdfParseHandle': https___linkedsoftwaredependencies_org_bundles_npm__comunica_actor_init_sparql__1_0_0_config_sets_rdf_parsers_json_mediatorRdfParseHandle,
+  'name': 'https://linkedsoftwaredependencies.org/bundles/npm/@comunica/actor-init-sparql/^1.0.0/config/sets/rdf-parsers.json#myRdfParserHtmlScript',
+  'bus': https___linkedsoftwaredependencies_org_bundles_npm__comunica_bus_rdf_parse_html_Bus_RdfParseHtml
 });
 const https___linkedsoftwaredependencies_org_bundles_npm__comunica_actor_init_sparql__1_0_0_config_sets_rdf_dereference_json_myRdfDereferencer = new (__webpack_require__(/*! @comunica/actor-rdf-dereference-http-parse */ "./node_modules/@comunica/actor-rdf-dereference-http-parse/index.js").ActorRdfDereferenceHttpParse)({
   'mediatorHttp': https___linkedsoftwaredependencies_org_bundles_npm__comunica_actor_init_sparql__1_0_0_config_sets_http_json_mediatorHttp,
@@ -1515,15 +1519,9 @@ const https___linkedsoftwaredependencies_org_bundles_npm__comunica_actor_init_sp
   'name': 'https://linkedsoftwaredependencies.org/bundles/npm/@comunica/actor-init-sparql/^1.0.0/config/sets/rdf-dereference.json#myRdfDereferencer',
   'bus': https___linkedsoftwaredependencies_org_bundles_npm__comunica_bus_rdf_dereference_Bus_RdfDereference
 });
-const https___linkedsoftwaredependencies_org_bundles_npm__comunica_actor_init_sparql__1_0_0_config_sets_rdf_parsers_json_myRdfParserHtmlScript = new (__webpack_require__(/*! @comunica/actor-rdf-parse-html-script */ "./node_modules/@comunica/actor-rdf-parse-html-script/index.js").ActorRdfParseHtmlScript)({
-  'mediatorRdfParseMediatypes': https___linkedsoftwaredependencies_org_bundles_npm__comunica_actor_init_sparql__1_0_0_config_sets_rdf_parsers_json_mediatorRdfParseMediatypes,
-  'mediatorRdfParseHandle': https___linkedsoftwaredependencies_org_bundles_npm__comunica_actor_init_sparql__1_0_0_config_sets_rdf_parsers_json_mediatorRdfParseHandle,
-  'name': 'https://linkedsoftwaredependencies.org/bundles/npm/@comunica/actor-init-sparql/^1.0.0/config/sets/rdf-parsers.json#myRdfParserHtmlScript',
-  'bus': https___linkedsoftwaredependencies_org_bundles_npm__comunica_bus_rdf_parse_html_Bus_RdfParseHtml
-});
 const https___linkedsoftwaredependencies_org_bundles_npm__comunica_actor_init_sparql__1_0_0_config_sets_sparql_serializers_json_myRdfSparqlSerializer = new (__webpack_require__(/*! @comunica/actor-sparql-serialize-rdf */ "./node_modules/@comunica/actor-sparql-serialize-rdf/index.js").ActorSparqlSerializeRdf)({
   'mediatorRdfSerialize': https___linkedsoftwaredependencies_org_bundles_npm__comunica_actor_init_sparql__1_0_0_config_sets_sparql_serializers_json_mediatorRdfSerialize,
-  'mediatorMediaTypeCombiner': __b0bnode309,
+  'mediatorMediaTypeCombiner': __b0bnode311,
   'name': 'https://linkedsoftwaredependencies.org/bundles/npm/@comunica/actor-init-sparql/^1.0.0/config/sets/sparql-serializers.json#myRdfSparqlSerializer',
   'bus': https___linkedsoftwaredependencies_org_bundles_npm__comunica_bus_sparql_serialize_Bus_SparqlSerialize
 });
@@ -1573,10 +1571,10 @@ const urn_comunica_sparqlinit = new (__webpack_require__(/*! ./index.js */ "./no
   'mediatorQueryOperation': https___linkedsoftwaredependencies_org_bundles_npm__comunica_actor_init_sparql__1_0_0_config_sets_sparql_queryoperators_json_mediatorQueryOperation,
   'mediatorSparqlParse': https___linkedsoftwaredependencies_org_bundles_npm__comunica_actor_init_sparql__1_0_0_config_sets_sparql_init_json_mediatorSparqlParse,
   'mediatorSparqlSerialize': https___linkedsoftwaredependencies_org_bundles_npm__comunica_actor_init_sparql__1_0_0_config_sets_sparql_init_json_mediatorSparqlSerialize,
-  'mediatorSparqlSerializeMediaTypeCombiner': __b0bnode303,
+  'mediatorSparqlSerializeMediaTypeCombiner': __b0bnode305,
   'mediatorContextPreprocess': https___linkedsoftwaredependencies_org_bundles_npm__comunica_actor_init_sparql__1_0_0_config_sets_sparql_init_json_mediatorContextPreprocess,
   'mediatorHttpInvalidate': https___linkedsoftwaredependencies_org_bundles_npm__comunica_actor_init_sparql__1_0_0_config_sets_sparql_init_json_mediatorHttpInvalidate,
-  'logger': __b15bnode126,
+  'logger': __b15bnode129,
   'contextKeyShortcuts': {
     'source': '@comunica/bus-rdf-resolve-quad-pattern:source',
     'sources': '@comunica/bus-rdf-resolve-quad-pattern:sources',
@@ -1586,7 +1584,8 @@ const urn_comunica_sparqlinit = new (__webpack_require__(/*! ./index.js */ "./no
     'log': '@comunica/core:log',
     'datetime': '@comunica/actor-http-memento:datetime',
     'queryTimestamp': '@comunica/actor-init-sparql:queryTimestamp',
-    'httpProxyHandler': '@comunica/actor-http-proxy:httpProxyHandler'
+    'httpProxyHandler': '@comunica/actor-http-proxy:httpProxyHandler',
+    'lenient': '@comunica/actor-init-sparql:lenient'
   },
   'name': 'urn:comunica:sparqlinit',
   'bus': https___linkedsoftwaredependencies_org_bundles_npm__comunica_bus_init_Bus_Init
@@ -1689,8 +1688,6 @@ const https___linkedsoftwaredependencies_org_bundles_npm__comunica_actor_init_sp
   'bus': https___linkedsoftwaredependencies_org_bundles_npm__comunica_bus_query_operation_Bus_QueryOperation
 });
 const https___linkedsoftwaredependencies_org_bundles_npm__comunica_actor_init_sparql__1_0_0_config_sets_sparql_queryoperators_json_myMinusQueryOperator = new (__webpack_require__(/*! @comunica/actor-query-operation-minus */ "./node_modules/@comunica/actor-query-operation-minus/index.js").ActorQueryOperationMinus)({
-  'hashAlgorithm': 'sha1',
-  'digestAlgorithm': 'base64',
   'mediatorQueryOperation': https___linkedsoftwaredependencies_org_bundles_npm__comunica_actor_init_sparql__1_0_0_config_sets_sparql_queryoperators_json_mediatorQueryOperation,
   'name': 'https://linkedsoftwaredependencies.org/bundles/npm/@comunica/actor-init-sparql/^1.0.0/config/sets/sparql-queryoperators.json#myMinusQueryOperator',
   'bus': https___linkedsoftwaredependencies_org_bundles_npm__comunica_bus_query_operation_Bus_QueryOperation
@@ -1721,6 +1718,7 @@ const https___linkedsoftwaredependencies_org_bundles_npm__comunica_actor_init_sp
   'bus': https___linkedsoftwaredependencies_org_bundles_npm__comunica_bus_query_operation_Bus_QueryOperation
 });
 const https___linkedsoftwaredependencies_org_bundles_npm__comunica_actor_init_sparql__1_0_0_config_sets_sparql_queryoperator_path_json_mySeqPathOperator = new (__webpack_require__(/*! @comunica/actor-query-operation-path-seq */ "./node_modules/@comunica/actor-query-operation-path-seq/index.js").ActorQueryOperationPathSeq)({
+  'mediatorJoin': https___linkedsoftwaredependencies_org_bundles_npm__comunica_actor_init_sparql__1_0_0_config_sets_sparql_queryoperators_json_mediatorRdfJoin,
   'mediatorQueryOperation': https___linkedsoftwaredependencies_org_bundles_npm__comunica_actor_init_sparql__1_0_0_config_sets_sparql_queryoperators_json_mediatorQueryOperation,
   'name': 'https://linkedsoftwaredependencies.org/bundles/npm/@comunica/actor-init-sparql/^1.0.0/config/sets/sparql-queryoperator-path.json#mySeqPathOperator',
   'bus': https___linkedsoftwaredependencies_org_bundles_npm__comunica_bus_query_operation_Bus_QueryOperation
@@ -1742,14 +1740,14 @@ const urn_comunica_my = ({
     https___linkedsoftwaredependencies_org_bundles_npm__comunica_actor_init_sparql__1_0_0_config_sets_http_json_myHttpProxy,
     https___linkedsoftwaredependencies_org_bundles_npm__comunica_actor_init_sparql__1_0_0_config_sets_http_json_myHttpFetcher,
     https___linkedsoftwaredependencies_org_bundles_npm__comunica_actor_init_sparql__1_0_0_config_sets_join_json_myRdfJoinActor,
-    https___linkedsoftwaredependencies_org_bundles_npm__comunica_actor_init_sparql__1_0_0_config_sets_rdf_dereference_json_myRdfDereferencer,
     https___linkedsoftwaredependencies_org_bundles_npm__comunica_actor_init_sparql__1_0_0_config_sets_rdf_parsers_json_myRdfParserN3,
     https___linkedsoftwaredependencies_org_bundles_npm__comunica_actor_init_sparql__1_0_0_config_sets_rdf_parsers_json_myRdfParserJsonLd,
-    https___linkedsoftwaredependencies_org_bundles_npm__comunica_actor_init_sparql__1_0_0_config_sets_rdf_parsers_json_myRdfParserHtml,
     https___linkedsoftwaredependencies_org_bundles_npm__comunica_actor_init_sparql__1_0_0_config_sets_rdf_parsers_json_myRdfParserRdfXml,
     https___linkedsoftwaredependencies_org_bundles_npm__comunica_actor_init_sparql__1_0_0_config_sets_rdf_parsers_json_myRdfParserXmlRdfa,
+    https___linkedsoftwaredependencies_org_bundles_npm__comunica_actor_init_sparql__1_0_0_config_sets_rdf_parsers_json_myRdfParserHtml,
     https___linkedsoftwaredependencies_org_bundles_npm__comunica_actor_init_sparql__1_0_0_config_sets_rdf_parsers_json_myRdfParserHtmlRdfa,
     https___linkedsoftwaredependencies_org_bundles_npm__comunica_actor_init_sparql__1_0_0_config_sets_rdf_parsers_json_myRdfParserHtmlScript,
+    https___linkedsoftwaredependencies_org_bundles_npm__comunica_actor_init_sparql__1_0_0_config_sets_rdf_dereference_json_myRdfDereferencer,
     https___linkedsoftwaredependencies_org_bundles_npm__comunica_actor_init_sparql__1_0_0_config_sets_rdf_serializers_json_myRdfSerializerN3,
     https___linkedsoftwaredependencies_org_bundles_npm__comunica_actor_init_sparql__1_0_0_config_sets_rdf_serializers_json_myRdfSerializeJsonLd,
     https___linkedsoftwaredependencies_org_bundles_npm__comunica_actor_init_sparql__1_0_0_config_sets_resolve_federated_json_myFederatedQuadPatternResolver,
@@ -1964,18 +1962,21 @@ class ActorInitSparql extends bus_init_1.ActorInit {
         if (context && context.has(bus_query_operation_1.KEY_CONTEXT_BASEIRI)) {
             baseIRI = context.get(bus_query_operation_1.KEY_CONTEXT_BASEIRI);
         }
-        // Start, but don't await, context pre-processing
-        const combinationPromise = this.mediatorContextPreprocess.mediate({ context });
+        // Pre-processing the context
+        context = (await this.mediatorContextPreprocess.mediate({ context })).context;
         // Parse query
         let operation;
         if (typeof query === 'string') {
-            operation = (await this.mediatorSparqlParse.mediate({ context, query, queryFormat, baseIRI })).operation;
+            const queryParseOutput = await this.mediatorSparqlParse.mediate({ context, query, queryFormat, baseIRI });
+            operation = queryParseOutput.operation;
+            // Update the baseIRI in the context if the query modified it.
+            if (queryParseOutput.baseIRI) {
+                context = context.set(bus_query_operation_1.KEY_CONTEXT_BASEIRI, queryParseOutput.baseIRI);
+            }
         }
         else {
             operation = query;
         }
-        // Block until context has been processed
-        context = (await combinationPromise).context;
         // Apply initial bindings in context
         if (context.has(exports.KEY_CONTEXT_INITIALBINDINGS)) {
             const bindings = context.get(exports.KEY_CONTEXT_INITIALBINDINGS);
@@ -2035,12 +2036,13 @@ class ActorInitSparql extends bus_init_1.ActorInit {
         throw new Error('ActorInitSparql#run is not supported in the browser.');
     }
 }
+exports.ActorInitSparql = ActorInitSparql;
 ActorInitSparql.ALGEBRA_TYPES = Object.keys(sparqlalgebrajs_1.Algebra.types)
     .reduce((acc, key) => { acc[sparqlalgebrajs_1.Algebra.types[key]] = true; return acc; }, {});
-exports.ActorInitSparql = ActorInitSparql;
 exports.KEY_CONTEXT_INITIALBINDINGS = '@comunica/actor-init-sparql:initialBindings';
 exports.KEY_CONTEXT_QUERYFORMAT = '@comunica/actor-init-sparql:queryFormat';
 exports.KEY_CONTEXT_GRAPHQL_SINGULARIZEVARIABLES = '@comunica/actor-init-sparql:singularizeVariables';
+exports.KEY_CONTEXT_LENIENT = '@comunica/actor-init-sparql:lenient';
 //# sourceMappingURL=ActorInitSparql-browser.js.map
 
 /***/ }),
@@ -2847,7 +2849,7 @@ const actor_abstract_bindings_hash_1 = __webpack_require__(/*! @comunica/actor-a
 /**
  * A comunica Distinct Hash Query Operation Actor.
  */
-class ActorQueryOperationDistinctHash extends actor_abstract_bindings_hash_1.AbstractBindingHash {
+class ActorQueryOperationDistinctHash extends actor_abstract_bindings_hash_1.AbstractBindingsHash {
     constructor(args) {
         super(args, 'distinct');
     }
@@ -3006,7 +3008,7 @@ class ActorQueryOperationFilterSparqlee extends bus_query_operation_1.ActorQuery
         bus_query_operation_1.ActorQueryOperation.validateQueryOutput(output, 'bindings');
         const { variables, metadata } = output;
         const expressionContext = bus_query_operation_1.ActorQueryOperation.getExpressionContext(context);
-        const config = Object.assign({}, expressionContext, { exists: this.createExistenceResolver(context) });
+        const config = Object.assign(Object.assign({}, expressionContext), { exists: this.createExistenceResolver(context) });
         const evaluator = new sparqlee_1.AsyncEvaluator(pattern.expression, config);
         const transform = async (item, next) => {
             try {
@@ -3296,9 +3298,9 @@ class ActorQueryOperationFromQuad extends bus_query_operation_1.ActorQueryOperat
         return this.mediatorQueryOperation.mediate({ operation, context });
     }
 }
+exports.ActorQueryOperationFromQuad = ActorQueryOperationFromQuad;
 ActorQueryOperationFromQuad.FACTORY = new sparqlalgebrajs_1.Factory();
 ActorQueryOperationFromQuad.ALGEBRA_TYPES = Object.keys(sparqlalgebrajs_1.Algebra.types).map((key) => sparqlalgebrajs_1.Algebra.types[key]);
-exports.ActorQueryOperationFromQuad = ActorQueryOperationFromQuad;
 //# sourceMappingURL=ActorQueryOperationFromQuad.js.map
 
 /***/ }),
@@ -3714,43 +3716,35 @@ __export(__webpack_require__(/*! ./lib/ActorQueryOperationMinus */ "./node_modul
 "use strict";
 
 Object.defineProperty(exports, "__esModule", { value: true });
-const actor_abstract_bindings_hash_1 = __webpack_require__(/*! @comunica/actor-abstract-bindings-hash */ "./node_modules/@comunica/actor-abstract-bindings-hash/index.js");
 const bus_query_operation_1 = __webpack_require__(/*! @comunica/bus-query-operation */ "./node_modules/@comunica/bus-query-operation/index.js");
 const asynciterator_promiseproxy_1 = __webpack_require__(/*! asynciterator-promiseproxy */ "./node_modules/asynciterator-promiseproxy/index.js");
+const BindingsIndex_1 = __webpack_require__(/*! ./BindingsIndex */ "./node_modules/@comunica/actor-query-operation-minus/lib/BindingsIndex.js");
 /**
  * A comunica Minus Query Operation Actor.
  */
-class ActorQueryOperationMinus extends actor_abstract_bindings_hash_1.AbstractFilterHash {
+class ActorQueryOperationMinus extends bus_query_operation_1.ActorQueryOperationTypedMediated {
     constructor(args) {
         super(args, 'minus');
     }
-    newHashFilter(hashAlgorithm, digestAlgorithm, commons, hashes) {
-        return (bindings) => {
-            const hash = ActorQueryOperationMinus.hash(hashAlgorithm, digestAlgorithm, bindings.filter((v, k) => commons[k]));
-            return !(hash in hashes);
-        };
+    async testOperation(operation, context) {
+        return true;
     }
     async runOperation(pattern, context) {
         const buffer = bus_query_operation_1.ActorQueryOperation.getSafeBindings(await this.mediatorQueryOperation.mediate({ operation: pattern.right, context }));
         const output = bus_query_operation_1.ActorQueryOperation.getSafeBindings(await this.mediatorQueryOperation.mediate({ operation: pattern.left, context }));
         const commons = this.getCommonVariables(buffer.variables, output.variables);
-        if (Object.keys(commons).length !== 0) {
-            const hashes = {};
+        if (commons.length !== 0) {
             /**
              * To assure we've filtered all B (`buffer`) values from A (`output`) we wait until we've fetched all values of B.
-             * Then we save these triples in a hashmap `hashes` and use the map to filter our A-stream.
+             * Then we save these triples in `index` and use it to filter our A-stream.
              */
+            const index = new BindingsIndex_1.BindingsIndex(commons);
             const bindingsStream = new asynciterator_promiseproxy_1.PromiseProxyIterator(async () => {
                 await new Promise((resolve) => {
-                    buffer.bindingsStream.on('data', (data) => {
-                        const hash = ActorQueryOperationMinus.hash(this.hashAlgorithm, this.digestAlgorithm, data.filter((v, k) => commons[k]));
-                        hashes[hash] = true;
-                    });
-                    buffer.bindingsStream.on('end', () => {
-                        resolve();
-                    });
+                    buffer.bindingsStream.on('data', (data) => index.add(data));
+                    buffer.bindingsStream.on('end', resolve);
                 });
-                return output.bindingsStream.filter(this.newHashFilter(this.hashAlgorithm, this.digestAlgorithm, commons, hashes));
+                return output.bindingsStream.filter((data) => !index.contains(data));
             });
             return { type: 'bindings', bindingsStream, variables: output.variables, metadata: output.metadata };
         }
@@ -3762,12 +3756,115 @@ class ActorQueryOperationMinus extends actor_abstract_bindings_hash_1.AbstractFi
      * This function puts all common values between 2 arrays in a map with `value` : true
      */
     getCommonVariables(array1, array2) {
-        return array1.filter((n) => -1 !== array2.indexOf(n))
-            .reduce((m, key) => { m[key] = true; return m; }, {});
+        return Object.keys(array1.filter((n) => -1 !== array2.indexOf(n))
+            .reduce((m, key) => { m[key] = true; return m; }, {}));
     }
 }
 exports.ActorQueryOperationMinus = ActorQueryOperationMinus;
 //# sourceMappingURL=ActorQueryOperationMinus.js.map
+
+/***/ }),
+
+/***/ "./node_modules/@comunica/actor-query-operation-minus/lib/BindingsIndex.js":
+/*!*********************************************************************************!*\
+  !*** ./node_modules/@comunica/actor-query-operation-minus/lib/BindingsIndex.js ***!
+  \*********************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+Object.defineProperty(exports, "__esModule", { value: true });
+const rdf_string_1 = __webpack_require__(/*! rdf-string */ "./node_modules/rdf-string/index.js");
+/**
+ * A simple efficient tree-based index for maintaining bindings,
+ * and checking whether or not a bindings is contained in this index.
+ *
+ * This will consider bindings with a variable term or a missing term
+ * as a 'match-all' with other terms.
+ */
+class BindingsIndex {
+    constructor(keys) {
+        this.data = {};
+        this.keys = keys;
+    }
+    static hashTerm(term) {
+        return term && term.termType !== 'Variable' ? rdf_string_1.termToString(term) : '';
+    }
+    /**
+     * Add the given bindings to the index.
+     * @param {Bindings} bindings A bindings.
+     */
+    add(bindings) {
+        if (this.isBindingsValid(bindings)) {
+            let dataIt = this.data;
+            for (const key of this.keys) {
+                const dataKey = BindingsIndex.hashTerm(bindings.get(key));
+                let subDataIt = dataIt[dataKey];
+                if (!subDataIt) {
+                    subDataIt = dataIt[dataKey] = {};
+                }
+                dataIt = subDataIt;
+            }
+        }
+    }
+    /**
+     * Check if the given bindings is contained in this index.
+     * @param {Bindings} bindings A bindings.
+     * @return {boolean} If it exists in the index.
+     */
+    contains(bindings) {
+        // Always return false if the bindings contain none of the expected keys
+        if (!this.isBindingsValid(bindings)) {
+            return false;
+        }
+        return this.containsRecursive(bindings, this.keys, [this.data]);
+    }
+    isBindingsValid(bindings) {
+        let validKeys = false;
+        for (const key of this.keys) {
+            if (bindings.get(key)) {
+                validKeys = true;
+                break;
+            }
+        }
+        return validKeys;
+    }
+    containsRecursive(bindings, keys, dataIndexes) {
+        if (keys.length === 0) {
+            return true;
+        }
+        let key;
+        [key, ...keys] = keys;
+        for (const data of dataIndexes) {
+            // If the index contained a variable, all terms will match.
+            const dataKey = BindingsIndex.hashTerm(bindings.get(key));
+            if (!dataKey) {
+                // Iterate over all entries
+                let subDatas = Object.keys(data).map((k) => data[k]);
+                if (subDatas.length === 0) {
+                    subDatas = [{}];
+                }
+                if (this.containsRecursive(bindings, keys, subDatas)) {
+                    return true;
+                }
+            }
+            else {
+                // Check the entry for the term, and the variable term.
+                const subDatas = [data[dataKey], data['']].filter((e) => !!e);
+                if (subDatas.length === 0) {
+                    continue;
+                }
+                if (this.containsRecursive(bindings, keys, subDatas)) {
+                    return true;
+                }
+            }
+        }
+        return false;
+    }
+}
+exports.BindingsIndex = BindingsIndex;
+//# sourceMappingURL=BindingsIndex.js.map
 
 /***/ }),
 
@@ -4520,6 +4617,7 @@ __export(__webpack_require__(/*! ./lib/ActorQueryOperationProject */ "./node_mod
 
 Object.defineProperty(exports, "__esModule", { value: true });
 const bus_query_operation_1 = __webpack_require__(/*! @comunica/bus-query-operation */ "./node_modules/@comunica/bus-query-operation/index.js");
+const data_model_1 = __webpack_require__(/*! @rdfjs/data-model */ "./node_modules/@rdfjs/data-model/index.js");
 const rdf_string_1 = __webpack_require__(/*! rdf-string */ "./node_modules/rdf-string/index.js");
 /**
  * A comunica Project Query Operation Actor.
@@ -4540,7 +4638,7 @@ class ActorQueryOperationProject extends bus_query_operation_1.ActorQueryOperati
         const deleteVariables = output.variables.filter((variable) => variables.indexOf(variable) < 0);
         const missingVariables = variables.filter((variable) => output.variables.indexOf(variable) < 0);
         // Make sure the project variables are the only variables that are present in the bindings.
-        const bindingsStream = !deleteVariables.length && !missingVariables.length
+        let bindingsStream = !deleteVariables.length && !missingVariables.length
             ? output.bindingsStream : output.bindingsStream.map((binding) => {
             for (const deleteVariable of deleteVariables) {
                 binding = binding.delete(deleteVariable);
@@ -4549,6 +4647,18 @@ class ActorQueryOperationProject extends bus_query_operation_1.ActorQueryOperati
                 binding = binding.set(missingVariable, null);
             }
             return binding;
+        });
+        // Make sure that blank nodes with same labels are not reused over different bindings, as required by SPARQL 1.1.
+        // Required for the BNODE() function: https://www.w3.org/TR/sparql11-query/#func-bnode
+        let blankNodeCounter = 0;
+        bindingsStream = bindingsStream.map((bindings) => {
+            blankNodeCounter++;
+            return bindings.map((term) => {
+                if (term && term.termType === 'BlankNode') {
+                    return data_model_1.blankNode(term.value + blankNodeCounter);
+                }
+                return term;
+            });
         });
         return { type: 'bindings', bindingsStream, metadata: output.metadata, variables };
     }
@@ -4611,10 +4721,54 @@ class ActorQueryOperationQuadpattern extends bus_query_operation_1.ActorQueryOpe
      * @param {RDF.BaseQuad} pattern A quad pattern.
      * @return {string[]} The variables in this pattern, without '?' prefix.
      */
-    getVariables(pattern) {
+    static getVariables(pattern) {
         return rdf_terms_1.uniqTerms(rdf_terms_1.getTerms(pattern)
             .filter(ActorQueryOperationQuadpattern.isTermVariable))
             .map(rdf_string_1.termToString);
+    }
+    /**
+     * A helper function to find a hash with quad elements that have duplicate variables.
+     *
+     * @param {RDF.Quad} pattern A quad pattern.
+     *
+     * @return {{[p: string]: string[]}} If no equal variable names are present in the four terms, this returns null.
+     *                                   Otherwise, this maps quad elements ('subject', 'predicate', 'object', 'graph')
+     *                                   to the list of quad elements it shares a variable name with.
+     *                                   If no links for a certain element exist, this element will
+     *                                   not be included in the hash.
+     *                                   Note 1: Quad elements will never have a link to themselves.
+     *                                           So this can never occur: { subject: [ 'subject'] },
+     *                                           instead 'null' would be returned.
+     *                                   Note 2: Links only exist in one direction,
+     *                                           this means that { subject: [ 'predicate'], predicate: [ 'subject' ] }
+     *                                           will not occur, instead only { subject: [ 'predicate'] }
+     *                                           will be returned.
+     */
+    static getDuplicateElementLinks(pattern) {
+        // Collect a variable to quad elements mapping.
+        const variableElements = {};
+        let duplicateVariables = false;
+        for (const key of rdf_terms_1.QUAD_TERM_NAMES) {
+            if (pattern[key].termType === 'Variable') {
+                const val = rdf_string_1.termToString(pattern[key]);
+                const length = (variableElements[val] || (variableElements[val] = [])).push(key);
+                duplicateVariables = duplicateVariables || length > 1;
+            }
+        }
+        if (!duplicateVariables) {
+            return null;
+        }
+        // Collect quad element to elements with equal variables mapping.
+        const duplicateElementLinks = {};
+        for (const variable in variableElements) {
+            const elements = variableElements[variable];
+            const remainingElements = elements.slice(1);
+            // Only store the elements that have at least one equal element.
+            if (remainingElements.length) {
+                duplicateElementLinks[elements[0]] = remainingElements;
+            }
+        }
+        return duplicateElementLinks;
     }
     async testOperation(operation, context) {
         return true;
@@ -4623,7 +4777,7 @@ class ActorQueryOperationQuadpattern extends bus_query_operation_1.ActorQueryOpe
         // Resolve the quad pattern
         const result = await this.mediatorResolveQuadPattern.mediate({ pattern, context });
         // Collect all variables from the pattern
-        const variables = this.getVariables(pattern);
+        const variables = ActorQueryOperationQuadpattern.getVariables(pattern);
         // Convenience datastructure for mapping quad elements to variables
         const elementVariables = rdf_terms_1.reduceTerms(pattern, (acc, term, key) => {
             if (ActorQueryOperationQuadpattern.isTermVariable(term)) {
@@ -4638,9 +4792,32 @@ class ActorQueryOperationQuadpattern extends bus_query_operation_1.ActorQueryOpe
             }
             return acc;
         };
-        const bindingsStream = new asynciterator_promiseproxy_1.PromiseProxyIterator(async () => result.data.map((quad) => {
-            return bus_query_operation_1.Bindings(rdf_terms_1.reduceTerms(quad, quadBindingsReducer, {}));
-        }, { autoStart: true, maxBufferSize: 128 }));
+        // Optionally filter, and construct bindings
+        const bindingsStream = new asynciterator_promiseproxy_1.PromiseProxyIterator(async () => {
+            let filteredOutput = result.data;
+            // Detect duplicate variables in the pattern
+            const duplicateElementLinks = ActorQueryOperationQuadpattern
+                .getDuplicateElementLinks(pattern);
+            // If there are duplicate variables in the search pattern,
+            // make sure that we filter out the triples that don't have equal values for those triple elements,
+            // as QPF ignores variable names.
+            if (duplicateElementLinks) {
+                filteredOutput = filteredOutput.filter((quad) => {
+                    // No need to check the graph, because an equal element already would have to be found in s, p, or o.
+                    for (const element1 of rdf_terms_1.TRIPLE_TERM_NAMES) {
+                        for (const element2 of (duplicateElementLinks[element1] || [])) {
+                            if (!quad[element1].equals(quad[element2])) {
+                                return false;
+                            }
+                        }
+                    }
+                    return true;
+                });
+            }
+            return filteredOutput.map((quad) => {
+                return bus_query_operation_1.Bindings(rdf_terms_1.reduceTerms(quad, quadBindingsReducer, {}));
+            }, { autoStart: true, maxBufferSize: 128 });
+        });
         return { type: 'bindings', bindingsStream, variables, metadata: result.metadata };
     }
 }
@@ -4682,7 +4859,7 @@ const LRU = __webpack_require__(/*! lru-cache */ "./node_modules/lru-cache/index
 /**
  * A comunica Reduced Hash Query Operation Actor.
  */
-class ActorQueryOperationReducedHash extends actor_abstract_bindings_hash_1.AbstractBindingHash {
+class ActorQueryOperationReducedHash extends actor_abstract_bindings_hash_1.AbstractBindingsHash {
     constructor(args) {
         super(args, 'reduced');
     }
@@ -4911,7 +5088,7 @@ class ActorQueryOperationSparqlEndpoint extends bus_query_operation_1.ActorQuery
     }
     async test(action) {
         if (!action.operation) {
-            throw new Error('Missing field \'operation\' in the query operation action: ' + __webpack_require__(/*! util */ "./node_modules/util/util.js").inspect(action));
+            throw new Error('Missing field \'operation\' in a query operation action.');
         }
         const source = await utils_datasource_1.DataSourceUtils.getSingleSource(action.context);
         if (source && bus_rdf_resolve_quad_pattern_1.getDataSourceType(source) === 'sparql') {
@@ -4947,8 +5124,8 @@ class ActorQueryOperationSparqlEndpoint extends bus_query_operation_1.ActorQuery
         return { type: 'bindings', metadata, bindingsStream, variables: selectQuery.variables.map(rdf_string_1.termToString) };
     }
 }
-ActorQueryOperationSparqlEndpoint.FACTORY = new sparqlalgebrajs_1.Factory();
 exports.ActorQueryOperationSparqlEndpoint = ActorQueryOperationSparqlEndpoint;
+ActorQueryOperationSparqlEndpoint.FACTORY = new sparqlalgebrajs_1.Factory();
 //# sourceMappingURL=ActorQueryOperationSparqlEndpoint.js.map
 
 /***/ }),
@@ -5175,15 +5352,33 @@ class ActorRdfDereferenceHttpParseBase extends bus_rdf_dereference_1.ActorRdfDer
         // Resolve HTTP URL using appropriate accept header
         const headers = new Headers();
         headers.append('Accept', acceptHeader);
-        const httpAction = { context: action.context, input: action.url, init: { headers } };
-        const httpResponse = await this.mediatorHttp.mediate(httpAction);
+        // Append any custom passed headers
+        for (const key in action.headers) {
+            headers.append(key, action.headers[key]);
+        }
+        const httpAction = {
+            context: action.context,
+            init: { headers, method: action.method },
+            input: action.url,
+        };
+        let httpResponse;
+        try {
+            httpResponse = await this.mediatorHttp.mediate(httpAction);
+        }
+        catch (error) {
+            return this.handleDereferenceError(action, error);
+        }
         const url = relative_to_absolute_iri_1.resolve(httpResponse.url, action.url); // The response URL can be relative to the given URL
+        // Convert output headers to a hash
+        const outputHeaders = {};
+        httpResponse.headers.forEach((value, key) => outputHeaders[key] = value);
         // Wrap WhatWG readable stream into a Node.js readable stream
         // If the body already is a Node.js stream (in the case of node-fetch), don't do explicit conversion.
         const responseStream = bus_http_1.ActorHttp.toNodeReadable(httpResponse.body);
         // Only parse if retrieval was successful
         if (httpResponse.status !== 200) {
-            throw new Error(`Could not retrieve ${action.url} (${httpResponse.status}: ${httpResponse.statusText || 'unknown error'})`);
+            const error = new Error(`Could not retrieve ${action.url} (${httpResponse.status}: ${httpResponse.statusText || 'unknown error'})`);
+            return this.handleDereferenceError(action, error);
         }
         // Parse the resulting response
         let mediaType = httpResponse.headers.has('content-type')
@@ -5197,9 +5392,16 @@ class ActorRdfDereferenceHttpParseBase extends bus_rdf_dereference_1.ActorRdfDer
             headers: httpResponse.headers,
             input: responseStream,
         };
-        const parseOutput = (await this.mediatorRdfParseHandle.mediate({ context: action.context, handle: parseAction, handleMediaType: mediaType })).handle;
+        let parseOutput;
+        try {
+            parseOutput = (await this.mediatorRdfParseHandle.mediate({ context: action.context, handle: parseAction, handleMediaType: mediaType })).handle;
+        }
+        catch (error) {
+            return this.handleDereferenceError(action, error);
+        }
+        const quads = this.handleDereferenceStreamErrors(action, parseOutput.quads);
         // Return the parsed quad stream and whether or not only triples are supported
-        return { url, quads: parseOutput.quads, triples: parseOutput.triples };
+        return { url, quads, triples: parseOutput.triples, headers: outputHeaders };
     }
     mediaTypesToAcceptString(mediaTypes, maxLength) {
         maxLength -= 10; // Ensure a ',*/*;q=0.1' suffix
@@ -5223,8 +5425,8 @@ class ActorRdfDereferenceHttpParseBase extends bus_rdf_dereference_1.ActorRdfDer
         return parts.join(',');
     }
 }
-ActorRdfDereferenceHttpParseBase.REGEX_MEDIATYPE = /^[^ ;]*/;
 exports.ActorRdfDereferenceHttpParseBase = ActorRdfDereferenceHttpParseBase;
+ActorRdfDereferenceHttpParseBase.REGEX_MEDIATYPE = /^[^ ;]*/;
 //# sourceMappingURL=ActorRdfDereferenceHttpParseBase.js.map
 
 /***/ }),
@@ -5403,9 +5605,7 @@ class ActorRdfMetadataExtractHydraControls extends bus_rdf_metadata_extract_1.Ac
             // First check the correct hydra:next, then the deprecated hydra:nextPage
             const links = hydraProperties[link] || hydraProperties[link + 'Page'];
             const linkTargets = links && links[pageUrl];
-            if (linkTargets && linkTargets.length > 0) {
-                metadata[link] = linkTargets[0];
-            }
+            metadata[link] = linkTargets && linkTargets.length > 0 ? linkTargets[0] : null;
             return metadata;
         }, {});
     }
@@ -5496,9 +5696,9 @@ class ActorRdfMetadataExtractHydraControls extends bus_rdf_metadata_extract_1.Ac
         return { metadata };
     }
 }
+exports.ActorRdfMetadataExtractHydraControls = ActorRdfMetadataExtractHydraControls;
 ActorRdfMetadataExtractHydraControls.HYDRA = 'http://www.w3.org/ns/hydra/core#';
 ActorRdfMetadataExtractHydraControls.LINK_TYPES = ['first', 'next', 'previous', 'last'];
-exports.ActorRdfMetadataExtractHydraControls = ActorRdfMetadataExtractHydraControls;
 //# sourceMappingURL=ActorRdfMetadataExtractHydraControls.js.map
 
 /***/ }),
@@ -6081,7 +6281,9 @@ __export(__webpack_require__(/*! ./lib/ActorRdfParseJsonLd */ "./node_modules/@c
 
 Object.defineProperty(exports, "__esModule", { value: true });
 const bus_rdf_parse_1 = __webpack_require__(/*! @comunica/bus-rdf-parse */ "./node_modules/@comunica/bus-rdf-parse/index.js");
+const http_link_header_1 = __webpack_require__(/*! http-link-header */ "./node_modules/http-link-header/lib/link.js");
 const jsonld_streaming_parser_1 = __webpack_require__(/*! jsonld-streaming-parser */ "./node_modules/jsonld-streaming-parser/index.js");
+const DocumentLoaderMediated_1 = __webpack_require__(/*! ./DocumentLoaderMediated */ "./node_modules/@comunica/actor-rdf-parse-jsonld/lib/DocumentLoaderMediated.js");
 /**
  * A JSON-LD RDF Parse actor that listens on the 'rdf-parse' bus.
  *
@@ -6091,14 +6293,67 @@ class ActorRdfParseJsonLd extends bus_rdf_parse_1.ActorRdfParseFixedMediaTypes {
     constructor(args) {
         super(args);
     }
-    async runHandle(action, mediaType, context) {
-        const quads = new jsonld_streaming_parser_1.JsonLdParser({ baseIRI: action.baseIRI, allowOutOfOrderContext: true })
-            .import(action.input);
+    async runHandle(action, mediaType, actionContext) {
+        // Try to extract a JSON-LD context link header (https://w3c.github.io/json-ld-syntax/#interpreting-json-as-json-ld)
+        let context;
+        if (mediaType !== 'application/ld+json' && action.headers && action.headers.has('Link')) {
+            const linkHeader = http_link_header_1.parse(action.headers.get('Link'));
+            for (const link of linkHeader.get('rel', 'http://www.w3.org/ns/json-ld#context')) {
+                if (link.type === 'application/ld+json') {
+                    if (context) {
+                        throw new Error('Multiple JSON-LD context link headers were found on ' + action.baseIRI);
+                    }
+                    context = link.uri;
+                }
+            }
+        }
+        // Parse the JSON-LD
+        const quads = new jsonld_streaming_parser_1.JsonLdParser({
+            allowOutOfOrderContext: true,
+            baseIRI: action.baseIRI,
+            context,
+            documentLoader: new DocumentLoaderMediated_1.DocumentLoaderMediated(this.mediatorHttp, actionContext),
+        }).import(action.input);
         return { quads };
     }
 }
 exports.ActorRdfParseJsonLd = ActorRdfParseJsonLd;
 //# sourceMappingURL=ActorRdfParseJsonLd.js.map
+
+/***/ }),
+
+/***/ "./node_modules/@comunica/actor-rdf-parse-jsonld/lib/DocumentLoaderMediated.js":
+/*!*************************************************************************************!*\
+  !*** ./node_modules/@comunica/actor-rdf-parse-jsonld/lib/DocumentLoaderMediated.js ***!
+  \*************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+Object.defineProperty(exports, "__esModule", { value: true });
+const bus_http_1 = __webpack_require__(/*! @comunica/bus-http */ "./node_modules/@comunica/bus-http/index.js");
+const stringifyStream = __webpack_require__(/*! stream-to-string */ "./node_modules/stream-to-string/index.js");
+/**
+ * A JSON-LD document loader that fetches over an HTTP bus using a given mediator.
+ */
+class DocumentLoaderMediated {
+    constructor(mediatorHttp, context) {
+        this.mediatorHttp = mediatorHttp;
+        this.context = context;
+    }
+    async load(url) {
+        const response = await this.mediatorHttp.mediate({ input: url, init: { headers: new Headers({ accept: 'application/ld+json' }) }, context: this.context });
+        if (response.ok) {
+            return JSON.parse(await stringifyStream(bus_http_1.ActorHttp.toNodeReadable(response.body)));
+        }
+        else {
+            throw new Error(`No valid context was found at ${url}: ${response.statusText}`);
+        }
+    }
+}
+exports.DocumentLoaderMediated = DocumentLoaderMediated;
+//# sourceMappingURL=DocumentLoaderMediated.js.map
 
 /***/ }),
 
@@ -6558,54 +6813,6 @@ class RdfSourceQpf {
         }
         return searchForm.getUri(entries);
     }
-    /**
-     * A helper function to find a hash with quad elements that have duplicate variables.
-     *
-     * @param {RDF.Term} subject An optional subject term.
-     * @param {RDF.Term} predicate An optional predicate term.
-     * @param {RDF.Term} object An optional object term.
-     * @param {RDF.Term} graph An optional graph term.
-     *
-     * @return {{[p: string]: string[]}} If no equal variable names are present in the four terms, this returns null.
-     *                                   Otherwise, this maps quad elements ('subject', 'predicate', 'object', 'graph')
-     *                                   to the list of quad elements it shares a variable name with.
-     *                                   If no links for a certain element exist, this element will
-     *                                   not be included in the hash.
-     *                                   Note 1: Quad elements will never have a link to themselves.
-     *                                           So this can never occur: { subject: [ 'subject'] },
-     *                                           instead 'null' would be returned.
-     *                                   Note 2: Links only exist in one direction,
-     *                                           this means that { subject: [ 'predicate'], predicate: [ 'subject' ] }
-     *                                           will not occur, instead only { subject: [ 'predicate'] }
-     *                                           will be returned.
-     */
-    getDuplicateElementLinks(subject, predicate, object, graph) {
-        // Collect a variable to quad elements mapping.
-        const variableElements = {};
-        let duplicateVariables = false;
-        const input = { subject, predicate, object, graph };
-        for (const key in input) {
-            if (input[key] && input[key].termType === 'Variable') {
-                const val = rdf_string_1.termToString(input[key]);
-                const length = (variableElements[val] || (variableElements[val] = [])).push(key);
-                duplicateVariables = duplicateVariables || length > 1;
-            }
-        }
-        if (!duplicateVariables) {
-            return null;
-        }
-        // Collect quad element to elements with equal variables mapping.
-        const duplicateElementLinks = {};
-        for (const variable in variableElements) {
-            const elements = variableElements[variable];
-            const remainingElements = elements.slice(1);
-            // Only store the elements that have at least one equal element.
-            if (remainingElements.length) {
-                duplicateElementLinks[elements[0]] = remainingElements;
-            }
-        }
-        return duplicateElementLinks;
-    }
     match(subject, predicate, object, graph) {
         if (subject instanceof RegExp
             || predicate instanceof RegExp
@@ -6633,27 +6840,8 @@ class RdfSourceQpf {
             // The server is free to send any data in its response (such as metadata),
             // including quads that do not match the given matter.
             // Therefore, we have to filter away all non-matching quads here.
-            let filteredOutput = asynciterator_1.AsyncIterator.wrap(rdfMetadataOuput.data)
+            const filteredOutput = asynciterator_1.AsyncIterator.wrap(rdfMetadataOuput.data)
                 .filter((quad) => rdf_terms_1.matchPattern(quad, subject, predicate, object, graph));
-            // Detect duplicate variables in the pattern
-            const duplicateElementLinks = this
-                .getDuplicateElementLinks(subject, predicate, object, graph);
-            // If there are duplicate variables in the search pattern,
-            // make sure that we filter out the triples that don't have equal values for those triple elements,
-            // as QPF ignores variable names.
-            if (duplicateElementLinks) {
-                filteredOutput = filteredOutput.filter((quad) => {
-                    // No need to check the graph, because an equal element already would have to be found in s, p, or o.
-                    for (const element1 of rdf_terms_1.TRIPLE_TERM_NAMES) {
-                        for (const element2 of (duplicateElementLinks[element1] || [])) {
-                            if (!quad[element1].equals(quad[element2])) {
-                                return false;
-                            }
-                        }
-                    }
-                    return true;
-                });
-            }
             return filteredOutput;
         });
         this.cacheQuads(quads, subject, predicate, object, graph);
@@ -6832,7 +7020,7 @@ class RdfSourceSparql {
      * @return {string} A count query string.
      */
     static patternToCountQuery(pattern) {
-        return sparqlalgebrajs_1.toSparql(RdfSourceSparql.FACTORY.createProject(RdfSourceSparql.FACTORY.createExtend(RdfSourceSparql.FACTORY.createGroup(RdfSourceSparql.patternToBgp(pattern), [], [RdfSourceSparql.FACTORY.createBoundAggregate(data_model_1.variable('var0'), 'count', RdfSourceSparql.FACTORY.createTermExpression(data_model_1.namedNode('*')), false)]), data_model_1.variable('count'), RdfSourceSparql.FACTORY.createTermExpression(data_model_1.variable('var0'))), [data_model_1.variable('count')]));
+        return sparqlalgebrajs_1.toSparql(RdfSourceSparql.FACTORY.createProject(RdfSourceSparql.FACTORY.createExtend(RdfSourceSparql.FACTORY.createGroup(RdfSourceSparql.patternToBgp(pattern), [], [RdfSourceSparql.FACTORY.createBoundAggregate(data_model_1.variable('var0'), 'count', RdfSourceSparql.FACTORY.createWildcardExpression(), false)]), data_model_1.variable('count'), RdfSourceSparql.FACTORY.createTermExpression(data_model_1.variable('var0'))), [data_model_1.variable('count')]));
     }
     /**
      * Return a new variable if the term is undefined, or the term as-is.
@@ -6943,8 +7131,8 @@ class RdfSourceSparql {
         return quads;
     }
 }
-RdfSourceSparql.FACTORY = new sparqlalgebrajs_1.Factory();
 exports.RdfSourceSparql = RdfSourceSparql;
+RdfSourceSparql.FACTORY = new sparqlalgebrajs_1.Factory();
 //# sourceMappingURL=RdfSourceSparql.js.map
 /* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./../../../timers-browserify/main.js */ "./node_modules/timers-browserify/main.js").setImmediate))
 
@@ -7299,7 +7487,7 @@ class LinkedRdfSourcesAsyncRdfIterator extends asynciterator_1.BufferedIterator 
         this.predicate = predicate;
         this.object = object;
         this.graph = graph;
-        this.sourceStates = [];
+        this.nextUrls = [];
         this.firstUrl = firstUrl;
         this.started = false;
         this.iterating = false;
@@ -7345,18 +7533,18 @@ class LinkedRdfSourcesAsyncRdfIterator extends asynciterator_1.BufferedIterator 
             const nextSource = this.nextSource;
             this.nextSource = null;
             this.getNextUrls(nextSource.metadata)
-                .then((nextUrls) => Promise.all(nextUrls
-                .map((nextUrl) => this.getNextSourceCached(nextUrl, nextSource.handledDatasets))))
-                .then((newSources) => {
-                if (newSources.length === 0 && this.sourceStates.length === 0) {
+                .then((nextUrls) => Promise.all(nextUrls))
+                .then(async (nextUrls) => {
+                if (nextUrls.length === 0 && this.nextUrls.length === 0) {
                     this.close();
                 }
                 else {
-                    for (const sourceState of newSources) {
-                        this.sourceStates.push(sourceState);
+                    for (const nextUrl of nextUrls) {
+                        this.nextUrls.push(nextUrl);
                     }
-                    this.startIterator(this.sourceStates[0], false);
-                    this.sourceStates.splice(0, 1);
+                    const nextSourceState = await this.getNextSourceCached(this.nextUrls[0], nextSource.handledDatasets);
+                    this.startIterator(nextSourceState, false);
+                    this.nextUrls.splice(0, 1);
                 }
                 done();
             }).catch((e) => this.emit('error', e));
@@ -7392,7 +7580,7 @@ class LinkedRdfSourcesAsyncRdfIterator extends asynciterator_1.BufferedIterator 
             if (ended) {
                 this.destroy(new Error('Received metadata AFTER the source iterator was ended.'));
             }
-            currentMetadata = metadata;
+            currentMetadata = Object.assign(Object.assign({}, currentMetadata), metadata);
         });
         it.on('data', (quad) => {
             this._push(quad);
@@ -7747,6 +7935,7 @@ __export(__webpack_require__(/*! ./lib/ActorSparqlParseAlgebra */ "./node_module
 Object.defineProperty(exports, "__esModule", { value: true });
 const bus_sparql_parse_1 = __webpack_require__(/*! @comunica/bus-sparql-parse */ "./node_modules/@comunica/bus-sparql-parse/index.js");
 const sparqlalgebrajs_1 = __webpack_require__(/*! sparqlalgebrajs */ "./node_modules/sparqlalgebrajs/index.js");
+const sparqljs_1 = __webpack_require__(/*! sparqljs */ "./node_modules/sparqljs/sparql.js");
 /**
  * A comunica Algebra SPARQL Parse Actor.
  */
@@ -7762,7 +7951,17 @@ class ActorSparqlParseAlgebra extends bus_sparql_parse_1.ActorSparqlParse {
         return true;
     }
     async run(action) {
-        return { operation: sparqlalgebrajs_1.translate(action.query, { quads: true, prefixes: this.prefixes, blankToVariable: true, baseIRI: action.baseIRI }) };
+        // TODO: will have to remove <any> once sparql.js types are updated
+        const parser = new sparqljs_1.Parser({ prefixes: this.prefixes, baseIRI: action.baseIRI });
+        // resets the identifier counter used for blank nodes
+        // provides nicer and more consistent output if there are multiple calls
+        parser._resetBlanks();
+        const parsedSyntax = parser.parse(action.query);
+        const baseIRI = parsedSyntax.type === 'query' ? parsedSyntax.base : null;
+        return {
+            baseIRI,
+            operation: sparqlalgebrajs_1.translate(parsedSyntax, { quads: true, prefixes: this.prefixes, blankToVariable: true, baseIRI: action.baseIRI }),
+        };
     }
 }
 exports.ActorSparqlParseAlgebra = ActorSparqlParseAlgebra;
@@ -9061,14 +9260,14 @@ const ActorQueryOperation_1 = __webpack_require__(/*! ./ActorQueryOperation */ "
  */
 class ActorQueryOperationTyped extends ActorQueryOperation_1.ActorQueryOperation {
     constructor(args, operationName) {
-        super(Object.assign({}, args, { operationName }));
+        super(Object.assign(Object.assign({}, args), { operationName }));
         if (!this.operationName) {
             throw new Error('A valid "operationName" argument must be provided.');
         }
     }
     async test(action) {
         if (!action.operation) {
-            throw new Error('Missing field \'operation\' in the query operation action: ' + __webpack_require__(/*! util */ "./node_modules/util/util.js").inspect(action));
+            throw new Error('Missing field \'operation\' in a query operation action.');
         }
         if (action.operation.type !== this.operationName) {
             throw new Error('Actor ' + this.name + ' only supports ' + this.operationName + ' operations, but got '
@@ -9079,7 +9278,8 @@ class ActorQueryOperationTyped extends ActorQueryOperation_1.ActorQueryOperation
     }
     async run(action) {
         const operation = action.operation;
-        const output = await this.runOperation(operation, action.context);
+        const subContext = action.context ? action.context.set(exports.KEY_CONTEXT_QUERYOPERATION, operation) : null;
+        const output = await this.runOperation(operation, subContext);
         if (output.metadata) {
             output.metadata =
                 ActorQueryOperation_1.ActorQueryOperation.cachifyMetadata(output.metadata);
@@ -9088,6 +9288,10 @@ class ActorQueryOperationTyped extends ActorQueryOperation_1.ActorQueryOperation
     }
 }
 exports.ActorQueryOperationTyped = ActorQueryOperationTyped;
+/**
+ * @type {string} Context entry for the current query operation.
+ */
+exports.KEY_CONTEXT_QUERYOPERATION = '@comunica/bus-query-operation:operation';
 //# sourceMappingURL=ActorQueryOperationTyped.js.map
 
 /***/ }),
@@ -9190,6 +9394,7 @@ __export(__webpack_require__(/*! ./lib/ActorRdfDereferenceMediaMappings */ "./no
 
 Object.defineProperty(exports, "__esModule", { value: true });
 const core_1 = __webpack_require__(/*! @comunica/core */ "./node_modules/@comunica/core/index.js");
+const stream_1 = __webpack_require__(/*! stream */ "./node_modules/stream-browserify/index.js");
 /**
  * A base actor for dereferencing URLs to quad streams.
  *
@@ -9205,8 +9410,53 @@ class ActorRdfDereference extends core_1.Actor {
     constructor(args) {
         super(args);
     }
+    /**
+     * Check if hard errors should occur on HTTP or parse errors.
+     * @param {IActionRdfDereference} action An RDF dereference action.
+     * @return {boolean} If hard errors are enabled.
+     */
+    isHardError(action) {
+        return !action.context || !action.context.get(exports.KEY_CONTEXT_LENIENT);
+    }
+    /**
+     * If hard errors are disabled, modify the given stream so that errors are delegated to the logger.
+     * @param {IActionRdfDereference} action An RDF dereference action.
+     * @param {Stream} quads A quad stream.
+     * @return {Stream} The resulting quad stream.
+     */
+    handleDereferenceStreamErrors(action, quads) {
+        // If we don't emit hard errors, make parsing error events log instead, and silence them downstream.
+        if (!this.isHardError(action)) {
+            quads.on('error', (error) => {
+                this.logError(action.context, error.message, { url: action.url });
+                // Make sure the errored stream is ended.
+                quads.push(null);
+            });
+            quads = quads.pipe(new stream_1.PassThrough({ objectMode: true }));
+        }
+        return quads;
+    }
+    /**
+     * Handle the given error as a rejection or delegate it to the logger,
+     * depending on whether or not hard errors are enabled.
+     * @param {IActionRdfDereference} action An RDF dereference action.
+     * @param {Error} error An error that has occured.
+     * @return {Promise<IActorRdfDereferenceOutput>} A promise that rejects or resolves to an empty output.
+     */
+    async handleDereferenceError(action, error) {
+        if (this.isHardError(action)) {
+            throw error;
+        }
+        else {
+            this.logError(action.context, error.message);
+            const quads = new stream_1.Readable();
+            quads.push(null);
+            return { url: action.url, quads };
+        }
+    }
 }
 exports.ActorRdfDereference = ActorRdfDereference;
+exports.KEY_CONTEXT_LENIENT = '@comunica/actor-init-sparql:lenient';
 //# sourceMappingURL=ActorRdfDereference.js.map
 
 /***/ }),
@@ -9518,7 +9768,7 @@ class ActorRdfMetadataExtractQuery extends ActorRdfMetadataExtract_1.ActorRdfMet
         // Load metadata quads into store
         const store = await rdf_store_stream_1.storeStream(dataStream);
         // Execute query against out in-memory store
-        const { data } = await this.graphqlClient.query(Object.assign({}, await this.sparqlOperation, { queryEngineOptions: { source: { type: 'rdfjsSource', value: store }, initialBindings } }));
+        const { data } = await this.graphqlClient.query(Object.assign(Object.assign({}, await this.sparqlOperation), { queryEngineOptions: { source: { type: 'rdfjsSource', value: store }, initialBindings } }));
         return data;
     }
 }
@@ -10894,7 +11144,6 @@ exports.KEY_CONTEXT_LOG = '@comunica/core:log';
 "use strict";
 
 Object.defineProperty(exports, "__esModule", { value: true });
-const util_1 = __webpack_require__(/*! util */ "./node_modules/util/util.js");
 /**
  * A mediator can mediate an action over a bus of actors.
  *
@@ -10940,8 +11189,7 @@ class Mediator {
         // Test all actors in the bus
         const actors = this.bus.publish(action);
         if (!actors.length) {
-            throw new Error('No actors are able to reply to the message in the bus '
-                + this.bus.name + ': ' + util_1.inspect(action));
+            throw new Error('No actors are able to reply to a message in the bus ' + this.bus.name);
         }
         return actors;
     }
@@ -14555,7 +14803,7 @@ function fromByteArray (uint8) {
 
   var Buffer;
   try {
-    Buffer = __webpack_require__(/*! buffer */ 7).Buffer;
+    Buffer = __webpack_require__(/*! buffer */ 6).Buffer;
   } catch (e) {
   }
 
@@ -17997,7 +18245,7 @@ if (typeof self === 'object') {
 } else {
   // Node.js or Web worker with no crypto support
   try {
-    var crypto = __webpack_require__(/*! crypto */ 8);
+    var crypto = __webpack_require__(/*! crypto */ 7);
     if (typeof crypto.randomBytes !== 'function')
       throw new Error('Not supported');
 
@@ -28202,8 +28450,8 @@ module.exports = JSON.parse("{\"elementNames\":{\"altglyph\":\"altGlyph\",\"altg
 /*
   Module dependencies
 */
-var ElementType = __webpack_require__(/*! domelementtype */ "./node_modules/dom-serializer/node_modules/domelementtype/lib/index.js");
-var entities = __webpack_require__(/*! entities */ "./node_modules/dom-serializer/node_modules/entities/lib/index.js");
+var ElementType = __webpack_require__(/*! domelementtype */ "./node_modules/domelementtype/lib/index.js");
+var entities = __webpack_require__(/*! entities */ "./node_modules/entities/lib/index.js");
 
 /* mixed-case SVG and MathML tags & attributes
    recognized by the HTML parser, see
@@ -28386,10 +28634,10 @@ function renderComment(elem) {
 
 /***/ }),
 
-/***/ "./node_modules/dom-serializer/node_modules/domelementtype/lib/index.js":
-/*!******************************************************************************!*\
-  !*** ./node_modules/dom-serializer/node_modules/domelementtype/lib/index.js ***!
-  \******************************************************************************/
+/***/ "./node_modules/domelementtype/lib/index.js":
+/*!**************************************************!*\
+  !*** ./node_modules/domelementtype/lib/index.js ***!
+  \**************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -28420,558 +28668,184 @@ exports.Doctype = "doctype" /* Doctype */;
 
 /***/ }),
 
-/***/ "./node_modules/dom-serializer/node_modules/entities/lib/decode.js":
-/*!*************************************************************************!*\
-  !*** ./node_modules/dom-serializer/node_modules/entities/lib/decode.js ***!
-  \*************************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-var __importDefault = (this && this.__importDefault) || function (mod) {
-    return (mod && mod.__esModule) ? mod : { "default": mod };
-};
-Object.defineProperty(exports, "__esModule", { value: true });
-var entities_json_1 = __importDefault(__webpack_require__(/*! ./maps/entities.json */ "./node_modules/dom-serializer/node_modules/entities/lib/maps/entities.json"));
-var legacy_json_1 = __importDefault(__webpack_require__(/*! ./maps/legacy.json */ "./node_modules/dom-serializer/node_modules/entities/lib/maps/legacy.json"));
-var xml_json_1 = __importDefault(__webpack_require__(/*! ./maps/xml.json */ "./node_modules/dom-serializer/node_modules/entities/lib/maps/xml.json"));
-var decode_codepoint_1 = __importDefault(__webpack_require__(/*! ./decode_codepoint */ "./node_modules/dom-serializer/node_modules/entities/lib/decode_codepoint.js"));
-exports.decodeXML = getStrictDecoder(xml_json_1.default);
-exports.decodeHTMLStrict = getStrictDecoder(entities_json_1.default);
-function getStrictDecoder(map) {
-    var keys = Object.keys(map).join("|");
-    var replace = getReplacer(map);
-    keys += "|#[xX][\\da-fA-F]+|#\\d+";
-    var re = new RegExp("&(?:" + keys + ");", "g");
-    return function (str) { return String(str).replace(re, replace); };
-}
-var sorter = function (a, b) { return (a < b ? 1 : -1); };
-exports.decodeHTML = (function () {
-    var legacy = Object.keys(legacy_json_1.default).sort(sorter);
-    var keys = Object.keys(entities_json_1.default).sort(sorter);
-    for (var i = 0, j = 0; i < keys.length; i++) {
-        if (legacy[j] === keys[i]) {
-            keys[i] += ";?";
-            j++;
-        }
-        else {
-            keys[i] += ";";
-        }
-    }
-    var re = new RegExp("&(?:" + keys.join("|") + "|#[xX][\\da-fA-F]+;?|#\\d+;?)", "g");
-    var replace = getReplacer(entities_json_1.default);
-    function replacer(str) {
-        if (str.substr(-1) !== ";")
-            str += ";";
-        return replace(str);
-    }
-    //TODO consider creating a merged map
-    return function (str) {
-        return String(str).replace(re, replacer);
-    };
-})();
-function getReplacer(map) {
-    return function replace(str) {
-        if (str.charAt(1) === "#") {
-            if (str.charAt(2) === "X" || str.charAt(2) === "x") {
-                return decode_codepoint_1.default(parseInt(str.substr(3), 16));
-            }
-            return decode_codepoint_1.default(parseInt(str.substr(2), 10));
-        }
-        return map[str.slice(1, -1)];
-    };
-}
-
-
-/***/ }),
-
-/***/ "./node_modules/dom-serializer/node_modules/entities/lib/decode_codepoint.js":
-/*!***********************************************************************************!*\
-  !*** ./node_modules/dom-serializer/node_modules/entities/lib/decode_codepoint.js ***!
-  \***********************************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-var __importDefault = (this && this.__importDefault) || function (mod) {
-    return (mod && mod.__esModule) ? mod : { "default": mod };
-};
-Object.defineProperty(exports, "__esModule", { value: true });
-var decode_json_1 = __importDefault(__webpack_require__(/*! ./maps/decode.json */ "./node_modules/dom-serializer/node_modules/entities/lib/maps/decode.json"));
-// modified version of https://github.com/mathiasbynens/he/blob/master/src/he.js#L94-L119
-function decodeCodePoint(codePoint) {
-    if ((codePoint >= 0xd800 && codePoint <= 0xdfff) || codePoint > 0x10ffff) {
-        return "\uFFFD";
-    }
-    if (codePoint in decode_json_1.default) {
-        // @ts-ignore
-        codePoint = decode_json_1.default[codePoint];
-    }
-    var output = "";
-    if (codePoint > 0xffff) {
-        codePoint -= 0x10000;
-        output += String.fromCharCode(((codePoint >>> 10) & 0x3ff) | 0xd800);
-        codePoint = 0xdc00 | (codePoint & 0x3ff);
-    }
-    output += String.fromCharCode(codePoint);
-    return output;
-}
-exports.default = decodeCodePoint;
-
-
-/***/ }),
-
-/***/ "./node_modules/dom-serializer/node_modules/entities/lib/encode.js":
-/*!*************************************************************************!*\
-  !*** ./node_modules/dom-serializer/node_modules/entities/lib/encode.js ***!
-  \*************************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-var __importDefault = (this && this.__importDefault) || function (mod) {
-    return (mod && mod.__esModule) ? mod : { "default": mod };
-};
-Object.defineProperty(exports, "__esModule", { value: true });
-var xml_json_1 = __importDefault(__webpack_require__(/*! ./maps/xml.json */ "./node_modules/dom-serializer/node_modules/entities/lib/maps/xml.json"));
-var inverseXML = getInverseObj(xml_json_1.default);
-var xmlReplacer = getInverseReplacer(inverseXML);
-exports.encodeXML = getInverse(inverseXML, xmlReplacer);
-var entities_json_1 = __importDefault(__webpack_require__(/*! ./maps/entities.json */ "./node_modules/dom-serializer/node_modules/entities/lib/maps/entities.json"));
-var inverseHTML = getInverseObj(entities_json_1.default);
-var htmlReplacer = getInverseReplacer(inverseHTML);
-exports.encodeHTML = getInverse(inverseHTML, htmlReplacer);
-function getInverseObj(obj) {
-    return Object.keys(obj)
-        .sort()
-        .reduce(function (inverse, name) {
-        inverse[obj[name]] = "&" + name + ";";
-        return inverse;
-    }, {});
-}
-function getInverseReplacer(inverse) {
-    var single = [];
-    var multiple = [];
-    Object.keys(inverse).forEach(function (k) {
-        return k.length === 1
-            ? // Add value to single array
-                single.push("\\" + k)
-            : // Add value to multiple array
-                multiple.push(k);
-    });
-    //TODO add ranges
-    multiple.unshift("[" + single.join("") + "]");
-    return new RegExp(multiple.join("|"), "g");
-}
-var reNonASCII = /[^\0-\x7F]/g;
-var reAstralSymbols = /[\uD800-\uDBFF][\uDC00-\uDFFF]/g;
-function singleCharReplacer(c) {
-    return "&#x" + c
-        .charCodeAt(0)
-        .toString(16)
-        .toUpperCase() + ";";
-}
-// eslint-disable-next-line @typescript-eslint/no-unused-vars, @typescript-eslint/no-explicit-any
-function astralReplacer(c, _) {
-    // http://mathiasbynens.be/notes/javascript-encoding#surrogate-formulae
-    var high = c.charCodeAt(0);
-    var low = c.charCodeAt(1);
-    var codePoint = (high - 0xd800) * 0x400 + low - 0xdc00 + 0x10000;
-    return "&#x" + codePoint.toString(16).toUpperCase() + ";";
-}
-function getInverse(inverse, re) {
-    return function (data) {
-        return data
-            .replace(re, function (name) { return inverse[name]; })
-            .replace(reAstralSymbols, astralReplacer)
-            .replace(reNonASCII, singleCharReplacer);
-    };
-}
-var reXmlChars = getInverseReplacer(inverseXML);
-function escape(data) {
-    return data
-        .replace(reXmlChars, singleCharReplacer)
-        .replace(reAstralSymbols, astralReplacer)
-        .replace(reNonASCII, singleCharReplacer);
-}
-exports.escape = escape;
-
-
-/***/ }),
-
-/***/ "./node_modules/dom-serializer/node_modules/entities/lib/index.js":
-/*!************************************************************************!*\
-  !*** ./node_modules/dom-serializer/node_modules/entities/lib/index.js ***!
-  \************************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-Object.defineProperty(exports, "__esModule", { value: true });
-var decode_1 = __webpack_require__(/*! ./decode */ "./node_modules/dom-serializer/node_modules/entities/lib/decode.js");
-var encode_1 = __webpack_require__(/*! ./encode */ "./node_modules/dom-serializer/node_modules/entities/lib/encode.js");
-function decode(data, level) {
-    return (!level || level <= 0 ? decode_1.decodeXML : decode_1.decodeHTML)(data);
-}
-exports.decode = decode;
-function decodeStrict(data, level) {
-    return (!level || level <= 0 ? decode_1.decodeXML : decode_1.decodeHTMLStrict)(data);
-}
-exports.decodeStrict = decodeStrict;
-function encode(data, level) {
-    return (!level || level <= 0 ? encode_1.encodeXML : encode_1.encodeHTML)(data);
-}
-exports.encode = encode;
-var encode_2 = __webpack_require__(/*! ./encode */ "./node_modules/dom-serializer/node_modules/entities/lib/encode.js");
-exports.encodeXML = encode_2.encodeXML;
-exports.encodeHTML = encode_2.encodeHTML;
-exports.escape = encode_2.escape;
-// Legacy aliases
-exports.encodeHTML4 = encode_2.encodeHTML;
-exports.encodeHTML5 = encode_2.encodeHTML;
-var decode_2 = __webpack_require__(/*! ./decode */ "./node_modules/dom-serializer/node_modules/entities/lib/decode.js");
-exports.decodeXML = decode_2.decodeXML;
-exports.decodeHTML = decode_2.decodeHTML;
-exports.decodeHTMLStrict = decode_2.decodeHTMLStrict;
-// Legacy aliases
-exports.decodeHTML4 = decode_2.decodeHTML;
-exports.decodeHTML5 = decode_2.decodeHTML;
-exports.decodeHTML4Strict = decode_2.decodeHTMLStrict;
-exports.decodeHTML5Strict = decode_2.decodeHTMLStrict;
-exports.decodeXMLStrict = decode_2.decodeXML;
-
-
-/***/ }),
-
-/***/ "./node_modules/dom-serializer/node_modules/entities/lib/maps/decode.json":
-/*!********************************************************************************!*\
-  !*** ./node_modules/dom-serializer/node_modules/entities/lib/maps/decode.json ***!
-  \********************************************************************************/
-/*! exports provided: 0, 128, 130, 131, 132, 133, 134, 135, 136, 137, 138, 139, 140, 142, 145, 146, 147, 148, 149, 150, 151, 152, 153, 154, 155, 156, 158, 159, default */
-/***/ (function(module) {
-
-module.exports = JSON.parse("{\"0\":65533,\"128\":8364,\"130\":8218,\"131\":402,\"132\":8222,\"133\":8230,\"134\":8224,\"135\":8225,\"136\":710,\"137\":8240,\"138\":352,\"139\":8249,\"140\":338,\"142\":381,\"145\":8216,\"146\":8217,\"147\":8220,\"148\":8221,\"149\":8226,\"150\":8211,\"151\":8212,\"152\":732,\"153\":8482,\"154\":353,\"155\":8250,\"156\":339,\"158\":382,\"159\":376}");
-
-/***/ }),
-
-/***/ "./node_modules/dom-serializer/node_modules/entities/lib/maps/entities.json":
-/*!**********************************************************************************!*\
-  !*** ./node_modules/dom-serializer/node_modules/entities/lib/maps/entities.json ***!
-  \**********************************************************************************/
-/*! exports provided: Aacute, aacute, Abreve, abreve, ac, acd, acE, Acirc, acirc, acute, Acy, acy, AElig, aelig, af, Afr, afr, Agrave, agrave, alefsym, aleph, Alpha, alpha, Amacr, amacr, amalg, amp, AMP, andand, And, and, andd, andslope, andv, ang, ange, angle, angmsdaa, angmsdab, angmsdac, angmsdad, angmsdae, angmsdaf, angmsdag, angmsdah, angmsd, angrt, angrtvb, angrtvbd, angsph, angst, angzarr, Aogon, aogon, Aopf, aopf, apacir, ap, apE, ape, apid, apos, ApplyFunction, approx, approxeq, Aring, aring, Ascr, ascr, Assign, ast, asymp, asympeq, Atilde, atilde, Auml, auml, awconint, awint, backcong, backepsilon, backprime, backsim, backsimeq, Backslash, Barv, barvee, barwed, Barwed, barwedge, bbrk, bbrktbrk, bcong, Bcy, bcy, bdquo, becaus, because, Because, bemptyv, bepsi, bernou, Bernoullis, Beta, beta, beth, between, Bfr, bfr, bigcap, bigcirc, bigcup, bigodot, bigoplus, bigotimes, bigsqcup, bigstar, bigtriangledown, bigtriangleup, biguplus, bigvee, bigwedge, bkarow, blacklozenge, blacksquare, blacktriangle, blacktriangledown, blacktriangleleft, blacktriangleright, blank, blk12, blk14, blk34, block, bne, bnequiv, bNot, bnot, Bopf, bopf, bot, bottom, bowtie, boxbox, boxdl, boxdL, boxDl, boxDL, boxdr, boxdR, boxDr, boxDR, boxh, boxH, boxhd, boxHd, boxhD, boxHD, boxhu, boxHu, boxhU, boxHU, boxminus, boxplus, boxtimes, boxul, boxuL, boxUl, boxUL, boxur, boxuR, boxUr, boxUR, boxv, boxV, boxvh, boxvH, boxVh, boxVH, boxvl, boxvL, boxVl, boxVL, boxvr, boxvR, boxVr, boxVR, bprime, breve, Breve, brvbar, bscr, Bscr, bsemi, bsim, bsime, bsolb, bsol, bsolhsub, bull, bullet, bump, bumpE, bumpe, Bumpeq, bumpeq, Cacute, cacute, capand, capbrcup, capcap, cap, Cap, capcup, capdot, CapitalDifferentialD, caps, caret, caron, Cayleys, ccaps, Ccaron, ccaron, Ccedil, ccedil, Ccirc, ccirc, Cconint, ccups, ccupssm, Cdot, cdot, cedil, Cedilla, cemptyv, cent, centerdot, CenterDot, cfr, Cfr, CHcy, chcy, check, checkmark, Chi, chi, circ, circeq, circlearrowleft, circlearrowright, circledast, circledcirc, circleddash, CircleDot, circledR, circledS, CircleMinus, CirclePlus, CircleTimes, cir, cirE, cire, cirfnint, cirmid, cirscir, ClockwiseContourIntegral, CloseCurlyDoubleQuote, CloseCurlyQuote, clubs, clubsuit, colon, Colon, Colone, colone, coloneq, comma, commat, comp, compfn, complement, complexes, cong, congdot, Congruent, conint, Conint, ContourIntegral, copf, Copf, coprod, Coproduct, copy, COPY, copysr, CounterClockwiseContourIntegral, crarr, cross, Cross, Cscr, cscr, csub, csube, csup, csupe, ctdot, cudarrl, cudarrr, cuepr, cuesc, cularr, cularrp, cupbrcap, cupcap, CupCap, cup, Cup, cupcup, cupdot, cupor, cups, curarr, curarrm, curlyeqprec, curlyeqsucc, curlyvee, curlywedge, curren, curvearrowleft, curvearrowright, cuvee, cuwed, cwconint, cwint, cylcty, dagger, Dagger, daleth, darr, Darr, dArr, dash, Dashv, dashv, dbkarow, dblac, Dcaron, dcaron, Dcy, dcy, ddagger, ddarr, DD, dd, DDotrahd, ddotseq, deg, Del, Delta, delta, demptyv, dfisht, Dfr, dfr, dHar, dharl, dharr, DiacriticalAcute, DiacriticalDot, DiacriticalDoubleAcute, DiacriticalGrave, DiacriticalTilde, diam, diamond, Diamond, diamondsuit, diams, die, DifferentialD, digamma, disin, div, divide, divideontimes, divonx, DJcy, djcy, dlcorn, dlcrop, dollar, Dopf, dopf, Dot, dot, DotDot, doteq, doteqdot, DotEqual, dotminus, dotplus, dotsquare, doublebarwedge, DoubleContourIntegral, DoubleDot, DoubleDownArrow, DoubleLeftArrow, DoubleLeftRightArrow, DoubleLeftTee, DoubleLongLeftArrow, DoubleLongLeftRightArrow, DoubleLongRightArrow, DoubleRightArrow, DoubleRightTee, DoubleUpArrow, DoubleUpDownArrow, DoubleVerticalBar, DownArrowBar, downarrow, DownArrow, Downarrow, DownArrowUpArrow, DownBreve, downdownarrows, downharpoonleft, downharpoonright, DownLeftRightVector, DownLeftTeeVector, DownLeftVectorBar, DownLeftVector, DownRightTeeVector, DownRightVectorBar, DownRightVector, DownTeeArrow, DownTee, drbkarow, drcorn, drcrop, Dscr, dscr, DScy, dscy, dsol, Dstrok, dstrok, dtdot, dtri, dtrif, duarr, duhar, dwangle, DZcy, dzcy, dzigrarr, Eacute, eacute, easter, Ecaron, ecaron, Ecirc, ecirc, ecir, ecolon, Ecy, ecy, eDDot, Edot, edot, eDot, ee, efDot, Efr, efr, eg, Egrave, egrave, egs, egsdot, el, Element, elinters, ell, els, elsdot, Emacr, emacr, empty, emptyset, EmptySmallSquare, emptyv, EmptyVerySmallSquare, emsp13, emsp14, emsp, ENG, eng, ensp, Eogon, eogon, Eopf, eopf, epar, eparsl, eplus, epsi, Epsilon, epsilon, epsiv, eqcirc, eqcolon, eqsim, eqslantgtr, eqslantless, Equal, equals, EqualTilde, equest, Equilibrium, equiv, equivDD, eqvparsl, erarr, erDot, escr, Escr, esdot, Esim, esim, Eta, eta, ETH, eth, Euml, euml, euro, excl, exist, Exists, expectation, exponentiale, ExponentialE, fallingdotseq, Fcy, fcy, female, ffilig, fflig, ffllig, Ffr, ffr, filig, FilledSmallSquare, FilledVerySmallSquare, fjlig, flat, fllig, fltns, fnof, Fopf, fopf, forall, ForAll, fork, forkv, Fouriertrf, fpartint, frac12, frac13, frac14, frac15, frac16, frac18, frac23, frac25, frac34, frac35, frac38, frac45, frac56, frac58, frac78, frasl, frown, fscr, Fscr, gacute, Gamma, gamma, Gammad, gammad, gap, Gbreve, gbreve, Gcedil, Gcirc, gcirc, Gcy, gcy, Gdot, gdot, ge, gE, gEl, gel, geq, geqq, geqslant, gescc, ges, gesdot, gesdoto, gesdotol, gesl, gesles, Gfr, gfr, gg, Gg, ggg, gimel, GJcy, gjcy, gla, gl, glE, glj, gnap, gnapprox, gne, gnE, gneq, gneqq, gnsim, Gopf, gopf, grave, GreaterEqual, GreaterEqualLess, GreaterFullEqual, GreaterGreater, GreaterLess, GreaterSlantEqual, GreaterTilde, Gscr, gscr, gsim, gsime, gsiml, gtcc, gtcir, gt, GT, Gt, gtdot, gtlPar, gtquest, gtrapprox, gtrarr, gtrdot, gtreqless, gtreqqless, gtrless, gtrsim, gvertneqq, gvnE, Hacek, hairsp, half, hamilt, HARDcy, hardcy, harrcir, harr, hArr, harrw, Hat, hbar, Hcirc, hcirc, hearts, heartsuit, hellip, hercon, hfr, Hfr, HilbertSpace, hksearow, hkswarow, hoarr, homtht, hookleftarrow, hookrightarrow, hopf, Hopf, horbar, HorizontalLine, hscr, Hscr, hslash, Hstrok, hstrok, HumpDownHump, HumpEqual, hybull, hyphen, Iacute, iacute, ic, Icirc, icirc, Icy, icy, Idot, IEcy, iecy, iexcl, iff, ifr, Ifr, Igrave, igrave, ii, iiiint, iiint, iinfin, iiota, IJlig, ijlig, Imacr, imacr, image, ImaginaryI, imagline, imagpart, imath, Im, imof, imped, Implies, incare, in, infin, infintie, inodot, intcal, int, Int, integers, Integral, intercal, Intersection, intlarhk, intprod, InvisibleComma, InvisibleTimes, IOcy, iocy, Iogon, iogon, Iopf, iopf, Iota, iota, iprod, iquest, iscr, Iscr, isin, isindot, isinE, isins, isinsv, isinv, it, Itilde, itilde, Iukcy, iukcy, Iuml, iuml, Jcirc, jcirc, Jcy, jcy, Jfr, jfr, jmath, Jopf, jopf, Jscr, jscr, Jsercy, jsercy, Jukcy, jukcy, Kappa, kappa, kappav, Kcedil, kcedil, Kcy, kcy, Kfr, kfr, kgreen, KHcy, khcy, KJcy, kjcy, Kopf, kopf, Kscr, kscr, lAarr, Lacute, lacute, laemptyv, lagran, Lambda, lambda, lang, Lang, langd, langle, lap, Laplacetrf, laquo, larrb, larrbfs, larr, Larr, lArr, larrfs, larrhk, larrlp, larrpl, larrsim, larrtl, latail, lAtail, lat, late, lates, lbarr, lBarr, lbbrk, lbrace, lbrack, lbrke, lbrksld, lbrkslu, Lcaron, lcaron, Lcedil, lcedil, lceil, lcub, Lcy, lcy, ldca, ldquo, ldquor, ldrdhar, ldrushar, ldsh, le, lE, LeftAngleBracket, LeftArrowBar, leftarrow, LeftArrow, Leftarrow, LeftArrowRightArrow, leftarrowtail, LeftCeiling, LeftDoubleBracket, LeftDownTeeVector, LeftDownVectorBar, LeftDownVector, LeftFloor, leftharpoondown, leftharpoonup, leftleftarrows, leftrightarrow, LeftRightArrow, Leftrightarrow, leftrightarrows, leftrightharpoons, leftrightsquigarrow, LeftRightVector, LeftTeeArrow, LeftTee, LeftTeeVector, leftthreetimes, LeftTriangleBar, LeftTriangle, LeftTriangleEqual, LeftUpDownVector, LeftUpTeeVector, LeftUpVectorBar, LeftUpVector, LeftVectorBar, LeftVector, lEg, leg, leq, leqq, leqslant, lescc, les, lesdot, lesdoto, lesdotor, lesg, lesges, lessapprox, lessdot, lesseqgtr, lesseqqgtr, LessEqualGreater, LessFullEqual, LessGreater, lessgtr, LessLess, lesssim, LessSlantEqual, LessTilde, lfisht, lfloor, Lfr, lfr, lg, lgE, lHar, lhard, lharu, lharul, lhblk, LJcy, ljcy, llarr, ll, Ll, llcorner, Lleftarrow, llhard, lltri, Lmidot, lmidot, lmoustache, lmoust, lnap, lnapprox, lne, lnE, lneq, lneqq, lnsim, loang, loarr, lobrk, longleftarrow, LongLeftArrow, Longleftarrow, longleftrightarrow, LongLeftRightArrow, Longleftrightarrow, longmapsto, longrightarrow, LongRightArrow, Longrightarrow, looparrowleft, looparrowright, lopar, Lopf, lopf, loplus, lotimes, lowast, lowbar, LowerLeftArrow, LowerRightArrow, loz, lozenge, lozf, lpar, lparlt, lrarr, lrcorner, lrhar, lrhard, lrm, lrtri, lsaquo, lscr, Lscr, lsh, Lsh, lsim, lsime, lsimg, lsqb, lsquo, lsquor, Lstrok, lstrok, ltcc, ltcir, lt, LT, Lt, ltdot, lthree, ltimes, ltlarr, ltquest, ltri, ltrie, ltrif, ltrPar, lurdshar, luruhar, lvertneqq, lvnE, macr, male, malt, maltese, Map, map, mapsto, mapstodown, mapstoleft, mapstoup, marker, mcomma, Mcy, mcy, mdash, mDDot, measuredangle, MediumSpace, Mellintrf, Mfr, mfr, mho, micro, midast, midcir, mid, middot, minusb, minus, minusd, minusdu, MinusPlus, mlcp, mldr, mnplus, models, Mopf, mopf, mp, mscr, Mscr, mstpos, Mu, mu, multimap, mumap, nabla, Nacute, nacute, nang, nap, napE, napid, napos, napprox, natural, naturals, natur, nbsp, nbump, nbumpe, ncap, Ncaron, ncaron, Ncedil, ncedil, ncong, ncongdot, ncup, Ncy, ncy, ndash, nearhk, nearr, neArr, nearrow, ne, nedot, NegativeMediumSpace, NegativeThickSpace, NegativeThinSpace, NegativeVeryThinSpace, nequiv, nesear, nesim, NestedGreaterGreater, NestedLessLess, NewLine, nexist, nexists, Nfr, nfr, ngE, nge, ngeq, ngeqq, ngeqslant, nges, nGg, ngsim, nGt, ngt, ngtr, nGtv, nharr, nhArr, nhpar, ni, nis, nisd, niv, NJcy, njcy, nlarr, nlArr, nldr, nlE, nle, nleftarrow, nLeftarrow, nleftrightarrow, nLeftrightarrow, nleq, nleqq, nleqslant, nles, nless, nLl, nlsim, nLt, nlt, nltri, nltrie, nLtv, nmid, NoBreak, NonBreakingSpace, nopf, Nopf, Not, not, NotCongruent, NotCupCap, NotDoubleVerticalBar, NotElement, NotEqual, NotEqualTilde, NotExists, NotGreater, NotGreaterEqual, NotGreaterFullEqual, NotGreaterGreater, NotGreaterLess, NotGreaterSlantEqual, NotGreaterTilde, NotHumpDownHump, NotHumpEqual, notin, notindot, notinE, notinva, notinvb, notinvc, NotLeftTriangleBar, NotLeftTriangle, NotLeftTriangleEqual, NotLess, NotLessEqual, NotLessGreater, NotLessLess, NotLessSlantEqual, NotLessTilde, NotNestedGreaterGreater, NotNestedLessLess, notni, notniva, notnivb, notnivc, NotPrecedes, NotPrecedesEqual, NotPrecedesSlantEqual, NotReverseElement, NotRightTriangleBar, NotRightTriangle, NotRightTriangleEqual, NotSquareSubset, NotSquareSubsetEqual, NotSquareSuperset, NotSquareSupersetEqual, NotSubset, NotSubsetEqual, NotSucceeds, NotSucceedsEqual, NotSucceedsSlantEqual, NotSucceedsTilde, NotSuperset, NotSupersetEqual, NotTilde, NotTildeEqual, NotTildeFullEqual, NotTildeTilde, NotVerticalBar, nparallel, npar, nparsl, npart, npolint, npr, nprcue, nprec, npreceq, npre, nrarrc, nrarr, nrArr, nrarrw, nrightarrow, nRightarrow, nrtri, nrtrie, nsc, nsccue, nsce, Nscr, nscr, nshortmid, nshortparallel, nsim, nsime, nsimeq, nsmid, nspar, nsqsube, nsqsupe, nsub, nsubE, nsube, nsubset, nsubseteq, nsubseteqq, nsucc, nsucceq, nsup, nsupE, nsupe, nsupset, nsupseteq, nsupseteqq, ntgl, Ntilde, ntilde, ntlg, ntriangleleft, ntrianglelefteq, ntriangleright, ntrianglerighteq, Nu, nu, num, numero, numsp, nvap, nvdash, nvDash, nVdash, nVDash, nvge, nvgt, nvHarr, nvinfin, nvlArr, nvle, nvlt, nvltrie, nvrArr, nvrtrie, nvsim, nwarhk, nwarr, nwArr, nwarrow, nwnear, Oacute, oacute, oast, Ocirc, ocirc, ocir, Ocy, ocy, odash, Odblac, odblac, odiv, odot, odsold, OElig, oelig, ofcir, Ofr, ofr, ogon, Ograve, ograve, ogt, ohbar, ohm, oint, olarr, olcir, olcross, oline, olt, Omacr, omacr, Omega, omega, Omicron, omicron, omid, ominus, Oopf, oopf, opar, OpenCurlyDoubleQuote, OpenCurlyQuote, operp, oplus, orarr, Or, or, ord, order, orderof, ordf, ordm, origof, oror, orslope, orv, oS, Oscr, oscr, Oslash, oslash, osol, Otilde, otilde, otimesas, Otimes, otimes, Ouml, ouml, ovbar, OverBar, OverBrace, OverBracket, OverParenthesis, para, parallel, par, parsim, parsl, part, PartialD, Pcy, pcy, percnt, period, permil, perp, pertenk, Pfr, pfr, Phi, phi, phiv, phmmat, phone, Pi, pi, pitchfork, piv, planck, planckh, plankv, plusacir, plusb, pluscir, plus, plusdo, plusdu, pluse, PlusMinus, plusmn, plussim, plustwo, pm, Poincareplane, pointint, popf, Popf, pound, prap, Pr, pr, prcue, precapprox, prec, preccurlyeq, Precedes, PrecedesEqual, PrecedesSlantEqual, PrecedesTilde, preceq, precnapprox, precneqq, precnsim, pre, prE, precsim, prime, Prime, primes, prnap, prnE, prnsim, prod, Product, profalar, profline, profsurf, prop, Proportional, Proportion, propto, prsim, prurel, Pscr, pscr, Psi, psi, puncsp, Qfr, qfr, qint, qopf, Qopf, qprime, Qscr, qscr, quaternions, quatint, quest, questeq, quot, QUOT, rAarr, race, Racute, racute, radic, raemptyv, rang, Rang, rangd, range, rangle, raquo, rarrap, rarrb, rarrbfs, rarrc, rarr, Rarr, rArr, rarrfs, rarrhk, rarrlp, rarrpl, rarrsim, Rarrtl, rarrtl, rarrw, ratail, rAtail, ratio, rationals, rbarr, rBarr, RBarr, rbbrk, rbrace, rbrack, rbrke, rbrksld, rbrkslu, Rcaron, rcaron, Rcedil, rcedil, rceil, rcub, Rcy, rcy, rdca, rdldhar, rdquo, rdquor, rdsh, real, realine, realpart, reals, Re, rect, reg, REG, ReverseElement, ReverseEquilibrium, ReverseUpEquilibrium, rfisht, rfloor, rfr, Rfr, rHar, rhard, rharu, rharul, Rho, rho, rhov, RightAngleBracket, RightArrowBar, rightarrow, RightArrow, Rightarrow, RightArrowLeftArrow, rightarrowtail, RightCeiling, RightDoubleBracket, RightDownTeeVector, RightDownVectorBar, RightDownVector, RightFloor, rightharpoondown, rightharpoonup, rightleftarrows, rightleftharpoons, rightrightarrows, rightsquigarrow, RightTeeArrow, RightTee, RightTeeVector, rightthreetimes, RightTriangleBar, RightTriangle, RightTriangleEqual, RightUpDownVector, RightUpTeeVector, RightUpVectorBar, RightUpVector, RightVectorBar, RightVector, ring, risingdotseq, rlarr, rlhar, rlm, rmoustache, rmoust, rnmid, roang, roarr, robrk, ropar, ropf, Ropf, roplus, rotimes, RoundImplies, rpar, rpargt, rppolint, rrarr, Rrightarrow, rsaquo, rscr, Rscr, rsh, Rsh, rsqb, rsquo, rsquor, rthree, rtimes, rtri, rtrie, rtrif, rtriltri, RuleDelayed, ruluhar, rx, Sacute, sacute, sbquo, scap, Scaron, scaron, Sc, sc, sccue, sce, scE, Scedil, scedil, Scirc, scirc, scnap, scnE, scnsim, scpolint, scsim, Scy, scy, sdotb, sdot, sdote, searhk, searr, seArr, searrow, sect, semi, seswar, setminus, setmn, sext, Sfr, sfr, sfrown, sharp, SHCHcy, shchcy, SHcy, shcy, ShortDownArrow, ShortLeftArrow, shortmid, shortparallel, ShortRightArrow, ShortUpArrow, shy, Sigma, sigma, sigmaf, sigmav, sim, simdot, sime, simeq, simg, simgE, siml, simlE, simne, simplus, simrarr, slarr, SmallCircle, smallsetminus, smashp, smeparsl, smid, smile, smt, smte, smtes, SOFTcy, softcy, solbar, solb, sol, Sopf, sopf, spades, spadesuit, spar, sqcap, sqcaps, sqcup, sqcups, Sqrt, sqsub, sqsube, sqsubset, sqsubseteq, sqsup, sqsupe, sqsupset, sqsupseteq, square, Square, SquareIntersection, SquareSubset, SquareSubsetEqual, SquareSuperset, SquareSupersetEqual, SquareUnion, squarf, squ, squf, srarr, Sscr, sscr, ssetmn, ssmile, sstarf, Star, star, starf, straightepsilon, straightphi, strns, sub, Sub, subdot, subE, sube, subedot, submult, subnE, subne, subplus, subrarr, subset, Subset, subseteq, subseteqq, SubsetEqual, subsetneq, subsetneqq, subsim, subsub, subsup, succapprox, succ, succcurlyeq, Succeeds, SucceedsEqual, SucceedsSlantEqual, SucceedsTilde, succeq, succnapprox, succneqq, succnsim, succsim, SuchThat, sum, Sum, sung, sup1, sup2, sup3, sup, Sup, supdot, supdsub, supE, supe, supedot, Superset, SupersetEqual, suphsol, suphsub, suplarr, supmult, supnE, supne, supplus, supset, Supset, supseteq, supseteqq, supsetneq, supsetneqq, supsim, supsub, supsup, swarhk, swarr, swArr, swarrow, swnwar, szlig, Tab, target, Tau, tau, tbrk, Tcaron, tcaron, Tcedil, tcedil, Tcy, tcy, tdot, telrec, Tfr, tfr, there4, therefore, Therefore, Theta, theta, thetasym, thetav, thickapprox, thicksim, ThickSpace, ThinSpace, thinsp, thkap, thksim, THORN, thorn, tilde, Tilde, TildeEqual, TildeFullEqual, TildeTilde, timesbar, timesb, times, timesd, tint, toea, topbot, topcir, top, Topf, topf, topfork, tosa, tprime, trade, TRADE, triangle, triangledown, triangleleft, trianglelefteq, triangleq, triangleright, trianglerighteq, tridot, trie, triminus, TripleDot, triplus, trisb, tritime, trpezium, Tscr, tscr, TScy, tscy, TSHcy, tshcy, Tstrok, tstrok, twixt, twoheadleftarrow, twoheadrightarrow, Uacute, uacute, uarr, Uarr, uArr, Uarrocir, Ubrcy, ubrcy, Ubreve, ubreve, Ucirc, ucirc, Ucy, ucy, udarr, Udblac, udblac, udhar, ufisht, Ufr, ufr, Ugrave, ugrave, uHar, uharl, uharr, uhblk, ulcorn, ulcorner, ulcrop, ultri, Umacr, umacr, uml, UnderBar, UnderBrace, UnderBracket, UnderParenthesis, Union, UnionPlus, Uogon, uogon, Uopf, uopf, UpArrowBar, uparrow, UpArrow, Uparrow, UpArrowDownArrow, updownarrow, UpDownArrow, Updownarrow, UpEquilibrium, upharpoonleft, upharpoonright, uplus, UpperLeftArrow, UpperRightArrow, upsi, Upsi, upsih, Upsilon, upsilon, UpTeeArrow, UpTee, upuparrows, urcorn, urcorner, urcrop, Uring, uring, urtri, Uscr, uscr, utdot, Utilde, utilde, utri, utrif, uuarr, Uuml, uuml, uwangle, vangrt, varepsilon, varkappa, varnothing, varphi, varpi, varpropto, varr, vArr, varrho, varsigma, varsubsetneq, varsubsetneqq, varsupsetneq, varsupsetneqq, vartheta, vartriangleleft, vartriangleright, vBar, Vbar, vBarv, Vcy, vcy, vdash, vDash, Vdash, VDash, Vdashl, veebar, vee, Vee, veeeq, vellip, verbar, Verbar, vert, Vert, VerticalBar, VerticalLine, VerticalSeparator, VerticalTilde, VeryThinSpace, Vfr, vfr, vltri, vnsub, vnsup, Vopf, vopf, vprop, vrtri, Vscr, vscr, vsubnE, vsubne, vsupnE, vsupne, Vvdash, vzigzag, Wcirc, wcirc, wedbar, wedge, Wedge, wedgeq, weierp, Wfr, wfr, Wopf, wopf, wp, wr, wreath, Wscr, wscr, xcap, xcirc, xcup, xdtri, Xfr, xfr, xharr, xhArr, Xi, xi, xlarr, xlArr, xmap, xnis, xodot, Xopf, xopf, xoplus, xotime, xrarr, xrArr, Xscr, xscr, xsqcup, xuplus, xutri, xvee, xwedge, Yacute, yacute, YAcy, yacy, Ycirc, ycirc, Ycy, ycy, yen, Yfr, yfr, YIcy, yicy, Yopf, yopf, Yscr, yscr, YUcy, yucy, yuml, Yuml, Zacute, zacute, Zcaron, zcaron, Zcy, zcy, Zdot, zdot, zeetrf, ZeroWidthSpace, Zeta, zeta, zfr, Zfr, ZHcy, zhcy, zigrarr, zopf, Zopf, Zscr, zscr, zwj, zwnj, default */
-/***/ (function(module) {
-
-module.exports = JSON.parse("{\"Aacute\":\"Á\",\"aacute\":\"á\",\"Abreve\":\"Ă\",\"abreve\":\"ă\",\"ac\":\"∾\",\"acd\":\"∿\",\"acE\":\"∾̳\",\"Acirc\":\"Â\",\"acirc\":\"â\",\"acute\":\"´\",\"Acy\":\"А\",\"acy\":\"а\",\"AElig\":\"Æ\",\"aelig\":\"æ\",\"af\":\"⁡\",\"Afr\":\"𝔄\",\"afr\":\"𝔞\",\"Agrave\":\"À\",\"agrave\":\"à\",\"alefsym\":\"ℵ\",\"aleph\":\"ℵ\",\"Alpha\":\"Α\",\"alpha\":\"α\",\"Amacr\":\"Ā\",\"amacr\":\"ā\",\"amalg\":\"⨿\",\"amp\":\"&\",\"AMP\":\"&\",\"andand\":\"⩕\",\"And\":\"⩓\",\"and\":\"∧\",\"andd\":\"⩜\",\"andslope\":\"⩘\",\"andv\":\"⩚\",\"ang\":\"∠\",\"ange\":\"⦤\",\"angle\":\"∠\",\"angmsdaa\":\"⦨\",\"angmsdab\":\"⦩\",\"angmsdac\":\"⦪\",\"angmsdad\":\"⦫\",\"angmsdae\":\"⦬\",\"angmsdaf\":\"⦭\",\"angmsdag\":\"⦮\",\"angmsdah\":\"⦯\",\"angmsd\":\"∡\",\"angrt\":\"∟\",\"angrtvb\":\"⊾\",\"angrtvbd\":\"⦝\",\"angsph\":\"∢\",\"angst\":\"Å\",\"angzarr\":\"⍼\",\"Aogon\":\"Ą\",\"aogon\":\"ą\",\"Aopf\":\"𝔸\",\"aopf\":\"𝕒\",\"apacir\":\"⩯\",\"ap\":\"≈\",\"apE\":\"⩰\",\"ape\":\"≊\",\"apid\":\"≋\",\"apos\":\"'\",\"ApplyFunction\":\"⁡\",\"approx\":\"≈\",\"approxeq\":\"≊\",\"Aring\":\"Å\",\"aring\":\"å\",\"Ascr\":\"𝒜\",\"ascr\":\"𝒶\",\"Assign\":\"≔\",\"ast\":\"*\",\"asymp\":\"≈\",\"asympeq\":\"≍\",\"Atilde\":\"Ã\",\"atilde\":\"ã\",\"Auml\":\"Ä\",\"auml\":\"ä\",\"awconint\":\"∳\",\"awint\":\"⨑\",\"backcong\":\"≌\",\"backepsilon\":\"϶\",\"backprime\":\"‵\",\"backsim\":\"∽\",\"backsimeq\":\"⋍\",\"Backslash\":\"∖\",\"Barv\":\"⫧\",\"barvee\":\"⊽\",\"barwed\":\"⌅\",\"Barwed\":\"⌆\",\"barwedge\":\"⌅\",\"bbrk\":\"⎵\",\"bbrktbrk\":\"⎶\",\"bcong\":\"≌\",\"Bcy\":\"Б\",\"bcy\":\"б\",\"bdquo\":\"„\",\"becaus\":\"∵\",\"because\":\"∵\",\"Because\":\"∵\",\"bemptyv\":\"⦰\",\"bepsi\":\"϶\",\"bernou\":\"ℬ\",\"Bernoullis\":\"ℬ\",\"Beta\":\"Β\",\"beta\":\"β\",\"beth\":\"ℶ\",\"between\":\"≬\",\"Bfr\":\"𝔅\",\"bfr\":\"𝔟\",\"bigcap\":\"⋂\",\"bigcirc\":\"◯\",\"bigcup\":\"⋃\",\"bigodot\":\"⨀\",\"bigoplus\":\"⨁\",\"bigotimes\":\"⨂\",\"bigsqcup\":\"⨆\",\"bigstar\":\"★\",\"bigtriangledown\":\"▽\",\"bigtriangleup\":\"△\",\"biguplus\":\"⨄\",\"bigvee\":\"⋁\",\"bigwedge\":\"⋀\",\"bkarow\":\"⤍\",\"blacklozenge\":\"⧫\",\"blacksquare\":\"▪\",\"blacktriangle\":\"▴\",\"blacktriangledown\":\"▾\",\"blacktriangleleft\":\"◂\",\"blacktriangleright\":\"▸\",\"blank\":\"␣\",\"blk12\":\"▒\",\"blk14\":\"░\",\"blk34\":\"▓\",\"block\":\"█\",\"bne\":\"=⃥\",\"bnequiv\":\"≡⃥\",\"bNot\":\"⫭\",\"bnot\":\"⌐\",\"Bopf\":\"𝔹\",\"bopf\":\"𝕓\",\"bot\":\"⊥\",\"bottom\":\"⊥\",\"bowtie\":\"⋈\",\"boxbox\":\"⧉\",\"boxdl\":\"┐\",\"boxdL\":\"╕\",\"boxDl\":\"╖\",\"boxDL\":\"╗\",\"boxdr\":\"┌\",\"boxdR\":\"╒\",\"boxDr\":\"╓\",\"boxDR\":\"╔\",\"boxh\":\"─\",\"boxH\":\"═\",\"boxhd\":\"┬\",\"boxHd\":\"╤\",\"boxhD\":\"╥\",\"boxHD\":\"╦\",\"boxhu\":\"┴\",\"boxHu\":\"╧\",\"boxhU\":\"╨\",\"boxHU\":\"╩\",\"boxminus\":\"⊟\",\"boxplus\":\"⊞\",\"boxtimes\":\"⊠\",\"boxul\":\"┘\",\"boxuL\":\"╛\",\"boxUl\":\"╜\",\"boxUL\":\"╝\",\"boxur\":\"└\",\"boxuR\":\"╘\",\"boxUr\":\"╙\",\"boxUR\":\"╚\",\"boxv\":\"│\",\"boxV\":\"║\",\"boxvh\":\"┼\",\"boxvH\":\"╪\",\"boxVh\":\"╫\",\"boxVH\":\"╬\",\"boxvl\":\"┤\",\"boxvL\":\"╡\",\"boxVl\":\"╢\",\"boxVL\":\"╣\",\"boxvr\":\"├\",\"boxvR\":\"╞\",\"boxVr\":\"╟\",\"boxVR\":\"╠\",\"bprime\":\"‵\",\"breve\":\"˘\",\"Breve\":\"˘\",\"brvbar\":\"¦\",\"bscr\":\"𝒷\",\"Bscr\":\"ℬ\",\"bsemi\":\"⁏\",\"bsim\":\"∽\",\"bsime\":\"⋍\",\"bsolb\":\"⧅\",\"bsol\":\"\\\\\",\"bsolhsub\":\"⟈\",\"bull\":\"•\",\"bullet\":\"•\",\"bump\":\"≎\",\"bumpE\":\"⪮\",\"bumpe\":\"≏\",\"Bumpeq\":\"≎\",\"bumpeq\":\"≏\",\"Cacute\":\"Ć\",\"cacute\":\"ć\",\"capand\":\"⩄\",\"capbrcup\":\"⩉\",\"capcap\":\"⩋\",\"cap\":\"∩\",\"Cap\":\"⋒\",\"capcup\":\"⩇\",\"capdot\":\"⩀\",\"CapitalDifferentialD\":\"ⅅ\",\"caps\":\"∩︀\",\"caret\":\"⁁\",\"caron\":\"ˇ\",\"Cayleys\":\"ℭ\",\"ccaps\":\"⩍\",\"Ccaron\":\"Č\",\"ccaron\":\"č\",\"Ccedil\":\"Ç\",\"ccedil\":\"ç\",\"Ccirc\":\"Ĉ\",\"ccirc\":\"ĉ\",\"Cconint\":\"∰\",\"ccups\":\"⩌\",\"ccupssm\":\"⩐\",\"Cdot\":\"Ċ\",\"cdot\":\"ċ\",\"cedil\":\"¸\",\"Cedilla\":\"¸\",\"cemptyv\":\"⦲\",\"cent\":\"¢\",\"centerdot\":\"·\",\"CenterDot\":\"·\",\"cfr\":\"𝔠\",\"Cfr\":\"ℭ\",\"CHcy\":\"Ч\",\"chcy\":\"ч\",\"check\":\"✓\",\"checkmark\":\"✓\",\"Chi\":\"Χ\",\"chi\":\"χ\",\"circ\":\"ˆ\",\"circeq\":\"≗\",\"circlearrowleft\":\"↺\",\"circlearrowright\":\"↻\",\"circledast\":\"⊛\",\"circledcirc\":\"⊚\",\"circleddash\":\"⊝\",\"CircleDot\":\"⊙\",\"circledR\":\"®\",\"circledS\":\"Ⓢ\",\"CircleMinus\":\"⊖\",\"CirclePlus\":\"⊕\",\"CircleTimes\":\"⊗\",\"cir\":\"○\",\"cirE\":\"⧃\",\"cire\":\"≗\",\"cirfnint\":\"⨐\",\"cirmid\":\"⫯\",\"cirscir\":\"⧂\",\"ClockwiseContourIntegral\":\"∲\",\"CloseCurlyDoubleQuote\":\"”\",\"CloseCurlyQuote\":\"’\",\"clubs\":\"♣\",\"clubsuit\":\"♣\",\"colon\":\":\",\"Colon\":\"∷\",\"Colone\":\"⩴\",\"colone\":\"≔\",\"coloneq\":\"≔\",\"comma\":\",\",\"commat\":\"@\",\"comp\":\"∁\",\"compfn\":\"∘\",\"complement\":\"∁\",\"complexes\":\"ℂ\",\"cong\":\"≅\",\"congdot\":\"⩭\",\"Congruent\":\"≡\",\"conint\":\"∮\",\"Conint\":\"∯\",\"ContourIntegral\":\"∮\",\"copf\":\"𝕔\",\"Copf\":\"ℂ\",\"coprod\":\"∐\",\"Coproduct\":\"∐\",\"copy\":\"©\",\"COPY\":\"©\",\"copysr\":\"℗\",\"CounterClockwiseContourIntegral\":\"∳\",\"crarr\":\"↵\",\"cross\":\"✗\",\"Cross\":\"⨯\",\"Cscr\":\"𝒞\",\"cscr\":\"𝒸\",\"csub\":\"⫏\",\"csube\":\"⫑\",\"csup\":\"⫐\",\"csupe\":\"⫒\",\"ctdot\":\"⋯\",\"cudarrl\":\"⤸\",\"cudarrr\":\"⤵\",\"cuepr\":\"⋞\",\"cuesc\":\"⋟\",\"cularr\":\"↶\",\"cularrp\":\"⤽\",\"cupbrcap\":\"⩈\",\"cupcap\":\"⩆\",\"CupCap\":\"≍\",\"cup\":\"∪\",\"Cup\":\"⋓\",\"cupcup\":\"⩊\",\"cupdot\":\"⊍\",\"cupor\":\"⩅\",\"cups\":\"∪︀\",\"curarr\":\"↷\",\"curarrm\":\"⤼\",\"curlyeqprec\":\"⋞\",\"curlyeqsucc\":\"⋟\",\"curlyvee\":\"⋎\",\"curlywedge\":\"⋏\",\"curren\":\"¤\",\"curvearrowleft\":\"↶\",\"curvearrowright\":\"↷\",\"cuvee\":\"⋎\",\"cuwed\":\"⋏\",\"cwconint\":\"∲\",\"cwint\":\"∱\",\"cylcty\":\"⌭\",\"dagger\":\"†\",\"Dagger\":\"‡\",\"daleth\":\"ℸ\",\"darr\":\"↓\",\"Darr\":\"↡\",\"dArr\":\"⇓\",\"dash\":\"‐\",\"Dashv\":\"⫤\",\"dashv\":\"⊣\",\"dbkarow\":\"⤏\",\"dblac\":\"˝\",\"Dcaron\":\"Ď\",\"dcaron\":\"ď\",\"Dcy\":\"Д\",\"dcy\":\"д\",\"ddagger\":\"‡\",\"ddarr\":\"⇊\",\"DD\":\"ⅅ\",\"dd\":\"ⅆ\",\"DDotrahd\":\"⤑\",\"ddotseq\":\"⩷\",\"deg\":\"°\",\"Del\":\"∇\",\"Delta\":\"Δ\",\"delta\":\"δ\",\"demptyv\":\"⦱\",\"dfisht\":\"⥿\",\"Dfr\":\"𝔇\",\"dfr\":\"𝔡\",\"dHar\":\"⥥\",\"dharl\":\"⇃\",\"dharr\":\"⇂\",\"DiacriticalAcute\":\"´\",\"DiacriticalDot\":\"˙\",\"DiacriticalDoubleAcute\":\"˝\",\"DiacriticalGrave\":\"`\",\"DiacriticalTilde\":\"˜\",\"diam\":\"⋄\",\"diamond\":\"⋄\",\"Diamond\":\"⋄\",\"diamondsuit\":\"♦\",\"diams\":\"♦\",\"die\":\"¨\",\"DifferentialD\":\"ⅆ\",\"digamma\":\"ϝ\",\"disin\":\"⋲\",\"div\":\"÷\",\"divide\":\"÷\",\"divideontimes\":\"⋇\",\"divonx\":\"⋇\",\"DJcy\":\"Ђ\",\"djcy\":\"ђ\",\"dlcorn\":\"⌞\",\"dlcrop\":\"⌍\",\"dollar\":\"$\",\"Dopf\":\"𝔻\",\"dopf\":\"𝕕\",\"Dot\":\"¨\",\"dot\":\"˙\",\"DotDot\":\"⃜\",\"doteq\":\"≐\",\"doteqdot\":\"≑\",\"DotEqual\":\"≐\",\"dotminus\":\"∸\",\"dotplus\":\"∔\",\"dotsquare\":\"⊡\",\"doublebarwedge\":\"⌆\",\"DoubleContourIntegral\":\"∯\",\"DoubleDot\":\"¨\",\"DoubleDownArrow\":\"⇓\",\"DoubleLeftArrow\":\"⇐\",\"DoubleLeftRightArrow\":\"⇔\",\"DoubleLeftTee\":\"⫤\",\"DoubleLongLeftArrow\":\"⟸\",\"DoubleLongLeftRightArrow\":\"⟺\",\"DoubleLongRightArrow\":\"⟹\",\"DoubleRightArrow\":\"⇒\",\"DoubleRightTee\":\"⊨\",\"DoubleUpArrow\":\"⇑\",\"DoubleUpDownArrow\":\"⇕\",\"DoubleVerticalBar\":\"∥\",\"DownArrowBar\":\"⤓\",\"downarrow\":\"↓\",\"DownArrow\":\"↓\",\"Downarrow\":\"⇓\",\"DownArrowUpArrow\":\"⇵\",\"DownBreve\":\"̑\",\"downdownarrows\":\"⇊\",\"downharpoonleft\":\"⇃\",\"downharpoonright\":\"⇂\",\"DownLeftRightVector\":\"⥐\",\"DownLeftTeeVector\":\"⥞\",\"DownLeftVectorBar\":\"⥖\",\"DownLeftVector\":\"↽\",\"DownRightTeeVector\":\"⥟\",\"DownRightVectorBar\":\"⥗\",\"DownRightVector\":\"⇁\",\"DownTeeArrow\":\"↧\",\"DownTee\":\"⊤\",\"drbkarow\":\"⤐\",\"drcorn\":\"⌟\",\"drcrop\":\"⌌\",\"Dscr\":\"𝒟\",\"dscr\":\"𝒹\",\"DScy\":\"Ѕ\",\"dscy\":\"ѕ\",\"dsol\":\"⧶\",\"Dstrok\":\"Đ\",\"dstrok\":\"đ\",\"dtdot\":\"⋱\",\"dtri\":\"▿\",\"dtrif\":\"▾\",\"duarr\":\"⇵\",\"duhar\":\"⥯\",\"dwangle\":\"⦦\",\"DZcy\":\"Џ\",\"dzcy\":\"џ\",\"dzigrarr\":\"⟿\",\"Eacute\":\"É\",\"eacute\":\"é\",\"easter\":\"⩮\",\"Ecaron\":\"Ě\",\"ecaron\":\"ě\",\"Ecirc\":\"Ê\",\"ecirc\":\"ê\",\"ecir\":\"≖\",\"ecolon\":\"≕\",\"Ecy\":\"Э\",\"ecy\":\"э\",\"eDDot\":\"⩷\",\"Edot\":\"Ė\",\"edot\":\"ė\",\"eDot\":\"≑\",\"ee\":\"ⅇ\",\"efDot\":\"≒\",\"Efr\":\"𝔈\",\"efr\":\"𝔢\",\"eg\":\"⪚\",\"Egrave\":\"È\",\"egrave\":\"è\",\"egs\":\"⪖\",\"egsdot\":\"⪘\",\"el\":\"⪙\",\"Element\":\"∈\",\"elinters\":\"⏧\",\"ell\":\"ℓ\",\"els\":\"⪕\",\"elsdot\":\"⪗\",\"Emacr\":\"Ē\",\"emacr\":\"ē\",\"empty\":\"∅\",\"emptyset\":\"∅\",\"EmptySmallSquare\":\"◻\",\"emptyv\":\"∅\",\"EmptyVerySmallSquare\":\"▫\",\"emsp13\":\" \",\"emsp14\":\" \",\"emsp\":\" \",\"ENG\":\"Ŋ\",\"eng\":\"ŋ\",\"ensp\":\" \",\"Eogon\":\"Ę\",\"eogon\":\"ę\",\"Eopf\":\"𝔼\",\"eopf\":\"𝕖\",\"epar\":\"⋕\",\"eparsl\":\"⧣\",\"eplus\":\"⩱\",\"epsi\":\"ε\",\"Epsilon\":\"Ε\",\"epsilon\":\"ε\",\"epsiv\":\"ϵ\",\"eqcirc\":\"≖\",\"eqcolon\":\"≕\",\"eqsim\":\"≂\",\"eqslantgtr\":\"⪖\",\"eqslantless\":\"⪕\",\"Equal\":\"⩵\",\"equals\":\"=\",\"EqualTilde\":\"≂\",\"equest\":\"≟\",\"Equilibrium\":\"⇌\",\"equiv\":\"≡\",\"equivDD\":\"⩸\",\"eqvparsl\":\"⧥\",\"erarr\":\"⥱\",\"erDot\":\"≓\",\"escr\":\"ℯ\",\"Escr\":\"ℰ\",\"esdot\":\"≐\",\"Esim\":\"⩳\",\"esim\":\"≂\",\"Eta\":\"Η\",\"eta\":\"η\",\"ETH\":\"Ð\",\"eth\":\"ð\",\"Euml\":\"Ë\",\"euml\":\"ë\",\"euro\":\"€\",\"excl\":\"!\",\"exist\":\"∃\",\"Exists\":\"∃\",\"expectation\":\"ℰ\",\"exponentiale\":\"ⅇ\",\"ExponentialE\":\"ⅇ\",\"fallingdotseq\":\"≒\",\"Fcy\":\"Ф\",\"fcy\":\"ф\",\"female\":\"♀\",\"ffilig\":\"ﬃ\",\"fflig\":\"ﬀ\",\"ffllig\":\"ﬄ\",\"Ffr\":\"𝔉\",\"ffr\":\"𝔣\",\"filig\":\"ﬁ\",\"FilledSmallSquare\":\"◼\",\"FilledVerySmallSquare\":\"▪\",\"fjlig\":\"fj\",\"flat\":\"♭\",\"fllig\":\"ﬂ\",\"fltns\":\"▱\",\"fnof\":\"ƒ\",\"Fopf\":\"𝔽\",\"fopf\":\"𝕗\",\"forall\":\"∀\",\"ForAll\":\"∀\",\"fork\":\"⋔\",\"forkv\":\"⫙\",\"Fouriertrf\":\"ℱ\",\"fpartint\":\"⨍\",\"frac12\":\"½\",\"frac13\":\"⅓\",\"frac14\":\"¼\",\"frac15\":\"⅕\",\"frac16\":\"⅙\",\"frac18\":\"⅛\",\"frac23\":\"⅔\",\"frac25\":\"⅖\",\"frac34\":\"¾\",\"frac35\":\"⅗\",\"frac38\":\"⅜\",\"frac45\":\"⅘\",\"frac56\":\"⅚\",\"frac58\":\"⅝\",\"frac78\":\"⅞\",\"frasl\":\"⁄\",\"frown\":\"⌢\",\"fscr\":\"𝒻\",\"Fscr\":\"ℱ\",\"gacute\":\"ǵ\",\"Gamma\":\"Γ\",\"gamma\":\"γ\",\"Gammad\":\"Ϝ\",\"gammad\":\"ϝ\",\"gap\":\"⪆\",\"Gbreve\":\"Ğ\",\"gbreve\":\"ğ\",\"Gcedil\":\"Ģ\",\"Gcirc\":\"Ĝ\",\"gcirc\":\"ĝ\",\"Gcy\":\"Г\",\"gcy\":\"г\",\"Gdot\":\"Ġ\",\"gdot\":\"ġ\",\"ge\":\"≥\",\"gE\":\"≧\",\"gEl\":\"⪌\",\"gel\":\"⋛\",\"geq\":\"≥\",\"geqq\":\"≧\",\"geqslant\":\"⩾\",\"gescc\":\"⪩\",\"ges\":\"⩾\",\"gesdot\":\"⪀\",\"gesdoto\":\"⪂\",\"gesdotol\":\"⪄\",\"gesl\":\"⋛︀\",\"gesles\":\"⪔\",\"Gfr\":\"𝔊\",\"gfr\":\"𝔤\",\"gg\":\"≫\",\"Gg\":\"⋙\",\"ggg\":\"⋙\",\"gimel\":\"ℷ\",\"GJcy\":\"Ѓ\",\"gjcy\":\"ѓ\",\"gla\":\"⪥\",\"gl\":\"≷\",\"glE\":\"⪒\",\"glj\":\"⪤\",\"gnap\":\"⪊\",\"gnapprox\":\"⪊\",\"gne\":\"⪈\",\"gnE\":\"≩\",\"gneq\":\"⪈\",\"gneqq\":\"≩\",\"gnsim\":\"⋧\",\"Gopf\":\"𝔾\",\"gopf\":\"𝕘\",\"grave\":\"`\",\"GreaterEqual\":\"≥\",\"GreaterEqualLess\":\"⋛\",\"GreaterFullEqual\":\"≧\",\"GreaterGreater\":\"⪢\",\"GreaterLess\":\"≷\",\"GreaterSlantEqual\":\"⩾\",\"GreaterTilde\":\"≳\",\"Gscr\":\"𝒢\",\"gscr\":\"ℊ\",\"gsim\":\"≳\",\"gsime\":\"⪎\",\"gsiml\":\"⪐\",\"gtcc\":\"⪧\",\"gtcir\":\"⩺\",\"gt\":\">\",\"GT\":\">\",\"Gt\":\"≫\",\"gtdot\":\"⋗\",\"gtlPar\":\"⦕\",\"gtquest\":\"⩼\",\"gtrapprox\":\"⪆\",\"gtrarr\":\"⥸\",\"gtrdot\":\"⋗\",\"gtreqless\":\"⋛\",\"gtreqqless\":\"⪌\",\"gtrless\":\"≷\",\"gtrsim\":\"≳\",\"gvertneqq\":\"≩︀\",\"gvnE\":\"≩︀\",\"Hacek\":\"ˇ\",\"hairsp\":\" \",\"half\":\"½\",\"hamilt\":\"ℋ\",\"HARDcy\":\"Ъ\",\"hardcy\":\"ъ\",\"harrcir\":\"⥈\",\"harr\":\"↔\",\"hArr\":\"⇔\",\"harrw\":\"↭\",\"Hat\":\"^\",\"hbar\":\"ℏ\",\"Hcirc\":\"Ĥ\",\"hcirc\":\"ĥ\",\"hearts\":\"♥\",\"heartsuit\":\"♥\",\"hellip\":\"…\",\"hercon\":\"⊹\",\"hfr\":\"𝔥\",\"Hfr\":\"ℌ\",\"HilbertSpace\":\"ℋ\",\"hksearow\":\"⤥\",\"hkswarow\":\"⤦\",\"hoarr\":\"⇿\",\"homtht\":\"∻\",\"hookleftarrow\":\"↩\",\"hookrightarrow\":\"↪\",\"hopf\":\"𝕙\",\"Hopf\":\"ℍ\",\"horbar\":\"―\",\"HorizontalLine\":\"─\",\"hscr\":\"𝒽\",\"Hscr\":\"ℋ\",\"hslash\":\"ℏ\",\"Hstrok\":\"Ħ\",\"hstrok\":\"ħ\",\"HumpDownHump\":\"≎\",\"HumpEqual\":\"≏\",\"hybull\":\"⁃\",\"hyphen\":\"‐\",\"Iacute\":\"Í\",\"iacute\":\"í\",\"ic\":\"⁣\",\"Icirc\":\"Î\",\"icirc\":\"î\",\"Icy\":\"И\",\"icy\":\"и\",\"Idot\":\"İ\",\"IEcy\":\"Е\",\"iecy\":\"е\",\"iexcl\":\"¡\",\"iff\":\"⇔\",\"ifr\":\"𝔦\",\"Ifr\":\"ℑ\",\"Igrave\":\"Ì\",\"igrave\":\"ì\",\"ii\":\"ⅈ\",\"iiiint\":\"⨌\",\"iiint\":\"∭\",\"iinfin\":\"⧜\",\"iiota\":\"℩\",\"IJlig\":\"Ĳ\",\"ijlig\":\"ĳ\",\"Imacr\":\"Ī\",\"imacr\":\"ī\",\"image\":\"ℑ\",\"ImaginaryI\":\"ⅈ\",\"imagline\":\"ℐ\",\"imagpart\":\"ℑ\",\"imath\":\"ı\",\"Im\":\"ℑ\",\"imof\":\"⊷\",\"imped\":\"Ƶ\",\"Implies\":\"⇒\",\"incare\":\"℅\",\"in\":\"∈\",\"infin\":\"∞\",\"infintie\":\"⧝\",\"inodot\":\"ı\",\"intcal\":\"⊺\",\"int\":\"∫\",\"Int\":\"∬\",\"integers\":\"ℤ\",\"Integral\":\"∫\",\"intercal\":\"⊺\",\"Intersection\":\"⋂\",\"intlarhk\":\"⨗\",\"intprod\":\"⨼\",\"InvisibleComma\":\"⁣\",\"InvisibleTimes\":\"⁢\",\"IOcy\":\"Ё\",\"iocy\":\"ё\",\"Iogon\":\"Į\",\"iogon\":\"į\",\"Iopf\":\"𝕀\",\"iopf\":\"𝕚\",\"Iota\":\"Ι\",\"iota\":\"ι\",\"iprod\":\"⨼\",\"iquest\":\"¿\",\"iscr\":\"𝒾\",\"Iscr\":\"ℐ\",\"isin\":\"∈\",\"isindot\":\"⋵\",\"isinE\":\"⋹\",\"isins\":\"⋴\",\"isinsv\":\"⋳\",\"isinv\":\"∈\",\"it\":\"⁢\",\"Itilde\":\"Ĩ\",\"itilde\":\"ĩ\",\"Iukcy\":\"І\",\"iukcy\":\"і\",\"Iuml\":\"Ï\",\"iuml\":\"ï\",\"Jcirc\":\"Ĵ\",\"jcirc\":\"ĵ\",\"Jcy\":\"Й\",\"jcy\":\"й\",\"Jfr\":\"𝔍\",\"jfr\":\"𝔧\",\"jmath\":\"ȷ\",\"Jopf\":\"𝕁\",\"jopf\":\"𝕛\",\"Jscr\":\"𝒥\",\"jscr\":\"𝒿\",\"Jsercy\":\"Ј\",\"jsercy\":\"ј\",\"Jukcy\":\"Є\",\"jukcy\":\"є\",\"Kappa\":\"Κ\",\"kappa\":\"κ\",\"kappav\":\"ϰ\",\"Kcedil\":\"Ķ\",\"kcedil\":\"ķ\",\"Kcy\":\"К\",\"kcy\":\"к\",\"Kfr\":\"𝔎\",\"kfr\":\"𝔨\",\"kgreen\":\"ĸ\",\"KHcy\":\"Х\",\"khcy\":\"х\",\"KJcy\":\"Ќ\",\"kjcy\":\"ќ\",\"Kopf\":\"𝕂\",\"kopf\":\"𝕜\",\"Kscr\":\"𝒦\",\"kscr\":\"𝓀\",\"lAarr\":\"⇚\",\"Lacute\":\"Ĺ\",\"lacute\":\"ĺ\",\"laemptyv\":\"⦴\",\"lagran\":\"ℒ\",\"Lambda\":\"Λ\",\"lambda\":\"λ\",\"lang\":\"⟨\",\"Lang\":\"⟪\",\"langd\":\"⦑\",\"langle\":\"⟨\",\"lap\":\"⪅\",\"Laplacetrf\":\"ℒ\",\"laquo\":\"«\",\"larrb\":\"⇤\",\"larrbfs\":\"⤟\",\"larr\":\"←\",\"Larr\":\"↞\",\"lArr\":\"⇐\",\"larrfs\":\"⤝\",\"larrhk\":\"↩\",\"larrlp\":\"↫\",\"larrpl\":\"⤹\",\"larrsim\":\"⥳\",\"larrtl\":\"↢\",\"latail\":\"⤙\",\"lAtail\":\"⤛\",\"lat\":\"⪫\",\"late\":\"⪭\",\"lates\":\"⪭︀\",\"lbarr\":\"⤌\",\"lBarr\":\"⤎\",\"lbbrk\":\"❲\",\"lbrace\":\"{\",\"lbrack\":\"[\",\"lbrke\":\"⦋\",\"lbrksld\":\"⦏\",\"lbrkslu\":\"⦍\",\"Lcaron\":\"Ľ\",\"lcaron\":\"ľ\",\"Lcedil\":\"Ļ\",\"lcedil\":\"ļ\",\"lceil\":\"⌈\",\"lcub\":\"{\",\"Lcy\":\"Л\",\"lcy\":\"л\",\"ldca\":\"⤶\",\"ldquo\":\"“\",\"ldquor\":\"„\",\"ldrdhar\":\"⥧\",\"ldrushar\":\"⥋\",\"ldsh\":\"↲\",\"le\":\"≤\",\"lE\":\"≦\",\"LeftAngleBracket\":\"⟨\",\"LeftArrowBar\":\"⇤\",\"leftarrow\":\"←\",\"LeftArrow\":\"←\",\"Leftarrow\":\"⇐\",\"LeftArrowRightArrow\":\"⇆\",\"leftarrowtail\":\"↢\",\"LeftCeiling\":\"⌈\",\"LeftDoubleBracket\":\"⟦\",\"LeftDownTeeVector\":\"⥡\",\"LeftDownVectorBar\":\"⥙\",\"LeftDownVector\":\"⇃\",\"LeftFloor\":\"⌊\",\"leftharpoondown\":\"↽\",\"leftharpoonup\":\"↼\",\"leftleftarrows\":\"⇇\",\"leftrightarrow\":\"↔\",\"LeftRightArrow\":\"↔\",\"Leftrightarrow\":\"⇔\",\"leftrightarrows\":\"⇆\",\"leftrightharpoons\":\"⇋\",\"leftrightsquigarrow\":\"↭\",\"LeftRightVector\":\"⥎\",\"LeftTeeArrow\":\"↤\",\"LeftTee\":\"⊣\",\"LeftTeeVector\":\"⥚\",\"leftthreetimes\":\"⋋\",\"LeftTriangleBar\":\"⧏\",\"LeftTriangle\":\"⊲\",\"LeftTriangleEqual\":\"⊴\",\"LeftUpDownVector\":\"⥑\",\"LeftUpTeeVector\":\"⥠\",\"LeftUpVectorBar\":\"⥘\",\"LeftUpVector\":\"↿\",\"LeftVectorBar\":\"⥒\",\"LeftVector\":\"↼\",\"lEg\":\"⪋\",\"leg\":\"⋚\",\"leq\":\"≤\",\"leqq\":\"≦\",\"leqslant\":\"⩽\",\"lescc\":\"⪨\",\"les\":\"⩽\",\"lesdot\":\"⩿\",\"lesdoto\":\"⪁\",\"lesdotor\":\"⪃\",\"lesg\":\"⋚︀\",\"lesges\":\"⪓\",\"lessapprox\":\"⪅\",\"lessdot\":\"⋖\",\"lesseqgtr\":\"⋚\",\"lesseqqgtr\":\"⪋\",\"LessEqualGreater\":\"⋚\",\"LessFullEqual\":\"≦\",\"LessGreater\":\"≶\",\"lessgtr\":\"≶\",\"LessLess\":\"⪡\",\"lesssim\":\"≲\",\"LessSlantEqual\":\"⩽\",\"LessTilde\":\"≲\",\"lfisht\":\"⥼\",\"lfloor\":\"⌊\",\"Lfr\":\"𝔏\",\"lfr\":\"𝔩\",\"lg\":\"≶\",\"lgE\":\"⪑\",\"lHar\":\"⥢\",\"lhard\":\"↽\",\"lharu\":\"↼\",\"lharul\":\"⥪\",\"lhblk\":\"▄\",\"LJcy\":\"Љ\",\"ljcy\":\"љ\",\"llarr\":\"⇇\",\"ll\":\"≪\",\"Ll\":\"⋘\",\"llcorner\":\"⌞\",\"Lleftarrow\":\"⇚\",\"llhard\":\"⥫\",\"lltri\":\"◺\",\"Lmidot\":\"Ŀ\",\"lmidot\":\"ŀ\",\"lmoustache\":\"⎰\",\"lmoust\":\"⎰\",\"lnap\":\"⪉\",\"lnapprox\":\"⪉\",\"lne\":\"⪇\",\"lnE\":\"≨\",\"lneq\":\"⪇\",\"lneqq\":\"≨\",\"lnsim\":\"⋦\",\"loang\":\"⟬\",\"loarr\":\"⇽\",\"lobrk\":\"⟦\",\"longleftarrow\":\"⟵\",\"LongLeftArrow\":\"⟵\",\"Longleftarrow\":\"⟸\",\"longleftrightarrow\":\"⟷\",\"LongLeftRightArrow\":\"⟷\",\"Longleftrightarrow\":\"⟺\",\"longmapsto\":\"⟼\",\"longrightarrow\":\"⟶\",\"LongRightArrow\":\"⟶\",\"Longrightarrow\":\"⟹\",\"looparrowleft\":\"↫\",\"looparrowright\":\"↬\",\"lopar\":\"⦅\",\"Lopf\":\"𝕃\",\"lopf\":\"𝕝\",\"loplus\":\"⨭\",\"lotimes\":\"⨴\",\"lowast\":\"∗\",\"lowbar\":\"_\",\"LowerLeftArrow\":\"↙\",\"LowerRightArrow\":\"↘\",\"loz\":\"◊\",\"lozenge\":\"◊\",\"lozf\":\"⧫\",\"lpar\":\"(\",\"lparlt\":\"⦓\",\"lrarr\":\"⇆\",\"lrcorner\":\"⌟\",\"lrhar\":\"⇋\",\"lrhard\":\"⥭\",\"lrm\":\"‎\",\"lrtri\":\"⊿\",\"lsaquo\":\"‹\",\"lscr\":\"𝓁\",\"Lscr\":\"ℒ\",\"lsh\":\"↰\",\"Lsh\":\"↰\",\"lsim\":\"≲\",\"lsime\":\"⪍\",\"lsimg\":\"⪏\",\"lsqb\":\"[\",\"lsquo\":\"‘\",\"lsquor\":\"‚\",\"Lstrok\":\"Ł\",\"lstrok\":\"ł\",\"ltcc\":\"⪦\",\"ltcir\":\"⩹\",\"lt\":\"<\",\"LT\":\"<\",\"Lt\":\"≪\",\"ltdot\":\"⋖\",\"lthree\":\"⋋\",\"ltimes\":\"⋉\",\"ltlarr\":\"⥶\",\"ltquest\":\"⩻\",\"ltri\":\"◃\",\"ltrie\":\"⊴\",\"ltrif\":\"◂\",\"ltrPar\":\"⦖\",\"lurdshar\":\"⥊\",\"luruhar\":\"⥦\",\"lvertneqq\":\"≨︀\",\"lvnE\":\"≨︀\",\"macr\":\"¯\",\"male\":\"♂\",\"malt\":\"✠\",\"maltese\":\"✠\",\"Map\":\"⤅\",\"map\":\"↦\",\"mapsto\":\"↦\",\"mapstodown\":\"↧\",\"mapstoleft\":\"↤\",\"mapstoup\":\"↥\",\"marker\":\"▮\",\"mcomma\":\"⨩\",\"Mcy\":\"М\",\"mcy\":\"м\",\"mdash\":\"—\",\"mDDot\":\"∺\",\"measuredangle\":\"∡\",\"MediumSpace\":\" \",\"Mellintrf\":\"ℳ\",\"Mfr\":\"𝔐\",\"mfr\":\"𝔪\",\"mho\":\"℧\",\"micro\":\"µ\",\"midast\":\"*\",\"midcir\":\"⫰\",\"mid\":\"∣\",\"middot\":\"·\",\"minusb\":\"⊟\",\"minus\":\"−\",\"minusd\":\"∸\",\"minusdu\":\"⨪\",\"MinusPlus\":\"∓\",\"mlcp\":\"⫛\",\"mldr\":\"…\",\"mnplus\":\"∓\",\"models\":\"⊧\",\"Mopf\":\"𝕄\",\"mopf\":\"𝕞\",\"mp\":\"∓\",\"mscr\":\"𝓂\",\"Mscr\":\"ℳ\",\"mstpos\":\"∾\",\"Mu\":\"Μ\",\"mu\":\"μ\",\"multimap\":\"⊸\",\"mumap\":\"⊸\",\"nabla\":\"∇\",\"Nacute\":\"Ń\",\"nacute\":\"ń\",\"nang\":\"∠⃒\",\"nap\":\"≉\",\"napE\":\"⩰̸\",\"napid\":\"≋̸\",\"napos\":\"ŉ\",\"napprox\":\"≉\",\"natural\":\"♮\",\"naturals\":\"ℕ\",\"natur\":\"♮\",\"nbsp\":\" \",\"nbump\":\"≎̸\",\"nbumpe\":\"≏̸\",\"ncap\":\"⩃\",\"Ncaron\":\"Ň\",\"ncaron\":\"ň\",\"Ncedil\":\"Ņ\",\"ncedil\":\"ņ\",\"ncong\":\"≇\",\"ncongdot\":\"⩭̸\",\"ncup\":\"⩂\",\"Ncy\":\"Н\",\"ncy\":\"н\",\"ndash\":\"–\",\"nearhk\":\"⤤\",\"nearr\":\"↗\",\"neArr\":\"⇗\",\"nearrow\":\"↗\",\"ne\":\"≠\",\"nedot\":\"≐̸\",\"NegativeMediumSpace\":\"​\",\"NegativeThickSpace\":\"​\",\"NegativeThinSpace\":\"​\",\"NegativeVeryThinSpace\":\"​\",\"nequiv\":\"≢\",\"nesear\":\"⤨\",\"nesim\":\"≂̸\",\"NestedGreaterGreater\":\"≫\",\"NestedLessLess\":\"≪\",\"NewLine\":\"\\n\",\"nexist\":\"∄\",\"nexists\":\"∄\",\"Nfr\":\"𝔑\",\"nfr\":\"𝔫\",\"ngE\":\"≧̸\",\"nge\":\"≱\",\"ngeq\":\"≱\",\"ngeqq\":\"≧̸\",\"ngeqslant\":\"⩾̸\",\"nges\":\"⩾̸\",\"nGg\":\"⋙̸\",\"ngsim\":\"≵\",\"nGt\":\"≫⃒\",\"ngt\":\"≯\",\"ngtr\":\"≯\",\"nGtv\":\"≫̸\",\"nharr\":\"↮\",\"nhArr\":\"⇎\",\"nhpar\":\"⫲\",\"ni\":\"∋\",\"nis\":\"⋼\",\"nisd\":\"⋺\",\"niv\":\"∋\",\"NJcy\":\"Њ\",\"njcy\":\"њ\",\"nlarr\":\"↚\",\"nlArr\":\"⇍\",\"nldr\":\"‥\",\"nlE\":\"≦̸\",\"nle\":\"≰\",\"nleftarrow\":\"↚\",\"nLeftarrow\":\"⇍\",\"nleftrightarrow\":\"↮\",\"nLeftrightarrow\":\"⇎\",\"nleq\":\"≰\",\"nleqq\":\"≦̸\",\"nleqslant\":\"⩽̸\",\"nles\":\"⩽̸\",\"nless\":\"≮\",\"nLl\":\"⋘̸\",\"nlsim\":\"≴\",\"nLt\":\"≪⃒\",\"nlt\":\"≮\",\"nltri\":\"⋪\",\"nltrie\":\"⋬\",\"nLtv\":\"≪̸\",\"nmid\":\"∤\",\"NoBreak\":\"⁠\",\"NonBreakingSpace\":\" \",\"nopf\":\"𝕟\",\"Nopf\":\"ℕ\",\"Not\":\"⫬\",\"not\":\"¬\",\"NotCongruent\":\"≢\",\"NotCupCap\":\"≭\",\"NotDoubleVerticalBar\":\"∦\",\"NotElement\":\"∉\",\"NotEqual\":\"≠\",\"NotEqualTilde\":\"≂̸\",\"NotExists\":\"∄\",\"NotGreater\":\"≯\",\"NotGreaterEqual\":\"≱\",\"NotGreaterFullEqual\":\"≧̸\",\"NotGreaterGreater\":\"≫̸\",\"NotGreaterLess\":\"≹\",\"NotGreaterSlantEqual\":\"⩾̸\",\"NotGreaterTilde\":\"≵\",\"NotHumpDownHump\":\"≎̸\",\"NotHumpEqual\":\"≏̸\",\"notin\":\"∉\",\"notindot\":\"⋵̸\",\"notinE\":\"⋹̸\",\"notinva\":\"∉\",\"notinvb\":\"⋷\",\"notinvc\":\"⋶\",\"NotLeftTriangleBar\":\"⧏̸\",\"NotLeftTriangle\":\"⋪\",\"NotLeftTriangleEqual\":\"⋬\",\"NotLess\":\"≮\",\"NotLessEqual\":\"≰\",\"NotLessGreater\":\"≸\",\"NotLessLess\":\"≪̸\",\"NotLessSlantEqual\":\"⩽̸\",\"NotLessTilde\":\"≴\",\"NotNestedGreaterGreater\":\"⪢̸\",\"NotNestedLessLess\":\"⪡̸\",\"notni\":\"∌\",\"notniva\":\"∌\",\"notnivb\":\"⋾\",\"notnivc\":\"⋽\",\"NotPrecedes\":\"⊀\",\"NotPrecedesEqual\":\"⪯̸\",\"NotPrecedesSlantEqual\":\"⋠\",\"NotReverseElement\":\"∌\",\"NotRightTriangleBar\":\"⧐̸\",\"NotRightTriangle\":\"⋫\",\"NotRightTriangleEqual\":\"⋭\",\"NotSquareSubset\":\"⊏̸\",\"NotSquareSubsetEqual\":\"⋢\",\"NotSquareSuperset\":\"⊐̸\",\"NotSquareSupersetEqual\":\"⋣\",\"NotSubset\":\"⊂⃒\",\"NotSubsetEqual\":\"⊈\",\"NotSucceeds\":\"⊁\",\"NotSucceedsEqual\":\"⪰̸\",\"NotSucceedsSlantEqual\":\"⋡\",\"NotSucceedsTilde\":\"≿̸\",\"NotSuperset\":\"⊃⃒\",\"NotSupersetEqual\":\"⊉\",\"NotTilde\":\"≁\",\"NotTildeEqual\":\"≄\",\"NotTildeFullEqual\":\"≇\",\"NotTildeTilde\":\"≉\",\"NotVerticalBar\":\"∤\",\"nparallel\":\"∦\",\"npar\":\"∦\",\"nparsl\":\"⫽⃥\",\"npart\":\"∂̸\",\"npolint\":\"⨔\",\"npr\":\"⊀\",\"nprcue\":\"⋠\",\"nprec\":\"⊀\",\"npreceq\":\"⪯̸\",\"npre\":\"⪯̸\",\"nrarrc\":\"⤳̸\",\"nrarr\":\"↛\",\"nrArr\":\"⇏\",\"nrarrw\":\"↝̸\",\"nrightarrow\":\"↛\",\"nRightarrow\":\"⇏\",\"nrtri\":\"⋫\",\"nrtrie\":\"⋭\",\"nsc\":\"⊁\",\"nsccue\":\"⋡\",\"nsce\":\"⪰̸\",\"Nscr\":\"𝒩\",\"nscr\":\"𝓃\",\"nshortmid\":\"∤\",\"nshortparallel\":\"∦\",\"nsim\":\"≁\",\"nsime\":\"≄\",\"nsimeq\":\"≄\",\"nsmid\":\"∤\",\"nspar\":\"∦\",\"nsqsube\":\"⋢\",\"nsqsupe\":\"⋣\",\"nsub\":\"⊄\",\"nsubE\":\"⫅̸\",\"nsube\":\"⊈\",\"nsubset\":\"⊂⃒\",\"nsubseteq\":\"⊈\",\"nsubseteqq\":\"⫅̸\",\"nsucc\":\"⊁\",\"nsucceq\":\"⪰̸\",\"nsup\":\"⊅\",\"nsupE\":\"⫆̸\",\"nsupe\":\"⊉\",\"nsupset\":\"⊃⃒\",\"nsupseteq\":\"⊉\",\"nsupseteqq\":\"⫆̸\",\"ntgl\":\"≹\",\"Ntilde\":\"Ñ\",\"ntilde\":\"ñ\",\"ntlg\":\"≸\",\"ntriangleleft\":\"⋪\",\"ntrianglelefteq\":\"⋬\",\"ntriangleright\":\"⋫\",\"ntrianglerighteq\":\"⋭\",\"Nu\":\"Ν\",\"nu\":\"ν\",\"num\":\"#\",\"numero\":\"№\",\"numsp\":\" \",\"nvap\":\"≍⃒\",\"nvdash\":\"⊬\",\"nvDash\":\"⊭\",\"nVdash\":\"⊮\",\"nVDash\":\"⊯\",\"nvge\":\"≥⃒\",\"nvgt\":\">⃒\",\"nvHarr\":\"⤄\",\"nvinfin\":\"⧞\",\"nvlArr\":\"⤂\",\"nvle\":\"≤⃒\",\"nvlt\":\"<⃒\",\"nvltrie\":\"⊴⃒\",\"nvrArr\":\"⤃\",\"nvrtrie\":\"⊵⃒\",\"nvsim\":\"∼⃒\",\"nwarhk\":\"⤣\",\"nwarr\":\"↖\",\"nwArr\":\"⇖\",\"nwarrow\":\"↖\",\"nwnear\":\"⤧\",\"Oacute\":\"Ó\",\"oacute\":\"ó\",\"oast\":\"⊛\",\"Ocirc\":\"Ô\",\"ocirc\":\"ô\",\"ocir\":\"⊚\",\"Ocy\":\"О\",\"ocy\":\"о\",\"odash\":\"⊝\",\"Odblac\":\"Ő\",\"odblac\":\"ő\",\"odiv\":\"⨸\",\"odot\":\"⊙\",\"odsold\":\"⦼\",\"OElig\":\"Œ\",\"oelig\":\"œ\",\"ofcir\":\"⦿\",\"Ofr\":\"𝔒\",\"ofr\":\"𝔬\",\"ogon\":\"˛\",\"Ograve\":\"Ò\",\"ograve\":\"ò\",\"ogt\":\"⧁\",\"ohbar\":\"⦵\",\"ohm\":\"Ω\",\"oint\":\"∮\",\"olarr\":\"↺\",\"olcir\":\"⦾\",\"olcross\":\"⦻\",\"oline\":\"‾\",\"olt\":\"⧀\",\"Omacr\":\"Ō\",\"omacr\":\"ō\",\"Omega\":\"Ω\",\"omega\":\"ω\",\"Omicron\":\"Ο\",\"omicron\":\"ο\",\"omid\":\"⦶\",\"ominus\":\"⊖\",\"Oopf\":\"𝕆\",\"oopf\":\"𝕠\",\"opar\":\"⦷\",\"OpenCurlyDoubleQuote\":\"“\",\"OpenCurlyQuote\":\"‘\",\"operp\":\"⦹\",\"oplus\":\"⊕\",\"orarr\":\"↻\",\"Or\":\"⩔\",\"or\":\"∨\",\"ord\":\"⩝\",\"order\":\"ℴ\",\"orderof\":\"ℴ\",\"ordf\":\"ª\",\"ordm\":\"º\",\"origof\":\"⊶\",\"oror\":\"⩖\",\"orslope\":\"⩗\",\"orv\":\"⩛\",\"oS\":\"Ⓢ\",\"Oscr\":\"𝒪\",\"oscr\":\"ℴ\",\"Oslash\":\"Ø\",\"oslash\":\"ø\",\"osol\":\"⊘\",\"Otilde\":\"Õ\",\"otilde\":\"õ\",\"otimesas\":\"⨶\",\"Otimes\":\"⨷\",\"otimes\":\"⊗\",\"Ouml\":\"Ö\",\"ouml\":\"ö\",\"ovbar\":\"⌽\",\"OverBar\":\"‾\",\"OverBrace\":\"⏞\",\"OverBracket\":\"⎴\",\"OverParenthesis\":\"⏜\",\"para\":\"¶\",\"parallel\":\"∥\",\"par\":\"∥\",\"parsim\":\"⫳\",\"parsl\":\"⫽\",\"part\":\"∂\",\"PartialD\":\"∂\",\"Pcy\":\"П\",\"pcy\":\"п\",\"percnt\":\"%\",\"period\":\".\",\"permil\":\"‰\",\"perp\":\"⊥\",\"pertenk\":\"‱\",\"Pfr\":\"𝔓\",\"pfr\":\"𝔭\",\"Phi\":\"Φ\",\"phi\":\"φ\",\"phiv\":\"ϕ\",\"phmmat\":\"ℳ\",\"phone\":\"☎\",\"Pi\":\"Π\",\"pi\":\"π\",\"pitchfork\":\"⋔\",\"piv\":\"ϖ\",\"planck\":\"ℏ\",\"planckh\":\"ℎ\",\"plankv\":\"ℏ\",\"plusacir\":\"⨣\",\"plusb\":\"⊞\",\"pluscir\":\"⨢\",\"plus\":\"+\",\"plusdo\":\"∔\",\"plusdu\":\"⨥\",\"pluse\":\"⩲\",\"PlusMinus\":\"±\",\"plusmn\":\"±\",\"plussim\":\"⨦\",\"plustwo\":\"⨧\",\"pm\":\"±\",\"Poincareplane\":\"ℌ\",\"pointint\":\"⨕\",\"popf\":\"𝕡\",\"Popf\":\"ℙ\",\"pound\":\"£\",\"prap\":\"⪷\",\"Pr\":\"⪻\",\"pr\":\"≺\",\"prcue\":\"≼\",\"precapprox\":\"⪷\",\"prec\":\"≺\",\"preccurlyeq\":\"≼\",\"Precedes\":\"≺\",\"PrecedesEqual\":\"⪯\",\"PrecedesSlantEqual\":\"≼\",\"PrecedesTilde\":\"≾\",\"preceq\":\"⪯\",\"precnapprox\":\"⪹\",\"precneqq\":\"⪵\",\"precnsim\":\"⋨\",\"pre\":\"⪯\",\"prE\":\"⪳\",\"precsim\":\"≾\",\"prime\":\"′\",\"Prime\":\"″\",\"primes\":\"ℙ\",\"prnap\":\"⪹\",\"prnE\":\"⪵\",\"prnsim\":\"⋨\",\"prod\":\"∏\",\"Product\":\"∏\",\"profalar\":\"⌮\",\"profline\":\"⌒\",\"profsurf\":\"⌓\",\"prop\":\"∝\",\"Proportional\":\"∝\",\"Proportion\":\"∷\",\"propto\":\"∝\",\"prsim\":\"≾\",\"prurel\":\"⊰\",\"Pscr\":\"𝒫\",\"pscr\":\"𝓅\",\"Psi\":\"Ψ\",\"psi\":\"ψ\",\"puncsp\":\" \",\"Qfr\":\"𝔔\",\"qfr\":\"𝔮\",\"qint\":\"⨌\",\"qopf\":\"𝕢\",\"Qopf\":\"ℚ\",\"qprime\":\"⁗\",\"Qscr\":\"𝒬\",\"qscr\":\"𝓆\",\"quaternions\":\"ℍ\",\"quatint\":\"⨖\",\"quest\":\"?\",\"questeq\":\"≟\",\"quot\":\"\\\"\",\"QUOT\":\"\\\"\",\"rAarr\":\"⇛\",\"race\":\"∽̱\",\"Racute\":\"Ŕ\",\"racute\":\"ŕ\",\"radic\":\"√\",\"raemptyv\":\"⦳\",\"rang\":\"⟩\",\"Rang\":\"⟫\",\"rangd\":\"⦒\",\"range\":\"⦥\",\"rangle\":\"⟩\",\"raquo\":\"»\",\"rarrap\":\"⥵\",\"rarrb\":\"⇥\",\"rarrbfs\":\"⤠\",\"rarrc\":\"⤳\",\"rarr\":\"→\",\"Rarr\":\"↠\",\"rArr\":\"⇒\",\"rarrfs\":\"⤞\",\"rarrhk\":\"↪\",\"rarrlp\":\"↬\",\"rarrpl\":\"⥅\",\"rarrsim\":\"⥴\",\"Rarrtl\":\"⤖\",\"rarrtl\":\"↣\",\"rarrw\":\"↝\",\"ratail\":\"⤚\",\"rAtail\":\"⤜\",\"ratio\":\"∶\",\"rationals\":\"ℚ\",\"rbarr\":\"⤍\",\"rBarr\":\"⤏\",\"RBarr\":\"⤐\",\"rbbrk\":\"❳\",\"rbrace\":\"}\",\"rbrack\":\"]\",\"rbrke\":\"⦌\",\"rbrksld\":\"⦎\",\"rbrkslu\":\"⦐\",\"Rcaron\":\"Ř\",\"rcaron\":\"ř\",\"Rcedil\":\"Ŗ\",\"rcedil\":\"ŗ\",\"rceil\":\"⌉\",\"rcub\":\"}\",\"Rcy\":\"Р\",\"rcy\":\"р\",\"rdca\":\"⤷\",\"rdldhar\":\"⥩\",\"rdquo\":\"”\",\"rdquor\":\"”\",\"rdsh\":\"↳\",\"real\":\"ℜ\",\"realine\":\"ℛ\",\"realpart\":\"ℜ\",\"reals\":\"ℝ\",\"Re\":\"ℜ\",\"rect\":\"▭\",\"reg\":\"®\",\"REG\":\"®\",\"ReverseElement\":\"∋\",\"ReverseEquilibrium\":\"⇋\",\"ReverseUpEquilibrium\":\"⥯\",\"rfisht\":\"⥽\",\"rfloor\":\"⌋\",\"rfr\":\"𝔯\",\"Rfr\":\"ℜ\",\"rHar\":\"⥤\",\"rhard\":\"⇁\",\"rharu\":\"⇀\",\"rharul\":\"⥬\",\"Rho\":\"Ρ\",\"rho\":\"ρ\",\"rhov\":\"ϱ\",\"RightAngleBracket\":\"⟩\",\"RightArrowBar\":\"⇥\",\"rightarrow\":\"→\",\"RightArrow\":\"→\",\"Rightarrow\":\"⇒\",\"RightArrowLeftArrow\":\"⇄\",\"rightarrowtail\":\"↣\",\"RightCeiling\":\"⌉\",\"RightDoubleBracket\":\"⟧\",\"RightDownTeeVector\":\"⥝\",\"RightDownVectorBar\":\"⥕\",\"RightDownVector\":\"⇂\",\"RightFloor\":\"⌋\",\"rightharpoondown\":\"⇁\",\"rightharpoonup\":\"⇀\",\"rightleftarrows\":\"⇄\",\"rightleftharpoons\":\"⇌\",\"rightrightarrows\":\"⇉\",\"rightsquigarrow\":\"↝\",\"RightTeeArrow\":\"↦\",\"RightTee\":\"⊢\",\"RightTeeVector\":\"⥛\",\"rightthreetimes\":\"⋌\",\"RightTriangleBar\":\"⧐\",\"RightTriangle\":\"⊳\",\"RightTriangleEqual\":\"⊵\",\"RightUpDownVector\":\"⥏\",\"RightUpTeeVector\":\"⥜\",\"RightUpVectorBar\":\"⥔\",\"RightUpVector\":\"↾\",\"RightVectorBar\":\"⥓\",\"RightVector\":\"⇀\",\"ring\":\"˚\",\"risingdotseq\":\"≓\",\"rlarr\":\"⇄\",\"rlhar\":\"⇌\",\"rlm\":\"‏\",\"rmoustache\":\"⎱\",\"rmoust\":\"⎱\",\"rnmid\":\"⫮\",\"roang\":\"⟭\",\"roarr\":\"⇾\",\"robrk\":\"⟧\",\"ropar\":\"⦆\",\"ropf\":\"𝕣\",\"Ropf\":\"ℝ\",\"roplus\":\"⨮\",\"rotimes\":\"⨵\",\"RoundImplies\":\"⥰\",\"rpar\":\")\",\"rpargt\":\"⦔\",\"rppolint\":\"⨒\",\"rrarr\":\"⇉\",\"Rrightarrow\":\"⇛\",\"rsaquo\":\"›\",\"rscr\":\"𝓇\",\"Rscr\":\"ℛ\",\"rsh\":\"↱\",\"Rsh\":\"↱\",\"rsqb\":\"]\",\"rsquo\":\"’\",\"rsquor\":\"’\",\"rthree\":\"⋌\",\"rtimes\":\"⋊\",\"rtri\":\"▹\",\"rtrie\":\"⊵\",\"rtrif\":\"▸\",\"rtriltri\":\"⧎\",\"RuleDelayed\":\"⧴\",\"ruluhar\":\"⥨\",\"rx\":\"℞\",\"Sacute\":\"Ś\",\"sacute\":\"ś\",\"sbquo\":\"‚\",\"scap\":\"⪸\",\"Scaron\":\"Š\",\"scaron\":\"š\",\"Sc\":\"⪼\",\"sc\":\"≻\",\"sccue\":\"≽\",\"sce\":\"⪰\",\"scE\":\"⪴\",\"Scedil\":\"Ş\",\"scedil\":\"ş\",\"Scirc\":\"Ŝ\",\"scirc\":\"ŝ\",\"scnap\":\"⪺\",\"scnE\":\"⪶\",\"scnsim\":\"⋩\",\"scpolint\":\"⨓\",\"scsim\":\"≿\",\"Scy\":\"С\",\"scy\":\"с\",\"sdotb\":\"⊡\",\"sdot\":\"⋅\",\"sdote\":\"⩦\",\"searhk\":\"⤥\",\"searr\":\"↘\",\"seArr\":\"⇘\",\"searrow\":\"↘\",\"sect\":\"§\",\"semi\":\";\",\"seswar\":\"⤩\",\"setminus\":\"∖\",\"setmn\":\"∖\",\"sext\":\"✶\",\"Sfr\":\"𝔖\",\"sfr\":\"𝔰\",\"sfrown\":\"⌢\",\"sharp\":\"♯\",\"SHCHcy\":\"Щ\",\"shchcy\":\"щ\",\"SHcy\":\"Ш\",\"shcy\":\"ш\",\"ShortDownArrow\":\"↓\",\"ShortLeftArrow\":\"←\",\"shortmid\":\"∣\",\"shortparallel\":\"∥\",\"ShortRightArrow\":\"→\",\"ShortUpArrow\":\"↑\",\"shy\":\"­\",\"Sigma\":\"Σ\",\"sigma\":\"σ\",\"sigmaf\":\"ς\",\"sigmav\":\"ς\",\"sim\":\"∼\",\"simdot\":\"⩪\",\"sime\":\"≃\",\"simeq\":\"≃\",\"simg\":\"⪞\",\"simgE\":\"⪠\",\"siml\":\"⪝\",\"simlE\":\"⪟\",\"simne\":\"≆\",\"simplus\":\"⨤\",\"simrarr\":\"⥲\",\"slarr\":\"←\",\"SmallCircle\":\"∘\",\"smallsetminus\":\"∖\",\"smashp\":\"⨳\",\"smeparsl\":\"⧤\",\"smid\":\"∣\",\"smile\":\"⌣\",\"smt\":\"⪪\",\"smte\":\"⪬\",\"smtes\":\"⪬︀\",\"SOFTcy\":\"Ь\",\"softcy\":\"ь\",\"solbar\":\"⌿\",\"solb\":\"⧄\",\"sol\":\"/\",\"Sopf\":\"𝕊\",\"sopf\":\"𝕤\",\"spades\":\"♠\",\"spadesuit\":\"♠\",\"spar\":\"∥\",\"sqcap\":\"⊓\",\"sqcaps\":\"⊓︀\",\"sqcup\":\"⊔\",\"sqcups\":\"⊔︀\",\"Sqrt\":\"√\",\"sqsub\":\"⊏\",\"sqsube\":\"⊑\",\"sqsubset\":\"⊏\",\"sqsubseteq\":\"⊑\",\"sqsup\":\"⊐\",\"sqsupe\":\"⊒\",\"sqsupset\":\"⊐\",\"sqsupseteq\":\"⊒\",\"square\":\"□\",\"Square\":\"□\",\"SquareIntersection\":\"⊓\",\"SquareSubset\":\"⊏\",\"SquareSubsetEqual\":\"⊑\",\"SquareSuperset\":\"⊐\",\"SquareSupersetEqual\":\"⊒\",\"SquareUnion\":\"⊔\",\"squarf\":\"▪\",\"squ\":\"□\",\"squf\":\"▪\",\"srarr\":\"→\",\"Sscr\":\"𝒮\",\"sscr\":\"𝓈\",\"ssetmn\":\"∖\",\"ssmile\":\"⌣\",\"sstarf\":\"⋆\",\"Star\":\"⋆\",\"star\":\"☆\",\"starf\":\"★\",\"straightepsilon\":\"ϵ\",\"straightphi\":\"ϕ\",\"strns\":\"¯\",\"sub\":\"⊂\",\"Sub\":\"⋐\",\"subdot\":\"⪽\",\"subE\":\"⫅\",\"sube\":\"⊆\",\"subedot\":\"⫃\",\"submult\":\"⫁\",\"subnE\":\"⫋\",\"subne\":\"⊊\",\"subplus\":\"⪿\",\"subrarr\":\"⥹\",\"subset\":\"⊂\",\"Subset\":\"⋐\",\"subseteq\":\"⊆\",\"subseteqq\":\"⫅\",\"SubsetEqual\":\"⊆\",\"subsetneq\":\"⊊\",\"subsetneqq\":\"⫋\",\"subsim\":\"⫇\",\"subsub\":\"⫕\",\"subsup\":\"⫓\",\"succapprox\":\"⪸\",\"succ\":\"≻\",\"succcurlyeq\":\"≽\",\"Succeeds\":\"≻\",\"SucceedsEqual\":\"⪰\",\"SucceedsSlantEqual\":\"≽\",\"SucceedsTilde\":\"≿\",\"succeq\":\"⪰\",\"succnapprox\":\"⪺\",\"succneqq\":\"⪶\",\"succnsim\":\"⋩\",\"succsim\":\"≿\",\"SuchThat\":\"∋\",\"sum\":\"∑\",\"Sum\":\"∑\",\"sung\":\"♪\",\"sup1\":\"¹\",\"sup2\":\"²\",\"sup3\":\"³\",\"sup\":\"⊃\",\"Sup\":\"⋑\",\"supdot\":\"⪾\",\"supdsub\":\"⫘\",\"supE\":\"⫆\",\"supe\":\"⊇\",\"supedot\":\"⫄\",\"Superset\":\"⊃\",\"SupersetEqual\":\"⊇\",\"suphsol\":\"⟉\",\"suphsub\":\"⫗\",\"suplarr\":\"⥻\",\"supmult\":\"⫂\",\"supnE\":\"⫌\",\"supne\":\"⊋\",\"supplus\":\"⫀\",\"supset\":\"⊃\",\"Supset\":\"⋑\",\"supseteq\":\"⊇\",\"supseteqq\":\"⫆\",\"supsetneq\":\"⊋\",\"supsetneqq\":\"⫌\",\"supsim\":\"⫈\",\"supsub\":\"⫔\",\"supsup\":\"⫖\",\"swarhk\":\"⤦\",\"swarr\":\"↙\",\"swArr\":\"⇙\",\"swarrow\":\"↙\",\"swnwar\":\"⤪\",\"szlig\":\"ß\",\"Tab\":\"\\t\",\"target\":\"⌖\",\"Tau\":\"Τ\",\"tau\":\"τ\",\"tbrk\":\"⎴\",\"Tcaron\":\"Ť\",\"tcaron\":\"ť\",\"Tcedil\":\"Ţ\",\"tcedil\":\"ţ\",\"Tcy\":\"Т\",\"tcy\":\"т\",\"tdot\":\"⃛\",\"telrec\":\"⌕\",\"Tfr\":\"𝔗\",\"tfr\":\"𝔱\",\"there4\":\"∴\",\"therefore\":\"∴\",\"Therefore\":\"∴\",\"Theta\":\"Θ\",\"theta\":\"θ\",\"thetasym\":\"ϑ\",\"thetav\":\"ϑ\",\"thickapprox\":\"≈\",\"thicksim\":\"∼\",\"ThickSpace\":\"  \",\"ThinSpace\":\" \",\"thinsp\":\" \",\"thkap\":\"≈\",\"thksim\":\"∼\",\"THORN\":\"Þ\",\"thorn\":\"þ\",\"tilde\":\"˜\",\"Tilde\":\"∼\",\"TildeEqual\":\"≃\",\"TildeFullEqual\":\"≅\",\"TildeTilde\":\"≈\",\"timesbar\":\"⨱\",\"timesb\":\"⊠\",\"times\":\"×\",\"timesd\":\"⨰\",\"tint\":\"∭\",\"toea\":\"⤨\",\"topbot\":\"⌶\",\"topcir\":\"⫱\",\"top\":\"⊤\",\"Topf\":\"𝕋\",\"topf\":\"𝕥\",\"topfork\":\"⫚\",\"tosa\":\"⤩\",\"tprime\":\"‴\",\"trade\":\"™\",\"TRADE\":\"™\",\"triangle\":\"▵\",\"triangledown\":\"▿\",\"triangleleft\":\"◃\",\"trianglelefteq\":\"⊴\",\"triangleq\":\"≜\",\"triangleright\":\"▹\",\"trianglerighteq\":\"⊵\",\"tridot\":\"◬\",\"trie\":\"≜\",\"triminus\":\"⨺\",\"TripleDot\":\"⃛\",\"triplus\":\"⨹\",\"trisb\":\"⧍\",\"tritime\":\"⨻\",\"trpezium\":\"⏢\",\"Tscr\":\"𝒯\",\"tscr\":\"𝓉\",\"TScy\":\"Ц\",\"tscy\":\"ц\",\"TSHcy\":\"Ћ\",\"tshcy\":\"ћ\",\"Tstrok\":\"Ŧ\",\"tstrok\":\"ŧ\",\"twixt\":\"≬\",\"twoheadleftarrow\":\"↞\",\"twoheadrightarrow\":\"↠\",\"Uacute\":\"Ú\",\"uacute\":\"ú\",\"uarr\":\"↑\",\"Uarr\":\"↟\",\"uArr\":\"⇑\",\"Uarrocir\":\"⥉\",\"Ubrcy\":\"Ў\",\"ubrcy\":\"ў\",\"Ubreve\":\"Ŭ\",\"ubreve\":\"ŭ\",\"Ucirc\":\"Û\",\"ucirc\":\"û\",\"Ucy\":\"У\",\"ucy\":\"у\",\"udarr\":\"⇅\",\"Udblac\":\"Ű\",\"udblac\":\"ű\",\"udhar\":\"⥮\",\"ufisht\":\"⥾\",\"Ufr\":\"𝔘\",\"ufr\":\"𝔲\",\"Ugrave\":\"Ù\",\"ugrave\":\"ù\",\"uHar\":\"⥣\",\"uharl\":\"↿\",\"uharr\":\"↾\",\"uhblk\":\"▀\",\"ulcorn\":\"⌜\",\"ulcorner\":\"⌜\",\"ulcrop\":\"⌏\",\"ultri\":\"◸\",\"Umacr\":\"Ū\",\"umacr\":\"ū\",\"uml\":\"¨\",\"UnderBar\":\"_\",\"UnderBrace\":\"⏟\",\"UnderBracket\":\"⎵\",\"UnderParenthesis\":\"⏝\",\"Union\":\"⋃\",\"UnionPlus\":\"⊎\",\"Uogon\":\"Ų\",\"uogon\":\"ų\",\"Uopf\":\"𝕌\",\"uopf\":\"𝕦\",\"UpArrowBar\":\"⤒\",\"uparrow\":\"↑\",\"UpArrow\":\"↑\",\"Uparrow\":\"⇑\",\"UpArrowDownArrow\":\"⇅\",\"updownarrow\":\"↕\",\"UpDownArrow\":\"↕\",\"Updownarrow\":\"⇕\",\"UpEquilibrium\":\"⥮\",\"upharpoonleft\":\"↿\",\"upharpoonright\":\"↾\",\"uplus\":\"⊎\",\"UpperLeftArrow\":\"↖\",\"UpperRightArrow\":\"↗\",\"upsi\":\"υ\",\"Upsi\":\"ϒ\",\"upsih\":\"ϒ\",\"Upsilon\":\"Υ\",\"upsilon\":\"υ\",\"UpTeeArrow\":\"↥\",\"UpTee\":\"⊥\",\"upuparrows\":\"⇈\",\"urcorn\":\"⌝\",\"urcorner\":\"⌝\",\"urcrop\":\"⌎\",\"Uring\":\"Ů\",\"uring\":\"ů\",\"urtri\":\"◹\",\"Uscr\":\"𝒰\",\"uscr\":\"𝓊\",\"utdot\":\"⋰\",\"Utilde\":\"Ũ\",\"utilde\":\"ũ\",\"utri\":\"▵\",\"utrif\":\"▴\",\"uuarr\":\"⇈\",\"Uuml\":\"Ü\",\"uuml\":\"ü\",\"uwangle\":\"⦧\",\"vangrt\":\"⦜\",\"varepsilon\":\"ϵ\",\"varkappa\":\"ϰ\",\"varnothing\":\"∅\",\"varphi\":\"ϕ\",\"varpi\":\"ϖ\",\"varpropto\":\"∝\",\"varr\":\"↕\",\"vArr\":\"⇕\",\"varrho\":\"ϱ\",\"varsigma\":\"ς\",\"varsubsetneq\":\"⊊︀\",\"varsubsetneqq\":\"⫋︀\",\"varsupsetneq\":\"⊋︀\",\"varsupsetneqq\":\"⫌︀\",\"vartheta\":\"ϑ\",\"vartriangleleft\":\"⊲\",\"vartriangleright\":\"⊳\",\"vBar\":\"⫨\",\"Vbar\":\"⫫\",\"vBarv\":\"⫩\",\"Vcy\":\"В\",\"vcy\":\"в\",\"vdash\":\"⊢\",\"vDash\":\"⊨\",\"Vdash\":\"⊩\",\"VDash\":\"⊫\",\"Vdashl\":\"⫦\",\"veebar\":\"⊻\",\"vee\":\"∨\",\"Vee\":\"⋁\",\"veeeq\":\"≚\",\"vellip\":\"⋮\",\"verbar\":\"|\",\"Verbar\":\"‖\",\"vert\":\"|\",\"Vert\":\"‖\",\"VerticalBar\":\"∣\",\"VerticalLine\":\"|\",\"VerticalSeparator\":\"❘\",\"VerticalTilde\":\"≀\",\"VeryThinSpace\":\" \",\"Vfr\":\"𝔙\",\"vfr\":\"𝔳\",\"vltri\":\"⊲\",\"vnsub\":\"⊂⃒\",\"vnsup\":\"⊃⃒\",\"Vopf\":\"𝕍\",\"vopf\":\"𝕧\",\"vprop\":\"∝\",\"vrtri\":\"⊳\",\"Vscr\":\"𝒱\",\"vscr\":\"𝓋\",\"vsubnE\":\"⫋︀\",\"vsubne\":\"⊊︀\",\"vsupnE\":\"⫌︀\",\"vsupne\":\"⊋︀\",\"Vvdash\":\"⊪\",\"vzigzag\":\"⦚\",\"Wcirc\":\"Ŵ\",\"wcirc\":\"ŵ\",\"wedbar\":\"⩟\",\"wedge\":\"∧\",\"Wedge\":\"⋀\",\"wedgeq\":\"≙\",\"weierp\":\"℘\",\"Wfr\":\"𝔚\",\"wfr\":\"𝔴\",\"Wopf\":\"𝕎\",\"wopf\":\"𝕨\",\"wp\":\"℘\",\"wr\":\"≀\",\"wreath\":\"≀\",\"Wscr\":\"𝒲\",\"wscr\":\"𝓌\",\"xcap\":\"⋂\",\"xcirc\":\"◯\",\"xcup\":\"⋃\",\"xdtri\":\"▽\",\"Xfr\":\"𝔛\",\"xfr\":\"𝔵\",\"xharr\":\"⟷\",\"xhArr\":\"⟺\",\"Xi\":\"Ξ\",\"xi\":\"ξ\",\"xlarr\":\"⟵\",\"xlArr\":\"⟸\",\"xmap\":\"⟼\",\"xnis\":\"⋻\",\"xodot\":\"⨀\",\"Xopf\":\"𝕏\",\"xopf\":\"𝕩\",\"xoplus\":\"⨁\",\"xotime\":\"⨂\",\"xrarr\":\"⟶\",\"xrArr\":\"⟹\",\"Xscr\":\"𝒳\",\"xscr\":\"𝓍\",\"xsqcup\":\"⨆\",\"xuplus\":\"⨄\",\"xutri\":\"△\",\"xvee\":\"⋁\",\"xwedge\":\"⋀\",\"Yacute\":\"Ý\",\"yacute\":\"ý\",\"YAcy\":\"Я\",\"yacy\":\"я\",\"Ycirc\":\"Ŷ\",\"ycirc\":\"ŷ\",\"Ycy\":\"Ы\",\"ycy\":\"ы\",\"yen\":\"¥\",\"Yfr\":\"𝔜\",\"yfr\":\"𝔶\",\"YIcy\":\"Ї\",\"yicy\":\"ї\",\"Yopf\":\"𝕐\",\"yopf\":\"𝕪\",\"Yscr\":\"𝒴\",\"yscr\":\"𝓎\",\"YUcy\":\"Ю\",\"yucy\":\"ю\",\"yuml\":\"ÿ\",\"Yuml\":\"Ÿ\",\"Zacute\":\"Ź\",\"zacute\":\"ź\",\"Zcaron\":\"Ž\",\"zcaron\":\"ž\",\"Zcy\":\"З\",\"zcy\":\"з\",\"Zdot\":\"Ż\",\"zdot\":\"ż\",\"zeetrf\":\"ℨ\",\"ZeroWidthSpace\":\"​\",\"Zeta\":\"Ζ\",\"zeta\":\"ζ\",\"zfr\":\"𝔷\",\"Zfr\":\"ℨ\",\"ZHcy\":\"Ж\",\"zhcy\":\"ж\",\"zigrarr\":\"⇝\",\"zopf\":\"𝕫\",\"Zopf\":\"ℤ\",\"Zscr\":\"𝒵\",\"zscr\":\"𝓏\",\"zwj\":\"‍\",\"zwnj\":\"‌\"}");
-
-/***/ }),
-
-/***/ "./node_modules/dom-serializer/node_modules/entities/lib/maps/legacy.json":
-/*!********************************************************************************!*\
-  !*** ./node_modules/dom-serializer/node_modules/entities/lib/maps/legacy.json ***!
-  \********************************************************************************/
-/*! exports provided: Aacute, aacute, Acirc, acirc, acute, AElig, aelig, Agrave, agrave, amp, AMP, Aring, aring, Atilde, atilde, Auml, auml, brvbar, Ccedil, ccedil, cedil, cent, copy, COPY, curren, deg, divide, Eacute, eacute, Ecirc, ecirc, Egrave, egrave, ETH, eth, Euml, euml, frac12, frac14, frac34, gt, GT, Iacute, iacute, Icirc, icirc, iexcl, Igrave, igrave, iquest, Iuml, iuml, laquo, lt, LT, macr, micro, middot, nbsp, not, Ntilde, ntilde, Oacute, oacute, Ocirc, ocirc, Ograve, ograve, ordf, ordm, Oslash, oslash, Otilde, otilde, Ouml, ouml, para, plusmn, pound, quot, QUOT, raquo, reg, REG, sect, shy, sup1, sup2, sup3, szlig, THORN, thorn, times, Uacute, uacute, Ucirc, ucirc, Ugrave, ugrave, uml, Uuml, uuml, Yacute, yacute, yen, yuml, default */
-/***/ (function(module) {
-
-module.exports = JSON.parse("{\"Aacute\":\"Á\",\"aacute\":\"á\",\"Acirc\":\"Â\",\"acirc\":\"â\",\"acute\":\"´\",\"AElig\":\"Æ\",\"aelig\":\"æ\",\"Agrave\":\"À\",\"agrave\":\"à\",\"amp\":\"&\",\"AMP\":\"&\",\"Aring\":\"Å\",\"aring\":\"å\",\"Atilde\":\"Ã\",\"atilde\":\"ã\",\"Auml\":\"Ä\",\"auml\":\"ä\",\"brvbar\":\"¦\",\"Ccedil\":\"Ç\",\"ccedil\":\"ç\",\"cedil\":\"¸\",\"cent\":\"¢\",\"copy\":\"©\",\"COPY\":\"©\",\"curren\":\"¤\",\"deg\":\"°\",\"divide\":\"÷\",\"Eacute\":\"É\",\"eacute\":\"é\",\"Ecirc\":\"Ê\",\"ecirc\":\"ê\",\"Egrave\":\"È\",\"egrave\":\"è\",\"ETH\":\"Ð\",\"eth\":\"ð\",\"Euml\":\"Ë\",\"euml\":\"ë\",\"frac12\":\"½\",\"frac14\":\"¼\",\"frac34\":\"¾\",\"gt\":\">\",\"GT\":\">\",\"Iacute\":\"Í\",\"iacute\":\"í\",\"Icirc\":\"Î\",\"icirc\":\"î\",\"iexcl\":\"¡\",\"Igrave\":\"Ì\",\"igrave\":\"ì\",\"iquest\":\"¿\",\"Iuml\":\"Ï\",\"iuml\":\"ï\",\"laquo\":\"«\",\"lt\":\"<\",\"LT\":\"<\",\"macr\":\"¯\",\"micro\":\"µ\",\"middot\":\"·\",\"nbsp\":\" \",\"not\":\"¬\",\"Ntilde\":\"Ñ\",\"ntilde\":\"ñ\",\"Oacute\":\"Ó\",\"oacute\":\"ó\",\"Ocirc\":\"Ô\",\"ocirc\":\"ô\",\"Ograve\":\"Ò\",\"ograve\":\"ò\",\"ordf\":\"ª\",\"ordm\":\"º\",\"Oslash\":\"Ø\",\"oslash\":\"ø\",\"Otilde\":\"Õ\",\"otilde\":\"õ\",\"Ouml\":\"Ö\",\"ouml\":\"ö\",\"para\":\"¶\",\"plusmn\":\"±\",\"pound\":\"£\",\"quot\":\"\\\"\",\"QUOT\":\"\\\"\",\"raquo\":\"»\",\"reg\":\"®\",\"REG\":\"®\",\"sect\":\"§\",\"shy\":\"­\",\"sup1\":\"¹\",\"sup2\":\"²\",\"sup3\":\"³\",\"szlig\":\"ß\",\"THORN\":\"Þ\",\"thorn\":\"þ\",\"times\":\"×\",\"Uacute\":\"Ú\",\"uacute\":\"ú\",\"Ucirc\":\"Û\",\"ucirc\":\"û\",\"Ugrave\":\"Ù\",\"ugrave\":\"ù\",\"uml\":\"¨\",\"Uuml\":\"Ü\",\"uuml\":\"ü\",\"Yacute\":\"Ý\",\"yacute\":\"ý\",\"yen\":\"¥\",\"yuml\":\"ÿ\"}");
-
-/***/ }),
-
-/***/ "./node_modules/dom-serializer/node_modules/entities/lib/maps/xml.json":
-/*!*****************************************************************************!*\
-  !*** ./node_modules/dom-serializer/node_modules/entities/lib/maps/xml.json ***!
-  \*****************************************************************************/
-/*! exports provided: amp, apos, gt, lt, quot, default */
-/***/ (function(module) {
-
-module.exports = JSON.parse("{\"amp\":\"&\",\"apos\":\"'\",\"gt\":\">\",\"lt\":\"<\",\"quot\":\"\\\"\"}");
-
-/***/ }),
-
-/***/ "./node_modules/domelementtype/index.js":
+/***/ "./node_modules/domhandler/lib/index.js":
 /*!**********************************************!*\
-  !*** ./node_modules/domelementtype/index.js ***!
+  !*** ./node_modules/domhandler/lib/index.js ***!
   \**********************************************/
 /*! no static exports found */
-/***/ (function(module, exports) {
-
-//Types of elements found in the DOM
-module.exports = {
-	Text: "text", //Text
-	Directive: "directive", //<? ... ?>
-	Comment: "comment", //<!-- ... -->
-	Script: "script", //<script> tags
-	Style: "style", //<style> tags
-	Tag: "tag", //Any tag
-	CDATA: "cdata", //<![CDATA[ ... ]]>
-	Doctype: "doctype",
-
-	isTag: function(elem){
-		return elem.type === "tag" || elem.type === "script" || elem.type === "style";
-	}
-};
-
-
-/***/ }),
-
-/***/ "./node_modules/domhandler/index.js":
-/*!******************************************!*\
-  !*** ./node_modules/domhandler/index.js ***!
-  \******************************************/
-/*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-var ElementType = __webpack_require__(/*! domelementtype */ "./node_modules/domelementtype/index.js");
+"use strict";
 
-var re_whitespace = /\s+/g;
-var NodePrototype = __webpack_require__(/*! ./lib/node */ "./node_modules/domhandler/lib/node.js");
-var ElementPrototype = __webpack_require__(/*! ./lib/element */ "./node_modules/domhandler/lib/element.js");
-
-function DomHandler(callback, options, elementCB){
-	if(typeof callback === "object"){
-		elementCB = options;
-		options = callback;
-		callback = null;
-	} else if(typeof options === "function"){
-		elementCB = options;
-		options = defaultOpts;
-	}
-	this._callback = callback;
-	this._options = options || defaultOpts;
-	this._elementCB = elementCB;
-	this.dom = [];
-	this._done = false;
-	this._tagStack = [];
-	this._parser = this._parser || null;
-}
-
-//default options
+Object.defineProperty(exports, "__esModule", { value: true });
+var node_1 = __webpack_require__(/*! ./node */ "./node_modules/domhandler/lib/node.js");
+exports.Node = node_1.Node;
+exports.Element = node_1.Element;
+exports.DataNode = node_1.DataNode;
+exports.NodeWithChildren = node_1.NodeWithChildren;
+var reWhitespace = /\s+/g;
+// Default options
 var defaultOpts = {
-	normalizeWhitespace: false, //Replace all whitespace with single spaces
-	withStartIndices: false, //Add startIndex properties to nodes
-	withEndIndices: false, //Add endIndex properties to nodes
+    normalizeWhitespace: false,
+    withStartIndices: false,
+    withEndIndices: false
 };
-
-DomHandler.prototype.onparserinit = function(parser){
-	this._parser = parser;
-};
-
-//Resets the handler back to starting state
-DomHandler.prototype.onreset = function(){
-	DomHandler.call(this, this._callback, this._options, this._elementCB);
-};
-
-//Signals the handler that parsing is done
-DomHandler.prototype.onend = function(){
-	if(this._done) return;
-	this._done = true;
-	this._parser = null;
-	this._handleCallback(null);
-};
-
-DomHandler.prototype._handleCallback =
-DomHandler.prototype.onerror = function(error){
-	if(typeof this._callback === "function"){
-		this._callback(error, this.dom);
-	} else {
-		if(error) throw error;
-	}
-};
-
-DomHandler.prototype.onclosetag = function(){
-	//if(this._tagStack.pop().name !== name) this._handleCallback(Error("Tagname didn't match!"));
-	
-	var elem = this._tagStack.pop();
-
-	if(this._options.withEndIndices && elem){
-		elem.endIndex = this._parser.endIndex;
-	}
-
-	if(this._elementCB) this._elementCB(elem);
-};
-
-DomHandler.prototype._createDomElement = function(properties){
-	if (!this._options.withDomLvl1) return properties;
-
-	var element;
-	if (properties.type === "tag") {
-		element = Object.create(ElementPrototype);
-	} else {
-		element = Object.create(NodePrototype);
-	}
-
-	for (var key in properties) {
-		if (properties.hasOwnProperty(key)) {
-			element[key] = properties[key];
-		}
-	}
-
-	return element;
-};
-
-DomHandler.prototype._addDomElement = function(element){
-	var parent = this._tagStack[this._tagStack.length - 1];
-	var siblings = parent ? parent.children : this.dom;
-	var previousSibling = siblings[siblings.length - 1];
-
-	element.next = null;
-
-	if(this._options.withStartIndices){
-		element.startIndex = this._parser.startIndex;
-	}
-	if(this._options.withEndIndices){
-		element.endIndex = this._parser.endIndex;
-	}
-
-	if(previousSibling){
-		element.prev = previousSibling;
-		previousSibling.next = element;
-	} else {
-		element.prev = null;
-	}
-
-	siblings.push(element);
-	element.parent = parent || null;
-};
-
-DomHandler.prototype.onopentag = function(name, attribs){
-	var properties = {
-		type: name === "script" ? ElementType.Script : name === "style" ? ElementType.Style : ElementType.Tag,
-		name: name,
-		attribs: attribs,
-		children: []
-	};
-
-	var element = this._createDomElement(properties);
-
-	this._addDomElement(element);
-
-	this._tagStack.push(element);
-};
-
-DomHandler.prototype.ontext = function(data){
-	//the ignoreWhitespace is officially dropped, but for now,
-	//it's an alias for normalizeWhitespace
-	var normalize = this._options.normalizeWhitespace || this._options.ignoreWhitespace;
-
-	var lastTag;
-
-	if(!this._tagStack.length && this.dom.length && (lastTag = this.dom[this.dom.length-1]).type === ElementType.Text){
-		if(normalize){
-			lastTag.data = (lastTag.data + data).replace(re_whitespace, " ");
-		} else {
-			lastTag.data += data;
-		}
-	} else {
-		if(
-			this._tagStack.length &&
-			(lastTag = this._tagStack[this._tagStack.length - 1]) &&
-			(lastTag = lastTag.children[lastTag.children.length - 1]) &&
-			lastTag.type === ElementType.Text
-		){
-			if(normalize){
-				lastTag.data = (lastTag.data + data).replace(re_whitespace, " ");
-			} else {
-				lastTag.data += data;
-			}
-		} else {
-			if(normalize){
-				data = data.replace(re_whitespace, " ");
-			}
-
-			var element = this._createDomElement({
-				data: data,
-				type: ElementType.Text
-			});
-
-			this._addDomElement(element);
-		}
-	}
-};
-
-DomHandler.prototype.oncomment = function(data){
-	var lastTag = this._tagStack[this._tagStack.length - 1];
-
-	if(lastTag && lastTag.type === ElementType.Comment){
-		lastTag.data += data;
-		return;
-	}
-
-	var properties = {
-		data: data,
-		type: ElementType.Comment
-	};
-
-	var element = this._createDomElement(properties);
-
-	this._addDomElement(element);
-	this._tagStack.push(element);
-};
-
-DomHandler.prototype.oncdatastart = function(){
-	var properties = {
-		children: [{
-			data: "",
-			type: ElementType.Text
-		}],
-		type: ElementType.CDATA
-	};
-
-	var element = this._createDomElement(properties);
-
-	this._addDomElement(element);
-	this._tagStack.push(element);
-};
-
-DomHandler.prototype.oncommentend = DomHandler.prototype.oncdataend = function(){
-	this._tagStack.pop();
-};
-
-DomHandler.prototype.onprocessinginstruction = function(name, data){
-	var element = this._createDomElement({
-		name: name,
-		data: data,
-		type: ElementType.Directive
-	});
-
-	this._addDomElement(element);
-};
-
-module.exports = DomHandler;
-
-
-/***/ }),
-
-/***/ "./node_modules/domhandler/lib/element.js":
-/*!************************************************!*\
-  !*** ./node_modules/domhandler/lib/element.js ***!
-  \************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-// DOM-Level-1-compliant structure
-var NodePrototype = __webpack_require__(/*! ./node */ "./node_modules/domhandler/lib/node.js");
-var ElementPrototype = module.exports = Object.create(NodePrototype);
-
-var domLvl1 = {
-	tagName: "name"
-};
-
-Object.keys(domLvl1).forEach(function(key) {
-	var shorthand = domLvl1[key];
-	Object.defineProperty(ElementPrototype, key, {
-		get: function() {
-			return this[shorthand] || null;
-		},
-		set: function(val) {
-			this[shorthand] = val;
-			return val;
-		}
-	});
-});
+var DomHandler = /** @class */ (function () {
+    /**
+     * Initiate a new DomHandler.
+     *
+     * @param callback Called once parsing has completed.
+     * @param options Settings for the handler.
+     * @param elementCB Callback whenever a tag is closed.
+     */
+    function DomHandler(callback, options, elementCB) {
+        /** The constructed DOM */
+        this.dom = [];
+        /** Indicated whether parsing has been completed. */
+        this._done = false;
+        /** Stack of open tags. */
+        this._tagStack = [];
+        /** A data node that is still being written to. */
+        this._lastNode = null;
+        /** Reference to the parser instance. Used for location information. */
+        this._parser = null;
+        // Make it possible to skip arguments, for backwards-compatibility
+        if (typeof options === "function") {
+            elementCB = options;
+            options = defaultOpts;
+        }
+        if (typeof callback === "object") {
+            options = callback;
+            callback = undefined;
+        }
+        this._callback = callback || null;
+        this._options = options || defaultOpts;
+        this._elementCB = elementCB || null;
+    }
+    DomHandler.prototype.onparserinit = function (parser) {
+        this._parser = parser;
+    };
+    // Resets the handler back to starting state
+    DomHandler.prototype.onreset = function () {
+        this.dom = [];
+        this._done = false;
+        this._tagStack = [];
+        this._lastNode = null;
+        this._parser = this._parser || null;
+    };
+    // Signals the handler that parsing is done
+    DomHandler.prototype.onend = function () {
+        if (this._done)
+            return;
+        this._done = true;
+        this._parser = null;
+        this.handleCallback(null);
+    };
+    DomHandler.prototype.onerror = function (error) {
+        this.handleCallback(error);
+    };
+    DomHandler.prototype.onclosetag = function () {
+        this._lastNode = null;
+        // If(this._tagStack.pop().name !== name) this.handleCallback(Error("Tagname didn't match!"));
+        var elem = this._tagStack.pop();
+        if (!elem || !this._parser) {
+            return;
+        }
+        if (this._options.withEndIndices) {
+            elem.endIndex = this._parser.endIndex;
+        }
+        if (this._elementCB)
+            this._elementCB(elem);
+    };
+    DomHandler.prototype.onopentag = function (name, attribs) {
+        var element = new node_1.Element(name, attribs);
+        this.addNode(element);
+        this._tagStack.push(element);
+    };
+    DomHandler.prototype.ontext = function (data) {
+        var normalize = this._options.normalizeWhitespace;
+        var _lastNode = this._lastNode;
+        if (_lastNode && _lastNode.type === "text" /* Text */) {
+            if (normalize) {
+                _lastNode.data = (_lastNode.data + data).replace(reWhitespace, " ");
+            }
+            else {
+                _lastNode.data += data;
+            }
+        }
+        else {
+            if (normalize) {
+                data = data.replace(reWhitespace, " ");
+            }
+            var node = new node_1.DataNode("text" /* Text */, data);
+            this.addNode(node);
+            this._lastNode = node;
+        }
+    };
+    DomHandler.prototype.oncomment = function (data) {
+        if (this._lastNode && this._lastNode.type === "comment" /* Comment */) {
+            this._lastNode.data += data;
+            return;
+        }
+        var node = new node_1.DataNode("comment" /* Comment */, data);
+        this.addNode(node);
+        this._lastNode = node;
+    };
+    DomHandler.prototype.oncommentend = function () {
+        this._lastNode = null;
+    };
+    DomHandler.prototype.oncdatastart = function () {
+        var text = new node_1.DataNode("text" /* Text */, "");
+        var node = new node_1.NodeWithChildren("cdata" /* CDATA */, [text]);
+        this.addNode(node);
+        text.parent = node;
+        this._lastNode = text;
+    };
+    DomHandler.prototype.oncdataend = function () {
+        this._lastNode = null;
+    };
+    DomHandler.prototype.onprocessinginstruction = function (name, data) {
+        var node = new node_1.ProcessingInstruction(name, data);
+        this.addNode(node);
+    };
+    DomHandler.prototype.handleCallback = function (error) {
+        if (typeof this._callback === "function") {
+            this._callback(error, this.dom);
+        }
+        else if (error) {
+            throw error;
+        }
+    };
+    DomHandler.prototype.addNode = function (node) {
+        var parent = this._tagStack[this._tagStack.length - 1];
+        var siblings = parent ? parent.children : this.dom;
+        var previousSibling = siblings[siblings.length - 1];
+        if (this._parser) {
+            if (this._options.withStartIndices) {
+                node.startIndex = this._parser.startIndex;
+            }
+            if (this._options.withEndIndices) {
+                node.endIndex = this._parser.endIndex;
+            }
+        }
+        siblings.push(node);
+        if (previousSibling) {
+            node.prev = previousSibling;
+            previousSibling.next = node;
+        }
+        if (parent) {
+            node.parent = parent;
+        }
+        this._lastNode = null;
+    };
+    DomHandler.prototype.addDataNode = function (node) {
+        this.addNode(node);
+        this._lastNode = node;
+    };
+    return DomHandler;
+}());
+exports.DomHandler = DomHandler;
+exports.default = DomHandler;
 
 
 /***/ }),
@@ -28981,77 +28855,202 @@ Object.keys(domLvl1).forEach(function(key) {
   !*** ./node_modules/domhandler/lib/node.js ***!
   \*********************************************/
 /*! no static exports found */
-/***/ (function(module, exports) {
-
-// This object will be used as the prototype for Nodes when creating a
-// DOM-Level-1-compliant structure.
-var NodePrototype = module.exports = {
-	get firstChild() {
-		var children = this.children;
-		return children && children[0] || null;
-	},
-	get lastChild() {
-		var children = this.children;
-		return children && children[children.length - 1] || null;
-	},
-	get nodeType() {
-		return nodeTypes[this.type] || nodeTypes.element;
-	}
-};
-
-var domLvl1 = {
-	tagName: "name",
-	childNodes: "children",
-	parentNode: "parent",
-	previousSibling: "prev",
-	nextSibling: "next",
-	nodeValue: "data"
-};
-
-var nodeTypes = {
-	element: 1,
-	text: 3,
-	cdata: 4,
-	comment: 8
-};
-
-Object.keys(domLvl1).forEach(function(key) {
-	var shorthand = domLvl1[key];
-	Object.defineProperty(NodePrototype, key, {
-		get: function() {
-			return this[shorthand] || null;
-		},
-		set: function(val) {
-			this[shorthand] = val;
-			return val;
-		}
-	});
-});
-
-
-/***/ }),
-
-/***/ "./node_modules/domutils/index.js":
-/*!****************************************!*\
-  !*** ./node_modules/domutils/index.js ***!
-  \****************************************/
-/*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-var DomUtils = module.exports;
+"use strict";
 
-[
-	__webpack_require__(/*! ./lib/stringify */ "./node_modules/domutils/lib/stringify.js"),
-	__webpack_require__(/*! ./lib/traversal */ "./node_modules/domutils/lib/traversal.js"),
-	__webpack_require__(/*! ./lib/manipulation */ "./node_modules/domutils/lib/manipulation.js"),
-	__webpack_require__(/*! ./lib/querying */ "./node_modules/domutils/lib/querying.js"),
-	__webpack_require__(/*! ./lib/legacy */ "./node_modules/domutils/lib/legacy.js"),
-	__webpack_require__(/*! ./lib/helpers */ "./node_modules/domutils/lib/helpers.js")
-].forEach(function(ext){
-	Object.keys(ext).forEach(function(key){
-		DomUtils[key] = ext[key].bind(DomUtils);
-	});
-});
+var __extends = (this && this.__extends) || (function () {
+    var extendStatics = function (d, b) {
+        extendStatics = Object.setPrototypeOf ||
+            ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
+            function (d, b) { for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p]; };
+        return extendStatics(d, b);
+    };
+    return function (d, b) {
+        extendStatics(d, b);
+        function __() { this.constructor = d; }
+        d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
+    };
+})();
+Object.defineProperty(exports, "__esModule", { value: true });
+var nodeTypes = new Map([
+    ["tag" /* Tag */, 1],
+    ["script" /* Script */, 1],
+    ["style" /* Style */, 1],
+    ["directive" /* Directive */, 1],
+    ["text" /* Text */, 3],
+    ["cdata" /* CDATA */, 4],
+    ["comment" /* Comment */, 8]
+]);
+// This object will be used as the prototype for Nodes when creating a
+// DOM-Level-1-compliant structure.
+var Node = /** @class */ (function () {
+    /**
+     *
+     * @param type The type of the node.
+     */
+    function Node(type) {
+        this.type = type;
+        /** Parent of the node */
+        this.parent = null;
+        /** Previous sibling */
+        this.prev = null;
+        /** Next sibling */
+        this.next = null;
+        /** The start index of the node. Requires `withStartIndices` on the handler to be `true. */
+        this.startIndex = null;
+        /** The end index of the node. Requires `withEndIndices` on the handler to be `true. */
+        this.endIndex = null;
+    }
+    Object.defineProperty(Node.prototype, "nodeType", {
+        // Read-only aliases
+        get: function () {
+            return nodeTypes.get(this.type) || 1;
+        },
+        enumerable: true,
+        configurable: true
+    });
+    Object.defineProperty(Node.prototype, "parentNode", {
+        // Read-write aliases for properties
+        get: function () {
+            return this.parent || null;
+        },
+        set: function (parent) {
+            this.parent = parent;
+        },
+        enumerable: true,
+        configurable: true
+    });
+    Object.defineProperty(Node.prototype, "previousSibling", {
+        get: function () {
+            return this.prev || null;
+        },
+        set: function (prev) {
+            this.prev = prev;
+        },
+        enumerable: true,
+        configurable: true
+    });
+    Object.defineProperty(Node.prototype, "nextSibling", {
+        get: function () {
+            return this.next || null;
+        },
+        set: function (next) {
+            this.next = next;
+        },
+        enumerable: true,
+        configurable: true
+    });
+    return Node;
+}());
+exports.Node = Node;
+var DataNode = /** @class */ (function (_super) {
+    __extends(DataNode, _super);
+    /**
+     *
+     * @param type The type of the node
+     * @param data The content of the data node
+     */
+    function DataNode(type, data) {
+        var _this = _super.call(this, type) || this;
+        _this.data = data;
+        return _this;
+    }
+    Object.defineProperty(DataNode.prototype, "nodeValue", {
+        get: function () {
+            return this.data;
+        },
+        set: function (data) {
+            this.data = data;
+        },
+        enumerable: true,
+        configurable: true
+    });
+    return DataNode;
+}(Node));
+exports.DataNode = DataNode;
+var ProcessingInstruction = /** @class */ (function (_super) {
+    __extends(ProcessingInstruction, _super);
+    function ProcessingInstruction(name, data) {
+        var _this = _super.call(this, "directive" /* Directive */, data) || this;
+        _this.name = name;
+        return _this;
+    }
+    return ProcessingInstruction;
+}(DataNode));
+exports.ProcessingInstruction = ProcessingInstruction;
+var NodeWithChildren = /** @class */ (function (_super) {
+    __extends(NodeWithChildren, _super);
+    /**
+     *
+     * @param type Type of the node.
+     * @param children Children of the node. Only certain node types can have children.
+     */
+    function NodeWithChildren(type, children) {
+        var _this = _super.call(this, type) || this;
+        _this.children = children;
+        return _this;
+    }
+    Object.defineProperty(NodeWithChildren.prototype, "firstChild", {
+        // Aliases
+        get: function () {
+            return this.children[0] || null;
+        },
+        enumerable: true,
+        configurable: true
+    });
+    Object.defineProperty(NodeWithChildren.prototype, "lastChild", {
+        get: function () {
+            return this.children[this.children.length - 1] || null;
+        },
+        enumerable: true,
+        configurable: true
+    });
+    Object.defineProperty(NodeWithChildren.prototype, "childNodes", {
+        get: function () {
+            return this.children;
+        },
+        set: function (children) {
+            this.children = children;
+        },
+        enumerable: true,
+        configurable: true
+    });
+    return NodeWithChildren;
+}(Node));
+exports.NodeWithChildren = NodeWithChildren;
+var Element = /** @class */ (function (_super) {
+    __extends(Element, _super);
+    /**
+     *
+     * @param name Name of the tag, eg. `div`, `span`
+     * @param attribs Object mapping attribute names to attribute values
+     */
+    function Element(name, attribs) {
+        var _this = _super.call(this, name === "script"
+            ? "script" /* Script */
+            : name === "style"
+                ? "style" /* Style */
+                : "tag" /* Tag */, []) || this;
+        _this.name = name;
+        _this.attribs = attribs;
+        _this.attribs = attribs;
+        return _this;
+    }
+    Object.defineProperty(Element.prototype, "tagName", {
+        // DOM Level 1 aliases
+        get: function () {
+            return this.name;
+        },
+        set: function (name) {
+            this.name = name;
+        },
+        enumerable: true,
+        configurable: true
+    });
+    return Element;
+}(NodeWithChildren));
+exports.Element = Element;
 
 
 /***/ }),
@@ -29061,149 +29060,153 @@ var DomUtils = module.exports;
   !*** ./node_modules/domutils/lib/helpers.js ***!
   \**********************************************/
 /*! no static exports found */
-/***/ (function(module, exports) {
+/***/ (function(module, exports, __webpack_require__) {
 
-// removeSubsets
-// Given an array of nodes, remove any member that is contained by another.
-exports.removeSubsets = function(nodes) {
-	var idx = nodes.length, node, ancestor, replace;
+"use strict";
 
-	// Check if each node (or one of its ancestors) is already contained in the
-	// array.
-	while (--idx > -1) {
-		node = ancestor = nodes[idx];
+Object.defineProperty(exports, "__esModule", { value: true });
+var tagtypes_1 = __webpack_require__(/*! ./tagtypes */ "./node_modules/domutils/lib/tagtypes.js");
+/**
+ * Given an array of nodes, remove any member that is contained by another.
+ *
+ * @param nodes — Nodes to filter.
+ */
+function removeSubsets(nodes) {
+    var idx = nodes.length;
+    // Check if each node (or one of its ancestors) is already contained in the
+    // array.
+    while (--idx >= 0) {
+        var node = nodes[idx];
+        // Remove the node if it is not unique.
+        // We are going through the array from the end, so we only
+        // have to check nodes that preceed the node under consideration in the array.
+        if (idx > 0 && nodes.lastIndexOf(node, idx - 1) >= 0) {
+            nodes.splice(idx, 1);
+            continue;
+        }
+        for (var ancestor = node.parent; ancestor; ancestor = ancestor.parent) {
+            if (nodes.indexOf(ancestor) > -1) {
+                nodes.splice(idx, 1);
+                break;
+            }
+        }
+    }
+    return nodes;
+}
+exports.removeSubsets = removeSubsets;
+/***
+ * Compare the position of one node against another node in any other document.
+ * The return value is a bitmask with the following values:
+ *
+ * document order:
+ * > There is an ordering, document order, defined on all the nodes in the
+ * > document corresponding to the order in which the first character of the
+ * > XML representation of each node occurs in the XML representation of the
+ * > document after expansion of general entities. Thus, the document element
+ * > node will be the first node. Element nodes occur before their children.
+ * > Thus, document order orders element nodes in order of the occurrence of
+ * > their start-tag in the XML (after expansion of entities). The attribute
+ * > nodes of an element occur after the element and before its children. The
+ * > relative order of attribute nodes is implementation-dependent./
+ *
+ * Source:
+ * http://www.w3.org/TR/DOM-Level-3-Core/glossary.html#dt-document-order
+ * @argument nodaA The first node to use in the comparison
+ * @argument nodeB The second node to use in the comparison
+ *
+ * @return A bitmask describing the input nodes' relative position.
+ *
+ *        See http://dom.spec.whatwg.org/#dom-node-comparedocumentposition for
+ *        a description of these values.
+ */
+function compareDocumentPosition(nodeA, nodeB) {
+    var aParents = [];
+    var bParents = [];
+    if (nodeA === nodeB) {
+        return 0;
+    }
+    var current = tagtypes_1.hasChildren(nodeA) ? nodeA : nodeA.parent;
+    while (current) {
+        aParents.unshift(current);
+        current = current.parent;
+    }
+    current = tagtypes_1.hasChildren(nodeB) ? nodeB : nodeB.parent;
+    while (current) {
+        bParents.unshift(current);
+        current = current.parent;
+    }
+    var idx = 0;
+    while (aParents[idx] === bParents[idx]) {
+        idx++;
+    }
+    if (idx === 0) {
+        return 1 /* DISCONNECTED */;
+    }
+    var sharedParent = aParents[idx - 1];
+    var siblings = sharedParent.children;
+    var aSibling = aParents[idx];
+    var bSibling = bParents[idx];
+    if (siblings.indexOf(aSibling) > siblings.indexOf(bSibling)) {
+        if (sharedParent === nodeB) {
+            return 4 /* FOLLOWING */ | 16 /* CONTAINED_BY */;
+        }
+        return 4 /* FOLLOWING */;
+    }
+    else {
+        if (sharedParent === nodeA) {
+            return 2 /* PRECEDING */ | 8 /* CONTAINS */;
+        }
+        return 2 /* PRECEDING */;
+    }
+}
+exports.compareDocumentPosition = compareDocumentPosition;
+/***
+ * Sort an array of nodes based on their relative position in the document and
+ * remove any duplicate nodes. If the array contains nodes that do not belong
+ * to the same document, sort order is unspecified.
+ *
+ * @argument nodes Array of DOM nodes
+ * @returns collection of unique nodes, sorted in document order
+ */
+function uniqueSort(nodes) {
+    nodes = nodes.filter(function (node, i, arr) { return !arr.includes(node, i + 1); });
+    nodes.sort(function (a, b) {
+        var relative = compareDocumentPosition(a, b);
+        if (relative & 2 /* PRECEDING */) {
+            return -1;
+        }
+        else if (relative & 4 /* FOLLOWING */) {
+            return 1;
+        }
+        return 0;
+    });
+    return nodes;
+}
+exports.uniqueSort = uniqueSort;
 
-		// Temporarily remove the node under consideration
-		nodes[idx] = null;
-		replace = true;
 
-		while (ancestor) {
-			if (nodes.indexOf(ancestor) > -1) {
-				replace = false;
-				nodes.splice(idx, 1);
-				break;
-			}
-			ancestor = ancestor.parent;
-		}
+/***/ }),
 
-		// If the node has been found to be unique, re-insert it.
-		if (replace) {
-			nodes[idx] = node;
-		}
-	}
+/***/ "./node_modules/domutils/lib/index.js":
+/*!********************************************!*\
+  !*** ./node_modules/domutils/lib/index.js ***!
+  \********************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
 
-	return nodes;
-};
+"use strict";
 
-// Source: http://dom.spec.whatwg.org/#dom-node-comparedocumentposition
-var POSITION = {
-	DISCONNECTED: 1,
-	PRECEDING: 2,
-	FOLLOWING: 4,
-	CONTAINS: 8,
-	CONTAINED_BY: 16
-};
-
-// Compare the position of one node against another node in any other document.
-// The return value is a bitmask with the following values:
-//
-// document order:
-// > There is an ordering, document order, defined on all the nodes in the
-// > document corresponding to the order in which the first character of the
-// > XML representation of each node occurs in the XML representation of the
-// > document after expansion of general entities. Thus, the document element
-// > node will be the first node. Element nodes occur before their children.
-// > Thus, document order orders element nodes in order of the occurrence of
-// > their start-tag in the XML (after expansion of entities). The attribute
-// > nodes of an element occur after the element and before its children. The
-// > relative order of attribute nodes is implementation-dependent./
-// Source:
-// http://www.w3.org/TR/DOM-Level-3-Core/glossary.html#dt-document-order
-//
-// @argument {Node} nodaA The first node to use in the comparison
-// @argument {Node} nodeB The second node to use in the comparison
-//
-// @return {Number} A bitmask describing the input nodes' relative position.
-//         See http://dom.spec.whatwg.org/#dom-node-comparedocumentposition for
-//         a description of these values.
-var comparePos = exports.compareDocumentPosition = function(nodeA, nodeB) {
-	var aParents = [];
-	var bParents = [];
-	var current, sharedParent, siblings, aSibling, bSibling, idx;
-
-	if (nodeA === nodeB) {
-		return 0;
-	}
-
-	current = nodeA;
-	while (current) {
-		aParents.unshift(current);
-		current = current.parent;
-	}
-	current = nodeB;
-	while (current) {
-		bParents.unshift(current);
-		current = current.parent;
-	}
-
-	idx = 0;
-	while (aParents[idx] === bParents[idx]) {
-		idx++;
-	}
-
-	if (idx === 0) {
-		return POSITION.DISCONNECTED;
-	}
-
-	sharedParent = aParents[idx - 1];
-	siblings = sharedParent.children;
-	aSibling = aParents[idx];
-	bSibling = bParents[idx];
-
-	if (siblings.indexOf(aSibling) > siblings.indexOf(bSibling)) {
-		if (sharedParent === nodeB) {
-			return POSITION.FOLLOWING | POSITION.CONTAINED_BY;
-		}
-		return POSITION.FOLLOWING;
-	} else {
-		if (sharedParent === nodeA) {
-			return POSITION.PRECEDING | POSITION.CONTAINS;
-		}
-		return POSITION.PRECEDING;
-	}
-};
-
-// Sort an array of nodes based on their relative position in the document and
-// remove any duplicate nodes. If the array contains nodes that do not belong
-// to the same document, sort order is unspecified.
-//
-// @argument {Array} nodes Array of DOM nodes
-//
-// @returns {Array} collection of unique nodes, sorted in document order
-exports.uniqueSort = function(nodes) {
-	var idx = nodes.length, node, position;
-
-	nodes = nodes.slice();
-
-	while (--idx > -1) {
-		node = nodes[idx];
-		position = nodes.indexOf(node);
-		if (position > -1 && position < idx) {
-			nodes.splice(idx, 1);
-		}
-	}
-	nodes.sort(function(a, b) {
-		var relative = comparePos(a, b);
-		if (relative & POSITION.PRECEDING) {
-			return -1;
-		} else if (relative & POSITION.FOLLOWING) {
-			return 1;
-		}
-		return 0;
-	});
-
-	return nodes;
-};
+function __export(m) {
+    for (var p in m) if (!exports.hasOwnProperty(p)) exports[p] = m[p];
+}
+Object.defineProperty(exports, "__esModule", { value: true });
+__export(__webpack_require__(/*! ./stringify */ "./node_modules/domutils/lib/stringify.js"));
+__export(__webpack_require__(/*! ./traversal */ "./node_modules/domutils/lib/traversal.js"));
+__export(__webpack_require__(/*! ./manipulation */ "./node_modules/domutils/lib/manipulation.js"));
+__export(__webpack_require__(/*! ./querying */ "./node_modules/domutils/lib/querying.js"));
+__export(__webpack_require__(/*! ./legacy */ "./node_modules/domutils/lib/legacy.js"));
+__export(__webpack_require__(/*! ./helpers */ "./node_modules/domutils/lib/helpers.js"));
+__export(__webpack_require__(/*! ./tagtypes */ "./node_modules/domutils/lib/tagtypes.js"));
 
 
 /***/ }),
@@ -29215,93 +29218,93 @@ exports.uniqueSort = function(nodes) {
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-var ElementType = __webpack_require__(/*! domelementtype */ "./node_modules/domelementtype/index.js");
-var isTag = exports.isTag = ElementType.isTag;
+"use strict";
 
-exports.testElement = function(options, element){
-	for(var key in options){
-		if(!options.hasOwnProperty(key));
-		else if(key === "tag_name"){
-			if(!isTag(element) || !options.tag_name(element.name)){
-				return false;
-			}
-		} else if(key === "tag_type"){
-			if(!options.tag_type(element.type)) return false;
-		} else if(key === "tag_contains"){
-			if(isTag(element) || !options.tag_contains(element.data)){
-				return false;
-			}
-		} else if(!element.attribs || !options[key](element.attribs[key])){
-			return false;
-		}
-	}
-	return true;
-};
-
+Object.defineProperty(exports, "__esModule", { value: true });
+var querying_1 = __webpack_require__(/*! ./querying */ "./node_modules/domutils/lib/querying.js");
+var tagtypes_1 = __webpack_require__(/*! ./tagtypes */ "./node_modules/domutils/lib/tagtypes.js");
+function isTextNode(node) {
+    return node.type === "text" /* Text */;
+}
+/* eslint-disable @typescript-eslint/camelcase */
 var Checks = {
-	tag_name: function(name){
-		if(typeof name === "function"){
-			return function(elem){ return isTag(elem) && name(elem.name); };
-		} else if(name === "*"){
-			return isTag;
-		} else {
-			return function(elem){ return isTag(elem) && elem.name === name; };
-		}
-	},
-	tag_type: function(type){
-		if(typeof type === "function"){
-			return function(elem){ return type(elem.type); };
-		} else {
-			return function(elem){ return elem.type === type; };
-		}
-	},
-	tag_contains: function(data){
-		if(typeof data === "function"){
-			return function(elem){ return !isTag(elem) && data(elem.data); };
-		} else {
-			return function(elem){ return !isTag(elem) && elem.data === data; };
-		}
-	}
+    tag_name: function (name) {
+        if (typeof name === "function") {
+            return function (elem) { return tagtypes_1.isTag(elem) && name(elem.name); };
+        }
+        else if (name === "*") {
+            return tagtypes_1.isTag;
+        }
+        else {
+            return function (elem) { return tagtypes_1.isTag(elem) && elem.name === name; };
+        }
+    },
+    tag_type: function (type) {
+        if (typeof type === "function") {
+            return function (elem) { return type(elem.type); };
+        }
+        else {
+            return function (elem) { return elem.type === type; };
+        }
+    },
+    tag_contains: function (data) {
+        if (typeof data === "function") {
+            return function (elem) { return isTextNode(elem) && data(elem.data); };
+        }
+        else {
+            return function (elem) { return isTextNode(elem) && elem.data === data; };
+        }
+    }
 };
-
-function getAttribCheck(attrib, value){
-	if(typeof value === "function"){
-		return function(elem){ return elem.attribs && value(elem.attribs[attrib]); };
-	} else {
-		return function(elem){ return elem.attribs && elem.attribs[attrib] === value; };
-	}
+/* eslint-enable @typescript-eslint/camelcase */
+function getAttribCheck(attrib, value) {
+    if (typeof value === "function") {
+        return function (elem) { return tagtypes_1.isTag(elem) && value(elem.attribs[attrib]); };
+    }
+    else {
+        return function (elem) { return tagtypes_1.isTag(elem) && elem.attribs[attrib] === value; };
+    }
 }
-
-function combineFuncs(a, b){
-	return function(elem){
-		return a(elem) || b(elem);
-	};
+function combineFuncs(a, b) {
+    return function (elem) { return a(elem) || b(elem); };
 }
-
-exports.getElements = function(options, element, recurse, limit){
-	var funcs = Object.keys(options).map(function(key){
-		var value = options[key];
-		return key in Checks ? Checks[key](value) : getAttribCheck(key, value);
-	});
-
-	return funcs.length === 0 ? [] : this.filter(
-		funcs.reduce(combineFuncs),
-		element, recurse, limit
-	);
-};
-
-exports.getElementById = function(id, element, recurse){
-	if(!Array.isArray(element)) element = [element];
-	return this.findOne(getAttribCheck("id", id), element, recurse !== false);
-};
-
-exports.getElementsByTagName = function(name, element, recurse, limit){
-	return this.filter(Checks.tag_name(name), element, recurse, limit);
-};
-
-exports.getElementsByTagType = function(type, element, recurse, limit){
-	return this.filter(Checks.tag_type(type), element, recurse, limit);
-};
+function compileTest(options) {
+    var funcs = Object.keys(options).map(function (key) {
+        var value = options[key];
+        // @ts-ignore
+        return key in Checks ? Checks[key](value) : getAttribCheck(key, value);
+    });
+    return funcs.length === 0 ? null : funcs.reduce(combineFuncs);
+}
+function testElement(options, element) {
+    var test = compileTest(options);
+    return test ? test(element) : true;
+}
+exports.testElement = testElement;
+function getElements(options, element, recurse, limit) {
+    if (limit === void 0) { limit = Infinity; }
+    var test = compileTest(options);
+    return test ? querying_1.filter(test, element, recurse, limit) : [];
+}
+exports.getElements = getElements;
+function getElementById(id, element, recurse) {
+    if (recurse === void 0) { recurse = true; }
+    if (!Array.isArray(element))
+        element = [element];
+    return querying_1.findOne(getAttribCheck("id", id), element, recurse);
+}
+exports.getElementById = getElementById;
+function getElementsByTagName(name, element, recurse, limit) {
+    if (limit === void 0) { limit = Infinity; }
+    return querying_1.filter(Checks.tag_name(name), element, recurse, limit);
+}
+exports.getElementsByTagName = getElementsByTagName;
+function getElementsByTagType(type, element, recurse, limit) {
+    if (recurse === void 0) { recurse = true; }
+    if (limit === void 0) { limit = Infinity; }
+    return querying_1.filter(Checks.tag_type(type), element, recurse, limit);
+}
+exports.getElementsByTagType = getElementsByTagType;
 
 
 /***/ }),
@@ -29311,85 +29314,110 @@ exports.getElementsByTagType = function(type, element, recurse, limit){
   !*** ./node_modules/domutils/lib/manipulation.js ***!
   \***************************************************/
 /*! no static exports found */
-/***/ (function(module, exports) {
+/***/ (function(module, exports, __webpack_require__) {
 
-exports.removeElement = function(elem){
-	if(elem.prev) elem.prev.next = elem.next;
-	if(elem.next) elem.next.prev = elem.prev;
+"use strict";
 
-	if(elem.parent){
-		var childs = elem.parent.children;
-		childs.splice(childs.lastIndexOf(elem), 1);
-	}
-};
-
-exports.replaceElement = function(elem, replacement){
-	var prev = replacement.prev = elem.prev;
-	if(prev){
-		prev.next = replacement;
-	}
-
-	var next = replacement.next = elem.next;
-	if(next){
-		next.prev = replacement;
-	}
-
-	var parent = replacement.parent = elem.parent;
-	if(parent){
-		var childs = parent.children;
-		childs[childs.lastIndexOf(elem)] = replacement;
-	}
-};
-
-exports.appendChild = function(elem, child){
-	child.parent = elem;
-
-	if(elem.children.push(child) !== 1){
-		var sibling = elem.children[elem.children.length - 2];
-		sibling.next = child;
-		child.prev = sibling;
-		child.next = null;
-	}
-};
-
-exports.append = function(elem, next){
-	var parent = elem.parent,
-		currNext = elem.next;
-
-	next.next = currNext;
-	next.prev = elem;
-	elem.next = next;
-	next.parent = parent;
-
-	if(currNext){
-		currNext.prev = next;
-		if(parent){
-			var childs = parent.children;
-			childs.splice(childs.lastIndexOf(currNext), 0, next);
-		}
-	} else if(parent){
-		parent.children.push(next);
-	}
-};
-
-exports.prepend = function(elem, prev){
-	var parent = elem.parent;
-	if(parent){
-		var childs = parent.children;
-		childs.splice(childs.lastIndexOf(elem), 0, prev);
-	}
-
-	if(elem.prev){
-		elem.prev.next = prev;
-	}
-	
-	prev.parent = parent;
-	prev.prev = elem.prev;
-	prev.next = elem;
-	elem.prev = prev;
-};
-
-
+Object.defineProperty(exports, "__esModule", { value: true });
+/***
+ * Remove an element from the dom
+ *
+ * @argument elem The element to be removed
+ */
+function removeElement(elem) {
+    if (elem.prev)
+        elem.prev.next = elem.next;
+    if (elem.next)
+        elem.next.prev = elem.prev;
+    if (elem.parent) {
+        var childs = elem.parent.children;
+        childs.splice(childs.lastIndexOf(elem), 1);
+    }
+}
+exports.removeElement = removeElement;
+/***
+ * Replace an element in the dom
+ *
+ * @argument elem The element to be replaced
+ * @argument replacement The element to be added
+ */
+function replaceElement(elem, replacement) {
+    var prev = (replacement.prev = elem.prev);
+    if (prev) {
+        prev.next = replacement;
+    }
+    var next = (replacement.next = elem.next);
+    if (next) {
+        next.prev = replacement;
+    }
+    var parent = (replacement.parent = elem.parent);
+    if (parent) {
+        var childs = parent.children;
+        childs[childs.lastIndexOf(elem)] = replacement;
+    }
+}
+exports.replaceElement = replaceElement;
+/***
+ * Append a child to an element
+ *
+ * @argument elem The element to append to
+ * @argument child The element to be added as a child
+ */
+function appendChild(elem, child) {
+    child.parent = elem;
+    if (elem.children.push(child) !== 1) {
+        var sibling = elem.children[elem.children.length - 2];
+        sibling.next = child;
+        child.prev = sibling;
+        child.next = null;
+    }
+}
+exports.appendChild = appendChild;
+/***
+ * Append an element after another
+ *
+ * @argument elem The element to append to
+ * @argument next The element be added
+ */
+function append(elem, next) {
+    var parent = elem.parent, currNext = elem.next;
+    next.next = currNext;
+    next.prev = elem;
+    elem.next = next;
+    next.parent = parent;
+    if (currNext) {
+        currNext.prev = next;
+        if (parent) {
+            var childs = parent.children;
+            childs.splice(childs.lastIndexOf(currNext), 0, next);
+        }
+    }
+    else if (parent) {
+        parent.children.push(next);
+    }
+}
+exports.append = append;
+/***
+ * Prepend an element before another
+ *
+ * @argument elem The element to append to
+ * @argument prev The element be added
+ */
+function prepend(elem, prev) {
+    var parent = elem.parent;
+    if (parent) {
+        var childs = parent.children;
+        childs.splice(childs.lastIndexOf(elem), 0, prev);
+    }
+    if (elem.prev) {
+        elem.prev.next = prev;
+    }
+    prev.parent = parent;
+    prev.prev = elem.prev;
+    prev.next = elem;
+    elem.prev = prev;
+}
+exports.prepend = prepend;
 
 
 /***/ }),
@@ -29401,101 +29429,93 @@ exports.prepend = function(elem, prev){
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-var isTag = __webpack_require__(/*! domelementtype */ "./node_modules/domelementtype/index.js").isTag;
+"use strict";
 
-module.exports = {
-	filter: filter,
-	find: find,
-	findOneChild: findOneChild,
-	findOne: findOne,
-	existsOne: existsOne,
-	findAll: findAll
-};
-
-function filter(test, element, recurse, limit){
-	if(!Array.isArray(element)) element = [element];
-
-	if(typeof limit !== "number" || !isFinite(limit)){
-		limit = Infinity;
-	}
-	return find(test, element, recurse !== false, limit);
+Object.defineProperty(exports, "__esModule", { value: true });
+var tagtypes_1 = __webpack_require__(/*! ./tagtypes */ "./node_modules/domutils/lib/tagtypes.js");
+function filter(test, element, recurse, limit) {
+    if (recurse === void 0) { recurse = true; }
+    if (limit === void 0) { limit = Infinity; }
+    if (!Array.isArray(element))
+        element = [element];
+    return find(test, element, recurse, limit);
 }
-
-function find(test, elems, recurse, limit){
-	var result = [], childs;
-
-	for(var i = 0, j = elems.length; i < j; i++){
-		if(test(elems[i])){
-			result.push(elems[i]);
-			if(--limit <= 0) break;
-		}
-
-		childs = elems[i].children;
-		if(recurse && childs && childs.length > 0){
-			childs = find(test, childs, recurse, limit);
-			result = result.concat(childs);
-			limit -= childs.length;
-			if(limit <= 0) break;
-		}
-	}
-
-	return result;
+exports.filter = filter;
+function find(test, elems, recurse, limit) {
+    var result = [];
+    for (var i = 0; i < elems.length; i++) {
+        var elem = elems[i];
+        if (test(elem)) {
+            result.push(elem);
+            if (--limit <= 0)
+                break;
+        }
+        if (recurse && tagtypes_1.hasChildren(elem) && elem.children.length > 0) {
+            var children = find(test, elem.children, recurse, limit);
+            result = result.concat(children);
+            limit -= children.length;
+            if (limit <= 0)
+                break;
+        }
+    }
+    return result;
 }
-
-function findOneChild(test, elems){
-	for(var i = 0, l = elems.length; i < l; i++){
-		if(test(elems[i])) return elems[i];
-	}
-
-	return null;
+exports.find = find;
+function findOneChild(test, elems) {
+    for (var i = 0; i < elems.length; i++) {
+        if (test(elems[i]))
+            return elems[i];
+    }
+    return null;
 }
-
-function findOne(test, elems){
-	var elem = null;
-
-	for(var i = 0, l = elems.length; i < l && !elem; i++){
-		if(!isTag(elems[i])){
-			continue;
-		} else if(test(elems[i])){
-			elem = elems[i];
-		} else if(elems[i].children.length > 0){
-			elem = findOne(test, elems[i].children);
-		}
-	}
-
-	return elem;
+exports.findOneChild = findOneChild;
+function findOne(test, elems, recurse) {
+    if (recurse === void 0) { recurse = true; }
+    var elem = null;
+    for (var i = 0; i < elems.length && !elem; i++) {
+        var checked = elems[i];
+        if (!tagtypes_1.isTag(checked)) {
+            continue;
+        }
+        else if (test(checked)) {
+            elem = checked;
+        }
+        else if (recurse && checked.children.length > 0) {
+            elem = findOne(test, checked.children);
+        }
+    }
+    return elem;
 }
-
-function existsOne(test, elems){
-	for(var i = 0, l = elems.length; i < l; i++){
-		if(
-			isTag(elems[i]) && (
-				test(elems[i]) || (
-					elems[i].children.length > 0 &&
-					existsOne(test, elems[i].children)
-				)
-			)
-		){
-			return true;
-		}
-	}
-
-	return false;
+exports.findOne = findOne;
+function existsOne(test, elems) {
+    for (var i = 0; i < elems.length; i++) {
+        var checked = elems[i];
+        if (tagtypes_1.isTag(checked) &&
+            (test(checked) ||
+                (checked.children.length > 0 &&
+                    existsOne(test, checked.children)))) {
+            return true;
+        }
+    }
+    return false;
 }
-
-function findAll(test, rootElems){
-	var result = [];
-	var stack = rootElems.slice();
-	while(stack.length){
-		var elem = stack.shift();
-		if(!isTag(elem)) continue;
-		if (elem.children && elem.children.length > 0) {
-			stack.unshift.apply(stack, elem.children);
-		}
-		if(test(elem)) result.push(elem);
-	}
-	return result;
+exports.existsOne = existsOne;
+function findAll(test, rootElems) {
+    var result = [];
+    var stack = rootElems.slice();
+    while (stack.length) {
+        var elem = stack.shift();
+        if (!elem || !tagtypes_1.isTag(elem))
+            continue;
+        if (elem.children && elem.children.length > 0) {
+            stack.unshift.apply(stack, elem.children);
+        }
+        if (test(elem))
+            result.push(elem);
+    }
+    return result;
 }
+exports.findAll = findAll;
 
 
 /***/ }),
@@ -29507,29 +29527,68 @@ function findAll(test, rootElems){
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-var ElementType = __webpack_require__(/*! domelementtype */ "./node_modules/domelementtype/index.js"),
-    getOuterHTML = __webpack_require__(/*! dom-serializer */ "./node_modules/dom-serializer/index.js"),
-    isTag = ElementType.isTag;
+"use strict";
 
-module.exports = {
-	getInnerHTML: getInnerHTML,
-	getOuterHTML: getOuterHTML,
-	getText: getText
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
 };
-
-function getInnerHTML(elem, opts){
-	return elem.children ? elem.children.map(function(elem){
-		return getOuterHTML(elem, opts);
-	}).join("") : "";
+Object.defineProperty(exports, "__esModule", { value: true });
+var tagtypes_1 = __webpack_require__(/*! ./tagtypes */ "./node_modules/domutils/lib/tagtypes.js");
+var dom_serializer_1 = __importDefault(__webpack_require__(/*! dom-serializer */ "./node_modules/dom-serializer/index.js"));
+exports.getOuterHTML = dom_serializer_1.default;
+function getInnerHTML(node, options) {
+    return tagtypes_1.hasChildren(node)
+        ? node.children.map(function (node) { return exports.getOuterHTML(node, options); }).join("")
+        : "";
 }
-
-function getText(elem){
-	if(Array.isArray(elem)) return elem.map(getText).join("");
-	if(isTag(elem)) return elem.name === "br" ? "\n" : getText(elem.children);
-	if(elem.type === ElementType.CDATA) return getText(elem.children);
-	if(elem.type === ElementType.Text) return elem.data;
-	return "";
+exports.getInnerHTML = getInnerHTML;
+function getText(node) {
+    if (Array.isArray(node))
+        return node.map(getText).join("");
+    if (tagtypes_1.isTag(node))
+        return node.name === "br" ? "\n" : getText(node.children);
+    if (tagtypes_1.isCDATA(node))
+        return getText(node.children);
+    if (tagtypes_1.isText(node))
+        return node.data;
+    return "";
 }
+exports.getText = getText;
+
+
+/***/ }),
+
+/***/ "./node_modules/domutils/lib/tagtypes.js":
+/*!***********************************************!*\
+  !*** ./node_modules/domutils/lib/tagtypes.js ***!
+  \***********************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+Object.defineProperty(exports, "__esModule", { value: true });
+var domelementtype_1 = __webpack_require__(/*! domelementtype */ "./node_modules/domelementtype/lib/index.js");
+function isTag(node) {
+    return domelementtype_1.isTag(node);
+}
+exports.isTag = isTag;
+function isCDATA(node) {
+    return "cdata" /* CDATA */ === node.type;
+}
+exports.isCDATA = isCDATA;
+function isText(node) {
+    return node.type === "text" /* Text */;
+}
+exports.isText = isText;
+function isComment(node) {
+    return node.type === "comment" /* Comment */;
+}
+exports.isComment = isComment;
+function hasChildren(node) {
+    return Object.prototype.hasOwnProperty.call(node, "children");
+}
+exports.hasChildren = hasChildren;
 
 
 /***/ }),
@@ -29539,32 +29598,42 @@ function getText(elem){
   !*** ./node_modules/domutils/lib/traversal.js ***!
   \************************************************/
 /*! no static exports found */
-/***/ (function(module, exports) {
+/***/ (function(module, exports, __webpack_require__) {
 
-var getChildren = exports.getChildren = function(elem){
-	return elem.children;
-};
+"use strict";
 
-var getParent = exports.getParent = function(elem){
-	return elem.parent;
-};
-
-exports.getSiblings = function(elem){
-	var parent = getParent(elem);
-	return parent ? getChildren(parent) : [elem];
-};
-
-exports.getAttributeValue = function(elem, name){
-	return elem.attribs && elem.attribs[name];
-};
-
-exports.hasAttrib = function(elem, name){
-	return !!elem.attribs && hasOwnProperty.call(elem.attribs, name);
-};
-
-exports.getName = function(elem){
-	return elem.name;
-};
+Object.defineProperty(exports, "__esModule", { value: true });
+function getChildren(elem) {
+    // @ts-ignore
+    return elem.children || null;
+}
+exports.getChildren = getChildren;
+function getParent(elem) {
+    return elem.parent || null;
+}
+exports.getParent = getParent;
+function getSiblings(elem) {
+    var parent = getParent(elem);
+    return parent ? getChildren(parent) : [elem];
+}
+exports.getSiblings = getSiblings;
+function getAttributeValue(elem, name) {
+    return elem.attribs && elem.attribs[name];
+}
+exports.getAttributeValue = getAttributeValue;
+function hasAttrib(elem, name) {
+    return !!getAttributeValue(elem, name);
+}
+exports.hasAttrib = hasAttrib;
+/***
+ * Returns the name property of an element
+ *
+ * @argument elem The element to get the name for
+ */
+function getName(elem) {
+    return elem.name;
+}
+exports.getName = getName;
 
 
 /***/ }),
@@ -33578,6 +33647,72 @@ module.exports = JSON.parse("{\"name\":\"elliptic\",\"version\":\"6.5.1\",\"desc
 
 /***/ }),
 
+/***/ "./node_modules/entities/lib/decode.js":
+/*!*********************************************!*\
+  !*** ./node_modules/entities/lib/decode.js ***!
+  \*********************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
+Object.defineProperty(exports, "__esModule", { value: true });
+var entities_json_1 = __importDefault(__webpack_require__(/*! ./maps/entities.json */ "./node_modules/entities/lib/maps/entities.json"));
+var legacy_json_1 = __importDefault(__webpack_require__(/*! ./maps/legacy.json */ "./node_modules/entities/lib/maps/legacy.json"));
+var xml_json_1 = __importDefault(__webpack_require__(/*! ./maps/xml.json */ "./node_modules/entities/lib/maps/xml.json"));
+var decode_codepoint_1 = __importDefault(__webpack_require__(/*! ./decode_codepoint */ "./node_modules/entities/lib/decode_codepoint.js"));
+exports.decodeXML = getStrictDecoder(xml_json_1.default);
+exports.decodeHTMLStrict = getStrictDecoder(entities_json_1.default);
+function getStrictDecoder(map) {
+    var keys = Object.keys(map).join("|");
+    var replace = getReplacer(map);
+    keys += "|#[xX][\\da-fA-F]+|#\\d+";
+    var re = new RegExp("&(?:" + keys + ");", "g");
+    return function (str) { return String(str).replace(re, replace); };
+}
+var sorter = function (a, b) { return (a < b ? 1 : -1); };
+exports.decodeHTML = (function () {
+    var legacy = Object.keys(legacy_json_1.default).sort(sorter);
+    var keys = Object.keys(entities_json_1.default).sort(sorter);
+    for (var i = 0, j = 0; i < keys.length; i++) {
+        if (legacy[j] === keys[i]) {
+            keys[i] += ";?";
+            j++;
+        }
+        else {
+            keys[i] += ";";
+        }
+    }
+    var re = new RegExp("&(?:" + keys.join("|") + "|#[xX][\\da-fA-F]+;?|#\\d+;?)", "g");
+    var replace = getReplacer(entities_json_1.default);
+    function replacer(str) {
+        if (str.substr(-1) !== ";")
+            str += ";";
+        return replace(str);
+    }
+    //TODO consider creating a merged map
+    return function (str) {
+        return String(str).replace(re, replacer);
+    };
+})();
+function getReplacer(map) {
+    return function replace(str) {
+        if (str.charAt(1) === "#") {
+            if (str.charAt(2) === "X" || str.charAt(2) === "x") {
+                return decode_codepoint_1.default(parseInt(str.substr(3), 16));
+            }
+            return decode_codepoint_1.default(parseInt(str.substr(2), 10));
+        }
+        return map[str.slice(1, -1)];
+    };
+}
+
+
+/***/ }),
+
 /***/ "./node_modules/entities/lib/decode_codepoint.js":
 /*!*******************************************************!*\
   !*** ./node_modules/entities/lib/decode_codepoint.js ***!
@@ -33585,39 +33720,164 @@ module.exports = JSON.parse("{\"name\":\"elliptic\",\"version\":\"6.5.1\",\"desc
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-var decodeMap = __webpack_require__(/*! ../maps/decode.json */ "./node_modules/entities/maps/decode.json");
+"use strict";
 
-module.exports = decodeCodePoint;
-
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
+Object.defineProperty(exports, "__esModule", { value: true });
+var decode_json_1 = __importDefault(__webpack_require__(/*! ./maps/decode.json */ "./node_modules/entities/lib/maps/decode.json"));
 // modified version of https://github.com/mathiasbynens/he/blob/master/src/he.js#L94-L119
 function decodeCodePoint(codePoint) {
     if ((codePoint >= 0xd800 && codePoint <= 0xdfff) || codePoint > 0x10ffff) {
         return "\uFFFD";
     }
-
-    if (codePoint in decodeMap) {
-        codePoint = decodeMap[codePoint];
+    if (codePoint in decode_json_1.default) {
+        // @ts-ignore
+        codePoint = decode_json_1.default[codePoint];
     }
-
     var output = "";
-
     if (codePoint > 0xffff) {
         codePoint -= 0x10000;
         output += String.fromCharCode(((codePoint >>> 10) & 0x3ff) | 0xd800);
         codePoint = 0xdc00 | (codePoint & 0x3ff);
     }
-
     output += String.fromCharCode(codePoint);
     return output;
 }
+exports.default = decodeCodePoint;
 
 
 /***/ }),
 
-/***/ "./node_modules/entities/maps/decode.json":
-/*!************************************************!*\
-  !*** ./node_modules/entities/maps/decode.json ***!
-  \************************************************/
+/***/ "./node_modules/entities/lib/encode.js":
+/*!*********************************************!*\
+  !*** ./node_modules/entities/lib/encode.js ***!
+  \*********************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
+Object.defineProperty(exports, "__esModule", { value: true });
+var xml_json_1 = __importDefault(__webpack_require__(/*! ./maps/xml.json */ "./node_modules/entities/lib/maps/xml.json"));
+var inverseXML = getInverseObj(xml_json_1.default);
+var xmlReplacer = getInverseReplacer(inverseXML);
+exports.encodeXML = getInverse(inverseXML, xmlReplacer);
+var entities_json_1 = __importDefault(__webpack_require__(/*! ./maps/entities.json */ "./node_modules/entities/lib/maps/entities.json"));
+var inverseHTML = getInverseObj(entities_json_1.default);
+var htmlReplacer = getInverseReplacer(inverseHTML);
+exports.encodeHTML = getInverse(inverseHTML, htmlReplacer);
+function getInverseObj(obj) {
+    return Object.keys(obj)
+        .sort()
+        .reduce(function (inverse, name) {
+        inverse[obj[name]] = "&" + name + ";";
+        return inverse;
+    }, {});
+}
+function getInverseReplacer(inverse) {
+    var single = [];
+    var multiple = [];
+    Object.keys(inverse).forEach(function (k) {
+        return k.length === 1
+            ? // Add value to single array
+                single.push("\\" + k)
+            : // Add value to multiple array
+                multiple.push(k);
+    });
+    //TODO add ranges
+    multiple.unshift("[" + single.join("") + "]");
+    return new RegExp(multiple.join("|"), "g");
+}
+var reNonASCII = /[^\0-\x7F]/g;
+var reAstralSymbols = /[\uD800-\uDBFF][\uDC00-\uDFFF]/g;
+function singleCharReplacer(c) {
+    return "&#x" + c
+        .charCodeAt(0)
+        .toString(16)
+        .toUpperCase() + ";";
+}
+// eslint-disable-next-line @typescript-eslint/no-unused-vars, @typescript-eslint/no-explicit-any
+function astralReplacer(c, _) {
+    // http://mathiasbynens.be/notes/javascript-encoding#surrogate-formulae
+    var high = c.charCodeAt(0);
+    var low = c.charCodeAt(1);
+    var codePoint = (high - 0xd800) * 0x400 + low - 0xdc00 + 0x10000;
+    return "&#x" + codePoint.toString(16).toUpperCase() + ";";
+}
+function getInverse(inverse, re) {
+    return function (data) {
+        return data
+            .replace(re, function (name) { return inverse[name]; })
+            .replace(reAstralSymbols, astralReplacer)
+            .replace(reNonASCII, singleCharReplacer);
+    };
+}
+var reXmlChars = getInverseReplacer(inverseXML);
+function escape(data) {
+    return data
+        .replace(reXmlChars, singleCharReplacer)
+        .replace(reAstralSymbols, astralReplacer)
+        .replace(reNonASCII, singleCharReplacer);
+}
+exports.escape = escape;
+
+
+/***/ }),
+
+/***/ "./node_modules/entities/lib/index.js":
+/*!********************************************!*\
+  !*** ./node_modules/entities/lib/index.js ***!
+  \********************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+Object.defineProperty(exports, "__esModule", { value: true });
+var decode_1 = __webpack_require__(/*! ./decode */ "./node_modules/entities/lib/decode.js");
+var encode_1 = __webpack_require__(/*! ./encode */ "./node_modules/entities/lib/encode.js");
+function decode(data, level) {
+    return (!level || level <= 0 ? decode_1.decodeXML : decode_1.decodeHTML)(data);
+}
+exports.decode = decode;
+function decodeStrict(data, level) {
+    return (!level || level <= 0 ? decode_1.decodeXML : decode_1.decodeHTMLStrict)(data);
+}
+exports.decodeStrict = decodeStrict;
+function encode(data, level) {
+    return (!level || level <= 0 ? encode_1.encodeXML : encode_1.encodeHTML)(data);
+}
+exports.encode = encode;
+var encode_2 = __webpack_require__(/*! ./encode */ "./node_modules/entities/lib/encode.js");
+exports.encodeXML = encode_2.encodeXML;
+exports.encodeHTML = encode_2.encodeHTML;
+exports.escape = encode_2.escape;
+// Legacy aliases
+exports.encodeHTML4 = encode_2.encodeHTML;
+exports.encodeHTML5 = encode_2.encodeHTML;
+var decode_2 = __webpack_require__(/*! ./decode */ "./node_modules/entities/lib/decode.js");
+exports.decodeXML = decode_2.decodeXML;
+exports.decodeHTML = decode_2.decodeHTML;
+exports.decodeHTMLStrict = decode_2.decodeHTMLStrict;
+// Legacy aliases
+exports.decodeHTML4 = decode_2.decodeHTML;
+exports.decodeHTML5 = decode_2.decodeHTML;
+exports.decodeHTML4Strict = decode_2.decodeHTMLStrict;
+exports.decodeHTML5Strict = decode_2.decodeHTMLStrict;
+exports.decodeXMLStrict = decode_2.decodeXML;
+
+
+/***/ }),
+
+/***/ "./node_modules/entities/lib/maps/decode.json":
+/*!****************************************************!*\
+  !*** ./node_modules/entities/lib/maps/decode.json ***!
+  \****************************************************/
 /*! exports provided: 0, 128, 130, 131, 132, 133, 134, 135, 136, 137, 138, 139, 140, 142, 145, 146, 147, 148, 149, 150, 151, 152, 153, 154, 155, 156, 158, 159, default */
 /***/ (function(module) {
 
@@ -33625,10 +33885,10 @@ module.exports = JSON.parse("{\"0\":65533,\"128\":8364,\"130\":8218,\"131\":402,
 
 /***/ }),
 
-/***/ "./node_modules/entities/maps/entities.json":
-/*!**************************************************!*\
-  !*** ./node_modules/entities/maps/entities.json ***!
-  \**************************************************/
+/***/ "./node_modules/entities/lib/maps/entities.json":
+/*!******************************************************!*\
+  !*** ./node_modules/entities/lib/maps/entities.json ***!
+  \******************************************************/
 /*! exports provided: Aacute, aacute, Abreve, abreve, ac, acd, acE, Acirc, acirc, acute, Acy, acy, AElig, aelig, af, Afr, afr, Agrave, agrave, alefsym, aleph, Alpha, alpha, Amacr, amacr, amalg, amp, AMP, andand, And, and, andd, andslope, andv, ang, ange, angle, angmsdaa, angmsdab, angmsdac, angmsdad, angmsdae, angmsdaf, angmsdag, angmsdah, angmsd, angrt, angrtvb, angrtvbd, angsph, angst, angzarr, Aogon, aogon, Aopf, aopf, apacir, ap, apE, ape, apid, apos, ApplyFunction, approx, approxeq, Aring, aring, Ascr, ascr, Assign, ast, asymp, asympeq, Atilde, atilde, Auml, auml, awconint, awint, backcong, backepsilon, backprime, backsim, backsimeq, Backslash, Barv, barvee, barwed, Barwed, barwedge, bbrk, bbrktbrk, bcong, Bcy, bcy, bdquo, becaus, because, Because, bemptyv, bepsi, bernou, Bernoullis, Beta, beta, beth, between, Bfr, bfr, bigcap, bigcirc, bigcup, bigodot, bigoplus, bigotimes, bigsqcup, bigstar, bigtriangledown, bigtriangleup, biguplus, bigvee, bigwedge, bkarow, blacklozenge, blacksquare, blacktriangle, blacktriangledown, blacktriangleleft, blacktriangleright, blank, blk12, blk14, blk34, block, bne, bnequiv, bNot, bnot, Bopf, bopf, bot, bottom, bowtie, boxbox, boxdl, boxdL, boxDl, boxDL, boxdr, boxdR, boxDr, boxDR, boxh, boxH, boxhd, boxHd, boxhD, boxHD, boxhu, boxHu, boxhU, boxHU, boxminus, boxplus, boxtimes, boxul, boxuL, boxUl, boxUL, boxur, boxuR, boxUr, boxUR, boxv, boxV, boxvh, boxvH, boxVh, boxVH, boxvl, boxvL, boxVl, boxVL, boxvr, boxvR, boxVr, boxVR, bprime, breve, Breve, brvbar, bscr, Bscr, bsemi, bsim, bsime, bsolb, bsol, bsolhsub, bull, bullet, bump, bumpE, bumpe, Bumpeq, bumpeq, Cacute, cacute, capand, capbrcup, capcap, cap, Cap, capcup, capdot, CapitalDifferentialD, caps, caret, caron, Cayleys, ccaps, Ccaron, ccaron, Ccedil, ccedil, Ccirc, ccirc, Cconint, ccups, ccupssm, Cdot, cdot, cedil, Cedilla, cemptyv, cent, centerdot, CenterDot, cfr, Cfr, CHcy, chcy, check, checkmark, Chi, chi, circ, circeq, circlearrowleft, circlearrowright, circledast, circledcirc, circleddash, CircleDot, circledR, circledS, CircleMinus, CirclePlus, CircleTimes, cir, cirE, cire, cirfnint, cirmid, cirscir, ClockwiseContourIntegral, CloseCurlyDoubleQuote, CloseCurlyQuote, clubs, clubsuit, colon, Colon, Colone, colone, coloneq, comma, commat, comp, compfn, complement, complexes, cong, congdot, Congruent, conint, Conint, ContourIntegral, copf, Copf, coprod, Coproduct, copy, COPY, copysr, CounterClockwiseContourIntegral, crarr, cross, Cross, Cscr, cscr, csub, csube, csup, csupe, ctdot, cudarrl, cudarrr, cuepr, cuesc, cularr, cularrp, cupbrcap, cupcap, CupCap, cup, Cup, cupcup, cupdot, cupor, cups, curarr, curarrm, curlyeqprec, curlyeqsucc, curlyvee, curlywedge, curren, curvearrowleft, curvearrowright, cuvee, cuwed, cwconint, cwint, cylcty, dagger, Dagger, daleth, darr, Darr, dArr, dash, Dashv, dashv, dbkarow, dblac, Dcaron, dcaron, Dcy, dcy, ddagger, ddarr, DD, dd, DDotrahd, ddotseq, deg, Del, Delta, delta, demptyv, dfisht, Dfr, dfr, dHar, dharl, dharr, DiacriticalAcute, DiacriticalDot, DiacriticalDoubleAcute, DiacriticalGrave, DiacriticalTilde, diam, diamond, Diamond, diamondsuit, diams, die, DifferentialD, digamma, disin, div, divide, divideontimes, divonx, DJcy, djcy, dlcorn, dlcrop, dollar, Dopf, dopf, Dot, dot, DotDot, doteq, doteqdot, DotEqual, dotminus, dotplus, dotsquare, doublebarwedge, DoubleContourIntegral, DoubleDot, DoubleDownArrow, DoubleLeftArrow, DoubleLeftRightArrow, DoubleLeftTee, DoubleLongLeftArrow, DoubleLongLeftRightArrow, DoubleLongRightArrow, DoubleRightArrow, DoubleRightTee, DoubleUpArrow, DoubleUpDownArrow, DoubleVerticalBar, DownArrowBar, downarrow, DownArrow, Downarrow, DownArrowUpArrow, DownBreve, downdownarrows, downharpoonleft, downharpoonright, DownLeftRightVector, DownLeftTeeVector, DownLeftVectorBar, DownLeftVector, DownRightTeeVector, DownRightVectorBar, DownRightVector, DownTeeArrow, DownTee, drbkarow, drcorn, drcrop, Dscr, dscr, DScy, dscy, dsol, Dstrok, dstrok, dtdot, dtri, dtrif, duarr, duhar, dwangle, DZcy, dzcy, dzigrarr, Eacute, eacute, easter, Ecaron, ecaron, Ecirc, ecirc, ecir, ecolon, Ecy, ecy, eDDot, Edot, edot, eDot, ee, efDot, Efr, efr, eg, Egrave, egrave, egs, egsdot, el, Element, elinters, ell, els, elsdot, Emacr, emacr, empty, emptyset, EmptySmallSquare, emptyv, EmptyVerySmallSquare, emsp13, emsp14, emsp, ENG, eng, ensp, Eogon, eogon, Eopf, eopf, epar, eparsl, eplus, epsi, Epsilon, epsilon, epsiv, eqcirc, eqcolon, eqsim, eqslantgtr, eqslantless, Equal, equals, EqualTilde, equest, Equilibrium, equiv, equivDD, eqvparsl, erarr, erDot, escr, Escr, esdot, Esim, esim, Eta, eta, ETH, eth, Euml, euml, euro, excl, exist, Exists, expectation, exponentiale, ExponentialE, fallingdotseq, Fcy, fcy, female, ffilig, fflig, ffllig, Ffr, ffr, filig, FilledSmallSquare, FilledVerySmallSquare, fjlig, flat, fllig, fltns, fnof, Fopf, fopf, forall, ForAll, fork, forkv, Fouriertrf, fpartint, frac12, frac13, frac14, frac15, frac16, frac18, frac23, frac25, frac34, frac35, frac38, frac45, frac56, frac58, frac78, frasl, frown, fscr, Fscr, gacute, Gamma, gamma, Gammad, gammad, gap, Gbreve, gbreve, Gcedil, Gcirc, gcirc, Gcy, gcy, Gdot, gdot, ge, gE, gEl, gel, geq, geqq, geqslant, gescc, ges, gesdot, gesdoto, gesdotol, gesl, gesles, Gfr, gfr, gg, Gg, ggg, gimel, GJcy, gjcy, gla, gl, glE, glj, gnap, gnapprox, gne, gnE, gneq, gneqq, gnsim, Gopf, gopf, grave, GreaterEqual, GreaterEqualLess, GreaterFullEqual, GreaterGreater, GreaterLess, GreaterSlantEqual, GreaterTilde, Gscr, gscr, gsim, gsime, gsiml, gtcc, gtcir, gt, GT, Gt, gtdot, gtlPar, gtquest, gtrapprox, gtrarr, gtrdot, gtreqless, gtreqqless, gtrless, gtrsim, gvertneqq, gvnE, Hacek, hairsp, half, hamilt, HARDcy, hardcy, harrcir, harr, hArr, harrw, Hat, hbar, Hcirc, hcirc, hearts, heartsuit, hellip, hercon, hfr, Hfr, HilbertSpace, hksearow, hkswarow, hoarr, homtht, hookleftarrow, hookrightarrow, hopf, Hopf, horbar, HorizontalLine, hscr, Hscr, hslash, Hstrok, hstrok, HumpDownHump, HumpEqual, hybull, hyphen, Iacute, iacute, ic, Icirc, icirc, Icy, icy, Idot, IEcy, iecy, iexcl, iff, ifr, Ifr, Igrave, igrave, ii, iiiint, iiint, iinfin, iiota, IJlig, ijlig, Imacr, imacr, image, ImaginaryI, imagline, imagpart, imath, Im, imof, imped, Implies, incare, in, infin, infintie, inodot, intcal, int, Int, integers, Integral, intercal, Intersection, intlarhk, intprod, InvisibleComma, InvisibleTimes, IOcy, iocy, Iogon, iogon, Iopf, iopf, Iota, iota, iprod, iquest, iscr, Iscr, isin, isindot, isinE, isins, isinsv, isinv, it, Itilde, itilde, Iukcy, iukcy, Iuml, iuml, Jcirc, jcirc, Jcy, jcy, Jfr, jfr, jmath, Jopf, jopf, Jscr, jscr, Jsercy, jsercy, Jukcy, jukcy, Kappa, kappa, kappav, Kcedil, kcedil, Kcy, kcy, Kfr, kfr, kgreen, KHcy, khcy, KJcy, kjcy, Kopf, kopf, Kscr, kscr, lAarr, Lacute, lacute, laemptyv, lagran, Lambda, lambda, lang, Lang, langd, langle, lap, Laplacetrf, laquo, larrb, larrbfs, larr, Larr, lArr, larrfs, larrhk, larrlp, larrpl, larrsim, larrtl, latail, lAtail, lat, late, lates, lbarr, lBarr, lbbrk, lbrace, lbrack, lbrke, lbrksld, lbrkslu, Lcaron, lcaron, Lcedil, lcedil, lceil, lcub, Lcy, lcy, ldca, ldquo, ldquor, ldrdhar, ldrushar, ldsh, le, lE, LeftAngleBracket, LeftArrowBar, leftarrow, LeftArrow, Leftarrow, LeftArrowRightArrow, leftarrowtail, LeftCeiling, LeftDoubleBracket, LeftDownTeeVector, LeftDownVectorBar, LeftDownVector, LeftFloor, leftharpoondown, leftharpoonup, leftleftarrows, leftrightarrow, LeftRightArrow, Leftrightarrow, leftrightarrows, leftrightharpoons, leftrightsquigarrow, LeftRightVector, LeftTeeArrow, LeftTee, LeftTeeVector, leftthreetimes, LeftTriangleBar, LeftTriangle, LeftTriangleEqual, LeftUpDownVector, LeftUpTeeVector, LeftUpVectorBar, LeftUpVector, LeftVectorBar, LeftVector, lEg, leg, leq, leqq, leqslant, lescc, les, lesdot, lesdoto, lesdotor, lesg, lesges, lessapprox, lessdot, lesseqgtr, lesseqqgtr, LessEqualGreater, LessFullEqual, LessGreater, lessgtr, LessLess, lesssim, LessSlantEqual, LessTilde, lfisht, lfloor, Lfr, lfr, lg, lgE, lHar, lhard, lharu, lharul, lhblk, LJcy, ljcy, llarr, ll, Ll, llcorner, Lleftarrow, llhard, lltri, Lmidot, lmidot, lmoustache, lmoust, lnap, lnapprox, lne, lnE, lneq, lneqq, lnsim, loang, loarr, lobrk, longleftarrow, LongLeftArrow, Longleftarrow, longleftrightarrow, LongLeftRightArrow, Longleftrightarrow, longmapsto, longrightarrow, LongRightArrow, Longrightarrow, looparrowleft, looparrowright, lopar, Lopf, lopf, loplus, lotimes, lowast, lowbar, LowerLeftArrow, LowerRightArrow, loz, lozenge, lozf, lpar, lparlt, lrarr, lrcorner, lrhar, lrhard, lrm, lrtri, lsaquo, lscr, Lscr, lsh, Lsh, lsim, lsime, lsimg, lsqb, lsquo, lsquor, Lstrok, lstrok, ltcc, ltcir, lt, LT, Lt, ltdot, lthree, ltimes, ltlarr, ltquest, ltri, ltrie, ltrif, ltrPar, lurdshar, luruhar, lvertneqq, lvnE, macr, male, malt, maltese, Map, map, mapsto, mapstodown, mapstoleft, mapstoup, marker, mcomma, Mcy, mcy, mdash, mDDot, measuredangle, MediumSpace, Mellintrf, Mfr, mfr, mho, micro, midast, midcir, mid, middot, minusb, minus, minusd, minusdu, MinusPlus, mlcp, mldr, mnplus, models, Mopf, mopf, mp, mscr, Mscr, mstpos, Mu, mu, multimap, mumap, nabla, Nacute, nacute, nang, nap, napE, napid, napos, napprox, natural, naturals, natur, nbsp, nbump, nbumpe, ncap, Ncaron, ncaron, Ncedil, ncedil, ncong, ncongdot, ncup, Ncy, ncy, ndash, nearhk, nearr, neArr, nearrow, ne, nedot, NegativeMediumSpace, NegativeThickSpace, NegativeThinSpace, NegativeVeryThinSpace, nequiv, nesear, nesim, NestedGreaterGreater, NestedLessLess, NewLine, nexist, nexists, Nfr, nfr, ngE, nge, ngeq, ngeqq, ngeqslant, nges, nGg, ngsim, nGt, ngt, ngtr, nGtv, nharr, nhArr, nhpar, ni, nis, nisd, niv, NJcy, njcy, nlarr, nlArr, nldr, nlE, nle, nleftarrow, nLeftarrow, nleftrightarrow, nLeftrightarrow, nleq, nleqq, nleqslant, nles, nless, nLl, nlsim, nLt, nlt, nltri, nltrie, nLtv, nmid, NoBreak, NonBreakingSpace, nopf, Nopf, Not, not, NotCongruent, NotCupCap, NotDoubleVerticalBar, NotElement, NotEqual, NotEqualTilde, NotExists, NotGreater, NotGreaterEqual, NotGreaterFullEqual, NotGreaterGreater, NotGreaterLess, NotGreaterSlantEqual, NotGreaterTilde, NotHumpDownHump, NotHumpEqual, notin, notindot, notinE, notinva, notinvb, notinvc, NotLeftTriangleBar, NotLeftTriangle, NotLeftTriangleEqual, NotLess, NotLessEqual, NotLessGreater, NotLessLess, NotLessSlantEqual, NotLessTilde, NotNestedGreaterGreater, NotNestedLessLess, notni, notniva, notnivb, notnivc, NotPrecedes, NotPrecedesEqual, NotPrecedesSlantEqual, NotReverseElement, NotRightTriangleBar, NotRightTriangle, NotRightTriangleEqual, NotSquareSubset, NotSquareSubsetEqual, NotSquareSuperset, NotSquareSupersetEqual, NotSubset, NotSubsetEqual, NotSucceeds, NotSucceedsEqual, NotSucceedsSlantEqual, NotSucceedsTilde, NotSuperset, NotSupersetEqual, NotTilde, NotTildeEqual, NotTildeFullEqual, NotTildeTilde, NotVerticalBar, nparallel, npar, nparsl, npart, npolint, npr, nprcue, nprec, npreceq, npre, nrarrc, nrarr, nrArr, nrarrw, nrightarrow, nRightarrow, nrtri, nrtrie, nsc, nsccue, nsce, Nscr, nscr, nshortmid, nshortparallel, nsim, nsime, nsimeq, nsmid, nspar, nsqsube, nsqsupe, nsub, nsubE, nsube, nsubset, nsubseteq, nsubseteqq, nsucc, nsucceq, nsup, nsupE, nsupe, nsupset, nsupseteq, nsupseteqq, ntgl, Ntilde, ntilde, ntlg, ntriangleleft, ntrianglelefteq, ntriangleright, ntrianglerighteq, Nu, nu, num, numero, numsp, nvap, nvdash, nvDash, nVdash, nVDash, nvge, nvgt, nvHarr, nvinfin, nvlArr, nvle, nvlt, nvltrie, nvrArr, nvrtrie, nvsim, nwarhk, nwarr, nwArr, nwarrow, nwnear, Oacute, oacute, oast, Ocirc, ocirc, ocir, Ocy, ocy, odash, Odblac, odblac, odiv, odot, odsold, OElig, oelig, ofcir, Ofr, ofr, ogon, Ograve, ograve, ogt, ohbar, ohm, oint, olarr, olcir, olcross, oline, olt, Omacr, omacr, Omega, omega, Omicron, omicron, omid, ominus, Oopf, oopf, opar, OpenCurlyDoubleQuote, OpenCurlyQuote, operp, oplus, orarr, Or, or, ord, order, orderof, ordf, ordm, origof, oror, orslope, orv, oS, Oscr, oscr, Oslash, oslash, osol, Otilde, otilde, otimesas, Otimes, otimes, Ouml, ouml, ovbar, OverBar, OverBrace, OverBracket, OverParenthesis, para, parallel, par, parsim, parsl, part, PartialD, Pcy, pcy, percnt, period, permil, perp, pertenk, Pfr, pfr, Phi, phi, phiv, phmmat, phone, Pi, pi, pitchfork, piv, planck, planckh, plankv, plusacir, plusb, pluscir, plus, plusdo, plusdu, pluse, PlusMinus, plusmn, plussim, plustwo, pm, Poincareplane, pointint, popf, Popf, pound, prap, Pr, pr, prcue, precapprox, prec, preccurlyeq, Precedes, PrecedesEqual, PrecedesSlantEqual, PrecedesTilde, preceq, precnapprox, precneqq, precnsim, pre, prE, precsim, prime, Prime, primes, prnap, prnE, prnsim, prod, Product, profalar, profline, profsurf, prop, Proportional, Proportion, propto, prsim, prurel, Pscr, pscr, Psi, psi, puncsp, Qfr, qfr, qint, qopf, Qopf, qprime, Qscr, qscr, quaternions, quatint, quest, questeq, quot, QUOT, rAarr, race, Racute, racute, radic, raemptyv, rang, Rang, rangd, range, rangle, raquo, rarrap, rarrb, rarrbfs, rarrc, rarr, Rarr, rArr, rarrfs, rarrhk, rarrlp, rarrpl, rarrsim, Rarrtl, rarrtl, rarrw, ratail, rAtail, ratio, rationals, rbarr, rBarr, RBarr, rbbrk, rbrace, rbrack, rbrke, rbrksld, rbrkslu, Rcaron, rcaron, Rcedil, rcedil, rceil, rcub, Rcy, rcy, rdca, rdldhar, rdquo, rdquor, rdsh, real, realine, realpart, reals, Re, rect, reg, REG, ReverseElement, ReverseEquilibrium, ReverseUpEquilibrium, rfisht, rfloor, rfr, Rfr, rHar, rhard, rharu, rharul, Rho, rho, rhov, RightAngleBracket, RightArrowBar, rightarrow, RightArrow, Rightarrow, RightArrowLeftArrow, rightarrowtail, RightCeiling, RightDoubleBracket, RightDownTeeVector, RightDownVectorBar, RightDownVector, RightFloor, rightharpoondown, rightharpoonup, rightleftarrows, rightleftharpoons, rightrightarrows, rightsquigarrow, RightTeeArrow, RightTee, RightTeeVector, rightthreetimes, RightTriangleBar, RightTriangle, RightTriangleEqual, RightUpDownVector, RightUpTeeVector, RightUpVectorBar, RightUpVector, RightVectorBar, RightVector, ring, risingdotseq, rlarr, rlhar, rlm, rmoustache, rmoust, rnmid, roang, roarr, robrk, ropar, ropf, Ropf, roplus, rotimes, RoundImplies, rpar, rpargt, rppolint, rrarr, Rrightarrow, rsaquo, rscr, Rscr, rsh, Rsh, rsqb, rsquo, rsquor, rthree, rtimes, rtri, rtrie, rtrif, rtriltri, RuleDelayed, ruluhar, rx, Sacute, sacute, sbquo, scap, Scaron, scaron, Sc, sc, sccue, sce, scE, Scedil, scedil, Scirc, scirc, scnap, scnE, scnsim, scpolint, scsim, Scy, scy, sdotb, sdot, sdote, searhk, searr, seArr, searrow, sect, semi, seswar, setminus, setmn, sext, Sfr, sfr, sfrown, sharp, SHCHcy, shchcy, SHcy, shcy, ShortDownArrow, ShortLeftArrow, shortmid, shortparallel, ShortRightArrow, ShortUpArrow, shy, Sigma, sigma, sigmaf, sigmav, sim, simdot, sime, simeq, simg, simgE, siml, simlE, simne, simplus, simrarr, slarr, SmallCircle, smallsetminus, smashp, smeparsl, smid, smile, smt, smte, smtes, SOFTcy, softcy, solbar, solb, sol, Sopf, sopf, spades, spadesuit, spar, sqcap, sqcaps, sqcup, sqcups, Sqrt, sqsub, sqsube, sqsubset, sqsubseteq, sqsup, sqsupe, sqsupset, sqsupseteq, square, Square, SquareIntersection, SquareSubset, SquareSubsetEqual, SquareSuperset, SquareSupersetEqual, SquareUnion, squarf, squ, squf, srarr, Sscr, sscr, ssetmn, ssmile, sstarf, Star, star, starf, straightepsilon, straightphi, strns, sub, Sub, subdot, subE, sube, subedot, submult, subnE, subne, subplus, subrarr, subset, Subset, subseteq, subseteqq, SubsetEqual, subsetneq, subsetneqq, subsim, subsub, subsup, succapprox, succ, succcurlyeq, Succeeds, SucceedsEqual, SucceedsSlantEqual, SucceedsTilde, succeq, succnapprox, succneqq, succnsim, succsim, SuchThat, sum, Sum, sung, sup1, sup2, sup3, sup, Sup, supdot, supdsub, supE, supe, supedot, Superset, SupersetEqual, suphsol, suphsub, suplarr, supmult, supnE, supne, supplus, supset, Supset, supseteq, supseteqq, supsetneq, supsetneqq, supsim, supsub, supsup, swarhk, swarr, swArr, swarrow, swnwar, szlig, Tab, target, Tau, tau, tbrk, Tcaron, tcaron, Tcedil, tcedil, Tcy, tcy, tdot, telrec, Tfr, tfr, there4, therefore, Therefore, Theta, theta, thetasym, thetav, thickapprox, thicksim, ThickSpace, ThinSpace, thinsp, thkap, thksim, THORN, thorn, tilde, Tilde, TildeEqual, TildeFullEqual, TildeTilde, timesbar, timesb, times, timesd, tint, toea, topbot, topcir, top, Topf, topf, topfork, tosa, tprime, trade, TRADE, triangle, triangledown, triangleleft, trianglelefteq, triangleq, triangleright, trianglerighteq, tridot, trie, triminus, TripleDot, triplus, trisb, tritime, trpezium, Tscr, tscr, TScy, tscy, TSHcy, tshcy, Tstrok, tstrok, twixt, twoheadleftarrow, twoheadrightarrow, Uacute, uacute, uarr, Uarr, uArr, Uarrocir, Ubrcy, ubrcy, Ubreve, ubreve, Ucirc, ucirc, Ucy, ucy, udarr, Udblac, udblac, udhar, ufisht, Ufr, ufr, Ugrave, ugrave, uHar, uharl, uharr, uhblk, ulcorn, ulcorner, ulcrop, ultri, Umacr, umacr, uml, UnderBar, UnderBrace, UnderBracket, UnderParenthesis, Union, UnionPlus, Uogon, uogon, Uopf, uopf, UpArrowBar, uparrow, UpArrow, Uparrow, UpArrowDownArrow, updownarrow, UpDownArrow, Updownarrow, UpEquilibrium, upharpoonleft, upharpoonright, uplus, UpperLeftArrow, UpperRightArrow, upsi, Upsi, upsih, Upsilon, upsilon, UpTeeArrow, UpTee, upuparrows, urcorn, urcorner, urcrop, Uring, uring, urtri, Uscr, uscr, utdot, Utilde, utilde, utri, utrif, uuarr, Uuml, uuml, uwangle, vangrt, varepsilon, varkappa, varnothing, varphi, varpi, varpropto, varr, vArr, varrho, varsigma, varsubsetneq, varsubsetneqq, varsupsetneq, varsupsetneqq, vartheta, vartriangleleft, vartriangleright, vBar, Vbar, vBarv, Vcy, vcy, vdash, vDash, Vdash, VDash, Vdashl, veebar, vee, Vee, veeeq, vellip, verbar, Verbar, vert, Vert, VerticalBar, VerticalLine, VerticalSeparator, VerticalTilde, VeryThinSpace, Vfr, vfr, vltri, vnsub, vnsup, Vopf, vopf, vprop, vrtri, Vscr, vscr, vsubnE, vsubne, vsupnE, vsupne, Vvdash, vzigzag, Wcirc, wcirc, wedbar, wedge, Wedge, wedgeq, weierp, Wfr, wfr, Wopf, wopf, wp, wr, wreath, Wscr, wscr, xcap, xcirc, xcup, xdtri, Xfr, xfr, xharr, xhArr, Xi, xi, xlarr, xlArr, xmap, xnis, xodot, Xopf, xopf, xoplus, xotime, xrarr, xrArr, Xscr, xscr, xsqcup, xuplus, xutri, xvee, xwedge, Yacute, yacute, YAcy, yacy, Ycirc, ycirc, Ycy, ycy, yen, Yfr, yfr, YIcy, yicy, Yopf, yopf, Yscr, yscr, YUcy, yucy, yuml, Yuml, Zacute, zacute, Zcaron, zcaron, Zcy, zcy, Zdot, zdot, zeetrf, ZeroWidthSpace, Zeta, zeta, zfr, Zfr, ZHcy, zhcy, zigrarr, zopf, Zopf, Zscr, zscr, zwj, zwnj, default */
 /***/ (function(module) {
 
@@ -33636,10 +33896,10 @@ module.exports = JSON.parse("{\"Aacute\":\"Á\",\"aacute\":\"á\",\"Abreve\":\"�
 
 /***/ }),
 
-/***/ "./node_modules/entities/maps/legacy.json":
-/*!************************************************!*\
-  !*** ./node_modules/entities/maps/legacy.json ***!
-  \************************************************/
+/***/ "./node_modules/entities/lib/maps/legacy.json":
+/*!****************************************************!*\
+  !*** ./node_modules/entities/lib/maps/legacy.json ***!
+  \****************************************************/
 /*! exports provided: Aacute, aacute, Acirc, acirc, acute, AElig, aelig, Agrave, agrave, amp, AMP, Aring, aring, Atilde, atilde, Auml, auml, brvbar, Ccedil, ccedil, cedil, cent, copy, COPY, curren, deg, divide, Eacute, eacute, Ecirc, ecirc, Egrave, egrave, ETH, eth, Euml, euml, frac12, frac14, frac34, gt, GT, Iacute, iacute, Icirc, icirc, iexcl, Igrave, igrave, iquest, Iuml, iuml, laquo, lt, LT, macr, micro, middot, nbsp, not, Ntilde, ntilde, Oacute, oacute, Ocirc, ocirc, Ograve, ograve, ordf, ordm, Oslash, oslash, Otilde, otilde, Ouml, ouml, para, plusmn, pound, quot, QUOT, raquo, reg, REG, sect, shy, sup1, sup2, sup3, szlig, THORN, thorn, times, Uacute, uacute, Ucirc, ucirc, Ugrave, ugrave, uml, Uuml, uuml, Yacute, yacute, yen, yuml, default */
 /***/ (function(module) {
 
@@ -33647,10 +33907,10 @@ module.exports = JSON.parse("{\"Aacute\":\"Á\",\"aacute\":\"á\",\"Acirc\":\"Â
 
 /***/ }),
 
-/***/ "./node_modules/entities/maps/xml.json":
-/*!*********************************************!*\
-  !*** ./node_modules/entities/maps/xml.json ***!
-  \*********************************************/
+/***/ "./node_modules/entities/lib/maps/xml.json":
+/*!*************************************************!*\
+  !*** ./node_modules/entities/lib/maps/xml.json ***!
+  \*************************************************/
 /*! exports provided: amp, apos, gt, lt, quot, default */
 /***/ (function(module) {
 
@@ -33801,7 +34061,7 @@ module.exports = JSON.parse("{\"amp\":\"&\",\"apos\":\"'\",\"gt\":\">\",\"lt\":\
     function lib$es6$promise$asap$$attemptVertex() {
       try {
         var r = require;
-        var vertx = __webpack_require__(/*! vertx */ 6);
+        var vertx = __webpack_require__(/*! vertx */ 5);
         lib$es6$promise$asap$$vertxNext = vertx.runOnLoop || vertx.runOnContext;
         return lib$es6$promise$asap$$useVertxTimer();
       } catch(e) {
@@ -35155,6 +35415,73 @@ module.exports = EVP_BytesToKey
 
 /***/ }),
 
+/***/ "./node_modules/fast-deep-equal/index.js":
+/*!***********************************************!*\
+  !*** ./node_modules/fast-deep-equal/index.js ***!
+  \***********************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+var isArray = Array.isArray;
+var keyList = Object.keys;
+var hasProp = Object.prototype.hasOwnProperty;
+
+module.exports = function equal(a, b) {
+  if (a === b) return true;
+
+  if (a && b && typeof a == 'object' && typeof b == 'object') {
+    var arrA = isArray(a)
+      , arrB = isArray(b)
+      , i
+      , length
+      , key;
+
+    if (arrA && arrB) {
+      length = a.length;
+      if (length != b.length) return false;
+      for (i = length; i-- !== 0;)
+        if (!equal(a[i], b[i])) return false;
+      return true;
+    }
+
+    if (arrA != arrB) return false;
+
+    var dateA = a instanceof Date
+      , dateB = b instanceof Date;
+    if (dateA != dateB) return false;
+    if (dateA && dateB) return a.getTime() == b.getTime();
+
+    var regexpA = a instanceof RegExp
+      , regexpB = b instanceof RegExp;
+    if (regexpA != regexpB) return false;
+    if (regexpA && regexpB) return a.toString() == b.toString();
+
+    var keys = keyList(a);
+    length = keys.length;
+
+    if (length !== keyList(b).length)
+      return false;
+
+    for (i = length; i-- !== 0;)
+      if (!hasProp.call(b, keys[i])) return false;
+
+    for (i = length; i-- !== 0;) {
+      key = keys[i];
+      if (!equal(a[key], b[key])) return false;
+    }
+
+    return true;
+  }
+
+  return a!==a && b!==b;
+};
+
+
+/***/ }),
+
 /***/ "./node_modules/fetch-sparql-endpoint/index.js":
 /*!*****************************************************!*\
   !*** ./node_modules/fetch-sparql-endpoint/index.js ***!
@@ -35297,7 +35624,7 @@ class SparqlEndpointFetcher {
             const httpResponse = yield this.fetchCb(url, { headers });
             // Wrap WhatWG readable stream into a Node.js readable stream
             // If the body already is a Node.js stream (in the case of node-fetch), don't do explicit conversion.
-            const responseStream = __webpack_require__(/*! is-stream */ "./node_modules/is-stream/index.js")(httpResponse.body)
+            const responseStream = __webpack_require__(/*! is-stream */ "./node_modules/fetch-sparql-endpoint/node_modules/is-stream/index.js")(httpResponse.body)
                 ? httpResponse.body : __webpack_require__(/*! node-web-streams */ "./node_modules/node-web-streams/index.js").toNodeReadable(httpResponse.body);
             // Determine the content type and emit it to the stream
             let contentType = httpResponse.headers.get('Content-Type') || '';
@@ -35319,6 +35646,47 @@ SparqlEndpointFetcher.CONTENTTYPE_TURTLE = 'text/turtle';
 exports.SparqlEndpointFetcher = SparqlEndpointFetcher;
 //# sourceMappingURL=SparqlEndpointFetcher.js.map
 /* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./../../timers-browserify/main.js */ "./node_modules/timers-browserify/main.js").setImmediate))
+
+/***/ }),
+
+/***/ "./node_modules/fetch-sparql-endpoint/node_modules/is-stream/index.js":
+/*!****************************************************************************!*\
+  !*** ./node_modules/fetch-sparql-endpoint/node_modules/is-stream/index.js ***!
+  \****************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+const isStream = stream =>
+	stream !== null &&
+	typeof stream === 'object' &&
+	typeof stream.pipe === 'function';
+
+isStream.writable = stream =>
+	isStream(stream) &&
+	stream.writable !== false &&
+	typeof stream._write === 'function' &&
+	typeof stream._writableState === 'object';
+
+isStream.readable = stream =>
+	isStream(stream) &&
+	stream.readable !== false &&
+	typeof stream._read === 'function' &&
+	typeof stream._readableState === 'object';
+
+isStream.duplex = stream =>
+	isStream.writable(stream) &&
+	isStream.readable(stream);
+
+isStream.transform = stream =>
+	isStream.duplex(stream) &&
+	typeof stream._transform === 'function' &&
+	typeof stream._transformState === 'object';
+
+module.exports = isStream;
+
 
 /***/ }),
 
@@ -35721,6 +36089,15 @@ class Util {
         if (bgps.length === operations.length) {
             // Create a big BGP from all BGPs
             return this.joinOperationsAsBgp(bgps);
+        }
+        else if (bgps.length === operations.length - 1
+            && nonBgps[0].type === 'leftjoin'
+            && nonBgps[0].left.type === 'bgp') {
+            // Check if we have one left-join (with a BGP on the left), and the rest are BGPs.
+            // If so, merge the BGPS within the left-hand-side of the left-join.
+            const originalLeftJoin = nonBgps[0];
+            bgps.push(originalLeftJoin.left);
+            return this.operationFactory.createLeftJoin(this.joinOperationsAsBgp(bgps), originalLeftJoin.right);
         }
         else if (nonBgps.length === operations.length) {
             // Create nested joins
@@ -36226,6 +36603,7 @@ exports.NodeHandlerDocument = NodeHandlerDocument;
 "use strict";
 
 Object.defineProperty(exports, "__esModule", { value: true });
+const sparqlalgebrajs_1 = __webpack_require__(/*! sparqlalgebrajs */ "./node_modules/sparqlalgebrajs/index.js");
 const IConvertContext_1 = __webpack_require__(/*! ../IConvertContext */ "./node_modules/graphql-to-sparql/lib/IConvertContext.js");
 const NodeHandlerAdapter_1 = __webpack_require__(/*! ./NodeHandlerAdapter */ "./node_modules/graphql-to-sparql/lib/handler/NodeHandlerAdapter.js");
 /**
@@ -36429,8 +36807,7 @@ class NodeHandlerSelectionAdapter extends NodeHandlerAdapter_1.NodeHandlerAdapte
         }
         // Wrap the operation in a slice if a 'first' or 'offset' argument was provided.
         if (offset || limit) {
-            operation = this.util.operationFactory
-                .createSlice(this.util.operationFactory.createProject(operation, []), offset, limit);
+            operation = this.util.operationFactory.createSlice(this.util.operationFactory.createProject(operation, sparqlalgebrajs_1.Util.inScopeVariables(operation)), offset, limit);
         }
         // Override operation if needed
         return this.handleDirectiveOutputs(directiveOutputs, operation);
@@ -38415,6 +38792,12 @@ function readNumber(source, start, firstCode, line, col, prev) {
     }
 
     position = readDigits(source, position, code);
+    code = body.charCodeAt(position);
+  } // Numbers cannot be followed by . or e
+
+
+  if (code === 46 || code === 69 || code === 101) {
+    throw Object(_error_syntaxError__WEBPACK_IMPORTED_MODULE_1__["syntaxError"])(source, position, "Invalid number, expected digit but got: ".concat(printCharCode(code), "."));
   }
 
   return new Tok(isFloat ? _tokenKind__WEBPACK_IMPORTED_MODULE_3__["TokenKind"].FLOAT : _tokenKind__WEBPACK_IMPORTED_MODULE_3__["TokenKind"].INT, start, position, line, col, prev, body.slice(start, position));
@@ -40354,7 +40737,7 @@ function printPrefixedLines(lines) {
   return existingLines.map(function (_ref3) {
     var prefix = _ref3[0],
         line = _ref3[1];
-    return lpad(padLen, prefix) + ' | ' + line;
+    return lpad(padLen, prefix) + (line ? ' | ' + line : ' |');
   }).join('\n');
 }
 
@@ -42801,63 +43184,66 @@ HmacDRBG.prototype.generate = function generate(len, enc, add, addEnc) {
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = CollectingHandler;
+"use strict";
 
-function CollectingHandler(cbs) {
-    this._cbs = cbs || {};
-    this.events = [];
-}
-
-var EVENTS = __webpack_require__(/*! ./ */ "./node_modules/htmlparser2/lib/index.js").EVENTS;
-Object.keys(EVENTS).forEach(function(name) {
-    if (EVENTS[name] === 0) {
-        name = "on" + name;
-        CollectingHandler.prototype[name] = function() {
-            this.events.push([name]);
-            if (this._cbs[name]) this._cbs[name]();
-        };
-    } else if (EVENTS[name] === 1) {
-        name = "on" + name;
-        CollectingHandler.prototype[name] = function(a) {
-            this.events.push([name, a]);
-            if (this._cbs[name]) this._cbs[name](a);
-        };
-    } else if (EVENTS[name] === 2) {
-        name = "on" + name;
-        CollectingHandler.prototype[name] = function(a, b) {
-            this.events.push([name, a, b]);
-            if (this._cbs[name]) this._cbs[name](a, b);
-        };
-    } else {
-        throw Error("wrong number of arguments");
-    }
-});
-
-CollectingHandler.prototype.onreset = function() {
-    this.events = [];
-    if (this._cbs.onreset) this._cbs.onreset();
+var __extends = (this && this.__extends) || (function () {
+    var extendStatics = function (d, b) {
+        extendStatics = Object.setPrototypeOf ||
+            ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
+            function (d, b) { for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p]; };
+        return extendStatics(d, b);
+    };
+    return function (d, b) {
+        extendStatics(d, b);
+        function __() { this.constructor = d; }
+        d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
+    };
+})();
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
 };
-
-CollectingHandler.prototype.restart = function() {
-    if (this._cbs.onreset) this._cbs.onreset();
-
-    for (var i = 0, len = this.events.length; i < len; i++) {
-        if (this._cbs[this.events[i][0]]) {
-            var num = this.events[i].length;
-
-            if (num === 1) {
-                this._cbs[this.events[i][0]]();
-            } else if (num === 2) {
-                this._cbs[this.events[i][0]](this.events[i][1]);
-            } else {
-                this._cbs[this.events[i][0]](
-                    this.events[i][1],
-                    this.events[i][2]
-                );
+Object.defineProperty(exports, "__esModule", { value: true });
+var MultiplexHandler_1 = __importDefault(__webpack_require__(/*! ./MultiplexHandler */ "./node_modules/htmlparser2/lib/MultiplexHandler.js"));
+var CollectingHandler = /** @class */ (function (_super) {
+    __extends(CollectingHandler, _super);
+    function CollectingHandler(cbs) {
+        if (cbs === void 0) { cbs = {}; }
+        var _this = _super.call(this, function (name) {
+            var _a;
+            var args = [];
+            for (var _i = 1; _i < arguments.length; _i++) {
+                args[_i - 1] = arguments[_i];
             }
-        }
+            _this.events.push([name].concat(args));
+            // @ts-ignore
+            if (_this._cbs[name])
+                (_a = _this._cbs)[name].apply(_a, args);
+        }) || this;
+        _this._cbs = cbs;
+        _this.events = [];
+        return _this;
     }
-};
+    CollectingHandler.prototype.onreset = function () {
+        this.events = [];
+        if (this._cbs.onreset)
+            this._cbs.onreset();
+    };
+    CollectingHandler.prototype.restart = function () {
+        var _a;
+        if (this._cbs.onreset)
+            this._cbs.onreset();
+        for (var i = 0; i < this.events.length; i++) {
+            var _b = this.events[i], name_1 = _b[0], args = _b.slice(1);
+            if (!this._cbs[name_1]) {
+                continue;
+            }
+            // @ts-ignore
+            (_a = this._cbs)[name_1].apply(_a, args);
+        }
+    };
+    return CollectingHandler;
+}(MultiplexHandler_1.default));
+exports.CollectingHandler = CollectingHandler;
 
 
 /***/ }),
@@ -42869,18 +43255,125 @@ CollectingHandler.prototype.restart = function() {
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-var DomHandler = __webpack_require__(/*! domhandler */ "./node_modules/domhandler/index.js");
-var DomUtils = __webpack_require__(/*! domutils */ "./node_modules/domutils/index.js");
+"use strict";
 
-//TODO: make this a streamable handler
-function FeedHandler(callback, options) {
-    this.init(callback, options);
-}
-
-__webpack_require__(/*! inherits */ "./node_modules/inherits/inherits_browser.js")(FeedHandler, DomHandler);
-
-FeedHandler.prototype.init = DomHandler;
-
+var __extends = (this && this.__extends) || (function () {
+    var extendStatics = function (d, b) {
+        extendStatics = Object.setPrototypeOf ||
+            ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
+            function (d, b) { for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p]; };
+        return extendStatics(d, b);
+    };
+    return function (d, b) {
+        extendStatics(d, b);
+        function __() { this.constructor = d; }
+        d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
+    };
+})();
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
+var __importStar = (this && this.__importStar) || function (mod) {
+    if (mod && mod.__esModule) return mod;
+    var result = {};
+    if (mod != null) for (var k in mod) if (Object.hasOwnProperty.call(mod, k)) result[k] = mod[k];
+    result["default"] = mod;
+    return result;
+};
+Object.defineProperty(exports, "__esModule", { value: true });
+var domhandler_1 = __importDefault(__webpack_require__(/*! domhandler */ "./node_modules/domhandler/lib/index.js"));
+var DomUtils = __importStar(__webpack_require__(/*! domutils */ "./node_modules/domutils/lib/index.js"));
+var Parser_1 = __webpack_require__(/*! ./Parser */ "./node_modules/htmlparser2/lib/Parser.js");
+//TODO: Consume data as it is coming in
+var FeedHandler = /** @class */ (function (_super) {
+    __extends(FeedHandler, _super);
+    /**
+     *
+     * @param callback
+     * @param options
+     */
+    function FeedHandler(callback, options) {
+        var _this = this;
+        if (typeof callback === "object" && callback !== null) {
+            callback = undefined;
+            options = callback;
+        }
+        _this = _super.call(this, callback, options) || this;
+        return _this;
+    }
+    FeedHandler.prototype.onend = function () {
+        var feed = {};
+        var feedRoot = getOneElement(isValidFeed, this.dom);
+        if (feedRoot) {
+            if (feedRoot.name === "feed") {
+                var childs = feedRoot.children;
+                feed.type = "atom";
+                addConditionally(feed, "id", "id", childs);
+                addConditionally(feed, "title", "title", childs);
+                var href = getAttribute("href", getOneElement("link", childs));
+                if (href) {
+                    feed.link = href;
+                }
+                addConditionally(feed, "description", "subtitle", childs);
+                var updated = fetch("updated", childs);
+                if (updated) {
+                    feed.updated = new Date(updated);
+                }
+                addConditionally(feed, "author", "email", childs, true);
+                feed.items = getElements("entry", childs).map(function (item) {
+                    var entry = {};
+                    var children = item.children;
+                    addConditionally(entry, "id", "id", children);
+                    addConditionally(entry, "title", "title", children);
+                    var href = getAttribute("href", getOneElement("link", children));
+                    if (href) {
+                        entry.link = href;
+                    }
+                    var description = fetch("summary", children) ||
+                        fetch("content", children);
+                    if (description) {
+                        entry.description = description;
+                    }
+                    var pubDate = fetch("updated", children);
+                    if (pubDate) {
+                        entry.pubDate = new Date(pubDate);
+                    }
+                    return entry;
+                });
+            }
+            else {
+                var childs = getOneElement("channel", feedRoot.children)
+                    .children;
+                feed.type = feedRoot.name.substr(0, 3);
+                feed.id = "";
+                addConditionally(feed, "title", "title", childs);
+                addConditionally(feed, "link", "link", childs);
+                addConditionally(feed, "description", "description", childs);
+                var updated = fetch("lastBuildDate", childs);
+                if (updated) {
+                    feed.updated = new Date(updated);
+                }
+                addConditionally(feed, "author", "managingEditor", childs, true);
+                feed.items = getElements("item", feedRoot.children).map(function (item) {
+                    var entry = {};
+                    var children = item.children;
+                    addConditionally(entry, "id", "guid", children);
+                    addConditionally(entry, "title", "title", children);
+                    addConditionally(entry, "link", "link", children);
+                    addConditionally(entry, "description", "description", children);
+                    var pubDate = fetch("pubDate", children);
+                    if (pubDate)
+                        entry.pubDate = new Date(pubDate);
+                    return entry;
+                });
+            }
+        }
+        this.feed = feed;
+        this.handleCallback(feedRoot ? null : Error("couldn't find root of feed"));
+    };
+    return FeedHandler;
+}(domhandler_1.default));
+exports.FeedHandler = FeedHandler;
 function getElements(what, where) {
     return DomUtils.getElementsByTagName(what, where, true);
 }
@@ -42888,101 +43381,109 @@ function getOneElement(what, where) {
     return DomUtils.getElementsByTagName(what, where, true, 1)[0];
 }
 function fetch(what, where, recurse) {
-    return DomUtils.getText(
-        DomUtils.getElementsByTagName(what, where, recurse, 1)
-    ).trim();
+    if (recurse === void 0) { recurse = false; }
+    return DomUtils.getText(DomUtils.getElementsByTagName(what, where, recurse, 1)).trim();
 }
-
-function addConditionally(obj, prop, what, where, recurse) {
-    var tmp = fetch(what, where, recurse);
-    if (tmp) obj[prop] = tmp;
-}
-
-var isValidFeed = function(value) {
-    return value === "rss" || value === "feed" || value === "rdf:RDF";
-};
-
-FeedHandler.prototype.onend = function() {
-    var feed = {},
-        feedRoot = getOneElement(isValidFeed, this.dom),
-        tmp,
-        childs;
-
-    if (feedRoot) {
-        if (feedRoot.name === "feed") {
-            childs = feedRoot.children;
-
-            feed.type = "atom";
-            addConditionally(feed, "id", "id", childs);
-            addConditionally(feed, "title", "title", childs);
-            if (
-                (tmp = getOneElement("link", childs)) &&
-                (tmp = tmp.attribs) &&
-                (tmp = tmp.href)
-            )
-                feed.link = tmp;
-            addConditionally(feed, "description", "subtitle", childs);
-            if ((tmp = fetch("updated", childs))) feed.updated = new Date(tmp);
-            addConditionally(feed, "author", "email", childs, true);
-
-            feed.items = getElements("entry", childs).map(function(item) {
-                var entry = {},
-                    tmp;
-
-                item = item.children;
-
-                addConditionally(entry, "id", "id", item);
-                addConditionally(entry, "title", "title", item);
-                if (
-                    (tmp = getOneElement("link", item)) &&
-                    (tmp = tmp.attribs) &&
-                    (tmp = tmp.href)
-                )
-                    entry.link = tmp;
-                if ((tmp = fetch("summary", item) || fetch("content", item)))
-                    entry.description = tmp;
-                if ((tmp = fetch("updated", item)))
-                    entry.pubDate = new Date(tmp);
-                return entry;
-            });
-        } else {
-            childs = getOneElement("channel", feedRoot.children).children;
-
-            feed.type = feedRoot.name.substr(0, 3);
-            feed.id = "";
-            addConditionally(feed, "title", "title", childs);
-            addConditionally(feed, "link", "link", childs);
-            addConditionally(feed, "description", "description", childs);
-            if ((tmp = fetch("lastBuildDate", childs)))
-                feed.updated = new Date(tmp);
-            addConditionally(feed, "author", "managingEditor", childs, true);
-
-            feed.items = getElements("item", feedRoot.children).map(function(
-                item
-            ) {
-                var entry = {},
-                    tmp;
-
-                item = item.children;
-
-                addConditionally(entry, "id", "guid", item);
-                addConditionally(entry, "title", "title", item);
-                addConditionally(entry, "link", "link", item);
-                addConditionally(entry, "description", "description", item);
-                if ((tmp = fetch("pubDate", item)))
-                    entry.pubDate = new Date(tmp);
-                return entry;
-            });
-        }
+function getAttribute(name, elem) {
+    if (!elem) {
+        return null;
     }
-    this.dom = feed;
-    DomHandler.prototype._handleCallback.call(
-        this,
-        feedRoot ? null : Error("couldn't find root of feed")
-    );
-};
+    var attribs = elem.attribs;
+    return attribs[name];
+}
+function addConditionally(obj, prop, what, where, recurse) {
+    if (recurse === void 0) { recurse = false; }
+    var tmp = fetch(what, where, recurse);
+    // @ts-ignore
+    if (tmp)
+        obj[prop] = tmp;
+}
+function isValidFeed(value) {
+    return value === "rss" || value === "feed" || value === "rdf:RDF";
+}
+var defaultOptions = { xmlMode: true };
+/**
+ * Parse a feed.
+ *
+ * @param feed The feed that should be parsed, as a string.
+ * @param options Optionally, options for parsing. When using this option, you probably want to set `xmlMode` to `true`.
+ */
+function parseFeed(feed, options) {
+    if (options === void 0) { options = defaultOptions; }
+    var handler = new FeedHandler(options);
+    new Parser_1.Parser(handler, options).end(feed);
+    return handler.feed;
+}
+exports.parseFeed = parseFeed;
 
-module.exports = FeedHandler;
+
+/***/ }),
+
+/***/ "./node_modules/htmlparser2/lib/MultiplexHandler.js":
+/*!**********************************************************!*\
+  !*** ./node_modules/htmlparser2/lib/MultiplexHandler.js ***!
+  \**********************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+Object.defineProperty(exports, "__esModule", { value: true });
+/**
+ * Calls a specific handler function for all events that are encountered.
+ *
+ * @param func — The function to multiplex all events to.
+ */
+var MultiplexHandler = /** @class */ (function () {
+    function MultiplexHandler(func) {
+        this._func = func;
+    }
+    /* Format: eventname: number of arguments */
+    MultiplexHandler.prototype.onattribute = function (name, value) {
+        this._func("onattribute", name, value);
+    };
+    MultiplexHandler.prototype.oncdatastart = function () {
+        this._func("oncdatastart");
+    };
+    MultiplexHandler.prototype.oncdataend = function () {
+        this._func("oncdataend");
+    };
+    MultiplexHandler.prototype.ontext = function (text) {
+        this._func("ontext", text);
+    };
+    MultiplexHandler.prototype.onprocessinginstruction = function (name, value) {
+        this._func("onprocessinginstruction", name, value);
+    };
+    MultiplexHandler.prototype.oncomment = function (comment) {
+        this._func("oncomment", comment);
+    };
+    MultiplexHandler.prototype.oncommentend = function () {
+        this._func("oncommentend");
+    };
+    MultiplexHandler.prototype.onclosetag = function (name) {
+        this._func("onclosetag", name);
+    };
+    MultiplexHandler.prototype.onopentag = function (name, attribs) {
+        this._func("onopentag", name, attribs);
+    };
+    MultiplexHandler.prototype.onopentagname = function (name) {
+        this._func("onopentagname", name);
+    };
+    MultiplexHandler.prototype.onerror = function (error) {
+        this._func("onerror", error);
+    };
+    MultiplexHandler.prototype.onend = function () {
+        this._func("onend");
+    };
+    MultiplexHandler.prototype.onparserinit = function (parser) {
+        this._func("onparserinit", parser);
+    };
+    MultiplexHandler.prototype.onreset = function () {
+        this._func("onreset");
+    };
+    return MultiplexHandler;
+}());
+exports.default = MultiplexHandler;
 
 
 /***/ }),
@@ -42994,472 +43495,377 @@ module.exports = FeedHandler;
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-var Tokenizer = __webpack_require__(/*! ./Tokenizer.js */ "./node_modules/htmlparser2/lib/Tokenizer.js");
+"use strict";
 
-/*
-	Options:
-
-	xmlMode: Disables the special behavior for script/style tags (false by default)
-	lowerCaseAttributeNames: call .toLowerCase for each attribute name (true if xmlMode is `false`)
-	lowerCaseTags: call .toLowerCase for each tag name (true if xmlMode is `false`)
-*/
-
-/*
-	Callbacks:
-
-	oncdataend,
-	oncdatastart,
-	onclosetag,
-	oncomment,
-	oncommentend,
-	onerror,
-	onopentag,
-	onprocessinginstruction,
-	onreset,
-	ontext
-*/
-
-var formTags = {
-    input: true,
-    option: true,
-    optgroup: true,
-    select: true,
-    button: true,
-    datalist: true,
-    textarea: true
+var __extends = (this && this.__extends) || (function () {
+    var extendStatics = function (d, b) {
+        extendStatics = Object.setPrototypeOf ||
+            ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
+            function (d, b) { for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p]; };
+        return extendStatics(d, b);
+    };
+    return function (d, b) {
+        extendStatics(d, b);
+        function __() { this.constructor = d; }
+        d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
+    };
+})();
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
 };
-
+Object.defineProperty(exports, "__esModule", { value: true });
+var Tokenizer_1 = __importDefault(__webpack_require__(/*! ./Tokenizer */ "./node_modules/htmlparser2/lib/Tokenizer.js"));
+var events_1 = __webpack_require__(/*! events */ "./node_modules/events/events.js");
+var formTags = new Set([
+    "input",
+    "option",
+    "optgroup",
+    "select",
+    "button",
+    "datalist",
+    "textarea"
+]);
+var pTag = new Set(["p"]);
 var openImpliesClose = {
-    tr: { tr: true, th: true, td: true },
-    th: { th: true },
-    td: { thead: true, th: true, td: true },
-    body: { head: true, link: true, script: true },
-    li: { li: true },
-    p: { p: true },
-    h1: { p: true },
-    h2: { p: true },
-    h3: { p: true },
-    h4: { p: true },
-    h5: { p: true },
-    h6: { p: true },
+    tr: new Set(["tr", "th", "td"]),
+    th: new Set(["th"]),
+    td: new Set(["thead", "th", "td"]),
+    body: new Set(["head", "link", "script"]),
+    li: new Set(["li"]),
+    p: pTag,
+    h1: pTag,
+    h2: pTag,
+    h3: pTag,
+    h4: pTag,
+    h5: pTag,
+    h6: pTag,
     select: formTags,
     input: formTags,
     output: formTags,
     button: formTags,
     datalist: formTags,
     textarea: formTags,
-    option: { option: true },
-    optgroup: { optgroup: true }
+    option: new Set(["option"]),
+    optgroup: new Set(["optgroup", "option"]),
+    dd: new Set(["dt", "dd"]),
+    dt: new Set(["dt", "dd"]),
+    address: pTag,
+    article: pTag,
+    aside: pTag,
+    blockquote: pTag,
+    details: pTag,
+    div: pTag,
+    dl: pTag,
+    fieldset: pTag,
+    figcaption: pTag,
+    figure: pTag,
+    footer: pTag,
+    form: pTag,
+    header: pTag,
+    hr: pTag,
+    main: pTag,
+    nav: pTag,
+    ol: pTag,
+    pre: pTag,
+    section: pTag,
+    table: pTag,
+    ul: pTag,
+    rt: new Set(["rt", "rp"]),
+    rp: new Set(["rt", "rp"]),
+    tbody: new Set(["thead", "tbody"]),
+    tfoot: new Set(["thead", "tbody"])
 };
-
-var voidElements = {
-    __proto__: null,
-    area: true,
-    base: true,
-    basefont: true,
-    br: true,
-    col: true,
-    command: true,
-    embed: true,
-    frame: true,
-    hr: true,
-    img: true,
-    input: true,
-    isindex: true,
-    keygen: true,
-    link: true,
-    meta: true,
-    param: true,
-    source: true,
-    track: true,
-    wbr: true
-};
-
-var foreignContextElements = {
-    __proto__: null,
-    math: true,
-    svg: true
-};
-var htmlIntegrationElements = {
-    __proto__: null,
-    mi: true,
-    mo: true,
-    mn: true,
-    ms: true,
-    mtext: true,
-    "annotation-xml": true,
-    foreignObject: true,
-    desc: true,
-    title: true
-};
-
-var re_nameEnd = /\s|\//;
-
-function Parser(cbs, options) {
-    this._options = options || {};
-    this._cbs = cbs || {};
-
-    this._tagname = "";
-    this._attribname = "";
-    this._attribvalue = "";
-    this._attribs = null;
-    this._stack = [];
-    this._foreignContext = [];
-
-    this.startIndex = 0;
-    this.endIndex = null;
-
-    this._lowerCaseTagNames =
-        "lowerCaseTags" in this._options
-            ? !!this._options.lowerCaseTags
-            : !this._options.xmlMode;
-    this._lowerCaseAttributeNames =
-        "lowerCaseAttributeNames" in this._options
-            ? !!this._options.lowerCaseAttributeNames
-            : !this._options.xmlMode;
-
-    if (this._options.Tokenizer) {
-        Tokenizer = this._options.Tokenizer;
+var voidElements = new Set([
+    "area",
+    "base",
+    "basefont",
+    "br",
+    "col",
+    "command",
+    "embed",
+    "frame",
+    "hr",
+    "img",
+    "input",
+    "isindex",
+    "keygen",
+    "link",
+    "meta",
+    "param",
+    "source",
+    "track",
+    "wbr"
+]);
+var foreignContextElements = new Set(["math", "svg"]);
+var htmlIntegrationElements = new Set([
+    "mi",
+    "mo",
+    "mn",
+    "ms",
+    "mtext",
+    "annotation-xml",
+    "foreignObject",
+    "desc",
+    "title"
+]);
+var reNameEnd = /\s|\//;
+var Parser = /** @class */ (function (_super) {
+    __extends(Parser, _super);
+    function Parser(cbs, options) {
+        var _this = _super.call(this) || this;
+        _this._tagname = "";
+        _this._attribname = "";
+        _this._attribvalue = "";
+        _this._attribs = null;
+        _this._stack = [];
+        _this._foreignContext = [];
+        _this.startIndex = 0;
+        _this.endIndex = null;
+        // Aliases for backwards compatibility
+        _this.parseChunk = Parser.prototype.write;
+        _this.done = Parser.prototype.end;
+        _this._options = options || {};
+        _this._cbs = cbs || {};
+        _this._tagname = "";
+        _this._attribname = "";
+        _this._attribvalue = "";
+        _this._attribs = null;
+        _this._stack = [];
+        _this._foreignContext = [];
+        _this.startIndex = 0;
+        _this.endIndex = null;
+        _this._lowerCaseTagNames =
+            "lowerCaseTags" in _this._options
+                ? !!_this._options.lowerCaseTags
+                : !_this._options.xmlMode;
+        _this._lowerCaseAttributeNames =
+            "lowerCaseAttributeNames" in _this._options
+                ? !!_this._options.lowerCaseAttributeNames
+                : !_this._options.xmlMode;
+        _this._tokenizer = new (_this._options.Tokenizer || Tokenizer_1.default)(_this._options, _this);
+        if (_this._cbs.onparserinit)
+            _this._cbs.onparserinit(_this);
+        return _this;
     }
-    this._tokenizer = new Tokenizer(this._options, this);
-
-    if (this._cbs.onparserinit) this._cbs.onparserinit(this);
-}
-
-__webpack_require__(/*! inherits */ "./node_modules/inherits/inherits_browser.js")(Parser, __webpack_require__(/*! events */ "./node_modules/events/events.js").EventEmitter);
-
-Parser.prototype._updatePosition = function(initialOffset) {
-    if (this.endIndex === null) {
-        if (this._tokenizer._sectionStart <= initialOffset) {
-            this.startIndex = 0;
-        } else {
-            this.startIndex = this._tokenizer._sectionStart - initialOffset;
+    Parser.prototype._updatePosition = function (initialOffset) {
+        if (this.endIndex === null) {
+            if (this._tokenizer._sectionStart <= initialOffset) {
+                this.startIndex = 0;
+            }
+            else {
+                this.startIndex = this._tokenizer._sectionStart - initialOffset;
+            }
         }
-    } else this.startIndex = this.endIndex + 1;
-    this.endIndex = this._tokenizer.getAbsoluteIndex();
-};
-
-//Tokenizer event handlers
-Parser.prototype.ontext = function(data) {
-    this._updatePosition(1);
-    this.endIndex--;
-
-    if (this._cbs.ontext) this._cbs.ontext(data);
-};
-
-Parser.prototype.onopentagname = function(name) {
-    if (this._lowerCaseTagNames) {
-        name = name.toLowerCase();
-    }
-
-    this._tagname = name;
-
-    if (!this._options.xmlMode && name in openImpliesClose) {
-        for (
-            var el;
-            (el = this._stack[this._stack.length - 1]) in
-            openImpliesClose[name];
-            this.onclosetag(el)
-        );
-    }
-
-    if (this._options.xmlMode || !(name in voidElements)) {
-        this._stack.push(name);
-        if (name in foreignContextElements) this._foreignContext.push(true);
-        else if (name in htmlIntegrationElements)
-            this._foreignContext.push(false);
-    }
-
-    if (this._cbs.onopentagname) this._cbs.onopentagname(name);
-    if (this._cbs.onopentag) this._attribs = {};
-};
-
-Parser.prototype.onopentagend = function() {
-    this._updatePosition(1);
-
-    if (this._attribs) {
+        else
+            this.startIndex = this.endIndex + 1;
+        this.endIndex = this._tokenizer.getAbsoluteIndex();
+    };
+    //Tokenizer event handlers
+    Parser.prototype.ontext = function (data) {
+        this._updatePosition(1);
+        // @ts-ignore
+        this.endIndex--;
+        if (this._cbs.ontext)
+            this._cbs.ontext(data);
+    };
+    Parser.prototype.onopentagname = function (name) {
+        if (this._lowerCaseTagNames) {
+            name = name.toLowerCase();
+        }
+        this._tagname = name;
+        if (!this._options.xmlMode && name in openImpliesClose) {
+            for (var el = void 0; 
+            // @ts-ignore
+            openImpliesClose[name].has((el = this._stack[this._stack.length - 1])); this.onclosetag(el))
+                ;
+        }
+        if (this._options.xmlMode || !voidElements.has(name)) {
+            this._stack.push(name);
+            if (foreignContextElements.has(name)) {
+                this._foreignContext.push(true);
+            }
+            else if (htmlIntegrationElements.has(name)) {
+                this._foreignContext.push(false);
+            }
+        }
+        if (this._cbs.onopentagname)
+            this._cbs.onopentagname(name);
         if (this._cbs.onopentag)
-            this._cbs.onopentag(this._tagname, this._attribs);
-        this._attribs = null;
-    }
-
-    if (
-        !this._options.xmlMode &&
-        this._cbs.onclosetag &&
-        this._tagname in voidElements
-    ) {
-        this._cbs.onclosetag(this._tagname);
-    }
-
-    this._tagname = "";
-};
-
-Parser.prototype.onclosetag = function(name) {
-    this._updatePosition(1);
-
-    if (this._lowerCaseTagNames) {
-        name = name.toLowerCase();
-    }
-    
-    if (name in foreignContextElements || name in htmlIntegrationElements) {
-        this._foreignContext.pop();
-    }
-
-    if (
-        this._stack.length &&
-        (!(name in voidElements) || this._options.xmlMode)
-    ) {
-        var pos = this._stack.lastIndexOf(name);
-        if (pos !== -1) {
-            if (this._cbs.onclosetag) {
-                pos = this._stack.length - pos;
-                while (pos--) this._cbs.onclosetag(this._stack.pop());
-            } else this._stack.length = pos;
-        } else if (name === "p" && !this._options.xmlMode) {
+            this._attribs = {};
+    };
+    Parser.prototype.onopentagend = function () {
+        this._updatePosition(1);
+        if (this._attribs) {
+            if (this._cbs.onopentag) {
+                this._cbs.onopentag(this._tagname, this._attribs);
+            }
+            this._attribs = null;
+        }
+        if (!this._options.xmlMode &&
+            this._cbs.onclosetag &&
+            voidElements.has(this._tagname)) {
+            this._cbs.onclosetag(this._tagname);
+        }
+        this._tagname = "";
+    };
+    Parser.prototype.onclosetag = function (name) {
+        this._updatePosition(1);
+        if (this._lowerCaseTagNames) {
+            name = name.toLowerCase();
+        }
+        if (foreignContextElements.has(name) ||
+            htmlIntegrationElements.has(name)) {
+            this._foreignContext.pop();
+        }
+        if (this._stack.length &&
+            (this._options.xmlMode || !voidElements.has(name))) {
+            var pos = this._stack.lastIndexOf(name);
+            if (pos !== -1) {
+                if (this._cbs.onclosetag) {
+                    pos = this._stack.length - pos;
+                    // @ts-ignore
+                    while (pos--)
+                        this._cbs.onclosetag(this._stack.pop());
+                }
+                else
+                    this._stack.length = pos;
+            }
+            else if (name === "p" && !this._options.xmlMode) {
+                this.onopentagname(name);
+                this._closeCurrentTag();
+            }
+        }
+        else if (!this._options.xmlMode && (name === "br" || name === "p")) {
             this.onopentagname(name);
             this._closeCurrentTag();
         }
-    } else if (!this._options.xmlMode && (name === "br" || name === "p")) {
-        this.onopentagname(name);
-        this._closeCurrentTag();
-    }
-};
-
-Parser.prototype.onselfclosingtag = function() {
-    if (
-        this._options.xmlMode ||
-        this._options.recognizeSelfClosing ||
-        this._foreignContext[this._foreignContext.length - 1]
-    ) {
-        this._closeCurrentTag();
-    } else {
-        this.onopentagend();
-    }
-};
-
-Parser.prototype._closeCurrentTag = function() {
-    var name = this._tagname;
-
-    this.onopentagend();
-
-    //self-closing tags will be on the top of the stack
-    //(cheaper check than in onclosetag)
-    if (this._stack[this._stack.length - 1] === name) {
-        if (this._cbs.onclosetag) {
-            this._cbs.onclosetag(name);
+    };
+    Parser.prototype.onselfclosingtag = function () {
+        if (this._options.xmlMode ||
+            this._options.recognizeSelfClosing ||
+            this._foreignContext[this._foreignContext.length - 1]) {
+            this._closeCurrentTag();
         }
-        this._stack.pop();
-        
-    }
-};
-
-Parser.prototype.onattribname = function(name) {
-    if (this._lowerCaseAttributeNames) {
-        name = name.toLowerCase();
-    }
-    this._attribname = name;
-};
-
-Parser.prototype.onattribdata = function(value) {
-    this._attribvalue += value;
-};
-
-Parser.prototype.onattribend = function() {
-    if (this._cbs.onattribute)
-        this._cbs.onattribute(this._attribname, this._attribvalue);
-    if (
-        this._attribs &&
-        !Object.prototype.hasOwnProperty.call(this._attribs, this._attribname)
-    ) {
-        this._attribs[this._attribname] = this._attribvalue;
-    }
-    this._attribname = "";
-    this._attribvalue = "";
-};
-
-Parser.prototype._getInstructionName = function(value) {
-    var idx = value.search(re_nameEnd),
-        name = idx < 0 ? value : value.substr(0, idx);
-
-    if (this._lowerCaseTagNames) {
-        name = name.toLowerCase();
-    }
-
-    return name;
-};
-
-Parser.prototype.ondeclaration = function(value) {
-    if (this._cbs.onprocessinginstruction) {
-        var name = this._getInstructionName(value);
-        this._cbs.onprocessinginstruction("!" + name, "!" + value);
-    }
-};
-
-Parser.prototype.onprocessinginstruction = function(value) {
-    if (this._cbs.onprocessinginstruction) {
-        var name = this._getInstructionName(value);
-        this._cbs.onprocessinginstruction("?" + name, "?" + value);
-    }
-};
-
-Parser.prototype.oncomment = function(value) {
-    this._updatePosition(4);
-
-    if (this._cbs.oncomment) this._cbs.oncomment(value);
-    if (this._cbs.oncommentend) this._cbs.oncommentend();
-};
-
-Parser.prototype.oncdata = function(value) {
-    this._updatePosition(1);
-
-    if (this._options.xmlMode || this._options.recognizeCDATA) {
-        if (this._cbs.oncdatastart) this._cbs.oncdatastart();
-        if (this._cbs.ontext) this._cbs.ontext(value);
-        if (this._cbs.oncdataend) this._cbs.oncdataend();
-    } else {
-        this.oncomment("[CDATA[" + value + "]]");
-    }
-};
-
-Parser.prototype.onerror = function(err) {
-    if (this._cbs.onerror) this._cbs.onerror(err);
-};
-
-Parser.prototype.onend = function() {
-    if (this._cbs.onclosetag) {
-        for (
-            var i = this._stack.length;
-            i > 0;
-            this._cbs.onclosetag(this._stack[--i])
-        );
-    }
-    if (this._cbs.onend) this._cbs.onend();
-};
-
-//Resets the parser to a blank state, ready to parse a new HTML document
-Parser.prototype.reset = function() {
-    if (this._cbs.onreset) this._cbs.onreset();
-    this._tokenizer.reset();
-
-    this._tagname = "";
-    this._attribname = "";
-    this._attribs = null;
-    this._stack = [];
-
-    if (this._cbs.onparserinit) this._cbs.onparserinit(this);
-};
-
-//Parses a complete HTML document and pushes it to the handler
-Parser.prototype.parseComplete = function(data) {
-    this.reset();
-    this.end(data);
-};
-
-Parser.prototype.write = function(chunk) {
-    this._tokenizer.write(chunk);
-};
-
-Parser.prototype.end = function(chunk) {
-    this._tokenizer.end(chunk);
-};
-
-Parser.prototype.pause = function() {
-    this._tokenizer.pause();
-};
-
-Parser.prototype.resume = function() {
-    this._tokenizer.resume();
-};
-
-//alias for backwards compat
-Parser.prototype.parseChunk = Parser.prototype.write;
-Parser.prototype.done = Parser.prototype.end;
-
-module.exports = Parser;
-
-
-/***/ }),
-
-/***/ "./node_modules/htmlparser2/lib/ProxyHandler.js":
-/*!******************************************************!*\
-  !*** ./node_modules/htmlparser2/lib/ProxyHandler.js ***!
-  \******************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-module.exports = ProxyHandler;
-
-function ProxyHandler(cbs) {
-    this._cbs = cbs || {};
-}
-
-var EVENTS = __webpack_require__(/*! ./ */ "./node_modules/htmlparser2/lib/index.js").EVENTS;
-Object.keys(EVENTS).forEach(function(name) {
-    if (EVENTS[name] === 0) {
-        name = "on" + name;
-        ProxyHandler.prototype[name] = function() {
-            if (this._cbs[name]) this._cbs[name]();
-        };
-    } else if (EVENTS[name] === 1) {
-        name = "on" + name;
-        ProxyHandler.prototype[name] = function(a) {
-            if (this._cbs[name]) this._cbs[name](a);
-        };
-    } else if (EVENTS[name] === 2) {
-        name = "on" + name;
-        ProxyHandler.prototype[name] = function(a, b) {
-            if (this._cbs[name]) this._cbs[name](a, b);
-        };
-    } else {
-        throw Error("wrong number of arguments");
-    }
-});
-
-
-/***/ }),
-
-/***/ "./node_modules/htmlparser2/lib/Stream.js":
-/*!************************************************!*\
-  !*** ./node_modules/htmlparser2/lib/Stream.js ***!
-  \************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-module.exports = Stream;
-
-var Parser = __webpack_require__(/*! ./WritableStream.js */ "./node_modules/htmlparser2/lib/WritableStream.js");
-
-function Stream(options) {
-    Parser.call(this, new Cbs(this), options);
-}
-
-__webpack_require__(/*! inherits */ "./node_modules/inherits/inherits_browser.js")(Stream, Parser);
-
-Stream.prototype.readable = true;
-
-function Cbs(scope) {
-    this.scope = scope;
-}
-
-var EVENTS = __webpack_require__(/*! ../ */ "./node_modules/htmlparser2/lib/index.js").EVENTS;
-
-Object.keys(EVENTS).forEach(function(name) {
-    if (EVENTS[name] === 0) {
-        Cbs.prototype["on" + name] = function() {
-            this.scope.emit(name);
-        };
-    } else if (EVENTS[name] === 1) {
-        Cbs.prototype["on" + name] = function(a) {
-            this.scope.emit(name, a);
-        };
-    } else if (EVENTS[name] === 2) {
-        Cbs.prototype["on" + name] = function(a, b) {
-            this.scope.emit(name, a, b);
-        };
-    } else {
-        throw Error("wrong number of arguments!");
-    }
-});
+        else {
+            this.onopentagend();
+        }
+    };
+    Parser.prototype._closeCurrentTag = function () {
+        var name = this._tagname;
+        this.onopentagend();
+        //self-closing tags will be on the top of the stack
+        //(cheaper check than in onclosetag)
+        if (this._stack[this._stack.length - 1] === name) {
+            if (this._cbs.onclosetag) {
+                this._cbs.onclosetag(name);
+            }
+            this._stack.pop();
+        }
+    };
+    Parser.prototype.onattribname = function (name) {
+        if (this._lowerCaseAttributeNames) {
+            name = name.toLowerCase();
+        }
+        this._attribname = name;
+    };
+    Parser.prototype.onattribdata = function (value) {
+        this._attribvalue += value;
+    };
+    Parser.prototype.onattribend = function () {
+        if (this._cbs.onattribute)
+            this._cbs.onattribute(this._attribname, this._attribvalue);
+        if (this._attribs &&
+            !Object.prototype.hasOwnProperty.call(this._attribs, this._attribname)) {
+            this._attribs[this._attribname] = this._attribvalue;
+        }
+        this._attribname = "";
+        this._attribvalue = "";
+    };
+    Parser.prototype._getInstructionName = function (value) {
+        var idx = value.search(reNameEnd);
+        var name = idx < 0 ? value : value.substr(0, idx);
+        if (this._lowerCaseTagNames) {
+            name = name.toLowerCase();
+        }
+        return name;
+    };
+    Parser.prototype.ondeclaration = function (value) {
+        if (this._cbs.onprocessinginstruction) {
+            var name_1 = this._getInstructionName(value);
+            this._cbs.onprocessinginstruction("!" + name_1, "!" + value);
+        }
+    };
+    Parser.prototype.onprocessinginstruction = function (value) {
+        if (this._cbs.onprocessinginstruction) {
+            var name_2 = this._getInstructionName(value);
+            this._cbs.onprocessinginstruction("?" + name_2, "?" + value);
+        }
+    };
+    Parser.prototype.oncomment = function (value) {
+        this._updatePosition(4);
+        if (this._cbs.oncomment)
+            this._cbs.oncomment(value);
+        if (this._cbs.oncommentend)
+            this._cbs.oncommentend();
+    };
+    Parser.prototype.oncdata = function (value) {
+        this._updatePosition(1);
+        if (this._options.xmlMode || this._options.recognizeCDATA) {
+            if (this._cbs.oncdatastart)
+                this._cbs.oncdatastart();
+            if (this._cbs.ontext)
+                this._cbs.ontext(value);
+            if (this._cbs.oncdataend)
+                this._cbs.oncdataend();
+        }
+        else {
+            this.oncomment("[CDATA[" + value + "]]");
+        }
+    };
+    Parser.prototype.onerror = function (err) {
+        if (this._cbs.onerror)
+            this._cbs.onerror(err);
+    };
+    Parser.prototype.onend = function () {
+        if (this._cbs.onclosetag) {
+            for (var i = this._stack.length; i > 0; this._cbs.onclosetag(this._stack[--i]))
+                ;
+        }
+        if (this._cbs.onend)
+            this._cbs.onend();
+    };
+    //Resets the parser to a blank state, ready to parse a new HTML document
+    Parser.prototype.reset = function () {
+        if (this._cbs.onreset)
+            this._cbs.onreset();
+        this._tokenizer.reset();
+        this._tagname = "";
+        this._attribname = "";
+        this._attribs = null;
+        this._stack = [];
+        if (this._cbs.onparserinit)
+            this._cbs.onparserinit(this);
+    };
+    //Parses a complete HTML document and pushes it to the handler
+    Parser.prototype.parseComplete = function (data) {
+        this.reset();
+        this.end(data);
+    };
+    Parser.prototype.write = function (chunk) {
+        this._tokenizer.write(chunk);
+    };
+    Parser.prototype.end = function (chunk) {
+        this._tokenizer.end(chunk);
+    };
+    Parser.prototype.pause = function () {
+        this._tokenizer.pause();
+    };
+    Parser.prototype.resume = function () {
+        this._tokenizer.resume();
+    };
+    return Parser;
+}(events_1.EventEmitter));
+exports.Parser = Parser;
 
 
 /***/ }),
@@ -43471,1012 +43877,866 @@ Object.keys(EVENTS).forEach(function(name) {
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = Tokenizer;
+"use strict";
 
-var decodeCodePoint = __webpack_require__(/*! entities/lib/decode_codepoint.js */ "./node_modules/entities/lib/decode_codepoint.js");
-var entityMap = __webpack_require__(/*! entities/maps/entities.json */ "./node_modules/entities/maps/entities.json");
-var legacyMap = __webpack_require__(/*! entities/maps/legacy.json */ "./node_modules/entities/maps/legacy.json");
-var xmlMap = __webpack_require__(/*! entities/maps/xml.json */ "./node_modules/entities/maps/xml.json");
-
-var i = 0;
-
-var TEXT = i++;
-var BEFORE_TAG_NAME = i++; //after <
-var IN_TAG_NAME = i++;
-var IN_SELF_CLOSING_TAG = i++;
-var BEFORE_CLOSING_TAG_NAME = i++;
-var IN_CLOSING_TAG_NAME = i++;
-var AFTER_CLOSING_TAG_NAME = i++;
-
-//attributes
-var BEFORE_ATTRIBUTE_NAME = i++;
-var IN_ATTRIBUTE_NAME = i++;
-var AFTER_ATTRIBUTE_NAME = i++;
-var BEFORE_ATTRIBUTE_VALUE = i++;
-var IN_ATTRIBUTE_VALUE_DQ = i++; // "
-var IN_ATTRIBUTE_VALUE_SQ = i++; // '
-var IN_ATTRIBUTE_VALUE_NQ = i++;
-
-//declarations
-var BEFORE_DECLARATION = i++; // !
-var IN_DECLARATION = i++;
-
-//processing instructions
-var IN_PROCESSING_INSTRUCTION = i++; // ?
-
-//comments
-var BEFORE_COMMENT = i++;
-var IN_COMMENT = i++;
-var AFTER_COMMENT_1 = i++;
-var AFTER_COMMENT_2 = i++;
-
-//cdata
-var BEFORE_CDATA_1 = i++; // [
-var BEFORE_CDATA_2 = i++; // C
-var BEFORE_CDATA_3 = i++; // D
-var BEFORE_CDATA_4 = i++; // A
-var BEFORE_CDATA_5 = i++; // T
-var BEFORE_CDATA_6 = i++; // A
-var IN_CDATA = i++; // [
-var AFTER_CDATA_1 = i++; // ]
-var AFTER_CDATA_2 = i++; // ]
-
-//special tags
-var BEFORE_SPECIAL = i++; //S
-var BEFORE_SPECIAL_END = i++; //S
-
-var BEFORE_SCRIPT_1 = i++; //C
-var BEFORE_SCRIPT_2 = i++; //R
-var BEFORE_SCRIPT_3 = i++; //I
-var BEFORE_SCRIPT_4 = i++; //P
-var BEFORE_SCRIPT_5 = i++; //T
-var AFTER_SCRIPT_1 = i++; //C
-var AFTER_SCRIPT_2 = i++; //R
-var AFTER_SCRIPT_3 = i++; //I
-var AFTER_SCRIPT_4 = i++; //P
-var AFTER_SCRIPT_5 = i++; //T
-
-var BEFORE_STYLE_1 = i++; //T
-var BEFORE_STYLE_2 = i++; //Y
-var BEFORE_STYLE_3 = i++; //L
-var BEFORE_STYLE_4 = i++; //E
-var AFTER_STYLE_1 = i++; //T
-var AFTER_STYLE_2 = i++; //Y
-var AFTER_STYLE_3 = i++; //L
-var AFTER_STYLE_4 = i++; //E
-
-var BEFORE_ENTITY = i++; //&
-var BEFORE_NUMERIC_ENTITY = i++; //#
-var IN_NAMED_ENTITY = i++;
-var IN_NUMERIC_ENTITY = i++;
-var IN_HEX_ENTITY = i++; //X
-
-var j = 0;
-
-var SPECIAL_NONE = j++;
-var SPECIAL_SCRIPT = j++;
-var SPECIAL_STYLE = j++;
-
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
+Object.defineProperty(exports, "__esModule", { value: true });
+var decode_codepoint_1 = __importDefault(__webpack_require__(/*! entities/lib/decode_codepoint */ "./node_modules/entities/lib/decode_codepoint.js"));
+var entities_json_1 = __importDefault(__webpack_require__(/*! entities/lib/maps/entities.json */ "./node_modules/entities/lib/maps/entities.json"));
+var legacy_json_1 = __importDefault(__webpack_require__(/*! entities/lib/maps/legacy.json */ "./node_modules/entities/lib/maps/legacy.json"));
+var xml_json_1 = __importDefault(__webpack_require__(/*! entities/lib/maps/xml.json */ "./node_modules/entities/lib/maps/xml.json"));
 function whitespace(c) {
     return c === " " || c === "\n" || c === "\t" || c === "\f" || c === "\r";
 }
-
 function ifElseState(upper, SUCCESS, FAILURE) {
     var lower = upper.toLowerCase();
-
     if (upper === lower) {
-        return function(c) {
+        return function (t, c) {
             if (c === lower) {
-                this._state = SUCCESS;
-            } else {
-                this._state = FAILURE;
-                this._index--;
+                t._state = SUCCESS;
+            }
+            else {
+                t._state = FAILURE;
+                t._index--;
             }
         };
-    } else {
-        return function(c) {
+    }
+    else {
+        return function (t, c) {
             if (c === lower || c === upper) {
-                this._state = SUCCESS;
-            } else {
-                this._state = FAILURE;
-                this._index--;
+                t._state = SUCCESS;
+            }
+            else {
+                t._state = FAILURE;
+                t._index--;
             }
         };
     }
 }
-
 function consumeSpecialNameChar(upper, NEXT_STATE) {
     var lower = upper.toLowerCase();
-
-    return function(c) {
+    return function (t, c) {
         if (c === lower || c === upper) {
-            this._state = NEXT_STATE;
-        } else {
-            this._state = IN_TAG_NAME;
-            this._index--; //consume the token again
+            t._state = NEXT_STATE;
+        }
+        else {
+            t._state = 3 /* InTagName */;
+            t._index--; //consume the token again
         }
     };
 }
-
-function Tokenizer(options, cbs) {
-    this._state = TEXT;
-    this._buffer = "";
-    this._sectionStart = 0;
-    this._index = 0;
-    this._bufferOffset = 0; //chars removed from _buffer
-    this._baseState = TEXT;
-    this._special = SPECIAL_NONE;
-    this._cbs = cbs;
-    this._running = true;
-    this._ended = false;
-    this._xmlMode = !!(options && options.xmlMode);
-    this._decodeEntities = !!(options && options.decodeEntities);
-}
-
-Tokenizer.prototype._stateText = function(c) {
-    if (c === "<") {
-        if (this._index > this._sectionStart) {
+var stateBeforeCdata1 = ifElseState("C", 23 /* BeforeCdata2 */, 16 /* InDeclaration */);
+var stateBeforeCdata2 = ifElseState("D", 24 /* BeforeCdata3 */, 16 /* InDeclaration */);
+var stateBeforeCdata3 = ifElseState("A", 25 /* BeforeCdata4 */, 16 /* InDeclaration */);
+var stateBeforeCdata4 = ifElseState("T", 26 /* BeforeCdata5 */, 16 /* InDeclaration */);
+var stateBeforeCdata5 = ifElseState("A", 27 /* BeforeCdata6 */, 16 /* InDeclaration */);
+var stateBeforeScript1 = consumeSpecialNameChar("R", 34 /* BeforeScript2 */);
+var stateBeforeScript2 = consumeSpecialNameChar("I", 35 /* BeforeScript3 */);
+var stateBeforeScript3 = consumeSpecialNameChar("P", 36 /* BeforeScript4 */);
+var stateBeforeScript4 = consumeSpecialNameChar("T", 37 /* BeforeScript5 */);
+var stateAfterScript1 = ifElseState("R", 39 /* AfterScript2 */, 1 /* Text */);
+var stateAfterScript2 = ifElseState("I", 40 /* AfterScript3 */, 1 /* Text */);
+var stateAfterScript3 = ifElseState("P", 41 /* AfterScript4 */, 1 /* Text */);
+var stateAfterScript4 = ifElseState("T", 42 /* AfterScript5 */, 1 /* Text */);
+var stateBeforeStyle1 = consumeSpecialNameChar("Y", 44 /* BeforeStyle2 */);
+var stateBeforeStyle2 = consumeSpecialNameChar("L", 45 /* BeforeStyle3 */);
+var stateBeforeStyle3 = consumeSpecialNameChar("E", 46 /* BeforeStyle4 */);
+var stateAfterStyle1 = ifElseState("Y", 48 /* AfterStyle2 */, 1 /* Text */);
+var stateAfterStyle2 = ifElseState("L", 49 /* AfterStyle3 */, 1 /* Text */);
+var stateAfterStyle3 = ifElseState("E", 50 /* AfterStyle4 */, 1 /* Text */);
+var stateBeforeEntity = ifElseState("#", 52 /* BeforeNumericEntity */, 53 /* InNamedEntity */);
+var stateBeforeNumericEntity = ifElseState("X", 55 /* InHexEntity */, 54 /* InNumericEntity */);
+var Tokenizer = /** @class */ (function () {
+    function Tokenizer(options, cbs) {
+        /** The current state the tokenizer is in. */
+        this._state = 1 /* Text */;
+        /** The read buffer. */
+        this._buffer = "";
+        /** The beginning of the section that is currently being read. */
+        this._sectionStart = 0;
+        /** The index within the buffer that we are currently looking at. */
+        this._index = 0;
+        /**
+         * Data that has already been processed will be removed from the buffer occasionally.
+         * `_bufferOffset` keeps track of how many characters have been removed, to make sure position information is accurate.
+         */
+        this._bufferOffset = 0;
+        /** Some behavior, eg. when decoding entities, is done while we are in another state. This keeps track of the other state type. */
+        this._baseState = 1 /* Text */;
+        /** For special parsing behavior inside of script and style tags. */
+        this._special = 1 /* None */;
+        /** Indicates whether the tokenizer has been paused. */
+        this._running = true;
+        /** Indicates whether the tokenizer has finished running / `.end` has been called. */
+        this._ended = false;
+        this._cbs = cbs;
+        this._xmlMode = !!(options && options.xmlMode);
+        this._decodeEntities = !!(options && options.decodeEntities);
+    }
+    Tokenizer.prototype.reset = function () {
+        this._state = 1 /* Text */;
+        this._buffer = "";
+        this._sectionStart = 0;
+        this._index = 0;
+        this._bufferOffset = 0;
+        this._baseState = 1 /* Text */;
+        this._special = 1 /* None */;
+        this._running = true;
+        this._ended = false;
+    };
+    Tokenizer.prototype._stateText = function (c) {
+        if (c === "<") {
+            if (this._index > this._sectionStart) {
+                this._cbs.ontext(this._getSection());
+            }
+            this._state = 2 /* BeforeTagName */;
+            this._sectionStart = this._index;
+        }
+        else if (this._decodeEntities &&
+            this._special === 1 /* None */ &&
+            c === "&") {
+            if (this._index > this._sectionStart) {
+                this._cbs.ontext(this._getSection());
+            }
+            this._baseState = 1 /* Text */;
+            this._state = 51 /* BeforeEntity */;
+            this._sectionStart = this._index;
+        }
+    };
+    Tokenizer.prototype._stateBeforeTagName = function (c) {
+        if (c === "/") {
+            this._state = 5 /* BeforeClosingTagName */;
+        }
+        else if (c === "<") {
             this._cbs.ontext(this._getSection());
+            this._sectionStart = this._index;
         }
-        this._state = BEFORE_TAG_NAME;
-        this._sectionStart = this._index;
-    } else if (
-        this._decodeEntities &&
-        this._special === SPECIAL_NONE &&
-        c === "&"
-    ) {
-        if (this._index > this._sectionStart) {
-            this._cbs.ontext(this._getSection());
+        else if (c === ">" ||
+            this._special !== 1 /* None */ ||
+            whitespace(c)) {
+            this._state = 1 /* Text */;
         }
-        this._baseState = TEXT;
-        this._state = BEFORE_ENTITY;
-        this._sectionStart = this._index;
-    }
-};
-
-Tokenizer.prototype._stateBeforeTagName = function(c) {
-    if (c === "/") {
-        this._state = BEFORE_CLOSING_TAG_NAME;
-    } else if (c === "<") {
-        this._cbs.ontext(this._getSection());
-        this._sectionStart = this._index;
-    } else if (c === ">" || this._special !== SPECIAL_NONE || whitespace(c)) {
-        this._state = TEXT;
-    } else if (c === "!") {
-        this._state = BEFORE_DECLARATION;
-        this._sectionStart = this._index + 1;
-    } else if (c === "?") {
-        this._state = IN_PROCESSING_INSTRUCTION;
-        this._sectionStart = this._index + 1;
-    } else {
-        this._state =
-            !this._xmlMode && (c === "s" || c === "S")
-                ? BEFORE_SPECIAL
-                : IN_TAG_NAME;
-        this._sectionStart = this._index;
-    }
-};
-
-Tokenizer.prototype._stateInTagName = function(c) {
-    if (c === "/" || c === ">" || whitespace(c)) {
-        this._emitToken("onopentagname");
-        this._state = BEFORE_ATTRIBUTE_NAME;
-        this._index--;
-    }
-};
-
-Tokenizer.prototype._stateBeforeCloseingTagName = function(c) {
-    if (whitespace(c));
-    else if (c === ">") {
-        this._state = TEXT;
-    } else if (this._special !== SPECIAL_NONE) {
-        if (c === "s" || c === "S") {
-            this._state = BEFORE_SPECIAL_END;
-        } else {
-            this._state = TEXT;
-            this._index--;
-        }
-    } else {
-        this._state = IN_CLOSING_TAG_NAME;
-        this._sectionStart = this._index;
-    }
-};
-
-Tokenizer.prototype._stateInCloseingTagName = function(c) {
-    if (c === ">" || whitespace(c)) {
-        this._emitToken("onclosetag");
-        this._state = AFTER_CLOSING_TAG_NAME;
-        this._index--;
-    }
-};
-
-Tokenizer.prototype._stateAfterCloseingTagName = function(c) {
-    //skip everything until ">"
-    if (c === ">") {
-        this._state = TEXT;
-        this._sectionStart = this._index + 1;
-    }
-};
-
-Tokenizer.prototype._stateBeforeAttributeName = function(c) {
-    if (c === ">") {
-        this._cbs.onopentagend();
-        this._state = TEXT;
-        this._sectionStart = this._index + 1;
-    } else if (c === "/") {
-        this._state = IN_SELF_CLOSING_TAG;
-    } else if (!whitespace(c)) {
-        this._state = IN_ATTRIBUTE_NAME;
-        this._sectionStart = this._index;
-    }
-};
-
-Tokenizer.prototype._stateInSelfClosingTag = function(c) {
-    if (c === ">") {
-        this._cbs.onselfclosingtag();
-        this._state = TEXT;
-        this._sectionStart = this._index + 1;
-    } else if (!whitespace(c)) {
-        this._state = BEFORE_ATTRIBUTE_NAME;
-        this._index--;
-    }
-};
-
-Tokenizer.prototype._stateInAttributeName = function(c) {
-    if (c === "=" || c === "/" || c === ">" || whitespace(c)) {
-        this._cbs.onattribname(this._getSection());
-        this._sectionStart = -1;
-        this._state = AFTER_ATTRIBUTE_NAME;
-        this._index--;
-    }
-};
-
-Tokenizer.prototype._stateAfterAttributeName = function(c) {
-    if (c === "=") {
-        this._state = BEFORE_ATTRIBUTE_VALUE;
-    } else if (c === "/" || c === ">") {
-        this._cbs.onattribend();
-        this._state = BEFORE_ATTRIBUTE_NAME;
-        this._index--;
-    } else if (!whitespace(c)) {
-        this._cbs.onattribend();
-        this._state = IN_ATTRIBUTE_NAME;
-        this._sectionStart = this._index;
-    }
-};
-
-Tokenizer.prototype._stateBeforeAttributeValue = function(c) {
-    if (c === '"') {
-        this._state = IN_ATTRIBUTE_VALUE_DQ;
-        this._sectionStart = this._index + 1;
-    } else if (c === "'") {
-        this._state = IN_ATTRIBUTE_VALUE_SQ;
-        this._sectionStart = this._index + 1;
-    } else if (!whitespace(c)) {
-        this._state = IN_ATTRIBUTE_VALUE_NQ;
-        this._sectionStart = this._index;
-        this._index--; //reconsume token
-    }
-};
-
-Tokenizer.prototype._stateInAttributeValueDoubleQuotes = function(c) {
-    if (c === '"') {
-        this._emitToken("onattribdata");
-        this._cbs.onattribend();
-        this._state = BEFORE_ATTRIBUTE_NAME;
-    } else if (this._decodeEntities && c === "&") {
-        this._emitToken("onattribdata");
-        this._baseState = this._state;
-        this._state = BEFORE_ENTITY;
-        this._sectionStart = this._index;
-    }
-};
-
-Tokenizer.prototype._stateInAttributeValueSingleQuotes = function(c) {
-    if (c === "'") {
-        this._emitToken("onattribdata");
-        this._cbs.onattribend();
-        this._state = BEFORE_ATTRIBUTE_NAME;
-    } else if (this._decodeEntities && c === "&") {
-        this._emitToken("onattribdata");
-        this._baseState = this._state;
-        this._state = BEFORE_ENTITY;
-        this._sectionStart = this._index;
-    }
-};
-
-Tokenizer.prototype._stateInAttributeValueNoQuotes = function(c) {
-    if (whitespace(c) || c === ">") {
-        this._emitToken("onattribdata");
-        this._cbs.onattribend();
-        this._state = BEFORE_ATTRIBUTE_NAME;
-        this._index--;
-    } else if (this._decodeEntities && c === "&") {
-        this._emitToken("onattribdata");
-        this._baseState = this._state;
-        this._state = BEFORE_ENTITY;
-        this._sectionStart = this._index;
-    }
-};
-
-Tokenizer.prototype._stateBeforeDeclaration = function(c) {
-    this._state =
-        c === "["
-            ? BEFORE_CDATA_1
-            : c === "-"
-                ? BEFORE_COMMENT
-                : IN_DECLARATION;
-};
-
-Tokenizer.prototype._stateInDeclaration = function(c) {
-    if (c === ">") {
-        this._cbs.ondeclaration(this._getSection());
-        this._state = TEXT;
-        this._sectionStart = this._index + 1;
-    }
-};
-
-Tokenizer.prototype._stateInProcessingInstruction = function(c) {
-    if (c === ">") {
-        this._cbs.onprocessinginstruction(this._getSection());
-        this._state = TEXT;
-        this._sectionStart = this._index + 1;
-    }
-};
-
-Tokenizer.prototype._stateBeforeComment = function(c) {
-    if (c === "-") {
-        this._state = IN_COMMENT;
-        this._sectionStart = this._index + 1;
-    } else {
-        this._state = IN_DECLARATION;
-    }
-};
-
-Tokenizer.prototype._stateInComment = function(c) {
-    if (c === "-") this._state = AFTER_COMMENT_1;
-};
-
-Tokenizer.prototype._stateAfterComment1 = function(c) {
-    if (c === "-") {
-        this._state = AFTER_COMMENT_2;
-    } else {
-        this._state = IN_COMMENT;
-    }
-};
-
-Tokenizer.prototype._stateAfterComment2 = function(c) {
-    if (c === ">") {
-        //remove 2 trailing chars
-        this._cbs.oncomment(
-            this._buffer.substring(this._sectionStart, this._index - 2)
-        );
-        this._state = TEXT;
-        this._sectionStart = this._index + 1;
-    } else if (c !== "-") {
-        this._state = IN_COMMENT;
-    }
-    // else: stay in AFTER_COMMENT_2 (`--->`)
-};
-
-Tokenizer.prototype._stateBeforeCdata1 = ifElseState(
-    "C",
-    BEFORE_CDATA_2,
-    IN_DECLARATION
-);
-Tokenizer.prototype._stateBeforeCdata2 = ifElseState(
-    "D",
-    BEFORE_CDATA_3,
-    IN_DECLARATION
-);
-Tokenizer.prototype._stateBeforeCdata3 = ifElseState(
-    "A",
-    BEFORE_CDATA_4,
-    IN_DECLARATION
-);
-Tokenizer.prototype._stateBeforeCdata4 = ifElseState(
-    "T",
-    BEFORE_CDATA_5,
-    IN_DECLARATION
-);
-Tokenizer.prototype._stateBeforeCdata5 = ifElseState(
-    "A",
-    BEFORE_CDATA_6,
-    IN_DECLARATION
-);
-
-Tokenizer.prototype._stateBeforeCdata6 = function(c) {
-    if (c === "[") {
-        this._state = IN_CDATA;
-        this._sectionStart = this._index + 1;
-    } else {
-        this._state = IN_DECLARATION;
-        this._index--;
-    }
-};
-
-Tokenizer.prototype._stateInCdata = function(c) {
-    if (c === "]") this._state = AFTER_CDATA_1;
-};
-
-Tokenizer.prototype._stateAfterCdata1 = function(c) {
-    if (c === "]") this._state = AFTER_CDATA_2;
-    else this._state = IN_CDATA;
-};
-
-Tokenizer.prototype._stateAfterCdata2 = function(c) {
-    if (c === ">") {
-        //remove 2 trailing chars
-        this._cbs.oncdata(
-            this._buffer.substring(this._sectionStart, this._index - 2)
-        );
-        this._state = TEXT;
-        this._sectionStart = this._index + 1;
-    } else if (c !== "]") {
-        this._state = IN_CDATA;
-    }
-    //else: stay in AFTER_CDATA_2 (`]]]>`)
-};
-
-Tokenizer.prototype._stateBeforeSpecial = function(c) {
-    if (c === "c" || c === "C") {
-        this._state = BEFORE_SCRIPT_1;
-    } else if (c === "t" || c === "T") {
-        this._state = BEFORE_STYLE_1;
-    } else {
-        this._state = IN_TAG_NAME;
-        this._index--; //consume the token again
-    }
-};
-
-Tokenizer.prototype._stateBeforeSpecialEnd = function(c) {
-    if (this._special === SPECIAL_SCRIPT && (c === "c" || c === "C")) {
-        this._state = AFTER_SCRIPT_1;
-    } else if (this._special === SPECIAL_STYLE && (c === "t" || c === "T")) {
-        this._state = AFTER_STYLE_1;
-    } else this._state = TEXT;
-};
-
-Tokenizer.prototype._stateBeforeScript1 = consumeSpecialNameChar(
-    "R",
-    BEFORE_SCRIPT_2
-);
-Tokenizer.prototype._stateBeforeScript2 = consumeSpecialNameChar(
-    "I",
-    BEFORE_SCRIPT_3
-);
-Tokenizer.prototype._stateBeforeScript3 = consumeSpecialNameChar(
-    "P",
-    BEFORE_SCRIPT_4
-);
-Tokenizer.prototype._stateBeforeScript4 = consumeSpecialNameChar(
-    "T",
-    BEFORE_SCRIPT_5
-);
-
-Tokenizer.prototype._stateBeforeScript5 = function(c) {
-    if (c === "/" || c === ">" || whitespace(c)) {
-        this._special = SPECIAL_SCRIPT;
-    }
-    this._state = IN_TAG_NAME;
-    this._index--; //consume the token again
-};
-
-Tokenizer.prototype._stateAfterScript1 = ifElseState("R", AFTER_SCRIPT_2, TEXT);
-Tokenizer.prototype._stateAfterScript2 = ifElseState("I", AFTER_SCRIPT_3, TEXT);
-Tokenizer.prototype._stateAfterScript3 = ifElseState("P", AFTER_SCRIPT_4, TEXT);
-Tokenizer.prototype._stateAfterScript4 = ifElseState("T", AFTER_SCRIPT_5, TEXT);
-
-Tokenizer.prototype._stateAfterScript5 = function(c) {
-    if (c === ">" || whitespace(c)) {
-        this._special = SPECIAL_NONE;
-        this._state = IN_CLOSING_TAG_NAME;
-        this._sectionStart = this._index - 6;
-        this._index--; //reconsume the token
-    } else this._state = TEXT;
-};
-
-Tokenizer.prototype._stateBeforeStyle1 = consumeSpecialNameChar(
-    "Y",
-    BEFORE_STYLE_2
-);
-Tokenizer.prototype._stateBeforeStyle2 = consumeSpecialNameChar(
-    "L",
-    BEFORE_STYLE_3
-);
-Tokenizer.prototype._stateBeforeStyle3 = consumeSpecialNameChar(
-    "E",
-    BEFORE_STYLE_4
-);
-
-Tokenizer.prototype._stateBeforeStyle4 = function(c) {
-    if (c === "/" || c === ">" || whitespace(c)) {
-        this._special = SPECIAL_STYLE;
-    }
-    this._state = IN_TAG_NAME;
-    this._index--; //consume the token again
-};
-
-Tokenizer.prototype._stateAfterStyle1 = ifElseState("Y", AFTER_STYLE_2, TEXT);
-Tokenizer.prototype._stateAfterStyle2 = ifElseState("L", AFTER_STYLE_3, TEXT);
-Tokenizer.prototype._stateAfterStyle3 = ifElseState("E", AFTER_STYLE_4, TEXT);
-
-Tokenizer.prototype._stateAfterStyle4 = function(c) {
-    if (c === ">" || whitespace(c)) {
-        this._special = SPECIAL_NONE;
-        this._state = IN_CLOSING_TAG_NAME;
-        this._sectionStart = this._index - 5;
-        this._index--; //reconsume the token
-    } else this._state = TEXT;
-};
-
-Tokenizer.prototype._stateBeforeEntity = ifElseState(
-    "#",
-    BEFORE_NUMERIC_ENTITY,
-    IN_NAMED_ENTITY
-);
-Tokenizer.prototype._stateBeforeNumericEntity = ifElseState(
-    "X",
-    IN_HEX_ENTITY,
-    IN_NUMERIC_ENTITY
-);
-
-//for entities terminated with a semicolon
-Tokenizer.prototype._parseNamedEntityStrict = function() {
-    //offset = 1
-    if (this._sectionStart + 1 < this._index) {
-        var entity = this._buffer.substring(
-                this._sectionStart + 1,
-                this._index
-            ),
-            map = this._xmlMode ? xmlMap : entityMap;
-
-        if (map.hasOwnProperty(entity)) {
-            this._emitPartial(map[entity]);
+        else if (c === "!") {
+            this._state = 15 /* BeforeDeclaration */;
             this._sectionStart = this._index + 1;
         }
-    }
-};
-
-//parses legacy entities (without trailing semicolon)
-Tokenizer.prototype._parseLegacyEntity = function() {
-    var start = this._sectionStart + 1,
-        limit = this._index - start;
-
-    if (limit > 6) limit = 6; //the max length of legacy entities is 6
-
-    while (limit >= 2) {
-        //the min length of legacy entities is 2
-        var entity = this._buffer.substr(start, limit);
-
-        if (legacyMap.hasOwnProperty(entity)) {
-            this._emitPartial(legacyMap[entity]);
-            this._sectionStart += limit + 1;
-            return;
-        } else {
-            limit--;
+        else if (c === "?") {
+            this._state = 17 /* InProcessingInstruction */;
+            this._sectionStart = this._index + 1;
         }
-    }
-};
-
-Tokenizer.prototype._stateInNamedEntity = function(c) {
-    if (c === ";") {
-        this._parseNamedEntityStrict();
-        if (this._sectionStart + 1 < this._index && !this._xmlMode) {
-            this._parseLegacyEntity();
+        else {
+            this._state =
+                !this._xmlMode && (c === "s" || c === "S")
+                    ? 31 /* BeforeSpecial */
+                    : 3 /* InTagName */;
+            this._sectionStart = this._index;
         }
-        this._state = this._baseState;
-    } else if (
-        (c < "a" || c > "z") &&
-        (c < "A" || c > "Z") &&
-        (c < "0" || c > "9")
-    ) {
-        if (this._xmlMode);
-        else if (this._sectionStart + 1 === this._index);
-        else if (this._baseState !== TEXT) {
-            if (c !== "=") {
-                this._parseNamedEntityStrict();
+    };
+    Tokenizer.prototype._stateInTagName = function (c) {
+        if (c === "/" || c === ">" || whitespace(c)) {
+            this._emitToken("onopentagname");
+            this._state = 8 /* BeforeAttributeName */;
+            this._index--;
+        }
+    };
+    Tokenizer.prototype._stateBeforeCloseingTagName = function (c) {
+        if (whitespace(c)) {
+            // ignore
+        }
+        else if (c === ">") {
+            this._state = 1 /* Text */;
+        }
+        else if (this._special !== 1 /* None */) {
+            if (c === "s" || c === "S") {
+                this._state = 32 /* BeforeSpecialEnd */;
             }
-        } else {
-            this._parseLegacyEntity();
+            else {
+                this._state = 1 /* Text */;
+                this._index--;
+            }
         }
-
+        else {
+            this._state = 6 /* InClosingTagName */;
+            this._sectionStart = this._index;
+        }
+    };
+    Tokenizer.prototype._stateInCloseingTagName = function (c) {
+        if (c === ">" || whitespace(c)) {
+            this._emitToken("onclosetag");
+            this._state = 7 /* AfterClosingTagName */;
+            this._index--;
+        }
+    };
+    Tokenizer.prototype._stateAfterCloseingTagName = function (c) {
+        //skip everything until ">"
+        if (c === ">") {
+            this._state = 1 /* Text */;
+            this._sectionStart = this._index + 1;
+        }
+    };
+    Tokenizer.prototype._stateBeforeAttributeName = function (c) {
+        if (c === ">") {
+            this._cbs.onopentagend();
+            this._state = 1 /* Text */;
+            this._sectionStart = this._index + 1;
+        }
+        else if (c === "/") {
+            this._state = 4 /* InSelfClosingTag */;
+        }
+        else if (!whitespace(c)) {
+            this._state = 9 /* InAttributeName */;
+            this._sectionStart = this._index;
+        }
+    };
+    Tokenizer.prototype._stateInSelfClosingTag = function (c) {
+        if (c === ">") {
+            this._cbs.onselfclosingtag();
+            this._state = 1 /* Text */;
+            this._sectionStart = this._index + 1;
+        }
+        else if (!whitespace(c)) {
+            this._state = 8 /* BeforeAttributeName */;
+            this._index--;
+        }
+    };
+    Tokenizer.prototype._stateInAttributeName = function (c) {
+        if (c === "=" || c === "/" || c === ">" || whitespace(c)) {
+            this._cbs.onattribname(this._getSection());
+            this._sectionStart = -1;
+            this._state = 10 /* AfterAttributeName */;
+            this._index--;
+        }
+    };
+    Tokenizer.prototype._stateAfterAttributeName = function (c) {
+        if (c === "=") {
+            this._state = 11 /* BeforeAttributeValue */;
+        }
+        else if (c === "/" || c === ">") {
+            this._cbs.onattribend();
+            this._state = 8 /* BeforeAttributeName */;
+            this._index--;
+        }
+        else if (!whitespace(c)) {
+            this._cbs.onattribend();
+            this._state = 9 /* InAttributeName */;
+            this._sectionStart = this._index;
+        }
+    };
+    Tokenizer.prototype._stateBeforeAttributeValue = function (c) {
+        if (c === '"') {
+            this._state = 12 /* InAttributeValueDq */;
+            this._sectionStart = this._index + 1;
+        }
+        else if (c === "'") {
+            this._state = 13 /* InAttributeValueSq */;
+            this._sectionStart = this._index + 1;
+        }
+        else if (!whitespace(c)) {
+            this._state = 14 /* InAttributeValueNq */;
+            this._sectionStart = this._index;
+            this._index--; //reconsume token
+        }
+    };
+    Tokenizer.prototype._stateInAttributeValueDoubleQuotes = function (c) {
+        if (c === '"') {
+            this._emitToken("onattribdata");
+            this._cbs.onattribend();
+            this._state = 8 /* BeforeAttributeName */;
+        }
+        else if (this._decodeEntities && c === "&") {
+            this._emitToken("onattribdata");
+            this._baseState = this._state;
+            this._state = 51 /* BeforeEntity */;
+            this._sectionStart = this._index;
+        }
+    };
+    Tokenizer.prototype._stateInAttributeValueSingleQuotes = function (c) {
+        if (c === "'") {
+            this._emitToken("onattribdata");
+            this._cbs.onattribend();
+            this._state = 8 /* BeforeAttributeName */;
+        }
+        else if (this._decodeEntities && c === "&") {
+            this._emitToken("onattribdata");
+            this._baseState = this._state;
+            this._state = 51 /* BeforeEntity */;
+            this._sectionStart = this._index;
+        }
+    };
+    Tokenizer.prototype._stateInAttributeValueNoQuotes = function (c) {
+        if (whitespace(c) || c === ">") {
+            this._emitToken("onattribdata");
+            this._cbs.onattribend();
+            this._state = 8 /* BeforeAttributeName */;
+            this._index--;
+        }
+        else if (this._decodeEntities && c === "&") {
+            this._emitToken("onattribdata");
+            this._baseState = this._state;
+            this._state = 51 /* BeforeEntity */;
+            this._sectionStart = this._index;
+        }
+    };
+    Tokenizer.prototype._stateBeforeDeclaration = function (c) {
+        this._state =
+            c === "["
+                ? 22 /* BeforeCdata1 */
+                : c === "-"
+                    ? 18 /* BeforeComment */
+                    : 16 /* InDeclaration */;
+    };
+    Tokenizer.prototype._stateInDeclaration = function (c) {
+        if (c === ">") {
+            this._cbs.ondeclaration(this._getSection());
+            this._state = 1 /* Text */;
+            this._sectionStart = this._index + 1;
+        }
+    };
+    Tokenizer.prototype._stateInProcessingInstruction = function (c) {
+        if (c === ">") {
+            this._cbs.onprocessinginstruction(this._getSection());
+            this._state = 1 /* Text */;
+            this._sectionStart = this._index + 1;
+        }
+    };
+    Tokenizer.prototype._stateBeforeComment = function (c) {
+        if (c === "-") {
+            this._state = 19 /* InComment */;
+            this._sectionStart = this._index + 1;
+        }
+        else {
+            this._state = 16 /* InDeclaration */;
+        }
+    };
+    Tokenizer.prototype._stateInComment = function (c) {
+        if (c === "-")
+            this._state = 20 /* AfterComment1 */;
+    };
+    Tokenizer.prototype._stateAfterComment1 = function (c) {
+        if (c === "-") {
+            this._state = 21 /* AfterComment2 */;
+        }
+        else {
+            this._state = 19 /* InComment */;
+        }
+    };
+    Tokenizer.prototype._stateAfterComment2 = function (c) {
+        if (c === ">") {
+            //remove 2 trailing chars
+            this._cbs.oncomment(this._buffer.substring(this._sectionStart, this._index - 2));
+            this._state = 1 /* Text */;
+            this._sectionStart = this._index + 1;
+        }
+        else if (c !== "-") {
+            this._state = 19 /* InComment */;
+        }
+        // else: stay in AFTER_COMMENT_2 (`--->`)
+    };
+    Tokenizer.prototype._stateBeforeCdata6 = function (c) {
+        if (c === "[") {
+            this._state = 28 /* InCdata */;
+            this._sectionStart = this._index + 1;
+        }
+        else {
+            this._state = 16 /* InDeclaration */;
+            this._index--;
+        }
+    };
+    Tokenizer.prototype._stateInCdata = function (c) {
+        if (c === "]")
+            this._state = 29 /* AfterCdata1 */;
+    };
+    Tokenizer.prototype._stateAfterCdata1 = function (c) {
+        if (c === "]")
+            this._state = 30 /* AfterCdata2 */;
+        else
+            this._state = 28 /* InCdata */;
+    };
+    Tokenizer.prototype._stateAfterCdata2 = function (c) {
+        if (c === ">") {
+            //remove 2 trailing chars
+            this._cbs.oncdata(this._buffer.substring(this._sectionStart, this._index - 2));
+            this._state = 1 /* Text */;
+            this._sectionStart = this._index + 1;
+        }
+        else if (c !== "]") {
+            this._state = 28 /* InCdata */;
+        }
+        //else: stay in AFTER_CDATA_2 (`]]]>`)
+    };
+    Tokenizer.prototype._stateBeforeSpecial = function (c) {
+        if (c === "c" || c === "C") {
+            this._state = 33 /* BeforeScript1 */;
+        }
+        else if (c === "t" || c === "T") {
+            this._state = 43 /* BeforeStyle1 */;
+        }
+        else {
+            this._state = 3 /* InTagName */;
+            this._index--; //consume the token again
+        }
+    };
+    Tokenizer.prototype._stateBeforeSpecialEnd = function (c) {
+        if (this._special === 2 /* Script */ && (c === "c" || c === "C")) {
+            this._state = 38 /* AfterScript1 */;
+        }
+        else if (this._special === 3 /* Style */ &&
+            (c === "t" || c === "T")) {
+            this._state = 47 /* AfterStyle1 */;
+        }
+        else
+            this._state = 1 /* Text */;
+    };
+    Tokenizer.prototype._stateBeforeScript5 = function (c) {
+        if (c === "/" || c === ">" || whitespace(c)) {
+            this._special = 2 /* Script */;
+        }
+        this._state = 3 /* InTagName */;
+        this._index--; //consume the token again
+    };
+    Tokenizer.prototype._stateAfterScript5 = function (c) {
+        if (c === ">" || whitespace(c)) {
+            this._special = 1 /* None */;
+            this._state = 6 /* InClosingTagName */;
+            this._sectionStart = this._index - 6;
+            this._index--; //reconsume the token
+        }
+        else
+            this._state = 1 /* Text */;
+    };
+    Tokenizer.prototype._stateBeforeStyle4 = function (c) {
+        if (c === "/" || c === ">" || whitespace(c)) {
+            this._special = 3 /* Style */;
+        }
+        this._state = 3 /* InTagName */;
+        this._index--; //consume the token again
+    };
+    Tokenizer.prototype._stateAfterStyle4 = function (c) {
+        if (c === ">" || whitespace(c)) {
+            this._special = 1 /* None */;
+            this._state = 6 /* InClosingTagName */;
+            this._sectionStart = this._index - 5;
+            this._index--; //reconsume the token
+        }
+        else
+            this._state = 1 /* Text */;
+    };
+    //for entities terminated with a semicolon
+    Tokenizer.prototype._parseNamedEntityStrict = function () {
+        //offset = 1
+        if (this._sectionStart + 1 < this._index) {
+            var entity = this._buffer.substring(this._sectionStart + 1, this._index), map = this._xmlMode ? xml_json_1.default : entities_json_1.default;
+            if (Object.prototype.hasOwnProperty.call(map, entity)) {
+                // @ts-ignore
+                this._emitPartial(map[entity]);
+                this._sectionStart = this._index + 1;
+            }
+        }
+    };
+    //parses legacy entities (without trailing semicolon)
+    Tokenizer.prototype._parseLegacyEntity = function () {
+        var start = this._sectionStart + 1;
+        var limit = this._index - start;
+        if (limit > 6)
+            limit = 6; // The max length of legacy entities is 6
+        while (limit >= 2) {
+            // The min length of legacy entities is 2
+            var entity = this._buffer.substr(start, limit);
+            if (Object.prototype.hasOwnProperty.call(legacy_json_1.default, entity)) {
+                // @ts-ignore
+                this._emitPartial(legacy_json_1.default[entity]);
+                this._sectionStart += limit + 1;
+                return;
+            }
+            else {
+                limit--;
+            }
+        }
+    };
+    Tokenizer.prototype._stateInNamedEntity = function (c) {
+        if (c === ";") {
+            this._parseNamedEntityStrict();
+            if (this._sectionStart + 1 < this._index && !this._xmlMode) {
+                this._parseLegacyEntity();
+            }
+            this._state = this._baseState;
+        }
+        else if ((c < "a" || c > "z") &&
+            (c < "A" || c > "Z") &&
+            (c < "0" || c > "9")) {
+            if (this._xmlMode || this._sectionStart + 1 === this._index) {
+                // ignore
+            }
+            else if (this._baseState !== 1 /* Text */) {
+                if (c !== "=") {
+                    this._parseNamedEntityStrict();
+                }
+            }
+            else {
+                this._parseLegacyEntity();
+            }
+            this._state = this._baseState;
+            this._index--;
+        }
+    };
+    Tokenizer.prototype._decodeNumericEntity = function (offset, base) {
+        var sectionStart = this._sectionStart + offset;
+        if (sectionStart !== this._index) {
+            //parse entity
+            var entity = this._buffer.substring(sectionStart, this._index);
+            var parsed = parseInt(entity, base);
+            this._emitPartial(decode_codepoint_1.default(parsed));
+            this._sectionStart = this._index;
+        }
+        else {
+            this._sectionStart--;
+        }
         this._state = this._baseState;
-        this._index--;
-    }
-};
-
-Tokenizer.prototype._decodeNumericEntity = function(offset, base) {
-    var sectionStart = this._sectionStart + offset;
-
-    if (sectionStart !== this._index) {
-        //parse entity
-        var entity = this._buffer.substring(sectionStart, this._index);
-        var parsed = parseInt(entity, base);
-
-        this._emitPartial(decodeCodePoint(parsed));
-        this._sectionStart = this._index;
-    } else {
-        this._sectionStart--;
-    }
-
-    this._state = this._baseState;
-};
-
-Tokenizer.prototype._stateInNumericEntity = function(c) {
-    if (c === ";") {
-        this._decodeNumericEntity(2, 10);
-        this._sectionStart++;
-    } else if (c < "0" || c > "9") {
-        if (!this._xmlMode) {
+    };
+    Tokenizer.prototype._stateInNumericEntity = function (c) {
+        if (c === ";") {
             this._decodeNumericEntity(2, 10);
-        } else {
-            this._state = this._baseState;
+            this._sectionStart++;
         }
-        this._index--;
-    }
-};
-
-Tokenizer.prototype._stateInHexEntity = function(c) {
-    if (c === ";") {
-        this._decodeNumericEntity(3, 16);
-        this._sectionStart++;
-    } else if (
-        (c < "a" || c > "f") &&
-        (c < "A" || c > "F") &&
-        (c < "0" || c > "9")
-    ) {
-        if (!this._xmlMode) {
-            this._decodeNumericEntity(3, 16);
-        } else {
-            this._state = this._baseState;
-        }
-        this._index--;
-    }
-};
-
-Tokenizer.prototype._cleanup = function() {
-    if (this._sectionStart < 0) {
-        this._buffer = "";
-        this._bufferOffset += this._index;
-        this._index = 0;
-    } else if (this._running) {
-        if (this._state === TEXT) {
-            if (this._sectionStart !== this._index) {
-                this._cbs.ontext(this._buffer.substr(this._sectionStart));
+        else if (c < "0" || c > "9") {
+            if (!this._xmlMode) {
+                this._decodeNumericEntity(2, 10);
             }
+            else {
+                this._state = this._baseState;
+            }
+            this._index--;
+        }
+    };
+    Tokenizer.prototype._stateInHexEntity = function (c) {
+        if (c === ";") {
+            this._decodeNumericEntity(3, 16);
+            this._sectionStart++;
+        }
+        else if ((c < "a" || c > "f") &&
+            (c < "A" || c > "F") &&
+            (c < "0" || c > "9")) {
+            if (!this._xmlMode) {
+                this._decodeNumericEntity(3, 16);
+            }
+            else {
+                this._state = this._baseState;
+            }
+            this._index--;
+        }
+    };
+    Tokenizer.prototype._cleanup = function () {
+        if (this._sectionStart < 0) {
             this._buffer = "";
             this._bufferOffset += this._index;
             this._index = 0;
-        } else if (this._sectionStart === this._index) {
-            //the section just started
-            this._buffer = "";
-            this._bufferOffset += this._index;
-            this._index = 0;
-        } else {
-            //remove everything unnecessary
-            this._buffer = this._buffer.substr(this._sectionStart);
-            this._index -= this._sectionStart;
-            this._bufferOffset += this._sectionStart;
         }
-
-        this._sectionStart = 0;
-    }
-};
-
-//TODO make events conditional
-Tokenizer.prototype.write = function(chunk) {
-    if (this._ended) this._cbs.onerror(Error(".write() after done!"));
-
-    this._buffer += chunk;
-    this._parse();
-};
-
-Tokenizer.prototype._parse = function() {
-    while (this._index < this._buffer.length && this._running) {
-        var c = this._buffer.charAt(this._index);
-        if (this._state === TEXT) {
-            this._stateText(c);
-        } else if (this._state === BEFORE_TAG_NAME) {
-            this._stateBeforeTagName(c);
-        } else if (this._state === IN_TAG_NAME) {
-            this._stateInTagName(c);
-        } else if (this._state === BEFORE_CLOSING_TAG_NAME) {
-            this._stateBeforeCloseingTagName(c);
-        } else if (this._state === IN_CLOSING_TAG_NAME) {
-            this._stateInCloseingTagName(c);
-        } else if (this._state === AFTER_CLOSING_TAG_NAME) {
-            this._stateAfterCloseingTagName(c);
-        } else if (this._state === IN_SELF_CLOSING_TAG) {
-            this._stateInSelfClosingTag(c);
-        } else if (this._state === BEFORE_ATTRIBUTE_NAME) {
-
-        /*
-		*	attributes
-		*/
-            this._stateBeforeAttributeName(c);
-        } else if (this._state === IN_ATTRIBUTE_NAME) {
-            this._stateInAttributeName(c);
-        } else if (this._state === AFTER_ATTRIBUTE_NAME) {
-            this._stateAfterAttributeName(c);
-        } else if (this._state === BEFORE_ATTRIBUTE_VALUE) {
-            this._stateBeforeAttributeValue(c);
-        } else if (this._state === IN_ATTRIBUTE_VALUE_DQ) {
-            this._stateInAttributeValueDoubleQuotes(c);
-        } else if (this._state === IN_ATTRIBUTE_VALUE_SQ) {
-            this._stateInAttributeValueSingleQuotes(c);
-        } else if (this._state === IN_ATTRIBUTE_VALUE_NQ) {
-            this._stateInAttributeValueNoQuotes(c);
-        } else if (this._state === BEFORE_DECLARATION) {
-
-        /*
-		*	declarations
-		*/
-            this._stateBeforeDeclaration(c);
-        } else if (this._state === IN_DECLARATION) {
-            this._stateInDeclaration(c);
-        } else if (this._state === IN_PROCESSING_INSTRUCTION) {
-
-        /*
-		*	processing instructions
-		*/
-            this._stateInProcessingInstruction(c);
-        } else if (this._state === BEFORE_COMMENT) {
-
-        /*
-		*	comments
-		*/
-            this._stateBeforeComment(c);
-        } else if (this._state === IN_COMMENT) {
-            this._stateInComment(c);
-        } else if (this._state === AFTER_COMMENT_1) {
-            this._stateAfterComment1(c);
-        } else if (this._state === AFTER_COMMENT_2) {
-            this._stateAfterComment2(c);
-        } else if (this._state === BEFORE_CDATA_1) {
-
-        /*
-		*	cdata
-		*/
-            this._stateBeforeCdata1(c);
-        } else if (this._state === BEFORE_CDATA_2) {
-            this._stateBeforeCdata2(c);
-        } else if (this._state === BEFORE_CDATA_3) {
-            this._stateBeforeCdata3(c);
-        } else if (this._state === BEFORE_CDATA_4) {
-            this._stateBeforeCdata4(c);
-        } else if (this._state === BEFORE_CDATA_5) {
-            this._stateBeforeCdata5(c);
-        } else if (this._state === BEFORE_CDATA_6) {
-            this._stateBeforeCdata6(c);
-        } else if (this._state === IN_CDATA) {
-            this._stateInCdata(c);
-        } else if (this._state === AFTER_CDATA_1) {
-            this._stateAfterCdata1(c);
-        } else if (this._state === AFTER_CDATA_2) {
-            this._stateAfterCdata2(c);
-        } else if (this._state === BEFORE_SPECIAL) {
-
-        /*
-		* special tags
-		*/
-            this._stateBeforeSpecial(c);
-        } else if (this._state === BEFORE_SPECIAL_END) {
-            this._stateBeforeSpecialEnd(c);
-        } else if (this._state === BEFORE_SCRIPT_1) {
-
-        /*
-		* script
-		*/
-            this._stateBeforeScript1(c);
-        } else if (this._state === BEFORE_SCRIPT_2) {
-            this._stateBeforeScript2(c);
-        } else if (this._state === BEFORE_SCRIPT_3) {
-            this._stateBeforeScript3(c);
-        } else if (this._state === BEFORE_SCRIPT_4) {
-            this._stateBeforeScript4(c);
-        } else if (this._state === BEFORE_SCRIPT_5) {
-            this._stateBeforeScript5(c);
-        } else if (this._state === AFTER_SCRIPT_1) {
-            this._stateAfterScript1(c);
-        } else if (this._state === AFTER_SCRIPT_2) {
-            this._stateAfterScript2(c);
-        } else if (this._state === AFTER_SCRIPT_3) {
-            this._stateAfterScript3(c);
-        } else if (this._state === AFTER_SCRIPT_4) {
-            this._stateAfterScript4(c);
-        } else if (this._state === AFTER_SCRIPT_5) {
-            this._stateAfterScript5(c);
-        } else if (this._state === BEFORE_STYLE_1) {
-
-        /*
-		* style
-		*/
-            this._stateBeforeStyle1(c);
-        } else if (this._state === BEFORE_STYLE_2) {
-            this._stateBeforeStyle2(c);
-        } else if (this._state === BEFORE_STYLE_3) {
-            this._stateBeforeStyle3(c);
-        } else if (this._state === BEFORE_STYLE_4) {
-            this._stateBeforeStyle4(c);
-        } else if (this._state === AFTER_STYLE_1) {
-            this._stateAfterStyle1(c);
-        } else if (this._state === AFTER_STYLE_2) {
-            this._stateAfterStyle2(c);
-        } else if (this._state === AFTER_STYLE_3) {
-            this._stateAfterStyle3(c);
-        } else if (this._state === AFTER_STYLE_4) {
-            this._stateAfterStyle4(c);
-        } else if (this._state === BEFORE_ENTITY) {
-
-        /*
-		* entities
-		*/
-            this._stateBeforeEntity(c);
-        } else if (this._state === BEFORE_NUMERIC_ENTITY) {
-            this._stateBeforeNumericEntity(c);
-        } else if (this._state === IN_NAMED_ENTITY) {
-            this._stateInNamedEntity(c);
-        } else if (this._state === IN_NUMERIC_ENTITY) {
-            this._stateInNumericEntity(c);
-        } else if (this._state === IN_HEX_ENTITY) {
-            this._stateInHexEntity(c);
-        } else {
-            this._cbs.onerror(Error("unknown _state"), this._state);
+        else if (this._running) {
+            if (this._state === 1 /* Text */) {
+                if (this._sectionStart !== this._index) {
+                    this._cbs.ontext(this._buffer.substr(this._sectionStart));
+                }
+                this._buffer = "";
+                this._bufferOffset += this._index;
+                this._index = 0;
+            }
+            else if (this._sectionStart === this._index) {
+                //the section just started
+                this._buffer = "";
+                this._bufferOffset += this._index;
+                this._index = 0;
+            }
+            else {
+                //remove everything unnecessary
+                this._buffer = this._buffer.substr(this._sectionStart);
+                this._index -= this._sectionStart;
+                this._bufferOffset += this._sectionStart;
+            }
+            this._sectionStart = 0;
         }
-
-        this._index++;
-    }
-
-    this._cleanup();
-};
-
-Tokenizer.prototype.pause = function() {
-    this._running = false;
-};
-Tokenizer.prototype.resume = function() {
-    this._running = true;
-
-    if (this._index < this._buffer.length) {
+    };
+    //TODO make events conditional
+    Tokenizer.prototype.write = function (chunk) {
+        if (this._ended)
+            this._cbs.onerror(Error(".write() after done!"));
+        this._buffer += chunk;
         this._parse();
-    }
-    if (this._ended) {
-        this._finish();
-    }
-};
-
-Tokenizer.prototype.end = function(chunk) {
-    if (this._ended) this._cbs.onerror(Error(".end() after done!"));
-    if (chunk) this.write(chunk);
-
-    this._ended = true;
-
-    if (this._running) this._finish();
-};
-
-Tokenizer.prototype._finish = function() {
-    //if there is remaining data, emit it in a reasonable way
-    if (this._sectionStart < this._index) {
-        this._handleTrailingData();
-    }
-
-    this._cbs.onend();
-};
-
-Tokenizer.prototype._handleTrailingData = function() {
-    var data = this._buffer.substr(this._sectionStart);
-
-    if (
-        this._state === IN_CDATA ||
-        this._state === AFTER_CDATA_1 ||
-        this._state === AFTER_CDATA_2
-    ) {
-        this._cbs.oncdata(data);
-    } else if (
-        this._state === IN_COMMENT ||
-        this._state === AFTER_COMMENT_1 ||
-        this._state === AFTER_COMMENT_2
-    ) {
-        this._cbs.oncomment(data);
-    } else if (this._state === IN_NAMED_ENTITY && !this._xmlMode) {
-        this._parseLegacyEntity();
+    };
+    // Iterates through the buffer, calling the function corresponding to the current state.
+    // States that are more likely to be hit are higher up, as a performance improvement.
+    Tokenizer.prototype._parse = function () {
+        while (this._index < this._buffer.length && this._running) {
+            var c = this._buffer.charAt(this._index);
+            if (this._state === 1 /* Text */) {
+                this._stateText(c);
+            }
+            else if (this._state === 12 /* InAttributeValueDq */) {
+                this._stateInAttributeValueDoubleQuotes(c);
+            }
+            else if (this._state === 9 /* InAttributeName */) {
+                this._stateInAttributeName(c);
+            }
+            else if (this._state === 19 /* InComment */) {
+                this._stateInComment(c);
+            }
+            else if (this._state === 8 /* BeforeAttributeName */) {
+                this._stateBeforeAttributeName(c);
+            }
+            else if (this._state === 3 /* InTagName */) {
+                this._stateInTagName(c);
+            }
+            else if (this._state === 6 /* InClosingTagName */) {
+                this._stateInCloseingTagName(c);
+            }
+            else if (this._state === 2 /* BeforeTagName */) {
+                this._stateBeforeTagName(c);
+            }
+            else if (this._state === 10 /* AfterAttributeName */) {
+                this._stateAfterAttributeName(c);
+            }
+            else if (this._state === 13 /* InAttributeValueSq */) {
+                this._stateInAttributeValueSingleQuotes(c);
+            }
+            else if (this._state === 11 /* BeforeAttributeValue */) {
+                this._stateBeforeAttributeValue(c);
+            }
+            else if (this._state === 5 /* BeforeClosingTagName */) {
+                this._stateBeforeCloseingTagName(c);
+            }
+            else if (this._state === 7 /* AfterClosingTagName */) {
+                this._stateAfterCloseingTagName(c);
+            }
+            else if (this._state === 31 /* BeforeSpecial */) {
+                this._stateBeforeSpecial(c);
+            }
+            else if (this._state === 20 /* AfterComment1 */) {
+                this._stateAfterComment1(c);
+            }
+            else if (this._state === 14 /* InAttributeValueNq */) {
+                this._stateInAttributeValueNoQuotes(c);
+            }
+            else if (this._state === 4 /* InSelfClosingTag */) {
+                this._stateInSelfClosingTag(c);
+            }
+            else if (this._state === 16 /* InDeclaration */) {
+                this._stateInDeclaration(c);
+            }
+            else if (this._state === 15 /* BeforeDeclaration */) {
+                this._stateBeforeDeclaration(c);
+            }
+            else if (this._state === 21 /* AfterComment2 */) {
+                this._stateAfterComment2(c);
+            }
+            else if (this._state === 18 /* BeforeComment */) {
+                this._stateBeforeComment(c);
+            }
+            else if (this._state === 32 /* BeforeSpecialEnd */) {
+                this._stateBeforeSpecialEnd(c);
+            }
+            else if (this._state === 38 /* AfterScript1 */) {
+                stateAfterScript1(this, c);
+            }
+            else if (this._state === 39 /* AfterScript2 */) {
+                stateAfterScript2(this, c);
+            }
+            else if (this._state === 40 /* AfterScript3 */) {
+                stateAfterScript3(this, c);
+            }
+            else if (this._state === 33 /* BeforeScript1 */) {
+                stateBeforeScript1(this, c);
+            }
+            else if (this._state === 34 /* BeforeScript2 */) {
+                stateBeforeScript2(this, c);
+            }
+            else if (this._state === 35 /* BeforeScript3 */) {
+                stateBeforeScript3(this, c);
+            }
+            else if (this._state === 36 /* BeforeScript4 */) {
+                stateBeforeScript4(this, c);
+            }
+            else if (this._state === 37 /* BeforeScript5 */) {
+                this._stateBeforeScript5(c);
+            }
+            else if (this._state === 41 /* AfterScript4 */) {
+                stateAfterScript4(this, c);
+            }
+            else if (this._state === 42 /* AfterScript5 */) {
+                this._stateAfterScript5(c);
+            }
+            else if (this._state === 43 /* BeforeStyle1 */) {
+                stateBeforeStyle1(this, c);
+            }
+            else if (this._state === 28 /* InCdata */) {
+                this._stateInCdata(c);
+            }
+            else if (this._state === 44 /* BeforeStyle2 */) {
+                stateBeforeStyle2(this, c);
+            }
+            else if (this._state === 45 /* BeforeStyle3 */) {
+                stateBeforeStyle3(this, c);
+            }
+            else if (this._state === 46 /* BeforeStyle4 */) {
+                this._stateBeforeStyle4(c);
+            }
+            else if (this._state === 47 /* AfterStyle1 */) {
+                stateAfterStyle1(this, c);
+            }
+            else if (this._state === 48 /* AfterStyle2 */) {
+                stateAfterStyle2(this, c);
+            }
+            else if (this._state === 49 /* AfterStyle3 */) {
+                stateAfterStyle3(this, c);
+            }
+            else if (this._state === 50 /* AfterStyle4 */) {
+                this._stateAfterStyle4(c);
+            }
+            else if (this._state === 17 /* InProcessingInstruction */) {
+                this._stateInProcessingInstruction(c);
+            }
+            else if (this._state === 53 /* InNamedEntity */) {
+                this._stateInNamedEntity(c);
+            }
+            else if (this._state === 22 /* BeforeCdata1 */) {
+                stateBeforeCdata1(this, c);
+            }
+            else if (this._state === 51 /* BeforeEntity */) {
+                stateBeforeEntity(this, c);
+            }
+            else if (this._state === 23 /* BeforeCdata2 */) {
+                stateBeforeCdata2(this, c);
+            }
+            else if (this._state === 24 /* BeforeCdata3 */) {
+                stateBeforeCdata3(this, c);
+            }
+            else if (this._state === 29 /* AfterCdata1 */) {
+                this._stateAfterCdata1(c);
+            }
+            else if (this._state === 30 /* AfterCdata2 */) {
+                this._stateAfterCdata2(c);
+            }
+            else if (this._state === 25 /* BeforeCdata4 */) {
+                stateBeforeCdata4(this, c);
+            }
+            else if (this._state === 26 /* BeforeCdata5 */) {
+                stateBeforeCdata5(this, c);
+            }
+            else if (this._state === 27 /* BeforeCdata6 */) {
+                this._stateBeforeCdata6(c);
+            }
+            else if (this._state === 55 /* InHexEntity */) {
+                this._stateInHexEntity(c);
+            }
+            else if (this._state === 54 /* InNumericEntity */) {
+                this._stateInNumericEntity(c);
+            }
+            else if (this._state === 52 /* BeforeNumericEntity */) {
+                stateBeforeNumericEntity(this, c);
+            }
+            else {
+                this._cbs.onerror(Error("unknown _state"), this._state);
+            }
+            this._index++;
+        }
+        this._cleanup();
+    };
+    Tokenizer.prototype.pause = function () {
+        this._running = false;
+    };
+    Tokenizer.prototype.resume = function () {
+        this._running = true;
+        if (this._index < this._buffer.length) {
+            this._parse();
+        }
+        if (this._ended) {
+            this._finish();
+        }
+    };
+    Tokenizer.prototype.end = function (chunk) {
+        if (this._ended)
+            this._cbs.onerror(Error(".end() after done!"));
+        if (chunk)
+            this.write(chunk);
+        this._ended = true;
+        if (this._running)
+            this._finish();
+    };
+    Tokenizer.prototype._finish = function () {
+        //if there is remaining data, emit it in a reasonable way
         if (this._sectionStart < this._index) {
-            this._state = this._baseState;
             this._handleTrailingData();
         }
-    } else if (this._state === IN_NUMERIC_ENTITY && !this._xmlMode) {
-        this._decodeNumericEntity(2, 10);
-        if (this._sectionStart < this._index) {
-            this._state = this._baseState;
-            this._handleTrailingData();
+        this._cbs.onend();
+    };
+    Tokenizer.prototype._handleTrailingData = function () {
+        var data = this._buffer.substr(this._sectionStart);
+        if (this._state === 28 /* InCdata */ ||
+            this._state === 29 /* AfterCdata1 */ ||
+            this._state === 30 /* AfterCdata2 */) {
+            this._cbs.oncdata(data);
         }
-    } else if (this._state === IN_HEX_ENTITY && !this._xmlMode) {
-        this._decodeNumericEntity(3, 16);
-        if (this._sectionStart < this._index) {
-            this._state = this._baseState;
-            this._handleTrailingData();
+        else if (this._state === 19 /* InComment */ ||
+            this._state === 20 /* AfterComment1 */ ||
+            this._state === 21 /* AfterComment2 */) {
+            this._cbs.oncomment(data);
         }
-    } else if (
-        this._state !== IN_TAG_NAME &&
-        this._state !== BEFORE_ATTRIBUTE_NAME &&
-        this._state !== BEFORE_ATTRIBUTE_VALUE &&
-        this._state !== AFTER_ATTRIBUTE_NAME &&
-        this._state !== IN_ATTRIBUTE_NAME &&
-        this._state !== IN_ATTRIBUTE_VALUE_SQ &&
-        this._state !== IN_ATTRIBUTE_VALUE_DQ &&
-        this._state !== IN_ATTRIBUTE_VALUE_NQ &&
-        this._state !== IN_CLOSING_TAG_NAME
-    ) {
-        this._cbs.ontext(data);
-    }
-    //else, ignore remaining data
-    //TODO add a way to remove current tag
-};
-
-Tokenizer.prototype.reset = function() {
-    Tokenizer.call(
-        this,
-        { xmlMode: this._xmlMode, decodeEntities: this._decodeEntities },
-        this._cbs
-    );
-};
-
-Tokenizer.prototype.getAbsoluteIndex = function() {
-    return this._bufferOffset + this._index;
-};
-
-Tokenizer.prototype._getSection = function() {
-    return this._buffer.substring(this._sectionStart, this._index);
-};
-
-Tokenizer.prototype._emitToken = function(name) {
-    this._cbs[name](this._getSection());
-    this._sectionStart = -1;
-};
-
-Tokenizer.prototype._emitPartial = function(value) {
-    if (this._baseState !== TEXT) {
-        this._cbs.onattribdata(value); //TODO implement the new event
-    } else {
-        this._cbs.ontext(value);
-    }
-};
-
-
-/***/ }),
-
-/***/ "./node_modules/htmlparser2/lib/WritableStream.js":
-/*!********************************************************!*\
-  !*** ./node_modules/htmlparser2/lib/WritableStream.js ***!
-  \********************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-module.exports = Stream;
-
-var Parser = __webpack_require__(/*! ./Parser.js */ "./node_modules/htmlparser2/lib/Parser.js");
-var WritableStream = __webpack_require__(/*! readable-stream */ 3).Writable;
-var StringDecoder = __webpack_require__(/*! string_decoder */ "./node_modules/string_decoder/lib/string_decoder.js").StringDecoder;
-var Buffer = __webpack_require__(/*! buffer */ "./node_modules/buffer/index.js").Buffer;
-
-function Stream(cbs, options) {
-    var parser = (this._parser = new Parser(cbs, options));
-    var decoder = (this._decoder = new StringDecoder());
-
-    WritableStream.call(this, { decodeStrings: false });
-
-    this.once("finish", function() {
-        parser.end(decoder.end());
-    });
-}
-
-__webpack_require__(/*! inherits */ "./node_modules/inherits/inherits_browser.js")(Stream, WritableStream);
-
-Stream.prototype._write = function(chunk, encoding, cb) {
-    if (chunk instanceof Buffer) chunk = this._decoder.write(chunk);
-    this._parser.write(chunk);
-    cb();
-};
+        else if (this._state === 53 /* InNamedEntity */ && !this._xmlMode) {
+            this._parseLegacyEntity();
+            if (this._sectionStart < this._index) {
+                this._state = this._baseState;
+                this._handleTrailingData();
+            }
+        }
+        else if (this._state === 54 /* InNumericEntity */ && !this._xmlMode) {
+            this._decodeNumericEntity(2, 10);
+            if (this._sectionStart < this._index) {
+                this._state = this._baseState;
+                this._handleTrailingData();
+            }
+        }
+        else if (this._state === 55 /* InHexEntity */ && !this._xmlMode) {
+            this._decodeNumericEntity(3, 16);
+            if (this._sectionStart < this._index) {
+                this._state = this._baseState;
+                this._handleTrailingData();
+            }
+        }
+        else if (this._state !== 3 /* InTagName */ &&
+            this._state !== 8 /* BeforeAttributeName */ &&
+            this._state !== 11 /* BeforeAttributeValue */ &&
+            this._state !== 10 /* AfterAttributeName */ &&
+            this._state !== 9 /* InAttributeName */ &&
+            this._state !== 13 /* InAttributeValueSq */ &&
+            this._state !== 12 /* InAttributeValueDq */ &&
+            this._state !== 14 /* InAttributeValueNq */ &&
+            this._state !== 6 /* InClosingTagName */) {
+            this._cbs.ontext(data);
+        }
+        //else, ignore remaining data
+        //TODO add a way to remove current tag
+    };
+    Tokenizer.prototype.getAbsoluteIndex = function () {
+        return this._bufferOffset + this._index;
+    };
+    Tokenizer.prototype._getSection = function () {
+        return this._buffer.substring(this._sectionStart, this._index);
+    };
+    Tokenizer.prototype._emitToken = function (name) {
+        this._cbs[name](this._getSection());
+        this._sectionStart = -1;
+    };
+    Tokenizer.prototype._emitPartial = function (value) {
+        if (this._baseState !== 1 /* Text */) {
+            this._cbs.onattribdata(value); //TODO implement the new event
+        }
+        else {
+            this._cbs.ontext(value);
+        }
+    };
+    return Tokenizer;
+}());
+exports.default = Tokenizer;
 
 
 /***/ }),
@@ -44488,79 +44748,446 @@ Stream.prototype._write = function(chunk, encoding, cb) {
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-var Parser = __webpack_require__(/*! ./Parser.js */ "./node_modules/htmlparser2/lib/Parser.js");
-var DomHandler = __webpack_require__(/*! domhandler */ "./node_modules/domhandler/index.js");
+"use strict";
 
-function defineProp(name, value) {
-    delete module.exports[name];
-    module.exports[name] = value;
-    return value;
+function __export(m) {
+    for (var p in m) if (!exports.hasOwnProperty(p)) exports[p] = m[p];
+}
+var __importStar = (this && this.__importStar) || function (mod) {
+    if (mod && mod.__esModule) return mod;
+    var result = {};
+    if (mod != null) for (var k in mod) if (Object.hasOwnProperty.call(mod, k)) result[k] = mod[k];
+    result["default"] = mod;
+    return result;
+};
+Object.defineProperty(exports, "__esModule", { value: true });
+var Parser_1 = __webpack_require__(/*! ./Parser */ "./node_modules/htmlparser2/lib/Parser.js");
+exports.Parser = Parser_1.Parser;
+var domhandler_1 = __webpack_require__(/*! domhandler */ "./node_modules/domhandler/lib/index.js");
+exports.DomHandler = domhandler_1.DomHandler;
+exports.DefaultHandler = domhandler_1.DomHandler;
+// Helper methods
+/**
+ * Parses data, returns the resulting DOM.
+ *
+ * @param data The data that should be parsed.
+ * @param options Optional options for the parser and DOM builder.
+ */
+function parseDOM(data, options) {
+    var handler = new domhandler_1.DomHandler(void 0, options);
+    new Parser_1.Parser(handler, options).end(data);
+    return handler.dom;
+}
+exports.parseDOM = parseDOM;
+/**
+ * Creates a parser instance, with an attached DOM handler.
+ *
+ * @param cb A callback that will be called once parsing has been completed.
+ * @param options Optional options for the parser and DOM builder.
+ * @param elementCb An optional callback that will be called every time a tag has been completed inside of the DOM.
+ */
+function createDomStream(cb, options, elementCb) {
+    var handler = new domhandler_1.DomHandler(cb, options, elementCb);
+    return new Parser_1.Parser(handler, options);
+}
+exports.createDomStream = createDomStream;
+var Tokenizer_1 = __webpack_require__(/*! ./Tokenizer */ "./node_modules/htmlparser2/lib/Tokenizer.js");
+exports.Tokenizer = Tokenizer_1.default;
+var ElementType = __importStar(__webpack_require__(/*! domelementtype */ "./node_modules/domelementtype/lib/index.js"));
+exports.ElementType = ElementType;
+/**
+ * List of all events that the parser emits.
+ *
+ * Format: eventname: number of arguments.
+ */
+exports.EVENTS = {
+    attribute: 2,
+    cdatastart: 0,
+    cdataend: 0,
+    text: 1,
+    processinginstruction: 2,
+    comment: 1,
+    commentend: 0,
+    closetag: 1,
+    opentag: 2,
+    opentagname: 1,
+    error: 1,
+    end: 0
+};
+/*
+    All of the following exports exist for backwards-compatibility.
+    They should probably be removed eventually.
+*/
+__export(__webpack_require__(/*! ./FeedHandler */ "./node_modules/htmlparser2/lib/FeedHandler.js"));
+__export(__webpack_require__(/*! ./WritableStream */ 2));
+__export(__webpack_require__(/*! ./CollectingHandler */ "./node_modules/htmlparser2/lib/CollectingHandler.js"));
+var DomUtils = __importStar(__webpack_require__(/*! domutils */ "./node_modules/domutils/lib/index.js"));
+exports.DomUtils = DomUtils;
+var FeedHandler_1 = __webpack_require__(/*! ./FeedHandler */ "./node_modules/htmlparser2/lib/FeedHandler.js");
+exports.RssHandler = FeedHandler_1.FeedHandler;
+
+
+/***/ }),
+
+/***/ "./node_modules/http-link-header/lib/link.js":
+/*!***************************************************!*\
+  !*** ./node_modules/http-link-header/lib/link.js ***!
+  \***************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+/* WEBPACK VAR INJECTION */(function(Buffer) {
+
+var COMPATIBLE_ENCODING_PATTERN = /^utf-?8|ascii|utf-?16-?le|ucs-?2|base-?64|latin-?1$/i
+var WS_TRIM_PATTERN = /^[\s\uFEFF\xA0]+|[\s\uFEFF\xA0]+$/g
+var WS_CHAR_PATTERN = /\s|\uFEFF|\xA0/
+var WS_FOLD_PATTERN = /\r?\n[\x20\x09]+/g
+var DELIMITER_PATTERN = /[;,"]/
+var WS_DELIMITER_PATTERN = /[;,"]|\s/
+
+var STATE = {
+  IDLE: 1 << 0,
+  URI: 1 << 1,
+  ATTR: 1 << 2,
 }
 
-module.exports = {
-    Parser: Parser,
-    Tokenizer: __webpack_require__(/*! ./Tokenizer.js */ "./node_modules/htmlparser2/lib/Tokenizer.js"),
-    ElementType: __webpack_require__(/*! domelementtype */ "./node_modules/domelementtype/index.js"),
-    DomHandler: DomHandler,
-    get FeedHandler() {
-        return defineProp("FeedHandler", __webpack_require__(/*! ./FeedHandler.js */ "./node_modules/htmlparser2/lib/FeedHandler.js"));
-    },
-    get Stream() {
-        return defineProp("Stream", __webpack_require__(/*! ./Stream.js */ "./node_modules/htmlparser2/lib/Stream.js"));
-    },
-    get WritableStream() {
-        return defineProp("WritableStream", __webpack_require__(/*! ./WritableStream.js */ "./node_modules/htmlparser2/lib/WritableStream.js"));
-    },
-    get ProxyHandler() {
-        return defineProp("ProxyHandler", __webpack_require__(/*! ./ProxyHandler.js */ "./node_modules/htmlparser2/lib/ProxyHandler.js"));
-    },
-    get DomUtils() {
-        return defineProp("DomUtils", __webpack_require__(/*! domutils */ "./node_modules/domutils/index.js"));
-    },
-    get CollectingHandler() {
-        return defineProp(
-            "CollectingHandler",
-            __webpack_require__(/*! ./CollectingHandler.js */ "./node_modules/htmlparser2/lib/CollectingHandler.js")
-        );
-    },
-    // For legacy support
-    DefaultHandler: DomHandler,
-    get RssHandler() {
-        return defineProp("RssHandler", this.FeedHandler);
-    },
-    //helper methods
-    parseDOM: function(data, options) {
-        var handler = new DomHandler(options);
-        new Parser(handler, options).end(data);
-        return handler.dom;
-    },
-    parseFeed: function(feed, options) {
-        var handler = new module.exports.FeedHandler(options);
-        new Parser(handler, options).end(feed);
-        return handler.dom;
-    },
-    createDomStream: function(cb, options, elementCb) {
-        var handler = new DomHandler(cb, options, elementCb);
-        return new Parser(handler, options);
-    },
-    // List of all events that the parser emits
-    EVENTS: {
-        /* Format: eventname: number of arguments */
-        attribute: 2,
-        cdatastart: 0,
-        cdataend: 0,
-        text: 1,
-        processinginstruction: 2,
-        comment: 1,
-        commentend: 0,
-        closetag: 1,
-        opentag: 2,
-        opentagname: 1,
-        error: 1,
-        end: 0
-    }
-};
+function trim( value ) {
+  return value.replace( WS_TRIM_PATTERN, '' )
+}
 
+function hasWhitespace( value ) {
+  return WS_CHAR_PATTERN.test( value )
+}
+
+function skipWhitespace( value, offset ) {
+  while( hasWhitespace( value[offset] ) ) {
+    offset++
+  }
+  return offset
+}
+
+function needsQuotes( value ) {
+  return WS_DELIMITER_PATTERN.test( value )
+}
+
+class Link {
+
+  /**
+   * Link
+   * @constructor
+   * @param {String} [value]
+   * @returns {Link}
+   */
+  constructor( value ) {
+
+    /** @type {Array} URI references */
+    this.refs = []
+
+    if( value ) {
+      this.parse( value )
+    }
+
+  }
+
+  /**
+   * Get refs with given relation type
+   * @param {String} value
+   * @returns {Array<Object>}
+   */
+  rel( value ) {
+
+    var links = []
+
+    for( var i = 0; i < this.refs.length; i++ ) {
+      if( this.refs[ i ].rel === value ) {
+        links.push( this.refs[ i ] )
+      }
+    }
+
+    return links
+
+  }
+
+  /**
+   * Get refs where given attribute has a given value
+   * @param {String} attr
+   * @param {String} value
+   * @returns {Array<Object>}
+   */
+  get( attr, value ) {
+
+    attr = attr.toLowerCase()
+
+    var links = []
+
+    for( var i = 0; i < this.refs.length; i++ ) {
+      if( this.refs[ i ][ attr ] === value ) {
+        links.push( this.refs[ i ] )
+      }
+    }
+
+    return links
+
+  }
+
+  set( link ) {
+    this.refs.push( link )
+    return this
+  }
+
+  has( attr, value ) {
+
+    attr = attr.toLowerCase()
+
+    for( var i = 0; i < this.refs.length; i++ ) {
+      if( this.refs[ i ][ attr ] === value ) {
+        return true
+      }
+    }
+
+    return false
+
+  }
+
+  parse( value, offset ) {
+
+    offset = offset || 0
+    value = offset ? value.slice( offset ) : value
+
+    // Trim & unfold folded lines
+    value = trim( value ).replace( WS_FOLD_PATTERN, '' )
+
+    var state = STATE.IDLE
+    var length = value.length
+    var offset = 0
+    var ref = null
+
+    while( offset < length ) {
+      if( state === STATE.IDLE ) {
+        if( hasWhitespace( value[offset] ) ) {
+          offset++
+          continue
+        } else if( value[offset] === '<' ) {
+          var end = value.indexOf( '>', offset )
+          if( end === -1 ) throw new Error( 'Expected end of URI delimiter at offset ' + offset )
+          ref = { uri: value.slice( offset + 1, end ) }
+          this.refs.push( ref )
+          offset = end
+          state = STATE.URI
+        } else {
+          throw new Error( 'Unexpected character "' + value[offset] + '" at offset ' + offset )
+        }
+        offset++
+      } else if( state === STATE.URI ) {
+        if( hasWhitespace( value[offset] ) ) {
+          offset++
+          continue
+        } else if( value[offset] === ';' ) {
+          state = STATE.ATTR
+          offset++
+        } else if( value[offset] === ',' ) {
+          state = STATE.IDLE
+          offset++
+        } else {
+          throw new Error( 'Unexpected character "' + value[offset] + '" at offset ' + offset )
+        }
+      } else if( state === STATE.ATTR ) {
+        if( value[offset] ===';' || hasWhitespace( value[offset] ) ) {
+          offset++
+          continue
+        }
+        var end = value.indexOf( '=', offset )
+        if( end === -1 ) throw new Error( 'Expected attribute delimiter at offset ' + offset )
+        var attr = trim( value.slice( offset, end ) ).toLowerCase()
+        var attrValue = ''
+        offset = end + 1
+        offset = skipWhitespace( value, offset )
+        if( value[offset] === '"' ) {
+          offset++
+          while( offset < length ) {
+            if( value[offset] === '"' ) {
+              offset++; break
+            }
+            if( value[offset] === '\\' ) {
+              offset++
+            }
+            attrValue += value[offset]
+            offset++
+          }
+        } else {
+          var end = offset + 1
+          while( !DELIMITER_PATTERN.test( value[end] ) && end < length ) {
+            end++
+          }
+          attrValue = value.slice( offset, end )
+          offset = end
+        }
+        if( ref[ attr ] && Link.isSingleOccurenceAttr( attr ) ) {
+          // Ignore multiples of attributes which may only appear once
+        } else if( attr[ attr.length - 1 ] === '*' ) {
+          ref[ attr ] = Link.parseExtendedValue( attrValue )
+        } else {
+          attrValue = attr === 'rel' || attr === 'type' ?
+            attrValue.toLowerCase() : attrValue
+          if( ref[ attr ] != null ) {
+            if( Array.isArray( ref[ attr ] ) ) {
+              ref[ attr ].push( attrValue )
+            } else {
+              ref[ attr ] = [ ref[ attr ], attrValue ]
+            }
+          } else {
+            ref[ attr ] = attrValue
+          }
+        }
+        switch( value[offset] ) {
+          case ',': state = STATE.IDLE; break
+          case ';': state = STATE.ATTR; break
+        }
+        offset++
+      } else {
+        throw new Error( 'Unknown parser state "' + state + '"' )
+      }
+    }
+
+    ref = null
+
+    return this
+
+  }
+
+  toString() {
+
+    var refs = []
+    var link = ''
+    var ref = null
+
+    for( var i = 0; i < this.refs.length; i++ ) {
+      ref = this.refs[i]
+      link = Object.keys( this.refs[i] ).reduce( function( link, attr ) {
+        if( attr === 'uri' ) return link
+        return link + '; ' + Link.formatAttribute( attr, ref[ attr ] )
+      }, '<' + ref.uri + '>' )
+      refs.push( link )
+    }
+
+    return refs.join( ', ' )
+
+  }
+
+}
+
+/**
+ * Determines whether an encoding can be
+ * natively handled with a `Buffer`
+ * @param {String} value
+ * @returns {Boolean}
+ */
+Link.isCompatibleEncoding = function( value ) {
+  return COMPATIBLE_ENCODING_PATTERN.test( value )
+}
+
+Link.parse = function( value, offset ) {
+  return new Link().parse( value, offset )
+}
+
+Link.isSingleOccurenceAttr = function( attr ) {
+  return attr === 'rel' || attr === 'type' || attr === 'media' ||
+    attr === 'title' || attr === 'title*'
+}
+
+Link.isTokenAttr = function( attr ) {
+  return attr === 'rel' || attr === 'type' || attr === 'anchor'
+}
+
+Link.escapeQuotes = function( value ) {
+  return value.replace( /"/g, '\\"' )
+}
+
+/**
+ * Parses an extended value and attempts to decode it
+ * @internal
+ * @param {String} value
+ * @return {Object}
+ */
+Link.parseExtendedValue = function( value ) {
+  var parts = /([^']+)?(?:'([^']+)')?(.+)/.exec( value )
+  return {
+    language: parts[2].toLowerCase(),
+    encoding: Link.isCompatibleEncoding( parts[1] ) ?
+      null : parts[1].toLowerCase(),
+    value: Link.isCompatibleEncoding( parts[1] ) ?
+      decodeURIComponent( parts[3] ) : parts[3]
+  }
+}
+
+/**
+ * Format a given extended attribute and it's value
+ * @param {String} attr
+ * @param {Object} data
+ * @return {String}
+ */
+Link.formatExtendedAttribute = function( attr, data ) {
+
+  var encoding = ( data.encoding || 'utf-8' ).toUpperCase()
+  var language = data.language || 'en'
+
+  var encodedValue = ''
+
+  if( Buffer.isBuffer( data.value ) && Link.isCompatibleEncoding( encoding ) ) {
+    encodedValue = data.value.toString( encoding )
+  } else if( Buffer.isBuffer( data.value ) ) {
+    encodedValue = data.value.toString( 'hex' )
+      .replace( /[0-9a-f]{2}/gi, '%$1' )
+  } else {
+    encodedValue = encodeURIComponent( data.value )
+  }
+
+  return attr + '=' + encoding + '\'' +
+    language + '\'' + encodedValue
+
+}
+
+/**
+ * Format a given attribute and it's value
+ * @param {String} attr
+ * @param {String|Object} value
+ * @return {String}
+ */
+Link.formatAttribute = function( attr, value ) {
+
+  if( Array.isArray( value ) ) {
+    return value.map(( item ) => {
+      return Link.formatAttribute( attr, item )
+    }).join( '; ' )
+  }
+
+  if( attr[ attr.length - 1 ] === '*' || typeof value !== 'string' ) {
+    return Link.formatExtendedAttribute( attr, value )
+  }
+
+  if( Link.isTokenAttr( attr ) ) {
+    value = needsQuotes( value ) ?
+      '"' + Link.escapeQuotes( value ) + '"' :
+      Link.escapeQuotes( value )
+  } else if( needsQuotes( value ) ) {
+    value = encodeURIComponent( value )
+    // We don't need to escape <SP> <,> <;> within quotes
+    value = value
+      .replace( /%20/g, ' ' )
+      .replace( /%2C/g, ',' )
+      .replace( /%3B/g, ';' )
+
+    value = '"' + value + '"'
+  }
+
+  return attr + '=' + value
+
+}
+
+module.exports = Link
+
+/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./../../buffer/index.js */ "./node_modules/buffer/index.js").Buffer))
 
 /***/ }),
 
@@ -50358,6 +50985,15 @@ class ContextParser {
         this.expandContentTypeToBase = options.expandContentTypeToBase;
     }
     /**
+     * Check if the given term is a valid compact IRI.
+     * Otherwise, it may be an IRI.
+     * @param {string} term A term.
+     * @return {boolean} If it is a compact IRI.
+     */
+    static isCompactIri(term) {
+        return term.indexOf(':') >= 0 && !(term && term[0] === '#');
+    }
+    /**
      * Get the prefix from the given term.
      * @see https://json-ld.org/spec/latest/json-ld/#compact-iris
      * @param {string} term A term that is an URL or a prefixed URL.
@@ -50365,6 +51001,10 @@ class ContextParser {
      * @return {string} The prefix or null.
      */
     static getPrefix(term, context) {
+        // Do not consider relative IRIs starting with a hash as compact IRIs
+        if (term && term[0] === '#') {
+            return null;
+        }
         const separatorPos = term.indexOf(':');
         if (separatorPos >= 0) {
             // Suffix can not begin with two slashes
@@ -50401,7 +51041,7 @@ class ContextParser {
      * Expand the term or prefix of the given term if it has one,
      * otherwise return the term as-is.
      *
-     * This will apply as much compaction iterations as possible to compact the IRI as much as possible.
+     * This will try to expand the IRI as much as possible.
      *
      * Iff in vocab-mode, then other references to other terms in the context can be used,
      * such as to `myTerm`:
@@ -50418,34 +51058,6 @@ class ContextParser {
      * @return {string} The expanded term, the term as-is, or null if it was explicitly disabled in the context.
      */
     static expandTerm(term, context, vocab) {
-        let termIn;
-        do {
-            termIn = term;
-            term = ContextParser.expandTermSingle(term, context, vocab);
-        } while (term && term !== termIn);
-        return term;
-    }
-    /**
-     * Expand the term or prefix of the given term if it has one,
-     * otherwise return the term as-is.
-     *
-     * This will only perform a single compaction iteration over the context.
-     *
-     * Iff in vocab-mode, then other references to other terms in the context can be used,
-     * such as to `myTerm`:
-     * ```
-     * {
-     *   "myTerm": "http://example.org/myLongTerm"
-     * }
-     * ```
-     *
-     * @param {string} term A term that is an URL or a prefixed URL.
-     * @param {IJsonLdContextNormalized} context A context.
-     * @param {boolean} vocab If the term is a predicate or type and should be expanded based on @vocab,
-     *                        otherwise it is considered a regular term that is expanded based on @base.
-     * @return {string} The expanded term, the term as-is, or null if it was explicitly disabled in the context.
-     */
-    static expandTermSingle(term, context, vocab) {
         ContextParser.assertNormalized(context);
         const contextValue = context[term];
         // Immediately return if the term was disabled in the context
@@ -50467,10 +51079,10 @@ class ContextParser {
                 return value + term.substr(prefix.length + 1);
             }
         }
-        else if (vocab && context['@vocab'] && term.charAt(0) !== '@' && term.indexOf(':') < 0) {
+        else if (vocab && context['@vocab'] && term.charAt(0) !== '@' && !ContextParser.isCompactIri(term)) {
             return context['@vocab'] + term;
         }
-        else if (!vocab && context['@base'] && term.charAt(0) !== '@' && term.indexOf(':') < 0) {
+        else if (!vocab && context['@base'] && term.charAt(0) !== '@' && !ContextParser.isCompactIri(term)) {
             return relative_to_absolute_iri_1.resolve(term, context['@base']);
         }
         return term;
@@ -50478,7 +51090,7 @@ class ContextParser {
     /**
      * Compact the given term using @base, @vocab, an aliased term, or a prefixed term.
      *
-     * This will apply as much compaction iterations as possible to compact the IRI as much as possible.
+     * This will try to compact the IRI as much as possible.
      *
      * @param {string} iri An IRI to compact.
      * @param {IJsonLdContextNormalized} context The context to compact with.
@@ -50487,25 +51099,6 @@ class ContextParser {
      * @return {string} The compacted term or the IRI as-is.
      */
     static compactIri(iri, context, vocab) {
-        let iriIn;
-        do {
-            iriIn = iri;
-            iri = ContextParser.compactIriSingle(iri, context, vocab);
-        } while (iri && iri !== iriIn);
-        return iri;
-    }
-    /**
-     * Compact the given term using @base, @vocab, an aliased term, or a prefixed term.
-     *
-     * This will only perform a single compaction iteration over the context.
-     *
-     * @param {string} iri An IRI to compact.
-     * @param {IJsonLdContextNormalized} context The context to compact with.
-     * @param {boolean} vocab If the term is a predicate or type and should be compacted based on @vocab,
-     *                        otherwise it is considered a regular term that is compacted based on @base.
-     * @return {string} The compacted term or the IRI as-is.
-     */
-    static compactIriSingle(iri, context, vocab) {
         ContextParser.assertNormalized(context);
         // Try @vocab compacting
         if (vocab && context['@vocab'] && iri.startsWith(context['@vocab'])) {
@@ -50516,6 +51109,9 @@ class ContextParser {
             return iri.substr(context['@base'].length);
         }
         // Loop over all terms in the context
+        // This will try to prefix as short as possible.
+        // Once a fully compacted alias is found, return immediately, as we can not go any shorter.
+        const shortestPrefixing = { prefix: '', suffix: iri };
         for (const key in context) {
             const value = context[key];
             if (value && !key.startsWith('@')) {
@@ -50524,16 +51120,21 @@ class ContextParser {
                     const suffix = iri.substr(contextIri.length);
                     if (!suffix) {
                         if (vocab) {
-                            // Compact aliased term
+                            // Immediately return on compacted alias
                             return key;
                         }
                     }
-                    else {
-                        // Compact prefixed term
-                        return key + ':' + suffix;
+                    else if (suffix.length < shortestPrefixing.suffix.length) {
+                        // Overwrite the shortest prefix
+                        shortestPrefixing.prefix = key;
+                        shortestPrefixing.suffix = suffix;
                     }
                 }
             }
+        }
+        // Return the shortest prefix
+        if (shortestPrefixing.prefix) {
+            return shortestPrefixing.prefix + ':' + shortestPrefixing.suffix;
         }
         return iri;
     }
@@ -50632,6 +51233,27 @@ Tried mapping ${key} to ${context[key]}`);
         return context;
     }
     /**
+     * Normalize the @language entries in the given context to lowercase.
+     * @param {IJsonLdContextNormalized} context A context.
+     * @return {IJsonLdContextNormalized} The mutated input context.
+     */
+    static normalize(context) {
+        for (const key of Object.keys(context)) {
+            if (key === '@language' && typeof context[key] === 'string') {
+                context[key] = context[key].toLowerCase();
+            }
+            else {
+                const value = context[key];
+                if (value && typeof value === 'object') {
+                    if (typeof value['@language'] === 'string') {
+                        value['@language'] = value['@language'].toLowerCase();
+                    }
+                }
+            }
+        }
+        return context;
+    }
+    /**
      * Validate the entries of the given context.
      * @param {IJsonLdContextNormalized} context A context.
      */
@@ -50666,7 +51288,7 @@ Tried mapping ${key} to ${context[key]}`);
                         // Always valid
                         break;
                     case 'object':
-                        if (key.indexOf(':') < 0 && !('@id' in value)
+                        if (!ContextParser.isCompactIri(key) && !('@id' in value)
                             && (value['@type'] === '@id' ? !context['@base'] : !context['@vocab'])) {
                             throw new Error(`Missing @id in context entry: '${key}': '${JSON.stringify(value)}'`);
                         }
@@ -50717,6 +51339,21 @@ must be one of ${ContextParser.CONTAINERS.join(', ')}`);
         }
     }
     /**
+     * Resolve relative context IRIs, or return full IRIs as-is.
+     * @param {string} contextIri A context IRI.
+     * @param {string} baseIri A base IRI.
+     * @return {string} The normalized context IRI.
+     */
+    static normalizeContextIri(contextIri, baseIri) {
+        if (!ContextParser.isValidIri(contextIri)) {
+            contextIri = relative_to_absolute_iri_1.resolve(contextIri, baseIri);
+            if (!ContextParser.isValidIri(contextIri)) {
+                throw new Error(`Invalid context IRI: ${contextIri}`);
+            }
+        }
+        return contextIri;
+    }
+    /**
      * Parse a JSON-LD context in any form.
      * @param {JsonLdContext} context A context, URL to a context, or an array of contexts/URLs.
      * @param {IParseOptions} options Optional parsing options.
@@ -50729,27 +51366,24 @@ must be one of ${ContextParser.CONTAINERS.join(', ')}`);
                 return baseIri ? { '@base': baseIri } : {};
             }
             else if (typeof context === 'string') {
-                // Resolve relative context URIs
-                if (!ContextParser.isValidIri(context)) {
-                    context = relative_to_absolute_iri_1.resolve(context, baseIri);
-                    if (!ContextParser.isValidIri(context)) {
-                        throw new Error(`Invalid context IRI: ${context}`);
-                    }
-                }
-                return this.parse(yield this.load(context), { baseIri, parentContext, external: true });
+                return this.parse(yield this.load(ContextParser.normalizeContextIri(context, baseIri)), { baseIri, parentContext, external: true });
             }
             else if (Array.isArray(context)) {
                 // As a performance consideration, first load all external contexts in parallel.
                 const contexts = yield Promise.all(context.map((subContext) => {
                     if (typeof subContext === 'string') {
-                        return this.load(subContext);
+                        return this.load(ContextParser.normalizeContextIri(subContext, baseIri));
                     }
                     else {
                         return subContext;
                     }
                 }));
                 return contexts.reduce((accContextPromise, contextEntry) => accContextPromise
-                    .then((accContext) => this.parse(contextEntry, { baseIri, parentContext: accContext, external })), Promise.resolve(parentContext));
+                    .then((accContext) => this.parse(contextEntry, {
+                    baseIri: accContext && accContext['@base'] || baseIri,
+                    external,
+                    parentContext: accContext,
+                })), Promise.resolve(parentContext));
             }
             else if (typeof context === 'object') {
                 if (context['@context']) {
@@ -50764,12 +51398,20 @@ must be one of ${ContextParser.CONTAINERS.join(', ')}`);
                     delete context['@base'];
                 }
                 // Override the base IRI if provided.
-                if (baseIri && !('@base' in newContext)) {
-                    newContext['@base'] = baseIri;
+                if (baseIri) {
+                    if (!('@base' in context)) {
+                        // The context base is the document base
+                        context['@base'] = baseIri;
+                    }
+                    else if (context['@base'] !== null && !ContextParser.isValidIri(context['@base'])) {
+                        // The context base is relative to the document base
+                        context['@base'] = relative_to_absolute_iri_1.resolve(context['@base'], baseIri);
+                    }
                 }
                 newContext = Object.assign({}, newContext, parentContext, context);
                 ContextParser.idifyReverseTerms(newContext);
                 ContextParser.expandPrefixedTerms(newContext, this.expandContentTypeToBase);
+                ContextParser.normalize(newContext);
                 if (this.validate) {
                     ContextParser.validate(newContext);
                 }
@@ -50923,6 +51565,9 @@ class ContextTree {
             }
             subTree.setContext(tail, context);
         }
+    }
+    removeContext(path) {
+        this.setContext(path, null);
     }
 }
 exports.ContextTree = ContextTree;
@@ -51167,6 +51812,8 @@ class JsonLdParser extends stream_1.Transform {
                 }
             }
         }
+        // Clear the keyword cache.
+        this.parsingContext.unaliasedKeywordCacheStack.splice(0);
         // Handle non-context jobs
         for (const job of this.contextAwaitingJobs) {
             await job();
@@ -51563,9 +52210,13 @@ class Util {
                     await this.validateValueIndexes(value);
                     return null;
                 }
+                // Handle local context in the value
+                if ('@context' in value) {
+                    context = await this.parsingContext.contextParser.parse(value['@context'], { baseIri: this.parsingContext.baseIRI, parentContext: context });
+                }
                 // In all other cases, we have a hash
                 value = await this.unaliasKeywords(value, keys, depth); // Un-alias potential keywords in this hash
-                if ("@value" in value) {
+                if ('@value' in value) {
                     let val;
                     let valueLanguage;
                     let valueType;
@@ -51611,6 +52262,8 @@ class Util {
                         if (typeof val !== 'string') {
                             throw new Error(`When an '@language' is set, the value of '@value' must be a string, got '${JSON.stringify(val)}'`);
                         }
+                        // Language tags are always normalized to lowercase.
+                        valueLanguage = valueLanguage.toLowerCase();
                         return this.dataFactory.literal(val, valueLanguage);
                     }
                     else if (valueType) { // Validate @type
@@ -51812,10 +52465,14 @@ class Util {
         const contextType = Util.getContextValueType(context, key);
         if (contextType) {
             if (contextType === '@id') {
-                return this.resourceToTerm(context, this.intToString(value, defaultDatatype));
+                if (!defaultDatatype) {
+                    return this.resourceToTerm(context, this.intToString(value, defaultDatatype));
+                }
             }
             else if (contextType === '@vocab') {
-                return this.createVocabOrBaseTerm(context, this.intToString(value, defaultDatatype));
+                if (!defaultDatatype) {
+                    return this.createVocabOrBaseTerm(context, this.intToString(value, defaultDatatype));
+                }
             }
             else {
                 defaultDatatype = this.dataFactory.namedNode(contextType);
@@ -52077,6 +52734,8 @@ class EntryHandlerArrayValue {
                 }
                 // Execute the job one level higher
                 await parsingContext.newOnValueJob(keys.slice(0, -1), value, depth - 1);
+                // Remove any defined contexts at this level to avoid it to propagate to the next array element.
+                parsingContext.contextTree.removeContext(keys.slice(0, -1));
             }
         }
     }
@@ -69066,1866 +69725,6 @@ module.exports = intersection;
 
 /***/ }),
 
-/***/ "./node_modules/lodash.isequal/index.js":
-/*!**********************************************!*\
-  !*** ./node_modules/lodash.isequal/index.js ***!
-  \**********************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-/* WEBPACK VAR INJECTION */(function(global, module) {/**
- * Lodash (Custom Build) <https://lodash.com/>
- * Build: `lodash modularize exports="npm" -o ./`
- * Copyright JS Foundation and other contributors <https://js.foundation/>
- * Released under MIT license <https://lodash.com/license>
- * Based on Underscore.js 1.8.3 <http://underscorejs.org/LICENSE>
- * Copyright Jeremy Ashkenas, DocumentCloud and Investigative Reporters & Editors
- */
-
-/** Used as the size to enable large array optimizations. */
-var LARGE_ARRAY_SIZE = 200;
-
-/** Used to stand-in for `undefined` hash values. */
-var HASH_UNDEFINED = '__lodash_hash_undefined__';
-
-/** Used to compose bitmasks for value comparisons. */
-var COMPARE_PARTIAL_FLAG = 1,
-    COMPARE_UNORDERED_FLAG = 2;
-
-/** Used as references for various `Number` constants. */
-var MAX_SAFE_INTEGER = 9007199254740991;
-
-/** `Object#toString` result references. */
-var argsTag = '[object Arguments]',
-    arrayTag = '[object Array]',
-    asyncTag = '[object AsyncFunction]',
-    boolTag = '[object Boolean]',
-    dateTag = '[object Date]',
-    errorTag = '[object Error]',
-    funcTag = '[object Function]',
-    genTag = '[object GeneratorFunction]',
-    mapTag = '[object Map]',
-    numberTag = '[object Number]',
-    nullTag = '[object Null]',
-    objectTag = '[object Object]',
-    promiseTag = '[object Promise]',
-    proxyTag = '[object Proxy]',
-    regexpTag = '[object RegExp]',
-    setTag = '[object Set]',
-    stringTag = '[object String]',
-    symbolTag = '[object Symbol]',
-    undefinedTag = '[object Undefined]',
-    weakMapTag = '[object WeakMap]';
-
-var arrayBufferTag = '[object ArrayBuffer]',
-    dataViewTag = '[object DataView]',
-    float32Tag = '[object Float32Array]',
-    float64Tag = '[object Float64Array]',
-    int8Tag = '[object Int8Array]',
-    int16Tag = '[object Int16Array]',
-    int32Tag = '[object Int32Array]',
-    uint8Tag = '[object Uint8Array]',
-    uint8ClampedTag = '[object Uint8ClampedArray]',
-    uint16Tag = '[object Uint16Array]',
-    uint32Tag = '[object Uint32Array]';
-
-/**
- * Used to match `RegExp`
- * [syntax characters](http://ecma-international.org/ecma-262/7.0/#sec-patterns).
- */
-var reRegExpChar = /[\\^$.*+?()[\]{}|]/g;
-
-/** Used to detect host constructors (Safari). */
-var reIsHostCtor = /^\[object .+?Constructor\]$/;
-
-/** Used to detect unsigned integer values. */
-var reIsUint = /^(?:0|[1-9]\d*)$/;
-
-/** Used to identify `toStringTag` values of typed arrays. */
-var typedArrayTags = {};
-typedArrayTags[float32Tag] = typedArrayTags[float64Tag] =
-typedArrayTags[int8Tag] = typedArrayTags[int16Tag] =
-typedArrayTags[int32Tag] = typedArrayTags[uint8Tag] =
-typedArrayTags[uint8ClampedTag] = typedArrayTags[uint16Tag] =
-typedArrayTags[uint32Tag] = true;
-typedArrayTags[argsTag] = typedArrayTags[arrayTag] =
-typedArrayTags[arrayBufferTag] = typedArrayTags[boolTag] =
-typedArrayTags[dataViewTag] = typedArrayTags[dateTag] =
-typedArrayTags[errorTag] = typedArrayTags[funcTag] =
-typedArrayTags[mapTag] = typedArrayTags[numberTag] =
-typedArrayTags[objectTag] = typedArrayTags[regexpTag] =
-typedArrayTags[setTag] = typedArrayTags[stringTag] =
-typedArrayTags[weakMapTag] = false;
-
-/** Detect free variable `global` from Node.js. */
-var freeGlobal = typeof global == 'object' && global && global.Object === Object && global;
-
-/** Detect free variable `self`. */
-var freeSelf = typeof self == 'object' && self && self.Object === Object && self;
-
-/** Used as a reference to the global object. */
-var root = freeGlobal || freeSelf || Function('return this')();
-
-/** Detect free variable `exports`. */
-var freeExports =  true && exports && !exports.nodeType && exports;
-
-/** Detect free variable `module`. */
-var freeModule = freeExports && typeof module == 'object' && module && !module.nodeType && module;
-
-/** Detect the popular CommonJS extension `module.exports`. */
-var moduleExports = freeModule && freeModule.exports === freeExports;
-
-/** Detect free variable `process` from Node.js. */
-var freeProcess = moduleExports && freeGlobal.process;
-
-/** Used to access faster Node.js helpers. */
-var nodeUtil = (function() {
-  try {
-    return freeProcess && freeProcess.binding && freeProcess.binding('util');
-  } catch (e) {}
-}());
-
-/* Node.js helper references. */
-var nodeIsTypedArray = nodeUtil && nodeUtil.isTypedArray;
-
-/**
- * A specialized version of `_.filter` for arrays without support for
- * iteratee shorthands.
- *
- * @private
- * @param {Array} [array] The array to iterate over.
- * @param {Function} predicate The function invoked per iteration.
- * @returns {Array} Returns the new filtered array.
- */
-function arrayFilter(array, predicate) {
-  var index = -1,
-      length = array == null ? 0 : array.length,
-      resIndex = 0,
-      result = [];
-
-  while (++index < length) {
-    var value = array[index];
-    if (predicate(value, index, array)) {
-      result[resIndex++] = value;
-    }
-  }
-  return result;
-}
-
-/**
- * Appends the elements of `values` to `array`.
- *
- * @private
- * @param {Array} array The array to modify.
- * @param {Array} values The values to append.
- * @returns {Array} Returns `array`.
- */
-function arrayPush(array, values) {
-  var index = -1,
-      length = values.length,
-      offset = array.length;
-
-  while (++index < length) {
-    array[offset + index] = values[index];
-  }
-  return array;
-}
-
-/**
- * A specialized version of `_.some` for arrays without support for iteratee
- * shorthands.
- *
- * @private
- * @param {Array} [array] The array to iterate over.
- * @param {Function} predicate The function invoked per iteration.
- * @returns {boolean} Returns `true` if any element passes the predicate check,
- *  else `false`.
- */
-function arraySome(array, predicate) {
-  var index = -1,
-      length = array == null ? 0 : array.length;
-
-  while (++index < length) {
-    if (predicate(array[index], index, array)) {
-      return true;
-    }
-  }
-  return false;
-}
-
-/**
- * The base implementation of `_.times` without support for iteratee shorthands
- * or max array length checks.
- *
- * @private
- * @param {number} n The number of times to invoke `iteratee`.
- * @param {Function} iteratee The function invoked per iteration.
- * @returns {Array} Returns the array of results.
- */
-function baseTimes(n, iteratee) {
-  var index = -1,
-      result = Array(n);
-
-  while (++index < n) {
-    result[index] = iteratee(index);
-  }
-  return result;
-}
-
-/**
- * The base implementation of `_.unary` without support for storing metadata.
- *
- * @private
- * @param {Function} func The function to cap arguments for.
- * @returns {Function} Returns the new capped function.
- */
-function baseUnary(func) {
-  return function(value) {
-    return func(value);
-  };
-}
-
-/**
- * Checks if a `cache` value for `key` exists.
- *
- * @private
- * @param {Object} cache The cache to query.
- * @param {string} key The key of the entry to check.
- * @returns {boolean} Returns `true` if an entry for `key` exists, else `false`.
- */
-function cacheHas(cache, key) {
-  return cache.has(key);
-}
-
-/**
- * Gets the value at `key` of `object`.
- *
- * @private
- * @param {Object} [object] The object to query.
- * @param {string} key The key of the property to get.
- * @returns {*} Returns the property value.
- */
-function getValue(object, key) {
-  return object == null ? undefined : object[key];
-}
-
-/**
- * Converts `map` to its key-value pairs.
- *
- * @private
- * @param {Object} map The map to convert.
- * @returns {Array} Returns the key-value pairs.
- */
-function mapToArray(map) {
-  var index = -1,
-      result = Array(map.size);
-
-  map.forEach(function(value, key) {
-    result[++index] = [key, value];
-  });
-  return result;
-}
-
-/**
- * Creates a unary function that invokes `func` with its argument transformed.
- *
- * @private
- * @param {Function} func The function to wrap.
- * @param {Function} transform The argument transform.
- * @returns {Function} Returns the new function.
- */
-function overArg(func, transform) {
-  return function(arg) {
-    return func(transform(arg));
-  };
-}
-
-/**
- * Converts `set` to an array of its values.
- *
- * @private
- * @param {Object} set The set to convert.
- * @returns {Array} Returns the values.
- */
-function setToArray(set) {
-  var index = -1,
-      result = Array(set.size);
-
-  set.forEach(function(value) {
-    result[++index] = value;
-  });
-  return result;
-}
-
-/** Used for built-in method references. */
-var arrayProto = Array.prototype,
-    funcProto = Function.prototype,
-    objectProto = Object.prototype;
-
-/** Used to detect overreaching core-js shims. */
-var coreJsData = root['__core-js_shared__'];
-
-/** Used to resolve the decompiled source of functions. */
-var funcToString = funcProto.toString;
-
-/** Used to check objects for own properties. */
-var hasOwnProperty = objectProto.hasOwnProperty;
-
-/** Used to detect methods masquerading as native. */
-var maskSrcKey = (function() {
-  var uid = /[^.]+$/.exec(coreJsData && coreJsData.keys && coreJsData.keys.IE_PROTO || '');
-  return uid ? ('Symbol(src)_1.' + uid) : '';
-}());
-
-/**
- * Used to resolve the
- * [`toStringTag`](http://ecma-international.org/ecma-262/7.0/#sec-object.prototype.tostring)
- * of values.
- */
-var nativeObjectToString = objectProto.toString;
-
-/** Used to detect if a method is native. */
-var reIsNative = RegExp('^' +
-  funcToString.call(hasOwnProperty).replace(reRegExpChar, '\\$&')
-  .replace(/hasOwnProperty|(function).*?(?=\\\()| for .+?(?=\\\])/g, '$1.*?') + '$'
-);
-
-/** Built-in value references. */
-var Buffer = moduleExports ? root.Buffer : undefined,
-    Symbol = root.Symbol,
-    Uint8Array = root.Uint8Array,
-    propertyIsEnumerable = objectProto.propertyIsEnumerable,
-    splice = arrayProto.splice,
-    symToStringTag = Symbol ? Symbol.toStringTag : undefined;
-
-/* Built-in method references for those with the same name as other `lodash` methods. */
-var nativeGetSymbols = Object.getOwnPropertySymbols,
-    nativeIsBuffer = Buffer ? Buffer.isBuffer : undefined,
-    nativeKeys = overArg(Object.keys, Object);
-
-/* Built-in method references that are verified to be native. */
-var DataView = getNative(root, 'DataView'),
-    Map = getNative(root, 'Map'),
-    Promise = getNative(root, 'Promise'),
-    Set = getNative(root, 'Set'),
-    WeakMap = getNative(root, 'WeakMap'),
-    nativeCreate = getNative(Object, 'create');
-
-/** Used to detect maps, sets, and weakmaps. */
-var dataViewCtorString = toSource(DataView),
-    mapCtorString = toSource(Map),
-    promiseCtorString = toSource(Promise),
-    setCtorString = toSource(Set),
-    weakMapCtorString = toSource(WeakMap);
-
-/** Used to convert symbols to primitives and strings. */
-var symbolProto = Symbol ? Symbol.prototype : undefined,
-    symbolValueOf = symbolProto ? symbolProto.valueOf : undefined;
-
-/**
- * Creates a hash object.
- *
- * @private
- * @constructor
- * @param {Array} [entries] The key-value pairs to cache.
- */
-function Hash(entries) {
-  var index = -1,
-      length = entries == null ? 0 : entries.length;
-
-  this.clear();
-  while (++index < length) {
-    var entry = entries[index];
-    this.set(entry[0], entry[1]);
-  }
-}
-
-/**
- * Removes all key-value entries from the hash.
- *
- * @private
- * @name clear
- * @memberOf Hash
- */
-function hashClear() {
-  this.__data__ = nativeCreate ? nativeCreate(null) : {};
-  this.size = 0;
-}
-
-/**
- * Removes `key` and its value from the hash.
- *
- * @private
- * @name delete
- * @memberOf Hash
- * @param {Object} hash The hash to modify.
- * @param {string} key The key of the value to remove.
- * @returns {boolean} Returns `true` if the entry was removed, else `false`.
- */
-function hashDelete(key) {
-  var result = this.has(key) && delete this.__data__[key];
-  this.size -= result ? 1 : 0;
-  return result;
-}
-
-/**
- * Gets the hash value for `key`.
- *
- * @private
- * @name get
- * @memberOf Hash
- * @param {string} key The key of the value to get.
- * @returns {*} Returns the entry value.
- */
-function hashGet(key) {
-  var data = this.__data__;
-  if (nativeCreate) {
-    var result = data[key];
-    return result === HASH_UNDEFINED ? undefined : result;
-  }
-  return hasOwnProperty.call(data, key) ? data[key] : undefined;
-}
-
-/**
- * Checks if a hash value for `key` exists.
- *
- * @private
- * @name has
- * @memberOf Hash
- * @param {string} key The key of the entry to check.
- * @returns {boolean} Returns `true` if an entry for `key` exists, else `false`.
- */
-function hashHas(key) {
-  var data = this.__data__;
-  return nativeCreate ? (data[key] !== undefined) : hasOwnProperty.call(data, key);
-}
-
-/**
- * Sets the hash `key` to `value`.
- *
- * @private
- * @name set
- * @memberOf Hash
- * @param {string} key The key of the value to set.
- * @param {*} value The value to set.
- * @returns {Object} Returns the hash instance.
- */
-function hashSet(key, value) {
-  var data = this.__data__;
-  this.size += this.has(key) ? 0 : 1;
-  data[key] = (nativeCreate && value === undefined) ? HASH_UNDEFINED : value;
-  return this;
-}
-
-// Add methods to `Hash`.
-Hash.prototype.clear = hashClear;
-Hash.prototype['delete'] = hashDelete;
-Hash.prototype.get = hashGet;
-Hash.prototype.has = hashHas;
-Hash.prototype.set = hashSet;
-
-/**
- * Creates an list cache object.
- *
- * @private
- * @constructor
- * @param {Array} [entries] The key-value pairs to cache.
- */
-function ListCache(entries) {
-  var index = -1,
-      length = entries == null ? 0 : entries.length;
-
-  this.clear();
-  while (++index < length) {
-    var entry = entries[index];
-    this.set(entry[0], entry[1]);
-  }
-}
-
-/**
- * Removes all key-value entries from the list cache.
- *
- * @private
- * @name clear
- * @memberOf ListCache
- */
-function listCacheClear() {
-  this.__data__ = [];
-  this.size = 0;
-}
-
-/**
- * Removes `key` and its value from the list cache.
- *
- * @private
- * @name delete
- * @memberOf ListCache
- * @param {string} key The key of the value to remove.
- * @returns {boolean} Returns `true` if the entry was removed, else `false`.
- */
-function listCacheDelete(key) {
-  var data = this.__data__,
-      index = assocIndexOf(data, key);
-
-  if (index < 0) {
-    return false;
-  }
-  var lastIndex = data.length - 1;
-  if (index == lastIndex) {
-    data.pop();
-  } else {
-    splice.call(data, index, 1);
-  }
-  --this.size;
-  return true;
-}
-
-/**
- * Gets the list cache value for `key`.
- *
- * @private
- * @name get
- * @memberOf ListCache
- * @param {string} key The key of the value to get.
- * @returns {*} Returns the entry value.
- */
-function listCacheGet(key) {
-  var data = this.__data__,
-      index = assocIndexOf(data, key);
-
-  return index < 0 ? undefined : data[index][1];
-}
-
-/**
- * Checks if a list cache value for `key` exists.
- *
- * @private
- * @name has
- * @memberOf ListCache
- * @param {string} key The key of the entry to check.
- * @returns {boolean} Returns `true` if an entry for `key` exists, else `false`.
- */
-function listCacheHas(key) {
-  return assocIndexOf(this.__data__, key) > -1;
-}
-
-/**
- * Sets the list cache `key` to `value`.
- *
- * @private
- * @name set
- * @memberOf ListCache
- * @param {string} key The key of the value to set.
- * @param {*} value The value to set.
- * @returns {Object} Returns the list cache instance.
- */
-function listCacheSet(key, value) {
-  var data = this.__data__,
-      index = assocIndexOf(data, key);
-
-  if (index < 0) {
-    ++this.size;
-    data.push([key, value]);
-  } else {
-    data[index][1] = value;
-  }
-  return this;
-}
-
-// Add methods to `ListCache`.
-ListCache.prototype.clear = listCacheClear;
-ListCache.prototype['delete'] = listCacheDelete;
-ListCache.prototype.get = listCacheGet;
-ListCache.prototype.has = listCacheHas;
-ListCache.prototype.set = listCacheSet;
-
-/**
- * Creates a map cache object to store key-value pairs.
- *
- * @private
- * @constructor
- * @param {Array} [entries] The key-value pairs to cache.
- */
-function MapCache(entries) {
-  var index = -1,
-      length = entries == null ? 0 : entries.length;
-
-  this.clear();
-  while (++index < length) {
-    var entry = entries[index];
-    this.set(entry[0], entry[1]);
-  }
-}
-
-/**
- * Removes all key-value entries from the map.
- *
- * @private
- * @name clear
- * @memberOf MapCache
- */
-function mapCacheClear() {
-  this.size = 0;
-  this.__data__ = {
-    'hash': new Hash,
-    'map': new (Map || ListCache),
-    'string': new Hash
-  };
-}
-
-/**
- * Removes `key` and its value from the map.
- *
- * @private
- * @name delete
- * @memberOf MapCache
- * @param {string} key The key of the value to remove.
- * @returns {boolean} Returns `true` if the entry was removed, else `false`.
- */
-function mapCacheDelete(key) {
-  var result = getMapData(this, key)['delete'](key);
-  this.size -= result ? 1 : 0;
-  return result;
-}
-
-/**
- * Gets the map value for `key`.
- *
- * @private
- * @name get
- * @memberOf MapCache
- * @param {string} key The key of the value to get.
- * @returns {*} Returns the entry value.
- */
-function mapCacheGet(key) {
-  return getMapData(this, key).get(key);
-}
-
-/**
- * Checks if a map value for `key` exists.
- *
- * @private
- * @name has
- * @memberOf MapCache
- * @param {string} key The key of the entry to check.
- * @returns {boolean} Returns `true` if an entry for `key` exists, else `false`.
- */
-function mapCacheHas(key) {
-  return getMapData(this, key).has(key);
-}
-
-/**
- * Sets the map `key` to `value`.
- *
- * @private
- * @name set
- * @memberOf MapCache
- * @param {string} key The key of the value to set.
- * @param {*} value The value to set.
- * @returns {Object} Returns the map cache instance.
- */
-function mapCacheSet(key, value) {
-  var data = getMapData(this, key),
-      size = data.size;
-
-  data.set(key, value);
-  this.size += data.size == size ? 0 : 1;
-  return this;
-}
-
-// Add methods to `MapCache`.
-MapCache.prototype.clear = mapCacheClear;
-MapCache.prototype['delete'] = mapCacheDelete;
-MapCache.prototype.get = mapCacheGet;
-MapCache.prototype.has = mapCacheHas;
-MapCache.prototype.set = mapCacheSet;
-
-/**
- *
- * Creates an array cache object to store unique values.
- *
- * @private
- * @constructor
- * @param {Array} [values] The values to cache.
- */
-function SetCache(values) {
-  var index = -1,
-      length = values == null ? 0 : values.length;
-
-  this.__data__ = new MapCache;
-  while (++index < length) {
-    this.add(values[index]);
-  }
-}
-
-/**
- * Adds `value` to the array cache.
- *
- * @private
- * @name add
- * @memberOf SetCache
- * @alias push
- * @param {*} value The value to cache.
- * @returns {Object} Returns the cache instance.
- */
-function setCacheAdd(value) {
-  this.__data__.set(value, HASH_UNDEFINED);
-  return this;
-}
-
-/**
- * Checks if `value` is in the array cache.
- *
- * @private
- * @name has
- * @memberOf SetCache
- * @param {*} value The value to search for.
- * @returns {number} Returns `true` if `value` is found, else `false`.
- */
-function setCacheHas(value) {
-  return this.__data__.has(value);
-}
-
-// Add methods to `SetCache`.
-SetCache.prototype.add = SetCache.prototype.push = setCacheAdd;
-SetCache.prototype.has = setCacheHas;
-
-/**
- * Creates a stack cache object to store key-value pairs.
- *
- * @private
- * @constructor
- * @param {Array} [entries] The key-value pairs to cache.
- */
-function Stack(entries) {
-  var data = this.__data__ = new ListCache(entries);
-  this.size = data.size;
-}
-
-/**
- * Removes all key-value entries from the stack.
- *
- * @private
- * @name clear
- * @memberOf Stack
- */
-function stackClear() {
-  this.__data__ = new ListCache;
-  this.size = 0;
-}
-
-/**
- * Removes `key` and its value from the stack.
- *
- * @private
- * @name delete
- * @memberOf Stack
- * @param {string} key The key of the value to remove.
- * @returns {boolean} Returns `true` if the entry was removed, else `false`.
- */
-function stackDelete(key) {
-  var data = this.__data__,
-      result = data['delete'](key);
-
-  this.size = data.size;
-  return result;
-}
-
-/**
- * Gets the stack value for `key`.
- *
- * @private
- * @name get
- * @memberOf Stack
- * @param {string} key The key of the value to get.
- * @returns {*} Returns the entry value.
- */
-function stackGet(key) {
-  return this.__data__.get(key);
-}
-
-/**
- * Checks if a stack value for `key` exists.
- *
- * @private
- * @name has
- * @memberOf Stack
- * @param {string} key The key of the entry to check.
- * @returns {boolean} Returns `true` if an entry for `key` exists, else `false`.
- */
-function stackHas(key) {
-  return this.__data__.has(key);
-}
-
-/**
- * Sets the stack `key` to `value`.
- *
- * @private
- * @name set
- * @memberOf Stack
- * @param {string} key The key of the value to set.
- * @param {*} value The value to set.
- * @returns {Object} Returns the stack cache instance.
- */
-function stackSet(key, value) {
-  var data = this.__data__;
-  if (data instanceof ListCache) {
-    var pairs = data.__data__;
-    if (!Map || (pairs.length < LARGE_ARRAY_SIZE - 1)) {
-      pairs.push([key, value]);
-      this.size = ++data.size;
-      return this;
-    }
-    data = this.__data__ = new MapCache(pairs);
-  }
-  data.set(key, value);
-  this.size = data.size;
-  return this;
-}
-
-// Add methods to `Stack`.
-Stack.prototype.clear = stackClear;
-Stack.prototype['delete'] = stackDelete;
-Stack.prototype.get = stackGet;
-Stack.prototype.has = stackHas;
-Stack.prototype.set = stackSet;
-
-/**
- * Creates an array of the enumerable property names of the array-like `value`.
- *
- * @private
- * @param {*} value The value to query.
- * @param {boolean} inherited Specify returning inherited property names.
- * @returns {Array} Returns the array of property names.
- */
-function arrayLikeKeys(value, inherited) {
-  var isArr = isArray(value),
-      isArg = !isArr && isArguments(value),
-      isBuff = !isArr && !isArg && isBuffer(value),
-      isType = !isArr && !isArg && !isBuff && isTypedArray(value),
-      skipIndexes = isArr || isArg || isBuff || isType,
-      result = skipIndexes ? baseTimes(value.length, String) : [],
-      length = result.length;
-
-  for (var key in value) {
-    if ((inherited || hasOwnProperty.call(value, key)) &&
-        !(skipIndexes && (
-           // Safari 9 has enumerable `arguments.length` in strict mode.
-           key == 'length' ||
-           // Node.js 0.10 has enumerable non-index properties on buffers.
-           (isBuff && (key == 'offset' || key == 'parent')) ||
-           // PhantomJS 2 has enumerable non-index properties on typed arrays.
-           (isType && (key == 'buffer' || key == 'byteLength' || key == 'byteOffset')) ||
-           // Skip index properties.
-           isIndex(key, length)
-        ))) {
-      result.push(key);
-    }
-  }
-  return result;
-}
-
-/**
- * Gets the index at which the `key` is found in `array` of key-value pairs.
- *
- * @private
- * @param {Array} array The array to inspect.
- * @param {*} key The key to search for.
- * @returns {number} Returns the index of the matched value, else `-1`.
- */
-function assocIndexOf(array, key) {
-  var length = array.length;
-  while (length--) {
-    if (eq(array[length][0], key)) {
-      return length;
-    }
-  }
-  return -1;
-}
-
-/**
- * The base implementation of `getAllKeys` and `getAllKeysIn` which uses
- * `keysFunc` and `symbolsFunc` to get the enumerable property names and
- * symbols of `object`.
- *
- * @private
- * @param {Object} object The object to query.
- * @param {Function} keysFunc The function to get the keys of `object`.
- * @param {Function} symbolsFunc The function to get the symbols of `object`.
- * @returns {Array} Returns the array of property names and symbols.
- */
-function baseGetAllKeys(object, keysFunc, symbolsFunc) {
-  var result = keysFunc(object);
-  return isArray(object) ? result : arrayPush(result, symbolsFunc(object));
-}
-
-/**
- * The base implementation of `getTag` without fallbacks for buggy environments.
- *
- * @private
- * @param {*} value The value to query.
- * @returns {string} Returns the `toStringTag`.
- */
-function baseGetTag(value) {
-  if (value == null) {
-    return value === undefined ? undefinedTag : nullTag;
-  }
-  return (symToStringTag && symToStringTag in Object(value))
-    ? getRawTag(value)
-    : objectToString(value);
-}
-
-/**
- * The base implementation of `_.isArguments`.
- *
- * @private
- * @param {*} value The value to check.
- * @returns {boolean} Returns `true` if `value` is an `arguments` object,
- */
-function baseIsArguments(value) {
-  return isObjectLike(value) && baseGetTag(value) == argsTag;
-}
-
-/**
- * The base implementation of `_.isEqual` which supports partial comparisons
- * and tracks traversed objects.
- *
- * @private
- * @param {*} value The value to compare.
- * @param {*} other The other value to compare.
- * @param {boolean} bitmask The bitmask flags.
- *  1 - Unordered comparison
- *  2 - Partial comparison
- * @param {Function} [customizer] The function to customize comparisons.
- * @param {Object} [stack] Tracks traversed `value` and `other` objects.
- * @returns {boolean} Returns `true` if the values are equivalent, else `false`.
- */
-function baseIsEqual(value, other, bitmask, customizer, stack) {
-  if (value === other) {
-    return true;
-  }
-  if (value == null || other == null || (!isObjectLike(value) && !isObjectLike(other))) {
-    return value !== value && other !== other;
-  }
-  return baseIsEqualDeep(value, other, bitmask, customizer, baseIsEqual, stack);
-}
-
-/**
- * A specialized version of `baseIsEqual` for arrays and objects which performs
- * deep comparisons and tracks traversed objects enabling objects with circular
- * references to be compared.
- *
- * @private
- * @param {Object} object The object to compare.
- * @param {Object} other The other object to compare.
- * @param {number} bitmask The bitmask flags. See `baseIsEqual` for more details.
- * @param {Function} customizer The function to customize comparisons.
- * @param {Function} equalFunc The function to determine equivalents of values.
- * @param {Object} [stack] Tracks traversed `object` and `other` objects.
- * @returns {boolean} Returns `true` if the objects are equivalent, else `false`.
- */
-function baseIsEqualDeep(object, other, bitmask, customizer, equalFunc, stack) {
-  var objIsArr = isArray(object),
-      othIsArr = isArray(other),
-      objTag = objIsArr ? arrayTag : getTag(object),
-      othTag = othIsArr ? arrayTag : getTag(other);
-
-  objTag = objTag == argsTag ? objectTag : objTag;
-  othTag = othTag == argsTag ? objectTag : othTag;
-
-  var objIsObj = objTag == objectTag,
-      othIsObj = othTag == objectTag,
-      isSameTag = objTag == othTag;
-
-  if (isSameTag && isBuffer(object)) {
-    if (!isBuffer(other)) {
-      return false;
-    }
-    objIsArr = true;
-    objIsObj = false;
-  }
-  if (isSameTag && !objIsObj) {
-    stack || (stack = new Stack);
-    return (objIsArr || isTypedArray(object))
-      ? equalArrays(object, other, bitmask, customizer, equalFunc, stack)
-      : equalByTag(object, other, objTag, bitmask, customizer, equalFunc, stack);
-  }
-  if (!(bitmask & COMPARE_PARTIAL_FLAG)) {
-    var objIsWrapped = objIsObj && hasOwnProperty.call(object, '__wrapped__'),
-        othIsWrapped = othIsObj && hasOwnProperty.call(other, '__wrapped__');
-
-    if (objIsWrapped || othIsWrapped) {
-      var objUnwrapped = objIsWrapped ? object.value() : object,
-          othUnwrapped = othIsWrapped ? other.value() : other;
-
-      stack || (stack = new Stack);
-      return equalFunc(objUnwrapped, othUnwrapped, bitmask, customizer, stack);
-    }
-  }
-  if (!isSameTag) {
-    return false;
-  }
-  stack || (stack = new Stack);
-  return equalObjects(object, other, bitmask, customizer, equalFunc, stack);
-}
-
-/**
- * The base implementation of `_.isNative` without bad shim checks.
- *
- * @private
- * @param {*} value The value to check.
- * @returns {boolean} Returns `true` if `value` is a native function,
- *  else `false`.
- */
-function baseIsNative(value) {
-  if (!isObject(value) || isMasked(value)) {
-    return false;
-  }
-  var pattern = isFunction(value) ? reIsNative : reIsHostCtor;
-  return pattern.test(toSource(value));
-}
-
-/**
- * The base implementation of `_.isTypedArray` without Node.js optimizations.
- *
- * @private
- * @param {*} value The value to check.
- * @returns {boolean} Returns `true` if `value` is a typed array, else `false`.
- */
-function baseIsTypedArray(value) {
-  return isObjectLike(value) &&
-    isLength(value.length) && !!typedArrayTags[baseGetTag(value)];
-}
-
-/**
- * The base implementation of `_.keys` which doesn't treat sparse arrays as dense.
- *
- * @private
- * @param {Object} object The object to query.
- * @returns {Array} Returns the array of property names.
- */
-function baseKeys(object) {
-  if (!isPrototype(object)) {
-    return nativeKeys(object);
-  }
-  var result = [];
-  for (var key in Object(object)) {
-    if (hasOwnProperty.call(object, key) && key != 'constructor') {
-      result.push(key);
-    }
-  }
-  return result;
-}
-
-/**
- * A specialized version of `baseIsEqualDeep` for arrays with support for
- * partial deep comparisons.
- *
- * @private
- * @param {Array} array The array to compare.
- * @param {Array} other The other array to compare.
- * @param {number} bitmask The bitmask flags. See `baseIsEqual` for more details.
- * @param {Function} customizer The function to customize comparisons.
- * @param {Function} equalFunc The function to determine equivalents of values.
- * @param {Object} stack Tracks traversed `array` and `other` objects.
- * @returns {boolean} Returns `true` if the arrays are equivalent, else `false`.
- */
-function equalArrays(array, other, bitmask, customizer, equalFunc, stack) {
-  var isPartial = bitmask & COMPARE_PARTIAL_FLAG,
-      arrLength = array.length,
-      othLength = other.length;
-
-  if (arrLength != othLength && !(isPartial && othLength > arrLength)) {
-    return false;
-  }
-  // Assume cyclic values are equal.
-  var stacked = stack.get(array);
-  if (stacked && stack.get(other)) {
-    return stacked == other;
-  }
-  var index = -1,
-      result = true,
-      seen = (bitmask & COMPARE_UNORDERED_FLAG) ? new SetCache : undefined;
-
-  stack.set(array, other);
-  stack.set(other, array);
-
-  // Ignore non-index properties.
-  while (++index < arrLength) {
-    var arrValue = array[index],
-        othValue = other[index];
-
-    if (customizer) {
-      var compared = isPartial
-        ? customizer(othValue, arrValue, index, other, array, stack)
-        : customizer(arrValue, othValue, index, array, other, stack);
-    }
-    if (compared !== undefined) {
-      if (compared) {
-        continue;
-      }
-      result = false;
-      break;
-    }
-    // Recursively compare arrays (susceptible to call stack limits).
-    if (seen) {
-      if (!arraySome(other, function(othValue, othIndex) {
-            if (!cacheHas(seen, othIndex) &&
-                (arrValue === othValue || equalFunc(arrValue, othValue, bitmask, customizer, stack))) {
-              return seen.push(othIndex);
-            }
-          })) {
-        result = false;
-        break;
-      }
-    } else if (!(
-          arrValue === othValue ||
-            equalFunc(arrValue, othValue, bitmask, customizer, stack)
-        )) {
-      result = false;
-      break;
-    }
-  }
-  stack['delete'](array);
-  stack['delete'](other);
-  return result;
-}
-
-/**
- * A specialized version of `baseIsEqualDeep` for comparing objects of
- * the same `toStringTag`.
- *
- * **Note:** This function only supports comparing values with tags of
- * `Boolean`, `Date`, `Error`, `Number`, `RegExp`, or `String`.
- *
- * @private
- * @param {Object} object The object to compare.
- * @param {Object} other The other object to compare.
- * @param {string} tag The `toStringTag` of the objects to compare.
- * @param {number} bitmask The bitmask flags. See `baseIsEqual` for more details.
- * @param {Function} customizer The function to customize comparisons.
- * @param {Function} equalFunc The function to determine equivalents of values.
- * @param {Object} stack Tracks traversed `object` and `other` objects.
- * @returns {boolean} Returns `true` if the objects are equivalent, else `false`.
- */
-function equalByTag(object, other, tag, bitmask, customizer, equalFunc, stack) {
-  switch (tag) {
-    case dataViewTag:
-      if ((object.byteLength != other.byteLength) ||
-          (object.byteOffset != other.byteOffset)) {
-        return false;
-      }
-      object = object.buffer;
-      other = other.buffer;
-
-    case arrayBufferTag:
-      if ((object.byteLength != other.byteLength) ||
-          !equalFunc(new Uint8Array(object), new Uint8Array(other))) {
-        return false;
-      }
-      return true;
-
-    case boolTag:
-    case dateTag:
-    case numberTag:
-      // Coerce booleans to `1` or `0` and dates to milliseconds.
-      // Invalid dates are coerced to `NaN`.
-      return eq(+object, +other);
-
-    case errorTag:
-      return object.name == other.name && object.message == other.message;
-
-    case regexpTag:
-    case stringTag:
-      // Coerce regexes to strings and treat strings, primitives and objects,
-      // as equal. See http://www.ecma-international.org/ecma-262/7.0/#sec-regexp.prototype.tostring
-      // for more details.
-      return object == (other + '');
-
-    case mapTag:
-      var convert = mapToArray;
-
-    case setTag:
-      var isPartial = bitmask & COMPARE_PARTIAL_FLAG;
-      convert || (convert = setToArray);
-
-      if (object.size != other.size && !isPartial) {
-        return false;
-      }
-      // Assume cyclic values are equal.
-      var stacked = stack.get(object);
-      if (stacked) {
-        return stacked == other;
-      }
-      bitmask |= COMPARE_UNORDERED_FLAG;
-
-      // Recursively compare objects (susceptible to call stack limits).
-      stack.set(object, other);
-      var result = equalArrays(convert(object), convert(other), bitmask, customizer, equalFunc, stack);
-      stack['delete'](object);
-      return result;
-
-    case symbolTag:
-      if (symbolValueOf) {
-        return symbolValueOf.call(object) == symbolValueOf.call(other);
-      }
-  }
-  return false;
-}
-
-/**
- * A specialized version of `baseIsEqualDeep` for objects with support for
- * partial deep comparisons.
- *
- * @private
- * @param {Object} object The object to compare.
- * @param {Object} other The other object to compare.
- * @param {number} bitmask The bitmask flags. See `baseIsEqual` for more details.
- * @param {Function} customizer The function to customize comparisons.
- * @param {Function} equalFunc The function to determine equivalents of values.
- * @param {Object} stack Tracks traversed `object` and `other` objects.
- * @returns {boolean} Returns `true` if the objects are equivalent, else `false`.
- */
-function equalObjects(object, other, bitmask, customizer, equalFunc, stack) {
-  var isPartial = bitmask & COMPARE_PARTIAL_FLAG,
-      objProps = getAllKeys(object),
-      objLength = objProps.length,
-      othProps = getAllKeys(other),
-      othLength = othProps.length;
-
-  if (objLength != othLength && !isPartial) {
-    return false;
-  }
-  var index = objLength;
-  while (index--) {
-    var key = objProps[index];
-    if (!(isPartial ? key in other : hasOwnProperty.call(other, key))) {
-      return false;
-    }
-  }
-  // Assume cyclic values are equal.
-  var stacked = stack.get(object);
-  if (stacked && stack.get(other)) {
-    return stacked == other;
-  }
-  var result = true;
-  stack.set(object, other);
-  stack.set(other, object);
-
-  var skipCtor = isPartial;
-  while (++index < objLength) {
-    key = objProps[index];
-    var objValue = object[key],
-        othValue = other[key];
-
-    if (customizer) {
-      var compared = isPartial
-        ? customizer(othValue, objValue, key, other, object, stack)
-        : customizer(objValue, othValue, key, object, other, stack);
-    }
-    // Recursively compare objects (susceptible to call stack limits).
-    if (!(compared === undefined
-          ? (objValue === othValue || equalFunc(objValue, othValue, bitmask, customizer, stack))
-          : compared
-        )) {
-      result = false;
-      break;
-    }
-    skipCtor || (skipCtor = key == 'constructor');
-  }
-  if (result && !skipCtor) {
-    var objCtor = object.constructor,
-        othCtor = other.constructor;
-
-    // Non `Object` object instances with different constructors are not equal.
-    if (objCtor != othCtor &&
-        ('constructor' in object && 'constructor' in other) &&
-        !(typeof objCtor == 'function' && objCtor instanceof objCtor &&
-          typeof othCtor == 'function' && othCtor instanceof othCtor)) {
-      result = false;
-    }
-  }
-  stack['delete'](object);
-  stack['delete'](other);
-  return result;
-}
-
-/**
- * Creates an array of own enumerable property names and symbols of `object`.
- *
- * @private
- * @param {Object} object The object to query.
- * @returns {Array} Returns the array of property names and symbols.
- */
-function getAllKeys(object) {
-  return baseGetAllKeys(object, keys, getSymbols);
-}
-
-/**
- * Gets the data for `map`.
- *
- * @private
- * @param {Object} map The map to query.
- * @param {string} key The reference key.
- * @returns {*} Returns the map data.
- */
-function getMapData(map, key) {
-  var data = map.__data__;
-  return isKeyable(key)
-    ? data[typeof key == 'string' ? 'string' : 'hash']
-    : data.map;
-}
-
-/**
- * Gets the native function at `key` of `object`.
- *
- * @private
- * @param {Object} object The object to query.
- * @param {string} key The key of the method to get.
- * @returns {*} Returns the function if it's native, else `undefined`.
- */
-function getNative(object, key) {
-  var value = getValue(object, key);
-  return baseIsNative(value) ? value : undefined;
-}
-
-/**
- * A specialized version of `baseGetTag` which ignores `Symbol.toStringTag` values.
- *
- * @private
- * @param {*} value The value to query.
- * @returns {string} Returns the raw `toStringTag`.
- */
-function getRawTag(value) {
-  var isOwn = hasOwnProperty.call(value, symToStringTag),
-      tag = value[symToStringTag];
-
-  try {
-    value[symToStringTag] = undefined;
-    var unmasked = true;
-  } catch (e) {}
-
-  var result = nativeObjectToString.call(value);
-  if (unmasked) {
-    if (isOwn) {
-      value[symToStringTag] = tag;
-    } else {
-      delete value[symToStringTag];
-    }
-  }
-  return result;
-}
-
-/**
- * Creates an array of the own enumerable symbols of `object`.
- *
- * @private
- * @param {Object} object The object to query.
- * @returns {Array} Returns the array of symbols.
- */
-var getSymbols = !nativeGetSymbols ? stubArray : function(object) {
-  if (object == null) {
-    return [];
-  }
-  object = Object(object);
-  return arrayFilter(nativeGetSymbols(object), function(symbol) {
-    return propertyIsEnumerable.call(object, symbol);
-  });
-};
-
-/**
- * Gets the `toStringTag` of `value`.
- *
- * @private
- * @param {*} value The value to query.
- * @returns {string} Returns the `toStringTag`.
- */
-var getTag = baseGetTag;
-
-// Fallback for data views, maps, sets, and weak maps in IE 11 and promises in Node.js < 6.
-if ((DataView && getTag(new DataView(new ArrayBuffer(1))) != dataViewTag) ||
-    (Map && getTag(new Map) != mapTag) ||
-    (Promise && getTag(Promise.resolve()) != promiseTag) ||
-    (Set && getTag(new Set) != setTag) ||
-    (WeakMap && getTag(new WeakMap) != weakMapTag)) {
-  getTag = function(value) {
-    var result = baseGetTag(value),
-        Ctor = result == objectTag ? value.constructor : undefined,
-        ctorString = Ctor ? toSource(Ctor) : '';
-
-    if (ctorString) {
-      switch (ctorString) {
-        case dataViewCtorString: return dataViewTag;
-        case mapCtorString: return mapTag;
-        case promiseCtorString: return promiseTag;
-        case setCtorString: return setTag;
-        case weakMapCtorString: return weakMapTag;
-      }
-    }
-    return result;
-  };
-}
-
-/**
- * Checks if `value` is a valid array-like index.
- *
- * @private
- * @param {*} value The value to check.
- * @param {number} [length=MAX_SAFE_INTEGER] The upper bounds of a valid index.
- * @returns {boolean} Returns `true` if `value` is a valid index, else `false`.
- */
-function isIndex(value, length) {
-  length = length == null ? MAX_SAFE_INTEGER : length;
-  return !!length &&
-    (typeof value == 'number' || reIsUint.test(value)) &&
-    (value > -1 && value % 1 == 0 && value < length);
-}
-
-/**
- * Checks if `value` is suitable for use as unique object key.
- *
- * @private
- * @param {*} value The value to check.
- * @returns {boolean} Returns `true` if `value` is suitable, else `false`.
- */
-function isKeyable(value) {
-  var type = typeof value;
-  return (type == 'string' || type == 'number' || type == 'symbol' || type == 'boolean')
-    ? (value !== '__proto__')
-    : (value === null);
-}
-
-/**
- * Checks if `func` has its source masked.
- *
- * @private
- * @param {Function} func The function to check.
- * @returns {boolean} Returns `true` if `func` is masked, else `false`.
- */
-function isMasked(func) {
-  return !!maskSrcKey && (maskSrcKey in func);
-}
-
-/**
- * Checks if `value` is likely a prototype object.
- *
- * @private
- * @param {*} value The value to check.
- * @returns {boolean} Returns `true` if `value` is a prototype, else `false`.
- */
-function isPrototype(value) {
-  var Ctor = value && value.constructor,
-      proto = (typeof Ctor == 'function' && Ctor.prototype) || objectProto;
-
-  return value === proto;
-}
-
-/**
- * Converts `value` to a string using `Object.prototype.toString`.
- *
- * @private
- * @param {*} value The value to convert.
- * @returns {string} Returns the converted string.
- */
-function objectToString(value) {
-  return nativeObjectToString.call(value);
-}
-
-/**
- * Converts `func` to its source code.
- *
- * @private
- * @param {Function} func The function to convert.
- * @returns {string} Returns the source code.
- */
-function toSource(func) {
-  if (func != null) {
-    try {
-      return funcToString.call(func);
-    } catch (e) {}
-    try {
-      return (func + '');
-    } catch (e) {}
-  }
-  return '';
-}
-
-/**
- * Performs a
- * [`SameValueZero`](http://ecma-international.org/ecma-262/7.0/#sec-samevaluezero)
- * comparison between two values to determine if they are equivalent.
- *
- * @static
- * @memberOf _
- * @since 4.0.0
- * @category Lang
- * @param {*} value The value to compare.
- * @param {*} other The other value to compare.
- * @returns {boolean} Returns `true` if the values are equivalent, else `false`.
- * @example
- *
- * var object = { 'a': 1 };
- * var other = { 'a': 1 };
- *
- * _.eq(object, object);
- * // => true
- *
- * _.eq(object, other);
- * // => false
- *
- * _.eq('a', 'a');
- * // => true
- *
- * _.eq('a', Object('a'));
- * // => false
- *
- * _.eq(NaN, NaN);
- * // => true
- */
-function eq(value, other) {
-  return value === other || (value !== value && other !== other);
-}
-
-/**
- * Checks if `value` is likely an `arguments` object.
- *
- * @static
- * @memberOf _
- * @since 0.1.0
- * @category Lang
- * @param {*} value The value to check.
- * @returns {boolean} Returns `true` if `value` is an `arguments` object,
- *  else `false`.
- * @example
- *
- * _.isArguments(function() { return arguments; }());
- * // => true
- *
- * _.isArguments([1, 2, 3]);
- * // => false
- */
-var isArguments = baseIsArguments(function() { return arguments; }()) ? baseIsArguments : function(value) {
-  return isObjectLike(value) && hasOwnProperty.call(value, 'callee') &&
-    !propertyIsEnumerable.call(value, 'callee');
-};
-
-/**
- * Checks if `value` is classified as an `Array` object.
- *
- * @static
- * @memberOf _
- * @since 0.1.0
- * @category Lang
- * @param {*} value The value to check.
- * @returns {boolean} Returns `true` if `value` is an array, else `false`.
- * @example
- *
- * _.isArray([1, 2, 3]);
- * // => true
- *
- * _.isArray(document.body.children);
- * // => false
- *
- * _.isArray('abc');
- * // => false
- *
- * _.isArray(_.noop);
- * // => false
- */
-var isArray = Array.isArray;
-
-/**
- * Checks if `value` is array-like. A value is considered array-like if it's
- * not a function and has a `value.length` that's an integer greater than or
- * equal to `0` and less than or equal to `Number.MAX_SAFE_INTEGER`.
- *
- * @static
- * @memberOf _
- * @since 4.0.0
- * @category Lang
- * @param {*} value The value to check.
- * @returns {boolean} Returns `true` if `value` is array-like, else `false`.
- * @example
- *
- * _.isArrayLike([1, 2, 3]);
- * // => true
- *
- * _.isArrayLike(document.body.children);
- * // => true
- *
- * _.isArrayLike('abc');
- * // => true
- *
- * _.isArrayLike(_.noop);
- * // => false
- */
-function isArrayLike(value) {
-  return value != null && isLength(value.length) && !isFunction(value);
-}
-
-/**
- * Checks if `value` is a buffer.
- *
- * @static
- * @memberOf _
- * @since 4.3.0
- * @category Lang
- * @param {*} value The value to check.
- * @returns {boolean} Returns `true` if `value` is a buffer, else `false`.
- * @example
- *
- * _.isBuffer(new Buffer(2));
- * // => true
- *
- * _.isBuffer(new Uint8Array(2));
- * // => false
- */
-var isBuffer = nativeIsBuffer || stubFalse;
-
-/**
- * Performs a deep comparison between two values to determine if they are
- * equivalent.
- *
- * **Note:** This method supports comparing arrays, array buffers, booleans,
- * date objects, error objects, maps, numbers, `Object` objects, regexes,
- * sets, strings, symbols, and typed arrays. `Object` objects are compared
- * by their own, not inherited, enumerable properties. Functions and DOM
- * nodes are compared by strict equality, i.e. `===`.
- *
- * @static
- * @memberOf _
- * @since 0.1.0
- * @category Lang
- * @param {*} value The value to compare.
- * @param {*} other The other value to compare.
- * @returns {boolean} Returns `true` if the values are equivalent, else `false`.
- * @example
- *
- * var object = { 'a': 1 };
- * var other = { 'a': 1 };
- *
- * _.isEqual(object, other);
- * // => true
- *
- * object === other;
- * // => false
- */
-function isEqual(value, other) {
-  return baseIsEqual(value, other);
-}
-
-/**
- * Checks if `value` is classified as a `Function` object.
- *
- * @static
- * @memberOf _
- * @since 0.1.0
- * @category Lang
- * @param {*} value The value to check.
- * @returns {boolean} Returns `true` if `value` is a function, else `false`.
- * @example
- *
- * _.isFunction(_);
- * // => true
- *
- * _.isFunction(/abc/);
- * // => false
- */
-function isFunction(value) {
-  if (!isObject(value)) {
-    return false;
-  }
-  // The use of `Object#toString` avoids issues with the `typeof` operator
-  // in Safari 9 which returns 'object' for typed arrays and other constructors.
-  var tag = baseGetTag(value);
-  return tag == funcTag || tag == genTag || tag == asyncTag || tag == proxyTag;
-}
-
-/**
- * Checks if `value` is a valid array-like length.
- *
- * **Note:** This method is loosely based on
- * [`ToLength`](http://ecma-international.org/ecma-262/7.0/#sec-tolength).
- *
- * @static
- * @memberOf _
- * @since 4.0.0
- * @category Lang
- * @param {*} value The value to check.
- * @returns {boolean} Returns `true` if `value` is a valid length, else `false`.
- * @example
- *
- * _.isLength(3);
- * // => true
- *
- * _.isLength(Number.MIN_VALUE);
- * // => false
- *
- * _.isLength(Infinity);
- * // => false
- *
- * _.isLength('3');
- * // => false
- */
-function isLength(value) {
-  return typeof value == 'number' &&
-    value > -1 && value % 1 == 0 && value <= MAX_SAFE_INTEGER;
-}
-
-/**
- * Checks if `value` is the
- * [language type](http://www.ecma-international.org/ecma-262/7.0/#sec-ecmascript-language-types)
- * of `Object`. (e.g. arrays, functions, objects, regexes, `new Number(0)`, and `new String('')`)
- *
- * @static
- * @memberOf _
- * @since 0.1.0
- * @category Lang
- * @param {*} value The value to check.
- * @returns {boolean} Returns `true` if `value` is an object, else `false`.
- * @example
- *
- * _.isObject({});
- * // => true
- *
- * _.isObject([1, 2, 3]);
- * // => true
- *
- * _.isObject(_.noop);
- * // => true
- *
- * _.isObject(null);
- * // => false
- */
-function isObject(value) {
-  var type = typeof value;
-  return value != null && (type == 'object' || type == 'function');
-}
-
-/**
- * Checks if `value` is object-like. A value is object-like if it's not `null`
- * and has a `typeof` result of "object".
- *
- * @static
- * @memberOf _
- * @since 4.0.0
- * @category Lang
- * @param {*} value The value to check.
- * @returns {boolean} Returns `true` if `value` is object-like, else `false`.
- * @example
- *
- * _.isObjectLike({});
- * // => true
- *
- * _.isObjectLike([1, 2, 3]);
- * // => true
- *
- * _.isObjectLike(_.noop);
- * // => false
- *
- * _.isObjectLike(null);
- * // => false
- */
-function isObjectLike(value) {
-  return value != null && typeof value == 'object';
-}
-
-/**
- * Checks if `value` is classified as a typed array.
- *
- * @static
- * @memberOf _
- * @since 3.0.0
- * @category Lang
- * @param {*} value The value to check.
- * @returns {boolean} Returns `true` if `value` is a typed array, else `false`.
- * @example
- *
- * _.isTypedArray(new Uint8Array);
- * // => true
- *
- * _.isTypedArray([]);
- * // => false
- */
-var isTypedArray = nodeIsTypedArray ? baseUnary(nodeIsTypedArray) : baseIsTypedArray;
-
-/**
- * Creates an array of the own enumerable property names of `object`.
- *
- * **Note:** Non-object values are coerced to objects. See the
- * [ES spec](http://ecma-international.org/ecma-262/7.0/#sec-object.keys)
- * for more details.
- *
- * @static
- * @since 0.1.0
- * @memberOf _
- * @category Object
- * @param {Object} object The object to query.
- * @returns {Array} Returns the array of property names.
- * @example
- *
- * function Foo() {
- *   this.a = 1;
- *   this.b = 2;
- * }
- *
- * Foo.prototype.c = 3;
- *
- * _.keys(new Foo);
- * // => ['a', 'b'] (iteration order is not guaranteed)
- *
- * _.keys('hi');
- * // => ['0', '1']
- */
-function keys(object) {
-  return isArrayLike(object) ? arrayLikeKeys(object) : baseKeys(object);
-}
-
-/**
- * This method returns a new empty array.
- *
- * @static
- * @memberOf _
- * @since 4.13.0
- * @category Util
- * @returns {Array} Returns the new empty array.
- * @example
- *
- * var arrays = _.times(2, _.stubArray);
- *
- * console.log(arrays);
- * // => [[], []]
- *
- * console.log(arrays[0] === arrays[1]);
- * // => false
- */
-function stubArray() {
-  return [];
-}
-
-/**
- * This method returns `false`.
- *
- * @static
- * @memberOf _
- * @since 4.13.0
- * @category Util
- * @returns {boolean} Returns `false`.
- * @example
- *
- * _.times(2, _.stubFalse);
- * // => [false, false]
- */
-function stubFalse() {
-  return false;
-}
-
-module.exports = isEqual;
-
-/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./../webpack/buildin/global.js */ "./node_modules/webpack/buildin/global.js"), __webpack_require__(/*! ./../webpack/buildin/module.js */ "./node_modules/webpack/buildin/module.js")(module)))
-
-/***/ }),
-
 /***/ "./node_modules/lodash.mapvalues/index.js":
 /*!************************************************!*\
   !*** ./node_modules/lodash.mapvalues/index.js ***!
@@ -77884,8 +76683,10 @@ class N3Parser {
 
   // ### `_setBase` sets the base IRI to resolve relative IRIs
   _setBase(baseIRI) {
-    if (!baseIRI)
-      this._base = null;
+    if (!baseIRI) {
+      this._base = '';
+      this._basePath = '';
+    }
     else {
       // Remove fragment if present
       var fragmentPos = baseIRI.indexOf('#');
@@ -78806,7 +77607,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _N3DataFactory__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./N3DataFactory */ "./node_modules/n3/src/N3DataFactory.js");
 /* harmony import */ var stream__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! stream */ "./node_modules/stream-browserify/index.js");
 /* harmony import */ var stream__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(stream__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var _IRIs__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./IRIs */ "./node_modules/n3/src/IRIs.js");
 // **N3Store** objects store N3 quads by graph in memory.
+
 
 
 
@@ -79184,16 +77987,12 @@ class N3Store {
   // ### `match` returns a stream of quads matching a pattern.
   // Setting any field to `undefined` or `null` indicates a wildcard.
   match(subject, predicate, object, graph) {
-    var self = this;
     var stream = new stream__WEBPACK_IMPORTED_MODULE_1__["Readable"]({ objectMode: true });
 
     // Initialize stream once it is being read
-    stream._read = function () {
-      stream._read = function () {};
-      var quads = self.getQuads(subject, predicate, object, graph);
-      for (var quad of quads) {
+    stream._read = () => {
+      for (var quad of this.getQuads(subject, predicate, object, graph))
         stream.push(quad);
-      }
       stream.push(null);
     };
 
@@ -79501,6 +78300,104 @@ class N3Store {
     this._entities[this._id] = name;
     return this._factory.blankNode(name.substr(2));
   }
+
+  // ### `extractLists` finds and removes all list triples
+  // and returns the items per list.
+  extractLists({ remove = false, ignoreErrors = false } = {}) {
+    var lists = {}; // has scalar keys so could be a simple Object
+    var onError = ignoreErrors ? (() => true) :
+                  ((node, message) => { throw new Error(`${node.value} ${message}`); });
+
+    // Traverse each list from its tail
+    var tails = this.getQuads(null, _IRIs__WEBPACK_IMPORTED_MODULE_2__["default"].rdf.rest, _IRIs__WEBPACK_IMPORTED_MODULE_2__["default"].rdf.nil, null);
+    var toRemove = remove ? [...tails] : [];
+    tails.forEach(tailQuad => {
+      var items = [];             // the members found as objects of rdf:first quads
+      var malformed = false;      // signals whether the current list is malformed
+      var head;                   // the head of the list (_:b1 in above example)
+      var headPos;                // set to subject or object when head is set
+      var graph = tailQuad.graph; // make sure list is in exactly one graph
+
+      // Traverse the list from tail to end
+      var current = tailQuad.subject;
+      while (current && !malformed) {
+        var objectQuads = this.getQuads(null, null, current, null);
+        var subjectQuads = this.getQuads(current, null, null, null);
+        var i, quad, first = null, rest = null, parent = null;
+
+        // Find the first and rest of this list node
+        for (i = 0; i < subjectQuads.length && !malformed; i++) {
+          quad = subjectQuads[i];
+          if (!quad.graph.equals(graph))
+            malformed = onError(current, 'not confined to single graph');
+          else if (head)
+            malformed = onError(current, 'has non-list arcs out');
+
+          // one rdf:first
+          else if (quad.predicate.value === _IRIs__WEBPACK_IMPORTED_MODULE_2__["default"].rdf.first) {
+            if (first)
+              malformed = onError(current, 'has multiple rdf:first arcs');
+            else
+              toRemove.push(first = quad);
+          }
+
+          // one rdf:rest
+          else if (quad.predicate.value === _IRIs__WEBPACK_IMPORTED_MODULE_2__["default"].rdf.rest) {
+            if (rest)
+              malformed = onError(current, 'has multiple rdf:rest arcs');
+            else
+              toRemove.push(rest = quad);
+          }
+
+          // alien triple
+          else if (objectQuads.length)
+            malformed = onError(current, 'can\'t be subject and object');
+          else {
+            head = quad; // e.g. { (1 2 3) :p :o }
+            headPos = 'subject';
+          }
+        }
+
+        // { :s :p (1 2) } arrives here with no head
+        // { (1 2) :p :o } arrives here with head set to the list.
+        for (i = 0; i < objectQuads.length && !malformed; ++i) {
+          quad = objectQuads[i];
+          if (head)
+            malformed = onError(current, 'can\'t have coreferences');
+          // one rdf:rest
+          else if (quad.predicate.value === _IRIs__WEBPACK_IMPORTED_MODULE_2__["default"].rdf.rest) {
+            if (parent)
+              malformed = onError(current, 'has incoming rdf:rest arcs');
+            else
+              parent = quad;
+          }
+          else {
+            head = quad; // e.g. { :s :p (1 2) }
+            headPos = 'object';
+          }
+        }
+
+        // Store the list item and continue with parent
+        if (!first)
+          malformed = onError(current, 'has no list head');
+        else
+          items.unshift(first.object);
+        current = parent && parent.subject;
+      }
+
+      // Don't remove any quads if the list is malformed
+      if (malformed)
+        remove = false;
+      // Store the list under the value of its head
+      else if (head)
+        lists[head[headPos].value] = items;
+    });
+
+    // Remove list quads if requested
+    if (remove)
+      this.removeQuads(toRemove);
+    return lists;
+  }
 }
 
 // Determines whether the argument is a string
@@ -79752,6 +78649,7 @@ class N3Writer {
     if (outputStream && typeof outputStream.write !== 'function')
       options = outputStream, outputStream = null;
     options = options || {};
+    this._lists = options.lists;
 
     // If no output stream given, send the output as string through the end callback
     if (!outputStream) {
@@ -79848,8 +78746,12 @@ class N3Writer {
   // ### `_encodeIriOrBlank` represents an IRI or blank node
   _encodeIriOrBlank(entity) {
     // A blank node or list is represented as-is
-    if (entity.termType !== 'NamedNode')
+    if (entity.termType !== 'NamedNode') {
+      // If it is a list head, pretty-print it
+      if (this._lists && (entity.value in this._lists))
+        entity = this.list(this._lists[entity.value]);
       return 'id' in entity ? entity.id : '_:' + entity.value;
+    }
     // Escape special characters
     var iri = entity.value;
     if (escape.test(iri))
@@ -79918,24 +78820,20 @@ class N3Writer {
 
   // ### `addPrefixes` adds the prefixes to the output stream
   addPrefixes(prefixes, done) {
-    // Add all useful prefixes
     var prefixIRIs = this._prefixIRIs, hasPrefixes = false;
     for (var prefix in prefixes) {
-      // Verify whether the prefix can be used and does not exist yet
       var iri = prefixes[prefix];
       if (typeof iri !== 'string')
         iri = iri.value;
-      if (/[#\/]$/.test(iri) && prefixIRIs[iri] !== (prefix += ':')) {
-        hasPrefixes = true;
-        prefixIRIs[iri] = prefix;
-        // Finish a possible pending quad
-        if (this._subject !== null) {
-          this._write(this._inDefaultGraph ? '.\n' : '\n}\n');
-          this._subject = null, this._graph = '';
-        }
-        // Write prefix
-        this._write('@prefix ' + prefix + ' <' + iri + '>.\n');
+      hasPrefixes = true;
+      // Finish a possible pending quad
+      if (this._subject !== null) {
+        this._write(this._inDefaultGraph ? '.\n' : '\n}\n');
+        this._subject = null, this._graph = '';
       }
+      // Store and write the prefix
+      prefixIRIs[iri] = (prefix += ':');
+      this._write('@prefix ' + prefix + ' <' + iri + '>.\n');
     }
     // Recreate the prefix matcher
     if (hasPrefixes) {
@@ -85499,7 +84397,7 @@ __export(__webpack_require__(/*! ./lib/Util */ "./node_modules/rdfa-streaming-pa
 "use strict";
 
 Object.defineProperty(exports, "__esModule", { value: true });
-const htmlparser2_1 = __webpack_require__(/*! htmlparser2 */ "./node_modules/rdfa-streaming-parser/node_modules/htmlparser2/lib/index.js");
+const htmlparser2_1 = __webpack_require__(/*! htmlparser2 */ "./node_modules/htmlparser2/lib/index.js");
 const stream_1 = __webpack_require__(/*! stream */ "./node_modules/stream-browserify/index.js");
 const INITIAL_CONTEXT_XHTML = __webpack_require__(/*! ./initial-context-xhtml.json */ "./node_modules/rdfa-streaming-parser/lib/initial-context-xhtml.json");
 const INITIAL_CONTEXT = __webpack_require__(/*! ./initial-context.json */ "./node_modules/rdfa-streaming-parser/lib/initial-context.json");
@@ -86672,2743 +85570,6 @@ module.exports = JSON.parse("{\"@context\":{\"as\":\"https://www.w3.org/ns/activ
 
 /***/ }),
 
-/***/ "./node_modules/rdfa-streaming-parser/node_modules/domelementtype/lib/index.js":
-/*!*************************************************************************************!*\
-  !*** ./node_modules/rdfa-streaming-parser/node_modules/domelementtype/lib/index.js ***!
-  \*************************************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-Object.defineProperty(exports, "__esModule", { value: true });
-/**
- * Tests whether an element is a tag or not.
- *
- * @param elem Element to test
- */
-function isTag(elem) {
-    return (elem.type === "tag" /* Tag */ ||
-        elem.type === "script" /* Script */ ||
-        elem.type === "style" /* Style */);
-}
-exports.isTag = isTag;
-// Exports for backwards compatibility
-exports.Text = "text" /* Text */; //Text
-exports.Directive = "directive" /* Directive */; //<? ... ?>
-exports.Comment = "comment" /* Comment */; //<!-- ... -->
-exports.Script = "script" /* Script */; //<script> tags
-exports.Style = "style" /* Style */; //<style> tags
-exports.Tag = "tag" /* Tag */; //Any tag
-exports.CDATA = "cdata" /* CDATA */; //<![CDATA[ ... ]]>
-exports.Doctype = "doctype" /* Doctype */;
-
-
-/***/ }),
-
-/***/ "./node_modules/rdfa-streaming-parser/node_modules/domhandler/lib/index.js":
-/*!*********************************************************************************!*\
-  !*** ./node_modules/rdfa-streaming-parser/node_modules/domhandler/lib/index.js ***!
-  \*********************************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-Object.defineProperty(exports, "__esModule", { value: true });
-var node_1 = __webpack_require__(/*! ./node */ "./node_modules/rdfa-streaming-parser/node_modules/domhandler/lib/node.js");
-exports.Node = node_1.Node;
-exports.Element = node_1.Element;
-exports.DataNode = node_1.DataNode;
-exports.NodeWithChildren = node_1.NodeWithChildren;
-var reWhitespace = /\s+/g;
-// Default options
-var defaultOpts = {
-    normalizeWhitespace: false,
-    withStartIndices: false,
-    withEndIndices: false
-};
-var DomHandler = /** @class */ (function () {
-    /**
-     * Initiate a new DomHandler.
-     *
-     * @param callback Called once parsing has completed.
-     * @param options Settings for the handler.
-     * @param elementCB Callback whenever a tag is closed.
-     */
-    function DomHandler(callback, options, elementCB) {
-        /** The constructed DOM */
-        this.dom = [];
-        /** Indicated whether parsing has been completed. */
-        this._done = false;
-        /** Stack of open tags. */
-        this._tagStack = [];
-        /** A data node that is still being written to. */
-        this._lastNode = null;
-        /** Reference to the parser instance. Used for location information. */
-        this._parser = null;
-        // Make it possible to skip arguments, for backwards-compatibility
-        if (typeof options === "function") {
-            elementCB = options;
-            options = defaultOpts;
-        }
-        if (typeof callback === "object") {
-            options = callback;
-            callback = undefined;
-        }
-        this._callback = callback || null;
-        this._options = options || defaultOpts;
-        this._elementCB = elementCB || null;
-    }
-    DomHandler.prototype.onparserinit = function (parser) {
-        this._parser = parser;
-    };
-    // Resets the handler back to starting state
-    DomHandler.prototype.onreset = function () {
-        this.dom = [];
-        this._done = false;
-        this._tagStack = [];
-        this._lastNode = null;
-        this._parser = this._parser || null;
-    };
-    // Signals the handler that parsing is done
-    DomHandler.prototype.onend = function () {
-        if (this._done)
-            return;
-        this._done = true;
-        this._parser = null;
-        this.handleCallback(null);
-    };
-    DomHandler.prototype.onerror = function (error) {
-        this.handleCallback(error);
-    };
-    DomHandler.prototype.onclosetag = function () {
-        this._lastNode = null;
-        // If(this._tagStack.pop().name !== name) this.handleCallback(Error("Tagname didn't match!"));
-        var elem = this._tagStack.pop();
-        if (!elem || !this._parser) {
-            return;
-        }
-        if (this._options.withEndIndices) {
-            elem.endIndex = this._parser.endIndex;
-        }
-        if (this._elementCB)
-            this._elementCB(elem);
-    };
-    DomHandler.prototype.onopentag = function (name, attribs) {
-        var element = new node_1.Element(name, attribs);
-        this.addNode(element);
-        this._tagStack.push(element);
-    };
-    DomHandler.prototype.ontext = function (data) {
-        var normalize = this._options.normalizeWhitespace;
-        var _lastNode = this._lastNode;
-        if (_lastNode && _lastNode.type === "text" /* Text */) {
-            if (normalize) {
-                _lastNode.data = (_lastNode.data + data).replace(reWhitespace, " ");
-            }
-            else {
-                _lastNode.data += data;
-            }
-        }
-        else {
-            if (normalize) {
-                data = data.replace(reWhitespace, " ");
-            }
-            var node = new node_1.DataNode("text" /* Text */, data);
-            this.addNode(node);
-            this._lastNode = node;
-        }
-    };
-    DomHandler.prototype.oncomment = function (data) {
-        if (this._lastNode && this._lastNode.type === "comment" /* Comment */) {
-            this._lastNode.data += data;
-            return;
-        }
-        var node = new node_1.DataNode("comment" /* Comment */, data);
-        this.addNode(node);
-        this._lastNode = node;
-    };
-    DomHandler.prototype.oncommentend = function () {
-        this._lastNode = null;
-    };
-    DomHandler.prototype.oncdatastart = function () {
-        var text = new node_1.DataNode("text" /* Text */, "");
-        var node = new node_1.NodeWithChildren("cdata" /* CDATA */, [text]);
-        this.addNode(node);
-        text.parent = node;
-        this._lastNode = text;
-    };
-    DomHandler.prototype.oncdataend = function () {
-        this._lastNode = null;
-    };
-    DomHandler.prototype.onprocessinginstruction = function (name, data) {
-        var node = new node_1.ProcessingInstruction(name, data);
-        this.addNode(node);
-    };
-    DomHandler.prototype.handleCallback = function (error) {
-        if (typeof this._callback === "function") {
-            this._callback(error, this.dom);
-        }
-        else if (error) {
-            throw error;
-        }
-    };
-    DomHandler.prototype.addNode = function (node) {
-        var parent = this._tagStack[this._tagStack.length - 1];
-        var siblings = parent ? parent.children : this.dom;
-        var previousSibling = siblings[siblings.length - 1];
-        if (this._parser) {
-            if (this._options.withStartIndices) {
-                node.startIndex = this._parser.startIndex;
-            }
-            if (this._options.withEndIndices) {
-                node.endIndex = this._parser.endIndex;
-            }
-        }
-        siblings.push(node);
-        if (previousSibling) {
-            node.prev = previousSibling;
-            previousSibling.next = node;
-        }
-        if (parent) {
-            node.parent = parent;
-        }
-        this._lastNode = null;
-    };
-    DomHandler.prototype.addDataNode = function (node) {
-        this.addNode(node);
-        this._lastNode = node;
-    };
-    return DomHandler;
-}());
-exports.DomHandler = DomHandler;
-exports.default = DomHandler;
-
-
-/***/ }),
-
-/***/ "./node_modules/rdfa-streaming-parser/node_modules/domhandler/lib/node.js":
-/*!********************************************************************************!*\
-  !*** ./node_modules/rdfa-streaming-parser/node_modules/domhandler/lib/node.js ***!
-  \********************************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-var __extends = (this && this.__extends) || (function () {
-    var extendStatics = function (d, b) {
-        extendStatics = Object.setPrototypeOf ||
-            ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
-            function (d, b) { for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p]; };
-        return extendStatics(d, b);
-    };
-    return function (d, b) {
-        extendStatics(d, b);
-        function __() { this.constructor = d; }
-        d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
-    };
-})();
-Object.defineProperty(exports, "__esModule", { value: true });
-var nodeTypes = new Map([
-    ["tag" /* Tag */, 1],
-    ["script" /* Script */, 1],
-    ["style" /* Style */, 1],
-    ["directive" /* Directive */, 1],
-    ["text" /* Text */, 3],
-    ["cdata" /* CDATA */, 4],
-    ["comment" /* Comment */, 8]
-]);
-// This object will be used as the prototype for Nodes when creating a
-// DOM-Level-1-compliant structure.
-var Node = /** @class */ (function () {
-    /**
-     *
-     * @param type The type of the node.
-     */
-    function Node(type) {
-        this.type = type;
-        /** Parent of the node */
-        this.parent = null;
-        /** Previous sibling */
-        this.prev = null;
-        /** Next sibling */
-        this.next = null;
-        /** The start index of the node. Requires `withStartIndices` on the handler to be `true. */
-        this.startIndex = null;
-        /** The end index of the node. Requires `withEndIndices` on the handler to be `true. */
-        this.endIndex = null;
-    }
-    Object.defineProperty(Node.prototype, "nodeType", {
-        // Read-only aliases
-        get: function () {
-            return nodeTypes.get(this.type) || 1;
-        },
-        enumerable: true,
-        configurable: true
-    });
-    Object.defineProperty(Node.prototype, "parentNode", {
-        // Read-write aliases for properties
-        get: function () {
-            return this.parent || null;
-        },
-        set: function (parent) {
-            this.parent = parent;
-        },
-        enumerable: true,
-        configurable: true
-    });
-    Object.defineProperty(Node.prototype, "previousSibling", {
-        get: function () {
-            return this.prev || null;
-        },
-        set: function (prev) {
-            this.prev = prev;
-        },
-        enumerable: true,
-        configurable: true
-    });
-    Object.defineProperty(Node.prototype, "nextSibling", {
-        get: function () {
-            return this.next || null;
-        },
-        set: function (next) {
-            this.next = next;
-        },
-        enumerable: true,
-        configurable: true
-    });
-    return Node;
-}());
-exports.Node = Node;
-var DataNode = /** @class */ (function (_super) {
-    __extends(DataNode, _super);
-    /**
-     *
-     * @param type The type of the node
-     * @param data The content of the data node
-     */
-    function DataNode(type, data) {
-        var _this = _super.call(this, type) || this;
-        _this.data = data;
-        return _this;
-    }
-    Object.defineProperty(DataNode.prototype, "nodeValue", {
-        get: function () {
-            return this.data;
-        },
-        set: function (data) {
-            this.data = data;
-        },
-        enumerable: true,
-        configurable: true
-    });
-    return DataNode;
-}(Node));
-exports.DataNode = DataNode;
-var ProcessingInstruction = /** @class */ (function (_super) {
-    __extends(ProcessingInstruction, _super);
-    function ProcessingInstruction(name, data) {
-        var _this = _super.call(this, "directive" /* Directive */, data) || this;
-        _this.name = name;
-        return _this;
-    }
-    return ProcessingInstruction;
-}(DataNode));
-exports.ProcessingInstruction = ProcessingInstruction;
-var NodeWithChildren = /** @class */ (function (_super) {
-    __extends(NodeWithChildren, _super);
-    /**
-     *
-     * @param type Type of the node.
-     * @param children Children of the node. Only certain node types can have children.
-     */
-    function NodeWithChildren(type, children) {
-        var _this = _super.call(this, type) || this;
-        _this.children = children;
-        return _this;
-    }
-    Object.defineProperty(NodeWithChildren.prototype, "firstChild", {
-        // Aliases
-        get: function () {
-            return this.children[0] || null;
-        },
-        enumerable: true,
-        configurable: true
-    });
-    Object.defineProperty(NodeWithChildren.prototype, "lastChild", {
-        get: function () {
-            return this.children[this.children.length - 1] || null;
-        },
-        enumerable: true,
-        configurable: true
-    });
-    Object.defineProperty(NodeWithChildren.prototype, "childNodes", {
-        get: function () {
-            return this.children;
-        },
-        set: function (children) {
-            this.children = children;
-        },
-        enumerable: true,
-        configurable: true
-    });
-    return NodeWithChildren;
-}(Node));
-exports.NodeWithChildren = NodeWithChildren;
-var Element = /** @class */ (function (_super) {
-    __extends(Element, _super);
-    /**
-     *
-     * @param name Name of the tag, eg. `div`, `span`
-     * @param attribs Object mapping attribute names to attribute values
-     */
-    function Element(name, attribs) {
-        var _this = _super.call(this, name === "script"
-            ? "script" /* Script */
-            : name === "style"
-                ? "style" /* Style */
-                : "tag" /* Tag */, []) || this;
-        _this.name = name;
-        _this.attribs = attribs;
-        _this.attribs = attribs;
-        return _this;
-    }
-    Object.defineProperty(Element.prototype, "tagName", {
-        // DOM Level 1 aliases
-        get: function () {
-            return this.name;
-        },
-        set: function (name) {
-            this.name = name;
-        },
-        enumerable: true,
-        configurable: true
-    });
-    return Element;
-}(NodeWithChildren));
-exports.Element = Element;
-
-
-/***/ }),
-
-/***/ "./node_modules/rdfa-streaming-parser/node_modules/domutils/lib/helpers.js":
-/*!*********************************************************************************!*\
-  !*** ./node_modules/rdfa-streaming-parser/node_modules/domutils/lib/helpers.js ***!
-  \*********************************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-Object.defineProperty(exports, "__esModule", { value: true });
-var tagtypes_1 = __webpack_require__(/*! ./tagtypes */ "./node_modules/rdfa-streaming-parser/node_modules/domutils/lib/tagtypes.js");
-/**
- * Given an array of nodes, remove any member that is contained by another.
- *
- * @param nodes — Nodes to filter.
- */
-function removeSubsets(nodes) {
-    var idx = nodes.length;
-    // Check if each node (or one of its ancestors) is already contained in the
-    // array.
-    while (--idx >= 0) {
-        var node = nodes[idx];
-        // Remove the node if it is not unique.
-        // We are going through the array from the end, so we only
-        // have to check nodes that preceed the node under consideration in the array.
-        if (idx > 0 && nodes.lastIndexOf(node, idx - 1) >= 0) {
-            nodes.splice(idx, 1);
-            continue;
-        }
-        for (var ancestor = node.parent; ancestor; ancestor = ancestor.parent) {
-            if (nodes.indexOf(ancestor) > -1) {
-                nodes.splice(idx, 1);
-                break;
-            }
-        }
-    }
-    return nodes;
-}
-exports.removeSubsets = removeSubsets;
-/***
- * Compare the position of one node against another node in any other document.
- * The return value is a bitmask with the following values:
- *
- * document order:
- * > There is an ordering, document order, defined on all the nodes in the
- * > document corresponding to the order in which the first character of the
- * > XML representation of each node occurs in the XML representation of the
- * > document after expansion of general entities. Thus, the document element
- * > node will be the first node. Element nodes occur before their children.
- * > Thus, document order orders element nodes in order of the occurrence of
- * > their start-tag in the XML (after expansion of entities). The attribute
- * > nodes of an element occur after the element and before its children. The
- * > relative order of attribute nodes is implementation-dependent./
- *
- * Source:
- * http://www.w3.org/TR/DOM-Level-3-Core/glossary.html#dt-document-order
- * @argument nodaA The first node to use in the comparison
- * @argument nodeB The second node to use in the comparison
- *
- * @return A bitmask describing the input nodes' relative position.
- *
- *        See http://dom.spec.whatwg.org/#dom-node-comparedocumentposition for
- *        a description of these values.
- */
-function compareDocumentPosition(nodeA, nodeB) {
-    var aParents = [];
-    var bParents = [];
-    if (nodeA === nodeB) {
-        return 0;
-    }
-    var current = tagtypes_1.hasChildren(nodeA) ? nodeA : nodeA.parent;
-    while (current) {
-        aParents.unshift(current);
-        current = current.parent;
-    }
-    current = tagtypes_1.hasChildren(nodeB) ? nodeB : nodeB.parent;
-    while (current) {
-        bParents.unshift(current);
-        current = current.parent;
-    }
-    var idx = 0;
-    while (aParents[idx] === bParents[idx]) {
-        idx++;
-    }
-    if (idx === 0) {
-        return 1 /* DISCONNECTED */;
-    }
-    var sharedParent = aParents[idx - 1];
-    var siblings = sharedParent.children;
-    var aSibling = aParents[idx];
-    var bSibling = bParents[idx];
-    if (siblings.indexOf(aSibling) > siblings.indexOf(bSibling)) {
-        if (sharedParent === nodeB) {
-            return 4 /* FOLLOWING */ | 16 /* CONTAINED_BY */;
-        }
-        return 4 /* FOLLOWING */;
-    }
-    else {
-        if (sharedParent === nodeA) {
-            return 2 /* PRECEDING */ | 8 /* CONTAINS */;
-        }
-        return 2 /* PRECEDING */;
-    }
-}
-exports.compareDocumentPosition = compareDocumentPosition;
-/***
- * Sort an array of nodes based on their relative position in the document and
- * remove any duplicate nodes. If the array contains nodes that do not belong
- * to the same document, sort order is unspecified.
- *
- * @argument nodes Array of DOM nodes
- * @returns collection of unique nodes, sorted in document order
- */
-function uniqueSort(nodes) {
-    nodes = nodes.filter(function (node, i, arr) { return !arr.includes(node, i + 1); });
-    nodes.sort(function (a, b) {
-        var relative = compareDocumentPosition(a, b);
-        if (relative & 2 /* PRECEDING */) {
-            return -1;
-        }
-        else if (relative & 4 /* FOLLOWING */) {
-            return 1;
-        }
-        return 0;
-    });
-    return nodes;
-}
-exports.uniqueSort = uniqueSort;
-
-
-/***/ }),
-
-/***/ "./node_modules/rdfa-streaming-parser/node_modules/domutils/lib/index.js":
-/*!*******************************************************************************!*\
-  !*** ./node_modules/rdfa-streaming-parser/node_modules/domutils/lib/index.js ***!
-  \*******************************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-function __export(m) {
-    for (var p in m) if (!exports.hasOwnProperty(p)) exports[p] = m[p];
-}
-Object.defineProperty(exports, "__esModule", { value: true });
-__export(__webpack_require__(/*! ./stringify */ "./node_modules/rdfa-streaming-parser/node_modules/domutils/lib/stringify.js"));
-__export(__webpack_require__(/*! ./traversal */ "./node_modules/rdfa-streaming-parser/node_modules/domutils/lib/traversal.js"));
-__export(__webpack_require__(/*! ./manipulation */ "./node_modules/rdfa-streaming-parser/node_modules/domutils/lib/manipulation.js"));
-__export(__webpack_require__(/*! ./querying */ "./node_modules/rdfa-streaming-parser/node_modules/domutils/lib/querying.js"));
-__export(__webpack_require__(/*! ./legacy */ "./node_modules/rdfa-streaming-parser/node_modules/domutils/lib/legacy.js"));
-__export(__webpack_require__(/*! ./helpers */ "./node_modules/rdfa-streaming-parser/node_modules/domutils/lib/helpers.js"));
-__export(__webpack_require__(/*! ./tagtypes */ "./node_modules/rdfa-streaming-parser/node_modules/domutils/lib/tagtypes.js"));
-
-
-/***/ }),
-
-/***/ "./node_modules/rdfa-streaming-parser/node_modules/domutils/lib/legacy.js":
-/*!********************************************************************************!*\
-  !*** ./node_modules/rdfa-streaming-parser/node_modules/domutils/lib/legacy.js ***!
-  \********************************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-Object.defineProperty(exports, "__esModule", { value: true });
-var querying_1 = __webpack_require__(/*! ./querying */ "./node_modules/rdfa-streaming-parser/node_modules/domutils/lib/querying.js");
-var tagtypes_1 = __webpack_require__(/*! ./tagtypes */ "./node_modules/rdfa-streaming-parser/node_modules/domutils/lib/tagtypes.js");
-function isTextNode(node) {
-    return node.type === "text" /* Text */;
-}
-/* eslint-disable @typescript-eslint/camelcase */
-var Checks = {
-    tag_name: function (name) {
-        if (typeof name === "function") {
-            return function (elem) { return tagtypes_1.isTag(elem) && name(elem.name); };
-        }
-        else if (name === "*") {
-            return tagtypes_1.isTag;
-        }
-        else {
-            return function (elem) { return tagtypes_1.isTag(elem) && elem.name === name; };
-        }
-    },
-    tag_type: function (type) {
-        if (typeof type === "function") {
-            return function (elem) { return type(elem.type); };
-        }
-        else {
-            return function (elem) { return elem.type === type; };
-        }
-    },
-    tag_contains: function (data) {
-        if (typeof data === "function") {
-            return function (elem) { return isTextNode(elem) && data(elem.data); };
-        }
-        else {
-            return function (elem) { return isTextNode(elem) && elem.data === data; };
-        }
-    }
-};
-/* eslint-enable @typescript-eslint/camelcase */
-function getAttribCheck(attrib, value) {
-    if (typeof value === "function") {
-        return function (elem) { return tagtypes_1.isTag(elem) && value(elem.attribs[attrib]); };
-    }
-    else {
-        return function (elem) { return tagtypes_1.isTag(elem) && elem.attribs[attrib] === value; };
-    }
-}
-function combineFuncs(a, b) {
-    return function (elem) { return a(elem) || b(elem); };
-}
-function compileTest(options) {
-    var funcs = Object.keys(options).map(function (key) {
-        var value = options[key];
-        // @ts-ignore
-        return key in Checks ? Checks[key](value) : getAttribCheck(key, value);
-    });
-    return funcs.length === 0 ? null : funcs.reduce(combineFuncs);
-}
-function testElement(options, element) {
-    var test = compileTest(options);
-    return test ? test(element) : true;
-}
-exports.testElement = testElement;
-function getElements(options, element, recurse, limit) {
-    if (limit === void 0) { limit = Infinity; }
-    var test = compileTest(options);
-    return test ? querying_1.filter(test, element, recurse, limit) : [];
-}
-exports.getElements = getElements;
-function getElementById(id, element, recurse) {
-    if (recurse === void 0) { recurse = true; }
-    if (!Array.isArray(element))
-        element = [element];
-    return querying_1.findOne(getAttribCheck("id", id), element, recurse);
-}
-exports.getElementById = getElementById;
-function getElementsByTagName(name, element, recurse, limit) {
-    if (limit === void 0) { limit = Infinity; }
-    return querying_1.filter(Checks.tag_name(name), element, recurse, limit);
-}
-exports.getElementsByTagName = getElementsByTagName;
-function getElementsByTagType(type, element, recurse, limit) {
-    if (recurse === void 0) { recurse = true; }
-    if (limit === void 0) { limit = Infinity; }
-    return querying_1.filter(Checks.tag_type(type), element, recurse, limit);
-}
-exports.getElementsByTagType = getElementsByTagType;
-
-
-/***/ }),
-
-/***/ "./node_modules/rdfa-streaming-parser/node_modules/domutils/lib/manipulation.js":
-/*!**************************************************************************************!*\
-  !*** ./node_modules/rdfa-streaming-parser/node_modules/domutils/lib/manipulation.js ***!
-  \**************************************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-Object.defineProperty(exports, "__esModule", { value: true });
-/***
- * Remove an element from the dom
- *
- * @argument elem The element to be removed
- */
-function removeElement(elem) {
-    if (elem.prev)
-        elem.prev.next = elem.next;
-    if (elem.next)
-        elem.next.prev = elem.prev;
-    if (elem.parent) {
-        var childs = elem.parent.children;
-        childs.splice(childs.lastIndexOf(elem), 1);
-    }
-}
-exports.removeElement = removeElement;
-/***
- * Replace an element in the dom
- *
- * @argument elem The element to be replaced
- * @argument replacement The element to be added
- */
-function replaceElement(elem, replacement) {
-    var prev = (replacement.prev = elem.prev);
-    if (prev) {
-        prev.next = replacement;
-    }
-    var next = (replacement.next = elem.next);
-    if (next) {
-        next.prev = replacement;
-    }
-    var parent = (replacement.parent = elem.parent);
-    if (parent) {
-        var childs = parent.children;
-        childs[childs.lastIndexOf(elem)] = replacement;
-    }
-}
-exports.replaceElement = replaceElement;
-/***
- * Append a child to an element
- *
- * @argument elem The element to append to
- * @argument child The element to be added as a child
- */
-function appendChild(elem, child) {
-    child.parent = elem;
-    if (elem.children.push(child) !== 1) {
-        var sibling = elem.children[elem.children.length - 2];
-        sibling.next = child;
-        child.prev = sibling;
-        child.next = null;
-    }
-}
-exports.appendChild = appendChild;
-/***
- * Append an element after another
- *
- * @argument elem The element to append to
- * @argument next The element be added
- */
-function append(elem, next) {
-    var parent = elem.parent, currNext = elem.next;
-    next.next = currNext;
-    next.prev = elem;
-    elem.next = next;
-    next.parent = parent;
-    if (currNext) {
-        currNext.prev = next;
-        if (parent) {
-            var childs = parent.children;
-            childs.splice(childs.lastIndexOf(currNext), 0, next);
-        }
-    }
-    else if (parent) {
-        parent.children.push(next);
-    }
-}
-exports.append = append;
-/***
- * Prepend an element before another
- *
- * @argument elem The element to append to
- * @argument prev The element be added
- */
-function prepend(elem, prev) {
-    var parent = elem.parent;
-    if (parent) {
-        var childs = parent.children;
-        childs.splice(childs.lastIndexOf(elem), 0, prev);
-    }
-    if (elem.prev) {
-        elem.prev.next = prev;
-    }
-    prev.parent = parent;
-    prev.prev = elem.prev;
-    prev.next = elem;
-    elem.prev = prev;
-}
-exports.prepend = prepend;
-
-
-/***/ }),
-
-/***/ "./node_modules/rdfa-streaming-parser/node_modules/domutils/lib/querying.js":
-/*!**********************************************************************************!*\
-  !*** ./node_modules/rdfa-streaming-parser/node_modules/domutils/lib/querying.js ***!
-  \**********************************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-Object.defineProperty(exports, "__esModule", { value: true });
-var tagtypes_1 = __webpack_require__(/*! ./tagtypes */ "./node_modules/rdfa-streaming-parser/node_modules/domutils/lib/tagtypes.js");
-function filter(test, element, recurse, limit) {
-    if (recurse === void 0) { recurse = true; }
-    if (limit === void 0) { limit = Infinity; }
-    if (!Array.isArray(element))
-        element = [element];
-    return find(test, element, recurse, limit);
-}
-exports.filter = filter;
-function find(test, elems, recurse, limit) {
-    var result = [];
-    for (var i = 0; i < elems.length; i++) {
-        var elem = elems[i];
-        if (test(elem)) {
-            result.push(elem);
-            if (--limit <= 0)
-                break;
-        }
-        if (recurse && tagtypes_1.hasChildren(elem) && elem.children.length > 0) {
-            var children = find(test, elem.children, recurse, limit);
-            result = result.concat(children);
-            limit -= children.length;
-            if (limit <= 0)
-                break;
-        }
-    }
-    return result;
-}
-exports.find = find;
-function findOneChild(test, elems) {
-    for (var i = 0; i < elems.length; i++) {
-        if (test(elems[i]))
-            return elems[i];
-    }
-    return null;
-}
-exports.findOneChild = findOneChild;
-function findOne(test, elems, recurse) {
-    if (recurse === void 0) { recurse = true; }
-    var elem = null;
-    for (var i = 0; i < elems.length && !elem; i++) {
-        var checked = elems[i];
-        if (!tagtypes_1.isTag(checked)) {
-            continue;
-        }
-        else if (test(checked)) {
-            elem = checked;
-        }
-        else if (recurse && checked.children.length > 0) {
-            elem = findOne(test, checked.children);
-        }
-    }
-    return elem;
-}
-exports.findOne = findOne;
-function existsOne(test, elems) {
-    for (var i = 0; i < elems.length; i++) {
-        var checked = elems[i];
-        if (tagtypes_1.isTag(checked) &&
-            (test(checked) ||
-                (checked.children.length > 0 &&
-                    existsOne(test, checked.children)))) {
-            return true;
-        }
-    }
-    return false;
-}
-exports.existsOne = existsOne;
-function findAll(test, rootElems) {
-    var result = [];
-    var stack = rootElems.slice();
-    while (stack.length) {
-        var elem = stack.shift();
-        if (!elem || !tagtypes_1.isTag(elem))
-            continue;
-        if (elem.children && elem.children.length > 0) {
-            stack.unshift.apply(stack, elem.children);
-        }
-        if (test(elem))
-            result.push(elem);
-    }
-    return result;
-}
-exports.findAll = findAll;
-
-
-/***/ }),
-
-/***/ "./node_modules/rdfa-streaming-parser/node_modules/domutils/lib/stringify.js":
-/*!***********************************************************************************!*\
-  !*** ./node_modules/rdfa-streaming-parser/node_modules/domutils/lib/stringify.js ***!
-  \***********************************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-var __importDefault = (this && this.__importDefault) || function (mod) {
-    return (mod && mod.__esModule) ? mod : { "default": mod };
-};
-Object.defineProperty(exports, "__esModule", { value: true });
-var tagtypes_1 = __webpack_require__(/*! ./tagtypes */ "./node_modules/rdfa-streaming-parser/node_modules/domutils/lib/tagtypes.js");
-var dom_serializer_1 = __importDefault(__webpack_require__(/*! dom-serializer */ "./node_modules/dom-serializer/index.js"));
-exports.getOuterHTML = dom_serializer_1.default;
-function getInnerHTML(node, options) {
-    return tagtypes_1.hasChildren(node)
-        ? node.children.map(function (node) { return exports.getOuterHTML(node, options); }).join("")
-        : "";
-}
-exports.getInnerHTML = getInnerHTML;
-function getText(node) {
-    if (Array.isArray(node))
-        return node.map(getText).join("");
-    if (tagtypes_1.isTag(node))
-        return node.name === "br" ? "\n" : getText(node.children);
-    if (tagtypes_1.isCDATA(node))
-        return getText(node.children);
-    if (tagtypes_1.isText(node))
-        return node.data;
-    return "";
-}
-exports.getText = getText;
-
-
-/***/ }),
-
-/***/ "./node_modules/rdfa-streaming-parser/node_modules/domutils/lib/tagtypes.js":
-/*!**********************************************************************************!*\
-  !*** ./node_modules/rdfa-streaming-parser/node_modules/domutils/lib/tagtypes.js ***!
-  \**********************************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-Object.defineProperty(exports, "__esModule", { value: true });
-var domelementtype_1 = __webpack_require__(/*! domelementtype */ "./node_modules/rdfa-streaming-parser/node_modules/domelementtype/lib/index.js");
-function isTag(node) {
-    return domelementtype_1.isTag(node);
-}
-exports.isTag = isTag;
-function isCDATA(node) {
-    return "cdata" /* CDATA */ === node.type;
-}
-exports.isCDATA = isCDATA;
-function isText(node) {
-    return node.type === "text" /* Text */;
-}
-exports.isText = isText;
-function isComment(node) {
-    return node.type === "comment" /* Comment */;
-}
-exports.isComment = isComment;
-function hasChildren(node) {
-    return Object.prototype.hasOwnProperty.call(node, "children");
-}
-exports.hasChildren = hasChildren;
-
-
-/***/ }),
-
-/***/ "./node_modules/rdfa-streaming-parser/node_modules/domutils/lib/traversal.js":
-/*!***********************************************************************************!*\
-  !*** ./node_modules/rdfa-streaming-parser/node_modules/domutils/lib/traversal.js ***!
-  \***********************************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-Object.defineProperty(exports, "__esModule", { value: true });
-function getChildren(elem) {
-    // @ts-ignore
-    return elem.children || null;
-}
-exports.getChildren = getChildren;
-function getParent(elem) {
-    return elem.parent || null;
-}
-exports.getParent = getParent;
-function getSiblings(elem) {
-    var parent = getParent(elem);
-    return parent ? getChildren(parent) : [elem];
-}
-exports.getSiblings = getSiblings;
-function getAttributeValue(elem, name) {
-    return elem.attribs && elem.attribs[name];
-}
-exports.getAttributeValue = getAttributeValue;
-function hasAttrib(elem, name) {
-    return !!getAttributeValue(elem, name);
-}
-exports.hasAttrib = hasAttrib;
-/***
- * Returns the name property of an element
- *
- * @argument elem The element to get the name for
- */
-function getName(elem) {
-    return elem.name;
-}
-exports.getName = getName;
-
-
-/***/ }),
-
-/***/ "./node_modules/rdfa-streaming-parser/node_modules/entities/lib/decode_codepoint.js":
-/*!******************************************************************************************!*\
-  !*** ./node_modules/rdfa-streaming-parser/node_modules/entities/lib/decode_codepoint.js ***!
-  \******************************************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-var __importDefault = (this && this.__importDefault) || function (mod) {
-    return (mod && mod.__esModule) ? mod : { "default": mod };
-};
-Object.defineProperty(exports, "__esModule", { value: true });
-var decode_json_1 = __importDefault(__webpack_require__(/*! ./maps/decode.json */ "./node_modules/rdfa-streaming-parser/node_modules/entities/lib/maps/decode.json"));
-// modified version of https://github.com/mathiasbynens/he/blob/master/src/he.js#L94-L119
-function decodeCodePoint(codePoint) {
-    if ((codePoint >= 0xd800 && codePoint <= 0xdfff) || codePoint > 0x10ffff) {
-        return "\uFFFD";
-    }
-    if (codePoint in decode_json_1.default) {
-        // @ts-ignore
-        codePoint = decode_json_1.default[codePoint];
-    }
-    var output = "";
-    if (codePoint > 0xffff) {
-        codePoint -= 0x10000;
-        output += String.fromCharCode(((codePoint >>> 10) & 0x3ff) | 0xd800);
-        codePoint = 0xdc00 | (codePoint & 0x3ff);
-    }
-    output += String.fromCharCode(codePoint);
-    return output;
-}
-exports.default = decodeCodePoint;
-
-
-/***/ }),
-
-/***/ "./node_modules/rdfa-streaming-parser/node_modules/entities/lib/maps/decode.json":
-/*!***************************************************************************************!*\
-  !*** ./node_modules/rdfa-streaming-parser/node_modules/entities/lib/maps/decode.json ***!
-  \***************************************************************************************/
-/*! exports provided: 0, 128, 130, 131, 132, 133, 134, 135, 136, 137, 138, 139, 140, 142, 145, 146, 147, 148, 149, 150, 151, 152, 153, 154, 155, 156, 158, 159, default */
-/***/ (function(module) {
-
-module.exports = JSON.parse("{\"0\":65533,\"128\":8364,\"130\":8218,\"131\":402,\"132\":8222,\"133\":8230,\"134\":8224,\"135\":8225,\"136\":710,\"137\":8240,\"138\":352,\"139\":8249,\"140\":338,\"142\":381,\"145\":8216,\"146\":8217,\"147\":8220,\"148\":8221,\"149\":8226,\"150\":8211,\"151\":8212,\"152\":732,\"153\":8482,\"154\":353,\"155\":8250,\"156\":339,\"158\":382,\"159\":376}");
-
-/***/ }),
-
-/***/ "./node_modules/rdfa-streaming-parser/node_modules/entities/lib/maps/entities.json":
-/*!*****************************************************************************************!*\
-  !*** ./node_modules/rdfa-streaming-parser/node_modules/entities/lib/maps/entities.json ***!
-  \*****************************************************************************************/
-/*! exports provided: Aacute, aacute, Abreve, abreve, ac, acd, acE, Acirc, acirc, acute, Acy, acy, AElig, aelig, af, Afr, afr, Agrave, agrave, alefsym, aleph, Alpha, alpha, Amacr, amacr, amalg, amp, AMP, andand, And, and, andd, andslope, andv, ang, ange, angle, angmsdaa, angmsdab, angmsdac, angmsdad, angmsdae, angmsdaf, angmsdag, angmsdah, angmsd, angrt, angrtvb, angrtvbd, angsph, angst, angzarr, Aogon, aogon, Aopf, aopf, apacir, ap, apE, ape, apid, apos, ApplyFunction, approx, approxeq, Aring, aring, Ascr, ascr, Assign, ast, asymp, asympeq, Atilde, atilde, Auml, auml, awconint, awint, backcong, backepsilon, backprime, backsim, backsimeq, Backslash, Barv, barvee, barwed, Barwed, barwedge, bbrk, bbrktbrk, bcong, Bcy, bcy, bdquo, becaus, because, Because, bemptyv, bepsi, bernou, Bernoullis, Beta, beta, beth, between, Bfr, bfr, bigcap, bigcirc, bigcup, bigodot, bigoplus, bigotimes, bigsqcup, bigstar, bigtriangledown, bigtriangleup, biguplus, bigvee, bigwedge, bkarow, blacklozenge, blacksquare, blacktriangle, blacktriangledown, blacktriangleleft, blacktriangleright, blank, blk12, blk14, blk34, block, bne, bnequiv, bNot, bnot, Bopf, bopf, bot, bottom, bowtie, boxbox, boxdl, boxdL, boxDl, boxDL, boxdr, boxdR, boxDr, boxDR, boxh, boxH, boxhd, boxHd, boxhD, boxHD, boxhu, boxHu, boxhU, boxHU, boxminus, boxplus, boxtimes, boxul, boxuL, boxUl, boxUL, boxur, boxuR, boxUr, boxUR, boxv, boxV, boxvh, boxvH, boxVh, boxVH, boxvl, boxvL, boxVl, boxVL, boxvr, boxvR, boxVr, boxVR, bprime, breve, Breve, brvbar, bscr, Bscr, bsemi, bsim, bsime, bsolb, bsol, bsolhsub, bull, bullet, bump, bumpE, bumpe, Bumpeq, bumpeq, Cacute, cacute, capand, capbrcup, capcap, cap, Cap, capcup, capdot, CapitalDifferentialD, caps, caret, caron, Cayleys, ccaps, Ccaron, ccaron, Ccedil, ccedil, Ccirc, ccirc, Cconint, ccups, ccupssm, Cdot, cdot, cedil, Cedilla, cemptyv, cent, centerdot, CenterDot, cfr, Cfr, CHcy, chcy, check, checkmark, Chi, chi, circ, circeq, circlearrowleft, circlearrowright, circledast, circledcirc, circleddash, CircleDot, circledR, circledS, CircleMinus, CirclePlus, CircleTimes, cir, cirE, cire, cirfnint, cirmid, cirscir, ClockwiseContourIntegral, CloseCurlyDoubleQuote, CloseCurlyQuote, clubs, clubsuit, colon, Colon, Colone, colone, coloneq, comma, commat, comp, compfn, complement, complexes, cong, congdot, Congruent, conint, Conint, ContourIntegral, copf, Copf, coprod, Coproduct, copy, COPY, copysr, CounterClockwiseContourIntegral, crarr, cross, Cross, Cscr, cscr, csub, csube, csup, csupe, ctdot, cudarrl, cudarrr, cuepr, cuesc, cularr, cularrp, cupbrcap, cupcap, CupCap, cup, Cup, cupcup, cupdot, cupor, cups, curarr, curarrm, curlyeqprec, curlyeqsucc, curlyvee, curlywedge, curren, curvearrowleft, curvearrowright, cuvee, cuwed, cwconint, cwint, cylcty, dagger, Dagger, daleth, darr, Darr, dArr, dash, Dashv, dashv, dbkarow, dblac, Dcaron, dcaron, Dcy, dcy, ddagger, ddarr, DD, dd, DDotrahd, ddotseq, deg, Del, Delta, delta, demptyv, dfisht, Dfr, dfr, dHar, dharl, dharr, DiacriticalAcute, DiacriticalDot, DiacriticalDoubleAcute, DiacriticalGrave, DiacriticalTilde, diam, diamond, Diamond, diamondsuit, diams, die, DifferentialD, digamma, disin, div, divide, divideontimes, divonx, DJcy, djcy, dlcorn, dlcrop, dollar, Dopf, dopf, Dot, dot, DotDot, doteq, doteqdot, DotEqual, dotminus, dotplus, dotsquare, doublebarwedge, DoubleContourIntegral, DoubleDot, DoubleDownArrow, DoubleLeftArrow, DoubleLeftRightArrow, DoubleLeftTee, DoubleLongLeftArrow, DoubleLongLeftRightArrow, DoubleLongRightArrow, DoubleRightArrow, DoubleRightTee, DoubleUpArrow, DoubleUpDownArrow, DoubleVerticalBar, DownArrowBar, downarrow, DownArrow, Downarrow, DownArrowUpArrow, DownBreve, downdownarrows, downharpoonleft, downharpoonright, DownLeftRightVector, DownLeftTeeVector, DownLeftVectorBar, DownLeftVector, DownRightTeeVector, DownRightVectorBar, DownRightVector, DownTeeArrow, DownTee, drbkarow, drcorn, drcrop, Dscr, dscr, DScy, dscy, dsol, Dstrok, dstrok, dtdot, dtri, dtrif, duarr, duhar, dwangle, DZcy, dzcy, dzigrarr, Eacute, eacute, easter, Ecaron, ecaron, Ecirc, ecirc, ecir, ecolon, Ecy, ecy, eDDot, Edot, edot, eDot, ee, efDot, Efr, efr, eg, Egrave, egrave, egs, egsdot, el, Element, elinters, ell, els, elsdot, Emacr, emacr, empty, emptyset, EmptySmallSquare, emptyv, EmptyVerySmallSquare, emsp13, emsp14, emsp, ENG, eng, ensp, Eogon, eogon, Eopf, eopf, epar, eparsl, eplus, epsi, Epsilon, epsilon, epsiv, eqcirc, eqcolon, eqsim, eqslantgtr, eqslantless, Equal, equals, EqualTilde, equest, Equilibrium, equiv, equivDD, eqvparsl, erarr, erDot, escr, Escr, esdot, Esim, esim, Eta, eta, ETH, eth, Euml, euml, euro, excl, exist, Exists, expectation, exponentiale, ExponentialE, fallingdotseq, Fcy, fcy, female, ffilig, fflig, ffllig, Ffr, ffr, filig, FilledSmallSquare, FilledVerySmallSquare, fjlig, flat, fllig, fltns, fnof, Fopf, fopf, forall, ForAll, fork, forkv, Fouriertrf, fpartint, frac12, frac13, frac14, frac15, frac16, frac18, frac23, frac25, frac34, frac35, frac38, frac45, frac56, frac58, frac78, frasl, frown, fscr, Fscr, gacute, Gamma, gamma, Gammad, gammad, gap, Gbreve, gbreve, Gcedil, Gcirc, gcirc, Gcy, gcy, Gdot, gdot, ge, gE, gEl, gel, geq, geqq, geqslant, gescc, ges, gesdot, gesdoto, gesdotol, gesl, gesles, Gfr, gfr, gg, Gg, ggg, gimel, GJcy, gjcy, gla, gl, glE, glj, gnap, gnapprox, gne, gnE, gneq, gneqq, gnsim, Gopf, gopf, grave, GreaterEqual, GreaterEqualLess, GreaterFullEqual, GreaterGreater, GreaterLess, GreaterSlantEqual, GreaterTilde, Gscr, gscr, gsim, gsime, gsiml, gtcc, gtcir, gt, GT, Gt, gtdot, gtlPar, gtquest, gtrapprox, gtrarr, gtrdot, gtreqless, gtreqqless, gtrless, gtrsim, gvertneqq, gvnE, Hacek, hairsp, half, hamilt, HARDcy, hardcy, harrcir, harr, hArr, harrw, Hat, hbar, Hcirc, hcirc, hearts, heartsuit, hellip, hercon, hfr, Hfr, HilbertSpace, hksearow, hkswarow, hoarr, homtht, hookleftarrow, hookrightarrow, hopf, Hopf, horbar, HorizontalLine, hscr, Hscr, hslash, Hstrok, hstrok, HumpDownHump, HumpEqual, hybull, hyphen, Iacute, iacute, ic, Icirc, icirc, Icy, icy, Idot, IEcy, iecy, iexcl, iff, ifr, Ifr, Igrave, igrave, ii, iiiint, iiint, iinfin, iiota, IJlig, ijlig, Imacr, imacr, image, ImaginaryI, imagline, imagpart, imath, Im, imof, imped, Implies, incare, in, infin, infintie, inodot, intcal, int, Int, integers, Integral, intercal, Intersection, intlarhk, intprod, InvisibleComma, InvisibleTimes, IOcy, iocy, Iogon, iogon, Iopf, iopf, Iota, iota, iprod, iquest, iscr, Iscr, isin, isindot, isinE, isins, isinsv, isinv, it, Itilde, itilde, Iukcy, iukcy, Iuml, iuml, Jcirc, jcirc, Jcy, jcy, Jfr, jfr, jmath, Jopf, jopf, Jscr, jscr, Jsercy, jsercy, Jukcy, jukcy, Kappa, kappa, kappav, Kcedil, kcedil, Kcy, kcy, Kfr, kfr, kgreen, KHcy, khcy, KJcy, kjcy, Kopf, kopf, Kscr, kscr, lAarr, Lacute, lacute, laemptyv, lagran, Lambda, lambda, lang, Lang, langd, langle, lap, Laplacetrf, laquo, larrb, larrbfs, larr, Larr, lArr, larrfs, larrhk, larrlp, larrpl, larrsim, larrtl, latail, lAtail, lat, late, lates, lbarr, lBarr, lbbrk, lbrace, lbrack, lbrke, lbrksld, lbrkslu, Lcaron, lcaron, Lcedil, lcedil, lceil, lcub, Lcy, lcy, ldca, ldquo, ldquor, ldrdhar, ldrushar, ldsh, le, lE, LeftAngleBracket, LeftArrowBar, leftarrow, LeftArrow, Leftarrow, LeftArrowRightArrow, leftarrowtail, LeftCeiling, LeftDoubleBracket, LeftDownTeeVector, LeftDownVectorBar, LeftDownVector, LeftFloor, leftharpoondown, leftharpoonup, leftleftarrows, leftrightarrow, LeftRightArrow, Leftrightarrow, leftrightarrows, leftrightharpoons, leftrightsquigarrow, LeftRightVector, LeftTeeArrow, LeftTee, LeftTeeVector, leftthreetimes, LeftTriangleBar, LeftTriangle, LeftTriangleEqual, LeftUpDownVector, LeftUpTeeVector, LeftUpVectorBar, LeftUpVector, LeftVectorBar, LeftVector, lEg, leg, leq, leqq, leqslant, lescc, les, lesdot, lesdoto, lesdotor, lesg, lesges, lessapprox, lessdot, lesseqgtr, lesseqqgtr, LessEqualGreater, LessFullEqual, LessGreater, lessgtr, LessLess, lesssim, LessSlantEqual, LessTilde, lfisht, lfloor, Lfr, lfr, lg, lgE, lHar, lhard, lharu, lharul, lhblk, LJcy, ljcy, llarr, ll, Ll, llcorner, Lleftarrow, llhard, lltri, Lmidot, lmidot, lmoustache, lmoust, lnap, lnapprox, lne, lnE, lneq, lneqq, lnsim, loang, loarr, lobrk, longleftarrow, LongLeftArrow, Longleftarrow, longleftrightarrow, LongLeftRightArrow, Longleftrightarrow, longmapsto, longrightarrow, LongRightArrow, Longrightarrow, looparrowleft, looparrowright, lopar, Lopf, lopf, loplus, lotimes, lowast, lowbar, LowerLeftArrow, LowerRightArrow, loz, lozenge, lozf, lpar, lparlt, lrarr, lrcorner, lrhar, lrhard, lrm, lrtri, lsaquo, lscr, Lscr, lsh, Lsh, lsim, lsime, lsimg, lsqb, lsquo, lsquor, Lstrok, lstrok, ltcc, ltcir, lt, LT, Lt, ltdot, lthree, ltimes, ltlarr, ltquest, ltri, ltrie, ltrif, ltrPar, lurdshar, luruhar, lvertneqq, lvnE, macr, male, malt, maltese, Map, map, mapsto, mapstodown, mapstoleft, mapstoup, marker, mcomma, Mcy, mcy, mdash, mDDot, measuredangle, MediumSpace, Mellintrf, Mfr, mfr, mho, micro, midast, midcir, mid, middot, minusb, minus, minusd, minusdu, MinusPlus, mlcp, mldr, mnplus, models, Mopf, mopf, mp, mscr, Mscr, mstpos, Mu, mu, multimap, mumap, nabla, Nacute, nacute, nang, nap, napE, napid, napos, napprox, natural, naturals, natur, nbsp, nbump, nbumpe, ncap, Ncaron, ncaron, Ncedil, ncedil, ncong, ncongdot, ncup, Ncy, ncy, ndash, nearhk, nearr, neArr, nearrow, ne, nedot, NegativeMediumSpace, NegativeThickSpace, NegativeThinSpace, NegativeVeryThinSpace, nequiv, nesear, nesim, NestedGreaterGreater, NestedLessLess, NewLine, nexist, nexists, Nfr, nfr, ngE, nge, ngeq, ngeqq, ngeqslant, nges, nGg, ngsim, nGt, ngt, ngtr, nGtv, nharr, nhArr, nhpar, ni, nis, nisd, niv, NJcy, njcy, nlarr, nlArr, nldr, nlE, nle, nleftarrow, nLeftarrow, nleftrightarrow, nLeftrightarrow, nleq, nleqq, nleqslant, nles, nless, nLl, nlsim, nLt, nlt, nltri, nltrie, nLtv, nmid, NoBreak, NonBreakingSpace, nopf, Nopf, Not, not, NotCongruent, NotCupCap, NotDoubleVerticalBar, NotElement, NotEqual, NotEqualTilde, NotExists, NotGreater, NotGreaterEqual, NotGreaterFullEqual, NotGreaterGreater, NotGreaterLess, NotGreaterSlantEqual, NotGreaterTilde, NotHumpDownHump, NotHumpEqual, notin, notindot, notinE, notinva, notinvb, notinvc, NotLeftTriangleBar, NotLeftTriangle, NotLeftTriangleEqual, NotLess, NotLessEqual, NotLessGreater, NotLessLess, NotLessSlantEqual, NotLessTilde, NotNestedGreaterGreater, NotNestedLessLess, notni, notniva, notnivb, notnivc, NotPrecedes, NotPrecedesEqual, NotPrecedesSlantEqual, NotReverseElement, NotRightTriangleBar, NotRightTriangle, NotRightTriangleEqual, NotSquareSubset, NotSquareSubsetEqual, NotSquareSuperset, NotSquareSupersetEqual, NotSubset, NotSubsetEqual, NotSucceeds, NotSucceedsEqual, NotSucceedsSlantEqual, NotSucceedsTilde, NotSuperset, NotSupersetEqual, NotTilde, NotTildeEqual, NotTildeFullEqual, NotTildeTilde, NotVerticalBar, nparallel, npar, nparsl, npart, npolint, npr, nprcue, nprec, npreceq, npre, nrarrc, nrarr, nrArr, nrarrw, nrightarrow, nRightarrow, nrtri, nrtrie, nsc, nsccue, nsce, Nscr, nscr, nshortmid, nshortparallel, nsim, nsime, nsimeq, nsmid, nspar, nsqsube, nsqsupe, nsub, nsubE, nsube, nsubset, nsubseteq, nsubseteqq, nsucc, nsucceq, nsup, nsupE, nsupe, nsupset, nsupseteq, nsupseteqq, ntgl, Ntilde, ntilde, ntlg, ntriangleleft, ntrianglelefteq, ntriangleright, ntrianglerighteq, Nu, nu, num, numero, numsp, nvap, nvdash, nvDash, nVdash, nVDash, nvge, nvgt, nvHarr, nvinfin, nvlArr, nvle, nvlt, nvltrie, nvrArr, nvrtrie, nvsim, nwarhk, nwarr, nwArr, nwarrow, nwnear, Oacute, oacute, oast, Ocirc, ocirc, ocir, Ocy, ocy, odash, Odblac, odblac, odiv, odot, odsold, OElig, oelig, ofcir, Ofr, ofr, ogon, Ograve, ograve, ogt, ohbar, ohm, oint, olarr, olcir, olcross, oline, olt, Omacr, omacr, Omega, omega, Omicron, omicron, omid, ominus, Oopf, oopf, opar, OpenCurlyDoubleQuote, OpenCurlyQuote, operp, oplus, orarr, Or, or, ord, order, orderof, ordf, ordm, origof, oror, orslope, orv, oS, Oscr, oscr, Oslash, oslash, osol, Otilde, otilde, otimesas, Otimes, otimes, Ouml, ouml, ovbar, OverBar, OverBrace, OverBracket, OverParenthesis, para, parallel, par, parsim, parsl, part, PartialD, Pcy, pcy, percnt, period, permil, perp, pertenk, Pfr, pfr, Phi, phi, phiv, phmmat, phone, Pi, pi, pitchfork, piv, planck, planckh, plankv, plusacir, plusb, pluscir, plus, plusdo, plusdu, pluse, PlusMinus, plusmn, plussim, plustwo, pm, Poincareplane, pointint, popf, Popf, pound, prap, Pr, pr, prcue, precapprox, prec, preccurlyeq, Precedes, PrecedesEqual, PrecedesSlantEqual, PrecedesTilde, preceq, precnapprox, precneqq, precnsim, pre, prE, precsim, prime, Prime, primes, prnap, prnE, prnsim, prod, Product, profalar, profline, profsurf, prop, Proportional, Proportion, propto, prsim, prurel, Pscr, pscr, Psi, psi, puncsp, Qfr, qfr, qint, qopf, Qopf, qprime, Qscr, qscr, quaternions, quatint, quest, questeq, quot, QUOT, rAarr, race, Racute, racute, radic, raemptyv, rang, Rang, rangd, range, rangle, raquo, rarrap, rarrb, rarrbfs, rarrc, rarr, Rarr, rArr, rarrfs, rarrhk, rarrlp, rarrpl, rarrsim, Rarrtl, rarrtl, rarrw, ratail, rAtail, ratio, rationals, rbarr, rBarr, RBarr, rbbrk, rbrace, rbrack, rbrke, rbrksld, rbrkslu, Rcaron, rcaron, Rcedil, rcedil, rceil, rcub, Rcy, rcy, rdca, rdldhar, rdquo, rdquor, rdsh, real, realine, realpart, reals, Re, rect, reg, REG, ReverseElement, ReverseEquilibrium, ReverseUpEquilibrium, rfisht, rfloor, rfr, Rfr, rHar, rhard, rharu, rharul, Rho, rho, rhov, RightAngleBracket, RightArrowBar, rightarrow, RightArrow, Rightarrow, RightArrowLeftArrow, rightarrowtail, RightCeiling, RightDoubleBracket, RightDownTeeVector, RightDownVectorBar, RightDownVector, RightFloor, rightharpoondown, rightharpoonup, rightleftarrows, rightleftharpoons, rightrightarrows, rightsquigarrow, RightTeeArrow, RightTee, RightTeeVector, rightthreetimes, RightTriangleBar, RightTriangle, RightTriangleEqual, RightUpDownVector, RightUpTeeVector, RightUpVectorBar, RightUpVector, RightVectorBar, RightVector, ring, risingdotseq, rlarr, rlhar, rlm, rmoustache, rmoust, rnmid, roang, roarr, robrk, ropar, ropf, Ropf, roplus, rotimes, RoundImplies, rpar, rpargt, rppolint, rrarr, Rrightarrow, rsaquo, rscr, Rscr, rsh, Rsh, rsqb, rsquo, rsquor, rthree, rtimes, rtri, rtrie, rtrif, rtriltri, RuleDelayed, ruluhar, rx, Sacute, sacute, sbquo, scap, Scaron, scaron, Sc, sc, sccue, sce, scE, Scedil, scedil, Scirc, scirc, scnap, scnE, scnsim, scpolint, scsim, Scy, scy, sdotb, sdot, sdote, searhk, searr, seArr, searrow, sect, semi, seswar, setminus, setmn, sext, Sfr, sfr, sfrown, sharp, SHCHcy, shchcy, SHcy, shcy, ShortDownArrow, ShortLeftArrow, shortmid, shortparallel, ShortRightArrow, ShortUpArrow, shy, Sigma, sigma, sigmaf, sigmav, sim, simdot, sime, simeq, simg, simgE, siml, simlE, simne, simplus, simrarr, slarr, SmallCircle, smallsetminus, smashp, smeparsl, smid, smile, smt, smte, smtes, SOFTcy, softcy, solbar, solb, sol, Sopf, sopf, spades, spadesuit, spar, sqcap, sqcaps, sqcup, sqcups, Sqrt, sqsub, sqsube, sqsubset, sqsubseteq, sqsup, sqsupe, sqsupset, sqsupseteq, square, Square, SquareIntersection, SquareSubset, SquareSubsetEqual, SquareSuperset, SquareSupersetEqual, SquareUnion, squarf, squ, squf, srarr, Sscr, sscr, ssetmn, ssmile, sstarf, Star, star, starf, straightepsilon, straightphi, strns, sub, Sub, subdot, subE, sube, subedot, submult, subnE, subne, subplus, subrarr, subset, Subset, subseteq, subseteqq, SubsetEqual, subsetneq, subsetneqq, subsim, subsub, subsup, succapprox, succ, succcurlyeq, Succeeds, SucceedsEqual, SucceedsSlantEqual, SucceedsTilde, succeq, succnapprox, succneqq, succnsim, succsim, SuchThat, sum, Sum, sung, sup1, sup2, sup3, sup, Sup, supdot, supdsub, supE, supe, supedot, Superset, SupersetEqual, suphsol, suphsub, suplarr, supmult, supnE, supne, supplus, supset, Supset, supseteq, supseteqq, supsetneq, supsetneqq, supsim, supsub, supsup, swarhk, swarr, swArr, swarrow, swnwar, szlig, Tab, target, Tau, tau, tbrk, Tcaron, tcaron, Tcedil, tcedil, Tcy, tcy, tdot, telrec, Tfr, tfr, there4, therefore, Therefore, Theta, theta, thetasym, thetav, thickapprox, thicksim, ThickSpace, ThinSpace, thinsp, thkap, thksim, THORN, thorn, tilde, Tilde, TildeEqual, TildeFullEqual, TildeTilde, timesbar, timesb, times, timesd, tint, toea, topbot, topcir, top, Topf, topf, topfork, tosa, tprime, trade, TRADE, triangle, triangledown, triangleleft, trianglelefteq, triangleq, triangleright, trianglerighteq, tridot, trie, triminus, TripleDot, triplus, trisb, tritime, trpezium, Tscr, tscr, TScy, tscy, TSHcy, tshcy, Tstrok, tstrok, twixt, twoheadleftarrow, twoheadrightarrow, Uacute, uacute, uarr, Uarr, uArr, Uarrocir, Ubrcy, ubrcy, Ubreve, ubreve, Ucirc, ucirc, Ucy, ucy, udarr, Udblac, udblac, udhar, ufisht, Ufr, ufr, Ugrave, ugrave, uHar, uharl, uharr, uhblk, ulcorn, ulcorner, ulcrop, ultri, Umacr, umacr, uml, UnderBar, UnderBrace, UnderBracket, UnderParenthesis, Union, UnionPlus, Uogon, uogon, Uopf, uopf, UpArrowBar, uparrow, UpArrow, Uparrow, UpArrowDownArrow, updownarrow, UpDownArrow, Updownarrow, UpEquilibrium, upharpoonleft, upharpoonright, uplus, UpperLeftArrow, UpperRightArrow, upsi, Upsi, upsih, Upsilon, upsilon, UpTeeArrow, UpTee, upuparrows, urcorn, urcorner, urcrop, Uring, uring, urtri, Uscr, uscr, utdot, Utilde, utilde, utri, utrif, uuarr, Uuml, uuml, uwangle, vangrt, varepsilon, varkappa, varnothing, varphi, varpi, varpropto, varr, vArr, varrho, varsigma, varsubsetneq, varsubsetneqq, varsupsetneq, varsupsetneqq, vartheta, vartriangleleft, vartriangleright, vBar, Vbar, vBarv, Vcy, vcy, vdash, vDash, Vdash, VDash, Vdashl, veebar, vee, Vee, veeeq, vellip, verbar, Verbar, vert, Vert, VerticalBar, VerticalLine, VerticalSeparator, VerticalTilde, VeryThinSpace, Vfr, vfr, vltri, vnsub, vnsup, Vopf, vopf, vprop, vrtri, Vscr, vscr, vsubnE, vsubne, vsupnE, vsupne, Vvdash, vzigzag, Wcirc, wcirc, wedbar, wedge, Wedge, wedgeq, weierp, Wfr, wfr, Wopf, wopf, wp, wr, wreath, Wscr, wscr, xcap, xcirc, xcup, xdtri, Xfr, xfr, xharr, xhArr, Xi, xi, xlarr, xlArr, xmap, xnis, xodot, Xopf, xopf, xoplus, xotime, xrarr, xrArr, Xscr, xscr, xsqcup, xuplus, xutri, xvee, xwedge, Yacute, yacute, YAcy, yacy, Ycirc, ycirc, Ycy, ycy, yen, Yfr, yfr, YIcy, yicy, Yopf, yopf, Yscr, yscr, YUcy, yucy, yuml, Yuml, Zacute, zacute, Zcaron, zcaron, Zcy, zcy, Zdot, zdot, zeetrf, ZeroWidthSpace, Zeta, zeta, zfr, Zfr, ZHcy, zhcy, zigrarr, zopf, Zopf, Zscr, zscr, zwj, zwnj, default */
-/***/ (function(module) {
-
-module.exports = JSON.parse("{\"Aacute\":\"Á\",\"aacute\":\"á\",\"Abreve\":\"Ă\",\"abreve\":\"ă\",\"ac\":\"∾\",\"acd\":\"∿\",\"acE\":\"∾̳\",\"Acirc\":\"Â\",\"acirc\":\"â\",\"acute\":\"´\",\"Acy\":\"А\",\"acy\":\"а\",\"AElig\":\"Æ\",\"aelig\":\"æ\",\"af\":\"⁡\",\"Afr\":\"𝔄\",\"afr\":\"𝔞\",\"Agrave\":\"À\",\"agrave\":\"à\",\"alefsym\":\"ℵ\",\"aleph\":\"ℵ\",\"Alpha\":\"Α\",\"alpha\":\"α\",\"Amacr\":\"Ā\",\"amacr\":\"ā\",\"amalg\":\"⨿\",\"amp\":\"&\",\"AMP\":\"&\",\"andand\":\"⩕\",\"And\":\"⩓\",\"and\":\"∧\",\"andd\":\"⩜\",\"andslope\":\"⩘\",\"andv\":\"⩚\",\"ang\":\"∠\",\"ange\":\"⦤\",\"angle\":\"∠\",\"angmsdaa\":\"⦨\",\"angmsdab\":\"⦩\",\"angmsdac\":\"⦪\",\"angmsdad\":\"⦫\",\"angmsdae\":\"⦬\",\"angmsdaf\":\"⦭\",\"angmsdag\":\"⦮\",\"angmsdah\":\"⦯\",\"angmsd\":\"∡\",\"angrt\":\"∟\",\"angrtvb\":\"⊾\",\"angrtvbd\":\"⦝\",\"angsph\":\"∢\",\"angst\":\"Å\",\"angzarr\":\"⍼\",\"Aogon\":\"Ą\",\"aogon\":\"ą\",\"Aopf\":\"𝔸\",\"aopf\":\"𝕒\",\"apacir\":\"⩯\",\"ap\":\"≈\",\"apE\":\"⩰\",\"ape\":\"≊\",\"apid\":\"≋\",\"apos\":\"'\",\"ApplyFunction\":\"⁡\",\"approx\":\"≈\",\"approxeq\":\"≊\",\"Aring\":\"Å\",\"aring\":\"å\",\"Ascr\":\"𝒜\",\"ascr\":\"𝒶\",\"Assign\":\"≔\",\"ast\":\"*\",\"asymp\":\"≈\",\"asympeq\":\"≍\",\"Atilde\":\"Ã\",\"atilde\":\"ã\",\"Auml\":\"Ä\",\"auml\":\"ä\",\"awconint\":\"∳\",\"awint\":\"⨑\",\"backcong\":\"≌\",\"backepsilon\":\"϶\",\"backprime\":\"‵\",\"backsim\":\"∽\",\"backsimeq\":\"⋍\",\"Backslash\":\"∖\",\"Barv\":\"⫧\",\"barvee\":\"⊽\",\"barwed\":\"⌅\",\"Barwed\":\"⌆\",\"barwedge\":\"⌅\",\"bbrk\":\"⎵\",\"bbrktbrk\":\"⎶\",\"bcong\":\"≌\",\"Bcy\":\"Б\",\"bcy\":\"б\",\"bdquo\":\"„\",\"becaus\":\"∵\",\"because\":\"∵\",\"Because\":\"∵\",\"bemptyv\":\"⦰\",\"bepsi\":\"϶\",\"bernou\":\"ℬ\",\"Bernoullis\":\"ℬ\",\"Beta\":\"Β\",\"beta\":\"β\",\"beth\":\"ℶ\",\"between\":\"≬\",\"Bfr\":\"𝔅\",\"bfr\":\"𝔟\",\"bigcap\":\"⋂\",\"bigcirc\":\"◯\",\"bigcup\":\"⋃\",\"bigodot\":\"⨀\",\"bigoplus\":\"⨁\",\"bigotimes\":\"⨂\",\"bigsqcup\":\"⨆\",\"bigstar\":\"★\",\"bigtriangledown\":\"▽\",\"bigtriangleup\":\"△\",\"biguplus\":\"⨄\",\"bigvee\":\"⋁\",\"bigwedge\":\"⋀\",\"bkarow\":\"⤍\",\"blacklozenge\":\"⧫\",\"blacksquare\":\"▪\",\"blacktriangle\":\"▴\",\"blacktriangledown\":\"▾\",\"blacktriangleleft\":\"◂\",\"blacktriangleright\":\"▸\",\"blank\":\"␣\",\"blk12\":\"▒\",\"blk14\":\"░\",\"blk34\":\"▓\",\"block\":\"█\",\"bne\":\"=⃥\",\"bnequiv\":\"≡⃥\",\"bNot\":\"⫭\",\"bnot\":\"⌐\",\"Bopf\":\"𝔹\",\"bopf\":\"𝕓\",\"bot\":\"⊥\",\"bottom\":\"⊥\",\"bowtie\":\"⋈\",\"boxbox\":\"⧉\",\"boxdl\":\"┐\",\"boxdL\":\"╕\",\"boxDl\":\"╖\",\"boxDL\":\"╗\",\"boxdr\":\"┌\",\"boxdR\":\"╒\",\"boxDr\":\"╓\",\"boxDR\":\"╔\",\"boxh\":\"─\",\"boxH\":\"═\",\"boxhd\":\"┬\",\"boxHd\":\"╤\",\"boxhD\":\"╥\",\"boxHD\":\"╦\",\"boxhu\":\"┴\",\"boxHu\":\"╧\",\"boxhU\":\"╨\",\"boxHU\":\"╩\",\"boxminus\":\"⊟\",\"boxplus\":\"⊞\",\"boxtimes\":\"⊠\",\"boxul\":\"┘\",\"boxuL\":\"╛\",\"boxUl\":\"╜\",\"boxUL\":\"╝\",\"boxur\":\"└\",\"boxuR\":\"╘\",\"boxUr\":\"╙\",\"boxUR\":\"╚\",\"boxv\":\"│\",\"boxV\":\"║\",\"boxvh\":\"┼\",\"boxvH\":\"╪\",\"boxVh\":\"╫\",\"boxVH\":\"╬\",\"boxvl\":\"┤\",\"boxvL\":\"╡\",\"boxVl\":\"╢\",\"boxVL\":\"╣\",\"boxvr\":\"├\",\"boxvR\":\"╞\",\"boxVr\":\"╟\",\"boxVR\":\"╠\",\"bprime\":\"‵\",\"breve\":\"˘\",\"Breve\":\"˘\",\"brvbar\":\"¦\",\"bscr\":\"𝒷\",\"Bscr\":\"ℬ\",\"bsemi\":\"⁏\",\"bsim\":\"∽\",\"bsime\":\"⋍\",\"bsolb\":\"⧅\",\"bsol\":\"\\\\\",\"bsolhsub\":\"⟈\",\"bull\":\"•\",\"bullet\":\"•\",\"bump\":\"≎\",\"bumpE\":\"⪮\",\"bumpe\":\"≏\",\"Bumpeq\":\"≎\",\"bumpeq\":\"≏\",\"Cacute\":\"Ć\",\"cacute\":\"ć\",\"capand\":\"⩄\",\"capbrcup\":\"⩉\",\"capcap\":\"⩋\",\"cap\":\"∩\",\"Cap\":\"⋒\",\"capcup\":\"⩇\",\"capdot\":\"⩀\",\"CapitalDifferentialD\":\"ⅅ\",\"caps\":\"∩︀\",\"caret\":\"⁁\",\"caron\":\"ˇ\",\"Cayleys\":\"ℭ\",\"ccaps\":\"⩍\",\"Ccaron\":\"Č\",\"ccaron\":\"č\",\"Ccedil\":\"Ç\",\"ccedil\":\"ç\",\"Ccirc\":\"Ĉ\",\"ccirc\":\"ĉ\",\"Cconint\":\"∰\",\"ccups\":\"⩌\",\"ccupssm\":\"⩐\",\"Cdot\":\"Ċ\",\"cdot\":\"ċ\",\"cedil\":\"¸\",\"Cedilla\":\"¸\",\"cemptyv\":\"⦲\",\"cent\":\"¢\",\"centerdot\":\"·\",\"CenterDot\":\"·\",\"cfr\":\"𝔠\",\"Cfr\":\"ℭ\",\"CHcy\":\"Ч\",\"chcy\":\"ч\",\"check\":\"✓\",\"checkmark\":\"✓\",\"Chi\":\"Χ\",\"chi\":\"χ\",\"circ\":\"ˆ\",\"circeq\":\"≗\",\"circlearrowleft\":\"↺\",\"circlearrowright\":\"↻\",\"circledast\":\"⊛\",\"circledcirc\":\"⊚\",\"circleddash\":\"⊝\",\"CircleDot\":\"⊙\",\"circledR\":\"®\",\"circledS\":\"Ⓢ\",\"CircleMinus\":\"⊖\",\"CirclePlus\":\"⊕\",\"CircleTimes\":\"⊗\",\"cir\":\"○\",\"cirE\":\"⧃\",\"cire\":\"≗\",\"cirfnint\":\"⨐\",\"cirmid\":\"⫯\",\"cirscir\":\"⧂\",\"ClockwiseContourIntegral\":\"∲\",\"CloseCurlyDoubleQuote\":\"”\",\"CloseCurlyQuote\":\"’\",\"clubs\":\"♣\",\"clubsuit\":\"♣\",\"colon\":\":\",\"Colon\":\"∷\",\"Colone\":\"⩴\",\"colone\":\"≔\",\"coloneq\":\"≔\",\"comma\":\",\",\"commat\":\"@\",\"comp\":\"∁\",\"compfn\":\"∘\",\"complement\":\"∁\",\"complexes\":\"ℂ\",\"cong\":\"≅\",\"congdot\":\"⩭\",\"Congruent\":\"≡\",\"conint\":\"∮\",\"Conint\":\"∯\",\"ContourIntegral\":\"∮\",\"copf\":\"𝕔\",\"Copf\":\"ℂ\",\"coprod\":\"∐\",\"Coproduct\":\"∐\",\"copy\":\"©\",\"COPY\":\"©\",\"copysr\":\"℗\",\"CounterClockwiseContourIntegral\":\"∳\",\"crarr\":\"↵\",\"cross\":\"✗\",\"Cross\":\"⨯\",\"Cscr\":\"𝒞\",\"cscr\":\"𝒸\",\"csub\":\"⫏\",\"csube\":\"⫑\",\"csup\":\"⫐\",\"csupe\":\"⫒\",\"ctdot\":\"⋯\",\"cudarrl\":\"⤸\",\"cudarrr\":\"⤵\",\"cuepr\":\"⋞\",\"cuesc\":\"⋟\",\"cularr\":\"↶\",\"cularrp\":\"⤽\",\"cupbrcap\":\"⩈\",\"cupcap\":\"⩆\",\"CupCap\":\"≍\",\"cup\":\"∪\",\"Cup\":\"⋓\",\"cupcup\":\"⩊\",\"cupdot\":\"⊍\",\"cupor\":\"⩅\",\"cups\":\"∪︀\",\"curarr\":\"↷\",\"curarrm\":\"⤼\",\"curlyeqprec\":\"⋞\",\"curlyeqsucc\":\"⋟\",\"curlyvee\":\"⋎\",\"curlywedge\":\"⋏\",\"curren\":\"¤\",\"curvearrowleft\":\"↶\",\"curvearrowright\":\"↷\",\"cuvee\":\"⋎\",\"cuwed\":\"⋏\",\"cwconint\":\"∲\",\"cwint\":\"∱\",\"cylcty\":\"⌭\",\"dagger\":\"†\",\"Dagger\":\"‡\",\"daleth\":\"ℸ\",\"darr\":\"↓\",\"Darr\":\"↡\",\"dArr\":\"⇓\",\"dash\":\"‐\",\"Dashv\":\"⫤\",\"dashv\":\"⊣\",\"dbkarow\":\"⤏\",\"dblac\":\"˝\",\"Dcaron\":\"Ď\",\"dcaron\":\"ď\",\"Dcy\":\"Д\",\"dcy\":\"д\",\"ddagger\":\"‡\",\"ddarr\":\"⇊\",\"DD\":\"ⅅ\",\"dd\":\"ⅆ\",\"DDotrahd\":\"⤑\",\"ddotseq\":\"⩷\",\"deg\":\"°\",\"Del\":\"∇\",\"Delta\":\"Δ\",\"delta\":\"δ\",\"demptyv\":\"⦱\",\"dfisht\":\"⥿\",\"Dfr\":\"𝔇\",\"dfr\":\"𝔡\",\"dHar\":\"⥥\",\"dharl\":\"⇃\",\"dharr\":\"⇂\",\"DiacriticalAcute\":\"´\",\"DiacriticalDot\":\"˙\",\"DiacriticalDoubleAcute\":\"˝\",\"DiacriticalGrave\":\"`\",\"DiacriticalTilde\":\"˜\",\"diam\":\"⋄\",\"diamond\":\"⋄\",\"Diamond\":\"⋄\",\"diamondsuit\":\"♦\",\"diams\":\"♦\",\"die\":\"¨\",\"DifferentialD\":\"ⅆ\",\"digamma\":\"ϝ\",\"disin\":\"⋲\",\"div\":\"÷\",\"divide\":\"÷\",\"divideontimes\":\"⋇\",\"divonx\":\"⋇\",\"DJcy\":\"Ђ\",\"djcy\":\"ђ\",\"dlcorn\":\"⌞\",\"dlcrop\":\"⌍\",\"dollar\":\"$\",\"Dopf\":\"𝔻\",\"dopf\":\"𝕕\",\"Dot\":\"¨\",\"dot\":\"˙\",\"DotDot\":\"⃜\",\"doteq\":\"≐\",\"doteqdot\":\"≑\",\"DotEqual\":\"≐\",\"dotminus\":\"∸\",\"dotplus\":\"∔\",\"dotsquare\":\"⊡\",\"doublebarwedge\":\"⌆\",\"DoubleContourIntegral\":\"∯\",\"DoubleDot\":\"¨\",\"DoubleDownArrow\":\"⇓\",\"DoubleLeftArrow\":\"⇐\",\"DoubleLeftRightArrow\":\"⇔\",\"DoubleLeftTee\":\"⫤\",\"DoubleLongLeftArrow\":\"⟸\",\"DoubleLongLeftRightArrow\":\"⟺\",\"DoubleLongRightArrow\":\"⟹\",\"DoubleRightArrow\":\"⇒\",\"DoubleRightTee\":\"⊨\",\"DoubleUpArrow\":\"⇑\",\"DoubleUpDownArrow\":\"⇕\",\"DoubleVerticalBar\":\"∥\",\"DownArrowBar\":\"⤓\",\"downarrow\":\"↓\",\"DownArrow\":\"↓\",\"Downarrow\":\"⇓\",\"DownArrowUpArrow\":\"⇵\",\"DownBreve\":\"̑\",\"downdownarrows\":\"⇊\",\"downharpoonleft\":\"⇃\",\"downharpoonright\":\"⇂\",\"DownLeftRightVector\":\"⥐\",\"DownLeftTeeVector\":\"⥞\",\"DownLeftVectorBar\":\"⥖\",\"DownLeftVector\":\"↽\",\"DownRightTeeVector\":\"⥟\",\"DownRightVectorBar\":\"⥗\",\"DownRightVector\":\"⇁\",\"DownTeeArrow\":\"↧\",\"DownTee\":\"⊤\",\"drbkarow\":\"⤐\",\"drcorn\":\"⌟\",\"drcrop\":\"⌌\",\"Dscr\":\"𝒟\",\"dscr\":\"𝒹\",\"DScy\":\"Ѕ\",\"dscy\":\"ѕ\",\"dsol\":\"⧶\",\"Dstrok\":\"Đ\",\"dstrok\":\"đ\",\"dtdot\":\"⋱\",\"dtri\":\"▿\",\"dtrif\":\"▾\",\"duarr\":\"⇵\",\"duhar\":\"⥯\",\"dwangle\":\"⦦\",\"DZcy\":\"Џ\",\"dzcy\":\"џ\",\"dzigrarr\":\"⟿\",\"Eacute\":\"É\",\"eacute\":\"é\",\"easter\":\"⩮\",\"Ecaron\":\"Ě\",\"ecaron\":\"ě\",\"Ecirc\":\"Ê\",\"ecirc\":\"ê\",\"ecir\":\"≖\",\"ecolon\":\"≕\",\"Ecy\":\"Э\",\"ecy\":\"э\",\"eDDot\":\"⩷\",\"Edot\":\"Ė\",\"edot\":\"ė\",\"eDot\":\"≑\",\"ee\":\"ⅇ\",\"efDot\":\"≒\",\"Efr\":\"𝔈\",\"efr\":\"𝔢\",\"eg\":\"⪚\",\"Egrave\":\"È\",\"egrave\":\"è\",\"egs\":\"⪖\",\"egsdot\":\"⪘\",\"el\":\"⪙\",\"Element\":\"∈\",\"elinters\":\"⏧\",\"ell\":\"ℓ\",\"els\":\"⪕\",\"elsdot\":\"⪗\",\"Emacr\":\"Ē\",\"emacr\":\"ē\",\"empty\":\"∅\",\"emptyset\":\"∅\",\"EmptySmallSquare\":\"◻\",\"emptyv\":\"∅\",\"EmptyVerySmallSquare\":\"▫\",\"emsp13\":\" \",\"emsp14\":\" \",\"emsp\":\" \",\"ENG\":\"Ŋ\",\"eng\":\"ŋ\",\"ensp\":\" \",\"Eogon\":\"Ę\",\"eogon\":\"ę\",\"Eopf\":\"𝔼\",\"eopf\":\"𝕖\",\"epar\":\"⋕\",\"eparsl\":\"⧣\",\"eplus\":\"⩱\",\"epsi\":\"ε\",\"Epsilon\":\"Ε\",\"epsilon\":\"ε\",\"epsiv\":\"ϵ\",\"eqcirc\":\"≖\",\"eqcolon\":\"≕\",\"eqsim\":\"≂\",\"eqslantgtr\":\"⪖\",\"eqslantless\":\"⪕\",\"Equal\":\"⩵\",\"equals\":\"=\",\"EqualTilde\":\"≂\",\"equest\":\"≟\",\"Equilibrium\":\"⇌\",\"equiv\":\"≡\",\"equivDD\":\"⩸\",\"eqvparsl\":\"⧥\",\"erarr\":\"⥱\",\"erDot\":\"≓\",\"escr\":\"ℯ\",\"Escr\":\"ℰ\",\"esdot\":\"≐\",\"Esim\":\"⩳\",\"esim\":\"≂\",\"Eta\":\"Η\",\"eta\":\"η\",\"ETH\":\"Ð\",\"eth\":\"ð\",\"Euml\":\"Ë\",\"euml\":\"ë\",\"euro\":\"€\",\"excl\":\"!\",\"exist\":\"∃\",\"Exists\":\"∃\",\"expectation\":\"ℰ\",\"exponentiale\":\"ⅇ\",\"ExponentialE\":\"ⅇ\",\"fallingdotseq\":\"≒\",\"Fcy\":\"Ф\",\"fcy\":\"ф\",\"female\":\"♀\",\"ffilig\":\"ﬃ\",\"fflig\":\"ﬀ\",\"ffllig\":\"ﬄ\",\"Ffr\":\"𝔉\",\"ffr\":\"𝔣\",\"filig\":\"ﬁ\",\"FilledSmallSquare\":\"◼\",\"FilledVerySmallSquare\":\"▪\",\"fjlig\":\"fj\",\"flat\":\"♭\",\"fllig\":\"ﬂ\",\"fltns\":\"▱\",\"fnof\":\"ƒ\",\"Fopf\":\"𝔽\",\"fopf\":\"𝕗\",\"forall\":\"∀\",\"ForAll\":\"∀\",\"fork\":\"⋔\",\"forkv\":\"⫙\",\"Fouriertrf\":\"ℱ\",\"fpartint\":\"⨍\",\"frac12\":\"½\",\"frac13\":\"⅓\",\"frac14\":\"¼\",\"frac15\":\"⅕\",\"frac16\":\"⅙\",\"frac18\":\"⅛\",\"frac23\":\"⅔\",\"frac25\":\"⅖\",\"frac34\":\"¾\",\"frac35\":\"⅗\",\"frac38\":\"⅜\",\"frac45\":\"⅘\",\"frac56\":\"⅚\",\"frac58\":\"⅝\",\"frac78\":\"⅞\",\"frasl\":\"⁄\",\"frown\":\"⌢\",\"fscr\":\"𝒻\",\"Fscr\":\"ℱ\",\"gacute\":\"ǵ\",\"Gamma\":\"Γ\",\"gamma\":\"γ\",\"Gammad\":\"Ϝ\",\"gammad\":\"ϝ\",\"gap\":\"⪆\",\"Gbreve\":\"Ğ\",\"gbreve\":\"ğ\",\"Gcedil\":\"Ģ\",\"Gcirc\":\"Ĝ\",\"gcirc\":\"ĝ\",\"Gcy\":\"Г\",\"gcy\":\"г\",\"Gdot\":\"Ġ\",\"gdot\":\"ġ\",\"ge\":\"≥\",\"gE\":\"≧\",\"gEl\":\"⪌\",\"gel\":\"⋛\",\"geq\":\"≥\",\"geqq\":\"≧\",\"geqslant\":\"⩾\",\"gescc\":\"⪩\",\"ges\":\"⩾\",\"gesdot\":\"⪀\",\"gesdoto\":\"⪂\",\"gesdotol\":\"⪄\",\"gesl\":\"⋛︀\",\"gesles\":\"⪔\",\"Gfr\":\"𝔊\",\"gfr\":\"𝔤\",\"gg\":\"≫\",\"Gg\":\"⋙\",\"ggg\":\"⋙\",\"gimel\":\"ℷ\",\"GJcy\":\"Ѓ\",\"gjcy\":\"ѓ\",\"gla\":\"⪥\",\"gl\":\"≷\",\"glE\":\"⪒\",\"glj\":\"⪤\",\"gnap\":\"⪊\",\"gnapprox\":\"⪊\",\"gne\":\"⪈\",\"gnE\":\"≩\",\"gneq\":\"⪈\",\"gneqq\":\"≩\",\"gnsim\":\"⋧\",\"Gopf\":\"𝔾\",\"gopf\":\"𝕘\",\"grave\":\"`\",\"GreaterEqual\":\"≥\",\"GreaterEqualLess\":\"⋛\",\"GreaterFullEqual\":\"≧\",\"GreaterGreater\":\"⪢\",\"GreaterLess\":\"≷\",\"GreaterSlantEqual\":\"⩾\",\"GreaterTilde\":\"≳\",\"Gscr\":\"𝒢\",\"gscr\":\"ℊ\",\"gsim\":\"≳\",\"gsime\":\"⪎\",\"gsiml\":\"⪐\",\"gtcc\":\"⪧\",\"gtcir\":\"⩺\",\"gt\":\">\",\"GT\":\">\",\"Gt\":\"≫\",\"gtdot\":\"⋗\",\"gtlPar\":\"⦕\",\"gtquest\":\"⩼\",\"gtrapprox\":\"⪆\",\"gtrarr\":\"⥸\",\"gtrdot\":\"⋗\",\"gtreqless\":\"⋛\",\"gtreqqless\":\"⪌\",\"gtrless\":\"≷\",\"gtrsim\":\"≳\",\"gvertneqq\":\"≩︀\",\"gvnE\":\"≩︀\",\"Hacek\":\"ˇ\",\"hairsp\":\" \",\"half\":\"½\",\"hamilt\":\"ℋ\",\"HARDcy\":\"Ъ\",\"hardcy\":\"ъ\",\"harrcir\":\"⥈\",\"harr\":\"↔\",\"hArr\":\"⇔\",\"harrw\":\"↭\",\"Hat\":\"^\",\"hbar\":\"ℏ\",\"Hcirc\":\"Ĥ\",\"hcirc\":\"ĥ\",\"hearts\":\"♥\",\"heartsuit\":\"♥\",\"hellip\":\"…\",\"hercon\":\"⊹\",\"hfr\":\"𝔥\",\"Hfr\":\"ℌ\",\"HilbertSpace\":\"ℋ\",\"hksearow\":\"⤥\",\"hkswarow\":\"⤦\",\"hoarr\":\"⇿\",\"homtht\":\"∻\",\"hookleftarrow\":\"↩\",\"hookrightarrow\":\"↪\",\"hopf\":\"𝕙\",\"Hopf\":\"ℍ\",\"horbar\":\"―\",\"HorizontalLine\":\"─\",\"hscr\":\"𝒽\",\"Hscr\":\"ℋ\",\"hslash\":\"ℏ\",\"Hstrok\":\"Ħ\",\"hstrok\":\"ħ\",\"HumpDownHump\":\"≎\",\"HumpEqual\":\"≏\",\"hybull\":\"⁃\",\"hyphen\":\"‐\",\"Iacute\":\"Í\",\"iacute\":\"í\",\"ic\":\"⁣\",\"Icirc\":\"Î\",\"icirc\":\"î\",\"Icy\":\"И\",\"icy\":\"и\",\"Idot\":\"İ\",\"IEcy\":\"Е\",\"iecy\":\"е\",\"iexcl\":\"¡\",\"iff\":\"⇔\",\"ifr\":\"𝔦\",\"Ifr\":\"ℑ\",\"Igrave\":\"Ì\",\"igrave\":\"ì\",\"ii\":\"ⅈ\",\"iiiint\":\"⨌\",\"iiint\":\"∭\",\"iinfin\":\"⧜\",\"iiota\":\"℩\",\"IJlig\":\"Ĳ\",\"ijlig\":\"ĳ\",\"Imacr\":\"Ī\",\"imacr\":\"ī\",\"image\":\"ℑ\",\"ImaginaryI\":\"ⅈ\",\"imagline\":\"ℐ\",\"imagpart\":\"ℑ\",\"imath\":\"ı\",\"Im\":\"ℑ\",\"imof\":\"⊷\",\"imped\":\"Ƶ\",\"Implies\":\"⇒\",\"incare\":\"℅\",\"in\":\"∈\",\"infin\":\"∞\",\"infintie\":\"⧝\",\"inodot\":\"ı\",\"intcal\":\"⊺\",\"int\":\"∫\",\"Int\":\"∬\",\"integers\":\"ℤ\",\"Integral\":\"∫\",\"intercal\":\"⊺\",\"Intersection\":\"⋂\",\"intlarhk\":\"⨗\",\"intprod\":\"⨼\",\"InvisibleComma\":\"⁣\",\"InvisibleTimes\":\"⁢\",\"IOcy\":\"Ё\",\"iocy\":\"ё\",\"Iogon\":\"Į\",\"iogon\":\"į\",\"Iopf\":\"𝕀\",\"iopf\":\"𝕚\",\"Iota\":\"Ι\",\"iota\":\"ι\",\"iprod\":\"⨼\",\"iquest\":\"¿\",\"iscr\":\"𝒾\",\"Iscr\":\"ℐ\",\"isin\":\"∈\",\"isindot\":\"⋵\",\"isinE\":\"⋹\",\"isins\":\"⋴\",\"isinsv\":\"⋳\",\"isinv\":\"∈\",\"it\":\"⁢\",\"Itilde\":\"Ĩ\",\"itilde\":\"ĩ\",\"Iukcy\":\"І\",\"iukcy\":\"і\",\"Iuml\":\"Ï\",\"iuml\":\"ï\",\"Jcirc\":\"Ĵ\",\"jcirc\":\"ĵ\",\"Jcy\":\"Й\",\"jcy\":\"й\",\"Jfr\":\"𝔍\",\"jfr\":\"𝔧\",\"jmath\":\"ȷ\",\"Jopf\":\"𝕁\",\"jopf\":\"𝕛\",\"Jscr\":\"𝒥\",\"jscr\":\"𝒿\",\"Jsercy\":\"Ј\",\"jsercy\":\"ј\",\"Jukcy\":\"Є\",\"jukcy\":\"є\",\"Kappa\":\"Κ\",\"kappa\":\"κ\",\"kappav\":\"ϰ\",\"Kcedil\":\"Ķ\",\"kcedil\":\"ķ\",\"Kcy\":\"К\",\"kcy\":\"к\",\"Kfr\":\"𝔎\",\"kfr\":\"𝔨\",\"kgreen\":\"ĸ\",\"KHcy\":\"Х\",\"khcy\":\"х\",\"KJcy\":\"Ќ\",\"kjcy\":\"ќ\",\"Kopf\":\"𝕂\",\"kopf\":\"𝕜\",\"Kscr\":\"𝒦\",\"kscr\":\"𝓀\",\"lAarr\":\"⇚\",\"Lacute\":\"Ĺ\",\"lacute\":\"ĺ\",\"laemptyv\":\"⦴\",\"lagran\":\"ℒ\",\"Lambda\":\"Λ\",\"lambda\":\"λ\",\"lang\":\"⟨\",\"Lang\":\"⟪\",\"langd\":\"⦑\",\"langle\":\"⟨\",\"lap\":\"⪅\",\"Laplacetrf\":\"ℒ\",\"laquo\":\"«\",\"larrb\":\"⇤\",\"larrbfs\":\"⤟\",\"larr\":\"←\",\"Larr\":\"↞\",\"lArr\":\"⇐\",\"larrfs\":\"⤝\",\"larrhk\":\"↩\",\"larrlp\":\"↫\",\"larrpl\":\"⤹\",\"larrsim\":\"⥳\",\"larrtl\":\"↢\",\"latail\":\"⤙\",\"lAtail\":\"⤛\",\"lat\":\"⪫\",\"late\":\"⪭\",\"lates\":\"⪭︀\",\"lbarr\":\"⤌\",\"lBarr\":\"⤎\",\"lbbrk\":\"❲\",\"lbrace\":\"{\",\"lbrack\":\"[\",\"lbrke\":\"⦋\",\"lbrksld\":\"⦏\",\"lbrkslu\":\"⦍\",\"Lcaron\":\"Ľ\",\"lcaron\":\"ľ\",\"Lcedil\":\"Ļ\",\"lcedil\":\"ļ\",\"lceil\":\"⌈\",\"lcub\":\"{\",\"Lcy\":\"Л\",\"lcy\":\"л\",\"ldca\":\"⤶\",\"ldquo\":\"“\",\"ldquor\":\"„\",\"ldrdhar\":\"⥧\",\"ldrushar\":\"⥋\",\"ldsh\":\"↲\",\"le\":\"≤\",\"lE\":\"≦\",\"LeftAngleBracket\":\"⟨\",\"LeftArrowBar\":\"⇤\",\"leftarrow\":\"←\",\"LeftArrow\":\"←\",\"Leftarrow\":\"⇐\",\"LeftArrowRightArrow\":\"⇆\",\"leftarrowtail\":\"↢\",\"LeftCeiling\":\"⌈\",\"LeftDoubleBracket\":\"⟦\",\"LeftDownTeeVector\":\"⥡\",\"LeftDownVectorBar\":\"⥙\",\"LeftDownVector\":\"⇃\",\"LeftFloor\":\"⌊\",\"leftharpoondown\":\"↽\",\"leftharpoonup\":\"↼\",\"leftleftarrows\":\"⇇\",\"leftrightarrow\":\"↔\",\"LeftRightArrow\":\"↔\",\"Leftrightarrow\":\"⇔\",\"leftrightarrows\":\"⇆\",\"leftrightharpoons\":\"⇋\",\"leftrightsquigarrow\":\"↭\",\"LeftRightVector\":\"⥎\",\"LeftTeeArrow\":\"↤\",\"LeftTee\":\"⊣\",\"LeftTeeVector\":\"⥚\",\"leftthreetimes\":\"⋋\",\"LeftTriangleBar\":\"⧏\",\"LeftTriangle\":\"⊲\",\"LeftTriangleEqual\":\"⊴\",\"LeftUpDownVector\":\"⥑\",\"LeftUpTeeVector\":\"⥠\",\"LeftUpVectorBar\":\"⥘\",\"LeftUpVector\":\"↿\",\"LeftVectorBar\":\"⥒\",\"LeftVector\":\"↼\",\"lEg\":\"⪋\",\"leg\":\"⋚\",\"leq\":\"≤\",\"leqq\":\"≦\",\"leqslant\":\"⩽\",\"lescc\":\"⪨\",\"les\":\"⩽\",\"lesdot\":\"⩿\",\"lesdoto\":\"⪁\",\"lesdotor\":\"⪃\",\"lesg\":\"⋚︀\",\"lesges\":\"⪓\",\"lessapprox\":\"⪅\",\"lessdot\":\"⋖\",\"lesseqgtr\":\"⋚\",\"lesseqqgtr\":\"⪋\",\"LessEqualGreater\":\"⋚\",\"LessFullEqual\":\"≦\",\"LessGreater\":\"≶\",\"lessgtr\":\"≶\",\"LessLess\":\"⪡\",\"lesssim\":\"≲\",\"LessSlantEqual\":\"⩽\",\"LessTilde\":\"≲\",\"lfisht\":\"⥼\",\"lfloor\":\"⌊\",\"Lfr\":\"𝔏\",\"lfr\":\"𝔩\",\"lg\":\"≶\",\"lgE\":\"⪑\",\"lHar\":\"⥢\",\"lhard\":\"↽\",\"lharu\":\"↼\",\"lharul\":\"⥪\",\"lhblk\":\"▄\",\"LJcy\":\"Љ\",\"ljcy\":\"љ\",\"llarr\":\"⇇\",\"ll\":\"≪\",\"Ll\":\"⋘\",\"llcorner\":\"⌞\",\"Lleftarrow\":\"⇚\",\"llhard\":\"⥫\",\"lltri\":\"◺\",\"Lmidot\":\"Ŀ\",\"lmidot\":\"ŀ\",\"lmoustache\":\"⎰\",\"lmoust\":\"⎰\",\"lnap\":\"⪉\",\"lnapprox\":\"⪉\",\"lne\":\"⪇\",\"lnE\":\"≨\",\"lneq\":\"⪇\",\"lneqq\":\"≨\",\"lnsim\":\"⋦\",\"loang\":\"⟬\",\"loarr\":\"⇽\",\"lobrk\":\"⟦\",\"longleftarrow\":\"⟵\",\"LongLeftArrow\":\"⟵\",\"Longleftarrow\":\"⟸\",\"longleftrightarrow\":\"⟷\",\"LongLeftRightArrow\":\"⟷\",\"Longleftrightarrow\":\"⟺\",\"longmapsto\":\"⟼\",\"longrightarrow\":\"⟶\",\"LongRightArrow\":\"⟶\",\"Longrightarrow\":\"⟹\",\"looparrowleft\":\"↫\",\"looparrowright\":\"↬\",\"lopar\":\"⦅\",\"Lopf\":\"𝕃\",\"lopf\":\"𝕝\",\"loplus\":\"⨭\",\"lotimes\":\"⨴\",\"lowast\":\"∗\",\"lowbar\":\"_\",\"LowerLeftArrow\":\"↙\",\"LowerRightArrow\":\"↘\",\"loz\":\"◊\",\"lozenge\":\"◊\",\"lozf\":\"⧫\",\"lpar\":\"(\",\"lparlt\":\"⦓\",\"lrarr\":\"⇆\",\"lrcorner\":\"⌟\",\"lrhar\":\"⇋\",\"lrhard\":\"⥭\",\"lrm\":\"‎\",\"lrtri\":\"⊿\",\"lsaquo\":\"‹\",\"lscr\":\"𝓁\",\"Lscr\":\"ℒ\",\"lsh\":\"↰\",\"Lsh\":\"↰\",\"lsim\":\"≲\",\"lsime\":\"⪍\",\"lsimg\":\"⪏\",\"lsqb\":\"[\",\"lsquo\":\"‘\",\"lsquor\":\"‚\",\"Lstrok\":\"Ł\",\"lstrok\":\"ł\",\"ltcc\":\"⪦\",\"ltcir\":\"⩹\",\"lt\":\"<\",\"LT\":\"<\",\"Lt\":\"≪\",\"ltdot\":\"⋖\",\"lthree\":\"⋋\",\"ltimes\":\"⋉\",\"ltlarr\":\"⥶\",\"ltquest\":\"⩻\",\"ltri\":\"◃\",\"ltrie\":\"⊴\",\"ltrif\":\"◂\",\"ltrPar\":\"⦖\",\"lurdshar\":\"⥊\",\"luruhar\":\"⥦\",\"lvertneqq\":\"≨︀\",\"lvnE\":\"≨︀\",\"macr\":\"¯\",\"male\":\"♂\",\"malt\":\"✠\",\"maltese\":\"✠\",\"Map\":\"⤅\",\"map\":\"↦\",\"mapsto\":\"↦\",\"mapstodown\":\"↧\",\"mapstoleft\":\"↤\",\"mapstoup\":\"↥\",\"marker\":\"▮\",\"mcomma\":\"⨩\",\"Mcy\":\"М\",\"mcy\":\"м\",\"mdash\":\"—\",\"mDDot\":\"∺\",\"measuredangle\":\"∡\",\"MediumSpace\":\" \",\"Mellintrf\":\"ℳ\",\"Mfr\":\"𝔐\",\"mfr\":\"𝔪\",\"mho\":\"℧\",\"micro\":\"µ\",\"midast\":\"*\",\"midcir\":\"⫰\",\"mid\":\"∣\",\"middot\":\"·\",\"minusb\":\"⊟\",\"minus\":\"−\",\"minusd\":\"∸\",\"minusdu\":\"⨪\",\"MinusPlus\":\"∓\",\"mlcp\":\"⫛\",\"mldr\":\"…\",\"mnplus\":\"∓\",\"models\":\"⊧\",\"Mopf\":\"𝕄\",\"mopf\":\"𝕞\",\"mp\":\"∓\",\"mscr\":\"𝓂\",\"Mscr\":\"ℳ\",\"mstpos\":\"∾\",\"Mu\":\"Μ\",\"mu\":\"μ\",\"multimap\":\"⊸\",\"mumap\":\"⊸\",\"nabla\":\"∇\",\"Nacute\":\"Ń\",\"nacute\":\"ń\",\"nang\":\"∠⃒\",\"nap\":\"≉\",\"napE\":\"⩰̸\",\"napid\":\"≋̸\",\"napos\":\"ŉ\",\"napprox\":\"≉\",\"natural\":\"♮\",\"naturals\":\"ℕ\",\"natur\":\"♮\",\"nbsp\":\" \",\"nbump\":\"≎̸\",\"nbumpe\":\"≏̸\",\"ncap\":\"⩃\",\"Ncaron\":\"Ň\",\"ncaron\":\"ň\",\"Ncedil\":\"Ņ\",\"ncedil\":\"ņ\",\"ncong\":\"≇\",\"ncongdot\":\"⩭̸\",\"ncup\":\"⩂\",\"Ncy\":\"Н\",\"ncy\":\"н\",\"ndash\":\"–\",\"nearhk\":\"⤤\",\"nearr\":\"↗\",\"neArr\":\"⇗\",\"nearrow\":\"↗\",\"ne\":\"≠\",\"nedot\":\"≐̸\",\"NegativeMediumSpace\":\"​\",\"NegativeThickSpace\":\"​\",\"NegativeThinSpace\":\"​\",\"NegativeVeryThinSpace\":\"​\",\"nequiv\":\"≢\",\"nesear\":\"⤨\",\"nesim\":\"≂̸\",\"NestedGreaterGreater\":\"≫\",\"NestedLessLess\":\"≪\",\"NewLine\":\"\\n\",\"nexist\":\"∄\",\"nexists\":\"∄\",\"Nfr\":\"𝔑\",\"nfr\":\"𝔫\",\"ngE\":\"≧̸\",\"nge\":\"≱\",\"ngeq\":\"≱\",\"ngeqq\":\"≧̸\",\"ngeqslant\":\"⩾̸\",\"nges\":\"⩾̸\",\"nGg\":\"⋙̸\",\"ngsim\":\"≵\",\"nGt\":\"≫⃒\",\"ngt\":\"≯\",\"ngtr\":\"≯\",\"nGtv\":\"≫̸\",\"nharr\":\"↮\",\"nhArr\":\"⇎\",\"nhpar\":\"⫲\",\"ni\":\"∋\",\"nis\":\"⋼\",\"nisd\":\"⋺\",\"niv\":\"∋\",\"NJcy\":\"Њ\",\"njcy\":\"њ\",\"nlarr\":\"↚\",\"nlArr\":\"⇍\",\"nldr\":\"‥\",\"nlE\":\"≦̸\",\"nle\":\"≰\",\"nleftarrow\":\"↚\",\"nLeftarrow\":\"⇍\",\"nleftrightarrow\":\"↮\",\"nLeftrightarrow\":\"⇎\",\"nleq\":\"≰\",\"nleqq\":\"≦̸\",\"nleqslant\":\"⩽̸\",\"nles\":\"⩽̸\",\"nless\":\"≮\",\"nLl\":\"⋘̸\",\"nlsim\":\"≴\",\"nLt\":\"≪⃒\",\"nlt\":\"≮\",\"nltri\":\"⋪\",\"nltrie\":\"⋬\",\"nLtv\":\"≪̸\",\"nmid\":\"∤\",\"NoBreak\":\"⁠\",\"NonBreakingSpace\":\" \",\"nopf\":\"𝕟\",\"Nopf\":\"ℕ\",\"Not\":\"⫬\",\"not\":\"¬\",\"NotCongruent\":\"≢\",\"NotCupCap\":\"≭\",\"NotDoubleVerticalBar\":\"∦\",\"NotElement\":\"∉\",\"NotEqual\":\"≠\",\"NotEqualTilde\":\"≂̸\",\"NotExists\":\"∄\",\"NotGreater\":\"≯\",\"NotGreaterEqual\":\"≱\",\"NotGreaterFullEqual\":\"≧̸\",\"NotGreaterGreater\":\"≫̸\",\"NotGreaterLess\":\"≹\",\"NotGreaterSlantEqual\":\"⩾̸\",\"NotGreaterTilde\":\"≵\",\"NotHumpDownHump\":\"≎̸\",\"NotHumpEqual\":\"≏̸\",\"notin\":\"∉\",\"notindot\":\"⋵̸\",\"notinE\":\"⋹̸\",\"notinva\":\"∉\",\"notinvb\":\"⋷\",\"notinvc\":\"⋶\",\"NotLeftTriangleBar\":\"⧏̸\",\"NotLeftTriangle\":\"⋪\",\"NotLeftTriangleEqual\":\"⋬\",\"NotLess\":\"≮\",\"NotLessEqual\":\"≰\",\"NotLessGreater\":\"≸\",\"NotLessLess\":\"≪̸\",\"NotLessSlantEqual\":\"⩽̸\",\"NotLessTilde\":\"≴\",\"NotNestedGreaterGreater\":\"⪢̸\",\"NotNestedLessLess\":\"⪡̸\",\"notni\":\"∌\",\"notniva\":\"∌\",\"notnivb\":\"⋾\",\"notnivc\":\"⋽\",\"NotPrecedes\":\"⊀\",\"NotPrecedesEqual\":\"⪯̸\",\"NotPrecedesSlantEqual\":\"⋠\",\"NotReverseElement\":\"∌\",\"NotRightTriangleBar\":\"⧐̸\",\"NotRightTriangle\":\"⋫\",\"NotRightTriangleEqual\":\"⋭\",\"NotSquareSubset\":\"⊏̸\",\"NotSquareSubsetEqual\":\"⋢\",\"NotSquareSuperset\":\"⊐̸\",\"NotSquareSupersetEqual\":\"⋣\",\"NotSubset\":\"⊂⃒\",\"NotSubsetEqual\":\"⊈\",\"NotSucceeds\":\"⊁\",\"NotSucceedsEqual\":\"⪰̸\",\"NotSucceedsSlantEqual\":\"⋡\",\"NotSucceedsTilde\":\"≿̸\",\"NotSuperset\":\"⊃⃒\",\"NotSupersetEqual\":\"⊉\",\"NotTilde\":\"≁\",\"NotTildeEqual\":\"≄\",\"NotTildeFullEqual\":\"≇\",\"NotTildeTilde\":\"≉\",\"NotVerticalBar\":\"∤\",\"nparallel\":\"∦\",\"npar\":\"∦\",\"nparsl\":\"⫽⃥\",\"npart\":\"∂̸\",\"npolint\":\"⨔\",\"npr\":\"⊀\",\"nprcue\":\"⋠\",\"nprec\":\"⊀\",\"npreceq\":\"⪯̸\",\"npre\":\"⪯̸\",\"nrarrc\":\"⤳̸\",\"nrarr\":\"↛\",\"nrArr\":\"⇏\",\"nrarrw\":\"↝̸\",\"nrightarrow\":\"↛\",\"nRightarrow\":\"⇏\",\"nrtri\":\"⋫\",\"nrtrie\":\"⋭\",\"nsc\":\"⊁\",\"nsccue\":\"⋡\",\"nsce\":\"⪰̸\",\"Nscr\":\"𝒩\",\"nscr\":\"𝓃\",\"nshortmid\":\"∤\",\"nshortparallel\":\"∦\",\"nsim\":\"≁\",\"nsime\":\"≄\",\"nsimeq\":\"≄\",\"nsmid\":\"∤\",\"nspar\":\"∦\",\"nsqsube\":\"⋢\",\"nsqsupe\":\"⋣\",\"nsub\":\"⊄\",\"nsubE\":\"⫅̸\",\"nsube\":\"⊈\",\"nsubset\":\"⊂⃒\",\"nsubseteq\":\"⊈\",\"nsubseteqq\":\"⫅̸\",\"nsucc\":\"⊁\",\"nsucceq\":\"⪰̸\",\"nsup\":\"⊅\",\"nsupE\":\"⫆̸\",\"nsupe\":\"⊉\",\"nsupset\":\"⊃⃒\",\"nsupseteq\":\"⊉\",\"nsupseteqq\":\"⫆̸\",\"ntgl\":\"≹\",\"Ntilde\":\"Ñ\",\"ntilde\":\"ñ\",\"ntlg\":\"≸\",\"ntriangleleft\":\"⋪\",\"ntrianglelefteq\":\"⋬\",\"ntriangleright\":\"⋫\",\"ntrianglerighteq\":\"⋭\",\"Nu\":\"Ν\",\"nu\":\"ν\",\"num\":\"#\",\"numero\":\"№\",\"numsp\":\" \",\"nvap\":\"≍⃒\",\"nvdash\":\"⊬\",\"nvDash\":\"⊭\",\"nVdash\":\"⊮\",\"nVDash\":\"⊯\",\"nvge\":\"≥⃒\",\"nvgt\":\">⃒\",\"nvHarr\":\"⤄\",\"nvinfin\":\"⧞\",\"nvlArr\":\"⤂\",\"nvle\":\"≤⃒\",\"nvlt\":\"<⃒\",\"nvltrie\":\"⊴⃒\",\"nvrArr\":\"⤃\",\"nvrtrie\":\"⊵⃒\",\"nvsim\":\"∼⃒\",\"nwarhk\":\"⤣\",\"nwarr\":\"↖\",\"nwArr\":\"⇖\",\"nwarrow\":\"↖\",\"nwnear\":\"⤧\",\"Oacute\":\"Ó\",\"oacute\":\"ó\",\"oast\":\"⊛\",\"Ocirc\":\"Ô\",\"ocirc\":\"ô\",\"ocir\":\"⊚\",\"Ocy\":\"О\",\"ocy\":\"о\",\"odash\":\"⊝\",\"Odblac\":\"Ő\",\"odblac\":\"ő\",\"odiv\":\"⨸\",\"odot\":\"⊙\",\"odsold\":\"⦼\",\"OElig\":\"Œ\",\"oelig\":\"œ\",\"ofcir\":\"⦿\",\"Ofr\":\"𝔒\",\"ofr\":\"𝔬\",\"ogon\":\"˛\",\"Ograve\":\"Ò\",\"ograve\":\"ò\",\"ogt\":\"⧁\",\"ohbar\":\"⦵\",\"ohm\":\"Ω\",\"oint\":\"∮\",\"olarr\":\"↺\",\"olcir\":\"⦾\",\"olcross\":\"⦻\",\"oline\":\"‾\",\"olt\":\"⧀\",\"Omacr\":\"Ō\",\"omacr\":\"ō\",\"Omega\":\"Ω\",\"omega\":\"ω\",\"Omicron\":\"Ο\",\"omicron\":\"ο\",\"omid\":\"⦶\",\"ominus\":\"⊖\",\"Oopf\":\"𝕆\",\"oopf\":\"𝕠\",\"opar\":\"⦷\",\"OpenCurlyDoubleQuote\":\"“\",\"OpenCurlyQuote\":\"‘\",\"operp\":\"⦹\",\"oplus\":\"⊕\",\"orarr\":\"↻\",\"Or\":\"⩔\",\"or\":\"∨\",\"ord\":\"⩝\",\"order\":\"ℴ\",\"orderof\":\"ℴ\",\"ordf\":\"ª\",\"ordm\":\"º\",\"origof\":\"⊶\",\"oror\":\"⩖\",\"orslope\":\"⩗\",\"orv\":\"⩛\",\"oS\":\"Ⓢ\",\"Oscr\":\"𝒪\",\"oscr\":\"ℴ\",\"Oslash\":\"Ø\",\"oslash\":\"ø\",\"osol\":\"⊘\",\"Otilde\":\"Õ\",\"otilde\":\"õ\",\"otimesas\":\"⨶\",\"Otimes\":\"⨷\",\"otimes\":\"⊗\",\"Ouml\":\"Ö\",\"ouml\":\"ö\",\"ovbar\":\"⌽\",\"OverBar\":\"‾\",\"OverBrace\":\"⏞\",\"OverBracket\":\"⎴\",\"OverParenthesis\":\"⏜\",\"para\":\"¶\",\"parallel\":\"∥\",\"par\":\"∥\",\"parsim\":\"⫳\",\"parsl\":\"⫽\",\"part\":\"∂\",\"PartialD\":\"∂\",\"Pcy\":\"П\",\"pcy\":\"п\",\"percnt\":\"%\",\"period\":\".\",\"permil\":\"‰\",\"perp\":\"⊥\",\"pertenk\":\"‱\",\"Pfr\":\"𝔓\",\"pfr\":\"𝔭\",\"Phi\":\"Φ\",\"phi\":\"φ\",\"phiv\":\"ϕ\",\"phmmat\":\"ℳ\",\"phone\":\"☎\",\"Pi\":\"Π\",\"pi\":\"π\",\"pitchfork\":\"⋔\",\"piv\":\"ϖ\",\"planck\":\"ℏ\",\"planckh\":\"ℎ\",\"plankv\":\"ℏ\",\"plusacir\":\"⨣\",\"plusb\":\"⊞\",\"pluscir\":\"⨢\",\"plus\":\"+\",\"plusdo\":\"∔\",\"plusdu\":\"⨥\",\"pluse\":\"⩲\",\"PlusMinus\":\"±\",\"plusmn\":\"±\",\"plussim\":\"⨦\",\"plustwo\":\"⨧\",\"pm\":\"±\",\"Poincareplane\":\"ℌ\",\"pointint\":\"⨕\",\"popf\":\"𝕡\",\"Popf\":\"ℙ\",\"pound\":\"£\",\"prap\":\"⪷\",\"Pr\":\"⪻\",\"pr\":\"≺\",\"prcue\":\"≼\",\"precapprox\":\"⪷\",\"prec\":\"≺\",\"preccurlyeq\":\"≼\",\"Precedes\":\"≺\",\"PrecedesEqual\":\"⪯\",\"PrecedesSlantEqual\":\"≼\",\"PrecedesTilde\":\"≾\",\"preceq\":\"⪯\",\"precnapprox\":\"⪹\",\"precneqq\":\"⪵\",\"precnsim\":\"⋨\",\"pre\":\"⪯\",\"prE\":\"⪳\",\"precsim\":\"≾\",\"prime\":\"′\",\"Prime\":\"″\",\"primes\":\"ℙ\",\"prnap\":\"⪹\",\"prnE\":\"⪵\",\"prnsim\":\"⋨\",\"prod\":\"∏\",\"Product\":\"∏\",\"profalar\":\"⌮\",\"profline\":\"⌒\",\"profsurf\":\"⌓\",\"prop\":\"∝\",\"Proportional\":\"∝\",\"Proportion\":\"∷\",\"propto\":\"∝\",\"prsim\":\"≾\",\"prurel\":\"⊰\",\"Pscr\":\"𝒫\",\"pscr\":\"𝓅\",\"Psi\":\"Ψ\",\"psi\":\"ψ\",\"puncsp\":\" \",\"Qfr\":\"𝔔\",\"qfr\":\"𝔮\",\"qint\":\"⨌\",\"qopf\":\"𝕢\",\"Qopf\":\"ℚ\",\"qprime\":\"⁗\",\"Qscr\":\"𝒬\",\"qscr\":\"𝓆\",\"quaternions\":\"ℍ\",\"quatint\":\"⨖\",\"quest\":\"?\",\"questeq\":\"≟\",\"quot\":\"\\\"\",\"QUOT\":\"\\\"\",\"rAarr\":\"⇛\",\"race\":\"∽̱\",\"Racute\":\"Ŕ\",\"racute\":\"ŕ\",\"radic\":\"√\",\"raemptyv\":\"⦳\",\"rang\":\"⟩\",\"Rang\":\"⟫\",\"rangd\":\"⦒\",\"range\":\"⦥\",\"rangle\":\"⟩\",\"raquo\":\"»\",\"rarrap\":\"⥵\",\"rarrb\":\"⇥\",\"rarrbfs\":\"⤠\",\"rarrc\":\"⤳\",\"rarr\":\"→\",\"Rarr\":\"↠\",\"rArr\":\"⇒\",\"rarrfs\":\"⤞\",\"rarrhk\":\"↪\",\"rarrlp\":\"↬\",\"rarrpl\":\"⥅\",\"rarrsim\":\"⥴\",\"Rarrtl\":\"⤖\",\"rarrtl\":\"↣\",\"rarrw\":\"↝\",\"ratail\":\"⤚\",\"rAtail\":\"⤜\",\"ratio\":\"∶\",\"rationals\":\"ℚ\",\"rbarr\":\"⤍\",\"rBarr\":\"⤏\",\"RBarr\":\"⤐\",\"rbbrk\":\"❳\",\"rbrace\":\"}\",\"rbrack\":\"]\",\"rbrke\":\"⦌\",\"rbrksld\":\"⦎\",\"rbrkslu\":\"⦐\",\"Rcaron\":\"Ř\",\"rcaron\":\"ř\",\"Rcedil\":\"Ŗ\",\"rcedil\":\"ŗ\",\"rceil\":\"⌉\",\"rcub\":\"}\",\"Rcy\":\"Р\",\"rcy\":\"р\",\"rdca\":\"⤷\",\"rdldhar\":\"⥩\",\"rdquo\":\"”\",\"rdquor\":\"”\",\"rdsh\":\"↳\",\"real\":\"ℜ\",\"realine\":\"ℛ\",\"realpart\":\"ℜ\",\"reals\":\"ℝ\",\"Re\":\"ℜ\",\"rect\":\"▭\",\"reg\":\"®\",\"REG\":\"®\",\"ReverseElement\":\"∋\",\"ReverseEquilibrium\":\"⇋\",\"ReverseUpEquilibrium\":\"⥯\",\"rfisht\":\"⥽\",\"rfloor\":\"⌋\",\"rfr\":\"𝔯\",\"Rfr\":\"ℜ\",\"rHar\":\"⥤\",\"rhard\":\"⇁\",\"rharu\":\"⇀\",\"rharul\":\"⥬\",\"Rho\":\"Ρ\",\"rho\":\"ρ\",\"rhov\":\"ϱ\",\"RightAngleBracket\":\"⟩\",\"RightArrowBar\":\"⇥\",\"rightarrow\":\"→\",\"RightArrow\":\"→\",\"Rightarrow\":\"⇒\",\"RightArrowLeftArrow\":\"⇄\",\"rightarrowtail\":\"↣\",\"RightCeiling\":\"⌉\",\"RightDoubleBracket\":\"⟧\",\"RightDownTeeVector\":\"⥝\",\"RightDownVectorBar\":\"⥕\",\"RightDownVector\":\"⇂\",\"RightFloor\":\"⌋\",\"rightharpoondown\":\"⇁\",\"rightharpoonup\":\"⇀\",\"rightleftarrows\":\"⇄\",\"rightleftharpoons\":\"⇌\",\"rightrightarrows\":\"⇉\",\"rightsquigarrow\":\"↝\",\"RightTeeArrow\":\"↦\",\"RightTee\":\"⊢\",\"RightTeeVector\":\"⥛\",\"rightthreetimes\":\"⋌\",\"RightTriangleBar\":\"⧐\",\"RightTriangle\":\"⊳\",\"RightTriangleEqual\":\"⊵\",\"RightUpDownVector\":\"⥏\",\"RightUpTeeVector\":\"⥜\",\"RightUpVectorBar\":\"⥔\",\"RightUpVector\":\"↾\",\"RightVectorBar\":\"⥓\",\"RightVector\":\"⇀\",\"ring\":\"˚\",\"risingdotseq\":\"≓\",\"rlarr\":\"⇄\",\"rlhar\":\"⇌\",\"rlm\":\"‏\",\"rmoustache\":\"⎱\",\"rmoust\":\"⎱\",\"rnmid\":\"⫮\",\"roang\":\"⟭\",\"roarr\":\"⇾\",\"robrk\":\"⟧\",\"ropar\":\"⦆\",\"ropf\":\"𝕣\",\"Ropf\":\"ℝ\",\"roplus\":\"⨮\",\"rotimes\":\"⨵\",\"RoundImplies\":\"⥰\",\"rpar\":\")\",\"rpargt\":\"⦔\",\"rppolint\":\"⨒\",\"rrarr\":\"⇉\",\"Rrightarrow\":\"⇛\",\"rsaquo\":\"›\",\"rscr\":\"𝓇\",\"Rscr\":\"ℛ\",\"rsh\":\"↱\",\"Rsh\":\"↱\",\"rsqb\":\"]\",\"rsquo\":\"’\",\"rsquor\":\"’\",\"rthree\":\"⋌\",\"rtimes\":\"⋊\",\"rtri\":\"▹\",\"rtrie\":\"⊵\",\"rtrif\":\"▸\",\"rtriltri\":\"⧎\",\"RuleDelayed\":\"⧴\",\"ruluhar\":\"⥨\",\"rx\":\"℞\",\"Sacute\":\"Ś\",\"sacute\":\"ś\",\"sbquo\":\"‚\",\"scap\":\"⪸\",\"Scaron\":\"Š\",\"scaron\":\"š\",\"Sc\":\"⪼\",\"sc\":\"≻\",\"sccue\":\"≽\",\"sce\":\"⪰\",\"scE\":\"⪴\",\"Scedil\":\"Ş\",\"scedil\":\"ş\",\"Scirc\":\"Ŝ\",\"scirc\":\"ŝ\",\"scnap\":\"⪺\",\"scnE\":\"⪶\",\"scnsim\":\"⋩\",\"scpolint\":\"⨓\",\"scsim\":\"≿\",\"Scy\":\"С\",\"scy\":\"с\",\"sdotb\":\"⊡\",\"sdot\":\"⋅\",\"sdote\":\"⩦\",\"searhk\":\"⤥\",\"searr\":\"↘\",\"seArr\":\"⇘\",\"searrow\":\"↘\",\"sect\":\"§\",\"semi\":\";\",\"seswar\":\"⤩\",\"setminus\":\"∖\",\"setmn\":\"∖\",\"sext\":\"✶\",\"Sfr\":\"𝔖\",\"sfr\":\"𝔰\",\"sfrown\":\"⌢\",\"sharp\":\"♯\",\"SHCHcy\":\"Щ\",\"shchcy\":\"щ\",\"SHcy\":\"Ш\",\"shcy\":\"ш\",\"ShortDownArrow\":\"↓\",\"ShortLeftArrow\":\"←\",\"shortmid\":\"∣\",\"shortparallel\":\"∥\",\"ShortRightArrow\":\"→\",\"ShortUpArrow\":\"↑\",\"shy\":\"­\",\"Sigma\":\"Σ\",\"sigma\":\"σ\",\"sigmaf\":\"ς\",\"sigmav\":\"ς\",\"sim\":\"∼\",\"simdot\":\"⩪\",\"sime\":\"≃\",\"simeq\":\"≃\",\"simg\":\"⪞\",\"simgE\":\"⪠\",\"siml\":\"⪝\",\"simlE\":\"⪟\",\"simne\":\"≆\",\"simplus\":\"⨤\",\"simrarr\":\"⥲\",\"slarr\":\"←\",\"SmallCircle\":\"∘\",\"smallsetminus\":\"∖\",\"smashp\":\"⨳\",\"smeparsl\":\"⧤\",\"smid\":\"∣\",\"smile\":\"⌣\",\"smt\":\"⪪\",\"smte\":\"⪬\",\"smtes\":\"⪬︀\",\"SOFTcy\":\"Ь\",\"softcy\":\"ь\",\"solbar\":\"⌿\",\"solb\":\"⧄\",\"sol\":\"/\",\"Sopf\":\"𝕊\",\"sopf\":\"𝕤\",\"spades\":\"♠\",\"spadesuit\":\"♠\",\"spar\":\"∥\",\"sqcap\":\"⊓\",\"sqcaps\":\"⊓︀\",\"sqcup\":\"⊔\",\"sqcups\":\"⊔︀\",\"Sqrt\":\"√\",\"sqsub\":\"⊏\",\"sqsube\":\"⊑\",\"sqsubset\":\"⊏\",\"sqsubseteq\":\"⊑\",\"sqsup\":\"⊐\",\"sqsupe\":\"⊒\",\"sqsupset\":\"⊐\",\"sqsupseteq\":\"⊒\",\"square\":\"□\",\"Square\":\"□\",\"SquareIntersection\":\"⊓\",\"SquareSubset\":\"⊏\",\"SquareSubsetEqual\":\"⊑\",\"SquareSuperset\":\"⊐\",\"SquareSupersetEqual\":\"⊒\",\"SquareUnion\":\"⊔\",\"squarf\":\"▪\",\"squ\":\"□\",\"squf\":\"▪\",\"srarr\":\"→\",\"Sscr\":\"𝒮\",\"sscr\":\"𝓈\",\"ssetmn\":\"∖\",\"ssmile\":\"⌣\",\"sstarf\":\"⋆\",\"Star\":\"⋆\",\"star\":\"☆\",\"starf\":\"★\",\"straightepsilon\":\"ϵ\",\"straightphi\":\"ϕ\",\"strns\":\"¯\",\"sub\":\"⊂\",\"Sub\":\"⋐\",\"subdot\":\"⪽\",\"subE\":\"⫅\",\"sube\":\"⊆\",\"subedot\":\"⫃\",\"submult\":\"⫁\",\"subnE\":\"⫋\",\"subne\":\"⊊\",\"subplus\":\"⪿\",\"subrarr\":\"⥹\",\"subset\":\"⊂\",\"Subset\":\"⋐\",\"subseteq\":\"⊆\",\"subseteqq\":\"⫅\",\"SubsetEqual\":\"⊆\",\"subsetneq\":\"⊊\",\"subsetneqq\":\"⫋\",\"subsim\":\"⫇\",\"subsub\":\"⫕\",\"subsup\":\"⫓\",\"succapprox\":\"⪸\",\"succ\":\"≻\",\"succcurlyeq\":\"≽\",\"Succeeds\":\"≻\",\"SucceedsEqual\":\"⪰\",\"SucceedsSlantEqual\":\"≽\",\"SucceedsTilde\":\"≿\",\"succeq\":\"⪰\",\"succnapprox\":\"⪺\",\"succneqq\":\"⪶\",\"succnsim\":\"⋩\",\"succsim\":\"≿\",\"SuchThat\":\"∋\",\"sum\":\"∑\",\"Sum\":\"∑\",\"sung\":\"♪\",\"sup1\":\"¹\",\"sup2\":\"²\",\"sup3\":\"³\",\"sup\":\"⊃\",\"Sup\":\"⋑\",\"supdot\":\"⪾\",\"supdsub\":\"⫘\",\"supE\":\"⫆\",\"supe\":\"⊇\",\"supedot\":\"⫄\",\"Superset\":\"⊃\",\"SupersetEqual\":\"⊇\",\"suphsol\":\"⟉\",\"suphsub\":\"⫗\",\"suplarr\":\"⥻\",\"supmult\":\"⫂\",\"supnE\":\"⫌\",\"supne\":\"⊋\",\"supplus\":\"⫀\",\"supset\":\"⊃\",\"Supset\":\"⋑\",\"supseteq\":\"⊇\",\"supseteqq\":\"⫆\",\"supsetneq\":\"⊋\",\"supsetneqq\":\"⫌\",\"supsim\":\"⫈\",\"supsub\":\"⫔\",\"supsup\":\"⫖\",\"swarhk\":\"⤦\",\"swarr\":\"↙\",\"swArr\":\"⇙\",\"swarrow\":\"↙\",\"swnwar\":\"⤪\",\"szlig\":\"ß\",\"Tab\":\"\\t\",\"target\":\"⌖\",\"Tau\":\"Τ\",\"tau\":\"τ\",\"tbrk\":\"⎴\",\"Tcaron\":\"Ť\",\"tcaron\":\"ť\",\"Tcedil\":\"Ţ\",\"tcedil\":\"ţ\",\"Tcy\":\"Т\",\"tcy\":\"т\",\"tdot\":\"⃛\",\"telrec\":\"⌕\",\"Tfr\":\"𝔗\",\"tfr\":\"𝔱\",\"there4\":\"∴\",\"therefore\":\"∴\",\"Therefore\":\"∴\",\"Theta\":\"Θ\",\"theta\":\"θ\",\"thetasym\":\"ϑ\",\"thetav\":\"ϑ\",\"thickapprox\":\"≈\",\"thicksim\":\"∼\",\"ThickSpace\":\"  \",\"ThinSpace\":\" \",\"thinsp\":\" \",\"thkap\":\"≈\",\"thksim\":\"∼\",\"THORN\":\"Þ\",\"thorn\":\"þ\",\"tilde\":\"˜\",\"Tilde\":\"∼\",\"TildeEqual\":\"≃\",\"TildeFullEqual\":\"≅\",\"TildeTilde\":\"≈\",\"timesbar\":\"⨱\",\"timesb\":\"⊠\",\"times\":\"×\",\"timesd\":\"⨰\",\"tint\":\"∭\",\"toea\":\"⤨\",\"topbot\":\"⌶\",\"topcir\":\"⫱\",\"top\":\"⊤\",\"Topf\":\"𝕋\",\"topf\":\"𝕥\",\"topfork\":\"⫚\",\"tosa\":\"⤩\",\"tprime\":\"‴\",\"trade\":\"™\",\"TRADE\":\"™\",\"triangle\":\"▵\",\"triangledown\":\"▿\",\"triangleleft\":\"◃\",\"trianglelefteq\":\"⊴\",\"triangleq\":\"≜\",\"triangleright\":\"▹\",\"trianglerighteq\":\"⊵\",\"tridot\":\"◬\",\"trie\":\"≜\",\"triminus\":\"⨺\",\"TripleDot\":\"⃛\",\"triplus\":\"⨹\",\"trisb\":\"⧍\",\"tritime\":\"⨻\",\"trpezium\":\"⏢\",\"Tscr\":\"𝒯\",\"tscr\":\"𝓉\",\"TScy\":\"Ц\",\"tscy\":\"ц\",\"TSHcy\":\"Ћ\",\"tshcy\":\"ћ\",\"Tstrok\":\"Ŧ\",\"tstrok\":\"ŧ\",\"twixt\":\"≬\",\"twoheadleftarrow\":\"↞\",\"twoheadrightarrow\":\"↠\",\"Uacute\":\"Ú\",\"uacute\":\"ú\",\"uarr\":\"↑\",\"Uarr\":\"↟\",\"uArr\":\"⇑\",\"Uarrocir\":\"⥉\",\"Ubrcy\":\"Ў\",\"ubrcy\":\"ў\",\"Ubreve\":\"Ŭ\",\"ubreve\":\"ŭ\",\"Ucirc\":\"Û\",\"ucirc\":\"û\",\"Ucy\":\"У\",\"ucy\":\"у\",\"udarr\":\"⇅\",\"Udblac\":\"Ű\",\"udblac\":\"ű\",\"udhar\":\"⥮\",\"ufisht\":\"⥾\",\"Ufr\":\"𝔘\",\"ufr\":\"𝔲\",\"Ugrave\":\"Ù\",\"ugrave\":\"ù\",\"uHar\":\"⥣\",\"uharl\":\"↿\",\"uharr\":\"↾\",\"uhblk\":\"▀\",\"ulcorn\":\"⌜\",\"ulcorner\":\"⌜\",\"ulcrop\":\"⌏\",\"ultri\":\"◸\",\"Umacr\":\"Ū\",\"umacr\":\"ū\",\"uml\":\"¨\",\"UnderBar\":\"_\",\"UnderBrace\":\"⏟\",\"UnderBracket\":\"⎵\",\"UnderParenthesis\":\"⏝\",\"Union\":\"⋃\",\"UnionPlus\":\"⊎\",\"Uogon\":\"Ų\",\"uogon\":\"ų\",\"Uopf\":\"𝕌\",\"uopf\":\"𝕦\",\"UpArrowBar\":\"⤒\",\"uparrow\":\"↑\",\"UpArrow\":\"↑\",\"Uparrow\":\"⇑\",\"UpArrowDownArrow\":\"⇅\",\"updownarrow\":\"↕\",\"UpDownArrow\":\"↕\",\"Updownarrow\":\"⇕\",\"UpEquilibrium\":\"⥮\",\"upharpoonleft\":\"↿\",\"upharpoonright\":\"↾\",\"uplus\":\"⊎\",\"UpperLeftArrow\":\"↖\",\"UpperRightArrow\":\"↗\",\"upsi\":\"υ\",\"Upsi\":\"ϒ\",\"upsih\":\"ϒ\",\"Upsilon\":\"Υ\",\"upsilon\":\"υ\",\"UpTeeArrow\":\"↥\",\"UpTee\":\"⊥\",\"upuparrows\":\"⇈\",\"urcorn\":\"⌝\",\"urcorner\":\"⌝\",\"urcrop\":\"⌎\",\"Uring\":\"Ů\",\"uring\":\"ů\",\"urtri\":\"◹\",\"Uscr\":\"𝒰\",\"uscr\":\"𝓊\",\"utdot\":\"⋰\",\"Utilde\":\"Ũ\",\"utilde\":\"ũ\",\"utri\":\"▵\",\"utrif\":\"▴\",\"uuarr\":\"⇈\",\"Uuml\":\"Ü\",\"uuml\":\"ü\",\"uwangle\":\"⦧\",\"vangrt\":\"⦜\",\"varepsilon\":\"ϵ\",\"varkappa\":\"ϰ\",\"varnothing\":\"∅\",\"varphi\":\"ϕ\",\"varpi\":\"ϖ\",\"varpropto\":\"∝\",\"varr\":\"↕\",\"vArr\":\"⇕\",\"varrho\":\"ϱ\",\"varsigma\":\"ς\",\"varsubsetneq\":\"⊊︀\",\"varsubsetneqq\":\"⫋︀\",\"varsupsetneq\":\"⊋︀\",\"varsupsetneqq\":\"⫌︀\",\"vartheta\":\"ϑ\",\"vartriangleleft\":\"⊲\",\"vartriangleright\":\"⊳\",\"vBar\":\"⫨\",\"Vbar\":\"⫫\",\"vBarv\":\"⫩\",\"Vcy\":\"В\",\"vcy\":\"в\",\"vdash\":\"⊢\",\"vDash\":\"⊨\",\"Vdash\":\"⊩\",\"VDash\":\"⊫\",\"Vdashl\":\"⫦\",\"veebar\":\"⊻\",\"vee\":\"∨\",\"Vee\":\"⋁\",\"veeeq\":\"≚\",\"vellip\":\"⋮\",\"verbar\":\"|\",\"Verbar\":\"‖\",\"vert\":\"|\",\"Vert\":\"‖\",\"VerticalBar\":\"∣\",\"VerticalLine\":\"|\",\"VerticalSeparator\":\"❘\",\"VerticalTilde\":\"≀\",\"VeryThinSpace\":\" \",\"Vfr\":\"𝔙\",\"vfr\":\"𝔳\",\"vltri\":\"⊲\",\"vnsub\":\"⊂⃒\",\"vnsup\":\"⊃⃒\",\"Vopf\":\"𝕍\",\"vopf\":\"𝕧\",\"vprop\":\"∝\",\"vrtri\":\"⊳\",\"Vscr\":\"𝒱\",\"vscr\":\"𝓋\",\"vsubnE\":\"⫋︀\",\"vsubne\":\"⊊︀\",\"vsupnE\":\"⫌︀\",\"vsupne\":\"⊋︀\",\"Vvdash\":\"⊪\",\"vzigzag\":\"⦚\",\"Wcirc\":\"Ŵ\",\"wcirc\":\"ŵ\",\"wedbar\":\"⩟\",\"wedge\":\"∧\",\"Wedge\":\"⋀\",\"wedgeq\":\"≙\",\"weierp\":\"℘\",\"Wfr\":\"𝔚\",\"wfr\":\"𝔴\",\"Wopf\":\"𝕎\",\"wopf\":\"𝕨\",\"wp\":\"℘\",\"wr\":\"≀\",\"wreath\":\"≀\",\"Wscr\":\"𝒲\",\"wscr\":\"𝓌\",\"xcap\":\"⋂\",\"xcirc\":\"◯\",\"xcup\":\"⋃\",\"xdtri\":\"▽\",\"Xfr\":\"𝔛\",\"xfr\":\"𝔵\",\"xharr\":\"⟷\",\"xhArr\":\"⟺\",\"Xi\":\"Ξ\",\"xi\":\"ξ\",\"xlarr\":\"⟵\",\"xlArr\":\"⟸\",\"xmap\":\"⟼\",\"xnis\":\"⋻\",\"xodot\":\"⨀\",\"Xopf\":\"𝕏\",\"xopf\":\"𝕩\",\"xoplus\":\"⨁\",\"xotime\":\"⨂\",\"xrarr\":\"⟶\",\"xrArr\":\"⟹\",\"Xscr\":\"𝒳\",\"xscr\":\"𝓍\",\"xsqcup\":\"⨆\",\"xuplus\":\"⨄\",\"xutri\":\"△\",\"xvee\":\"⋁\",\"xwedge\":\"⋀\",\"Yacute\":\"Ý\",\"yacute\":\"ý\",\"YAcy\":\"Я\",\"yacy\":\"я\",\"Ycirc\":\"Ŷ\",\"ycirc\":\"ŷ\",\"Ycy\":\"Ы\",\"ycy\":\"ы\",\"yen\":\"¥\",\"Yfr\":\"𝔜\",\"yfr\":\"𝔶\",\"YIcy\":\"Ї\",\"yicy\":\"ї\",\"Yopf\":\"𝕐\",\"yopf\":\"𝕪\",\"Yscr\":\"𝒴\",\"yscr\":\"𝓎\",\"YUcy\":\"Ю\",\"yucy\":\"ю\",\"yuml\":\"ÿ\",\"Yuml\":\"Ÿ\",\"Zacute\":\"Ź\",\"zacute\":\"ź\",\"Zcaron\":\"Ž\",\"zcaron\":\"ž\",\"Zcy\":\"З\",\"zcy\":\"з\",\"Zdot\":\"Ż\",\"zdot\":\"ż\",\"zeetrf\":\"ℨ\",\"ZeroWidthSpace\":\"​\",\"Zeta\":\"Ζ\",\"zeta\":\"ζ\",\"zfr\":\"𝔷\",\"Zfr\":\"ℨ\",\"ZHcy\":\"Ж\",\"zhcy\":\"ж\",\"zigrarr\":\"⇝\",\"zopf\":\"𝕫\",\"Zopf\":\"ℤ\",\"Zscr\":\"𝒵\",\"zscr\":\"𝓏\",\"zwj\":\"‍\",\"zwnj\":\"‌\"}");
-
-/***/ }),
-
-/***/ "./node_modules/rdfa-streaming-parser/node_modules/entities/lib/maps/legacy.json":
-/*!***************************************************************************************!*\
-  !*** ./node_modules/rdfa-streaming-parser/node_modules/entities/lib/maps/legacy.json ***!
-  \***************************************************************************************/
-/*! exports provided: Aacute, aacute, Acirc, acirc, acute, AElig, aelig, Agrave, agrave, amp, AMP, Aring, aring, Atilde, atilde, Auml, auml, brvbar, Ccedil, ccedil, cedil, cent, copy, COPY, curren, deg, divide, Eacute, eacute, Ecirc, ecirc, Egrave, egrave, ETH, eth, Euml, euml, frac12, frac14, frac34, gt, GT, Iacute, iacute, Icirc, icirc, iexcl, Igrave, igrave, iquest, Iuml, iuml, laquo, lt, LT, macr, micro, middot, nbsp, not, Ntilde, ntilde, Oacute, oacute, Ocirc, ocirc, Ograve, ograve, ordf, ordm, Oslash, oslash, Otilde, otilde, Ouml, ouml, para, plusmn, pound, quot, QUOT, raquo, reg, REG, sect, shy, sup1, sup2, sup3, szlig, THORN, thorn, times, Uacute, uacute, Ucirc, ucirc, Ugrave, ugrave, uml, Uuml, uuml, Yacute, yacute, yen, yuml, default */
-/***/ (function(module) {
-
-module.exports = JSON.parse("{\"Aacute\":\"Á\",\"aacute\":\"á\",\"Acirc\":\"Â\",\"acirc\":\"â\",\"acute\":\"´\",\"AElig\":\"Æ\",\"aelig\":\"æ\",\"Agrave\":\"À\",\"agrave\":\"à\",\"amp\":\"&\",\"AMP\":\"&\",\"Aring\":\"Å\",\"aring\":\"å\",\"Atilde\":\"Ã\",\"atilde\":\"ã\",\"Auml\":\"Ä\",\"auml\":\"ä\",\"brvbar\":\"¦\",\"Ccedil\":\"Ç\",\"ccedil\":\"ç\",\"cedil\":\"¸\",\"cent\":\"¢\",\"copy\":\"©\",\"COPY\":\"©\",\"curren\":\"¤\",\"deg\":\"°\",\"divide\":\"÷\",\"Eacute\":\"É\",\"eacute\":\"é\",\"Ecirc\":\"Ê\",\"ecirc\":\"ê\",\"Egrave\":\"È\",\"egrave\":\"è\",\"ETH\":\"Ð\",\"eth\":\"ð\",\"Euml\":\"Ë\",\"euml\":\"ë\",\"frac12\":\"½\",\"frac14\":\"¼\",\"frac34\":\"¾\",\"gt\":\">\",\"GT\":\">\",\"Iacute\":\"Í\",\"iacute\":\"í\",\"Icirc\":\"Î\",\"icirc\":\"î\",\"iexcl\":\"¡\",\"Igrave\":\"Ì\",\"igrave\":\"ì\",\"iquest\":\"¿\",\"Iuml\":\"Ï\",\"iuml\":\"ï\",\"laquo\":\"«\",\"lt\":\"<\",\"LT\":\"<\",\"macr\":\"¯\",\"micro\":\"µ\",\"middot\":\"·\",\"nbsp\":\" \",\"not\":\"¬\",\"Ntilde\":\"Ñ\",\"ntilde\":\"ñ\",\"Oacute\":\"Ó\",\"oacute\":\"ó\",\"Ocirc\":\"Ô\",\"ocirc\":\"ô\",\"Ograve\":\"Ò\",\"ograve\":\"ò\",\"ordf\":\"ª\",\"ordm\":\"º\",\"Oslash\":\"Ø\",\"oslash\":\"ø\",\"Otilde\":\"Õ\",\"otilde\":\"õ\",\"Ouml\":\"Ö\",\"ouml\":\"ö\",\"para\":\"¶\",\"plusmn\":\"±\",\"pound\":\"£\",\"quot\":\"\\\"\",\"QUOT\":\"\\\"\",\"raquo\":\"»\",\"reg\":\"®\",\"REG\":\"®\",\"sect\":\"§\",\"shy\":\"­\",\"sup1\":\"¹\",\"sup2\":\"²\",\"sup3\":\"³\",\"szlig\":\"ß\",\"THORN\":\"Þ\",\"thorn\":\"þ\",\"times\":\"×\",\"Uacute\":\"Ú\",\"uacute\":\"ú\",\"Ucirc\":\"Û\",\"ucirc\":\"û\",\"Ugrave\":\"Ù\",\"ugrave\":\"ù\",\"uml\":\"¨\",\"Uuml\":\"Ü\",\"uuml\":\"ü\",\"Yacute\":\"Ý\",\"yacute\":\"ý\",\"yen\":\"¥\",\"yuml\":\"ÿ\"}");
-
-/***/ }),
-
-/***/ "./node_modules/rdfa-streaming-parser/node_modules/entities/lib/maps/xml.json":
-/*!************************************************************************************!*\
-  !*** ./node_modules/rdfa-streaming-parser/node_modules/entities/lib/maps/xml.json ***!
-  \************************************************************************************/
-/*! exports provided: amp, apos, gt, lt, quot, default */
-/***/ (function(module) {
-
-module.exports = JSON.parse("{\"amp\":\"&\",\"apos\":\"'\",\"gt\":\">\",\"lt\":\"<\",\"quot\":\"\\\"\"}");
-
-/***/ }),
-
-/***/ "./node_modules/rdfa-streaming-parser/node_modules/htmlparser2/lib/CollectingHandler.js":
-/*!**********************************************************************************************!*\
-  !*** ./node_modules/rdfa-streaming-parser/node_modules/htmlparser2/lib/CollectingHandler.js ***!
-  \**********************************************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-var __extends = (this && this.__extends) || (function () {
-    var extendStatics = function (d, b) {
-        extendStatics = Object.setPrototypeOf ||
-            ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
-            function (d, b) { for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p]; };
-        return extendStatics(d, b);
-    };
-    return function (d, b) {
-        extendStatics(d, b);
-        function __() { this.constructor = d; }
-        d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
-    };
-})();
-var __importDefault = (this && this.__importDefault) || function (mod) {
-    return (mod && mod.__esModule) ? mod : { "default": mod };
-};
-Object.defineProperty(exports, "__esModule", { value: true });
-var MultiplexHandler_1 = __importDefault(__webpack_require__(/*! ./MultiplexHandler */ "./node_modules/rdfa-streaming-parser/node_modules/htmlparser2/lib/MultiplexHandler.js"));
-var CollectingHandler = /** @class */ (function (_super) {
-    __extends(CollectingHandler, _super);
-    function CollectingHandler(cbs) {
-        if (cbs === void 0) { cbs = {}; }
-        var _this = _super.call(this, function (name) {
-            var _a;
-            var args = [];
-            for (var _i = 1; _i < arguments.length; _i++) {
-                args[_i - 1] = arguments[_i];
-            }
-            _this.events.push([name].concat(args));
-            // @ts-ignore
-            if (_this._cbs[name])
-                (_a = _this._cbs)[name].apply(_a, args);
-        }) || this;
-        _this._cbs = cbs;
-        _this.events = [];
-        return _this;
-    }
-    CollectingHandler.prototype.onreset = function () {
-        this.events = [];
-        if (this._cbs.onreset)
-            this._cbs.onreset();
-    };
-    CollectingHandler.prototype.restart = function () {
-        var _a;
-        if (this._cbs.onreset)
-            this._cbs.onreset();
-        for (var i = 0; i < this.events.length; i++) {
-            var _b = this.events[i], name_1 = _b[0], args = _b.slice(1);
-            if (!this._cbs[name_1]) {
-                continue;
-            }
-            // @ts-ignore
-            (_a = this._cbs)[name_1].apply(_a, args);
-        }
-    };
-    return CollectingHandler;
-}(MultiplexHandler_1.default));
-exports.CollectingHandler = CollectingHandler;
-
-
-/***/ }),
-
-/***/ "./node_modules/rdfa-streaming-parser/node_modules/htmlparser2/lib/FeedHandler.js":
-/*!****************************************************************************************!*\
-  !*** ./node_modules/rdfa-streaming-parser/node_modules/htmlparser2/lib/FeedHandler.js ***!
-  \****************************************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-var __extends = (this && this.__extends) || (function () {
-    var extendStatics = function (d, b) {
-        extendStatics = Object.setPrototypeOf ||
-            ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
-            function (d, b) { for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p]; };
-        return extendStatics(d, b);
-    };
-    return function (d, b) {
-        extendStatics(d, b);
-        function __() { this.constructor = d; }
-        d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
-    };
-})();
-var __importDefault = (this && this.__importDefault) || function (mod) {
-    return (mod && mod.__esModule) ? mod : { "default": mod };
-};
-var __importStar = (this && this.__importStar) || function (mod) {
-    if (mod && mod.__esModule) return mod;
-    var result = {};
-    if (mod != null) for (var k in mod) if (Object.hasOwnProperty.call(mod, k)) result[k] = mod[k];
-    result["default"] = mod;
-    return result;
-};
-Object.defineProperty(exports, "__esModule", { value: true });
-var domhandler_1 = __importDefault(__webpack_require__(/*! domhandler */ "./node_modules/rdfa-streaming-parser/node_modules/domhandler/lib/index.js"));
-var DomUtils = __importStar(__webpack_require__(/*! domutils */ "./node_modules/rdfa-streaming-parser/node_modules/domutils/lib/index.js"));
-var Parser_1 = __webpack_require__(/*! ./Parser */ "./node_modules/rdfa-streaming-parser/node_modules/htmlparser2/lib/Parser.js");
-//TODO: Consume data as it is coming in
-var FeedHandler = /** @class */ (function (_super) {
-    __extends(FeedHandler, _super);
-    /**
-     *
-     * @param callback
-     * @param options
-     */
-    function FeedHandler(callback, options) {
-        var _this = this;
-        if (typeof callback === "object" && callback !== null) {
-            callback = undefined;
-            options = callback;
-        }
-        _this = _super.call(this, callback, options) || this;
-        return _this;
-    }
-    FeedHandler.prototype.onend = function () {
-        var feed = {};
-        var feedRoot = getOneElement(isValidFeed, this.dom);
-        if (feedRoot) {
-            if (feedRoot.name === "feed") {
-                var childs = feedRoot.children;
-                feed.type = "atom";
-                addConditionally(feed, "id", "id", childs);
-                addConditionally(feed, "title", "title", childs);
-                var href = getAttribute("href", getOneElement("link", childs));
-                if (href) {
-                    feed.link = href;
-                }
-                addConditionally(feed, "description", "subtitle", childs);
-                var updated = fetch("updated", childs);
-                if (updated) {
-                    feed.updated = new Date(updated);
-                }
-                addConditionally(feed, "author", "email", childs, true);
-                feed.items = getElements("entry", childs).map(function (item) {
-                    var entry = {};
-                    var children = item.children;
-                    addConditionally(entry, "id", "id", children);
-                    addConditionally(entry, "title", "title", children);
-                    var href = getAttribute("href", getOneElement("link", children));
-                    if (href) {
-                        entry.link = href;
-                    }
-                    var description = fetch("summary", children) ||
-                        fetch("content", children);
-                    if (description) {
-                        entry.description = description;
-                    }
-                    var pubDate = fetch("updated", children);
-                    if (pubDate) {
-                        entry.pubDate = new Date(pubDate);
-                    }
-                    return entry;
-                });
-            }
-            else {
-                var childs = getOneElement("channel", feedRoot.children)
-                    .children;
-                feed.type = feedRoot.name.substr(0, 3);
-                feed.id = "";
-                addConditionally(feed, "title", "title", childs);
-                addConditionally(feed, "link", "link", childs);
-                addConditionally(feed, "description", "description", childs);
-                var updated = fetch("lastBuildDate", childs);
-                if (updated) {
-                    feed.updated = new Date(updated);
-                }
-                addConditionally(feed, "author", "managingEditor", childs, true);
-                feed.items = getElements("item", feedRoot.children).map(function (item) {
-                    var entry = {};
-                    var children = item.children;
-                    addConditionally(entry, "id", "guid", children);
-                    addConditionally(entry, "title", "title", children);
-                    addConditionally(entry, "link", "link", children);
-                    addConditionally(entry, "description", "description", children);
-                    var pubDate = fetch("pubDate", children);
-                    if (pubDate)
-                        entry.pubDate = new Date(pubDate);
-                    return entry;
-                });
-            }
-        }
-        this.feed = feed;
-        this.handleCallback(feedRoot ? null : Error("couldn't find root of feed"));
-    };
-    return FeedHandler;
-}(domhandler_1.default));
-exports.FeedHandler = FeedHandler;
-function getElements(what, where) {
-    return DomUtils.getElementsByTagName(what, where, true);
-}
-function getOneElement(what, where) {
-    return DomUtils.getElementsByTagName(what, where, true, 1)[0];
-}
-function fetch(what, where, recurse) {
-    if (recurse === void 0) { recurse = false; }
-    return DomUtils.getText(DomUtils.getElementsByTagName(what, where, recurse, 1)).trim();
-}
-function getAttribute(name, elem) {
-    if (!elem) {
-        return null;
-    }
-    var attribs = elem.attribs;
-    return attribs[name];
-}
-function addConditionally(obj, prop, what, where, recurse) {
-    if (recurse === void 0) { recurse = false; }
-    var tmp = fetch(what, where, recurse);
-    // @ts-ignore
-    if (tmp)
-        obj[prop] = tmp;
-}
-function isValidFeed(value) {
-    return value === "rss" || value === "feed" || value === "rdf:RDF";
-}
-var defaultOptions = { xmlMode: true };
-/**
- * Parse a feed.
- *
- * @param feed The feed that should be parsed, as a string.
- * @param options Optionally, options for parsing. When using this option, you probably want to set `xmlMode` to `true`.
- */
-function parseFeed(feed, options) {
-    if (options === void 0) { options = defaultOptions; }
-    var handler = new FeedHandler(options);
-    new Parser_1.Parser(handler, options).end(feed);
-    return handler.feed;
-}
-exports.parseFeed = parseFeed;
-
-
-/***/ }),
-
-/***/ "./node_modules/rdfa-streaming-parser/node_modules/htmlparser2/lib/MultiplexHandler.js":
-/*!*********************************************************************************************!*\
-  !*** ./node_modules/rdfa-streaming-parser/node_modules/htmlparser2/lib/MultiplexHandler.js ***!
-  \*********************************************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-Object.defineProperty(exports, "__esModule", { value: true });
-/**
- * Calls a specific handler function for all events that are encountered.
- *
- * @param func — The function to multiplex all events to.
- */
-var MultiplexHandler = /** @class */ (function () {
-    function MultiplexHandler(func) {
-        this._func = func;
-    }
-    /* Format: eventname: number of arguments */
-    MultiplexHandler.prototype.onattribute = function (name, value) {
-        this._func("onattribute", name, value);
-    };
-    MultiplexHandler.prototype.oncdatastart = function () {
-        this._func("oncdatastart");
-    };
-    MultiplexHandler.prototype.oncdataend = function () {
-        this._func("oncdataend");
-    };
-    MultiplexHandler.prototype.ontext = function (text) {
-        this._func("ontext", text);
-    };
-    MultiplexHandler.prototype.onprocessinginstruction = function (name, value) {
-        this._func("onprocessinginstruction", name, value);
-    };
-    MultiplexHandler.prototype.oncomment = function (comment) {
-        this._func("oncomment", comment);
-    };
-    MultiplexHandler.prototype.oncommentend = function () {
-        this._func("oncommentend");
-    };
-    MultiplexHandler.prototype.onclosetag = function (name) {
-        this._func("onclosetag", name);
-    };
-    MultiplexHandler.prototype.onopentag = function (name, attribs) {
-        this._func("onopentag", name, attribs);
-    };
-    MultiplexHandler.prototype.onopentagname = function (name) {
-        this._func("onopentagname", name);
-    };
-    MultiplexHandler.prototype.onerror = function (error) {
-        this._func("onerror", error);
-    };
-    MultiplexHandler.prototype.onend = function () {
-        this._func("onend");
-    };
-    MultiplexHandler.prototype.onparserinit = function (parser) {
-        this._func("onparserinit", parser);
-    };
-    MultiplexHandler.prototype.onreset = function () {
-        this._func("onreset");
-    };
-    return MultiplexHandler;
-}());
-exports.default = MultiplexHandler;
-
-
-/***/ }),
-
-/***/ "./node_modules/rdfa-streaming-parser/node_modules/htmlparser2/lib/Parser.js":
-/*!***********************************************************************************!*\
-  !*** ./node_modules/rdfa-streaming-parser/node_modules/htmlparser2/lib/Parser.js ***!
-  \***********************************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-var __extends = (this && this.__extends) || (function () {
-    var extendStatics = function (d, b) {
-        extendStatics = Object.setPrototypeOf ||
-            ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
-            function (d, b) { for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p]; };
-        return extendStatics(d, b);
-    };
-    return function (d, b) {
-        extendStatics(d, b);
-        function __() { this.constructor = d; }
-        d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
-    };
-})();
-var __importDefault = (this && this.__importDefault) || function (mod) {
-    return (mod && mod.__esModule) ? mod : { "default": mod };
-};
-Object.defineProperty(exports, "__esModule", { value: true });
-var Tokenizer_1 = __importDefault(__webpack_require__(/*! ./Tokenizer */ "./node_modules/rdfa-streaming-parser/node_modules/htmlparser2/lib/Tokenizer.js"));
-var events_1 = __webpack_require__(/*! events */ "./node_modules/events/events.js");
-var formTags = new Set([
-    "input",
-    "option",
-    "optgroup",
-    "select",
-    "button",
-    "datalist",
-    "textarea"
-]);
-var pTag = new Set(["p"]);
-var openImpliesClose = {
-    tr: new Set(["tr", "th", "td"]),
-    th: new Set(["th"]),
-    td: new Set(["thead", "th", "td"]),
-    body: new Set(["head", "link", "script"]),
-    li: new Set(["li"]),
-    p: pTag,
-    h1: pTag,
-    h2: pTag,
-    h3: pTag,
-    h4: pTag,
-    h5: pTag,
-    h6: pTag,
-    select: formTags,
-    input: formTags,
-    output: formTags,
-    button: formTags,
-    datalist: formTags,
-    textarea: formTags,
-    option: new Set(["option"]),
-    optgroup: new Set(["optgroup", "option"]),
-    dd: new Set(["dt", "dd"]),
-    dt: new Set(["dt", "dd"]),
-    address: pTag,
-    article: pTag,
-    aside: pTag,
-    blockquote: pTag,
-    details: pTag,
-    div: pTag,
-    dl: pTag,
-    fieldset: pTag,
-    figcaption: pTag,
-    figure: pTag,
-    footer: pTag,
-    form: pTag,
-    header: pTag,
-    hr: pTag,
-    main: pTag,
-    nav: pTag,
-    ol: pTag,
-    pre: pTag,
-    section: pTag,
-    table: pTag,
-    ul: pTag,
-    rt: new Set(["rt", "rp"]),
-    rp: new Set(["rt", "rp"]),
-    tbody: new Set(["thead", "tbody"]),
-    tfoot: new Set(["thead", "tbody"])
-};
-var voidElements = new Set([
-    "area",
-    "base",
-    "basefont",
-    "br",
-    "col",
-    "command",
-    "embed",
-    "frame",
-    "hr",
-    "img",
-    "input",
-    "isindex",
-    "keygen",
-    "link",
-    "meta",
-    "param",
-    "source",
-    "track",
-    "wbr"
-]);
-var foreignContextElements = new Set(["math", "svg"]);
-var htmlIntegrationElements = new Set([
-    "mi",
-    "mo",
-    "mn",
-    "ms",
-    "mtext",
-    "annotation-xml",
-    "foreignObject",
-    "desc",
-    "title"
-]);
-var reNameEnd = /\s|\//;
-var Parser = /** @class */ (function (_super) {
-    __extends(Parser, _super);
-    function Parser(cbs, options) {
-        var _this = _super.call(this) || this;
-        _this._tagname = "";
-        _this._attribname = "";
-        _this._attribvalue = "";
-        _this._attribs = null;
-        _this._stack = [];
-        _this._foreignContext = [];
-        _this.startIndex = 0;
-        _this.endIndex = null;
-        // Aliases for backwards compatibility
-        _this.parseChunk = Parser.prototype.write;
-        _this.done = Parser.prototype.end;
-        _this._options = options || {};
-        _this._cbs = cbs || {};
-        _this._tagname = "";
-        _this._attribname = "";
-        _this._attribvalue = "";
-        _this._attribs = null;
-        _this._stack = [];
-        _this._foreignContext = [];
-        _this.startIndex = 0;
-        _this.endIndex = null;
-        _this._lowerCaseTagNames =
-            "lowerCaseTags" in _this._options
-                ? !!_this._options.lowerCaseTags
-                : !_this._options.xmlMode;
-        _this._lowerCaseAttributeNames =
-            "lowerCaseAttributeNames" in _this._options
-                ? !!_this._options.lowerCaseAttributeNames
-                : !_this._options.xmlMode;
-        _this._tokenizer = new (_this._options.Tokenizer || Tokenizer_1.default)(_this._options, _this);
-        if (_this._cbs.onparserinit)
-            _this._cbs.onparserinit(_this);
-        return _this;
-    }
-    Parser.prototype._updatePosition = function (initialOffset) {
-        if (this.endIndex === null) {
-            if (this._tokenizer._sectionStart <= initialOffset) {
-                this.startIndex = 0;
-            }
-            else {
-                this.startIndex = this._tokenizer._sectionStart - initialOffset;
-            }
-        }
-        else
-            this.startIndex = this.endIndex + 1;
-        this.endIndex = this._tokenizer.getAbsoluteIndex();
-    };
-    //Tokenizer event handlers
-    Parser.prototype.ontext = function (data) {
-        this._updatePosition(1);
-        // @ts-ignore
-        this.endIndex--;
-        if (this._cbs.ontext)
-            this._cbs.ontext(data);
-    };
-    Parser.prototype.onopentagname = function (name) {
-        if (this._lowerCaseTagNames) {
-            name = name.toLowerCase();
-        }
-        this._tagname = name;
-        if (!this._options.xmlMode && name in openImpliesClose) {
-            for (var el = void 0; 
-            // @ts-ignore
-            openImpliesClose[name].has((el = this._stack[this._stack.length - 1])); this.onclosetag(el))
-                ;
-        }
-        if (this._options.xmlMode || !voidElements.has(name)) {
-            this._stack.push(name);
-            if (foreignContextElements.has(name)) {
-                this._foreignContext.push(true);
-            }
-            else if (htmlIntegrationElements.has(name)) {
-                this._foreignContext.push(false);
-            }
-        }
-        if (this._cbs.onopentagname)
-            this._cbs.onopentagname(name);
-        if (this._cbs.onopentag)
-            this._attribs = {};
-    };
-    Parser.prototype.onopentagend = function () {
-        this._updatePosition(1);
-        if (this._attribs) {
-            if (this._cbs.onopentag) {
-                this._cbs.onopentag(this._tagname, this._attribs);
-            }
-            this._attribs = null;
-        }
-        if (!this._options.xmlMode &&
-            this._cbs.onclosetag &&
-            voidElements.has(this._tagname)) {
-            this._cbs.onclosetag(this._tagname);
-        }
-        this._tagname = "";
-    };
-    Parser.prototype.onclosetag = function (name) {
-        this._updatePosition(1);
-        if (this._lowerCaseTagNames) {
-            name = name.toLowerCase();
-        }
-        if (foreignContextElements.has(name) ||
-            htmlIntegrationElements.has(name)) {
-            this._foreignContext.pop();
-        }
-        if (this._stack.length &&
-            (this._options.xmlMode || !voidElements.has(name))) {
-            var pos = this._stack.lastIndexOf(name);
-            if (pos !== -1) {
-                if (this._cbs.onclosetag) {
-                    pos = this._stack.length - pos;
-                    // @ts-ignore
-                    while (pos--)
-                        this._cbs.onclosetag(this._stack.pop());
-                }
-                else
-                    this._stack.length = pos;
-            }
-            else if (name === "p" && !this._options.xmlMode) {
-                this.onopentagname(name);
-                this._closeCurrentTag();
-            }
-        }
-        else if (!this._options.xmlMode && (name === "br" || name === "p")) {
-            this.onopentagname(name);
-            this._closeCurrentTag();
-        }
-    };
-    Parser.prototype.onselfclosingtag = function () {
-        if (this._options.xmlMode ||
-            this._options.recognizeSelfClosing ||
-            this._foreignContext[this._foreignContext.length - 1]) {
-            this._closeCurrentTag();
-        }
-        else {
-            this.onopentagend();
-        }
-    };
-    Parser.prototype._closeCurrentTag = function () {
-        var name = this._tagname;
-        this.onopentagend();
-        //self-closing tags will be on the top of the stack
-        //(cheaper check than in onclosetag)
-        if (this._stack[this._stack.length - 1] === name) {
-            if (this._cbs.onclosetag) {
-                this._cbs.onclosetag(name);
-            }
-            this._stack.pop();
-        }
-    };
-    Parser.prototype.onattribname = function (name) {
-        if (this._lowerCaseAttributeNames) {
-            name = name.toLowerCase();
-        }
-        this._attribname = name;
-    };
-    Parser.prototype.onattribdata = function (value) {
-        this._attribvalue += value;
-    };
-    Parser.prototype.onattribend = function () {
-        if (this._cbs.onattribute)
-            this._cbs.onattribute(this._attribname, this._attribvalue);
-        if (this._attribs &&
-            !Object.prototype.hasOwnProperty.call(this._attribs, this._attribname)) {
-            this._attribs[this._attribname] = this._attribvalue;
-        }
-        this._attribname = "";
-        this._attribvalue = "";
-    };
-    Parser.prototype._getInstructionName = function (value) {
-        var idx = value.search(reNameEnd);
-        var name = idx < 0 ? value : value.substr(0, idx);
-        if (this._lowerCaseTagNames) {
-            name = name.toLowerCase();
-        }
-        return name;
-    };
-    Parser.prototype.ondeclaration = function (value) {
-        if (this._cbs.onprocessinginstruction) {
-            var name_1 = this._getInstructionName(value);
-            this._cbs.onprocessinginstruction("!" + name_1, "!" + value);
-        }
-    };
-    Parser.prototype.onprocessinginstruction = function (value) {
-        if (this._cbs.onprocessinginstruction) {
-            var name_2 = this._getInstructionName(value);
-            this._cbs.onprocessinginstruction("?" + name_2, "?" + value);
-        }
-    };
-    Parser.prototype.oncomment = function (value) {
-        this._updatePosition(4);
-        if (this._cbs.oncomment)
-            this._cbs.oncomment(value);
-        if (this._cbs.oncommentend)
-            this._cbs.oncommentend();
-    };
-    Parser.prototype.oncdata = function (value) {
-        this._updatePosition(1);
-        if (this._options.xmlMode || this._options.recognizeCDATA) {
-            if (this._cbs.oncdatastart)
-                this._cbs.oncdatastart();
-            if (this._cbs.ontext)
-                this._cbs.ontext(value);
-            if (this._cbs.oncdataend)
-                this._cbs.oncdataend();
-        }
-        else {
-            this.oncomment("[CDATA[" + value + "]]");
-        }
-    };
-    Parser.prototype.onerror = function (err) {
-        if (this._cbs.onerror)
-            this._cbs.onerror(err);
-    };
-    Parser.prototype.onend = function () {
-        if (this._cbs.onclosetag) {
-            for (var i = this._stack.length; i > 0; this._cbs.onclosetag(this._stack[--i]))
-                ;
-        }
-        if (this._cbs.onend)
-            this._cbs.onend();
-    };
-    //Resets the parser to a blank state, ready to parse a new HTML document
-    Parser.prototype.reset = function () {
-        if (this._cbs.onreset)
-            this._cbs.onreset();
-        this._tokenizer.reset();
-        this._tagname = "";
-        this._attribname = "";
-        this._attribs = null;
-        this._stack = [];
-        if (this._cbs.onparserinit)
-            this._cbs.onparserinit(this);
-    };
-    //Parses a complete HTML document and pushes it to the handler
-    Parser.prototype.parseComplete = function (data) {
-        this.reset();
-        this.end(data);
-    };
-    Parser.prototype.write = function (chunk) {
-        this._tokenizer.write(chunk);
-    };
-    Parser.prototype.end = function (chunk) {
-        this._tokenizer.end(chunk);
-    };
-    Parser.prototype.pause = function () {
-        this._tokenizer.pause();
-    };
-    Parser.prototype.resume = function () {
-        this._tokenizer.resume();
-    };
-    return Parser;
-}(events_1.EventEmitter));
-exports.Parser = Parser;
-
-
-/***/ }),
-
-/***/ "./node_modules/rdfa-streaming-parser/node_modules/htmlparser2/lib/Tokenizer.js":
-/*!**************************************************************************************!*\
-  !*** ./node_modules/rdfa-streaming-parser/node_modules/htmlparser2/lib/Tokenizer.js ***!
-  \**************************************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-var __importDefault = (this && this.__importDefault) || function (mod) {
-    return (mod && mod.__esModule) ? mod : { "default": mod };
-};
-Object.defineProperty(exports, "__esModule", { value: true });
-var decode_codepoint_1 = __importDefault(__webpack_require__(/*! entities/lib/decode_codepoint */ "./node_modules/rdfa-streaming-parser/node_modules/entities/lib/decode_codepoint.js"));
-var entities_json_1 = __importDefault(__webpack_require__(/*! entities/lib/maps/entities.json */ "./node_modules/rdfa-streaming-parser/node_modules/entities/lib/maps/entities.json"));
-var legacy_json_1 = __importDefault(__webpack_require__(/*! entities/lib/maps/legacy.json */ "./node_modules/rdfa-streaming-parser/node_modules/entities/lib/maps/legacy.json"));
-var xml_json_1 = __importDefault(__webpack_require__(/*! entities/lib/maps/xml.json */ "./node_modules/rdfa-streaming-parser/node_modules/entities/lib/maps/xml.json"));
-function whitespace(c) {
-    return c === " " || c === "\n" || c === "\t" || c === "\f" || c === "\r";
-}
-function ifElseState(upper, SUCCESS, FAILURE) {
-    var lower = upper.toLowerCase();
-    if (upper === lower) {
-        return function (t, c) {
-            if (c === lower) {
-                t._state = SUCCESS;
-            }
-            else {
-                t._state = FAILURE;
-                t._index--;
-            }
-        };
-    }
-    else {
-        return function (t, c) {
-            if (c === lower || c === upper) {
-                t._state = SUCCESS;
-            }
-            else {
-                t._state = FAILURE;
-                t._index--;
-            }
-        };
-    }
-}
-function consumeSpecialNameChar(upper, NEXT_STATE) {
-    var lower = upper.toLowerCase();
-    return function (t, c) {
-        if (c === lower || c === upper) {
-            t._state = NEXT_STATE;
-        }
-        else {
-            t._state = 3 /* InTagName */;
-            t._index--; //consume the token again
-        }
-    };
-}
-var stateBeforeCdata1 = ifElseState("C", 23 /* BeforeCdata2 */, 16 /* InDeclaration */);
-var stateBeforeCdata2 = ifElseState("D", 24 /* BeforeCdata3 */, 16 /* InDeclaration */);
-var stateBeforeCdata3 = ifElseState("A", 25 /* BeforeCdata4 */, 16 /* InDeclaration */);
-var stateBeforeCdata4 = ifElseState("T", 26 /* BeforeCdata5 */, 16 /* InDeclaration */);
-var stateBeforeCdata5 = ifElseState("A", 27 /* BeforeCdata6 */, 16 /* InDeclaration */);
-var stateBeforeScript1 = consumeSpecialNameChar("R", 34 /* BeforeScript2 */);
-var stateBeforeScript2 = consumeSpecialNameChar("I", 35 /* BeforeScript3 */);
-var stateBeforeScript3 = consumeSpecialNameChar("P", 36 /* BeforeScript4 */);
-var stateBeforeScript4 = consumeSpecialNameChar("T", 37 /* BeforeScript5 */);
-var stateAfterScript1 = ifElseState("R", 39 /* AfterScript2 */, 1 /* Text */);
-var stateAfterScript2 = ifElseState("I", 40 /* AfterScript3 */, 1 /* Text */);
-var stateAfterScript3 = ifElseState("P", 41 /* AfterScript4 */, 1 /* Text */);
-var stateAfterScript4 = ifElseState("T", 42 /* AfterScript5 */, 1 /* Text */);
-var stateBeforeStyle1 = consumeSpecialNameChar("Y", 44 /* BeforeStyle2 */);
-var stateBeforeStyle2 = consumeSpecialNameChar("L", 45 /* BeforeStyle3 */);
-var stateBeforeStyle3 = consumeSpecialNameChar("E", 46 /* BeforeStyle4 */);
-var stateAfterStyle1 = ifElseState("Y", 48 /* AfterStyle2 */, 1 /* Text */);
-var stateAfterStyle2 = ifElseState("L", 49 /* AfterStyle3 */, 1 /* Text */);
-var stateAfterStyle3 = ifElseState("E", 50 /* AfterStyle4 */, 1 /* Text */);
-var stateBeforeEntity = ifElseState("#", 52 /* BeforeNumericEntity */, 53 /* InNamedEntity */);
-var stateBeforeNumericEntity = ifElseState("X", 55 /* InHexEntity */, 54 /* InNumericEntity */);
-var Tokenizer = /** @class */ (function () {
-    function Tokenizer(options, cbs) {
-        /** The current state the tokenizer is in. */
-        this._state = 1 /* Text */;
-        /** The read buffer. */
-        this._buffer = "";
-        /** The beginning of the section that is currently being read. */
-        this._sectionStart = 0;
-        /** The index within the buffer that we are currently looking at. */
-        this._index = 0;
-        /**
-         * Data that has already been processed will be removed from the buffer occasionally.
-         * `_bufferOffset` keeps track of how many characters have been removed, to make sure position information is accurate.
-         */
-        this._bufferOffset = 0;
-        /** Some behavior, eg. when decoding entities, is done while we are in another state. This keeps track of the other state type. */
-        this._baseState = 1 /* Text */;
-        /** For special parsing behavior inside of script and style tags. */
-        this._special = 1 /* None */;
-        /** Indicates whether the tokenizer has been paused. */
-        this._running = true;
-        /** Indicates whether the tokenizer has finished running / `.end` has been called. */
-        this._ended = false;
-        this._cbs = cbs;
-        this._xmlMode = !!(options && options.xmlMode);
-        this._decodeEntities = !!(options && options.decodeEntities);
-    }
-    Tokenizer.prototype.reset = function () {
-        this._state = 1 /* Text */;
-        this._buffer = "";
-        this._sectionStart = 0;
-        this._index = 0;
-        this._bufferOffset = 0;
-        this._baseState = 1 /* Text */;
-        this._special = 1 /* None */;
-        this._running = true;
-        this._ended = false;
-    };
-    Tokenizer.prototype._stateText = function (c) {
-        if (c === "<") {
-            if (this._index > this._sectionStart) {
-                this._cbs.ontext(this._getSection());
-            }
-            this._state = 2 /* BeforeTagName */;
-            this._sectionStart = this._index;
-        }
-        else if (this._decodeEntities &&
-            this._special === 1 /* None */ &&
-            c === "&") {
-            if (this._index > this._sectionStart) {
-                this._cbs.ontext(this._getSection());
-            }
-            this._baseState = 1 /* Text */;
-            this._state = 51 /* BeforeEntity */;
-            this._sectionStart = this._index;
-        }
-    };
-    Tokenizer.prototype._stateBeforeTagName = function (c) {
-        if (c === "/") {
-            this._state = 5 /* BeforeClosingTagName */;
-        }
-        else if (c === "<") {
-            this._cbs.ontext(this._getSection());
-            this._sectionStart = this._index;
-        }
-        else if (c === ">" ||
-            this._special !== 1 /* None */ ||
-            whitespace(c)) {
-            this._state = 1 /* Text */;
-        }
-        else if (c === "!") {
-            this._state = 15 /* BeforeDeclaration */;
-            this._sectionStart = this._index + 1;
-        }
-        else if (c === "?") {
-            this._state = 17 /* InProcessingInstruction */;
-            this._sectionStart = this._index + 1;
-        }
-        else {
-            this._state =
-                !this._xmlMode && (c === "s" || c === "S")
-                    ? 31 /* BeforeSpecial */
-                    : 3 /* InTagName */;
-            this._sectionStart = this._index;
-        }
-    };
-    Tokenizer.prototype._stateInTagName = function (c) {
-        if (c === "/" || c === ">" || whitespace(c)) {
-            this._emitToken("onopentagname");
-            this._state = 8 /* BeforeAttributeName */;
-            this._index--;
-        }
-    };
-    Tokenizer.prototype._stateBeforeCloseingTagName = function (c) {
-        if (whitespace(c)) {
-            // ignore
-        }
-        else if (c === ">") {
-            this._state = 1 /* Text */;
-        }
-        else if (this._special !== 1 /* None */) {
-            if (c === "s" || c === "S") {
-                this._state = 32 /* BeforeSpecialEnd */;
-            }
-            else {
-                this._state = 1 /* Text */;
-                this._index--;
-            }
-        }
-        else {
-            this._state = 6 /* InClosingTagName */;
-            this._sectionStart = this._index;
-        }
-    };
-    Tokenizer.prototype._stateInCloseingTagName = function (c) {
-        if (c === ">" || whitespace(c)) {
-            this._emitToken("onclosetag");
-            this._state = 7 /* AfterClosingTagName */;
-            this._index--;
-        }
-    };
-    Tokenizer.prototype._stateAfterCloseingTagName = function (c) {
-        //skip everything until ">"
-        if (c === ">") {
-            this._state = 1 /* Text */;
-            this._sectionStart = this._index + 1;
-        }
-    };
-    Tokenizer.prototype._stateBeforeAttributeName = function (c) {
-        if (c === ">") {
-            this._cbs.onopentagend();
-            this._state = 1 /* Text */;
-            this._sectionStart = this._index + 1;
-        }
-        else if (c === "/") {
-            this._state = 4 /* InSelfClosingTag */;
-        }
-        else if (!whitespace(c)) {
-            this._state = 9 /* InAttributeName */;
-            this._sectionStart = this._index;
-        }
-    };
-    Tokenizer.prototype._stateInSelfClosingTag = function (c) {
-        if (c === ">") {
-            this._cbs.onselfclosingtag();
-            this._state = 1 /* Text */;
-            this._sectionStart = this._index + 1;
-        }
-        else if (!whitespace(c)) {
-            this._state = 8 /* BeforeAttributeName */;
-            this._index--;
-        }
-    };
-    Tokenizer.prototype._stateInAttributeName = function (c) {
-        if (c === "=" || c === "/" || c === ">" || whitespace(c)) {
-            this._cbs.onattribname(this._getSection());
-            this._sectionStart = -1;
-            this._state = 10 /* AfterAttributeName */;
-            this._index--;
-        }
-    };
-    Tokenizer.prototype._stateAfterAttributeName = function (c) {
-        if (c === "=") {
-            this._state = 11 /* BeforeAttributeValue */;
-        }
-        else if (c === "/" || c === ">") {
-            this._cbs.onattribend();
-            this._state = 8 /* BeforeAttributeName */;
-            this._index--;
-        }
-        else if (!whitespace(c)) {
-            this._cbs.onattribend();
-            this._state = 9 /* InAttributeName */;
-            this._sectionStart = this._index;
-        }
-    };
-    Tokenizer.prototype._stateBeforeAttributeValue = function (c) {
-        if (c === '"') {
-            this._state = 12 /* InAttributeValueDq */;
-            this._sectionStart = this._index + 1;
-        }
-        else if (c === "'") {
-            this._state = 13 /* InAttributeValueSq */;
-            this._sectionStart = this._index + 1;
-        }
-        else if (!whitespace(c)) {
-            this._state = 14 /* InAttributeValueNq */;
-            this._sectionStart = this._index;
-            this._index--; //reconsume token
-        }
-    };
-    Tokenizer.prototype._stateInAttributeValueDoubleQuotes = function (c) {
-        if (c === '"') {
-            this._emitToken("onattribdata");
-            this._cbs.onattribend();
-            this._state = 8 /* BeforeAttributeName */;
-        }
-        else if (this._decodeEntities && c === "&") {
-            this._emitToken("onattribdata");
-            this._baseState = this._state;
-            this._state = 51 /* BeforeEntity */;
-            this._sectionStart = this._index;
-        }
-    };
-    Tokenizer.prototype._stateInAttributeValueSingleQuotes = function (c) {
-        if (c === "'") {
-            this._emitToken("onattribdata");
-            this._cbs.onattribend();
-            this._state = 8 /* BeforeAttributeName */;
-        }
-        else if (this._decodeEntities && c === "&") {
-            this._emitToken("onattribdata");
-            this._baseState = this._state;
-            this._state = 51 /* BeforeEntity */;
-            this._sectionStart = this._index;
-        }
-    };
-    Tokenizer.prototype._stateInAttributeValueNoQuotes = function (c) {
-        if (whitespace(c) || c === ">") {
-            this._emitToken("onattribdata");
-            this._cbs.onattribend();
-            this._state = 8 /* BeforeAttributeName */;
-            this._index--;
-        }
-        else if (this._decodeEntities && c === "&") {
-            this._emitToken("onattribdata");
-            this._baseState = this._state;
-            this._state = 51 /* BeforeEntity */;
-            this._sectionStart = this._index;
-        }
-    };
-    Tokenizer.prototype._stateBeforeDeclaration = function (c) {
-        this._state =
-            c === "["
-                ? 22 /* BeforeCdata1 */
-                : c === "-"
-                    ? 18 /* BeforeComment */
-                    : 16 /* InDeclaration */;
-    };
-    Tokenizer.prototype._stateInDeclaration = function (c) {
-        if (c === ">") {
-            this._cbs.ondeclaration(this._getSection());
-            this._state = 1 /* Text */;
-            this._sectionStart = this._index + 1;
-        }
-    };
-    Tokenizer.prototype._stateInProcessingInstruction = function (c) {
-        if (c === ">") {
-            this._cbs.onprocessinginstruction(this._getSection());
-            this._state = 1 /* Text */;
-            this._sectionStart = this._index + 1;
-        }
-    };
-    Tokenizer.prototype._stateBeforeComment = function (c) {
-        if (c === "-") {
-            this._state = 19 /* InComment */;
-            this._sectionStart = this._index + 1;
-        }
-        else {
-            this._state = 16 /* InDeclaration */;
-        }
-    };
-    Tokenizer.prototype._stateInComment = function (c) {
-        if (c === "-")
-            this._state = 20 /* AfterComment1 */;
-    };
-    Tokenizer.prototype._stateAfterComment1 = function (c) {
-        if (c === "-") {
-            this._state = 21 /* AfterComment2 */;
-        }
-        else {
-            this._state = 19 /* InComment */;
-        }
-    };
-    Tokenizer.prototype._stateAfterComment2 = function (c) {
-        if (c === ">") {
-            //remove 2 trailing chars
-            this._cbs.oncomment(this._buffer.substring(this._sectionStart, this._index - 2));
-            this._state = 1 /* Text */;
-            this._sectionStart = this._index + 1;
-        }
-        else if (c !== "-") {
-            this._state = 19 /* InComment */;
-        }
-        // else: stay in AFTER_COMMENT_2 (`--->`)
-    };
-    Tokenizer.prototype._stateBeforeCdata6 = function (c) {
-        if (c === "[") {
-            this._state = 28 /* InCdata */;
-            this._sectionStart = this._index + 1;
-        }
-        else {
-            this._state = 16 /* InDeclaration */;
-            this._index--;
-        }
-    };
-    Tokenizer.prototype._stateInCdata = function (c) {
-        if (c === "]")
-            this._state = 29 /* AfterCdata1 */;
-    };
-    Tokenizer.prototype._stateAfterCdata1 = function (c) {
-        if (c === "]")
-            this._state = 30 /* AfterCdata2 */;
-        else
-            this._state = 28 /* InCdata */;
-    };
-    Tokenizer.prototype._stateAfterCdata2 = function (c) {
-        if (c === ">") {
-            //remove 2 trailing chars
-            this._cbs.oncdata(this._buffer.substring(this._sectionStart, this._index - 2));
-            this._state = 1 /* Text */;
-            this._sectionStart = this._index + 1;
-        }
-        else if (c !== "]") {
-            this._state = 28 /* InCdata */;
-        }
-        //else: stay in AFTER_CDATA_2 (`]]]>`)
-    };
-    Tokenizer.prototype._stateBeforeSpecial = function (c) {
-        if (c === "c" || c === "C") {
-            this._state = 33 /* BeforeScript1 */;
-        }
-        else if (c === "t" || c === "T") {
-            this._state = 43 /* BeforeStyle1 */;
-        }
-        else {
-            this._state = 3 /* InTagName */;
-            this._index--; //consume the token again
-        }
-    };
-    Tokenizer.prototype._stateBeforeSpecialEnd = function (c) {
-        if (this._special === 2 /* Script */ && (c === "c" || c === "C")) {
-            this._state = 38 /* AfterScript1 */;
-        }
-        else if (this._special === 3 /* Style */ &&
-            (c === "t" || c === "T")) {
-            this._state = 47 /* AfterStyle1 */;
-        }
-        else
-            this._state = 1 /* Text */;
-    };
-    Tokenizer.prototype._stateBeforeScript5 = function (c) {
-        if (c === "/" || c === ">" || whitespace(c)) {
-            this._special = 2 /* Script */;
-        }
-        this._state = 3 /* InTagName */;
-        this._index--; //consume the token again
-    };
-    Tokenizer.prototype._stateAfterScript5 = function (c) {
-        if (c === ">" || whitespace(c)) {
-            this._special = 1 /* None */;
-            this._state = 6 /* InClosingTagName */;
-            this._sectionStart = this._index - 6;
-            this._index--; //reconsume the token
-        }
-        else
-            this._state = 1 /* Text */;
-    };
-    Tokenizer.prototype._stateBeforeStyle4 = function (c) {
-        if (c === "/" || c === ">" || whitespace(c)) {
-            this._special = 3 /* Style */;
-        }
-        this._state = 3 /* InTagName */;
-        this._index--; //consume the token again
-    };
-    Tokenizer.prototype._stateAfterStyle4 = function (c) {
-        if (c === ">" || whitespace(c)) {
-            this._special = 1 /* None */;
-            this._state = 6 /* InClosingTagName */;
-            this._sectionStart = this._index - 5;
-            this._index--; //reconsume the token
-        }
-        else
-            this._state = 1 /* Text */;
-    };
-    //for entities terminated with a semicolon
-    Tokenizer.prototype._parseNamedEntityStrict = function () {
-        //offset = 1
-        if (this._sectionStart + 1 < this._index) {
-            var entity = this._buffer.substring(this._sectionStart + 1, this._index), map = this._xmlMode ? xml_json_1.default : entities_json_1.default;
-            if (Object.prototype.hasOwnProperty.call(map, entity)) {
-                // @ts-ignore
-                this._emitPartial(map[entity]);
-                this._sectionStart = this._index + 1;
-            }
-        }
-    };
-    //parses legacy entities (without trailing semicolon)
-    Tokenizer.prototype._parseLegacyEntity = function () {
-        var start = this._sectionStart + 1;
-        var limit = this._index - start;
-        if (limit > 6)
-            limit = 6; // The max length of legacy entities is 6
-        while (limit >= 2) {
-            // The min length of legacy entities is 2
-            var entity = this._buffer.substr(start, limit);
-            if (Object.prototype.hasOwnProperty.call(legacy_json_1.default, entity)) {
-                // @ts-ignore
-                this._emitPartial(legacy_json_1.default[entity]);
-                this._sectionStart += limit + 1;
-                return;
-            }
-            else {
-                limit--;
-            }
-        }
-    };
-    Tokenizer.prototype._stateInNamedEntity = function (c) {
-        if (c === ";") {
-            this._parseNamedEntityStrict();
-            if (this._sectionStart + 1 < this._index && !this._xmlMode) {
-                this._parseLegacyEntity();
-            }
-            this._state = this._baseState;
-        }
-        else if ((c < "a" || c > "z") &&
-            (c < "A" || c > "Z") &&
-            (c < "0" || c > "9")) {
-            if (this._xmlMode || this._sectionStart + 1 === this._index) {
-                // ignore
-            }
-            else if (this._baseState !== 1 /* Text */) {
-                if (c !== "=") {
-                    this._parseNamedEntityStrict();
-                }
-            }
-            else {
-                this._parseLegacyEntity();
-            }
-            this._state = this._baseState;
-            this._index--;
-        }
-    };
-    Tokenizer.prototype._decodeNumericEntity = function (offset, base) {
-        var sectionStart = this._sectionStart + offset;
-        if (sectionStart !== this._index) {
-            //parse entity
-            var entity = this._buffer.substring(sectionStart, this._index);
-            var parsed = parseInt(entity, base);
-            this._emitPartial(decode_codepoint_1.default(parsed));
-            this._sectionStart = this._index;
-        }
-        else {
-            this._sectionStart--;
-        }
-        this._state = this._baseState;
-    };
-    Tokenizer.prototype._stateInNumericEntity = function (c) {
-        if (c === ";") {
-            this._decodeNumericEntity(2, 10);
-            this._sectionStart++;
-        }
-        else if (c < "0" || c > "9") {
-            if (!this._xmlMode) {
-                this._decodeNumericEntity(2, 10);
-            }
-            else {
-                this._state = this._baseState;
-            }
-            this._index--;
-        }
-    };
-    Tokenizer.prototype._stateInHexEntity = function (c) {
-        if (c === ";") {
-            this._decodeNumericEntity(3, 16);
-            this._sectionStart++;
-        }
-        else if ((c < "a" || c > "f") &&
-            (c < "A" || c > "F") &&
-            (c < "0" || c > "9")) {
-            if (!this._xmlMode) {
-                this._decodeNumericEntity(3, 16);
-            }
-            else {
-                this._state = this._baseState;
-            }
-            this._index--;
-        }
-    };
-    Tokenizer.prototype._cleanup = function () {
-        if (this._sectionStart < 0) {
-            this._buffer = "";
-            this._bufferOffset += this._index;
-            this._index = 0;
-        }
-        else if (this._running) {
-            if (this._state === 1 /* Text */) {
-                if (this._sectionStart !== this._index) {
-                    this._cbs.ontext(this._buffer.substr(this._sectionStart));
-                }
-                this._buffer = "";
-                this._bufferOffset += this._index;
-                this._index = 0;
-            }
-            else if (this._sectionStart === this._index) {
-                //the section just started
-                this._buffer = "";
-                this._bufferOffset += this._index;
-                this._index = 0;
-            }
-            else {
-                //remove everything unnecessary
-                this._buffer = this._buffer.substr(this._sectionStart);
-                this._index -= this._sectionStart;
-                this._bufferOffset += this._sectionStart;
-            }
-            this._sectionStart = 0;
-        }
-    };
-    //TODO make events conditional
-    Tokenizer.prototype.write = function (chunk) {
-        if (this._ended)
-            this._cbs.onerror(Error(".write() after done!"));
-        this._buffer += chunk;
-        this._parse();
-    };
-    // Iterates through the buffer, calling the function corresponding to the current state.
-    // States that are more likely to be hit are higher up, as a performance improvement.
-    Tokenizer.prototype._parse = function () {
-        while (this._index < this._buffer.length && this._running) {
-            var c = this._buffer.charAt(this._index);
-            if (this._state === 1 /* Text */) {
-                this._stateText(c);
-            }
-            else if (this._state === 12 /* InAttributeValueDq */) {
-                this._stateInAttributeValueDoubleQuotes(c);
-            }
-            else if (this._state === 9 /* InAttributeName */) {
-                this._stateInAttributeName(c);
-            }
-            else if (this._state === 19 /* InComment */) {
-                this._stateInComment(c);
-            }
-            else if (this._state === 8 /* BeforeAttributeName */) {
-                this._stateBeforeAttributeName(c);
-            }
-            else if (this._state === 3 /* InTagName */) {
-                this._stateInTagName(c);
-            }
-            else if (this._state === 6 /* InClosingTagName */) {
-                this._stateInCloseingTagName(c);
-            }
-            else if (this._state === 2 /* BeforeTagName */) {
-                this._stateBeforeTagName(c);
-            }
-            else if (this._state === 10 /* AfterAttributeName */) {
-                this._stateAfterAttributeName(c);
-            }
-            else if (this._state === 13 /* InAttributeValueSq */) {
-                this._stateInAttributeValueSingleQuotes(c);
-            }
-            else if (this._state === 11 /* BeforeAttributeValue */) {
-                this._stateBeforeAttributeValue(c);
-            }
-            else if (this._state === 5 /* BeforeClosingTagName */) {
-                this._stateBeforeCloseingTagName(c);
-            }
-            else if (this._state === 7 /* AfterClosingTagName */) {
-                this._stateAfterCloseingTagName(c);
-            }
-            else if (this._state === 31 /* BeforeSpecial */) {
-                this._stateBeforeSpecial(c);
-            }
-            else if (this._state === 20 /* AfterComment1 */) {
-                this._stateAfterComment1(c);
-            }
-            else if (this._state === 14 /* InAttributeValueNq */) {
-                this._stateInAttributeValueNoQuotes(c);
-            }
-            else if (this._state === 4 /* InSelfClosingTag */) {
-                this._stateInSelfClosingTag(c);
-            }
-            else if (this._state === 16 /* InDeclaration */) {
-                this._stateInDeclaration(c);
-            }
-            else if (this._state === 15 /* BeforeDeclaration */) {
-                this._stateBeforeDeclaration(c);
-            }
-            else if (this._state === 21 /* AfterComment2 */) {
-                this._stateAfterComment2(c);
-            }
-            else if (this._state === 18 /* BeforeComment */) {
-                this._stateBeforeComment(c);
-            }
-            else if (this._state === 32 /* BeforeSpecialEnd */) {
-                this._stateBeforeSpecialEnd(c);
-            }
-            else if (this._state === 38 /* AfterScript1 */) {
-                stateAfterScript1(this, c);
-            }
-            else if (this._state === 39 /* AfterScript2 */) {
-                stateAfterScript2(this, c);
-            }
-            else if (this._state === 40 /* AfterScript3 */) {
-                stateAfterScript3(this, c);
-            }
-            else if (this._state === 33 /* BeforeScript1 */) {
-                stateBeforeScript1(this, c);
-            }
-            else if (this._state === 34 /* BeforeScript2 */) {
-                stateBeforeScript2(this, c);
-            }
-            else if (this._state === 35 /* BeforeScript3 */) {
-                stateBeforeScript3(this, c);
-            }
-            else if (this._state === 36 /* BeforeScript4 */) {
-                stateBeforeScript4(this, c);
-            }
-            else if (this._state === 37 /* BeforeScript5 */) {
-                this._stateBeforeScript5(c);
-            }
-            else if (this._state === 41 /* AfterScript4 */) {
-                stateAfterScript4(this, c);
-            }
-            else if (this._state === 42 /* AfterScript5 */) {
-                this._stateAfterScript5(c);
-            }
-            else if (this._state === 43 /* BeforeStyle1 */) {
-                stateBeforeStyle1(this, c);
-            }
-            else if (this._state === 28 /* InCdata */) {
-                this._stateInCdata(c);
-            }
-            else if (this._state === 44 /* BeforeStyle2 */) {
-                stateBeforeStyle2(this, c);
-            }
-            else if (this._state === 45 /* BeforeStyle3 */) {
-                stateBeforeStyle3(this, c);
-            }
-            else if (this._state === 46 /* BeforeStyle4 */) {
-                this._stateBeforeStyle4(c);
-            }
-            else if (this._state === 47 /* AfterStyle1 */) {
-                stateAfterStyle1(this, c);
-            }
-            else if (this._state === 48 /* AfterStyle2 */) {
-                stateAfterStyle2(this, c);
-            }
-            else if (this._state === 49 /* AfterStyle3 */) {
-                stateAfterStyle3(this, c);
-            }
-            else if (this._state === 50 /* AfterStyle4 */) {
-                this._stateAfterStyle4(c);
-            }
-            else if (this._state === 17 /* InProcessingInstruction */) {
-                this._stateInProcessingInstruction(c);
-            }
-            else if (this._state === 53 /* InNamedEntity */) {
-                this._stateInNamedEntity(c);
-            }
-            else if (this._state === 22 /* BeforeCdata1 */) {
-                stateBeforeCdata1(this, c);
-            }
-            else if (this._state === 51 /* BeforeEntity */) {
-                stateBeforeEntity(this, c);
-            }
-            else if (this._state === 23 /* BeforeCdata2 */) {
-                stateBeforeCdata2(this, c);
-            }
-            else if (this._state === 24 /* BeforeCdata3 */) {
-                stateBeforeCdata3(this, c);
-            }
-            else if (this._state === 29 /* AfterCdata1 */) {
-                this._stateAfterCdata1(c);
-            }
-            else if (this._state === 30 /* AfterCdata2 */) {
-                this._stateAfterCdata2(c);
-            }
-            else if (this._state === 25 /* BeforeCdata4 */) {
-                stateBeforeCdata4(this, c);
-            }
-            else if (this._state === 26 /* BeforeCdata5 */) {
-                stateBeforeCdata5(this, c);
-            }
-            else if (this._state === 27 /* BeforeCdata6 */) {
-                this._stateBeforeCdata6(c);
-            }
-            else if (this._state === 55 /* InHexEntity */) {
-                this._stateInHexEntity(c);
-            }
-            else if (this._state === 54 /* InNumericEntity */) {
-                this._stateInNumericEntity(c);
-            }
-            else if (this._state === 52 /* BeforeNumericEntity */) {
-                stateBeforeNumericEntity(this, c);
-            }
-            else {
-                this._cbs.onerror(Error("unknown _state"), this._state);
-            }
-            this._index++;
-        }
-        this._cleanup();
-    };
-    Tokenizer.prototype.pause = function () {
-        this._running = false;
-    };
-    Tokenizer.prototype.resume = function () {
-        this._running = true;
-        if (this._index < this._buffer.length) {
-            this._parse();
-        }
-        if (this._ended) {
-            this._finish();
-        }
-    };
-    Tokenizer.prototype.end = function (chunk) {
-        if (this._ended)
-            this._cbs.onerror(Error(".end() after done!"));
-        if (chunk)
-            this.write(chunk);
-        this._ended = true;
-        if (this._running)
-            this._finish();
-    };
-    Tokenizer.prototype._finish = function () {
-        //if there is remaining data, emit it in a reasonable way
-        if (this._sectionStart < this._index) {
-            this._handleTrailingData();
-        }
-        this._cbs.onend();
-    };
-    Tokenizer.prototype._handleTrailingData = function () {
-        var data = this._buffer.substr(this._sectionStart);
-        if (this._state === 28 /* InCdata */ ||
-            this._state === 29 /* AfterCdata1 */ ||
-            this._state === 30 /* AfterCdata2 */) {
-            this._cbs.oncdata(data);
-        }
-        else if (this._state === 19 /* InComment */ ||
-            this._state === 20 /* AfterComment1 */ ||
-            this._state === 21 /* AfterComment2 */) {
-            this._cbs.oncomment(data);
-        }
-        else if (this._state === 53 /* InNamedEntity */ && !this._xmlMode) {
-            this._parseLegacyEntity();
-            if (this._sectionStart < this._index) {
-                this._state = this._baseState;
-                this._handleTrailingData();
-            }
-        }
-        else if (this._state === 54 /* InNumericEntity */ && !this._xmlMode) {
-            this._decodeNumericEntity(2, 10);
-            if (this._sectionStart < this._index) {
-                this._state = this._baseState;
-                this._handleTrailingData();
-            }
-        }
-        else if (this._state === 55 /* InHexEntity */ && !this._xmlMode) {
-            this._decodeNumericEntity(3, 16);
-            if (this._sectionStart < this._index) {
-                this._state = this._baseState;
-                this._handleTrailingData();
-            }
-        }
-        else if (this._state !== 3 /* InTagName */ &&
-            this._state !== 8 /* BeforeAttributeName */ &&
-            this._state !== 11 /* BeforeAttributeValue */ &&
-            this._state !== 10 /* AfterAttributeName */ &&
-            this._state !== 9 /* InAttributeName */ &&
-            this._state !== 13 /* InAttributeValueSq */ &&
-            this._state !== 12 /* InAttributeValueDq */ &&
-            this._state !== 14 /* InAttributeValueNq */ &&
-            this._state !== 6 /* InClosingTagName */) {
-            this._cbs.ontext(data);
-        }
-        //else, ignore remaining data
-        //TODO add a way to remove current tag
-    };
-    Tokenizer.prototype.getAbsoluteIndex = function () {
-        return this._bufferOffset + this._index;
-    };
-    Tokenizer.prototype._getSection = function () {
-        return this._buffer.substring(this._sectionStart, this._index);
-    };
-    Tokenizer.prototype._emitToken = function (name) {
-        this._cbs[name](this._getSection());
-        this._sectionStart = -1;
-    };
-    Tokenizer.prototype._emitPartial = function (value) {
-        if (this._baseState !== 1 /* Text */) {
-            this._cbs.onattribdata(value); //TODO implement the new event
-        }
-        else {
-            this._cbs.ontext(value);
-        }
-    };
-    return Tokenizer;
-}());
-exports.default = Tokenizer;
-
-
-/***/ }),
-
-/***/ "./node_modules/rdfa-streaming-parser/node_modules/htmlparser2/lib/index.js":
-/*!**********************************************************************************!*\
-  !*** ./node_modules/rdfa-streaming-parser/node_modules/htmlparser2/lib/index.js ***!
-  \**********************************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-function __export(m) {
-    for (var p in m) if (!exports.hasOwnProperty(p)) exports[p] = m[p];
-}
-var __importStar = (this && this.__importStar) || function (mod) {
-    if (mod && mod.__esModule) return mod;
-    var result = {};
-    if (mod != null) for (var k in mod) if (Object.hasOwnProperty.call(mod, k)) result[k] = mod[k];
-    result["default"] = mod;
-    return result;
-};
-Object.defineProperty(exports, "__esModule", { value: true });
-var Parser_1 = __webpack_require__(/*! ./Parser */ "./node_modules/rdfa-streaming-parser/node_modules/htmlparser2/lib/Parser.js");
-exports.Parser = Parser_1.Parser;
-var domhandler_1 = __webpack_require__(/*! domhandler */ "./node_modules/rdfa-streaming-parser/node_modules/domhandler/lib/index.js");
-exports.DomHandler = domhandler_1.DomHandler;
-exports.DefaultHandler = domhandler_1.DomHandler;
-// Helper methods
-/**
- * Parses data, returns the resulting DOM.
- *
- * @param data The data that should be parsed.
- * @param options Optional options for the parser and DOM builder.
- */
-function parseDOM(data, options) {
-    var handler = new domhandler_1.DomHandler(void 0, options);
-    new Parser_1.Parser(handler, options).end(data);
-    return handler.dom;
-}
-exports.parseDOM = parseDOM;
-/**
- * Creates a parser instance, with an attached DOM handler.
- *
- * @param cb A callback that will be called once parsing has been completed.
- * @param options Optional options for the parser and DOM builder.
- * @param elementCb An optional callback that will be called every time a tag has been completed inside of the DOM.
- */
-function createDomStream(cb, options, elementCb) {
-    var handler = new domhandler_1.DomHandler(cb, options, elementCb);
-    return new Parser_1.Parser(handler, options);
-}
-exports.createDomStream = createDomStream;
-var Tokenizer_1 = __webpack_require__(/*! ./Tokenizer */ "./node_modules/rdfa-streaming-parser/node_modules/htmlparser2/lib/Tokenizer.js");
-exports.Tokenizer = Tokenizer_1.default;
-var ElementType = __importStar(__webpack_require__(/*! domelementtype */ "./node_modules/rdfa-streaming-parser/node_modules/domelementtype/lib/index.js"));
-exports.ElementType = ElementType;
-/**
- * List of all events that the parser emits.
- *
- * Format: eventname: number of arguments.
- */
-exports.EVENTS = {
-    attribute: 2,
-    cdatastart: 0,
-    cdataend: 0,
-    text: 1,
-    processinginstruction: 2,
-    comment: 1,
-    commentend: 0,
-    closetag: 1,
-    opentag: 2,
-    opentagname: 1,
-    error: 1,
-    end: 0
-};
-/*
-    All of the following exports exist for backwards-compatibility.
-    They should probably be removed eventually.
-*/
-__export(__webpack_require__(/*! ./FeedHandler */ "./node_modules/rdfa-streaming-parser/node_modules/htmlparser2/lib/FeedHandler.js"));
-__export(__webpack_require__(/*! ./WritableStream */ 2));
-__export(__webpack_require__(/*! ./CollectingHandler */ "./node_modules/rdfa-streaming-parser/node_modules/htmlparser2/lib/CollectingHandler.js"));
-var DomUtils = __importStar(__webpack_require__(/*! domutils */ "./node_modules/rdfa-streaming-parser/node_modules/domutils/lib/index.js"));
-exports.DomUtils = DomUtils;
-var FeedHandler_1 = __webpack_require__(/*! ./FeedHandler */ "./node_modules/rdfa-streaming-parser/node_modules/htmlparser2/lib/FeedHandler.js");
-exports.RssHandler = FeedHandler_1.FeedHandler;
-
-
-/***/ }),
-
 /***/ "./node_modules/rdfxml-streaming-parser/index.js":
 /*!*******************************************************!*\
   !*** ./node_modules/rdfxml-streaming-parser/index.js ***!
@@ -90139,6 +86300,2487 @@ var ParseType;
     ParseType[ParseType["PROPERTY"] = 1] = "PROPERTY";
 })(ParseType = exports.ParseType || (exports.ParseType = {}));
 //# sourceMappingURL=RdfXmlParser.js.map
+
+/***/ }),
+
+/***/ "./node_modules/readable-stream/duplex-browser.js":
+/*!********************************************************!*\
+  !*** ./node_modules/readable-stream/duplex-browser.js ***!
+  \********************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+module.exports = __webpack_require__(/*! ./lib/_stream_duplex.js */ "./node_modules/readable-stream/lib/_stream_duplex.js");
+
+
+/***/ }),
+
+/***/ "./node_modules/readable-stream/lib/_stream_duplex.js":
+/*!************************************************************!*\
+  !*** ./node_modules/readable-stream/lib/_stream_duplex.js ***!
+  \************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+// Copyright Joyent, Inc. and other Node contributors.
+//
+// Permission is hereby granted, free of charge, to any person obtaining a
+// copy of this software and associated documentation files (the
+// "Software"), to deal in the Software without restriction, including
+// without limitation the rights to use, copy, modify, merge, publish,
+// distribute, sublicense, and/or sell copies of the Software, and to permit
+// persons to whom the Software is furnished to do so, subject to the
+// following conditions:
+//
+// The above copyright notice and this permission notice shall be included
+// in all copies or substantial portions of the Software.
+//
+// THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS
+// OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
+// MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN
+// NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM,
+// DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR
+// OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE
+// USE OR OTHER DEALINGS IN THE SOFTWARE.
+
+// a duplex stream is just a stream that is both readable and writable.
+// Since JS doesn't have multiple prototypal inheritance, this class
+// prototypally inherits from Readable, and then parasitically from
+// Writable.
+
+
+
+/*<replacement>*/
+
+var pna = __webpack_require__(/*! process-nextick-args */ "./node_modules/process-nextick-args/index.js");
+/*</replacement>*/
+
+/*<replacement>*/
+var objectKeys = Object.keys || function (obj) {
+  var keys = [];
+  for (var key in obj) {
+    keys.push(key);
+  }return keys;
+};
+/*</replacement>*/
+
+module.exports = Duplex;
+
+/*<replacement>*/
+var util = __webpack_require__(/*! core-util-is */ "./node_modules/core-util-is/lib/util.js");
+util.inherits = __webpack_require__(/*! inherits */ "./node_modules/inherits/inherits_browser.js");
+/*</replacement>*/
+
+var Readable = __webpack_require__(/*! ./_stream_readable */ "./node_modules/readable-stream/lib/_stream_readable.js");
+var Writable = __webpack_require__(/*! ./_stream_writable */ "./node_modules/readable-stream/lib/_stream_writable.js");
+
+util.inherits(Duplex, Readable);
+
+{
+  // avoid scope creep, the keys array can then be collected
+  var keys = objectKeys(Writable.prototype);
+  for (var v = 0; v < keys.length; v++) {
+    var method = keys[v];
+    if (!Duplex.prototype[method]) Duplex.prototype[method] = Writable.prototype[method];
+  }
+}
+
+function Duplex(options) {
+  if (!(this instanceof Duplex)) return new Duplex(options);
+
+  Readable.call(this, options);
+  Writable.call(this, options);
+
+  if (options && options.readable === false) this.readable = false;
+
+  if (options && options.writable === false) this.writable = false;
+
+  this.allowHalfOpen = true;
+  if (options && options.allowHalfOpen === false) this.allowHalfOpen = false;
+
+  this.once('end', onend);
+}
+
+Object.defineProperty(Duplex.prototype, 'writableHighWaterMark', {
+  // making it explicit this property is not enumerable
+  // because otherwise some prototype manipulation in
+  // userland will fail
+  enumerable: false,
+  get: function () {
+    return this._writableState.highWaterMark;
+  }
+});
+
+// the no-half-open enforcer
+function onend() {
+  // if we allow half-open state, or if the writable side ended,
+  // then we're ok.
+  if (this.allowHalfOpen || this._writableState.ended) return;
+
+  // no more data can be written.
+  // But allow more writes to happen in this tick.
+  pna.nextTick(onEndNT, this);
+}
+
+function onEndNT(self) {
+  self.end();
+}
+
+Object.defineProperty(Duplex.prototype, 'destroyed', {
+  get: function () {
+    if (this._readableState === undefined || this._writableState === undefined) {
+      return false;
+    }
+    return this._readableState.destroyed && this._writableState.destroyed;
+  },
+  set: function (value) {
+    // we ignore the value if the stream
+    // has not been initialized yet
+    if (this._readableState === undefined || this._writableState === undefined) {
+      return;
+    }
+
+    // backward compatibility, the user is explicitly
+    // managing destroyed
+    this._readableState.destroyed = value;
+    this._writableState.destroyed = value;
+  }
+});
+
+Duplex.prototype._destroy = function (err, cb) {
+  this.push(null);
+  this.end();
+
+  pna.nextTick(cb, err);
+};
+
+/***/ }),
+
+/***/ "./node_modules/readable-stream/lib/_stream_passthrough.js":
+/*!*****************************************************************!*\
+  !*** ./node_modules/readable-stream/lib/_stream_passthrough.js ***!
+  \*****************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+// Copyright Joyent, Inc. and other Node contributors.
+//
+// Permission is hereby granted, free of charge, to any person obtaining a
+// copy of this software and associated documentation files (the
+// "Software"), to deal in the Software without restriction, including
+// without limitation the rights to use, copy, modify, merge, publish,
+// distribute, sublicense, and/or sell copies of the Software, and to permit
+// persons to whom the Software is furnished to do so, subject to the
+// following conditions:
+//
+// The above copyright notice and this permission notice shall be included
+// in all copies or substantial portions of the Software.
+//
+// THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS
+// OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
+// MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN
+// NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM,
+// DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR
+// OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE
+// USE OR OTHER DEALINGS IN THE SOFTWARE.
+
+// a passthrough stream.
+// basically just the most minimal sort of Transform stream.
+// Every written chunk gets output as-is.
+
+
+
+module.exports = PassThrough;
+
+var Transform = __webpack_require__(/*! ./_stream_transform */ "./node_modules/readable-stream/lib/_stream_transform.js");
+
+/*<replacement>*/
+var util = __webpack_require__(/*! core-util-is */ "./node_modules/core-util-is/lib/util.js");
+util.inherits = __webpack_require__(/*! inherits */ "./node_modules/inherits/inherits_browser.js");
+/*</replacement>*/
+
+util.inherits(PassThrough, Transform);
+
+function PassThrough(options) {
+  if (!(this instanceof PassThrough)) return new PassThrough(options);
+
+  Transform.call(this, options);
+}
+
+PassThrough.prototype._transform = function (chunk, encoding, cb) {
+  cb(null, chunk);
+};
+
+/***/ }),
+
+/***/ "./node_modules/readable-stream/lib/_stream_readable.js":
+/*!**************************************************************!*\
+  !*** ./node_modules/readable-stream/lib/_stream_readable.js ***!
+  \**************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+/* WEBPACK VAR INJECTION */(function(global, process) {// Copyright Joyent, Inc. and other Node contributors.
+//
+// Permission is hereby granted, free of charge, to any person obtaining a
+// copy of this software and associated documentation files (the
+// "Software"), to deal in the Software without restriction, including
+// without limitation the rights to use, copy, modify, merge, publish,
+// distribute, sublicense, and/or sell copies of the Software, and to permit
+// persons to whom the Software is furnished to do so, subject to the
+// following conditions:
+//
+// The above copyright notice and this permission notice shall be included
+// in all copies or substantial portions of the Software.
+//
+// THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS
+// OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
+// MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN
+// NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM,
+// DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR
+// OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE
+// USE OR OTHER DEALINGS IN THE SOFTWARE.
+
+
+
+/*<replacement>*/
+
+var pna = __webpack_require__(/*! process-nextick-args */ "./node_modules/process-nextick-args/index.js");
+/*</replacement>*/
+
+module.exports = Readable;
+
+/*<replacement>*/
+var isArray = __webpack_require__(/*! isarray */ "./node_modules/isarray/index.js");
+/*</replacement>*/
+
+/*<replacement>*/
+var Duplex;
+/*</replacement>*/
+
+Readable.ReadableState = ReadableState;
+
+/*<replacement>*/
+var EE = __webpack_require__(/*! events */ "./node_modules/events/events.js").EventEmitter;
+
+var EElistenerCount = function (emitter, type) {
+  return emitter.listeners(type).length;
+};
+/*</replacement>*/
+
+/*<replacement>*/
+var Stream = __webpack_require__(/*! ./internal/streams/stream */ "./node_modules/readable-stream/lib/internal/streams/stream-browser.js");
+/*</replacement>*/
+
+/*<replacement>*/
+
+var Buffer = __webpack_require__(/*! safe-buffer */ "./node_modules/readable-stream/node_modules/safe-buffer/index.js").Buffer;
+var OurUint8Array = global.Uint8Array || function () {};
+function _uint8ArrayToBuffer(chunk) {
+  return Buffer.from(chunk);
+}
+function _isUint8Array(obj) {
+  return Buffer.isBuffer(obj) || obj instanceof OurUint8Array;
+}
+
+/*</replacement>*/
+
+/*<replacement>*/
+var util = __webpack_require__(/*! core-util-is */ "./node_modules/core-util-is/lib/util.js");
+util.inherits = __webpack_require__(/*! inherits */ "./node_modules/inherits/inherits_browser.js");
+/*</replacement>*/
+
+/*<replacement>*/
+var debugUtil = __webpack_require__(/*! util */ 0);
+var debug = void 0;
+if (debugUtil && debugUtil.debuglog) {
+  debug = debugUtil.debuglog('stream');
+} else {
+  debug = function () {};
+}
+/*</replacement>*/
+
+var BufferList = __webpack_require__(/*! ./internal/streams/BufferList */ "./node_modules/readable-stream/lib/internal/streams/BufferList.js");
+var destroyImpl = __webpack_require__(/*! ./internal/streams/destroy */ "./node_modules/readable-stream/lib/internal/streams/destroy.js");
+var StringDecoder;
+
+util.inherits(Readable, Stream);
+
+var kProxyEvents = ['error', 'close', 'destroy', 'pause', 'resume'];
+
+function prependListener(emitter, event, fn) {
+  // Sadly this is not cacheable as some libraries bundle their own
+  // event emitter implementation with them.
+  if (typeof emitter.prependListener === 'function') return emitter.prependListener(event, fn);
+
+  // This is a hack to make sure that our error handler is attached before any
+  // userland ones.  NEVER DO THIS. This is here only because this code needs
+  // to continue to work with older versions of Node.js that do not include
+  // the prependListener() method. The goal is to eventually remove this hack.
+  if (!emitter._events || !emitter._events[event]) emitter.on(event, fn);else if (isArray(emitter._events[event])) emitter._events[event].unshift(fn);else emitter._events[event] = [fn, emitter._events[event]];
+}
+
+function ReadableState(options, stream) {
+  Duplex = Duplex || __webpack_require__(/*! ./_stream_duplex */ "./node_modules/readable-stream/lib/_stream_duplex.js");
+
+  options = options || {};
+
+  // Duplex streams are both readable and writable, but share
+  // the same options object.
+  // However, some cases require setting options to different
+  // values for the readable and the writable sides of the duplex stream.
+  // These options can be provided separately as readableXXX and writableXXX.
+  var isDuplex = stream instanceof Duplex;
+
+  // object stream flag. Used to make read(n) ignore n and to
+  // make all the buffer merging and length checks go away
+  this.objectMode = !!options.objectMode;
+
+  if (isDuplex) this.objectMode = this.objectMode || !!options.readableObjectMode;
+
+  // the point at which it stops calling _read() to fill the buffer
+  // Note: 0 is a valid value, means "don't call _read preemptively ever"
+  var hwm = options.highWaterMark;
+  var readableHwm = options.readableHighWaterMark;
+  var defaultHwm = this.objectMode ? 16 : 16 * 1024;
+
+  if (hwm || hwm === 0) this.highWaterMark = hwm;else if (isDuplex && (readableHwm || readableHwm === 0)) this.highWaterMark = readableHwm;else this.highWaterMark = defaultHwm;
+
+  // cast to ints.
+  this.highWaterMark = Math.floor(this.highWaterMark);
+
+  // A linked list is used to store data chunks instead of an array because the
+  // linked list can remove elements from the beginning faster than
+  // array.shift()
+  this.buffer = new BufferList();
+  this.length = 0;
+  this.pipes = null;
+  this.pipesCount = 0;
+  this.flowing = null;
+  this.ended = false;
+  this.endEmitted = false;
+  this.reading = false;
+
+  // a flag to be able to tell if the event 'readable'/'data' is emitted
+  // immediately, or on a later tick.  We set this to true at first, because
+  // any actions that shouldn't happen until "later" should generally also
+  // not happen before the first read call.
+  this.sync = true;
+
+  // whenever we return null, then we set a flag to say
+  // that we're awaiting a 'readable' event emission.
+  this.needReadable = false;
+  this.emittedReadable = false;
+  this.readableListening = false;
+  this.resumeScheduled = false;
+
+  // has it been destroyed
+  this.destroyed = false;
+
+  // Crypto is kind of old and crusty.  Historically, its default string
+  // encoding is 'binary' so we have to make this configurable.
+  // Everything else in the universe uses 'utf8', though.
+  this.defaultEncoding = options.defaultEncoding || 'utf8';
+
+  // the number of writers that are awaiting a drain event in .pipe()s
+  this.awaitDrain = 0;
+
+  // if true, a maybeReadMore has been scheduled
+  this.readingMore = false;
+
+  this.decoder = null;
+  this.encoding = null;
+  if (options.encoding) {
+    if (!StringDecoder) StringDecoder = __webpack_require__(/*! string_decoder/ */ "./node_modules/string_decoder/lib/string_decoder.js").StringDecoder;
+    this.decoder = new StringDecoder(options.encoding);
+    this.encoding = options.encoding;
+  }
+}
+
+function Readable(options) {
+  Duplex = Duplex || __webpack_require__(/*! ./_stream_duplex */ "./node_modules/readable-stream/lib/_stream_duplex.js");
+
+  if (!(this instanceof Readable)) return new Readable(options);
+
+  this._readableState = new ReadableState(options, this);
+
+  // legacy
+  this.readable = true;
+
+  if (options) {
+    if (typeof options.read === 'function') this._read = options.read;
+
+    if (typeof options.destroy === 'function') this._destroy = options.destroy;
+  }
+
+  Stream.call(this);
+}
+
+Object.defineProperty(Readable.prototype, 'destroyed', {
+  get: function () {
+    if (this._readableState === undefined) {
+      return false;
+    }
+    return this._readableState.destroyed;
+  },
+  set: function (value) {
+    // we ignore the value if the stream
+    // has not been initialized yet
+    if (!this._readableState) {
+      return;
+    }
+
+    // backward compatibility, the user is explicitly
+    // managing destroyed
+    this._readableState.destroyed = value;
+  }
+});
+
+Readable.prototype.destroy = destroyImpl.destroy;
+Readable.prototype._undestroy = destroyImpl.undestroy;
+Readable.prototype._destroy = function (err, cb) {
+  this.push(null);
+  cb(err);
+};
+
+// Manually shove something into the read() buffer.
+// This returns true if the highWaterMark has not been hit yet,
+// similar to how Writable.write() returns true if you should
+// write() some more.
+Readable.prototype.push = function (chunk, encoding) {
+  var state = this._readableState;
+  var skipChunkCheck;
+
+  if (!state.objectMode) {
+    if (typeof chunk === 'string') {
+      encoding = encoding || state.defaultEncoding;
+      if (encoding !== state.encoding) {
+        chunk = Buffer.from(chunk, encoding);
+        encoding = '';
+      }
+      skipChunkCheck = true;
+    }
+  } else {
+    skipChunkCheck = true;
+  }
+
+  return readableAddChunk(this, chunk, encoding, false, skipChunkCheck);
+};
+
+// Unshift should *always* be something directly out of read()
+Readable.prototype.unshift = function (chunk) {
+  return readableAddChunk(this, chunk, null, true, false);
+};
+
+function readableAddChunk(stream, chunk, encoding, addToFront, skipChunkCheck) {
+  var state = stream._readableState;
+  if (chunk === null) {
+    state.reading = false;
+    onEofChunk(stream, state);
+  } else {
+    var er;
+    if (!skipChunkCheck) er = chunkInvalid(state, chunk);
+    if (er) {
+      stream.emit('error', er);
+    } else if (state.objectMode || chunk && chunk.length > 0) {
+      if (typeof chunk !== 'string' && !state.objectMode && Object.getPrototypeOf(chunk) !== Buffer.prototype) {
+        chunk = _uint8ArrayToBuffer(chunk);
+      }
+
+      if (addToFront) {
+        if (state.endEmitted) stream.emit('error', new Error('stream.unshift() after end event'));else addChunk(stream, state, chunk, true);
+      } else if (state.ended) {
+        stream.emit('error', new Error('stream.push() after EOF'));
+      } else {
+        state.reading = false;
+        if (state.decoder && !encoding) {
+          chunk = state.decoder.write(chunk);
+          if (state.objectMode || chunk.length !== 0) addChunk(stream, state, chunk, false);else maybeReadMore(stream, state);
+        } else {
+          addChunk(stream, state, chunk, false);
+        }
+      }
+    } else if (!addToFront) {
+      state.reading = false;
+    }
+  }
+
+  return needMoreData(state);
+}
+
+function addChunk(stream, state, chunk, addToFront) {
+  if (state.flowing && state.length === 0 && !state.sync) {
+    stream.emit('data', chunk);
+    stream.read(0);
+  } else {
+    // update the buffer info.
+    state.length += state.objectMode ? 1 : chunk.length;
+    if (addToFront) state.buffer.unshift(chunk);else state.buffer.push(chunk);
+
+    if (state.needReadable) emitReadable(stream);
+  }
+  maybeReadMore(stream, state);
+}
+
+function chunkInvalid(state, chunk) {
+  var er;
+  if (!_isUint8Array(chunk) && typeof chunk !== 'string' && chunk !== undefined && !state.objectMode) {
+    er = new TypeError('Invalid non-string/buffer chunk');
+  }
+  return er;
+}
+
+// if it's past the high water mark, we can push in some more.
+// Also, if we have no data yet, we can stand some
+// more bytes.  This is to work around cases where hwm=0,
+// such as the repl.  Also, if the push() triggered a
+// readable event, and the user called read(largeNumber) such that
+// needReadable was set, then we ought to push more, so that another
+// 'readable' event will be triggered.
+function needMoreData(state) {
+  return !state.ended && (state.needReadable || state.length < state.highWaterMark || state.length === 0);
+}
+
+Readable.prototype.isPaused = function () {
+  return this._readableState.flowing === false;
+};
+
+// backwards compatibility.
+Readable.prototype.setEncoding = function (enc) {
+  if (!StringDecoder) StringDecoder = __webpack_require__(/*! string_decoder/ */ "./node_modules/string_decoder/lib/string_decoder.js").StringDecoder;
+  this._readableState.decoder = new StringDecoder(enc);
+  this._readableState.encoding = enc;
+  return this;
+};
+
+// Don't raise the hwm > 8MB
+var MAX_HWM = 0x800000;
+function computeNewHighWaterMark(n) {
+  if (n >= MAX_HWM) {
+    n = MAX_HWM;
+  } else {
+    // Get the next highest power of 2 to prevent increasing hwm excessively in
+    // tiny amounts
+    n--;
+    n |= n >>> 1;
+    n |= n >>> 2;
+    n |= n >>> 4;
+    n |= n >>> 8;
+    n |= n >>> 16;
+    n++;
+  }
+  return n;
+}
+
+// This function is designed to be inlinable, so please take care when making
+// changes to the function body.
+function howMuchToRead(n, state) {
+  if (n <= 0 || state.length === 0 && state.ended) return 0;
+  if (state.objectMode) return 1;
+  if (n !== n) {
+    // Only flow one buffer at a time
+    if (state.flowing && state.length) return state.buffer.head.data.length;else return state.length;
+  }
+  // If we're asking for more than the current hwm, then raise the hwm.
+  if (n > state.highWaterMark) state.highWaterMark = computeNewHighWaterMark(n);
+  if (n <= state.length) return n;
+  // Don't have enough
+  if (!state.ended) {
+    state.needReadable = true;
+    return 0;
+  }
+  return state.length;
+}
+
+// you can override either this method, or the async _read(n) below.
+Readable.prototype.read = function (n) {
+  debug('read', n);
+  n = parseInt(n, 10);
+  var state = this._readableState;
+  var nOrig = n;
+
+  if (n !== 0) state.emittedReadable = false;
+
+  // if we're doing read(0) to trigger a readable event, but we
+  // already have a bunch of data in the buffer, then just trigger
+  // the 'readable' event and move on.
+  if (n === 0 && state.needReadable && (state.length >= state.highWaterMark || state.ended)) {
+    debug('read: emitReadable', state.length, state.ended);
+    if (state.length === 0 && state.ended) endReadable(this);else emitReadable(this);
+    return null;
+  }
+
+  n = howMuchToRead(n, state);
+
+  // if we've ended, and we're now clear, then finish it up.
+  if (n === 0 && state.ended) {
+    if (state.length === 0) endReadable(this);
+    return null;
+  }
+
+  // All the actual chunk generation logic needs to be
+  // *below* the call to _read.  The reason is that in certain
+  // synthetic stream cases, such as passthrough streams, _read
+  // may be a completely synchronous operation which may change
+  // the state of the read buffer, providing enough data when
+  // before there was *not* enough.
+  //
+  // So, the steps are:
+  // 1. Figure out what the state of things will be after we do
+  // a read from the buffer.
+  //
+  // 2. If that resulting state will trigger a _read, then call _read.
+  // Note that this may be asynchronous, or synchronous.  Yes, it is
+  // deeply ugly to write APIs this way, but that still doesn't mean
+  // that the Readable class should behave improperly, as streams are
+  // designed to be sync/async agnostic.
+  // Take note if the _read call is sync or async (ie, if the read call
+  // has returned yet), so that we know whether or not it's safe to emit
+  // 'readable' etc.
+  //
+  // 3. Actually pull the requested chunks out of the buffer and return.
+
+  // if we need a readable event, then we need to do some reading.
+  var doRead = state.needReadable;
+  debug('need readable', doRead);
+
+  // if we currently have less than the highWaterMark, then also read some
+  if (state.length === 0 || state.length - n < state.highWaterMark) {
+    doRead = true;
+    debug('length less than watermark', doRead);
+  }
+
+  // however, if we've ended, then there's no point, and if we're already
+  // reading, then it's unnecessary.
+  if (state.ended || state.reading) {
+    doRead = false;
+    debug('reading or ended', doRead);
+  } else if (doRead) {
+    debug('do read');
+    state.reading = true;
+    state.sync = true;
+    // if the length is currently zero, then we *need* a readable event.
+    if (state.length === 0) state.needReadable = true;
+    // call internal read method
+    this._read(state.highWaterMark);
+    state.sync = false;
+    // If _read pushed data synchronously, then `reading` will be false,
+    // and we need to re-evaluate how much data we can return to the user.
+    if (!state.reading) n = howMuchToRead(nOrig, state);
+  }
+
+  var ret;
+  if (n > 0) ret = fromList(n, state);else ret = null;
+
+  if (ret === null) {
+    state.needReadable = true;
+    n = 0;
+  } else {
+    state.length -= n;
+  }
+
+  if (state.length === 0) {
+    // If we have nothing in the buffer, then we want to know
+    // as soon as we *do* get something into the buffer.
+    if (!state.ended) state.needReadable = true;
+
+    // If we tried to read() past the EOF, then emit end on the next tick.
+    if (nOrig !== n && state.ended) endReadable(this);
+  }
+
+  if (ret !== null) this.emit('data', ret);
+
+  return ret;
+};
+
+function onEofChunk(stream, state) {
+  if (state.ended) return;
+  if (state.decoder) {
+    var chunk = state.decoder.end();
+    if (chunk && chunk.length) {
+      state.buffer.push(chunk);
+      state.length += state.objectMode ? 1 : chunk.length;
+    }
+  }
+  state.ended = true;
+
+  // emit 'readable' now to make sure it gets picked up.
+  emitReadable(stream);
+}
+
+// Don't emit readable right away in sync mode, because this can trigger
+// another read() call => stack overflow.  This way, it might trigger
+// a nextTick recursion warning, but that's not so bad.
+function emitReadable(stream) {
+  var state = stream._readableState;
+  state.needReadable = false;
+  if (!state.emittedReadable) {
+    debug('emitReadable', state.flowing);
+    state.emittedReadable = true;
+    if (state.sync) pna.nextTick(emitReadable_, stream);else emitReadable_(stream);
+  }
+}
+
+function emitReadable_(stream) {
+  debug('emit readable');
+  stream.emit('readable');
+  flow(stream);
+}
+
+// at this point, the user has presumably seen the 'readable' event,
+// and called read() to consume some data.  that may have triggered
+// in turn another _read(n) call, in which case reading = true if
+// it's in progress.
+// However, if we're not ended, or reading, and the length < hwm,
+// then go ahead and try to read some more preemptively.
+function maybeReadMore(stream, state) {
+  if (!state.readingMore) {
+    state.readingMore = true;
+    pna.nextTick(maybeReadMore_, stream, state);
+  }
+}
+
+function maybeReadMore_(stream, state) {
+  var len = state.length;
+  while (!state.reading && !state.flowing && !state.ended && state.length < state.highWaterMark) {
+    debug('maybeReadMore read 0');
+    stream.read(0);
+    if (len === state.length)
+      // didn't get any data, stop spinning.
+      break;else len = state.length;
+  }
+  state.readingMore = false;
+}
+
+// abstract method.  to be overridden in specific implementation classes.
+// call cb(er, data) where data is <= n in length.
+// for virtual (non-string, non-buffer) streams, "length" is somewhat
+// arbitrary, and perhaps not very meaningful.
+Readable.prototype._read = function (n) {
+  this.emit('error', new Error('_read() is not implemented'));
+};
+
+Readable.prototype.pipe = function (dest, pipeOpts) {
+  var src = this;
+  var state = this._readableState;
+
+  switch (state.pipesCount) {
+    case 0:
+      state.pipes = dest;
+      break;
+    case 1:
+      state.pipes = [state.pipes, dest];
+      break;
+    default:
+      state.pipes.push(dest);
+      break;
+  }
+  state.pipesCount += 1;
+  debug('pipe count=%d opts=%j', state.pipesCount, pipeOpts);
+
+  var doEnd = (!pipeOpts || pipeOpts.end !== false) && dest !== process.stdout && dest !== process.stderr;
+
+  var endFn = doEnd ? onend : unpipe;
+  if (state.endEmitted) pna.nextTick(endFn);else src.once('end', endFn);
+
+  dest.on('unpipe', onunpipe);
+  function onunpipe(readable, unpipeInfo) {
+    debug('onunpipe');
+    if (readable === src) {
+      if (unpipeInfo && unpipeInfo.hasUnpiped === false) {
+        unpipeInfo.hasUnpiped = true;
+        cleanup();
+      }
+    }
+  }
+
+  function onend() {
+    debug('onend');
+    dest.end();
+  }
+
+  // when the dest drains, it reduces the awaitDrain counter
+  // on the source.  This would be more elegant with a .once()
+  // handler in flow(), but adding and removing repeatedly is
+  // too slow.
+  var ondrain = pipeOnDrain(src);
+  dest.on('drain', ondrain);
+
+  var cleanedUp = false;
+  function cleanup() {
+    debug('cleanup');
+    // cleanup event handlers once the pipe is broken
+    dest.removeListener('close', onclose);
+    dest.removeListener('finish', onfinish);
+    dest.removeListener('drain', ondrain);
+    dest.removeListener('error', onerror);
+    dest.removeListener('unpipe', onunpipe);
+    src.removeListener('end', onend);
+    src.removeListener('end', unpipe);
+    src.removeListener('data', ondata);
+
+    cleanedUp = true;
+
+    // if the reader is waiting for a drain event from this
+    // specific writer, then it would cause it to never start
+    // flowing again.
+    // So, if this is awaiting a drain, then we just call it now.
+    // If we don't know, then assume that we are waiting for one.
+    if (state.awaitDrain && (!dest._writableState || dest._writableState.needDrain)) ondrain();
+  }
+
+  // If the user pushes more data while we're writing to dest then we'll end up
+  // in ondata again. However, we only want to increase awaitDrain once because
+  // dest will only emit one 'drain' event for the multiple writes.
+  // => Introduce a guard on increasing awaitDrain.
+  var increasedAwaitDrain = false;
+  src.on('data', ondata);
+  function ondata(chunk) {
+    debug('ondata');
+    increasedAwaitDrain = false;
+    var ret = dest.write(chunk);
+    if (false === ret && !increasedAwaitDrain) {
+      // If the user unpiped during `dest.write()`, it is possible
+      // to get stuck in a permanently paused state if that write
+      // also returned false.
+      // => Check whether `dest` is still a piping destination.
+      if ((state.pipesCount === 1 && state.pipes === dest || state.pipesCount > 1 && indexOf(state.pipes, dest) !== -1) && !cleanedUp) {
+        debug('false write response, pause', src._readableState.awaitDrain);
+        src._readableState.awaitDrain++;
+        increasedAwaitDrain = true;
+      }
+      src.pause();
+    }
+  }
+
+  // if the dest has an error, then stop piping into it.
+  // however, don't suppress the throwing behavior for this.
+  function onerror(er) {
+    debug('onerror', er);
+    unpipe();
+    dest.removeListener('error', onerror);
+    if (EElistenerCount(dest, 'error') === 0) dest.emit('error', er);
+  }
+
+  // Make sure our error handler is attached before userland ones.
+  prependListener(dest, 'error', onerror);
+
+  // Both close and finish should trigger unpipe, but only once.
+  function onclose() {
+    dest.removeListener('finish', onfinish);
+    unpipe();
+  }
+  dest.once('close', onclose);
+  function onfinish() {
+    debug('onfinish');
+    dest.removeListener('close', onclose);
+    unpipe();
+  }
+  dest.once('finish', onfinish);
+
+  function unpipe() {
+    debug('unpipe');
+    src.unpipe(dest);
+  }
+
+  // tell the dest that it's being piped to
+  dest.emit('pipe', src);
+
+  // start the flow if it hasn't been started already.
+  if (!state.flowing) {
+    debug('pipe resume');
+    src.resume();
+  }
+
+  return dest;
+};
+
+function pipeOnDrain(src) {
+  return function () {
+    var state = src._readableState;
+    debug('pipeOnDrain', state.awaitDrain);
+    if (state.awaitDrain) state.awaitDrain--;
+    if (state.awaitDrain === 0 && EElistenerCount(src, 'data')) {
+      state.flowing = true;
+      flow(src);
+    }
+  };
+}
+
+Readable.prototype.unpipe = function (dest) {
+  var state = this._readableState;
+  var unpipeInfo = { hasUnpiped: false };
+
+  // if we're not piping anywhere, then do nothing.
+  if (state.pipesCount === 0) return this;
+
+  // just one destination.  most common case.
+  if (state.pipesCount === 1) {
+    // passed in one, but it's not the right one.
+    if (dest && dest !== state.pipes) return this;
+
+    if (!dest) dest = state.pipes;
+
+    // got a match.
+    state.pipes = null;
+    state.pipesCount = 0;
+    state.flowing = false;
+    if (dest) dest.emit('unpipe', this, unpipeInfo);
+    return this;
+  }
+
+  // slow case. multiple pipe destinations.
+
+  if (!dest) {
+    // remove all.
+    var dests = state.pipes;
+    var len = state.pipesCount;
+    state.pipes = null;
+    state.pipesCount = 0;
+    state.flowing = false;
+
+    for (var i = 0; i < len; i++) {
+      dests[i].emit('unpipe', this, unpipeInfo);
+    }return this;
+  }
+
+  // try to find the right one.
+  var index = indexOf(state.pipes, dest);
+  if (index === -1) return this;
+
+  state.pipes.splice(index, 1);
+  state.pipesCount -= 1;
+  if (state.pipesCount === 1) state.pipes = state.pipes[0];
+
+  dest.emit('unpipe', this, unpipeInfo);
+
+  return this;
+};
+
+// set up data events if they are asked for
+// Ensure readable listeners eventually get something
+Readable.prototype.on = function (ev, fn) {
+  var res = Stream.prototype.on.call(this, ev, fn);
+
+  if (ev === 'data') {
+    // Start flowing on next tick if stream isn't explicitly paused
+    if (this._readableState.flowing !== false) this.resume();
+  } else if (ev === 'readable') {
+    var state = this._readableState;
+    if (!state.endEmitted && !state.readableListening) {
+      state.readableListening = state.needReadable = true;
+      state.emittedReadable = false;
+      if (!state.reading) {
+        pna.nextTick(nReadingNextTick, this);
+      } else if (state.length) {
+        emitReadable(this);
+      }
+    }
+  }
+
+  return res;
+};
+Readable.prototype.addListener = Readable.prototype.on;
+
+function nReadingNextTick(self) {
+  debug('readable nexttick read 0');
+  self.read(0);
+}
+
+// pause() and resume() are remnants of the legacy readable stream API
+// If the user uses them, then switch into old mode.
+Readable.prototype.resume = function () {
+  var state = this._readableState;
+  if (!state.flowing) {
+    debug('resume');
+    state.flowing = true;
+    resume(this, state);
+  }
+  return this;
+};
+
+function resume(stream, state) {
+  if (!state.resumeScheduled) {
+    state.resumeScheduled = true;
+    pna.nextTick(resume_, stream, state);
+  }
+}
+
+function resume_(stream, state) {
+  if (!state.reading) {
+    debug('resume read 0');
+    stream.read(0);
+  }
+
+  state.resumeScheduled = false;
+  state.awaitDrain = 0;
+  stream.emit('resume');
+  flow(stream);
+  if (state.flowing && !state.reading) stream.read(0);
+}
+
+Readable.prototype.pause = function () {
+  debug('call pause flowing=%j', this._readableState.flowing);
+  if (false !== this._readableState.flowing) {
+    debug('pause');
+    this._readableState.flowing = false;
+    this.emit('pause');
+  }
+  return this;
+};
+
+function flow(stream) {
+  var state = stream._readableState;
+  debug('flow', state.flowing);
+  while (state.flowing && stream.read() !== null) {}
+}
+
+// wrap an old-style stream as the async data source.
+// This is *not* part of the readable stream interface.
+// It is an ugly unfortunate mess of history.
+Readable.prototype.wrap = function (stream) {
+  var _this = this;
+
+  var state = this._readableState;
+  var paused = false;
+
+  stream.on('end', function () {
+    debug('wrapped end');
+    if (state.decoder && !state.ended) {
+      var chunk = state.decoder.end();
+      if (chunk && chunk.length) _this.push(chunk);
+    }
+
+    _this.push(null);
+  });
+
+  stream.on('data', function (chunk) {
+    debug('wrapped data');
+    if (state.decoder) chunk = state.decoder.write(chunk);
+
+    // don't skip over falsy values in objectMode
+    if (state.objectMode && (chunk === null || chunk === undefined)) return;else if (!state.objectMode && (!chunk || !chunk.length)) return;
+
+    var ret = _this.push(chunk);
+    if (!ret) {
+      paused = true;
+      stream.pause();
+    }
+  });
+
+  // proxy all the other methods.
+  // important when wrapping filters and duplexes.
+  for (var i in stream) {
+    if (this[i] === undefined && typeof stream[i] === 'function') {
+      this[i] = function (method) {
+        return function () {
+          return stream[method].apply(stream, arguments);
+        };
+      }(i);
+    }
+  }
+
+  // proxy certain important events.
+  for (var n = 0; n < kProxyEvents.length; n++) {
+    stream.on(kProxyEvents[n], this.emit.bind(this, kProxyEvents[n]));
+  }
+
+  // when we try to consume some more bytes, simply unpause the
+  // underlying stream.
+  this._read = function (n) {
+    debug('wrapped _read', n);
+    if (paused) {
+      paused = false;
+      stream.resume();
+    }
+  };
+
+  return this;
+};
+
+Object.defineProperty(Readable.prototype, 'readableHighWaterMark', {
+  // making it explicit this property is not enumerable
+  // because otherwise some prototype manipulation in
+  // userland will fail
+  enumerable: false,
+  get: function () {
+    return this._readableState.highWaterMark;
+  }
+});
+
+// exposed for testing purposes only.
+Readable._fromList = fromList;
+
+// Pluck off n bytes from an array of buffers.
+// Length is the combined lengths of all the buffers in the list.
+// This function is designed to be inlinable, so please take care when making
+// changes to the function body.
+function fromList(n, state) {
+  // nothing buffered
+  if (state.length === 0) return null;
+
+  var ret;
+  if (state.objectMode) ret = state.buffer.shift();else if (!n || n >= state.length) {
+    // read it all, truncate the list
+    if (state.decoder) ret = state.buffer.join('');else if (state.buffer.length === 1) ret = state.buffer.head.data;else ret = state.buffer.concat(state.length);
+    state.buffer.clear();
+  } else {
+    // read part of list
+    ret = fromListPartial(n, state.buffer, state.decoder);
+  }
+
+  return ret;
+}
+
+// Extracts only enough buffered data to satisfy the amount requested.
+// This function is designed to be inlinable, so please take care when making
+// changes to the function body.
+function fromListPartial(n, list, hasStrings) {
+  var ret;
+  if (n < list.head.data.length) {
+    // slice is the same for buffers and strings
+    ret = list.head.data.slice(0, n);
+    list.head.data = list.head.data.slice(n);
+  } else if (n === list.head.data.length) {
+    // first chunk is a perfect match
+    ret = list.shift();
+  } else {
+    // result spans more than one buffer
+    ret = hasStrings ? copyFromBufferString(n, list) : copyFromBuffer(n, list);
+  }
+  return ret;
+}
+
+// Copies a specified amount of characters from the list of buffered data
+// chunks.
+// This function is designed to be inlinable, so please take care when making
+// changes to the function body.
+function copyFromBufferString(n, list) {
+  var p = list.head;
+  var c = 1;
+  var ret = p.data;
+  n -= ret.length;
+  while (p = p.next) {
+    var str = p.data;
+    var nb = n > str.length ? str.length : n;
+    if (nb === str.length) ret += str;else ret += str.slice(0, n);
+    n -= nb;
+    if (n === 0) {
+      if (nb === str.length) {
+        ++c;
+        if (p.next) list.head = p.next;else list.head = list.tail = null;
+      } else {
+        list.head = p;
+        p.data = str.slice(nb);
+      }
+      break;
+    }
+    ++c;
+  }
+  list.length -= c;
+  return ret;
+}
+
+// Copies a specified amount of bytes from the list of buffered data chunks.
+// This function is designed to be inlinable, so please take care when making
+// changes to the function body.
+function copyFromBuffer(n, list) {
+  var ret = Buffer.allocUnsafe(n);
+  var p = list.head;
+  var c = 1;
+  p.data.copy(ret);
+  n -= p.data.length;
+  while (p = p.next) {
+    var buf = p.data;
+    var nb = n > buf.length ? buf.length : n;
+    buf.copy(ret, ret.length - n, 0, nb);
+    n -= nb;
+    if (n === 0) {
+      if (nb === buf.length) {
+        ++c;
+        if (p.next) list.head = p.next;else list.head = list.tail = null;
+      } else {
+        list.head = p;
+        p.data = buf.slice(nb);
+      }
+      break;
+    }
+    ++c;
+  }
+  list.length -= c;
+  return ret;
+}
+
+function endReadable(stream) {
+  var state = stream._readableState;
+
+  // If we get here before consuming all the bytes, then that is a
+  // bug in node.  Should never happen.
+  if (state.length > 0) throw new Error('"endReadable()" called on non-empty stream');
+
+  if (!state.endEmitted) {
+    state.ended = true;
+    pna.nextTick(endReadableNT, state, stream);
+  }
+}
+
+function endReadableNT(state, stream) {
+  // Check that we didn't get one last unshift.
+  if (!state.endEmitted && state.length === 0) {
+    state.endEmitted = true;
+    stream.readable = false;
+    stream.emit('end');
+  }
+}
+
+function indexOf(xs, x) {
+  for (var i = 0, l = xs.length; i < l; i++) {
+    if (xs[i] === x) return i;
+  }
+  return -1;
+}
+/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./../../webpack/buildin/global.js */ "./node_modules/webpack/buildin/global.js"), __webpack_require__(/*! ./../../process/browser.js */ "./node_modules/process/browser.js")))
+
+/***/ }),
+
+/***/ "./node_modules/readable-stream/lib/_stream_transform.js":
+/*!***************************************************************!*\
+  !*** ./node_modules/readable-stream/lib/_stream_transform.js ***!
+  \***************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+// Copyright Joyent, Inc. and other Node contributors.
+//
+// Permission is hereby granted, free of charge, to any person obtaining a
+// copy of this software and associated documentation files (the
+// "Software"), to deal in the Software without restriction, including
+// without limitation the rights to use, copy, modify, merge, publish,
+// distribute, sublicense, and/or sell copies of the Software, and to permit
+// persons to whom the Software is furnished to do so, subject to the
+// following conditions:
+//
+// The above copyright notice and this permission notice shall be included
+// in all copies or substantial portions of the Software.
+//
+// THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS
+// OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
+// MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN
+// NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM,
+// DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR
+// OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE
+// USE OR OTHER DEALINGS IN THE SOFTWARE.
+
+// a transform stream is a readable/writable stream where you do
+// something with the data.  Sometimes it's called a "filter",
+// but that's not a great name for it, since that implies a thing where
+// some bits pass through, and others are simply ignored.  (That would
+// be a valid example of a transform, of course.)
+//
+// While the output is causally related to the input, it's not a
+// necessarily symmetric or synchronous transformation.  For example,
+// a zlib stream might take multiple plain-text writes(), and then
+// emit a single compressed chunk some time in the future.
+//
+// Here's how this works:
+//
+// The Transform stream has all the aspects of the readable and writable
+// stream classes.  When you write(chunk), that calls _write(chunk,cb)
+// internally, and returns false if there's a lot of pending writes
+// buffered up.  When you call read(), that calls _read(n) until
+// there's enough pending readable data buffered up.
+//
+// In a transform stream, the written data is placed in a buffer.  When
+// _read(n) is called, it transforms the queued up data, calling the
+// buffered _write cb's as it consumes chunks.  If consuming a single
+// written chunk would result in multiple output chunks, then the first
+// outputted bit calls the readcb, and subsequent chunks just go into
+// the read buffer, and will cause it to emit 'readable' if necessary.
+//
+// This way, back-pressure is actually determined by the reading side,
+// since _read has to be called to start processing a new chunk.  However,
+// a pathological inflate type of transform can cause excessive buffering
+// here.  For example, imagine a stream where every byte of input is
+// interpreted as an integer from 0-255, and then results in that many
+// bytes of output.  Writing the 4 bytes {ff,ff,ff,ff} would result in
+// 1kb of data being output.  In this case, you could write a very small
+// amount of input, and end up with a very large amount of output.  In
+// such a pathological inflating mechanism, there'd be no way to tell
+// the system to stop doing the transform.  A single 4MB write could
+// cause the system to run out of memory.
+//
+// However, even in such a pathological case, only a single written chunk
+// would be consumed, and then the rest would wait (un-transformed) until
+// the results of the previous transformed chunk were consumed.
+
+
+
+module.exports = Transform;
+
+var Duplex = __webpack_require__(/*! ./_stream_duplex */ "./node_modules/readable-stream/lib/_stream_duplex.js");
+
+/*<replacement>*/
+var util = __webpack_require__(/*! core-util-is */ "./node_modules/core-util-is/lib/util.js");
+util.inherits = __webpack_require__(/*! inherits */ "./node_modules/inherits/inherits_browser.js");
+/*</replacement>*/
+
+util.inherits(Transform, Duplex);
+
+function afterTransform(er, data) {
+  var ts = this._transformState;
+  ts.transforming = false;
+
+  var cb = ts.writecb;
+
+  if (!cb) {
+    return this.emit('error', new Error('write callback called multiple times'));
+  }
+
+  ts.writechunk = null;
+  ts.writecb = null;
+
+  if (data != null) // single equals check for both `null` and `undefined`
+    this.push(data);
+
+  cb(er);
+
+  var rs = this._readableState;
+  rs.reading = false;
+  if (rs.needReadable || rs.length < rs.highWaterMark) {
+    this._read(rs.highWaterMark);
+  }
+}
+
+function Transform(options) {
+  if (!(this instanceof Transform)) return new Transform(options);
+
+  Duplex.call(this, options);
+
+  this._transformState = {
+    afterTransform: afterTransform.bind(this),
+    needTransform: false,
+    transforming: false,
+    writecb: null,
+    writechunk: null,
+    writeencoding: null
+  };
+
+  // start out asking for a readable event once data is transformed.
+  this._readableState.needReadable = true;
+
+  // we have implemented the _read method, and done the other things
+  // that Readable wants before the first _read call, so unset the
+  // sync guard flag.
+  this._readableState.sync = false;
+
+  if (options) {
+    if (typeof options.transform === 'function') this._transform = options.transform;
+
+    if (typeof options.flush === 'function') this._flush = options.flush;
+  }
+
+  // When the writable side finishes, then flush out anything remaining.
+  this.on('prefinish', prefinish);
+}
+
+function prefinish() {
+  var _this = this;
+
+  if (typeof this._flush === 'function') {
+    this._flush(function (er, data) {
+      done(_this, er, data);
+    });
+  } else {
+    done(this, null, null);
+  }
+}
+
+Transform.prototype.push = function (chunk, encoding) {
+  this._transformState.needTransform = false;
+  return Duplex.prototype.push.call(this, chunk, encoding);
+};
+
+// This is the part where you do stuff!
+// override this function in implementation classes.
+// 'chunk' is an input chunk.
+//
+// Call `push(newChunk)` to pass along transformed output
+// to the readable side.  You may call 'push' zero or more times.
+//
+// Call `cb(err)` when you are done with this chunk.  If you pass
+// an error, then that'll put the hurt on the whole operation.  If you
+// never call cb(), then you'll never get another chunk.
+Transform.prototype._transform = function (chunk, encoding, cb) {
+  throw new Error('_transform() is not implemented');
+};
+
+Transform.prototype._write = function (chunk, encoding, cb) {
+  var ts = this._transformState;
+  ts.writecb = cb;
+  ts.writechunk = chunk;
+  ts.writeencoding = encoding;
+  if (!ts.transforming) {
+    var rs = this._readableState;
+    if (ts.needTransform || rs.needReadable || rs.length < rs.highWaterMark) this._read(rs.highWaterMark);
+  }
+};
+
+// Doesn't matter what the args are here.
+// _transform does all the work.
+// That we got here means that the readable side wants more data.
+Transform.prototype._read = function (n) {
+  var ts = this._transformState;
+
+  if (ts.writechunk !== null && ts.writecb && !ts.transforming) {
+    ts.transforming = true;
+    this._transform(ts.writechunk, ts.writeencoding, ts.afterTransform);
+  } else {
+    // mark that we need a transform, so that any data that comes in
+    // will get processed, now that we've asked for it.
+    ts.needTransform = true;
+  }
+};
+
+Transform.prototype._destroy = function (err, cb) {
+  var _this2 = this;
+
+  Duplex.prototype._destroy.call(this, err, function (err2) {
+    cb(err2);
+    _this2.emit('close');
+  });
+};
+
+function done(stream, er, data) {
+  if (er) return stream.emit('error', er);
+
+  if (data != null) // single equals check for both `null` and `undefined`
+    stream.push(data);
+
+  // if there's nothing in the write buffer, then that means
+  // that nothing more will ever be provided
+  if (stream._writableState.length) throw new Error('Calling transform done when ws.length != 0');
+
+  if (stream._transformState.transforming) throw new Error('Calling transform done when still transforming');
+
+  return stream.push(null);
+}
+
+/***/ }),
+
+/***/ "./node_modules/readable-stream/lib/_stream_writable.js":
+/*!**************************************************************!*\
+  !*** ./node_modules/readable-stream/lib/_stream_writable.js ***!
+  \**************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+/* WEBPACK VAR INJECTION */(function(process, setImmediate, global) {// Copyright Joyent, Inc. and other Node contributors.
+//
+// Permission is hereby granted, free of charge, to any person obtaining a
+// copy of this software and associated documentation files (the
+// "Software"), to deal in the Software without restriction, including
+// without limitation the rights to use, copy, modify, merge, publish,
+// distribute, sublicense, and/or sell copies of the Software, and to permit
+// persons to whom the Software is furnished to do so, subject to the
+// following conditions:
+//
+// The above copyright notice and this permission notice shall be included
+// in all copies or substantial portions of the Software.
+//
+// THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS
+// OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
+// MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN
+// NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM,
+// DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR
+// OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE
+// USE OR OTHER DEALINGS IN THE SOFTWARE.
+
+// A bit simpler than readable streams.
+// Implement an async ._write(chunk, encoding, cb), and it'll handle all
+// the drain event emission and buffering.
+
+
+
+/*<replacement>*/
+
+var pna = __webpack_require__(/*! process-nextick-args */ "./node_modules/process-nextick-args/index.js");
+/*</replacement>*/
+
+module.exports = Writable;
+
+/* <replacement> */
+function WriteReq(chunk, encoding, cb) {
+  this.chunk = chunk;
+  this.encoding = encoding;
+  this.callback = cb;
+  this.next = null;
+}
+
+// It seems a linked list but it is not
+// there will be only 2 of these for each stream
+function CorkedRequest(state) {
+  var _this = this;
+
+  this.next = null;
+  this.entry = null;
+  this.finish = function () {
+    onCorkedFinish(_this, state);
+  };
+}
+/* </replacement> */
+
+/*<replacement>*/
+var asyncWrite = !process.browser && ['v0.10', 'v0.9.'].indexOf(process.version.slice(0, 5)) > -1 ? setImmediate : pna.nextTick;
+/*</replacement>*/
+
+/*<replacement>*/
+var Duplex;
+/*</replacement>*/
+
+Writable.WritableState = WritableState;
+
+/*<replacement>*/
+var util = __webpack_require__(/*! core-util-is */ "./node_modules/core-util-is/lib/util.js");
+util.inherits = __webpack_require__(/*! inherits */ "./node_modules/inherits/inherits_browser.js");
+/*</replacement>*/
+
+/*<replacement>*/
+var internalUtil = {
+  deprecate: __webpack_require__(/*! util-deprecate */ "./node_modules/util-deprecate/browser.js")
+};
+/*</replacement>*/
+
+/*<replacement>*/
+var Stream = __webpack_require__(/*! ./internal/streams/stream */ "./node_modules/readable-stream/lib/internal/streams/stream-browser.js");
+/*</replacement>*/
+
+/*<replacement>*/
+
+var Buffer = __webpack_require__(/*! safe-buffer */ "./node_modules/readable-stream/node_modules/safe-buffer/index.js").Buffer;
+var OurUint8Array = global.Uint8Array || function () {};
+function _uint8ArrayToBuffer(chunk) {
+  return Buffer.from(chunk);
+}
+function _isUint8Array(obj) {
+  return Buffer.isBuffer(obj) || obj instanceof OurUint8Array;
+}
+
+/*</replacement>*/
+
+var destroyImpl = __webpack_require__(/*! ./internal/streams/destroy */ "./node_modules/readable-stream/lib/internal/streams/destroy.js");
+
+util.inherits(Writable, Stream);
+
+function nop() {}
+
+function WritableState(options, stream) {
+  Duplex = Duplex || __webpack_require__(/*! ./_stream_duplex */ "./node_modules/readable-stream/lib/_stream_duplex.js");
+
+  options = options || {};
+
+  // Duplex streams are both readable and writable, but share
+  // the same options object.
+  // However, some cases require setting options to different
+  // values for the readable and the writable sides of the duplex stream.
+  // These options can be provided separately as readableXXX and writableXXX.
+  var isDuplex = stream instanceof Duplex;
+
+  // object stream flag to indicate whether or not this stream
+  // contains buffers or objects.
+  this.objectMode = !!options.objectMode;
+
+  if (isDuplex) this.objectMode = this.objectMode || !!options.writableObjectMode;
+
+  // the point at which write() starts returning false
+  // Note: 0 is a valid value, means that we always return false if
+  // the entire buffer is not flushed immediately on write()
+  var hwm = options.highWaterMark;
+  var writableHwm = options.writableHighWaterMark;
+  var defaultHwm = this.objectMode ? 16 : 16 * 1024;
+
+  if (hwm || hwm === 0) this.highWaterMark = hwm;else if (isDuplex && (writableHwm || writableHwm === 0)) this.highWaterMark = writableHwm;else this.highWaterMark = defaultHwm;
+
+  // cast to ints.
+  this.highWaterMark = Math.floor(this.highWaterMark);
+
+  // if _final has been called
+  this.finalCalled = false;
+
+  // drain event flag.
+  this.needDrain = false;
+  // at the start of calling end()
+  this.ending = false;
+  // when end() has been called, and returned
+  this.ended = false;
+  // when 'finish' is emitted
+  this.finished = false;
+
+  // has it been destroyed
+  this.destroyed = false;
+
+  // should we decode strings into buffers before passing to _write?
+  // this is here so that some node-core streams can optimize string
+  // handling at a lower level.
+  var noDecode = options.decodeStrings === false;
+  this.decodeStrings = !noDecode;
+
+  // Crypto is kind of old and crusty.  Historically, its default string
+  // encoding is 'binary' so we have to make this configurable.
+  // Everything else in the universe uses 'utf8', though.
+  this.defaultEncoding = options.defaultEncoding || 'utf8';
+
+  // not an actual buffer we keep track of, but a measurement
+  // of how much we're waiting to get pushed to some underlying
+  // socket or file.
+  this.length = 0;
+
+  // a flag to see when we're in the middle of a write.
+  this.writing = false;
+
+  // when true all writes will be buffered until .uncork() call
+  this.corked = 0;
+
+  // a flag to be able to tell if the onwrite cb is called immediately,
+  // or on a later tick.  We set this to true at first, because any
+  // actions that shouldn't happen until "later" should generally also
+  // not happen before the first write call.
+  this.sync = true;
+
+  // a flag to know if we're processing previously buffered items, which
+  // may call the _write() callback in the same tick, so that we don't
+  // end up in an overlapped onwrite situation.
+  this.bufferProcessing = false;
+
+  // the callback that's passed to _write(chunk,cb)
+  this.onwrite = function (er) {
+    onwrite(stream, er);
+  };
+
+  // the callback that the user supplies to write(chunk,encoding,cb)
+  this.writecb = null;
+
+  // the amount that is being written when _write is called.
+  this.writelen = 0;
+
+  this.bufferedRequest = null;
+  this.lastBufferedRequest = null;
+
+  // number of pending user-supplied write callbacks
+  // this must be 0 before 'finish' can be emitted
+  this.pendingcb = 0;
+
+  // emit prefinish if the only thing we're waiting for is _write cbs
+  // This is relevant for synchronous Transform streams
+  this.prefinished = false;
+
+  // True if the error was already emitted and should not be thrown again
+  this.errorEmitted = false;
+
+  // count buffered requests
+  this.bufferedRequestCount = 0;
+
+  // allocate the first CorkedRequest, there is always
+  // one allocated and free to use, and we maintain at most two
+  this.corkedRequestsFree = new CorkedRequest(this);
+}
+
+WritableState.prototype.getBuffer = function getBuffer() {
+  var current = this.bufferedRequest;
+  var out = [];
+  while (current) {
+    out.push(current);
+    current = current.next;
+  }
+  return out;
+};
+
+(function () {
+  try {
+    Object.defineProperty(WritableState.prototype, 'buffer', {
+      get: internalUtil.deprecate(function () {
+        return this.getBuffer();
+      }, '_writableState.buffer is deprecated. Use _writableState.getBuffer ' + 'instead.', 'DEP0003')
+    });
+  } catch (_) {}
+})();
+
+// Test _writableState for inheritance to account for Duplex streams,
+// whose prototype chain only points to Readable.
+var realHasInstance;
+if (typeof Symbol === 'function' && Symbol.hasInstance && typeof Function.prototype[Symbol.hasInstance] === 'function') {
+  realHasInstance = Function.prototype[Symbol.hasInstance];
+  Object.defineProperty(Writable, Symbol.hasInstance, {
+    value: function (object) {
+      if (realHasInstance.call(this, object)) return true;
+      if (this !== Writable) return false;
+
+      return object && object._writableState instanceof WritableState;
+    }
+  });
+} else {
+  realHasInstance = function (object) {
+    return object instanceof this;
+  };
+}
+
+function Writable(options) {
+  Duplex = Duplex || __webpack_require__(/*! ./_stream_duplex */ "./node_modules/readable-stream/lib/_stream_duplex.js");
+
+  // Writable ctor is applied to Duplexes, too.
+  // `realHasInstance` is necessary because using plain `instanceof`
+  // would return false, as no `_writableState` property is attached.
+
+  // Trying to use the custom `instanceof` for Writable here will also break the
+  // Node.js LazyTransform implementation, which has a non-trivial getter for
+  // `_writableState` that would lead to infinite recursion.
+  if (!realHasInstance.call(Writable, this) && !(this instanceof Duplex)) {
+    return new Writable(options);
+  }
+
+  this._writableState = new WritableState(options, this);
+
+  // legacy.
+  this.writable = true;
+
+  if (options) {
+    if (typeof options.write === 'function') this._write = options.write;
+
+    if (typeof options.writev === 'function') this._writev = options.writev;
+
+    if (typeof options.destroy === 'function') this._destroy = options.destroy;
+
+    if (typeof options.final === 'function') this._final = options.final;
+  }
+
+  Stream.call(this);
+}
+
+// Otherwise people can pipe Writable streams, which is just wrong.
+Writable.prototype.pipe = function () {
+  this.emit('error', new Error('Cannot pipe, not readable'));
+};
+
+function writeAfterEnd(stream, cb) {
+  var er = new Error('write after end');
+  // TODO: defer error events consistently everywhere, not just the cb
+  stream.emit('error', er);
+  pna.nextTick(cb, er);
+}
+
+// Checks that a user-supplied chunk is valid, especially for the particular
+// mode the stream is in. Currently this means that `null` is never accepted
+// and undefined/non-string values are only allowed in object mode.
+function validChunk(stream, state, chunk, cb) {
+  var valid = true;
+  var er = false;
+
+  if (chunk === null) {
+    er = new TypeError('May not write null values to stream');
+  } else if (typeof chunk !== 'string' && chunk !== undefined && !state.objectMode) {
+    er = new TypeError('Invalid non-string/buffer chunk');
+  }
+  if (er) {
+    stream.emit('error', er);
+    pna.nextTick(cb, er);
+    valid = false;
+  }
+  return valid;
+}
+
+Writable.prototype.write = function (chunk, encoding, cb) {
+  var state = this._writableState;
+  var ret = false;
+  var isBuf = !state.objectMode && _isUint8Array(chunk);
+
+  if (isBuf && !Buffer.isBuffer(chunk)) {
+    chunk = _uint8ArrayToBuffer(chunk);
+  }
+
+  if (typeof encoding === 'function') {
+    cb = encoding;
+    encoding = null;
+  }
+
+  if (isBuf) encoding = 'buffer';else if (!encoding) encoding = state.defaultEncoding;
+
+  if (typeof cb !== 'function') cb = nop;
+
+  if (state.ended) writeAfterEnd(this, cb);else if (isBuf || validChunk(this, state, chunk, cb)) {
+    state.pendingcb++;
+    ret = writeOrBuffer(this, state, isBuf, chunk, encoding, cb);
+  }
+
+  return ret;
+};
+
+Writable.prototype.cork = function () {
+  var state = this._writableState;
+
+  state.corked++;
+};
+
+Writable.prototype.uncork = function () {
+  var state = this._writableState;
+
+  if (state.corked) {
+    state.corked--;
+
+    if (!state.writing && !state.corked && !state.finished && !state.bufferProcessing && state.bufferedRequest) clearBuffer(this, state);
+  }
+};
+
+Writable.prototype.setDefaultEncoding = function setDefaultEncoding(encoding) {
+  // node::ParseEncoding() requires lower case.
+  if (typeof encoding === 'string') encoding = encoding.toLowerCase();
+  if (!(['hex', 'utf8', 'utf-8', 'ascii', 'binary', 'base64', 'ucs2', 'ucs-2', 'utf16le', 'utf-16le', 'raw'].indexOf((encoding + '').toLowerCase()) > -1)) throw new TypeError('Unknown encoding: ' + encoding);
+  this._writableState.defaultEncoding = encoding;
+  return this;
+};
+
+function decodeChunk(state, chunk, encoding) {
+  if (!state.objectMode && state.decodeStrings !== false && typeof chunk === 'string') {
+    chunk = Buffer.from(chunk, encoding);
+  }
+  return chunk;
+}
+
+Object.defineProperty(Writable.prototype, 'writableHighWaterMark', {
+  // making it explicit this property is not enumerable
+  // because otherwise some prototype manipulation in
+  // userland will fail
+  enumerable: false,
+  get: function () {
+    return this._writableState.highWaterMark;
+  }
+});
+
+// if we're already writing something, then just put this
+// in the queue, and wait our turn.  Otherwise, call _write
+// If we return false, then we need a drain event, so set that flag.
+function writeOrBuffer(stream, state, isBuf, chunk, encoding, cb) {
+  if (!isBuf) {
+    var newChunk = decodeChunk(state, chunk, encoding);
+    if (chunk !== newChunk) {
+      isBuf = true;
+      encoding = 'buffer';
+      chunk = newChunk;
+    }
+  }
+  var len = state.objectMode ? 1 : chunk.length;
+
+  state.length += len;
+
+  var ret = state.length < state.highWaterMark;
+  // we must ensure that previous needDrain will not be reset to false.
+  if (!ret) state.needDrain = true;
+
+  if (state.writing || state.corked) {
+    var last = state.lastBufferedRequest;
+    state.lastBufferedRequest = {
+      chunk: chunk,
+      encoding: encoding,
+      isBuf: isBuf,
+      callback: cb,
+      next: null
+    };
+    if (last) {
+      last.next = state.lastBufferedRequest;
+    } else {
+      state.bufferedRequest = state.lastBufferedRequest;
+    }
+    state.bufferedRequestCount += 1;
+  } else {
+    doWrite(stream, state, false, len, chunk, encoding, cb);
+  }
+
+  return ret;
+}
+
+function doWrite(stream, state, writev, len, chunk, encoding, cb) {
+  state.writelen = len;
+  state.writecb = cb;
+  state.writing = true;
+  state.sync = true;
+  if (writev) stream._writev(chunk, state.onwrite);else stream._write(chunk, encoding, state.onwrite);
+  state.sync = false;
+}
+
+function onwriteError(stream, state, sync, er, cb) {
+  --state.pendingcb;
+
+  if (sync) {
+    // defer the callback if we are being called synchronously
+    // to avoid piling up things on the stack
+    pna.nextTick(cb, er);
+    // this can emit finish, and it will always happen
+    // after error
+    pna.nextTick(finishMaybe, stream, state);
+    stream._writableState.errorEmitted = true;
+    stream.emit('error', er);
+  } else {
+    // the caller expect this to happen before if
+    // it is async
+    cb(er);
+    stream._writableState.errorEmitted = true;
+    stream.emit('error', er);
+    // this can emit finish, but finish must
+    // always follow error
+    finishMaybe(stream, state);
+  }
+}
+
+function onwriteStateUpdate(state) {
+  state.writing = false;
+  state.writecb = null;
+  state.length -= state.writelen;
+  state.writelen = 0;
+}
+
+function onwrite(stream, er) {
+  var state = stream._writableState;
+  var sync = state.sync;
+  var cb = state.writecb;
+
+  onwriteStateUpdate(state);
+
+  if (er) onwriteError(stream, state, sync, er, cb);else {
+    // Check if we're actually ready to finish, but don't emit yet
+    var finished = needFinish(state);
+
+    if (!finished && !state.corked && !state.bufferProcessing && state.bufferedRequest) {
+      clearBuffer(stream, state);
+    }
+
+    if (sync) {
+      /*<replacement>*/
+      asyncWrite(afterWrite, stream, state, finished, cb);
+      /*</replacement>*/
+    } else {
+      afterWrite(stream, state, finished, cb);
+    }
+  }
+}
+
+function afterWrite(stream, state, finished, cb) {
+  if (!finished) onwriteDrain(stream, state);
+  state.pendingcb--;
+  cb();
+  finishMaybe(stream, state);
+}
+
+// Must force callback to be called on nextTick, so that we don't
+// emit 'drain' before the write() consumer gets the 'false' return
+// value, and has a chance to attach a 'drain' listener.
+function onwriteDrain(stream, state) {
+  if (state.length === 0 && state.needDrain) {
+    state.needDrain = false;
+    stream.emit('drain');
+  }
+}
+
+// if there's something in the buffer waiting, then process it
+function clearBuffer(stream, state) {
+  state.bufferProcessing = true;
+  var entry = state.bufferedRequest;
+
+  if (stream._writev && entry && entry.next) {
+    // Fast case, write everything using _writev()
+    var l = state.bufferedRequestCount;
+    var buffer = new Array(l);
+    var holder = state.corkedRequestsFree;
+    holder.entry = entry;
+
+    var count = 0;
+    var allBuffers = true;
+    while (entry) {
+      buffer[count] = entry;
+      if (!entry.isBuf) allBuffers = false;
+      entry = entry.next;
+      count += 1;
+    }
+    buffer.allBuffers = allBuffers;
+
+    doWrite(stream, state, true, state.length, buffer, '', holder.finish);
+
+    // doWrite is almost always async, defer these to save a bit of time
+    // as the hot path ends with doWrite
+    state.pendingcb++;
+    state.lastBufferedRequest = null;
+    if (holder.next) {
+      state.corkedRequestsFree = holder.next;
+      holder.next = null;
+    } else {
+      state.corkedRequestsFree = new CorkedRequest(state);
+    }
+    state.bufferedRequestCount = 0;
+  } else {
+    // Slow case, write chunks one-by-one
+    while (entry) {
+      var chunk = entry.chunk;
+      var encoding = entry.encoding;
+      var cb = entry.callback;
+      var len = state.objectMode ? 1 : chunk.length;
+
+      doWrite(stream, state, false, len, chunk, encoding, cb);
+      entry = entry.next;
+      state.bufferedRequestCount--;
+      // if we didn't call the onwrite immediately, then
+      // it means that we need to wait until it does.
+      // also, that means that the chunk and cb are currently
+      // being processed, so move the buffer counter past them.
+      if (state.writing) {
+        break;
+      }
+    }
+
+    if (entry === null) state.lastBufferedRequest = null;
+  }
+
+  state.bufferedRequest = entry;
+  state.bufferProcessing = false;
+}
+
+Writable.prototype._write = function (chunk, encoding, cb) {
+  cb(new Error('_write() is not implemented'));
+};
+
+Writable.prototype._writev = null;
+
+Writable.prototype.end = function (chunk, encoding, cb) {
+  var state = this._writableState;
+
+  if (typeof chunk === 'function') {
+    cb = chunk;
+    chunk = null;
+    encoding = null;
+  } else if (typeof encoding === 'function') {
+    cb = encoding;
+    encoding = null;
+  }
+
+  if (chunk !== null && chunk !== undefined) this.write(chunk, encoding);
+
+  // .end() fully uncorks
+  if (state.corked) {
+    state.corked = 1;
+    this.uncork();
+  }
+
+  // ignore unnecessary end() calls.
+  if (!state.ending && !state.finished) endWritable(this, state, cb);
+};
+
+function needFinish(state) {
+  return state.ending && state.length === 0 && state.bufferedRequest === null && !state.finished && !state.writing;
+}
+function callFinal(stream, state) {
+  stream._final(function (err) {
+    state.pendingcb--;
+    if (err) {
+      stream.emit('error', err);
+    }
+    state.prefinished = true;
+    stream.emit('prefinish');
+    finishMaybe(stream, state);
+  });
+}
+function prefinish(stream, state) {
+  if (!state.prefinished && !state.finalCalled) {
+    if (typeof stream._final === 'function') {
+      state.pendingcb++;
+      state.finalCalled = true;
+      pna.nextTick(callFinal, stream, state);
+    } else {
+      state.prefinished = true;
+      stream.emit('prefinish');
+    }
+  }
+}
+
+function finishMaybe(stream, state) {
+  var need = needFinish(state);
+  if (need) {
+    prefinish(stream, state);
+    if (state.pendingcb === 0) {
+      state.finished = true;
+      stream.emit('finish');
+    }
+  }
+  return need;
+}
+
+function endWritable(stream, state, cb) {
+  state.ending = true;
+  finishMaybe(stream, state);
+  if (cb) {
+    if (state.finished) pna.nextTick(cb);else stream.once('finish', cb);
+  }
+  state.ended = true;
+  stream.writable = false;
+}
+
+function onCorkedFinish(corkReq, state, err) {
+  var entry = corkReq.entry;
+  corkReq.entry = null;
+  while (entry) {
+    var cb = entry.callback;
+    state.pendingcb--;
+    cb(err);
+    entry = entry.next;
+  }
+  if (state.corkedRequestsFree) {
+    state.corkedRequestsFree.next = corkReq;
+  } else {
+    state.corkedRequestsFree = corkReq;
+  }
+}
+
+Object.defineProperty(Writable.prototype, 'destroyed', {
+  get: function () {
+    if (this._writableState === undefined) {
+      return false;
+    }
+    return this._writableState.destroyed;
+  },
+  set: function (value) {
+    // we ignore the value if the stream
+    // has not been initialized yet
+    if (!this._writableState) {
+      return;
+    }
+
+    // backward compatibility, the user is explicitly
+    // managing destroyed
+    this._writableState.destroyed = value;
+  }
+});
+
+Writable.prototype.destroy = destroyImpl.destroy;
+Writable.prototype._undestroy = destroyImpl.undestroy;
+Writable.prototype._destroy = function (err, cb) {
+  this.end();
+  cb(err);
+};
+/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./../../process/browser.js */ "./node_modules/process/browser.js"), __webpack_require__(/*! ./../../timers-browserify/main.js */ "./node_modules/timers-browserify/main.js").setImmediate, __webpack_require__(/*! ./../../webpack/buildin/global.js */ "./node_modules/webpack/buildin/global.js")))
+
+/***/ }),
+
+/***/ "./node_modules/readable-stream/lib/internal/streams/BufferList.js":
+/*!*************************************************************************!*\
+  !*** ./node_modules/readable-stream/lib/internal/streams/BufferList.js ***!
+  \*************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+var Buffer = __webpack_require__(/*! safe-buffer */ "./node_modules/readable-stream/node_modules/safe-buffer/index.js").Buffer;
+var util = __webpack_require__(/*! util */ 1);
+
+function copyBuffer(src, target, offset) {
+  src.copy(target, offset);
+}
+
+module.exports = function () {
+  function BufferList() {
+    _classCallCheck(this, BufferList);
+
+    this.head = null;
+    this.tail = null;
+    this.length = 0;
+  }
+
+  BufferList.prototype.push = function push(v) {
+    var entry = { data: v, next: null };
+    if (this.length > 0) this.tail.next = entry;else this.head = entry;
+    this.tail = entry;
+    ++this.length;
+  };
+
+  BufferList.prototype.unshift = function unshift(v) {
+    var entry = { data: v, next: this.head };
+    if (this.length === 0) this.tail = entry;
+    this.head = entry;
+    ++this.length;
+  };
+
+  BufferList.prototype.shift = function shift() {
+    if (this.length === 0) return;
+    var ret = this.head.data;
+    if (this.length === 1) this.head = this.tail = null;else this.head = this.head.next;
+    --this.length;
+    return ret;
+  };
+
+  BufferList.prototype.clear = function clear() {
+    this.head = this.tail = null;
+    this.length = 0;
+  };
+
+  BufferList.prototype.join = function join(s) {
+    if (this.length === 0) return '';
+    var p = this.head;
+    var ret = '' + p.data;
+    while (p = p.next) {
+      ret += s + p.data;
+    }return ret;
+  };
+
+  BufferList.prototype.concat = function concat(n) {
+    if (this.length === 0) return Buffer.alloc(0);
+    if (this.length === 1) return this.head.data;
+    var ret = Buffer.allocUnsafe(n >>> 0);
+    var p = this.head;
+    var i = 0;
+    while (p) {
+      copyBuffer(p.data, ret, i);
+      i += p.data.length;
+      p = p.next;
+    }
+    return ret;
+  };
+
+  return BufferList;
+}();
+
+if (util && util.inspect && util.inspect.custom) {
+  module.exports.prototype[util.inspect.custom] = function () {
+    var obj = util.inspect({ length: this.length });
+    return this.constructor.name + ' ' + obj;
+  };
+}
+
+/***/ }),
+
+/***/ "./node_modules/readable-stream/lib/internal/streams/destroy.js":
+/*!**********************************************************************!*\
+  !*** ./node_modules/readable-stream/lib/internal/streams/destroy.js ***!
+  \**********************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+/*<replacement>*/
+
+var pna = __webpack_require__(/*! process-nextick-args */ "./node_modules/process-nextick-args/index.js");
+/*</replacement>*/
+
+// undocumented cb() API, needed for core, not for public API
+function destroy(err, cb) {
+  var _this = this;
+
+  var readableDestroyed = this._readableState && this._readableState.destroyed;
+  var writableDestroyed = this._writableState && this._writableState.destroyed;
+
+  if (readableDestroyed || writableDestroyed) {
+    if (cb) {
+      cb(err);
+    } else if (err && (!this._writableState || !this._writableState.errorEmitted)) {
+      pna.nextTick(emitErrorNT, this, err);
+    }
+    return this;
+  }
+
+  // we set destroyed to true before firing error callbacks in order
+  // to make it re-entrance safe in case destroy() is called within callbacks
+
+  if (this._readableState) {
+    this._readableState.destroyed = true;
+  }
+
+  // if this is a duplex stream mark the writable part as destroyed as well
+  if (this._writableState) {
+    this._writableState.destroyed = true;
+  }
+
+  this._destroy(err || null, function (err) {
+    if (!cb && err) {
+      pna.nextTick(emitErrorNT, _this, err);
+      if (_this._writableState) {
+        _this._writableState.errorEmitted = true;
+      }
+    } else if (cb) {
+      cb(err);
+    }
+  });
+
+  return this;
+}
+
+function undestroy() {
+  if (this._readableState) {
+    this._readableState.destroyed = false;
+    this._readableState.reading = false;
+    this._readableState.ended = false;
+    this._readableState.endEmitted = false;
+  }
+
+  if (this._writableState) {
+    this._writableState.destroyed = false;
+    this._writableState.ended = false;
+    this._writableState.ending = false;
+    this._writableState.finished = false;
+    this._writableState.errorEmitted = false;
+  }
+}
+
+function emitErrorNT(self, err) {
+  self.emit('error', err);
+}
+
+module.exports = {
+  destroy: destroy,
+  undestroy: undestroy
+};
+
+/***/ }),
+
+/***/ "./node_modules/readable-stream/lib/internal/streams/stream-browser.js":
+/*!*****************************************************************************!*\
+  !*** ./node_modules/readable-stream/lib/internal/streams/stream-browser.js ***!
+  \*****************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+module.exports = __webpack_require__(/*! events */ "./node_modules/events/events.js").EventEmitter;
+
+
+/***/ }),
+
+/***/ "./node_modules/readable-stream/node_modules/safe-buffer/index.js":
+/*!************************************************************************!*\
+  !*** ./node_modules/readable-stream/node_modules/safe-buffer/index.js ***!
+  \************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+/* eslint-disable node/no-deprecated-api */
+var buffer = __webpack_require__(/*! buffer */ "./node_modules/buffer/index.js")
+var Buffer = buffer.Buffer
+
+// alternative to using Object.keys for old browsers
+function copyProps (src, dst) {
+  for (var key in src) {
+    dst[key] = src[key]
+  }
+}
+if (Buffer.from && Buffer.alloc && Buffer.allocUnsafe && Buffer.allocUnsafeSlow) {
+  module.exports = buffer
+} else {
+  // Copy properties from require('buffer')
+  copyProps(buffer, exports)
+  exports.Buffer = SafeBuffer
+}
+
+function SafeBuffer (arg, encodingOrOffset, length) {
+  return Buffer(arg, encodingOrOffset, length)
+}
+
+// Copy static methods from Buffer
+copyProps(Buffer, SafeBuffer)
+
+SafeBuffer.from = function (arg, encodingOrOffset, length) {
+  if (typeof arg === 'number') {
+    throw new TypeError('Argument must not be a number')
+  }
+  return Buffer(arg, encodingOrOffset, length)
+}
+
+SafeBuffer.alloc = function (size, fill, encoding) {
+  if (typeof size !== 'number') {
+    throw new TypeError('Argument must be a number')
+  }
+  var buf = Buffer(size)
+  if (fill !== undefined) {
+    if (typeof encoding === 'string') {
+      buf.fill(fill, encoding)
+    } else {
+      buf.fill(fill)
+    }
+  } else {
+    buf.fill(0)
+  }
+  return buf
+}
+
+SafeBuffer.allocUnsafe = function (size) {
+  if (typeof size !== 'number') {
+    throw new TypeError('Argument must be a number')
+  }
+  return Buffer(size)
+}
+
+SafeBuffer.allocUnsafeSlow = function (size) {
+  if (typeof size !== 'number') {
+    throw new TypeError('Argument must be a number')
+  }
+  return buffer.SlowBuffer(size)
+}
+
+
+/***/ }),
+
+/***/ "./node_modules/readable-stream/passthrough.js":
+/*!*****************************************************!*\
+  !*** ./node_modules/readable-stream/passthrough.js ***!
+  \*****************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+module.exports = __webpack_require__(/*! ./readable */ "./node_modules/readable-stream/readable-browser.js").PassThrough
+
+
+/***/ }),
+
+/***/ "./node_modules/readable-stream/readable-browser.js":
+/*!**********************************************************!*\
+  !*** ./node_modules/readable-stream/readable-browser.js ***!
+  \**********************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__(/*! ./lib/_stream_readable.js */ "./node_modules/readable-stream/lib/_stream_readable.js");
+exports.Stream = exports;
+exports.Readable = exports;
+exports.Writable = __webpack_require__(/*! ./lib/_stream_writable.js */ "./node_modules/readable-stream/lib/_stream_writable.js");
+exports.Duplex = __webpack_require__(/*! ./lib/_stream_duplex.js */ "./node_modules/readable-stream/lib/_stream_duplex.js");
+exports.Transform = __webpack_require__(/*! ./lib/_stream_transform.js */ "./node_modules/readable-stream/lib/_stream_transform.js");
+exports.PassThrough = __webpack_require__(/*! ./lib/_stream_passthrough.js */ "./node_modules/readable-stream/lib/_stream_passthrough.js");
+
+
+/***/ }),
+
+/***/ "./node_modules/readable-stream/transform.js":
+/*!***************************************************!*\
+  !*** ./node_modules/readable-stream/transform.js ***!
+  \***************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+module.exports = __webpack_require__(/*! ./readable */ "./node_modules/readable-stream/readable-browser.js").Transform
+
+
+/***/ }),
+
+/***/ "./node_modules/readable-stream/writable-browser.js":
+/*!**********************************************************!*\
+  !*** ./node_modules/readable-stream/writable-browser.js ***!
+  \**********************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+module.exports = __webpack_require__(/*! ./lib/_stream_writable.js */ "./node_modules/readable-stream/lib/_stream_writable.js");
+
 
 /***/ }),
 
@@ -94184,6 +92826,7 @@ exports.expressionTypes = Object.freeze({
     NAMED: 'named',
     OPERATOR: 'operator',
     TERM: 'term',
+    WILDCARD: 'wildcard',
 });
 //# sourceMappingURL=algebra.js.map
 
@@ -94201,6 +92844,7 @@ exports.expressionTypes = Object.freeze({
 Object.defineProperty(exports, "__esModule", { value: true });
 const DataFactory = __webpack_require__(/*! @rdfjs/data-model */ "./node_modules/@rdfjs/data-model/index.js");
 const rdf_string_1 = __webpack_require__(/*! rdf-string */ "./node_modules/rdf-string/index.js");
+const Wildcard = __webpack_require__(/*! sparqljs */ "./node_modules/sparqljs/sparql.js").Wildcard;
 class Factory {
     constructor(dataFactory) {
         this.dataFactory = dataFactory || DataFactory;
@@ -94265,13 +92909,15 @@ class Factory {
     createZeroOrOnePath(path) { return { type: 'ZeroOrOnePath', path }; }
     createAggregateExpression(aggregator, expression, distinct, separator) {
         if (separator)
-            return { type: 'expression', expressionType: 'aggregate', aggregator, expression, separator, distinct };
-        return { type: 'expression', expressionType: 'aggregate', aggregator, expression, distinct };
+            return { type: 'expression', expressionType: 'aggregate', aggregator: aggregator, expression, separator, distinct };
+        return { type: 'expression', expressionType: 'aggregate', aggregator: aggregator, expression, distinct };
     }
     createExistenceExpression(not, input) { return { type: 'expression', expressionType: 'existence', not, input }; }
     createNamedExpression(name, args) { return { type: 'expression', expressionType: 'named', name, args }; }
     createOperatorExpression(operator, args) { return { type: 'expression', expressionType: 'operator', operator, args }; }
     createTermExpression(term) { return { type: 'expression', expressionType: 'term', term }; }
+    createWildcardExpression() { return { type: 'expression', expressionType: 'wildcard', wildcard: new Wildcard() }; }
+    ;
     createTerm(str) {
         return rdf_string_1.stringToTerm(str, this.dataFactory);
     }
@@ -94293,7 +92939,10 @@ exports.default = Factory;
 Object.defineProperty(exports, "__esModule", { value: true });
 const Algebra = __webpack_require__(/*! ./algebra */ "./node_modules/sparqlalgebrajs/lib/algebra.js");
 const factory_1 = __webpack_require__(/*! ./factory */ "./node_modules/sparqlalgebrajs/lib/factory.js");
+const util_1 = __webpack_require__(/*! ./util */ "./node_modules/sparqlalgebrajs/lib/util.js");
+const rdf_string_1 = __webpack_require__(/*! rdf-string */ "./node_modules/rdf-string/index.js");
 const SparqlGenerator = __webpack_require__(/*! sparqljs */ "./node_modules/sparqljs/sparql.js").Generator;
+const Wildcard = __webpack_require__(/*! sparqljs */ "./node_modules/sparqljs/sparql.js").Wildcard;
 const types = Algebra.types;
 const eTypes = Algebra.expressionTypes;
 let context;
@@ -94356,6 +93005,7 @@ function translateExpression(expr) {
         case eTypes.NAMED: return translateNamedExpression(expr);
         case eTypes.OPERATOR: return translateOperatorExpression(expr);
         case eTypes.TERM: return translateTermExpression(expr);
+        case eTypes.WILDCARD: return translateWildcardExpression(expr);
     }
     throw new Error('Unknown Expression Operation type ' + expr.expressionType);
 }
@@ -94373,23 +93023,7 @@ function translatePathComponent(path) {
     throw new Error('Unknown Path type ' + path.type);
 }
 function translateTerm(term) {
-    if (term.termType === 'BlankNode')
-        return '_:' + term.value;
-    if (term.termType === 'Literal') {
-        // TODO: should check which safety checks are required
-        let lit = term;
-        let result = `"${term.value}"`;
-        if (lit.language)
-            result += '@' + lit.language;
-        else if (lit.datatype && lit.datatype.value !== 'http://www.w3.org/2001/XMLSchema#string')
-            result += '^^' + lit.datatype.value;
-        return result;
-    }
-    if (term.termType === 'NamedNode')
-        return term.value;
-    if (term.termType === 'Variable')
-        return '?' + term.value;
-    throw new Error('Unknown Term type ' + term.termType);
+    return rdf_string_1.termToString(term);
 }
 // ------------------------- EXPRESSIONS -------------------------
 function translateAggregateExpression(expr) {
@@ -94415,7 +93049,7 @@ function translateExistenceExpression(expr) {
 function translateNamedExpression(expr) {
     return {
         type: 'functionCall',
-        function: translateTerm(expr.name),
+        function: expr.name,
         args: expr.args.map(translateExpression)
     };
 }
@@ -94435,7 +93069,10 @@ function translateOperatorExpression(expr) {
     return result;
 }
 function translateTermExpression(expr) {
-    return translateTerm(expr.term);
+    return expr.term;
+}
+function translateWildcardExpression(expr) {
+    return expr.wildcard;
 }
 // ------------------------- OPERATIONS -------------------------
 // these get translated in the project function
@@ -94477,7 +93114,7 @@ function translateExtend(op) {
         translateOperation(op.input),
         {
             type: 'bind',
-            variable: translateTerm(op.variable),
+            variable: op.variable,
             expression: translateExpression(op.expression)
         }
     ]);
@@ -94487,8 +93124,8 @@ function translateFrom(op) {
     // project is nested in group object
     let obj = result.patterns[0];
     obj.from = {
-        default: op.default.map(translateTerm),
-        named: op.named.map(translateTerm)
+        default: op.default,
+        named: op.named
     };
     return result;
 }
@@ -94505,7 +93142,7 @@ function translateGraph(op) {
     return {
         type: 'graph',
         patterns: flatten([translateOperation(op.input)]),
-        name: translateTerm(op.name)
+        name: op.name
     };
 }
 function translateGroup(op) {
@@ -94562,24 +93199,25 @@ function translatePath(op) {
     return {
         type: 'bgp',
         triples: [{
-                subject: translateTerm(op.subject),
+                subject: op.subject,
                 predicate: translatePathComponent(op.predicate),
-                object: translateTerm(op.object)
+                object: op.object
             }]
     };
 }
 function translatePattern(op) {
     // TODO: quads back to graph statement
     return {
-        subject: translateTerm(op.subject),
-        predicate: translateTerm(op.predicate),
-        object: translateTerm(op.object)
+        subject: op.subject,
+        predicate: op.predicate,
+        object: op.object
     };
 }
 function replaceAggregatorVariables(s, map) {
-    if (typeof s === 'string') {
-        if (map[s])
-            return map[s];
+    let st = util_1.default.isTerm(s) ? translateTerm(s) : s;
+    if (typeof st === 'string') {
+        if (map[st])
+            return map[st];
     }
     else if (Array.isArray(s)) {
         s = s.map(e => replaceAggregatorVariables(e, map));
@@ -94597,14 +93235,14 @@ function translateProject(op, type) {
     };
     if (type === types.PROJECT) {
         result.queryType = 'SELECT';
-        result.variables = op.variables.map(translateTerm);
+        result.variables = op.variables;
     }
     else if (type === types.ASK) {
         result.queryType = 'ASK';
     }
     else if (type === types.DESCRIBE) {
         result.queryType = 'DESCRIBE';
-        result.variables = op.terms.map(translateTerm);
+        result.variables = op.terms;
     }
     // backup values in case of nested queries
     // everything in extend, group, etc. is irrelevant for this project call
@@ -94629,33 +93267,35 @@ function translateProject(op, type) {
         extensions[translateTerm(e.variable)] = replaceAggregatorVariables(translateExpression(e.expression), aggregators);
     }
     if (context.group.length > 0)
-        result.group = context.group.map(translateTerm).map(v => {
+        result.group = context.group.map(variable => {
+            let v = translateTerm(variable);
             if (extensions[v]) {
                 let result = extensions[v];
                 delete extensions[v]; // make sure there is only 1 'AS' statement
                 return {
-                    variable: v,
+                    variable,
                     expression: result
                 };
             }
-            return { expression: v };
+            return { expression: variable };
         });
     // descending expressions will already be in the correct format due to the structure of those
     if (context.order.length > 0)
         result.order = context.order.map(translateOperation).map(o => o.descending ? o : ({ expression: o }));
     // this needs to happen after the group because it might depend on variables generated there
     if (result.variables) {
-        result.variables = result.variables.map((v) => {
+        result.variables = result.variables.map((term) => {
+            let v = translateTerm(term);
             if (extensions[v])
                 return {
-                    variable: v,
+                    variable: term,
                     expression: extensions[v]
                 };
-            return v;
+            return term;
         });
         // if the * didn't match any variables this would be empty
         if (result.variables.length === 0)
-            result.variables = ['*'];
+            result.variables = [new Wildcard()];
     }
     // convert filter to 'having' if it contains an aggregator variable
     // could always convert, but is nicer to use filter when possible
@@ -94675,6 +93315,8 @@ function translateProject(op, type) {
     return result;
 }
 function objectContainsValues(o, vals) {
+    if (util_1.default.isTerm(o))
+        return vals.indexOf(translateTerm(o)) >= 0;
     if (Array.isArray(o))
         return o.some(e => objectContainsValues(e, vals));
     if (o === Object(o))
@@ -94695,7 +93337,7 @@ function translateService(op) {
         patterns = [patterns];
     return {
         type: 'service',
-        name: translateTerm(op.name),
+        name: op.name,
         silent: op.silent,
         patterns
     };
@@ -94728,7 +93370,7 @@ function translateValues(op) {
             for (let v of op.variables) {
                 let s = '?' + v.value;
                 if (binding[s])
-                    result[s] = translateTerm(binding[s]);
+                    result[s] = binding[s];
                 else
                     result[s] = undefined;
             }
@@ -94764,7 +93406,7 @@ function translateInv(path) {
             return {
                 type: 'path',
                 pathType: '^',
-                items: [translateTerm(iri)]
+                items: [iri]
             };
         });
         if (inv.length <= 1)
@@ -94790,14 +93432,14 @@ function translateInv(path) {
     };
 }
 function translateLink(path) {
-    return translateTerm(path.iri);
+    return path.iri;
 }
 function translateNps(path) {
     if (path.iris.length <= 1)
         return {
             type: 'path',
             pathType: '!',
-            items: path.iris.map(translateTerm)
+            items: path.iris
         };
     return {
         type: 'path',
@@ -94805,7 +93447,7 @@ function translateNps(path) {
         items: [{
                 type: 'path',
                 pathType: '|',
-                items: path.iris.map(translateTerm)
+                items: path.iris
             }]
     };
 }
@@ -94916,8 +93558,9 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const Algebra = __webpack_require__(/*! ./algebra */ "./node_modules/sparqlalgebrajs/lib/algebra.js");
 const factory_1 = __webpack_require__(/*! ./factory */ "./node_modules/sparqlalgebrajs/lib/factory.js");
 const util_1 = __webpack_require__(/*! ./util */ "./node_modules/sparqlalgebrajs/lib/util.js");
+const equal = __webpack_require__(/*! fast-deep-equal */ "./node_modules/fast-deep-equal/index.js");
+const rdf_string_1 = __webpack_require__(/*! rdf-string */ "./node_modules/rdf-string/index.js");
 const Parser = __webpack_require__(/*! sparqljs */ "./node_modules/sparqljs/sparql.js").Parser;
-const isEqual = __webpack_require__(/*! lodash.isequal */ "./node_modules/lodash.isequal/index.js");
 const types = Algebra.types;
 let variables = new Set();
 let varCount = 0;
@@ -94937,7 +93580,7 @@ function translate(sparql, options) {
     options = options || {};
     factory = new factory_1.default(options.dataFactory);
     if (isString(sparql)) {
-        let parser = new Parser(options.prefixes, options.baseIRI);
+        let parser = new Parser(options);
         // resets the identifier counter used for blank nodes
         // provides nicer and more consistent output if there are multiple calls
         parser._resetBlanks();
@@ -94969,15 +93612,14 @@ function isString(str) {
 function isObject(o) {
     return o !== null && typeof o === 'object';
 }
-function isVariable(str) {
-    // there is also a '?' operator...
-    return isString(str) && str[0] === '?' && str.length > 1;
+function isVariable(term) {
+    return term && term.termType === "Variable";
 }
 // 18.2.1
 function inScopeVariables(thingy) {
     let inScope = {};
     if (isVariable(thingy)) {
-        inScope[thingy] = true;
+        inScope[rdf_string_1.termToString(thingy)] = true;
         variables.add(thingy); // keep track of all variables so we don't generate duplicates
     }
     else if (isObject(thingy)) {
@@ -94988,7 +93630,7 @@ function inScopeVariables(thingy) {
         else if (thingy.queryType === 'SELECT') {
             let all = inScopeVariables(thingy.where); // always executing this makes sure `variables` gets filled correctly
             for (let v of thingy.variables) {
-                if (v === '*')
+                if (util_1.default.isWildcard(v))
                     Object.assign(inScope, all);
                 else if (v.variable) // aggregates
                     Object.assign(inScope, inScopeVariables(v.variable));
@@ -95049,12 +93691,14 @@ function translateGroupGraphPattern(thingy) {
     return result;
 }
 function translateExpression(exp) {
-    if (isString(exp))
-        return factory.createTermExpression(factory.createTerm(exp));
+    if (util_1.default.isTerm(exp))
+        return factory.createTermExpression(exp);
+    if (util_1.default.isWildcard(exp))
+        return factory.createWildcardExpression();
     if (exp.aggregation)
         return factory.createAggregateExpression(exp.aggregation, translateExpression(exp.expression), exp.distinct, exp.separator);
     if (exp.function)
-        return factory.createNamedExpression(factory.createTerm(exp.function), exp.args.map(translateExpression));
+        return factory.createNamedExpression(exp.function, exp.args.map(translateExpression));
     if (exp.operator) {
         if (exp.operator === 'exists' || exp.operator === 'notexists')
             return factory.createExistenceExpression(exp.operator === 'notexists', translateGroupGraphPattern(exp.args[0]));
@@ -95092,14 +93736,14 @@ function translateBgp(thingy) {
     return joins.reduce((acc, item) => factory.createJoin(acc, item));
 }
 function translatePath(triple) {
-    let sub = factory.createTerm(triple.subject);
+    let sub = triple.subject;
     let pred = translatePathPredicate(triple.predicate);
-    let obj = factory.createTerm(triple.object);
+    let obj = triple.object;
     return simplifyPath(sub, pred, obj);
 }
 function translatePathPredicate(predicate) {
-    if (isString(predicate))
-        return factory.createLink(factory.createTerm(predicate));
+    if (util_1.default.isTerm(predicate) && predicate.termType === "NamedNode")
+        return factory.createLink(predicate);
     if (predicate.pathType === '^')
         return factory.createInv(translatePathPredicate(predicate.items[0]));
     if (predicate.pathType === '!') {
@@ -95112,7 +93756,7 @@ function translatePathPredicate(predicate) {
         else
             items = predicate.items;
         for (let item of items) {
-            if (isString(item))
+            if (util_1.default.isTerm(item))
                 normals.push(item);
             else if (item.pathType === '^')
                 inverted.push(item.items[0]);
@@ -95120,8 +93764,8 @@ function translatePathPredicate(predicate) {
                 throw new Error('Unexpected item: ' + JSON.stringify(item));
         }
         // NPS elements do not have the LINK function
-        let normalElement = factory.createNps(normals.map(factory.createTerm.bind(factory)));
-        let invertedElement = factory.createInv(factory.createNps(inverted.map(factory.createTerm.bind(factory))));
+        let normalElement = factory.createNps(normals);
+        let invertedElement = factory.createInv(factory.createNps(inverted));
         if (inverted.length === 0)
             return normalElement;
         if (normals.length === 0)
@@ -95138,7 +93782,7 @@ function translatePathPredicate(predicate) {
         return factory.createOneOrMorePath(translatePathPredicate(predicate.items[0]));
     if (predicate.pathType === '?')
         return factory.createZeroOrOnePath(translatePathPredicate(predicate.items[0]));
-    throw new Error('Unable to translate path expression ' + predicate);
+    throw new Error('Unable to translate path expression ' + JSON.stringify(predicate));
 }
 function simplifyPath(subject, predicate, object) {
     if (predicate.type === types.LINK)
@@ -95161,16 +93805,15 @@ function generateFreshVar() {
     return factory.createTerm(v);
 }
 function translateTriple(triple) {
-    return factory.createPattern(factory.createTerm(triple.subject), factory.createTerm(triple.predicate), factory.createTerm(triple.object));
+    return factory.createPattern(triple.subject, triple.predicate, triple.object);
 }
 function translateGraph(graph) {
-    let name = factory.createTerm(graph.name);
     graph.type = 'group';
     let result = translateGroupGraphPattern(graph);
     if (useQuads)
-        result = recurseGraph(result, name);
+        result = recurseGraph(result, graph.name);
     else
-        result = factory.createGraph(result, name);
+        result = factory.createGraph(result, graph.name);
     return result;
 }
 let typeVals = Object.keys(types).map(key => types[key]);
@@ -95209,11 +93852,11 @@ function accumulateGroupGraphPattern(G, E) {
         G = factory.createMinus(G, A);
     }
     else if (E.type === 'bind')
-        G = factory.createExtend(G, factory.createTerm(E.variable), translateExpression(E.expression));
+        G = factory.createExtend(G, E.variable, translateExpression(E.expression));
     else if (E.type === 'service') {
         // transform to group so childnodes get parsed correctly
         E.type = 'group';
-        let A = factory.createService(translateGroupGraphPattern(E), factory.createTerm(E.name), E.silent);
+        let A = factory.createService(translateGroupGraphPattern(E), E.name, E.silent);
         G = simplifiedJoin(G, A);
     }
     else {
@@ -95241,7 +93884,7 @@ function translateInlineData(values) {
         keys = keys.filter(k => binding[k] !== undefined);
         let map = {};
         for (let key of keys)
-            map[key] = factory.createTerm(binding[key]);
+            map[key] = binding[key];
         return map;
     });
     return factory.createValues(variables, bindings);
@@ -95261,12 +93904,12 @@ function translateAggregates(query, res, variables) {
         if (query.group) {
             for (let e of query.group) {
                 if (e.expression.type) {
-                    const v = e.variable ? factory.createTerm(e.variable) : generateFreshVar();
+                    const v = e.variable ? e.variable : generateFreshVar();
                     res = factory.createExtend(res, v, translateExpression(e.expression));
                     vars.push(v);
                 }
                 else
-                    vars.push(factory.createTerm(e.expression)); // this will always be a var, otherwise sparql would be invalid
+                    vars.push(e.expression); // this will always be a var, otherwise sparql would be invalid
             }
         }
         res = factory.createGroup(res, vars, aggregates);
@@ -95281,16 +93924,16 @@ function translateAggregates(query, res, variables) {
     // 18.2.4.4
     let PV = new Set();
     if (query.queryType === 'SELECT' || query.queryType === 'DESCRIBE') {
-        if (query.variables.indexOf('*') >= 0)
+        if (query.variables.some((e) => e && util_1.default.isWildcard(e)))
             PV = variables;
         else {
             for (let v of query.variables) {
                 // can have non-variables with DESCRIBE
                 if (isVariable(v) || !v.variable)
-                    PV.add(factory.createTerm(v));
+                    PV.add(v);
                 else if (v.variable) // ... AS ?x
                  {
-                    PV.add(factory.createTerm(v.variable));
+                    PV.add(v.variable);
                     E.push(v);
                 }
             }
@@ -95298,7 +93941,7 @@ function translateAggregates(query, res, variables) {
     }
     // TODO: Jena simplifies by having a list of extends
     for (let v of E)
-        res = factory.createExtend(res, factory.createTerm(v.variable), translateExpression(v.expression));
+        res = factory.createExtend(res, v.variable, translateExpression(v.expression));
     // 18.2.5
     // not using toList and toMultiset
     // 18.2.5.1
@@ -95330,7 +93973,7 @@ function translateAggregates(query, res, variables) {
     else if (query.queryType === 'DESCRIBE')
         res = factory.createDescribe(res, Array.from(PV));
     if (query.from)
-        res = factory.createFrom(res, query.from.default.map(factory.createTerm.bind(factory)), query.from.named.map(factory.createTerm.bind(factory)));
+        res = factory.createFrom(res, query.from.default, query.from.named);
     return res;
 }
 // rewrites some of the input sparql object to make use of aggregate variables
@@ -95341,17 +93984,17 @@ function mapAggregates(thingy, aggregates) {
         let found = false;
         let v;
         for (let key of Object.keys(aggregates)) {
-            if (isEqual(aggregates[key], thingy)) {
-                v = key;
+            if (equal(aggregates[key], thingy)) {
+                v = factory.createTerm(key);
                 found = true;
                 break;
             }
         }
         if (!found) {
-            v = '?' + generateFreshVar().value; // this is still in "sparql.js language" so a var string is still needed
-            aggregates[v] = thingy;
+            v = generateFreshVar();
+            aggregates[rdf_string_1.termToString(v)] = thingy;
         }
-        return v; // this is still in "sparql.js language" so a var string is still needed
+        return v;
     }
     // non-aggregate expression
     if (thingy.expression)
@@ -95806,6 +94449,8 @@ class Util {
             case algebra_1.expressionTypes.TERM:
                 const term = expr;
                 return factory.createTermExpression(term.term);
+            case algebra_1.expressionTypes.WILDCARD:
+                return factory.createWildcardExpression();
             default: throw new Error('Unknown Expression type ' + expr.expressionType);
         }
     }
@@ -95816,6 +94461,13 @@ class Util {
             labelLoop = label + counter++;
         }
         return dataFactory.variable(labelLoop);
+    }
+    // separate terms from wildcard since we handle them differently
+    static isTerm(term) {
+        return term.termType !== undefined && term.termType !== 'Wildcard';
+    }
+    static isWildcard(term) {
+        return term.termType === 'Wildcard';
     }
 }
 exports.default = Util;
@@ -95880,6 +94532,8 @@ function transformAlgebra(expr) {
             return transformExistence(expr);
         case types.AGGREGATE:
             return transformAggregate(expr);
+        case types.WILDCARD:
+            return transformWildcard(expr);
         default: throw new Err.InvalidExpressionType(expr);
     }
 }
@@ -95909,6 +94563,12 @@ function transformTerm(term) {
         case 'BlankNode': return new E.BlankNode(term.term.value);
         default: throw new Err.InvalidTermType(term);
     }
+}
+function transformWildcard(term) {
+    if (!term.wildcard) {
+        throw new Err.InvalidExpression(term);
+    }
+    return new E.NamedNode(term.wildcard.value);
 }
 // TODO: Maybe do this with a map?
 // tslint:disable-next-line:no-any
@@ -95951,7 +94611,6 @@ function transformLiteral(lit) {
         case Consts_1.TypeURL.XSD_NON_POSITIVE_INTEGER:
         case Consts_1.TypeURL.XSD_POSITIVE_INTEGER:
         case Consts_1.TypeURL.XSD_LONG:
-        case Consts_1.TypeURL.XSD_INT:
         case Consts_1.TypeURL.XSD_SHORT:
         case Consts_1.TypeURL.XSD_BYTE:
         case Consts_1.TypeURL.XSD_UNSIGNED_LONG:
@@ -98548,7 +97207,7 @@ const BNODE = {
     },
 };
 function BNODE_(input) {
-    return new E.BlankNode('blank_' + uuid.v4());
+    return new E.BlankNode(input || uuid.v4());
 }
 const _specialDefinitions = {
     // --------------------------------------------------------------------------
@@ -99332,10 +97991,10 @@ exports.parseXSDDateTime = parseXSDDateTime;
 
 var XSD_INTEGER = 'http://www.w3.org/2001/XMLSchema#integer';
 
-function Generator(options, prefixes) {
+function Generator(options) {
   this._options = options = options || {};
 
-  prefixes = prefixes || {};
+  var prefixes = options.prefixes || {};
   this._prefixByIri = {};
   var prefixIris = [];
   for (var prefix in prefixes) {
@@ -99363,11 +98022,12 @@ Generator.prototype.toQuery = function (q) {
   if (q.distinct)
     query += 'DISTINCT ';
 
-  if (q.variables)
+  if (q.variables){
     query += mapJoin(q.variables, undefined, function (variable) {
-      return isString(variable) ? this.toEntity(variable) :
-             '(' + this.toExpression(variable.expression) + ' AS ' + variable.variable + ')';
+      return isTerm(variable) ? this.toEntity(variable) :
+             '(' + this.toExpression(variable.expression) + ' AS ' + variableToString(variable.variable) + ')';
     }, this) + ' ';
+  }
   else if (q.template)
     query += this.group(q.template, true) + this._newline;
 
@@ -99383,7 +98043,7 @@ Generator.prototype.toQuery = function (q) {
   if (q.group)
     query += 'GROUP BY ' + mapJoin(q.group, undefined, function (it) {
       var result = isString(it.expression) ? it.expression : '(' + this.toExpression(it.expression) + ')';
-      return it.variable ? '(' + result + ' AS ' + it.variable + ')' : result;
+      return it.variable ? '(' + result + ' AS ' + variableToString(it.variable) + ')' : result;
     }, this) + this._newline;
   if (q.having)
     query += 'HAVING (' + mapJoin(q.having, undefined, this.toExpression, this) + ')' + this._newline;
@@ -99488,7 +98148,7 @@ Generator.prototype.filter = function (filter) {
 };
 
 Generator.prototype.bind = function (bind) {
-  return 'BIND(' + this.toExpression(bind.expression) + ' AS ' + bind.variable + ')';
+  return 'BIND(' + this.toExpression(bind.expression) + ' AS ' + variableToString(bind.variable) + ')';
 };
 
 Generator.prototype.optional = function (optional) {
@@ -99521,7 +98181,7 @@ Generator.prototype.values = function (valuesList) {
   return 'VALUES ' + lparen + keys.join(' ') + rparen + ' {' + this._newline +
     mapJoin(valuesList.values, this._newline, function (values) {
       return '  ' + lparen + mapJoin(keys, undefined, function (key) {
-        return values[key] !== undefined ? this.toEntity(values[key]) : 'UNDEF';
+        return values[key] ? this.toEntity(values[key]) : 'UNDEF';
       }, this) + rparen;
     }, this) + this._newline + '}';
 };
@@ -99533,14 +98193,14 @@ Generator.prototype.service = function (service) {
 
 // Converts the parsed expression object into a SPARQL expression
 Generator.prototype.toExpression = function (expr) {
-  if (isString(expr))
+  if (isTerm(expr)) {
     return this.toEntity(expr);
-
+  }
   switch (expr.type.toLowerCase()) {
     case 'aggregate':
       return expr.aggregation.toUpperCase() +
              '(' + (expr.distinct ? 'DISTINCT ' : '') + this.toExpression(expr.expression) +
-             (expr.separator ? '; SEPARATOR = ' + this.toEntity('"' + expr.separator + '"') : '') + ')';
+             (expr.separator ? '; SEPARATOR = ' + '"' + expr.separator.replace(escape, escapeReplacer) + '"' : '') + ')';
     case 'functioncall':
       return this.toEntity(expr.function) + '(' + mapJoin(expr.args, ', ', this.toExpression, this) + ')';
     case 'operation':
@@ -99559,9 +98219,9 @@ Generator.prototype.toExpression = function (expr) {
       case '-':
       case '*':
       case '/':
-          return (isString(args[0]) ? this.toEntity(args[0]) : '(' + this.toExpression(args[0]) + ')') +
+          return (isTerm(args[0]) ? this.toEntity(args[0]) : '(' + this.toExpression(args[0]) + ')') +
                  ' ' + operator + ' ' +
-                 (isString(args[1]) ? this.toEntity(args[1]) : '(' + this.toExpression(args[1]) + ')');
+                 (isTerm(args[1]) ? this.toEntity(args[1]) : '(' + this.toExpression(args[1]) + ')');
       // Unary operators
       case '!':
         return '!(' + this.toExpression(args[0]) + ')';
@@ -99587,30 +98247,31 @@ Generator.prototype.toExpression = function (expr) {
 
 // Converts the parsed entity (or property path) into a SPARQL entity
 Generator.prototype.toEntity = function (value) {
-  // regular entity
-  if (isString(value)) {
-    switch (value[0]) {
+  if (isTerm(value)) {
+    switch (value.termType) {
     // variable, * selector, or blank node
-    case '?':
-    case '$':
-    case '*':
-    case '_':
-      return value;
+    case 'Wildcard':
+      return '*';
+    case 'Variable':
+      return variableToString(value);
+    case 'BlankNode':
+      return '_:' + value.value;
     // literal
-    case '"':
-      var match = value.match(/^"([^]*)"(?:(@.+)|\^\^(.+))?$/) || {},
-          lexical = match[1] || '', language = match[2] || '', datatype = match[3];
-      value = '"' + lexical.replace(escape, escapeReplacer) + '"' + language;
-      if (datatype) {
-        if (datatype === XSD_INTEGER && /^\d+$/.test(lexical))
+    case 'Literal':
+      var lexical = value.value || '', language = value.language || '', datatype = value.datatype;
+      value = '"' + lexical.replace(escape, escapeReplacer) + '"';
+      if (language){
+        value += '@' + language;
+      } else if (datatype) {
+        if (datatype.value === XSD_INTEGER && /^\d+$/.test(lexical))
           // Add space to avoid confusion with decimals in broken parsers
           return lexical + ' ';
-        value += '^^' + this.encodeIRI(datatype);
+        value += '^^' + this.encodeIRI(datatype.value);
       }
       return value;
     // IRI
     default:
-      return this.encodeIRI(value);
+      return this.encodeIRI(value.value);
     }
   }
   // property path
@@ -99687,8 +98348,15 @@ Generator.prototype.toUpdate = function (update) {
 // Indents each line of the string
 Generator.prototype.indent = function(text) { return text.replace(/^/gm, this._indent); }
 
+function variableToString(variable){
+  return '?' + variable.value;
+}
+
 // Checks whether the object is a string
 function isString(object) { return typeof object === 'string'; }
+
+// Checks whether the object is a Term
+function isTerm(object) { return !!object.termType; }
 
 // Maps the array with the given function, and joins the results using the separator
 function mapJoin(array, sep, func, self) {
@@ -99702,9 +98370,13 @@ function mapJoin(array, sep, func, self) {
  *   newline: string
  * }
  */
-module.exports = function SparqlGenerator(options) {
+module.exports = function SparqlGenerator(options = {}) {
   return {
-    stringify: function (q) { return new Generator(options, q.prefixes).toQuery(q); }
+    stringify: function (query) {
+      var currentOptions = Object.create(options);
+      options.prefixes = query.prefixes;
+      return new Generator(options).toQuery(query);
+    }
   };
 };
 
@@ -99792,12 +98464,12 @@ module.exports = function SparqlGenerator(options) {
   }
 */
 var SparqlParser = (function(){
-var o=function(k,v,o,l){for(o=o||{},l=k.length;l--;o[k[l]]=v);return o},$V0=[6,12,15,24,34,43,48,99,109,112,114,115,124,125,130,298,299,300,301,302],$V1=[2,196],$V2=[99,109,112,114,115,124,125,130,298,299,300,301,302],$V3=[1,18],$V4=[1,27],$V5=[6,83],$V6=[38,39,51],$V7=[38,51],$V8=[1,55],$V9=[1,57],$Va=[1,53],$Vb=[1,56],$Vc=[28,29,293],$Vd=[13,16,286],$Ve=[111,133,296,303],$Vf=[13,16,111,133,286],$Vg=[1,80],$Vh=[1,84],$Vi=[1,86],$Vj=[111,133,296,297,303],$Vk=[13,16,111,133,286,297],$Vl=[1,92],$Vm=[2,236],$Vn=[1,91],$Vo=[13,16,28,29,80,86,215,218,219,272,273,274,275,276,277,278,279,280,281,282,283,284,285,286],$Vp=[6,38,39,51,61,68,71,79,81,83],$Vq=[6,13,16,28,38,39,51,61,68,71,79,81,83,286],$Vr=[6,13,16,28,29,31,32,38,39,41,51,61,68,71,79,80,81,83,86,92,108,111,124,125,127,132,159,160,162,165,166,183,187,208,213,215,216,218,219,223,227,231,246,251,268,272,273,274,275,276,277,278,279,280,281,282,283,284,285,286,293,304,306,307,309,310,311,312,313,314,315,316],$Vs=[1,107],$Vt=[1,108],$Vu=[6,13,16,28,29,39,41,80,83,86,111,159,160,162,165,166,215,218,219,272,273,274,275,276,277,278,279,280,281,282,283,284,285,286,304],$Vv=[2,295],$Vw=[1,125],$Vx=[1,123],$Vy=[6,183],$Vz=[2,312],$VA=[2,300],$VB=[38,127],$VC=[6,41,68,71,79,81,83],$VD=[2,238],$VE=[1,139],$VF=[1,141],$VG=[1,151],$VH=[1,157],$VI=[1,160],$VJ=[1,156],$VK=[1,158],$VL=[1,154],$VM=[1,155],$VN=[1,161],$VO=[1,162],$VP=[1,165],$VQ=[1,166],$VR=[1,167],$VS=[1,168],$VT=[1,169],$VU=[1,170],$VV=[1,171],$VW=[1,172],$VX=[1,173],$VY=[1,174],$VZ=[1,175],$V_=[1,176],$V$=[6,61,68,71,79,81,83],$V01=[28,29,38,39,51],$V11=[13,16,28,29,80,248,249,250,252,254,255,257,258,261,263,272,273,274,275,276,277,278,279,280,281,282,283,284,285,286,316,317,318,319,320,321],$V21=[2,409],$V31=[1,189],$V41=[1,190],$V51=[1,191],$V61=[13,16,41,80,92,272,273,274,275,276,277,278,279,280,281,282,283,284,285,286],$V71=[41,86],$V81=[28,32],$V91=[6,108,183],$Va1=[41,111],$Vb1=[6,41,71,79,81,83],$Vc1=[2,324],$Vd1=[2,316],$Ve1=[1,226],$Vf1=[1,228],$Vg1=[41,111,304],$Vh1=[13,16,28,29,32,39,41,80,83,86,111,159,160,162,165,166,183,187,208,213,215,216,218,219,251,272,273,274,275,276,277,278,279,280,281,282,283,284,285,286,304],$Vi1=[13,16,28,29,31,32,39,41,80,83,86,92,111,159,160,162,165,166,183,187,208,213,215,216,218,219,223,227,231,246,251,268,272,273,274,275,276,277,278,279,280,281,282,283,284,285,286,293,304,307,310,311,312,313,314,315,316],$Vj1=[13,16,28,29,31,32,39,41,80,83,86,92,111,159,160,162,165,166,183,187,208,213,215,216,218,219,223,227,231,246,251,268,270,271,272,273,274,275,276,277,278,279,280,281,282,283,284,285,286,293,304,307,310,311,312,313,314,315,316],$Vk1=[31,32,183,223,251],$Vl1=[31,32,183,223,227,251],$Vm1=[31,32,183,223,227,231,246,251,268,280,281,282,283,284,285,310,311,312,313,314,315,316],$Vn1=[31,32,183,223,227,231,246,251,268,280,281,282,283,284,285,293,307,310,311,312,313,314,315,316],$Vo1=[1,260],$Vp1=[1,261],$Vq1=[1,263],$Vr1=[1,264],$Vs1=[1,265],$Vt1=[1,266],$Vu1=[1,268],$Vv1=[1,269],$Vw1=[2,416],$Vx1=[1,271],$Vy1=[1,272],$Vz1=[1,273],$VA1=[1,279],$VB1=[1,274],$VC1=[1,275],$VD1=[1,276],$VE1=[1,277],$VF1=[1,278],$VG1=[1,286],$VH1=[1,299],$VI1=[6,41,79,81,83],$VJ1=[1,316],$VK1=[1,315],$VL1=[39,41,83,111,159,160,162,165,166],$VM1=[1,324],$VN1=[1,325],$VO1=[41,111,183,216,304],$VP1=[2,354],$VQ1=[13,16,28,29,32,80,86,215,218,219,272,273,274,275,276,277,278,279,280,281,282,283,284,285,286],$VR1=[13,16,28,29,32,39,41,80,83,86,111,159,160,162,165,166,183,215,216,218,219,251,272,273,274,275,276,277,278,279,280,281,282,283,284,285,286,304],$VS1=[13,16,28,29,80,208,246,248,249,250,252,254,255,257,258,261,263,272,273,274,275,276,277,278,279,280,281,282,283,284,285,286,310,316,317,318,319,320,321],$VT1=[1,349],$VU1=[1,350],$VV1=[1,352],$VW1=[1,351],$VX1=[6,13,16,28,29,31,32,39,41,68,71,74,76,79,80,81,83,86,111,159,160,162,165,166,183,215,218,219,223,227,231,246,248,249,250,251,252,254,255,257,258,261,263,268,272,273,274,275,276,277,278,279,280,281,282,283,284,285,286,293,304,307,310,311,312,313,314,315,316,317,318,319,320,321],$VY1=[1,360],$VZ1=[1,359],$V_1=[29,86],$V$1=[13,16,32,41,80,92,272,273,274,275,276,277,278,279,280,281,282,283,284,285,286],$V02=[29,41],$V12=[2,315],$V22=[6,41,83],$V32=[6,13,16,29,41,71,79,81,83,248,249,250,252,254,255,257,258,261,263,286,316,317,318,319,320,321],$V42=[6,13,16,28,29,39,41,71,74,76,79,80,81,83,86,111,159,160,162,165,166,215,218,219,248,249,250,252,254,255,257,258,261,263,272,273,274,275,276,277,278,279,280,281,282,283,284,285,286,304,316,317,318,319,320,321],$V52=[6,13,16,28,29,41,68,71,79,81,83,248,249,250,252,254,255,257,258,261,263,286,316,317,318,319,320,321],$V62=[6,13,16,28,29,31,32,39,41,61,68,71,74,76,79,80,81,83,86,111,159,160,162,165,166,183,215,218,219,223,227,231,246,248,249,250,251,252,254,255,257,258,261,263,268,272,273,274,275,276,277,278,279,280,281,282,283,284,285,286,293,304,305,307,310,311,312,313,314,315,316,317,318,319,320,321],$V72=[13,16,29,187,208,213,286],$V82=[2,366],$V92=[1,401],$Va2=[39,41,83,111,159,160,162,165,166,304],$Vb2=[13,16,28,29,32,39,41,80,83,86,111,159,160,162,165,166,183,187,215,216,218,219,251,272,273,274,275,276,277,278,279,280,281,282,283,284,285,286,304],$Vc2=[13,16,28,29,80,208,246,248,249,250,252,254,255,257,258,261,263,272,273,274,275,276,277,278,279,280,281,282,283,284,285,286,293,310,316,317,318,319,320,321],$Vd2=[1,450],$Ve2=[1,447],$Vf2=[1,448],$Vg2=[13,16,28,29,39,41,80,83,86,111,159,160,162,165,166,215,218,219,272,273,274,275,276,277,278,279,280,281,282,283,284,285,286],$Vh2=[13,16,28,286],$Vi2=[13,16,28,29,39,41,80,83,86,111,159,160,162,165,166,215,218,219,272,273,274,275,276,277,278,279,280,281,282,283,284,285,286,304],$Vj2=[2,327],$Vk2=[39,41,83,111,159,160,162,165,166,183,216,304],$Vl2=[6,13,16,28,29,41,74,76,79,81,83,248,249,250,252,254,255,257,258,261,263,286,316,317,318,319,320,321],$Vm2=[2,322],$Vn2=[13,16,29,187,208,286],$Vo2=[13,16,32,80,92,272,273,274,275,276,277,278,279,280,281,282,283,284,285,286],$Vp2=[13,16,28,29,41,80,86,111,215,218,219,272,273,274,275,276,277,278,279,280,281,282,283,284,285,286],$Vq2=[13,16,28,29,32,80,86,215,218,219,272,273,274,275,276,277,278,279,280,281,282,283,284,285,286,306,307],$Vr2=[13,16,28,29,32,80,86,215,218,219,272,273,274,275,276,277,278,279,280,281,282,283,284,285,286,293,306,307,309,310],$Vs2=[1,561],$Vt2=[1,562],$Vu2=[2,310],$Vv2=[13,16,32,187,213,286];
+var o=function(k,v,o,l){for(o=o||{},l=k.length;l--;o[k[l]]=v);return o},$V0=[6,12,15,28,40,49,54,105,115,118,120,121,130,131,136,301,302,303,304,305],$V1=[2,200],$V2=[105,115,118,120,121,130,131,136,301,302,303,304,305],$V3=[1,20],$V4=[1,29],$V5=[6,89],$V6=[44,45,57],$V7=[44,57],$V8=[1,58],$V9=[1,60],$Va=[1,56],$Vb=[1,59],$Vc=[1,65],$Vd=[1,66],$Ve=[26,34,35],$Vf=[13,16,291],$Vg=[117,139,299,306],$Vh=[13,16,117,139,291],$Vi=[1,88],$Vj=[1,92],$Vk=[1,94],$Vl=[117,139,299,300,306],$Vm=[13,16,117,139,291,300],$Vn=[1,100],$Vo=[2,242],$Vp=[1,99],$Vq=[13,16,34,35,86,92,221,224,225,278,279,280,281,282,283,284,285,286,287,288,289,290,291],$Vr=[6,44,45,57,67,74,77,85,87,89],$Vs=[6,13,16,34,44,45,57,67,74,77,85,87,89,291],$Vt=[6,13,16,26,34,35,37,38,44,45,47,57,67,74,77,85,86,87,89,92,98,114,117,130,131,133,138,165,166,168,171,172,189,193,214,219,221,222,224,225,229,233,237,252,257,274,278,279,280,281,282,283,284,285,286,287,288,289,290,291,307,309,310,312,313,314,315,316,317,318,319],$Vu=[34,35,44,45,57],$Vv=[13,16,34,35,86,254,255,256,258,260,261,263,264,267,269,278,279,280,281,282,283,284,285,286,287,288,289,290,291,319,320,321,322,323,324],$Vw=[2,415],$Vx=[1,121],$Vy=[1,122],$Vz=[1,123],$VA=[6,13,16,34,35,45,47,86,89,92,117,165,166,168,171,172,221,224,225,278,279,280,281,282,283,284,285,286,287,288,289,290,291,307],$VB=[2,301],$VC=[1,140],$VD=[1,138],$VE=[6,189],$VF=[2,318],$VG=[2,306],$VH=[44,133],$VI=[6,47,77,85,87,89],$VJ=[2,246],$VK=[1,154],$VL=[1,156],$VM=[6,47,74,77,85,87,89],$VN=[2,244],$VO=[1,162],$VP=[1,170],$VQ=[1,176],$VR=[1,179],$VS=[1,175],$VT=[1,177],$VU=[1,173],$VV=[1,174],$VW=[1,180],$VX=[1,181],$VY=[1,184],$VZ=[1,185],$V_=[1,186],$V$=[1,187],$V01=[1,188],$V11=[1,189],$V21=[1,190],$V31=[1,191],$V41=[1,192],$V51=[1,193],$V61=[1,194],$V71=[6,67,74,77,85,87,89],$V81=[37,38,189,229,257],$V91=[37,38,189,229,233,257],$Va1=[37,38,189,229,233,237,252,257,274,285,286,287,288,289,290,313,314,315,316,317,318,319],$Vb1=[26,37,38,189,229,233,237,252,257,274,285,286,287,288,289,290,310,313,314,315,316,317,318,319],$Vc1=[1,219],$Vd1=[1,220],$Ve1=[1,222],$Vf1=[1,223],$Vg1=[1,224],$Vh1=[1,225],$Vi1=[1,227],$Vj1=[1,228],$Vk1=[2,422],$Vl1=[1,230],$Vm1=[1,231],$Vn1=[1,232],$Vo1=[1,238],$Vp1=[1,233],$Vq1=[1,234],$Vr1=[1,235],$Vs1=[1,236],$Vt1=[1,237],$Vu1=[13,16,47,86,98,278,279,280,281,282,283,284,285,286,287,288,289,290,291],$Vv1=[47,92],$Vw1=[34,38],$Vx1=[6,114,189],$Vy1=[47,117],$Vz1=[6,47,85,87,89],$VA1=[2,330],$VB1=[2,322],$VC1=[1,283],$VD1=[1,285],$VE1=[47,117,307],$VF1=[13,16,34,35,38,45,47,86,89,92,117,165,166,168,171,172,189,193,214,219,221,222,224,225,257,278,279,280,281,282,283,284,285,286,287,288,289,290,291,307],$VG1=[13,16,26,34,35,37,38,45,47,86,89,92,98,117,165,166,168,171,172,189,193,214,219,221,222,224,225,229,233,237,252,257,274,278,279,280,281,282,283,284,285,286,287,288,289,290,291,307,310,313,314,315,316,317,318,319],$VH1=[13,16,26,34,35,37,38,45,47,86,89,92,98,117,165,166,168,171,172,189,193,214,219,221,222,224,225,229,233,237,252,257,274,276,277,278,279,280,281,282,283,284,285,286,287,288,289,290,291,307,310,313,314,315,316,317,318,319],$VI1=[13,16,34,35,86,214,252,254,255,256,258,260,261,263,264,267,269,278,279,280,281,282,283,284,285,286,287,288,289,290,291,313,319,320,321,322,323,324],$VJ1=[1,312],$VK1=[1,313],$VL1=[1,315],$VM1=[1,314],$VN1=[6,13,16,26,34,35,37,38,45,47,74,77,80,82,85,86,87,89,92,117,165,166,168,171,172,189,221,224,225,229,233,237,252,254,255,256,257,258,260,261,263,264,267,269,274,278,279,280,281,282,283,284,285,286,287,288,289,290,291,307,310,313,314,315,316,317,318,319,320,321,322,323,324],$VO1=[1,323],$VP1=[1,322],$VQ1=[35,92],$VR1=[1,335],$VS1=[1,348],$VT1=[6,47,89],$VU1=[6,13,16,35,47,77,85,87,89,254,255,256,258,260,261,263,264,267,269,291,319,320,321,322,323,324],$VV1=[6,13,16,34,35,45,47,77,80,82,85,86,87,89,92,117,165,166,168,171,172,221,224,225,254,255,256,258,260,261,263,264,267,269,278,279,280,281,282,283,284,285,286,287,288,289,290,291,307,319,320,321,322,323,324],$VW1=[45,47,89,117,165,166,168,171,172],$VX1=[1,365],$VY1=[1,366],$VZ1=[1,372],$V_1=[1,371],$V$1=[47,117,189,222,307],$V02=[2,360],$V12=[13,16,34,35,38,86,92,221,224,225,278,279,280,281,282,283,284,285,286,287,288,289,290,291],$V22=[13,16,34,35,38,45,47,86,89,92,117,165,166,168,171,172,189,221,222,224,225,257,278,279,280,281,282,283,284,285,286,287,288,289,290,291,307],$V32=[13,16,26,34,35,86,214,252,254,255,256,258,260,261,263,264,267,269,278,279,280,281,282,283,284,285,286,287,288,289,290,291,313,319,320,321,322,323,324],$V42=[13,16,38,47,86,98,278,279,280,281,282,283,284,285,286,287,288,289,290,291],$V52=[35,47],$V62=[2,321],$V72=[1,421],$V82=[1,418],$V92=[1,419],$Va2=[6,13,16,26,34,35,37,38,45,47,67,74,77,80,82,85,86,87,89,92,117,165,166,168,171,172,189,221,224,225,229,233,237,252,254,255,256,257,258,260,261,263,264,267,269,274,278,279,280,281,282,283,284,285,286,287,288,289,290,291,307,308,310,313,314,315,316,317,318,319,320,321,322,323,324],$Vb2=[13,16,35,193,214,219,291],$Vc2=[2,372],$Vd2=[1,439],$Ve2=[45,47,89,117,165,166,168,171,172,307],$Vf2=[6,13,16,34,35,47,74,77,85,87,89,254,255,256,258,260,261,263,264,267,269,291,319,320,321,322,323,324],$Vg2=[13,16,34,35,38,45,47,86,89,92,117,165,166,168,171,172,189,193,221,222,224,225,257,278,279,280,281,282,283,284,285,286,287,288,289,290,291,307],$Vh2=[6,13,16,34,35,47,80,82,85,87,89,254,255,256,258,260,261,263,264,267,269,291,319,320,321,322,323,324],$Vi2=[13,16,34,35,45,47,86,89,92,117,165,166,168,171,172,221,224,225,278,279,280,281,282,283,284,285,286,287,288,289,290,291],$Vj2=[13,16,34,291],$Vk2=[13,16,34,35,45,47,86,89,92,117,165,166,168,171,172,221,224,225,278,279,280,281,282,283,284,285,286,287,288,289,290,291,307],$Vl2=[2,333],$Vm2=[45,47,89,117,165,166,168,171,172,189,222,307],$Vn2=[2,328],$Vo2=[13,16,35,193,214,291],$Vp2=[13,16,38,86,98,278,279,280,281,282,283,284,285,286,287,288,289,290,291],$Vq2=[13,16,34,35,47,86,92,117,221,224,225,278,279,280,281,282,283,284,285,286,287,288,289,290,291],$Vr2=[13,16,34,35,38,86,92,221,224,225,278,279,280,281,282,283,284,285,286,287,288,289,290,291,309,310],$Vs2=[13,16,26,34,35,38,86,92,221,224,225,278,279,280,281,282,283,284,285,286,287,288,289,290,291,309,310,312,313],$Vt2=[1,573],$Vu2=[1,574],$Vv2=[2,316],$Vw2=[13,16,38,193,219,291];
 var parser = {trace: function trace () { },
 yy: {},
-symbols_: {"error":2,"QueryOrUpdate":3,"Prologue":4,"QueryOrUpdate_group0":5,"EOF":6,"Prologue_repetition0":7,"Query":8,"Query_group0":9,"Query_option0":10,"BaseDecl":11,"BASE":12,"IRIREF":13,"PrefixDecl":14,"PREFIX":15,"PNAME_NS":16,"SelectQuery":17,"SelectClause":18,"SelectQuery_repetition0":19,"WhereClause":20,"SolutionModifier":21,"SubSelect":22,"SubSelect_option0":23,"SELECT":24,"SelectClause_option0":25,"SelectClause_group0":26,"SelectClauseItem":27,"VAR":28,"(":29,"Expression":30,"AS":31,")":32,"ConstructQuery":33,"CONSTRUCT":34,"ConstructTemplate":35,"ConstructQuery_repetition0":36,"ConstructQuery_repetition1":37,"WHERE":38,"{":39,"ConstructQuery_option0":40,"}":41,"DescribeQuery":42,"DESCRIBE":43,"DescribeQuery_group0":44,"DescribeQuery_repetition0":45,"DescribeQuery_option0":46,"AskQuery":47,"ASK":48,"AskQuery_repetition0":49,"DatasetClause":50,"FROM":51,"DatasetClause_option0":52,"iri":53,"WhereClause_option0":54,"GroupGraphPattern":55,"SolutionModifier_option0":56,"SolutionModifier_option1":57,"SolutionModifier_option2":58,"SolutionModifier_option3":59,"GroupClause":60,"GROUP":61,"BY":62,"GroupClause_repetition_plus0":63,"GroupCondition":64,"BuiltInCall":65,"FunctionCall":66,"HavingClause":67,"HAVING":68,"HavingClause_repetition_plus0":69,"OrderClause":70,"ORDER":71,"OrderClause_repetition_plus0":72,"OrderCondition":73,"ASC":74,"BrackettedExpression":75,"DESC":76,"Constraint":77,"LimitOffsetClauses":78,"LIMIT":79,"INTEGER":80,"OFFSET":81,"ValuesClause":82,"VALUES":83,"InlineData":84,"InlineData_repetition0":85,"NIL":86,"InlineData_repetition1":87,"InlineData_repetition_plus2":88,"InlineData_repetition3":89,"DataBlockValue":90,"Literal":91,"UNDEF":92,"DataBlockValueList":93,"DataBlockValueList_repetition_plus0":94,"Update":95,"Update_repetition0":96,"Update1":97,"Update_option0":98,"LOAD":99,"Update1_option0":100,"Update1_option1":101,"Update1_group0":102,"Update1_option2":103,"GraphRefAll":104,"Update1_group1":105,"Update1_option3":106,"GraphOrDefault":107,"TO":108,"CREATE":109,"Update1_option4":110,"GRAPH":111,"INSERTDATA":112,"QuadPattern":113,"DELETEDATA":114,"DELETEWHERE":115,"Update1_option5":116,"InsertClause":117,"Update1_option6":118,"Update1_repetition0":119,"Update1_option7":120,"DeleteClause":121,"Update1_option8":122,"Update1_repetition1":123,"DELETE":124,"INSERT":125,"UsingClause":126,"USING":127,"UsingClause_option0":128,"WithClause":129,"WITH":130,"IntoGraphClause":131,"INTO":132,"DEFAULT":133,"GraphOrDefault_option0":134,"GraphRefAll_group0":135,"QuadPattern_option0":136,"QuadPattern_repetition0":137,"QuadsNotTriples":138,"QuadsNotTriples_group0":139,"QuadsNotTriples_option0":140,"QuadsNotTriples_option1":141,"QuadsNotTriples_option2":142,"TriplesTemplate":143,"TriplesTemplate_repetition0":144,"TriplesSameSubject":145,"TriplesTemplate_option0":146,"GroupGraphPatternSub":147,"GroupGraphPatternSub_option0":148,"GroupGraphPatternSub_repetition0":149,"GroupGraphPatternSubTail":150,"GraphPatternNotTriples":151,"GroupGraphPatternSubTail_option0":152,"GroupGraphPatternSubTail_option1":153,"TriplesBlock":154,"TriplesBlock_repetition0":155,"TriplesSameSubjectPath":156,"TriplesBlock_option0":157,"GraphPatternNotTriples_repetition0":158,"OPTIONAL":159,"MINUS":160,"GraphPatternNotTriples_group0":161,"SERVICE":162,"GraphPatternNotTriples_option0":163,"GraphPatternNotTriples_group1":164,"FILTER":165,"BIND":166,"FunctionCall_option0":167,"FunctionCall_repetition0":168,"ExpressionList":169,"ExpressionList_repetition0":170,"ConstructTemplate_option0":171,"ConstructTriples":172,"ConstructTriples_repetition0":173,"ConstructTriples_option0":174,"VarOrTerm":175,"PropertyListNotEmpty":176,"TriplesNode":177,"PropertyList":178,"PropertyList_option0":179,"VerbObjectList":180,"PropertyListNotEmpty_repetition0":181,"SemiOptionalVerbObjectList":182,";":183,"SemiOptionalVerbObjectList_option0":184,"Verb":185,"ObjectList":186,"a":187,"ObjectList_repetition0":188,"GraphNode":189,"PropertyListPathNotEmpty":190,"TriplesNodePath":191,"TriplesSameSubjectPath_option0":192,"PropertyListPathNotEmpty_group0":193,"PropertyListPathNotEmpty_repetition0":194,"GraphNodePath":195,"PropertyListPathNotEmpty_repetition1":196,"PropertyListPathNotEmptyTail":197,"PropertyListPathNotEmptyTail_group0":198,"Path":199,"Path_repetition0":200,"PathSequence":201,"PathSequence_repetition0":202,"PathEltOrInverse":203,"PathElt":204,"PathPrimary":205,"PathElt_option0":206,"PathEltOrInverse_option0":207,"!":208,"PathNegatedPropertySet":209,"PathOneInPropertySet":210,"PathNegatedPropertySet_repetition0":211,"PathNegatedPropertySet_option0":212,"^":213,"TriplesNode_repetition_plus0":214,"[":215,"]":216,"TriplesNodePath_repetition_plus0":217,"BLANK_NODE_LABEL":218,"ANON":219,"ConditionalAndExpression":220,"Expression_repetition0":221,"ExpressionTail":222,"||":223,"RelationalExpression":224,"ConditionalAndExpression_repetition0":225,"ConditionalAndExpressionTail":226,"&&":227,"AdditiveExpression":228,"RelationalExpression_group0":229,"RelationalExpression_option0":230,"IN":231,"MultiplicativeExpression":232,"AdditiveExpression_repetition0":233,"AdditiveExpressionTail":234,"AdditiveExpressionTail_group0":235,"NumericLiteralPositive":236,"AdditiveExpressionTail_repetition0":237,"NumericLiteralNegative":238,"AdditiveExpressionTail_repetition1":239,"UnaryExpression":240,"MultiplicativeExpression_repetition0":241,"MultiplicativeExpressionTail":242,"MultiplicativeExpressionTail_group0":243,"UnaryExpression_option0":244,"PrimaryExpression":245,"-":246,"Aggregate":247,"FUNC_ARITY0":248,"FUNC_ARITY1":249,"FUNC_ARITY2":250,",":251,"IF":252,"BuiltInCall_group0":253,"BOUND":254,"BNODE":255,"BuiltInCall_option0":256,"EXISTS":257,"COUNT":258,"Aggregate_option0":259,"Aggregate_group0":260,"FUNC_AGGREGATE":261,"Aggregate_option1":262,"GROUP_CONCAT":263,"Aggregate_option2":264,"Aggregate_option3":265,"GroupConcatSeparator":266,"SEPARATOR":267,"=":268,"String":269,"LANGTAG":270,"^^":271,"DECIMAL":272,"DOUBLE":273,"true":274,"false":275,"STRING_LITERAL1":276,"STRING_LITERAL2":277,"STRING_LITERAL_LONG1":278,"STRING_LITERAL_LONG2":279,"INTEGER_POSITIVE":280,"DECIMAL_POSITIVE":281,"DOUBLE_POSITIVE":282,"INTEGER_NEGATIVE":283,"DECIMAL_NEGATIVE":284,"DOUBLE_NEGATIVE":285,"PNAME_LN":286,"QueryOrUpdate_group0_option0":287,"Prologue_repetition0_group0":288,"SelectClause_option0_group0":289,"DISTINCT":290,"REDUCED":291,"SelectClause_group0_repetition_plus0":292,"*":293,"DescribeQuery_group0_repetition_plus0_group0":294,"DescribeQuery_group0_repetition_plus0":295,"NAMED":296,"SILENT":297,"CLEAR":298,"DROP":299,"ADD":300,"MOVE":301,"COPY":302,"ALL":303,".":304,"UNION":305,"|":306,"/":307,"PathElt_option0_group0":308,"?":309,"+":310,"!=":311,"<":312,">":313,"<=":314,">=":315,"NOT":316,"CONCAT":317,"COALESCE":318,"SUBSTR":319,"REGEX":320,"REPLACE":321,"$accept":0,"$end":1},
-terminals_: {2:"error",6:"EOF",12:"BASE",13:"IRIREF",15:"PREFIX",16:"PNAME_NS",24:"SELECT",28:"VAR",29:"(",31:"AS",32:")",34:"CONSTRUCT",38:"WHERE",39:"{",41:"}",43:"DESCRIBE",48:"ASK",51:"FROM",61:"GROUP",62:"BY",68:"HAVING",71:"ORDER",74:"ASC",76:"DESC",79:"LIMIT",80:"INTEGER",81:"OFFSET",83:"VALUES",86:"NIL",92:"UNDEF",99:"LOAD",108:"TO",109:"CREATE",111:"GRAPH",112:"INSERTDATA",114:"DELETEDATA",115:"DELETEWHERE",124:"DELETE",125:"INSERT",127:"USING",130:"WITH",132:"INTO",133:"DEFAULT",159:"OPTIONAL",160:"MINUS",162:"SERVICE",165:"FILTER",166:"BIND",183:";",187:"a",208:"!",213:"^",215:"[",216:"]",218:"BLANK_NODE_LABEL",219:"ANON",223:"||",227:"&&",231:"IN",246:"-",248:"FUNC_ARITY0",249:"FUNC_ARITY1",250:"FUNC_ARITY2",251:",",252:"IF",254:"BOUND",255:"BNODE",257:"EXISTS",258:"COUNT",261:"FUNC_AGGREGATE",263:"GROUP_CONCAT",267:"SEPARATOR",268:"=",270:"LANGTAG",271:"^^",272:"DECIMAL",273:"DOUBLE",274:"true",275:"false",276:"STRING_LITERAL1",277:"STRING_LITERAL2",278:"STRING_LITERAL_LONG1",279:"STRING_LITERAL_LONG2",280:"INTEGER_POSITIVE",281:"DECIMAL_POSITIVE",282:"DOUBLE_POSITIVE",283:"INTEGER_NEGATIVE",284:"DECIMAL_NEGATIVE",285:"DOUBLE_NEGATIVE",286:"PNAME_LN",290:"DISTINCT",291:"REDUCED",293:"*",296:"NAMED",297:"SILENT",298:"CLEAR",299:"DROP",300:"ADD",301:"MOVE",302:"COPY",303:"ALL",304:".",305:"UNION",306:"|",307:"/",309:"?",310:"+",311:"!=",312:"<",313:">",314:"<=",315:">=",316:"NOT",317:"CONCAT",318:"COALESCE",319:"SUBSTR",320:"REGEX",321:"REPLACE"},
-productions_: [0,[3,3],[4,1],[8,2],[11,2],[14,3],[17,4],[22,4],[18,3],[27,1],[27,5],[33,5],[33,7],[42,5],[47,4],[50,3],[20,2],[21,4],[60,3],[64,1],[64,1],[64,3],[64,5],[64,1],[67,2],[70,3],[73,2],[73,2],[73,1],[73,1],[78,2],[78,2],[78,4],[78,4],[82,2],[84,4],[84,4],[84,6],[90,1],[90,1],[90,1],[93,3],[95,3],[97,4],[97,3],[97,5],[97,4],[97,2],[97,2],[97,2],[97,6],[97,6],[121,2],[117,2],[126,3],[129,2],[131,3],[107,1],[107,2],[104,2],[104,1],[113,4],[138,7],[143,3],[55,3],[55,3],[147,2],[150,3],[154,3],[151,2],[151,2],[151,2],[151,3],[151,4],[151,2],[151,6],[151,1],[77,1],[77,1],[77,1],[66,2],[66,6],[169,1],[169,4],[35,3],[172,3],[145,2],[145,2],[178,1],[176,2],[182,2],[180,2],[185,1],[185,1],[185,1],[186,2],[156,2],[156,2],[190,4],[197,1],[197,3],[199,2],[201,2],[204,2],[203,2],[205,1],[205,1],[205,2],[205,3],[209,1],[209,1],[209,4],[210,1],[210,1],[210,2],[210,2],[177,3],[177,3],[191,3],[191,3],[189,1],[189,1],[195,1],[195,1],[175,1],[175,1],[175,1],[175,1],[175,1],[175,1],[30,2],[222,2],[220,2],[226,2],[224,1],[224,3],[224,4],[228,2],[234,2],[234,2],[234,2],[232,2],[242,2],[240,2],[240,2],[240,2],[245,1],[245,1],[245,1],[245,1],[245,1],[245,1],[75,3],[65,1],[65,2],[65,4],[65,6],[65,8],[65,2],[65,4],[65,2],[65,4],[65,3],[247,5],[247,5],[247,6],[266,4],[91,1],[91,2],[91,3],[91,1],[91,1],[91,1],[91,1],[91,1],[91,1],[91,1],[269,1],[269,1],[269,1],[269,1],[236,1],[236,1],[236,1],[238,1],[238,1],[238,1],[53,1],[53,1],[53,1],[287,0],[287,1],[5,1],[5,1],[288,1],[288,1],[7,0],[7,2],[9,1],[9,1],[9,1],[9,1],[10,0],[10,1],[19,0],[19,2],[23,0],[23,1],[289,1],[289,1],[25,0],[25,1],[292,1],[292,2],[26,1],[26,1],[36,0],[36,2],[37,0],[37,2],[40,0],[40,1],[294,1],[294,1],[295,1],[295,2],[44,1],[44,1],[45,0],[45,2],[46,0],[46,1],[49,0],[49,2],[52,0],[52,1],[54,0],[54,1],[56,0],[56,1],[57,0],[57,1],[58,0],[58,1],[59,0],[59,1],[63,1],[63,2],[69,1],[69,2],[72,1],[72,2],[85,0],[85,2],[87,0],[87,2],[88,1],[88,2],[89,0],[89,2],[94,1],[94,2],[96,0],[96,4],[98,0],[98,2],[100,0],[100,1],[101,0],[101,1],[102,1],[102,1],[103,0],[103,1],[105,1],[105,1],[105,1],[106,0],[106,1],[110,0],[110,1],[116,0],[116,1],[118,0],[118,1],[119,0],[119,2],[120,0],[120,1],[122,0],[122,1],[123,0],[123,2],[128,0],[128,1],[134,0],[134,1],[135,1],[135,1],[135,1],[136,0],[136,1],[137,0],[137,2],[139,1],[139,1],[140,0],[140,1],[141,0],[141,1],[142,0],[142,1],[144,0],[144,3],[146,0],[146,1],[148,0],[148,1],[149,0],[149,2],[152,0],[152,1],[153,0],[153,1],[155,0],[155,3],[157,0],[157,1],[158,0],[158,3],[161,1],[161,1],[163,0],[163,1],[164,1],[164,1],[167,0],[167,1],[168,0],[168,3],[170,0],[170,3],[171,0],[171,1],[173,0],[173,3],[174,0],[174,1],[179,0],[179,1],[181,0],[181,2],[184,0],[184,1],[188,0],[188,3],[192,0],[192,1],[193,1],[193,1],[194,0],[194,3],[196,0],[196,2],[198,1],[198,1],[200,0],[200,3],[202,0],[202,3],[308,1],[308,1],[308,1],[206,0],[206,1],[207,0],[207,1],[211,0],[211,3],[212,0],[212,1],[214,1],[214,2],[217,1],[217,2],[221,0],[221,2],[225,0],[225,2],[229,1],[229,1],[229,1],[229,1],[229,1],[229,1],[230,0],[230,1],[233,0],[233,2],[235,1],[235,1],[237,0],[237,2],[239,0],[239,2],[241,0],[241,2],[243,1],[243,1],[244,0],[244,1],[253,1],[253,1],[253,1],[253,1],[253,1],[256,0],[256,1],[259,0],[259,1],[260,1],[260,1],[262,0],[262,1],[264,0],[264,1],[265,0],[265,1]],
+symbols_: {"error":2,"QueryOrUpdate":3,"Prologue":4,"QueryOrUpdate_group0":5,"EOF":6,"Prologue_repetition0":7,"Query":8,"Query_group0":9,"Query_option0":10,"BaseDecl":11,"BASE":12,"IRIREF":13,"PrefixDecl":14,"PREFIX":15,"PNAME_NS":16,"SelectQuery":17,"SelectClauseWildcard":18,"SelectQuery_repetition0":19,"WhereClause":20,"SolutionModifierNoGroup":21,"SelectClauseVars":22,"SelectQuery_repetition1":23,"SolutionModifier":24,"SelectClauseBase":25,"*":26,"SelectClauseVars_repetition_plus0":27,"SELECT":28,"SelectClauseBase_option0":29,"SubSelect":30,"SubSelect_option0":31,"SubSelect_option1":32,"SelectClauseItem":33,"VAR":34,"(":35,"Expression":36,"AS":37,")":38,"ConstructQuery":39,"CONSTRUCT":40,"ConstructTemplate":41,"ConstructQuery_repetition0":42,"ConstructQuery_repetition1":43,"WHERE":44,"{":45,"ConstructQuery_option0":46,"}":47,"DescribeQuery":48,"DESCRIBE":49,"DescribeQuery_group0":50,"DescribeQuery_repetition0":51,"DescribeQuery_option0":52,"AskQuery":53,"ASK":54,"AskQuery_repetition0":55,"DatasetClause":56,"FROM":57,"DatasetClause_option0":58,"iri":59,"WhereClause_option0":60,"GroupGraphPattern":61,"SolutionModifier_option0":62,"SolutionModifierNoGroup_option0":63,"SolutionModifierNoGroup_option1":64,"SolutionModifierNoGroup_option2":65,"GroupClause":66,"GROUP":67,"BY":68,"GroupClause_repetition_plus0":69,"GroupCondition":70,"BuiltInCall":71,"FunctionCall":72,"HavingClause":73,"HAVING":74,"HavingClause_repetition_plus0":75,"OrderClause":76,"ORDER":77,"OrderClause_repetition_plus0":78,"OrderCondition":79,"ASC":80,"BrackettedExpression":81,"DESC":82,"Constraint":83,"LimitOffsetClauses":84,"LIMIT":85,"INTEGER":86,"OFFSET":87,"ValuesClause":88,"VALUES":89,"InlineData":90,"InlineData_repetition0":91,"NIL":92,"InlineData_repetition1":93,"InlineData_repetition_plus2":94,"InlineData_repetition3":95,"DataBlockValue":96,"Literal":97,"UNDEF":98,"DataBlockValueList":99,"DataBlockValueList_repetition_plus0":100,"Update":101,"Update_repetition0":102,"Update1":103,"Update_option0":104,"LOAD":105,"Update1_option0":106,"Update1_option1":107,"Update1_group0":108,"Update1_option2":109,"GraphRefAll":110,"Update1_group1":111,"Update1_option3":112,"GraphOrDefault":113,"TO":114,"CREATE":115,"Update1_option4":116,"GRAPH":117,"INSERTDATA":118,"QuadPattern":119,"DELETEDATA":120,"DELETEWHERE":121,"Update1_option5":122,"InsertClause":123,"Update1_option6":124,"Update1_repetition0":125,"Update1_option7":126,"DeleteClause":127,"Update1_option8":128,"Update1_repetition1":129,"DELETE":130,"INSERT":131,"UsingClause":132,"USING":133,"UsingClause_option0":134,"WithClause":135,"WITH":136,"IntoGraphClause":137,"INTO":138,"DEFAULT":139,"GraphOrDefault_option0":140,"GraphRefAll_group0":141,"QuadPattern_option0":142,"QuadPattern_repetition0":143,"QuadsNotTriples":144,"QuadsNotTriples_group0":145,"QuadsNotTriples_option0":146,"QuadsNotTriples_option1":147,"QuadsNotTriples_option2":148,"TriplesTemplate":149,"TriplesTemplate_repetition0":150,"TriplesSameSubject":151,"TriplesTemplate_option0":152,"GroupGraphPatternSub":153,"GroupGraphPatternSub_option0":154,"GroupGraphPatternSub_repetition0":155,"GroupGraphPatternSubTail":156,"GraphPatternNotTriples":157,"GroupGraphPatternSubTail_option0":158,"GroupGraphPatternSubTail_option1":159,"TriplesBlock":160,"TriplesBlock_repetition0":161,"TriplesSameSubjectPath":162,"TriplesBlock_option0":163,"GraphPatternNotTriples_repetition0":164,"OPTIONAL":165,"MINUS":166,"GraphPatternNotTriples_group0":167,"SERVICE":168,"GraphPatternNotTriples_option0":169,"GraphPatternNotTriples_group1":170,"FILTER":171,"BIND":172,"FunctionCall_option0":173,"FunctionCall_repetition0":174,"ExpressionList":175,"ExpressionList_repetition0":176,"ConstructTemplate_option0":177,"ConstructTriples":178,"ConstructTriples_repetition0":179,"ConstructTriples_option0":180,"VarOrTerm":181,"PropertyListNotEmpty":182,"TriplesNode":183,"PropertyList":184,"PropertyList_option0":185,"VerbObjectList":186,"PropertyListNotEmpty_repetition0":187,"SemiOptionalVerbObjectList":188,";":189,"SemiOptionalVerbObjectList_option0":190,"Verb":191,"ObjectList":192,"a":193,"ObjectList_repetition0":194,"GraphNode":195,"PropertyListPathNotEmpty":196,"TriplesNodePath":197,"TriplesSameSubjectPath_option0":198,"PropertyListPathNotEmpty_group0":199,"PropertyListPathNotEmpty_repetition0":200,"GraphNodePath":201,"PropertyListPathNotEmpty_repetition1":202,"PropertyListPathNotEmptyTail":203,"PropertyListPathNotEmptyTail_group0":204,"Path":205,"Path_repetition0":206,"PathSequence":207,"PathSequence_repetition0":208,"PathEltOrInverse":209,"PathElt":210,"PathPrimary":211,"PathElt_option0":212,"PathEltOrInverse_option0":213,"!":214,"PathNegatedPropertySet":215,"PathOneInPropertySet":216,"PathNegatedPropertySet_repetition0":217,"PathNegatedPropertySet_option0":218,"^":219,"TriplesNode_repetition_plus0":220,"[":221,"]":222,"TriplesNodePath_repetition_plus0":223,"BLANK_NODE_LABEL":224,"ANON":225,"ConditionalAndExpression":226,"Expression_repetition0":227,"ExpressionTail":228,"||":229,"RelationalExpression":230,"ConditionalAndExpression_repetition0":231,"ConditionalAndExpressionTail":232,"&&":233,"AdditiveExpression":234,"RelationalExpression_group0":235,"RelationalExpression_option0":236,"IN":237,"MultiplicativeExpression":238,"AdditiveExpression_repetition0":239,"AdditiveExpressionTail":240,"AdditiveExpressionTail_group0":241,"NumericLiteralPositive":242,"AdditiveExpressionTail_repetition0":243,"NumericLiteralNegative":244,"AdditiveExpressionTail_repetition1":245,"UnaryExpression":246,"MultiplicativeExpression_repetition0":247,"MultiplicativeExpressionTail":248,"MultiplicativeExpressionTail_group0":249,"UnaryExpression_option0":250,"PrimaryExpression":251,"-":252,"Aggregate":253,"FUNC_ARITY0":254,"FUNC_ARITY1":255,"FUNC_ARITY2":256,",":257,"IF":258,"BuiltInCall_group0":259,"BOUND":260,"BNODE":261,"BuiltInCall_option0":262,"EXISTS":263,"COUNT":264,"Aggregate_option0":265,"Aggregate_group0":266,"FUNC_AGGREGATE":267,"Aggregate_option1":268,"GROUP_CONCAT":269,"Aggregate_option2":270,"Aggregate_option3":271,"GroupConcatSeparator":272,"SEPARATOR":273,"=":274,"String":275,"LANGTAG":276,"^^":277,"DECIMAL":278,"DOUBLE":279,"BOOLEAN":280,"STRING_LITERAL1":281,"STRING_LITERAL2":282,"STRING_LITERAL_LONG1":283,"STRING_LITERAL_LONG2":284,"INTEGER_POSITIVE":285,"DECIMAL_POSITIVE":286,"DOUBLE_POSITIVE":287,"INTEGER_NEGATIVE":288,"DECIMAL_NEGATIVE":289,"DOUBLE_NEGATIVE":290,"PNAME_LN":291,"QueryOrUpdate_group0_option0":292,"Prologue_repetition0_group0":293,"SelectClauseBase_option0_group0":294,"DISTINCT":295,"REDUCED":296,"DescribeQuery_group0_repetition_plus0_group0":297,"DescribeQuery_group0_repetition_plus0":298,"NAMED":299,"SILENT":300,"CLEAR":301,"DROP":302,"ADD":303,"MOVE":304,"COPY":305,"ALL":306,".":307,"UNION":308,"|":309,"/":310,"PathElt_option0_group0":311,"?":312,"+":313,"!=":314,"<":315,">":316,"<=":317,">=":318,"NOT":319,"CONCAT":320,"COALESCE":321,"SUBSTR":322,"REGEX":323,"REPLACE":324,"$accept":0,"$end":1},
+terminals_: {2:"error",6:"EOF",12:"BASE",13:"IRIREF",15:"PREFIX",16:"PNAME_NS",26:"*",28:"SELECT",34:"VAR",35:"(",37:"AS",38:")",40:"CONSTRUCT",44:"WHERE",45:"{",47:"}",49:"DESCRIBE",54:"ASK",57:"FROM",67:"GROUP",68:"BY",74:"HAVING",77:"ORDER",80:"ASC",82:"DESC",85:"LIMIT",86:"INTEGER",87:"OFFSET",89:"VALUES",92:"NIL",98:"UNDEF",105:"LOAD",114:"TO",115:"CREATE",117:"GRAPH",118:"INSERTDATA",120:"DELETEDATA",121:"DELETEWHERE",130:"DELETE",131:"INSERT",133:"USING",136:"WITH",138:"INTO",139:"DEFAULT",165:"OPTIONAL",166:"MINUS",168:"SERVICE",171:"FILTER",172:"BIND",189:";",193:"a",214:"!",219:"^",221:"[",222:"]",224:"BLANK_NODE_LABEL",225:"ANON",229:"||",233:"&&",237:"IN",252:"-",254:"FUNC_ARITY0",255:"FUNC_ARITY1",256:"FUNC_ARITY2",257:",",258:"IF",260:"BOUND",261:"BNODE",263:"EXISTS",264:"COUNT",267:"FUNC_AGGREGATE",269:"GROUP_CONCAT",273:"SEPARATOR",274:"=",276:"LANGTAG",277:"^^",278:"DECIMAL",279:"DOUBLE",280:"BOOLEAN",281:"STRING_LITERAL1",282:"STRING_LITERAL2",283:"STRING_LITERAL_LONG1",284:"STRING_LITERAL_LONG2",285:"INTEGER_POSITIVE",286:"DECIMAL_POSITIVE",287:"DOUBLE_POSITIVE",288:"INTEGER_NEGATIVE",289:"DECIMAL_NEGATIVE",290:"DOUBLE_NEGATIVE",291:"PNAME_LN",295:"DISTINCT",296:"REDUCED",299:"NAMED",300:"SILENT",301:"CLEAR",302:"DROP",303:"ADD",304:"MOVE",305:"COPY",306:"ALL",307:".",308:"UNION",309:"|",310:"/",312:"?",313:"+",314:"!=",315:"<",316:">",317:"<=",318:">=",319:"NOT",320:"CONCAT",321:"COALESCE",322:"SUBSTR",323:"REGEX",324:"REPLACE"},
+productions_: [0,[3,3],[4,1],[8,2],[11,2],[14,3],[17,4],[17,4],[18,2],[22,2],[25,2],[30,4],[30,4],[33,1],[33,5],[39,5],[39,7],[48,5],[53,4],[56,3],[20,2],[24,2],[21,3],[66,3],[70,1],[70,1],[70,3],[70,5],[70,1],[73,2],[76,3],[79,2],[79,2],[79,1],[79,1],[84,2],[84,2],[84,4],[84,4],[88,2],[90,4],[90,4],[90,6],[96,1],[96,1],[96,1],[99,3],[101,3],[103,4],[103,3],[103,5],[103,4],[103,2],[103,2],[103,2],[103,6],[103,6],[127,2],[123,2],[132,3],[135,2],[137,3],[113,1],[113,2],[110,2],[110,1],[119,4],[144,7],[149,3],[61,3],[61,3],[153,2],[156,3],[160,3],[157,2],[157,2],[157,2],[157,3],[157,4],[157,2],[157,6],[157,1],[83,1],[83,1],[83,1],[72,2],[72,6],[175,1],[175,4],[41,3],[178,3],[151,2],[151,2],[184,1],[182,2],[188,2],[186,2],[191,1],[191,1],[191,1],[192,2],[162,2],[162,2],[196,4],[203,1],[203,3],[205,2],[207,2],[210,2],[209,2],[211,1],[211,1],[211,2],[211,3],[215,1],[215,1],[215,4],[216,1],[216,1],[216,2],[216,2],[183,3],[183,3],[197,3],[197,3],[195,1],[195,1],[201,1],[201,1],[181,1],[181,1],[181,1],[181,1],[181,1],[181,1],[36,2],[228,2],[226,2],[232,2],[230,1],[230,3],[230,4],[234,2],[240,2],[240,2],[240,2],[238,2],[248,2],[246,2],[246,2],[246,2],[251,1],[251,1],[251,1],[251,1],[251,1],[251,1],[81,3],[71,1],[71,2],[71,4],[71,6],[71,8],[71,2],[71,4],[71,2],[71,4],[71,3],[253,5],[253,5],[253,6],[272,4],[97,1],[97,2],[97,3],[97,1],[97,1],[97,1],[97,1],[97,1],[97,1],[275,1],[275,1],[275,1],[275,1],[242,1],[242,1],[242,1],[244,1],[244,1],[244,1],[59,1],[59,1],[59,1],[292,0],[292,1],[5,1],[5,1],[293,1],[293,1],[7,0],[7,2],[9,1],[9,1],[9,1],[9,1],[10,0],[10,1],[19,0],[19,2],[23,0],[23,2],[27,1],[27,2],[294,1],[294,1],[29,0],[29,1],[31,0],[31,1],[32,0],[32,1],[42,0],[42,2],[43,0],[43,2],[46,0],[46,1],[297,1],[297,1],[298,1],[298,2],[50,1],[50,1],[51,0],[51,2],[52,0],[52,1],[55,0],[55,2],[58,0],[58,1],[60,0],[60,1],[62,0],[62,1],[63,0],[63,1],[64,0],[64,1],[65,0],[65,1],[69,1],[69,2],[75,1],[75,2],[78,1],[78,2],[91,0],[91,2],[93,0],[93,2],[94,1],[94,2],[95,0],[95,2],[100,1],[100,2],[102,0],[102,4],[104,0],[104,2],[106,0],[106,1],[107,0],[107,1],[108,1],[108,1],[109,0],[109,1],[111,1],[111,1],[111,1],[112,0],[112,1],[116,0],[116,1],[122,0],[122,1],[124,0],[124,1],[125,0],[125,2],[126,0],[126,1],[128,0],[128,1],[129,0],[129,2],[134,0],[134,1],[140,0],[140,1],[141,1],[141,1],[141,1],[142,0],[142,1],[143,0],[143,2],[145,1],[145,1],[146,0],[146,1],[147,0],[147,1],[148,0],[148,1],[150,0],[150,3],[152,0],[152,1],[154,0],[154,1],[155,0],[155,2],[158,0],[158,1],[159,0],[159,1],[161,0],[161,3],[163,0],[163,1],[164,0],[164,3],[167,1],[167,1],[169,0],[169,1],[170,1],[170,1],[173,0],[173,1],[174,0],[174,3],[176,0],[176,3],[177,0],[177,1],[179,0],[179,3],[180,0],[180,1],[185,0],[185,1],[187,0],[187,2],[190,0],[190,1],[194,0],[194,3],[198,0],[198,1],[199,1],[199,1],[200,0],[200,3],[202,0],[202,2],[204,1],[204,1],[206,0],[206,3],[208,0],[208,3],[311,1],[311,1],[311,1],[212,0],[212,1],[213,0],[213,1],[217,0],[217,3],[218,0],[218,1],[220,1],[220,2],[223,1],[223,2],[227,0],[227,2],[231,0],[231,2],[235,1],[235,1],[235,1],[235,1],[235,1],[235,1],[236,0],[236,1],[239,0],[239,2],[241,1],[241,1],[243,0],[243,2],[245,0],[245,2],[247,0],[247,2],[249,1],[249,1],[250,0],[250,1],[259,1],[259,1],[259,1],[259,1],[259,1],[262,0],[262,1],[265,0],[265,1],[266,1],[266,1],[268,0],[268,1],[270,0],[270,1],[271,0],[271,1]],
 performAction: function anonymous(yytext, yyleng, yylineno, yy, yystate /* action[1] */, $$ /* vstack */, _$ /* lstack */) {
 /* this == yyval */
 
@@ -99831,90 +98503,98 @@ case 5:
       Parser.prefixes[$$[$0-1]] = $$[$0];
     
 break;
-case 6:
+case 6: case 7:
 this.$ = extend($$[$0-3], groupDatasets($$[$0-2]), $$[$0-1], $$[$0]);
 break;
-case 7:
+case 8:
+this.$ = extend($$[$0-1], {variables: [new Wildcard()]});
+break;
+case 9:
+this.$ = extend($$[$0-1], { variables: $$[$0] });
+break;
+case 10:
+this.$ = extend({ queryType: 'SELECT'}, $$[$0] && ($$[$0-1] = lowercase($$[$0]), $$[$0] = {}, $$[$0][$$[$0-1]] = true, $$[$0]));
+break;
+case 11: case 12:
 this.$ = extend($$[$0-3], $$[$0-2], $$[$0-1], $$[$0], { type: 'query' });
 break;
-case 8:
-this.$ = extend({ queryType: 'SELECT', variables: $$[$0] === '*' ? ['*'] : $$[$0] }, $$[$0-1] && ($$[$0-2] = lowercase($$[$0-1]), $$[$0-1] = {}, $$[$0-1][$$[$0-2]] = true, $$[$0-1]));
-break;
-case 9: case 92: case 124: case 151:
+case 13: case 97: case 129: case 156:
 this.$ = toVar($$[$0]);
 break;
-case 10: case 22:
+case 14: case 27:
 this.$ = expression($$[$0-3], { variable: toVar($$[$0-1]) });
 break;
-case 11:
+case 15:
 this.$ = extend({ queryType: 'CONSTRUCT', template: $$[$0-3] }, groupDatasets($$[$0-2]), $$[$0-1], $$[$0]);
 break;
-case 12:
+case 16:
 this.$ = extend({ queryType: 'CONSTRUCT', template: $$[$0-2] = ($$[$0-2] ? $$[$0-2].triples : []) }, groupDatasets($$[$0-5]), { where: [ { type: 'bgp', triples: appendAllTo([], $$[$0-2]) } ] }, $$[$0]);
 break;
-case 13:
-this.$ = extend({ queryType: 'DESCRIBE', variables: $$[$0-3] === '*' ? ['*'] : $$[$0-3].map(toVar) }, groupDatasets($$[$0-2]), $$[$0-1], $$[$0]);
-break;
-case 14:
-this.$ = extend({ queryType: 'ASK' }, groupDatasets($$[$0-2]), $$[$0-1], $$[$0]);
-break;
-case 15: case 54:
-this.$ = { iri: $$[$0], named: !!$$[$0-1] };
-break;
-case 16:
-this.$ = { where: $$[$0].patterns };
-break;
 case 17:
-this.$ = extend($$[$0-3], $$[$0-2], $$[$0-1], $$[$0]);
+this.$ = extend({ queryType: 'DESCRIBE', variables: $$[$0-3] === '*' ? [new Wildcard()] : $$[$0-3].map(toVar) }, groupDatasets($$[$0-2]), $$[$0-1], $$[$0]);
 break;
 case 18:
-this.$ = { group: $$[$0] };
+this.$ = extend({ queryType: 'ASK' }, groupDatasets($$[$0-2]), $$[$0-1], $$[$0]);
 break;
-case 19: case 20: case 26: case 28:
-this.$ = expression($$[$0]);
+case 19: case 59:
+this.$ = { iri: $$[$0], named: !!$$[$0-1] };
+break;
+case 20:
+this.$ = { where: $$[$0].patterns };
 break;
 case 21:
+this.$ = extend($$[$0-1], $$[$0]);
+break;
+case 22:
+this.$ = extend($$[$0-2], $$[$0-1], $$[$0]);
+break;
+case 23:
+this.$ = { group: $$[$0] };
+break;
+case 24: case 25: case 31: case 33:
+this.$ = expression($$[$0]);
+break;
+case 26:
 this.$ = expression($$[$0-1]);
 break;
-case 23: case 29:
+case 28: case 34:
 this.$ = expression(toVar($$[$0]));
 break;
-case 24:
+case 29:
 this.$ = { having: $$[$0] };
 break;
-case 25:
+case 30:
 this.$ = { order: $$[$0] };
 break;
-case 27:
+case 32:
 this.$ = expression($$[$0], { descending: true });
 break;
-case 30:
+case 35:
 this.$ = { limit:  toInt($$[$0]) };
 break;
-case 31:
+case 36:
 this.$ = { offset: toInt($$[$0]) };
 break;
-case 32:
+case 37:
 this.$ = { limit: toInt($$[$0-2]), offset: toInt($$[$0]) };
 break;
-case 33:
+case 38:
 this.$ = { limit: toInt($$[$0]), offset: toInt($$[$0-2]) };
 break;
-case 34:
+case 39:
 this.$ = { type: 'values', values: $$[$0] };
 break;
-case 35:
+case 40:
 
-      $$[$0-3] = toVar($$[$0-3]);
       this.$ = $$[$0-1].map(function(v) { var o = {}; o[$$[$0-3]] = v; return o; })
     
 break;
-case 36:
+case 41:
 
       this.$ = $$[$0-1].map(function() { return {}; })
     
 break;
-case 37:
+case 42:
 
       var length = $$[$0-4].length;
       $$[$0-4] = $$[$0-4].map(toVar);
@@ -99923,87 +98603,87 @@ case 37:
           throw Error('Inconsistent VALUES length');
         var valuesObject = {};
         for(var i = 0; i<length; i++)
-          valuesObject[$$[$0-4][i]] = values[i];
+          valuesObject['?' + $$[$0-4][i].value] = values[i];
         return valuesObject;
       });
     
 break;
-case 40:
+case 45:
 this.$ = undefined;
 break;
-case 41: case 84: case 108: case 152:
+case 46: case 89: case 113: case 157:
 this.$ = $$[$0-1];
 break;
-case 42:
+case 47:
 this.$ = { type: 'update', updates: appendTo($$[$0-2], $$[$0-1]) };
 break;
-case 43:
+case 48:
 this.$ = extend({ type: 'load', silent: !!$$[$0-2], source: $$[$0-1] }, $$[$0] && { destination: $$[$0] });
 break;
-case 44:
+case 49:
 this.$ = { type: lowercase($$[$0-2]), silent: !!$$[$0-1], graph: $$[$0] };
 break;
-case 45:
+case 50:
 this.$ = { type: lowercase($$[$0-4]), silent: !!$$[$0-3], source: $$[$0-2], destination: $$[$0] };
 break;
-case 46:
+case 51:
 this.$ = { type: 'create', silent: !!$$[$0-2], graph: { type: 'graph', name: $$[$0] } };
 break;
-case 47:
+case 52:
 this.$ = { updateType: 'insert',      insert: $$[$0] };
 break;
-case 48:
+case 53:
 this.$ = { updateType: 'delete',      delete: $$[$0] };
 break;
-case 49:
+case 54:
 this.$ = { updateType: 'deletewhere', delete: $$[$0] };
 break;
-case 50:
+case 55:
 this.$ = extend({ updateType: 'insertdelete' }, $$[$0-5], { insert: $$[$0-4] || [] }, { delete: $$[$0-3] || [] }, groupDatasets($$[$0-2]), { where: $$[$0].patterns });
 break;
-case 51:
+case 56:
 this.$ = extend({ updateType: 'insertdelete' }, $$[$0-5], { delete: $$[$0-4] || [] }, { insert: $$[$0-3] || [] }, groupDatasets($$[$0-2]), { where: $$[$0].patterns });
 break;
-case 52: case 53: case 56: case 143:
+case 57: case 58: case 61: case 148: case 171:
 this.$ = $$[$0];
 break;
-case 55:
+case 60:
 this.$ = { graph: $$[$0] };
 break;
-case 57:
+case 62:
 this.$ = { type: 'graph', default: true };
 break;
-case 58: case 59:
+case 63: case 64:
 this.$ = { type: 'graph', name: $$[$0] };
 break;
-case 60:
+case 65:
  this.$ = {}; this.$[lowercase($$[$0])] = true; 
 break;
-case 61:
+case 66:
 this.$ = $$[$0-2] ? unionAll($$[$0-1], [$$[$0-2]]) : unionAll($$[$0-1]);
 break;
-case 62:
+case 67:
 
       var graph = extend($$[$0-3] || { triples: [] }, { type: 'graph', name: toVar($$[$0-5]) });
       this.$ = $$[$0] ? [graph, $$[$0]] : [graph];
     
 break;
-case 63: case 68:
+case 68: case 73:
 this.$ = { type: 'bgp', triples: unionAll($$[$0-2], [$$[$0-1]]) };
 break;
-case 64:
+case 69:
 this.$ = { type: 'group', patterns: [ $$[$0-1] ] };
 break;
-case 65:
+case 70:
 this.$ = { type: 'group', patterns: $$[$0-1] };
 break;
-case 66:
+case 71:
 this.$ = $$[$0-1] ? unionAll([$$[$0-1]], $$[$0]) : unionAll($$[$0]);
 break;
-case 67:
+case 72:
 this.$ = $$[$0] ? [$$[$0-2], $$[$0]] : $$[$0-2];
 break;
-case 69:
+case 74:
 
       if ($$[$0-1].length)
         this.$ = { type: 'union', patterns: unionAll($$[$0-1].map(degroupSingle), [degroupSingle($$[$0])]) };
@@ -100011,245 +98691,247 @@ case 69:
         this.$ = $$[$0];
     
 break;
-case 70:
+case 75:
 this.$ = extend($$[$0], { type: 'optional' });
 break;
-case 71:
+case 76:
 this.$ = extend($$[$0], { type: 'minus' });
 break;
-case 72:
+case 77:
 this.$ = extend($$[$0], { type: 'graph', name: toVar($$[$0-1]) });
 break;
-case 73:
+case 78:
 this.$ = extend($$[$0], { type: 'service', name: toVar($$[$0-1]), silent: !!$$[$0-2] });
 break;
-case 74:
+case 79:
 this.$ = { type: 'filter', expression: $$[$0] };
 break;
-case 75:
+case 80:
 this.$ = { type: 'bind', variable: toVar($$[$0-1]), expression: $$[$0-3] };
 break;
-case 80:
+case 85:
 this.$ = { type: 'functionCall', function: $$[$0-1], args: [] };
 break;
-case 81:
+case 86:
 this.$ = { type: 'functionCall', function: $$[$0-5], args: appendTo($$[$0-2], $$[$0-1]), distinct: !!$$[$0-3] };
 break;
-case 82: case 99: case 110: case 196: case 204: case 216: case 218: case 228: case 232: case 252: case 254: case 258: case 262: case 285: case 291: case 302: case 312: case 318: case 324: case 328: case 338: case 340: case 344: case 350: case 354: case 360: case 362: case 366: case 368: case 377: case 385: case 387: case 397: case 401: case 403: case 405:
+case 87: case 104: case 115: case 200: case 208: case 210: case 222: case 224: case 234: case 238: case 258: case 260: case 264: case 268: case 291: case 297: case 308: case 318: case 324: case 330: case 334: case 344: case 346: case 350: case 356: case 360: case 366: case 368: case 372: case 374: case 383: case 391: case 393: case 403: case 407: case 409: case 411:
 this.$ = [];
 break;
-case 83:
+case 88:
 this.$ = appendTo($$[$0-2], $$[$0-1]);
 break;
-case 85:
+case 90:
 this.$ = unionAll($$[$0-2], [$$[$0-1]]);
 break;
-case 86: case 96:
+case 91: case 101:
 this.$ = $$[$0].map(function (t) { return extend(triple($$[$0-1]), t); });
 break;
-case 87:
+case 92:
 this.$ = appendAllTo($$[$0].map(function (t) { return extend(triple($$[$0-1].entity), t); }), $$[$0-1].triples) /* the subject is a blank node, possibly with more triples */;
 break;
-case 89:
+case 94:
 this.$ = unionAll([$$[$0-1]], $$[$0]);
 break;
-case 90:
+case 95:
 this.$ = unionAll($$[$0]);
 break;
-case 91:
+case 96:
 this.$ = objectListToTriples($$[$0-1], $$[$0]);
 break;
-case 94: case 106: case 113:
-this.$ = RDF_TYPE;
-break;
-case 95:
-this.$ = appendTo($$[$0-1], $$[$0]);
-break;
-case 97:
-this.$ = !$$[$0] ? $$[$0-1].triples : appendAllTo($$[$0].map(function (t) { return extend(triple($$[$0-1].entity), t); }), $$[$0-1].triples) /* the subject is a blank node, possibly with more triples */;
-break;
-case 98:
-this.$ = objectListToTriples(toVar($$[$0-3]), appendTo($$[$0-2], $$[$0-1]), $$[$0]);
+case 99: case 111: case 118:
+this.$ = Parser.factory.namedNode(RDF_TYPE);
 break;
 case 100:
-this.$ = objectListToTriples(toVar($$[$0-1]), $$[$0]);
-break;
-case 101:
-this.$ = $$[$0-1].length ? path('|',appendTo($$[$0-1], $$[$0])) : $$[$0];
+this.$ = appendTo($$[$0-1], $$[$0]);
 break;
 case 102:
-this.$ = $$[$0-1].length ? path('/', appendTo($$[$0-1], $$[$0])) : $$[$0];
+this.$ = !$$[$0] ? $$[$0-1].triples : appendAllTo($$[$0].map(function (t) { return extend(triple($$[$0-1].entity), t); }), $$[$0-1].triples) /* the subject is a blank node, possibly with more triples */;
 break;
 case 103:
+this.$ = objectListToTriples(toVar($$[$0-3]), appendTo($$[$0-2], $$[$0-1]), $$[$0]);
+break;
+case 105:
+this.$ = objectListToTriples(toVar($$[$0-1]), $$[$0]);
+break;
+case 106:
+this.$ = $$[$0-1].length ? path('|',appendTo($$[$0-1], $$[$0])) : $$[$0];
+break;
+case 107:
+this.$ = $$[$0-1].length ? path('/', appendTo($$[$0-1], $$[$0])) : $$[$0];
+break;
+case 108:
 this.$ = $$[$0] ? path($$[$0], [$$[$0-1]]) : $$[$0-1];
 break;
-case 104:
+case 109:
 this.$ = $$[$0-1] ? path($$[$0-1], [$$[$0]]) : $$[$0];;
 break;
-case 107: case 114:
+case 112: case 119:
 this.$ = path($$[$0-1], [$$[$0]]);
 break;
-case 111:
+case 116:
 this.$ = path('|', appendTo($$[$0-2], $$[$0-1]));
 break;
-case 115:
-this.$ = path($$[$0-1], [RDF_TYPE]);
+case 120:
+this.$ = path($$[$0-1], [Parser.factory.namedNode(RDF_TYPE)]);
 break;
-case 116: case 118:
+case 121: case 123:
 this.$ = createList($$[$0-1]);
 break;
-case 117: case 119:
+case 122: case 124:
 this.$ = createAnonymousObject($$[$0-1]);
 break;
-case 120:
+case 125:
 this.$ = { entity: $$[$0], triples: [] } /* for consistency with TriplesNode */;
 break;
-case 122:
+case 127:
 this.$ = { entity: $$[$0], triples: [] } /* for consistency with TriplesNodePath */;
 break;
-case 128:
-this.$ = blank();
-break;
-case 129:
-this.$ = RDF_NIL;
-break;
-case 130: case 132: case 137: case 141:
-this.$ = createOperationTree($$[$0-1], $$[$0]);
-break;
-case 131:
-this.$ = ['||', $$[$0]];
+case 132:
+this.$ = blank($$[$0].replace(/^(_:)/,''));;
 break;
 case 133:
-this.$ = ['&&', $$[$0]];
+this.$ = blank();
 break;
-case 135:
-this.$ = operation($$[$0-1], [$$[$0-2], $$[$0]]);
+case 134:
+this.$ = Parser.factory.namedNode(RDF_NIL);
+break;
+case 135: case 137: case 142: case 146:
+this.$ = createOperationTree($$[$0-1], $$[$0]);
 break;
 case 136:
-this.$ = operation($$[$0-2] ? 'notin' : 'in', [$$[$0-3], $$[$0]]);
+this.$ = ['||', $$[$0]];
 break;
-case 138: case 142:
-this.$ = [$$[$0-1], $$[$0]];
-break;
-case 139:
-this.$ = ['+', createOperationTree($$[$0-1], $$[$0])];
+case 138:
+this.$ = ['&&', $$[$0]];
 break;
 case 140:
-this.$ = ['-', createOperationTree($$[$0-1].replace('-', ''), $$[$0])];
+this.$ = operation($$[$0-1], [$$[$0-2], $$[$0]]);
+break;
+case 141:
+this.$ = operation($$[$0-2] ? 'notin' : 'in', [$$[$0-3], $$[$0]]);
+break;
+case 143: case 147:
+this.$ = [$$[$0-1], $$[$0]];
 break;
 case 144:
-this.$ = operation($$[$0-1], [$$[$0]]);
+this.$ = ['+', createOperationTree($$[$0-1], $$[$0])];
 break;
 case 145:
+this.$ = ['-', createOperationTree($$[$0-1].replace('-', ''), $$[$0])];
+break;
+case 149:
+this.$ = operation($$[$0-1], [$$[$0]]);
+break;
+case 150:
 this.$ = operation('UMINUS', [$$[$0]]);
 break;
-case 154:
+case 159:
 this.$ = operation(lowercase($$[$0-1]));
 break;
-case 155:
+case 160:
 this.$ = operation(lowercase($$[$0-3]), [$$[$0-1]]);
 break;
-case 156:
+case 161:
 this.$ = operation(lowercase($$[$0-5]), [$$[$0-3], $$[$0-1]]);
 break;
-case 157:
+case 162:
 this.$ = operation(lowercase($$[$0-7]), [$$[$0-5], $$[$0-3], $$[$0-1]]);
 break;
-case 158:
+case 163:
 this.$ = operation(lowercase($$[$0-1]), $$[$0]);
 break;
-case 159:
+case 164:
 this.$ = operation('bound', [toVar($$[$0-1])]);
 break;
-case 160:
+case 165:
 this.$ = operation($$[$0-1], []);
 break;
-case 161:
+case 166:
 this.$ = operation($$[$0-3], [$$[$0-1]]);
 break;
-case 162:
+case 167:
 this.$ = operation($$[$0-2] ? 'notexists' :'exists', [degroupSingle($$[$0])]);
 break;
-case 163: case 164:
+case 168: case 169:
 this.$ = expression($$[$0-1], { type: 'aggregate', aggregation: lowercase($$[$0-4]), distinct: !!$$[$0-2] });
 break;
-case 165:
+case 170:
 this.$ = expression($$[$0-2], { type: 'aggregate', aggregation: lowercase($$[$0-5]), distinct: !!$$[$0-3], separator: $$[$0-1] || ' ' });
 break;
-case 166:
-this.$ = $$[$0].substr(1, $$[$0].length - 2);
+case 172:
+this.$ = createTypedLiteral($$[$0]);
 break;
-case 168:
-this.$ = $$[$0-1] + lowercase($$[$0]);
+case 173:
+this.$ = createLangLiteral($$[$0-1], lowercase($$[$0].substr(1)));
 break;
-case 169:
-this.$ = $$[$0-2] + '^^' + $$[$0];
+case 174:
+this.$ = createTypedLiteral($$[$0-2], $$[$0]);
 break;
-case 170: case 184:
-this.$ = createLiteral($$[$0], XSD_INTEGER);
+case 175: case 188:
+this.$ = createTypedLiteral($$[$0], XSD_INTEGER);
 break;
-case 171: case 185:
-this.$ = createLiteral($$[$0], XSD_DECIMAL);
+case 176: case 189:
+this.$ = createTypedLiteral($$[$0], XSD_DECIMAL);
 break;
-case 172: case 186:
-this.$ = createLiteral(lowercase($$[$0]), XSD_DOUBLE);
+case 177: case 190:
+this.$ = createTypedLiteral(lowercase($$[$0]), XSD_DOUBLE);
 break;
-case 175:
-this.$ = XSD_TRUE;
+case 180:
+this.$ = createTypedLiteral($$[$0], XSD_BOOLEAN);
 break;
-case 176:
-this.$ = XSD_FALSE;
-break;
-case 177: case 178:
+case 181: case 182:
 this.$ = unescapeString($$[$0], 1);
 break;
-case 179: case 180:
+case 183: case 184:
 this.$ = unescapeString($$[$0], 3);
 break;
-case 181:
-this.$ = createLiteral($$[$0].substr(1), XSD_INTEGER);
+case 185:
+this.$ = createTypedLiteral($$[$0].substr(1), XSD_INTEGER);
 break;
-case 182:
-this.$ = createLiteral($$[$0].substr(1), XSD_DECIMAL);
-break;
-case 183:
-this.$ = createLiteral($$[$0].substr(1).toLowerCase(), XSD_DOUBLE);
+case 186:
+this.$ = createTypedLiteral($$[$0].substr(1), XSD_DECIMAL);
 break;
 case 187:
-this.$ = resolveIRI($$[$0]);
+this.$ = createTypedLiteral($$[$0].substr(1).toLowerCase(), XSD_DOUBLE);
 break;
-case 188:
+case 191:
+this.$ = Parser.factory.namedNode(resolveIRI($$[$0]));
+break;
+case 192:
 
       var namePos = $$[$0].indexOf(':'),
           prefix = $$[$0].substr(0, namePos),
           expansion = Parser.prefixes[prefix];
       if (!expansion) throw new Error('Unknown prefix: ' + prefix);
-      this.$ = resolveIRI(expansion + $$[$0].substr(namePos + 1));
+      var uriString = resolveIRI(expansion + $$[$0].substr(namePos + 1));
+      this.$ = Parser.factory.namedNode(uriString);
     
 break;
-case 189:
+case 193:
 
       $$[$0] = $$[$0].substr(0, $$[$0].length - 1);
       if (!($$[$0] in Parser.prefixes)) throw new Error('Unknown prefix: ' + $$[$0]);
-      this.$ = resolveIRI(Parser.prefixes[$$[$0]]);
+      var uriString = resolveIRI(Parser.prefixes[$$[$0]]);
+      this.$ = Parser.factory.namedNode(uriString);
     
 break;
-case 197: case 205: case 213: case 217: case 219: case 225: case 229: case 233: case 247: case 249: case 251: case 253: case 255: case 257: case 259: case 261: case 286: case 292: case 303: case 319: case 351: case 363: case 382: case 384: case 386: case 388: case 398: case 402: case 404: case 406:
+case 201: case 209: case 211: case 213: case 223: case 225: case 231: case 235: case 239: case 253: case 255: case 257: case 259: case 261: case 263: case 265: case 267: case 292: case 298: case 309: case 325: case 357: case 369: case 388: case 390: case 392: case 394: case 404: case 408: case 410: case 412:
 $$[$0-1].push($$[$0]);
 break;
-case 212: case 224: case 246: case 248: case 250: case 256: case 260: case 381: case 383:
+case 212: case 230: case 252: case 254: case 256: case 262: case 266: case 387: case 389:
 this.$ = [$$[$0]];
 break;
-case 263:
+case 269:
 $$[$0-3].push($$[$0-2]);
 break;
-case 313: case 325: case 329: case 339: case 341: case 345: case 355: case 361: case 367: case 369: case 378:
+case 319: case 331: case 335: case 345: case 347: case 351: case 361: case 367: case 373: case 375: case 384:
 $$[$0-2].push($$[$0-1]);
 break;
 }
 },
-table: [o($V0,$V1,{3:1,4:2,7:3}),{1:[3]},o($V2,[2,262],{5:4,8:5,287:6,9:7,95:8,17:9,33:10,42:11,47:12,96:13,18:14,6:[2,190],24:$V3,34:[1,15],43:[1,16],48:[1,17]}),o([6,24,34,43,48,99,109,112,114,115,124,125,130,298,299,300,301,302],[2,2],{288:19,11:20,14:21,12:[1,22],15:[1,23]}),{6:[1,24]},{6:[2,192]},{6:[2,193]},{6:[2,202],10:25,82:26,83:$V4},{6:[2,191]},o($V5,[2,198]),o($V5,[2,199]),o($V5,[2,200]),o($V5,[2,201]),{97:28,99:[1,29],102:30,105:31,109:[1,32],112:[1,33],114:[1,34],115:[1,35],116:36,120:37,124:[2,287],125:[2,281],129:43,130:[1,44],298:[1,38],299:[1,39],300:[1,40],301:[1,41],302:[1,42]},o($V6,[2,204],{19:45}),o($V7,[2,218],{35:46,37:47,39:[1,48]}),{13:$V8,16:$V9,28:$Va,44:49,53:54,286:$Vb,293:[1,51],294:52,295:50},o($V6,[2,232],{49:58}),o($Vc,[2,210],{25:59,289:60,290:[1,61],291:[1,62]}),o($V0,[2,197]),o($V0,[2,194]),o($V0,[2,195]),{13:[1,63]},{16:[1,64]},{1:[2,1]},{6:[2,3]},{6:[2,203]},{28:[1,66],29:[1,68],84:65,86:[1,67]},{6:[2,264],98:69,183:[1,70]},o($Vd,[2,266],{100:71,297:[1,72]}),o($Ve,[2,272],{103:73,297:[1,74]}),o($Vf,[2,277],{106:75,297:[1,76]}),{110:77,111:[2,279],297:[1,78]},{39:$Vg,113:79},{39:$Vg,113:81},{39:$Vg,113:82},{117:83,125:$Vh},{121:85,124:$Vi},o($Vj,[2,270]),o($Vj,[2,271]),o($Vk,[2,274]),o($Vk,[2,275]),o($Vk,[2,276]),{124:[2,288],125:[2,282]},{13:$V8,16:$V9,53:87,286:$Vb},{20:88,38:$Vl,39:$Vm,50:89,51:$Vn,54:90},o($V6,[2,216],{36:93}),{38:[1,94],50:95,51:$Vn},o($Vo,[2,344],{171:96,172:97,173:98,41:[2,342]}),o($Vp,[2,228],{45:99}),o($Vp,[2,226],{53:54,294:100,13:$V8,16:$V9,28:$Va,286:$Vb}),o($Vp,[2,227]),o($Vq,[2,224]),o($Vq,[2,222]),o($Vq,[2,223]),o($Vr,[2,187]),o($Vr,[2,188]),o($Vr,[2,189]),{20:101,38:$Vl,39:$Vm,50:102,51:$Vn,54:90},{26:103,27:106,28:$Vs,29:$Vt,292:104,293:[1,105]},o($Vc,[2,211]),o($Vc,[2,208]),o($Vc,[2,209]),o($V0,[2,4]),{13:[1,109]},o($Vu,[2,34]),{39:[1,110]},{39:[1,111]},{28:[1,113],88:112},{6:[2,42]},o($V0,$V1,{7:3,4:114}),{13:$V8,16:$V9,53:115,286:$Vb},o($Vd,[2,267]),{104:116,111:[1,117],133:[1,119],135:118,296:[1,120],303:[1,121]},o($Ve,[2,273]),o($Vd,$Vv,{107:122,134:124,111:$Vw,133:$Vx}),o($Vf,[2,278]),{111:[1,126]},{111:[2,280]},o($Vy,[2,47]),o($Vo,$Vz,{136:127,143:128,144:129,41:$VA,111:$VA}),o($Vy,[2,48]),o($Vy,[2,49]),o($VB,[2,283],{118:130,121:131,124:$Vi}),{39:$Vg,113:132},o($VB,[2,289],{122:133,117:134,125:$Vh}),{39:$Vg,113:135},o([124,125],[2,55]),o($VC,$VD,{21:136,56:137,60:138,61:$VE}),o($V6,[2,205]),{39:$VF,55:140},o($Vd,[2,234],{52:142,296:[1,143]}),{39:[2,237]},{20:144,38:$Vl,39:$Vm,50:145,51:$Vn,54:90},{39:[1,146]},o($V7,[2,219]),{41:[1,147]},{41:[2,343]},{13:$V8,16:$V9,28:$VG,29:$VH,53:152,80:$VI,86:$VJ,91:153,145:148,175:149,177:150,215:$VK,218:$VL,219:$VM,236:163,238:164,269:159,272:$VN,273:$VO,274:$VP,275:$VQ,276:$VR,277:$VS,278:$VT,279:$VU,280:$VV,281:$VW,282:$VX,283:$VY,284:$VZ,285:$V_,286:$Vb},o($V$,[2,230],{54:90,46:177,50:178,20:179,38:$Vl,39:$Vm,51:$Vn}),o($Vq,[2,225]),o($VC,$VD,{56:137,60:138,21:180,61:$VE}),o($V6,[2,233]),o($V6,[2,8]),o($V6,[2,214],{27:181,28:$Vs,29:$Vt}),o($V6,[2,215]),o($V01,[2,212]),o($V01,[2,9]),o($V11,$V21,{30:182,220:183,224:184,228:185,232:186,240:187,244:188,208:$V31,246:$V41,310:$V51}),o($V0,[2,5]),o($V61,[2,252],{85:192}),o($V71,[2,254],{87:193}),{28:[1,195],32:[1,194]},o($V81,[2,256]),o($V2,[2,263],{6:[2,265]}),o($Vy,[2,268],{101:196,131:197,132:[1,198]}),o($Vy,[2,44]),{13:$V8,16:$V9,53:199,286:$Vb},o($Vy,[2,60]),o($Vy,[2,297]),o($Vy,[2,298]),o($Vy,[2,299]),{108:[1,200]},o($V91,[2,57]),{13:$V8,16:$V9,53:201,286:$Vb},o($Vd,[2,296]),{13:$V8,16:$V9,53:202,286:$Vb},o($Va1,[2,302],{137:203}),o($Va1,[2,301]),{13:$V8,16:$V9,28:$VG,29:$VH,53:152,80:$VI,86:$VJ,91:153,145:204,175:149,177:150,215:$VK,218:$VL,219:$VM,236:163,238:164,269:159,272:$VN,273:$VO,274:$VP,275:$VQ,276:$VR,277:$VS,278:$VT,279:$VU,280:$VV,281:$VW,282:$VX,283:$VY,284:$VZ,285:$V_,286:$Vb},o($VB,[2,285],{119:205}),o($VB,[2,284]),o([38,124,127],[2,53]),o($VB,[2,291],{123:206}),o($VB,[2,290]),o([38,125,127],[2,52]),o($V5,[2,6]),o($Vb1,[2,240],{57:207,67:208,68:[1,209]}),o($VC,[2,239]),{62:[1,210]},o([6,41,61,68,71,79,81,83],[2,16]),o($Vo,$Vc1,{22:211,147:212,18:213,148:214,154:215,155:216,24:$V3,39:$Vd1,41:$Vd1,83:$Vd1,111:$Vd1,159:$Vd1,160:$Vd1,162:$Vd1,165:$Vd1,166:$Vd1}),{13:$V8,16:$V9,53:217,286:$Vb},o($Vd,[2,235]),o($VC,$VD,{56:137,60:138,21:218,61:$VE}),o($V6,[2,217]),o($Vo,$Vz,{144:129,40:219,143:220,41:[2,220]}),o($V6,[2,84]),{41:[2,346],174:221,304:[1,222]},{13:$V8,16:$V9,28:$Ve1,53:227,176:223,180:224,185:225,187:$Vf1,286:$Vb},o($Vg1,[2,348],{180:224,185:225,53:227,178:229,179:230,176:231,13:$V8,16:$V9,28:$Ve1,187:$Vf1,286:$Vb}),o($Vh1,[2,124]),o($Vh1,[2,125]),o($Vh1,[2,126]),o($Vh1,[2,127]),o($Vh1,[2,128]),o($Vh1,[2,129]),{13:$V8,16:$V9,28:$VG,29:$VH,53:152,80:$VI,86:$VJ,91:153,175:234,177:235,189:233,214:232,215:$VK,218:$VL,219:$VM,236:163,238:164,269:159,272:$VN,273:$VO,274:$VP,275:$VQ,276:$VR,277:$VS,278:$VT,279:$VU,280:$VV,281:$VW,282:$VX,283:$VY,284:$VZ,285:$V_,286:$Vb},{13:$V8,16:$V9,28:$Ve1,53:227,176:236,180:224,185:225,187:$Vf1,286:$Vb},o($Vi1,[2,167],{270:[1,237],271:[1,238]}),o($Vi1,[2,170]),o($Vi1,[2,171]),o($Vi1,[2,172]),o($Vi1,[2,173]),o($Vi1,[2,174]),o($Vi1,[2,175]),o($Vi1,[2,176]),o($Vj1,[2,177]),o($Vj1,[2,178]),o($Vj1,[2,179]),o($Vj1,[2,180]),o($Vi1,[2,181]),o($Vi1,[2,182]),o($Vi1,[2,183]),o($Vi1,[2,184]),o($Vi1,[2,185]),o($Vi1,[2,186]),o($VC,$VD,{56:137,60:138,21:239,61:$VE}),o($Vp,[2,229]),o($V$,[2,231]),o($V5,[2,14]),o($V01,[2,213]),{31:[1,240]},o($Vk1,[2,385],{221:241}),o($Vl1,[2,387],{225:242}),o($Vl1,[2,134],{229:243,230:244,231:[2,395],268:[1,245],311:[1,246],312:[1,247],313:[1,248],314:[1,249],315:[1,250],316:[1,251]}),o($Vm1,[2,397],{233:252}),o($Vn1,[2,405],{241:253}),{13:$V8,16:$V9,28:$Vo1,29:$Vp1,53:257,65:256,66:258,75:255,80:$VI,91:259,236:163,238:164,245:254,247:262,248:$Vq1,249:$Vr1,250:$Vs1,252:$Vt1,253:267,254:$Vu1,255:$Vv1,256:270,257:$Vw1,258:$Vx1,261:$Vy1,263:$Vz1,269:159,272:$VN,273:$VO,274:$VP,275:$VQ,276:$VR,277:$VS,278:$VT,279:$VU,280:$VV,281:$VW,282:$VX,283:$VY,284:$VZ,285:$V_,286:$Vb,316:$VA1,317:$VB1,318:$VC1,319:$VD1,320:$VE1,321:$VF1},{13:$V8,16:$V9,28:$Vo1,29:$Vp1,53:257,65:256,66:258,75:255,80:$VI,91:259,236:163,238:164,245:280,247:262,248:$Vq1,249:$Vr1,250:$Vs1,252:$Vt1,253:267,254:$Vu1,255:$Vv1,256:270,257:$Vw1,258:$Vx1,261:$Vy1,263:$Vz1,269:159,272:$VN,273:$VO,274:$VP,275:$VQ,276:$VR,277:$VS,278:$VT,279:$VU,280:$VV,281:$VW,282:$VX,283:$VY,284:$VZ,285:$V_,286:$Vb,316:$VA1,317:$VB1,318:$VC1,319:$VD1,320:$VE1,321:$VF1},{13:$V8,16:$V9,28:$Vo1,29:$Vp1,53:257,65:256,66:258,75:255,80:$VI,91:259,236:163,238:164,245:281,247:262,248:$Vq1,249:$Vr1,250:$Vs1,252:$Vt1,253:267,254:$Vu1,255:$Vv1,256:270,257:$Vw1,258:$Vx1,261:$Vy1,263:$Vz1,269:159,272:$VN,273:$VO,274:$VP,275:$VQ,276:$VR,277:$VS,278:$VT,279:$VU,280:$VV,281:$VW,282:$VX,283:$VY,284:$VZ,285:$V_,286:$Vb,316:$VA1,317:$VB1,318:$VC1,319:$VD1,320:$VE1,321:$VF1},o($V11,[2,410]),{13:$V8,16:$V9,41:[1,282],53:284,80:$VI,90:283,91:285,92:$VG1,236:163,238:164,269:159,272:$VN,273:$VO,274:$VP,275:$VQ,276:$VR,277:$VS,278:$VT,279:$VU,280:$VV,281:$VW,282:$VX,283:$VY,284:$VZ,285:$V_,286:$Vb},{41:[1,287],86:[1,288]},{39:[1,289]},o($V81,[2,257]),o($Vy,[2,43]),o($Vy,[2,269]),{111:[1,290]},o($Vy,[2,59]),o($Vd,$Vv,{134:124,107:291,111:$Vw,133:$Vx}),o($V91,[2,58]),o($Vy,[2,46]),{41:[1,292],111:[1,294],138:293},o($Va1,[2,314],{146:295,304:[1,296]}),{38:[1,297],126:298,127:$VH1},{38:[1,300],126:301,127:$VH1},o($VI1,[2,242],{58:302,70:303,71:[1,304]}),o($Vb1,[2,241]),{13:$V8,16:$V9,29:$Vp1,53:310,65:308,66:309,69:305,75:307,77:306,247:262,248:$Vq1,249:$Vr1,250:$Vs1,252:$Vt1,253:267,254:$Vu1,255:$Vv1,256:270,257:$Vw1,258:$Vx1,261:$Vy1,263:$Vz1,286:$Vb,316:$VA1,317:$VB1,318:$VC1,319:$VD1,320:$VE1,321:$VF1},{13:$V8,16:$V9,28:$VJ1,29:$VK1,53:310,63:311,64:312,65:313,66:314,247:262,248:$Vq1,249:$Vr1,250:$Vs1,252:$Vt1,253:267,254:$Vu1,255:$Vv1,256:270,257:$Vw1,258:$Vx1,261:$Vy1,263:$Vz1,286:$Vb,316:$VA1,317:$VB1,318:$VC1,319:$VD1,320:$VE1,321:$VF1},{41:[1,317]},{41:[1,318]},{20:319,38:$Vl,39:$Vm,54:90},o($VL1,[2,318],{149:320}),o($VL1,[2,317]),{13:$V8,16:$V9,28:$VG,29:$VM1,53:152,80:$VI,86:$VJ,91:153,156:321,175:322,191:323,215:$VN1,218:$VL,219:$VM,236:163,238:164,269:159,272:$VN,273:$VO,274:$VP,275:$VQ,276:$VR,277:$VS,278:$VT,279:$VU,280:$VV,281:$VW,282:$VX,283:$VY,284:$VZ,285:$V_,286:$Vb},o($Vp,[2,15]),o($V5,[2,11]),{41:[1,326]},{41:[2,221]},{41:[2,85]},o($Vo,[2,345],{41:[2,347]}),o($Vg1,[2,86]),o($VO1,[2,350],{181:327}),o($Vo,$VP1,{186:328,188:329}),o($Vo,[2,92]),o($Vo,[2,93]),o($Vo,[2,94]),o($Vg1,[2,87]),o($Vg1,[2,88]),o($Vg1,[2,349]),{13:$V8,16:$V9,28:$VG,29:$VH,32:[1,330],53:152,80:$VI,86:$VJ,91:153,175:234,177:235,189:331,215:$VK,218:$VL,219:$VM,236:163,238:164,269:159,272:$VN,273:$VO,274:$VP,275:$VQ,276:$VR,277:$VS,278:$VT,279:$VU,280:$VV,281:$VW,282:$VX,283:$VY,284:$VZ,285:$V_,286:$Vb},o($VQ1,[2,381]),o($VR1,[2,120]),o($VR1,[2,121]),{216:[1,332]},o($Vi1,[2,168]),{13:$V8,16:$V9,53:333,286:$Vb},o($V5,[2,13]),{28:[1,334]},o([31,32,183,251],[2,130],{222:335,223:[1,336]}),o($Vk1,[2,132],{226:337,227:[1,338]}),o($V11,$V21,{232:186,240:187,244:188,228:339,208:$V31,246:$V41,310:$V51}),{231:[1,340]},o($VS1,[2,389]),o($VS1,[2,390]),o($VS1,[2,391]),o($VS1,[2,392]),o($VS1,[2,393]),o($VS1,[2,394]),{231:[2,396]},o([31,32,183,223,227,231,251,268,311,312,313,314,315,316],[2,137],{234:341,235:342,236:343,238:344,246:[1,346],280:$VV,281:$VW,282:$VX,283:$VY,284:$VZ,285:$V_,310:[1,345]}),o($Vm1,[2,141],{242:347,243:348,293:$VT1,307:$VU1}),o($Vn1,[2,143]),o($Vn1,[2,146]),o($Vn1,[2,147]),o($Vn1,[2,148],{29:$VV1,86:$VW1}),o($Vn1,[2,149]),o($Vn1,[2,150]),o($Vn1,[2,151]),o($V11,$V21,{220:183,224:184,228:185,232:186,240:187,244:188,30:353,208:$V31,246:$V41,310:$V51}),o($VX1,[2,153]),{86:[1,354]},{29:[1,355]},{29:[1,356]},{29:[1,357]},{29:$VY1,86:$VZ1,169:358},{29:[1,361]},{29:[1,363],86:[1,362]},{257:[1,364]},{29:[1,365]},{29:[1,366]},{29:[1,367]},o($V_1,[2,411]),o($V_1,[2,412]),o($V_1,[2,413]),o($V_1,[2,414]),o($V_1,[2,415]),{257:[2,417]},o($Vn1,[2,144]),o($Vn1,[2,145]),o($Vu,[2,35]),o($V61,[2,253]),o($V$1,[2,38]),o($V$1,[2,39]),o($V$1,[2,40]),o($Vu,[2,36]),o($V71,[2,255]),o($V02,[2,258],{89:368}),{13:$V8,16:$V9,53:369,286:$Vb},o($Vy,[2,45]),o([6,38,124,125,127,183],[2,61]),o($Va1,[2,303]),{13:$V8,16:$V9,28:[1,371],53:372,139:370,286:$Vb},o($Va1,[2,63]),o($Vo,[2,313],{41:$V12,111:$V12}),{39:$VF,55:373},o($VB,[2,286]),o($Vd,[2,293],{128:374,296:[1,375]}),{39:$VF,55:376},o($VB,[2,292]),o($V22,[2,244],{59:377,78:378,79:[1,379],81:[1,380]}),o($VI1,[2,243]),{62:[1,381]},o($Vb1,[2,24],{247:262,253:267,256:270,75:307,65:308,66:309,53:310,77:382,13:$V8,16:$V9,29:$Vp1,248:$Vq1,249:$Vr1,250:$Vs1,252:$Vt1,254:$Vu1,255:$Vv1,257:$Vw1,258:$Vx1,261:$Vy1,263:$Vz1,286:$Vb,316:$VA1,317:$VB1,318:$VC1,319:$VD1,320:$VE1,321:$VF1}),o($V32,[2,248]),o($V42,[2,77]),o($V42,[2,78]),o($V42,[2,79]),{29:$VV1,86:$VW1},o($VC,[2,18],{247:262,253:267,256:270,53:310,65:313,66:314,64:383,13:$V8,16:$V9,28:$VJ1,29:$VK1,248:$Vq1,249:$Vr1,250:$Vs1,252:$Vt1,254:$Vu1,255:$Vv1,257:$Vw1,258:$Vx1,261:$Vy1,263:$Vz1,286:$Vb,316:$VA1,317:$VB1,318:$VC1,319:$VD1,320:$VE1,321:$VF1}),o($V52,[2,246]),o($V52,[2,19]),o($V52,[2,20]),o($V11,$V21,{220:183,224:184,228:185,232:186,240:187,244:188,30:384,208:$V31,246:$V41,310:$V51}),o($V52,[2,23]),o($V62,[2,64]),o($V62,[2,65]),o($VC,$VD,{56:137,60:138,21:385,61:$VE}),{39:[2,328],41:[2,66],82:395,83:$V4,111:[1,391],150:386,151:387,158:388,159:[1,389],160:[1,390],162:[1,392],165:[1,393],166:[1,394]},o($VL1,[2,326],{157:396,304:[1,397]}),o($V72,$V82,{190:398,193:399,199:400,200:402,28:$V92}),o($Va2,[2,356],{193:399,199:400,200:402,192:403,190:404,13:$V82,16:$V82,29:$V82,187:$V82,208:$V82,213:$V82,286:$V82,28:$V92}),{13:$V8,16:$V9,28:$VG,29:$VM1,53:152,80:$VI,86:$VJ,91:153,175:407,191:408,195:406,215:$VN1,217:405,218:$VL,219:$VM,236:163,238:164,269:159,272:$VN,273:$VO,274:$VP,275:$VQ,276:$VR,277:$VS,278:$VT,279:$VU,280:$VV,281:$VW,282:$VX,283:$VY,284:$VZ,285:$V_,286:$Vb},o($V72,$V82,{193:399,199:400,200:402,190:409,28:$V92}),o($VC,$VD,{56:137,60:138,21:410,61:$VE}),o([41,111,216,304],[2,89],{182:411,183:[1,412]}),o($VO1,[2,91]),{13:$V8,16:$V9,28:$VG,29:$VH,53:152,80:$VI,86:$VJ,91:153,175:234,177:235,189:413,215:$VK,218:$VL,219:$VM,236:163,238:164,269:159,272:$VN,273:$VO,274:$VP,275:$VQ,276:$VR,277:$VS,278:$VT,279:$VU,280:$VV,281:$VW,282:$VX,283:$VY,284:$VZ,285:$V_,286:$Vb},o($Vb2,[2,116]),o($VQ1,[2,382]),o($Vb2,[2,117]),o($Vi1,[2,169]),{32:[1,414]},o($Vk1,[2,386]),o($V11,$V21,{224:184,228:185,232:186,240:187,244:188,220:415,208:$V31,246:$V41,310:$V51}),o($Vl1,[2,388]),o($V11,$V21,{228:185,232:186,240:187,244:188,224:416,208:$V31,246:$V41,310:$V51}),o($Vl1,[2,135]),{29:$VY1,86:$VZ1,169:417},o($Vm1,[2,398]),o($V11,$V21,{240:187,244:188,232:418,208:$V31,246:$V41,310:$V51}),o($Vn1,[2,401],{237:419}),o($Vn1,[2,403],{239:420}),o($VS1,[2,399]),o($VS1,[2,400]),o($Vn1,[2,406]),o($V11,$V21,{244:188,240:421,208:$V31,246:$V41,310:$V51}),o($VS1,[2,407]),o($VS1,[2,408]),o($VX1,[2,80]),o($VS1,[2,336],{167:422,290:[1,423]}),{32:[1,424]},o($VX1,[2,154]),o($V11,$V21,{220:183,224:184,228:185,232:186,240:187,244:188,30:425,208:$V31,246:$V41,310:$V51}),o($V11,$V21,{220:183,224:184,228:185,232:186,240:187,244:188,30:426,208:$V31,246:$V41,310:$V51}),o($V11,$V21,{220:183,224:184,228:185,232:186,240:187,244:188,30:427,208:$V31,246:$V41,310:$V51}),o($VX1,[2,158]),o($VX1,[2,82]),o($VS1,[2,340],{170:428}),{28:[1,429]},o($VX1,[2,160]),o($V11,$V21,{220:183,224:184,228:185,232:186,240:187,244:188,30:430,208:$V31,246:$V41,310:$V51}),{39:$VF,55:431},o($Vc2,[2,418],{259:432,290:[1,433]}),o($VS1,[2,422],{262:434,290:[1,435]}),o($VS1,[2,424],{264:436,290:[1,437]}),{29:[1,440],41:[1,438],93:439},o($Vy,[2,56]),{39:[1,441]},{39:[2,304]},{39:[2,305]},o($Vy,[2,50]),{13:$V8,16:$V9,53:442,286:$Vb},o($Vd,[2,294]),o($Vy,[2,51]),o($V22,[2,17]),o($V22,[2,245]),{80:[1,443]},{80:[1,444]},{13:$V8,16:$V9,28:$Vd2,29:$Vp1,53:310,65:308,66:309,72:445,73:446,74:$Ve2,75:307,76:$Vf2,77:449,247:262,248:$Vq1,249:$Vr1,250:$Vs1,252:$Vt1,253:267,254:$Vu1,255:$Vv1,256:270,257:$Vw1,258:$Vx1,261:$Vy1,263:$Vz1,286:$Vb,316:$VA1,317:$VB1,318:$VC1,319:$VD1,320:$VE1,321:$VF1},o($V32,[2,249]),o($V52,[2,247]),{31:[1,452],32:[1,451]},{23:453,41:[2,206],82:454,83:$V4},o($VL1,[2,319]),o($Vg2,[2,320],{152:455,304:[1,456]}),{39:$VF,55:457},{39:$VF,55:458},{39:$VF,55:459},{13:$V8,16:$V9,28:[1,461],53:462,161:460,286:$Vb},o($Vh2,[2,332],{163:463,297:[1,464]}),{13:$V8,16:$V9,29:$Vp1,53:310,65:308,66:309,75:307,77:465,247:262,248:$Vq1,249:$Vr1,250:$Vs1,252:$Vt1,253:267,254:$Vu1,255:$Vv1,256:270,257:$Vw1,258:$Vx1,261:$Vy1,263:$Vz1,286:$Vb,316:$VA1,317:$VB1,318:$VC1,319:$VD1,320:$VE1,321:$VF1},{29:[1,466]},o($Vi2,[2,76]),o($VL1,[2,68]),o($Vo,[2,325],{39:$Vj2,41:$Vj2,83:$Vj2,111:$Vj2,159:$Vj2,160:$Vj2,162:$Vj2,165:$Vj2,166:$Vj2}),o($Va2,[2,96]),o($Vo,[2,360],{194:467}),o($Vo,[2,358]),o($Vo,[2,359]),o($V72,[2,368],{201:468,202:469}),o($Va2,[2,97]),o($Va2,[2,357]),{13:$V8,16:$V9,28:$VG,29:$VM1,32:[1,470],53:152,80:$VI,86:$VJ,91:153,175:407,191:408,195:471,215:$VN1,218:$VL,219:$VM,236:163,238:164,269:159,272:$VN,273:$VO,274:$VP,275:$VQ,276:$VR,277:$VS,278:$VT,279:$VU,280:$VV,281:$VW,282:$VX,283:$VY,284:$VZ,285:$V_,286:$Vb},o($VQ1,[2,383]),o($VR1,[2,122]),o($VR1,[2,123]),{216:[1,472]},o($V5,[2,12]),o($VO1,[2,351]),o($VO1,[2,352],{185:225,53:227,184:473,180:474,13:$V8,16:$V9,28:$Ve1,187:$Vf1,286:$Vb}),o($Vk2,[2,95],{251:[1,475]}),o($V01,[2,10]),o($Vk1,[2,131]),o($Vl1,[2,133]),o($Vl1,[2,136]),o($Vm1,[2,138]),o($Vm1,[2,139],{243:348,242:476,293:$VT1,307:$VU1}),o($Vm1,[2,140],{243:348,242:477,293:$VT1,307:$VU1}),o($Vn1,[2,142]),o($VS1,[2,338],{168:478}),o($VS1,[2,337]),o([6,13,16,28,29,31,32,39,41,71,74,76,79,80,81,83,86,111,159,160,162,165,166,183,215,218,219,223,227,231,246,248,249,250,251,252,254,255,257,258,261,263,268,272,273,274,275,276,277,278,279,280,281,282,283,284,285,286,293,304,307,310,311,312,313,314,315,316,317,318,319,320,321],[2,152]),{32:[1,479]},{251:[1,480]},{251:[1,481]},o($V11,$V21,{220:183,224:184,228:185,232:186,240:187,244:188,30:482,208:$V31,246:$V41,310:$V51}),{32:[1,483]},{32:[1,484]},o($VX1,[2,162]),o($V11,$V21,{220:183,224:184,228:185,232:186,240:187,244:188,260:485,30:487,208:$V31,246:$V41,293:[1,486],310:$V51}),o($Vc2,[2,419]),o($V11,$V21,{220:183,224:184,228:185,232:186,240:187,244:188,30:488,208:$V31,246:$V41,310:$V51}),o($VS1,[2,423]),o($V11,$V21,{220:183,224:184,228:185,232:186,240:187,244:188,30:489,208:$V31,246:$V41,310:$V51}),o($VS1,[2,425]),o($Vu,[2,37]),o($V02,[2,259]),{13:$V8,16:$V9,53:284,80:$VI,90:491,91:285,92:$VG1,94:490,236:163,238:164,269:159,272:$VN,273:$VO,274:$VP,275:$VQ,276:$VR,277:$VS,278:$VT,279:$VU,280:$VV,281:$VW,282:$VX,283:$VY,284:$VZ,285:$V_,286:$Vb},o($Vo,$Vz,{144:129,140:492,143:493,41:[2,306]}),o($VB,[2,54]),o($V22,[2,30],{81:[1,494]}),o($V22,[2,31],{79:[1,495]}),o($VI1,[2,25],{247:262,253:267,256:270,75:307,65:308,66:309,53:310,77:449,73:496,13:$V8,16:$V9,28:$Vd2,29:$Vp1,74:$Ve2,76:$Vf2,248:$Vq1,249:$Vr1,250:$Vs1,252:$Vt1,254:$Vu1,255:$Vv1,257:$Vw1,258:$Vx1,261:$Vy1,263:$Vz1,286:$Vb,316:$VA1,317:$VB1,318:$VC1,319:$VD1,320:$VE1,321:$VF1}),o($Vl2,[2,250]),{29:$Vp1,75:497},{29:$Vp1,75:498},o($Vl2,[2,28]),o($Vl2,[2,29]),o($V52,[2,21]),{28:[1,499]},{41:[2,7]},{41:[2,207]},o($Vo,$Vc1,{155:216,153:500,154:501,39:$Vm2,41:$Vm2,83:$Vm2,111:$Vm2,159:$Vm2,160:$Vm2,162:$Vm2,165:$Vm2,166:$Vm2}),o($Vg2,[2,321]),o($Vi2,[2,69],{305:[1,502]}),o($Vi2,[2,70]),o($Vi2,[2,71]),{39:$VF,55:503},{39:[2,330]},{39:[2,331]},{13:$V8,16:$V9,28:[1,505],53:506,164:504,286:$Vb},o($Vh2,[2,333]),o($Vi2,[2,74]),o($V11,$V21,{220:183,224:184,228:185,232:186,240:187,244:188,30:507,208:$V31,246:$V41,310:$V51}),{13:$V8,16:$V9,28:$VG,29:$VM1,53:152,80:$VI,86:$VJ,91:153,175:407,191:408,195:508,215:$VN1,218:$VL,219:$VM,236:163,238:164,269:159,272:$VN,273:$VO,274:$VP,275:$VQ,276:$VR,277:$VS,278:$VT,279:$VU,280:$VV,281:$VW,282:$VX,283:$VY,284:$VZ,285:$V_,286:$Vb},o($VQ1,[2,101],{306:[1,509]}),o($Vn2,[2,375],{203:510,207:511,213:[1,512]}),o($Vh1,[2,118]),o($VQ1,[2,384]),o($Vh1,[2,119]),o($VO1,[2,90]),o($VO1,[2,353]),o($Vo,[2,355]),o($Vn1,[2,402]),o($Vn1,[2,404]),o($V11,$V21,{220:183,224:184,228:185,232:186,240:187,244:188,30:513,208:$V31,246:$V41,310:$V51}),o($VX1,[2,155]),o($V11,$V21,{220:183,224:184,228:185,232:186,240:187,244:188,30:514,208:$V31,246:$V41,310:$V51}),o($V11,$V21,{220:183,224:184,228:185,232:186,240:187,244:188,30:515,208:$V31,246:$V41,310:$V51}),{32:[1,516],251:[1,517]},o($VX1,[2,159]),o($VX1,[2,161]),{32:[1,518]},{32:[2,420]},{32:[2,421]},{32:[1,519]},{32:[2,426],183:[1,522],265:520,266:521},{13:$V8,16:$V9,32:[1,523],53:284,80:$VI,90:524,91:285,92:$VG1,236:163,238:164,269:159,272:$VN,273:$VO,274:$VP,275:$VQ,276:$VR,277:$VS,278:$VT,279:$VU,280:$VV,281:$VW,282:$VX,283:$VY,284:$VZ,285:$V_,286:$Vb},o($Vo2,[2,260]),{41:[1,525]},{41:[2,307]},{80:[1,526]},{80:[1,527]},o($Vl2,[2,251]),o($Vl2,[2,26]),o($Vl2,[2,27]),{32:[1,528]},o($VL1,[2,67]),o($VL1,[2,323]),{39:[2,329]},o($Vi2,[2,72]),{39:$VF,55:529},{39:[2,334]},{39:[2,335]},{31:[1,530]},o($Vk2,[2,362],{196:531,251:[1,532]}),o($V72,[2,367]),o([13,16,28,29,32,80,86,215,218,219,272,273,274,275,276,277,278,279,280,281,282,283,284,285,286,306],[2,102],{307:[1,533]}),{13:$V8,16:$V9,29:[1,539],53:536,187:[1,537],204:534,205:535,208:[1,538],286:$Vb},o($Vn2,[2,376]),{32:[1,540],251:[1,541]},{32:[1,542]},{251:[1,543]},o($VX1,[2,83]),o($VS1,[2,341]),o($VX1,[2,163]),o($VX1,[2,164]),{32:[1,544]},{32:[2,427]},{267:[1,545]},o($V02,[2,41]),o($Vo2,[2,261]),o($Vp2,[2,308],{141:546,304:[1,547]}),o($V22,[2,32]),o($V22,[2,33]),o($V52,[2,22]),o($Vi2,[2,73]),{28:[1,548]},o([39,41,83,111,159,160,162,165,166,216,304],[2,98],{197:549,183:[1,550]}),o($Vo,[2,361]),o($V72,[2,369]),o($Vq2,[2,104]),o($Vq2,[2,373],{206:551,308:552,293:[1,554],309:[1,553],310:[1,555]}),o($Vr2,[2,105]),o($Vr2,[2,106]),{13:$V8,16:$V9,29:[1,559],53:560,86:[1,558],187:$Vs2,209:556,210:557,213:$Vt2,286:$Vb},o($V72,$V82,{200:402,199:563}),o($VX1,[2,81]),o($VS1,[2,339]),o($VX1,[2,156]),o($V11,$V21,{220:183,224:184,228:185,232:186,240:187,244:188,30:564,208:$V31,246:$V41,310:$V51}),o($VX1,[2,165]),{268:[1,565]},o($Vo,$Vz,{144:129,142:566,143:567,41:$Vu2,111:$Vu2}),o($Vp2,[2,309]),{32:[1,568]},o($Vk2,[2,363]),o($Vk2,[2,99],{200:402,198:569,199:570,13:$V82,16:$V82,29:$V82,187:$V82,208:$V82,213:$V82,286:$V82,28:[1,571]}),o($Vq2,[2,103]),o($Vq2,[2,374]),o($Vq2,[2,370]),o($Vq2,[2,371]),o($Vq2,[2,372]),o($Vr2,[2,107]),o($Vr2,[2,109]),o($Vr2,[2,110]),o($Vv2,[2,377],{211:572}),o($Vr2,[2,112]),o($Vr2,[2,113]),{13:$V8,16:$V9,53:573,187:[1,574],286:$Vb},{32:[1,575]},{32:[1,576]},{269:577,276:$VR,277:$VS,278:$VT,279:$VU},o($Va1,[2,62]),o($Va1,[2,311]),o($Vi2,[2,75]),o($Vo,$VP1,{188:329,186:578}),o($Vo,[2,364]),o($Vo,[2,365]),{13:$V8,16:$V9,32:[2,379],53:560,187:$Vs2,210:580,212:579,213:$Vt2,286:$Vb},o($Vr2,[2,114]),o($Vr2,[2,115]),o($Vr2,[2,108]),o($VX1,[2,157]),{32:[2,166]},o($Vk2,[2,100]),{32:[1,581]},{32:[2,380],306:[1,582]},o($Vr2,[2,111]),o($Vv2,[2,378])],
-defaultActions: {5:[2,192],6:[2,193],8:[2,191],24:[2,1],25:[2,3],26:[2,203],69:[2,42],78:[2,280],92:[2,237],97:[2,343],220:[2,221],221:[2,85],251:[2,396],279:[2,417],371:[2,304],372:[2,305],453:[2,7],454:[2,207],461:[2,330],462:[2,331],486:[2,420],487:[2,421],493:[2,307],502:[2,329],505:[2,334],506:[2,335],521:[2,427],577:[2,166]},
+table: [o($V0,$V1,{3:1,4:2,7:3}),{1:[3]},o($V2,[2,268],{5:4,8:5,292:6,9:7,101:8,17:9,39:10,48:11,53:12,102:13,18:14,22:15,25:19,6:[2,194],28:$V3,40:[1,16],49:[1,17],54:[1,18]}),o([6,28,40,49,54,105,115,118,120,121,130,131,136,301,302,303,304,305],[2,2],{293:21,11:22,14:23,12:[1,24],15:[1,25]}),{6:[1,26]},{6:[2,196]},{6:[2,197]},{6:[2,206],10:27,88:28,89:$V4},{6:[2,195]},o($V5,[2,202]),o($V5,[2,203]),o($V5,[2,204]),o($V5,[2,205]),{103:30,105:[1,31],108:32,111:33,115:[1,34],118:[1,35],120:[1,36],121:[1,37],122:38,126:39,130:[2,293],131:[2,287],135:45,136:[1,46],301:[1,40],302:[1,41],303:[1,42],304:[1,43],305:[1,44]},o($V6,[2,208],{19:47}),o($V6,[2,210],{23:48}),o($V7,[2,224],{41:49,43:50,45:[1,51]}),{13:$V8,16:$V9,26:[1,54],34:$Va,50:52,59:57,291:$Vb,297:55,298:53},o($V6,[2,238],{55:61}),{26:[1,62],27:63,33:64,34:$Vc,35:$Vd},o($Ve,[2,216],{29:67,294:68,295:[1,69],296:[1,70]}),o($V0,[2,201]),o($V0,[2,198]),o($V0,[2,199]),{13:[1,71]},{16:[1,72]},{1:[2,1]},{6:[2,3]},{6:[2,207]},{34:[1,74],35:[1,76],90:73,92:[1,75]},{6:[2,270],104:77,189:[1,78]},o($Vf,[2,272],{106:79,300:[1,80]}),o($Vg,[2,278],{109:81,300:[1,82]}),o($Vh,[2,283],{112:83,300:[1,84]}),{116:85,117:[2,285],300:[1,86]},{45:$Vi,119:87},{45:$Vi,119:89},{45:$Vi,119:90},{123:91,131:$Vj},{127:93,130:$Vk},o($Vl,[2,276]),o($Vl,[2,277]),o($Vm,[2,280]),o($Vm,[2,281]),o($Vm,[2,282]),{130:[2,294],131:[2,288]},{13:$V8,16:$V9,59:95,291:$Vb},{20:96,44:$Vn,45:$Vo,56:97,57:$Vp,60:98},{20:101,44:$Vn,45:$Vo,56:102,57:$Vp,60:98},o($V6,[2,222],{42:103}),{44:[1,104],56:105,57:$Vp},o($Vq,[2,350],{177:106,178:107,179:108,47:[2,348]}),o($Vr,[2,234],{51:109}),o($Vr,[2,232],{59:57,297:110,13:$V8,16:$V9,34:$Va,291:$Vb}),o($Vr,[2,233]),o($Vs,[2,230]),o($Vs,[2,228]),o($Vs,[2,229]),o($Vt,[2,191]),o($Vt,[2,192]),o($Vt,[2,193]),{20:111,44:$Vn,45:$Vo,56:112,57:$Vp,60:98},o($V6,[2,8]),o($V6,[2,9],{33:113,34:$Vc,35:$Vd}),o($Vu,[2,212]),o($Vu,[2,13]),o($Vv,$Vw,{36:114,226:115,230:116,234:117,238:118,246:119,250:120,214:$Vx,252:$Vy,313:$Vz}),o($Ve,[2,10]),o($Ve,[2,217]),o($Ve,[2,214]),o($Ve,[2,215]),o($V0,[2,4]),{13:[1,124]},o($VA,[2,39]),{45:[1,125]},{45:[1,126]},{34:[1,128],94:127},{6:[2,47]},o($V0,$V1,{7:3,4:129}),{13:$V8,16:$V9,59:130,291:$Vb},o($Vf,[2,273]),{110:131,117:[1,132],139:[1,134],141:133,299:[1,135],306:[1,136]},o($Vg,[2,279]),o($Vf,$VB,{113:137,140:139,117:$VC,139:$VD}),o($Vh,[2,284]),{117:[1,141]},{117:[2,286]},o($VE,[2,52]),o($Vq,$VF,{142:142,149:143,150:144,47:$VG,117:$VG}),o($VE,[2,53]),o($VE,[2,54]),o($VH,[2,289],{124:145,127:146,130:$Vk}),{45:$Vi,119:147},o($VH,[2,295],{128:148,123:149,131:$Vj}),{45:$Vi,119:150},o([130,131],[2,60]),o($VI,$VJ,{21:151,63:152,73:153,74:$VK}),o($V6,[2,209]),{45:$VL,61:155},o($Vf,[2,240],{58:157,299:[1,158]}),{45:[2,243]},o($VM,$VN,{24:159,62:160,66:161,67:$VO}),o($V6,[2,211]),{20:163,44:$Vn,45:$Vo,56:164,57:$Vp,60:98},{45:[1,165]},o($V7,[2,225]),{47:[1,166]},{47:[2,349]},{13:$V8,16:$V9,34:$VP,35:$VQ,59:171,86:$VR,92:$VS,97:172,151:167,181:168,183:169,221:$VT,224:$VU,225:$VV,242:182,244:183,275:178,278:$VW,279:$VX,280:$VY,281:$VZ,282:$V_,283:$V$,284:$V01,285:$V11,286:$V21,287:$V31,288:$V41,289:$V51,290:$V61,291:$Vb},o($V71,[2,236],{60:98,52:195,56:196,20:197,44:$Vn,45:$Vo,57:$Vp}),o($Vs,[2,231]),o($VM,$VN,{62:160,66:161,24:198,67:$VO}),o($V6,[2,239]),o($Vu,[2,213]),{37:[1,199]},o($V81,[2,391],{227:200}),o($V91,[2,393],{231:201}),o($V91,[2,139],{235:202,236:203,237:[2,401],274:[1,204],314:[1,205],315:[1,206],316:[1,207],317:[1,208],318:[1,209],319:[1,210]}),o($Va1,[2,403],{239:211}),o($Vb1,[2,411],{247:212}),{13:$V8,16:$V9,34:$Vc1,35:$Vd1,59:216,71:215,72:217,81:214,86:$VR,97:218,242:182,244:183,251:213,253:221,254:$Ve1,255:$Vf1,256:$Vg1,258:$Vh1,259:226,260:$Vi1,261:$Vj1,262:229,263:$Vk1,264:$Vl1,267:$Vm1,269:$Vn1,275:178,278:$VW,279:$VX,280:$VY,281:$VZ,282:$V_,283:$V$,284:$V01,285:$V11,286:$V21,287:$V31,288:$V41,289:$V51,290:$V61,291:$Vb,319:$Vo1,320:$Vp1,321:$Vq1,322:$Vr1,323:$Vs1,324:$Vt1},{13:$V8,16:$V9,34:$Vc1,35:$Vd1,59:216,71:215,72:217,81:214,86:$VR,97:218,242:182,244:183,251:239,253:221,254:$Ve1,255:$Vf1,256:$Vg1,258:$Vh1,259:226,260:$Vi1,261:$Vj1,262:229,263:$Vk1,264:$Vl1,267:$Vm1,269:$Vn1,275:178,278:$VW,279:$VX,280:$VY,281:$VZ,282:$V_,283:$V$,284:$V01,285:$V11,286:$V21,287:$V31,288:$V41,289:$V51,290:$V61,291:$Vb,319:$Vo1,320:$Vp1,321:$Vq1,322:$Vr1,323:$Vs1,324:$Vt1},{13:$V8,16:$V9,34:$Vc1,35:$Vd1,59:216,71:215,72:217,81:214,86:$VR,97:218,242:182,244:183,251:240,253:221,254:$Ve1,255:$Vf1,256:$Vg1,258:$Vh1,259:226,260:$Vi1,261:$Vj1,262:229,263:$Vk1,264:$Vl1,267:$Vm1,269:$Vn1,275:178,278:$VW,279:$VX,280:$VY,281:$VZ,282:$V_,283:$V$,284:$V01,285:$V11,286:$V21,287:$V31,288:$V41,289:$V51,290:$V61,291:$Vb,319:$Vo1,320:$Vp1,321:$Vq1,322:$Vr1,323:$Vs1,324:$Vt1},o($Vv,[2,416]),o($V0,[2,5]),o($Vu1,[2,258],{91:241}),o($Vv1,[2,260],{93:242}),{34:[1,244],38:[1,243]},o($Vw1,[2,262]),o($V2,[2,269],{6:[2,271]}),o($VE,[2,274],{107:245,137:246,138:[1,247]}),o($VE,[2,49]),{13:$V8,16:$V9,59:248,291:$Vb},o($VE,[2,65]),o($VE,[2,303]),o($VE,[2,304]),o($VE,[2,305]),{114:[1,249]},o($Vx1,[2,62]),{13:$V8,16:$V9,59:250,291:$Vb},o($Vf,[2,302]),{13:$V8,16:$V9,59:251,291:$Vb},o($Vy1,[2,308],{143:252}),o($Vy1,[2,307]),{13:$V8,16:$V9,34:$VP,35:$VQ,59:171,86:$VR,92:$VS,97:172,151:253,181:168,183:169,221:$VT,224:$VU,225:$VV,242:182,244:183,275:178,278:$VW,279:$VX,280:$VY,281:$VZ,282:$V_,283:$V$,284:$V01,285:$V11,286:$V21,287:$V31,288:$V41,289:$V51,290:$V61,291:$Vb},o($VH,[2,291],{125:254}),o($VH,[2,290]),o([44,130,133],[2,58]),o($VH,[2,297],{129:255}),o($VH,[2,296]),o([44,131,133],[2,57]),o($V5,[2,6]),o($Vz1,[2,248],{64:256,76:257,77:[1,258]}),o($VI,[2,247]),{13:$V8,16:$V9,35:$Vd1,59:264,71:262,72:263,75:259,81:261,83:260,253:221,254:$Ve1,255:$Vf1,256:$Vg1,258:$Vh1,259:226,260:$Vi1,261:$Vj1,262:229,263:$Vk1,264:$Vl1,267:$Vm1,269:$Vn1,291:$Vb,319:$Vo1,320:$Vp1,321:$Vq1,322:$Vr1,323:$Vs1,324:$Vt1},o([6,47,67,74,77,85,87,89],[2,20]),o($Vq,$VA1,{25:19,30:265,153:266,18:267,22:268,154:269,160:270,161:271,28:$V3,45:$VB1,47:$VB1,89:$VB1,117:$VB1,165:$VB1,166:$VB1,168:$VB1,171:$VB1,172:$VB1}),{13:$V8,16:$V9,59:272,291:$Vb},o($Vf,[2,241]),o($V5,[2,7]),o($VI,$VJ,{63:152,73:153,21:273,74:$VK}),o($VM,[2,245]),{68:[1,274]},o($VM,$VN,{62:160,66:161,24:275,67:$VO}),o($V6,[2,223]),o($Vq,$VF,{150:144,46:276,149:277,47:[2,226]}),o($V6,[2,89]),{47:[2,352],180:278,307:[1,279]},{13:$V8,16:$V9,34:$VC1,59:284,182:280,186:281,191:282,193:$VD1,291:$Vb},o($VE1,[2,354],{186:281,191:282,59:284,184:286,185:287,182:288,13:$V8,16:$V9,34:$VC1,193:$VD1,291:$Vb}),o($VF1,[2,129]),o($VF1,[2,130]),o($VF1,[2,131]),o($VF1,[2,132]),o($VF1,[2,133]),o($VF1,[2,134]),{13:$V8,16:$V9,34:$VP,35:$VQ,59:171,86:$VR,92:$VS,97:172,181:291,183:292,195:290,220:289,221:$VT,224:$VU,225:$VV,242:182,244:183,275:178,278:$VW,279:$VX,280:$VY,281:$VZ,282:$V_,283:$V$,284:$V01,285:$V11,286:$V21,287:$V31,288:$V41,289:$V51,290:$V61,291:$Vb},{13:$V8,16:$V9,34:$VC1,59:284,182:293,186:281,191:282,193:$VD1,291:$Vb},o($VG1,[2,172],{276:[1,294],277:[1,295]}),o($VG1,[2,175]),o($VG1,[2,176]),o($VG1,[2,177]),o($VG1,[2,178]),o($VG1,[2,179]),o($VG1,[2,180]),o($VH1,[2,181]),o($VH1,[2,182]),o($VH1,[2,183]),o($VH1,[2,184]),o($VG1,[2,185]),o($VG1,[2,186]),o($VG1,[2,187]),o($VG1,[2,188]),o($VG1,[2,189]),o($VG1,[2,190]),o($VM,$VN,{62:160,66:161,24:296,67:$VO}),o($Vr,[2,235]),o($V71,[2,237]),o($V5,[2,18]),{34:[1,297]},o([37,38,189,257],[2,135],{228:298,229:[1,299]}),o($V81,[2,137],{232:300,233:[1,301]}),o($Vv,$Vw,{238:118,246:119,250:120,234:302,214:$Vx,252:$Vy,313:$Vz}),{237:[1,303]},o($VI1,[2,395]),o($VI1,[2,396]),o($VI1,[2,397]),o($VI1,[2,398]),o($VI1,[2,399]),o($VI1,[2,400]),{237:[2,402]},o([37,38,189,229,233,237,257,274,314,315,316,317,318,319],[2,142],{240:304,241:305,242:306,244:307,252:[1,309],285:$V11,286:$V21,287:$V31,288:$V41,289:$V51,290:$V61,313:[1,308]}),o($Va1,[2,146],{248:310,249:311,26:$VJ1,310:$VK1}),o($Vb1,[2,148]),o($Vb1,[2,151]),o($Vb1,[2,152]),o($Vb1,[2,153],{35:$VL1,92:$VM1}),o($Vb1,[2,154]),o($Vb1,[2,155]),o($Vb1,[2,156]),o($Vv,$Vw,{226:115,230:116,234:117,238:118,246:119,250:120,36:316,214:$Vx,252:$Vy,313:$Vz}),o($VN1,[2,158]),{92:[1,317]},{35:[1,318]},{35:[1,319]},{35:[1,320]},{35:$VO1,92:$VP1,175:321},{35:[1,324]},{35:[1,326],92:[1,325]},{263:[1,327]},{35:[1,328]},{35:[1,329]},{35:[1,330]},o($VQ1,[2,417]),o($VQ1,[2,418]),o($VQ1,[2,419]),o($VQ1,[2,420]),o($VQ1,[2,421]),{263:[2,423]},o($Vb1,[2,149]),o($Vb1,[2,150]),{13:$V8,16:$V9,47:[1,331],59:333,86:$VR,96:332,97:334,98:$VR1,242:182,244:183,275:178,278:$VW,279:$VX,280:$VY,281:$VZ,282:$V_,283:$V$,284:$V01,285:$V11,286:$V21,287:$V31,288:$V41,289:$V51,290:$V61,291:$Vb},{47:[1,336],92:[1,337]},{45:[1,338]},o($Vw1,[2,263]),o($VE,[2,48]),o($VE,[2,275]),{117:[1,339]},o($VE,[2,64]),o($Vf,$VB,{140:139,113:340,117:$VC,139:$VD}),o($Vx1,[2,63]),o($VE,[2,51]),{47:[1,341],117:[1,343],144:342},o($Vy1,[2,320],{152:344,307:[1,345]}),{44:[1,346],132:347,133:$VS1},{44:[1,349],132:350,133:$VS1},o($VT1,[2,250],{65:351,84:352,85:[1,353],87:[1,354]}),o($Vz1,[2,249]),{68:[1,355]},o($VI,[2,29],{253:221,259:226,262:229,81:261,71:262,72:263,59:264,83:356,13:$V8,16:$V9,35:$Vd1,254:$Ve1,255:$Vf1,256:$Vg1,258:$Vh1,260:$Vi1,261:$Vj1,263:$Vk1,264:$Vl1,267:$Vm1,269:$Vn1,291:$Vb,319:$Vo1,320:$Vp1,321:$Vq1,322:$Vr1,323:$Vs1,324:$Vt1}),o($VU1,[2,254]),o($VV1,[2,82]),o($VV1,[2,83]),o($VV1,[2,84]),{35:$VL1,92:$VM1},{47:[1,357]},{47:[1,358]},{20:359,44:$Vn,45:$Vo,60:98},{20:360,44:$Vn,45:$Vo,60:98},o($VW1,[2,324],{155:361}),o($VW1,[2,323]),{13:$V8,16:$V9,34:$VP,35:$VX1,59:171,86:$VR,92:$VS,97:172,162:362,181:363,197:364,221:$VY1,224:$VU,225:$VV,242:182,244:183,275:178,278:$VW,279:$VX,280:$VY,281:$VZ,282:$V_,283:$V$,284:$V01,285:$V11,286:$V21,287:$V31,288:$V41,289:$V51,290:$V61,291:$Vb},o($Vr,[2,19]),o($VT1,[2,21]),{13:$V8,16:$V9,34:$VZ1,35:$V_1,59:264,69:367,70:368,71:369,72:370,253:221,254:$Ve1,255:$Vf1,256:$Vg1,258:$Vh1,259:226,260:$Vi1,261:$Vj1,262:229,263:$Vk1,264:$Vl1,267:$Vm1,269:$Vn1,291:$Vb,319:$Vo1,320:$Vp1,321:$Vq1,322:$Vr1,323:$Vs1,324:$Vt1},o($V5,[2,15]),{47:[1,373]},{47:[2,227]},{47:[2,90]},o($Vq,[2,351],{47:[2,353]}),o($VE1,[2,91]),o($V$1,[2,356],{187:374}),o($Vq,$V02,{192:375,194:376}),o($Vq,[2,97]),o($Vq,[2,98]),o($Vq,[2,99]),o($VE1,[2,92]),o($VE1,[2,93]),o($VE1,[2,355]),{13:$V8,16:$V9,34:$VP,35:$VQ,38:[1,377],59:171,86:$VR,92:$VS,97:172,181:291,183:292,195:378,221:$VT,224:$VU,225:$VV,242:182,244:183,275:178,278:$VW,279:$VX,280:$VY,281:$VZ,282:$V_,283:$V$,284:$V01,285:$V11,286:$V21,287:$V31,288:$V41,289:$V51,290:$V61,291:$Vb},o($V12,[2,387]),o($V22,[2,125]),o($V22,[2,126]),{222:[1,379]},o($VG1,[2,173]),{13:$V8,16:$V9,59:380,291:$Vb},o($V5,[2,17]),{38:[1,381]},o($V81,[2,392]),o($Vv,$Vw,{230:116,234:117,238:118,246:119,250:120,226:382,214:$Vx,252:$Vy,313:$Vz}),o($V91,[2,394]),o($Vv,$Vw,{234:117,238:118,246:119,250:120,230:383,214:$Vx,252:$Vy,313:$Vz}),o($V91,[2,140]),{35:$VO1,92:$VP1,175:384},o($Va1,[2,404]),o($Vv,$Vw,{246:119,250:120,238:385,214:$Vx,252:$Vy,313:$Vz}),o($Vb1,[2,407],{243:386}),o($Vb1,[2,409],{245:387}),o($VI1,[2,405]),o($VI1,[2,406]),o($Vb1,[2,412]),o($Vv,$Vw,{250:120,246:388,214:$Vx,252:$Vy,313:$Vz}),o($VI1,[2,413]),o($VI1,[2,414]),o($VN1,[2,85]),o($VI1,[2,342],{173:389,295:[1,390]}),{38:[1,391]},o($VN1,[2,159]),o($Vv,$Vw,{226:115,230:116,234:117,238:118,246:119,250:120,36:392,214:$Vx,252:$Vy,313:$Vz}),o($Vv,$Vw,{226:115,230:116,234:117,238:118,246:119,250:120,36:393,214:$Vx,252:$Vy,313:$Vz}),o($Vv,$Vw,{226:115,230:116,234:117,238:118,246:119,250:120,36:394,214:$Vx,252:$Vy,313:$Vz}),o($VN1,[2,163]),o($VN1,[2,87]),o($VI1,[2,346],{176:395}),{34:[1,396]},o($VN1,[2,165]),o($Vv,$Vw,{226:115,230:116,234:117,238:118,246:119,250:120,36:397,214:$Vx,252:$Vy,313:$Vz}),{45:$VL,61:398},o($V32,[2,424],{265:399,295:[1,400]}),o($VI1,[2,428],{268:401,295:[1,402]}),o($VI1,[2,430],{270:403,295:[1,404]}),o($VA,[2,40]),o($Vu1,[2,259]),o($V42,[2,43]),o($V42,[2,44]),o($V42,[2,45]),o($VA,[2,41]),o($Vv1,[2,261]),o($V52,[2,264],{95:405}),{13:$V8,16:$V9,59:406,291:$Vb},o($VE,[2,50]),o([6,44,130,131,133,189],[2,66]),o($Vy1,[2,309]),{13:$V8,16:$V9,34:[1,408],59:409,145:407,291:$Vb},o($Vy1,[2,68]),o($Vq,[2,319],{47:$V62,117:$V62}),{45:$VL,61:410},o($VH,[2,292]),o($Vf,[2,299],{134:411,299:[1,412]}),{45:$VL,61:413},o($VH,[2,298]),o($VT1,[2,22]),o($VT1,[2,251]),{86:[1,414]},{86:[1,415]},{13:$V8,16:$V9,34:$V72,35:$Vd1,59:264,71:262,72:263,78:416,79:417,80:$V82,81:261,82:$V92,83:420,253:221,254:$Ve1,255:$Vf1,256:$Vg1,258:$Vh1,259:226,260:$Vi1,261:$Vj1,262:229,263:$Vk1,264:$Vl1,267:$Vm1,269:$Vn1,291:$Vb,319:$Vo1,320:$Vp1,321:$Vq1,322:$Vr1,323:$Vs1,324:$Vt1},o($VU1,[2,255]),o($Va2,[2,69]),o($Va2,[2,70]),o($VI,$VJ,{63:152,73:153,21:422,74:$VK}),o($VM,$VN,{62:160,66:161,24:423,67:$VO}),{45:[2,334],47:[2,71],88:433,89:$V4,117:[1,429],156:424,157:425,164:426,165:[1,427],166:[1,428],168:[1,430],171:[1,431],172:[1,432]},o($VW1,[2,332],{163:434,307:[1,435]}),o($Vb2,$Vc2,{196:436,199:437,205:438,206:440,34:$Vd2}),o($Ve2,[2,362],{199:437,205:438,206:440,198:441,196:442,13:$Vc2,16:$Vc2,35:$Vc2,193:$Vc2,214:$Vc2,219:$Vc2,291:$Vc2,34:$Vd2}),{13:$V8,16:$V9,34:$VP,35:$VX1,59:171,86:$VR,92:$VS,97:172,181:445,197:446,201:444,221:$VY1,223:443,224:$VU,225:$VV,242:182,244:183,275:178,278:$VW,279:$VX,280:$VY,281:$VZ,282:$V_,283:$V$,284:$V01,285:$V11,286:$V21,287:$V31,288:$V41,289:$V51,290:$V61,291:$Vb},o($Vb2,$Vc2,{199:437,205:438,206:440,196:447,34:$Vd2}),o($VM,[2,23],{253:221,259:226,262:229,59:264,71:369,72:370,70:448,13:$V8,16:$V9,34:$VZ1,35:$V_1,254:$Ve1,255:$Vf1,256:$Vg1,258:$Vh1,260:$Vi1,261:$Vj1,263:$Vk1,264:$Vl1,267:$Vm1,269:$Vn1,291:$Vb,319:$Vo1,320:$Vp1,321:$Vq1,322:$Vr1,323:$Vs1,324:$Vt1}),o($Vf2,[2,252]),o($Vf2,[2,24]),o($Vf2,[2,25]),o($Vv,$Vw,{226:115,230:116,234:117,238:118,246:119,250:120,36:449,214:$Vx,252:$Vy,313:$Vz}),o($Vf2,[2,28]),o($VM,$VN,{62:160,66:161,24:450,67:$VO}),o([47,117,222,307],[2,94],{188:451,189:[1,452]}),o($V$1,[2,96]),{13:$V8,16:$V9,34:$VP,35:$VQ,59:171,86:$VR,92:$VS,97:172,181:291,183:292,195:453,221:$VT,224:$VU,225:$VV,242:182,244:183,275:178,278:$VW,279:$VX,280:$VY,281:$VZ,282:$V_,283:$V$,284:$V01,285:$V11,286:$V21,287:$V31,288:$V41,289:$V51,290:$V61,291:$Vb},o($Vg2,[2,121]),o($V12,[2,388]),o($Vg2,[2,122]),o($VG1,[2,174]),o($Vu,[2,14]),o($V81,[2,136]),o($V91,[2,138]),o($V91,[2,141]),o($Va1,[2,143]),o($Va1,[2,144],{249:311,248:454,26:$VJ1,310:$VK1}),o($Va1,[2,145],{249:311,248:455,26:$VJ1,310:$VK1}),o($Vb1,[2,147]),o($VI1,[2,344],{174:456}),o($VI1,[2,343]),o([6,13,16,26,34,35,37,38,45,47,77,80,82,85,86,87,89,92,117,165,166,168,171,172,189,221,224,225,229,233,237,252,254,255,256,257,258,260,261,263,264,267,269,274,278,279,280,281,282,283,284,285,286,287,288,289,290,291,307,310,313,314,315,316,317,318,319,320,321,322,323,324],[2,157]),{38:[1,457]},{257:[1,458]},{257:[1,459]},o($Vv,$Vw,{226:115,230:116,234:117,238:118,246:119,250:120,36:460,214:$Vx,252:$Vy,313:$Vz}),{38:[1,461]},{38:[1,462]},o($VN1,[2,167]),o($Vv,$Vw,{226:115,230:116,234:117,238:118,246:119,250:120,266:463,36:465,26:[1,464],214:$Vx,252:$Vy,313:$Vz}),o($V32,[2,425]),o($Vv,$Vw,{226:115,230:116,234:117,238:118,246:119,250:120,36:466,214:$Vx,252:$Vy,313:$Vz}),o($VI1,[2,429]),o($Vv,$Vw,{226:115,230:116,234:117,238:118,246:119,250:120,36:467,214:$Vx,252:$Vy,313:$Vz}),o($VI1,[2,431]),{35:[1,470],47:[1,468],99:469},o($VE,[2,61]),{45:[1,471]},{45:[2,310]},{45:[2,311]},o($VE,[2,55]),{13:$V8,16:$V9,59:472,291:$Vb},o($Vf,[2,300]),o($VE,[2,56]),o($VT1,[2,35],{87:[1,473]}),o($VT1,[2,36],{85:[1,474]}),o($Vz1,[2,30],{253:221,259:226,262:229,81:261,71:262,72:263,59:264,83:420,79:475,13:$V8,16:$V9,34:$V72,35:$Vd1,80:$V82,82:$V92,254:$Ve1,255:$Vf1,256:$Vg1,258:$Vh1,260:$Vi1,261:$Vj1,263:$Vk1,264:$Vl1,267:$Vm1,269:$Vn1,291:$Vb,319:$Vo1,320:$Vp1,321:$Vq1,322:$Vr1,323:$Vs1,324:$Vt1}),o($Vh2,[2,256]),{35:$Vd1,81:476},{35:$Vd1,81:477},o($Vh2,[2,33]),o($Vh2,[2,34]),{31:478,47:[2,218],88:479,89:$V4},{32:480,47:[2,220],88:481,89:$V4},o($VW1,[2,325]),o($Vi2,[2,326],{158:482,307:[1,483]}),{45:$VL,61:484},{45:$VL,61:485},{45:$VL,61:486},{13:$V8,16:$V9,34:[1,488],59:489,167:487,291:$Vb},o($Vj2,[2,338],{169:490,300:[1,491]}),{13:$V8,16:$V9,35:$Vd1,59:264,71:262,72:263,81:261,83:492,253:221,254:$Ve1,255:$Vf1,256:$Vg1,258:$Vh1,259:226,260:$Vi1,261:$Vj1,262:229,263:$Vk1,264:$Vl1,267:$Vm1,269:$Vn1,291:$Vb,319:$Vo1,320:$Vp1,321:$Vq1,322:$Vr1,323:$Vs1,324:$Vt1},{35:[1,493]},o($Vk2,[2,81]),o($VW1,[2,73]),o($Vq,[2,331],{45:$Vl2,47:$Vl2,89:$Vl2,117:$Vl2,165:$Vl2,166:$Vl2,168:$Vl2,171:$Vl2,172:$Vl2}),o($Ve2,[2,101]),o($Vq,[2,366],{200:494}),o($Vq,[2,364]),o($Vq,[2,365]),o($Vb2,[2,374],{207:495,208:496}),o($Ve2,[2,102]),o($Ve2,[2,363]),{13:$V8,16:$V9,34:$VP,35:$VX1,38:[1,497],59:171,86:$VR,92:$VS,97:172,181:445,197:446,201:498,221:$VY1,224:$VU,225:$VV,242:182,244:183,275:178,278:$VW,279:$VX,280:$VY,281:$VZ,282:$V_,283:$V$,284:$V01,285:$V11,286:$V21,287:$V31,288:$V41,289:$V51,290:$V61,291:$Vb},o($V12,[2,389]),o($V22,[2,127]),o($V22,[2,128]),{222:[1,499]},o($Vf2,[2,253]),{37:[1,501],38:[1,500]},o($V5,[2,16]),o($V$1,[2,357]),o($V$1,[2,358],{191:282,59:284,190:502,186:503,13:$V8,16:$V9,34:$VC1,193:$VD1,291:$Vb}),o($Vm2,[2,100],{257:[1,504]}),o($Vb1,[2,408]),o($Vb1,[2,410]),o($Vv,$Vw,{226:115,230:116,234:117,238:118,246:119,250:120,36:505,214:$Vx,252:$Vy,313:$Vz}),o($VN1,[2,160]),o($Vv,$Vw,{226:115,230:116,234:117,238:118,246:119,250:120,36:506,214:$Vx,252:$Vy,313:$Vz}),o($Vv,$Vw,{226:115,230:116,234:117,238:118,246:119,250:120,36:507,214:$Vx,252:$Vy,313:$Vz}),{38:[1,508],257:[1,509]},o($VN1,[2,164]),o($VN1,[2,166]),{38:[1,510]},{38:[2,426]},{38:[2,427]},{38:[1,511]},{38:[2,432],189:[1,514],271:512,272:513},o($VA,[2,42]),o($V52,[2,265]),{13:$V8,16:$V9,59:333,86:$VR,96:516,97:334,98:$VR1,100:515,242:182,244:183,275:178,278:$VW,279:$VX,280:$VY,281:$VZ,282:$V_,283:$V$,284:$V01,285:$V11,286:$V21,287:$V31,288:$V41,289:$V51,290:$V61,291:$Vb},o($Vq,$VF,{150:144,146:517,149:518,47:[2,312]}),o($VH,[2,59]),{86:[1,519]},{86:[1,520]},o($Vh2,[2,257]),o($Vh2,[2,31]),o($Vh2,[2,32]),{47:[2,11]},{47:[2,219]},{47:[2,12]},{47:[2,221]},o($Vq,$VA1,{161:271,159:521,160:522,45:$Vn2,47:$Vn2,89:$Vn2,117:$Vn2,165:$Vn2,166:$Vn2,168:$Vn2,171:$Vn2,172:$Vn2}),o($Vi2,[2,327]),o($Vk2,[2,74],{308:[1,523]}),o($Vk2,[2,75]),o($Vk2,[2,76]),{45:$VL,61:524},{45:[2,336]},{45:[2,337]},{13:$V8,16:$V9,34:[1,526],59:527,170:525,291:$Vb},o($Vj2,[2,339]),o($Vk2,[2,79]),o($Vv,$Vw,{226:115,230:116,234:117,238:118,246:119,250:120,36:528,214:$Vx,252:$Vy,313:$Vz}),{13:$V8,16:$V9,34:$VP,35:$VX1,59:171,86:$VR,92:$VS,97:172,181:445,197:446,201:529,221:$VY1,224:$VU,225:$VV,242:182,244:183,275:178,278:$VW,279:$VX,280:$VY,281:$VZ,282:$V_,283:$V$,284:$V01,285:$V11,286:$V21,287:$V31,288:$V41,289:$V51,290:$V61,291:$Vb},o($V12,[2,106],{309:[1,530]}),o($Vo2,[2,381],{209:531,213:532,219:[1,533]}),o($VF1,[2,123]),o($V12,[2,390]),o($VF1,[2,124]),o($Vf2,[2,26]),{34:[1,534]},o($V$1,[2,95]),o($V$1,[2,359]),o($Vq,[2,361]),{38:[1,535],257:[1,536]},{38:[1,537]},{257:[1,538]},o($VN1,[2,88]),o($VI1,[2,347]),o($VN1,[2,168]),o($VN1,[2,169]),{38:[1,539]},{38:[2,433]},{273:[1,540]},{13:$V8,16:$V9,38:[1,541],59:333,86:$VR,96:542,97:334,98:$VR1,242:182,244:183,275:178,278:$VW,279:$VX,280:$VY,281:$VZ,282:$V_,283:$V$,284:$V01,285:$V11,286:$V21,287:$V31,288:$V41,289:$V51,290:$V61,291:$Vb},o($Vp2,[2,266]),{47:[1,543]},{47:[2,313]},o($VT1,[2,37]),o($VT1,[2,38]),o($VW1,[2,72]),o($VW1,[2,329]),{45:[2,335]},o($Vk2,[2,77]),{45:$VL,61:544},{45:[2,340]},{45:[2,341]},{37:[1,545]},o($Vm2,[2,368],{202:546,257:[1,547]}),o($Vb2,[2,373]),o([13,16,34,35,38,86,92,221,224,225,278,279,280,281,282,283,284,285,286,287,288,289,290,291,309],[2,107],{310:[1,548]}),{13:$V8,16:$V9,35:[1,554],59:551,193:[1,552],210:549,211:550,214:[1,553],291:$Vb},o($Vo2,[2,382]),{38:[1,555]},o($VN1,[2,86]),o($VI1,[2,345]),o($VN1,[2,161]),o($Vv,$Vw,{226:115,230:116,234:117,238:118,246:119,250:120,36:556,214:$Vx,252:$Vy,313:$Vz}),o($VN1,[2,170]),{274:[1,557]},o($V52,[2,46]),o($Vp2,[2,267]),o($Vq2,[2,314],{147:558,307:[1,559]}),o($Vk2,[2,78]),{34:[1,560]},o([45,47,89,117,165,166,168,171,172,222,307],[2,103],{203:561,189:[1,562]}),o($Vq,[2,367]),o($Vb2,[2,375]),o($Vr2,[2,109]),o($Vr2,[2,379],{212:563,311:564,26:[1,566],312:[1,565],313:[1,567]}),o($Vs2,[2,110]),o($Vs2,[2,111]),{13:$V8,16:$V9,35:[1,571],59:572,92:[1,570],193:$Vt2,215:568,216:569,219:$Vu2,291:$Vb},o($Vb2,$Vc2,{206:440,205:575}),o($Vf2,[2,27]),{38:[1,576]},{275:577,281:$VZ,282:$V_,283:$V$,284:$V01},o($Vq,$VF,{150:144,148:578,149:579,47:$Vv2,117:$Vv2}),o($Vq2,[2,315]),{38:[1,580]},o($Vm2,[2,369]),o($Vm2,[2,104],{206:440,204:581,205:582,13:$Vc2,16:$Vc2,35:$Vc2,193:$Vc2,214:$Vc2,219:$Vc2,291:$Vc2,34:[1,583]}),o($Vr2,[2,108]),o($Vr2,[2,380]),o($Vr2,[2,376]),o($Vr2,[2,377]),o($Vr2,[2,378]),o($Vs2,[2,112]),o($Vs2,[2,114]),o($Vs2,[2,115]),o($Vw2,[2,383],{217:584}),o($Vs2,[2,117]),o($Vs2,[2,118]),{13:$V8,16:$V9,59:585,193:[1,586],291:$Vb},{38:[1,587]},o($VN1,[2,162]),{38:[2,171]},o($Vy1,[2,67]),o($Vy1,[2,317]),o($Vk2,[2,80]),o($Vq,$V02,{194:376,192:588}),o($Vq,[2,370]),o($Vq,[2,371]),{13:$V8,16:$V9,38:[2,385],59:572,193:$Vt2,216:590,218:589,219:$Vu2,291:$Vb},o($Vs2,[2,119]),o($Vs2,[2,120]),o($Vs2,[2,113]),o($Vm2,[2,105]),{38:[1,591]},{38:[2,386],309:[1,592]},o($Vs2,[2,116]),o($Vw2,[2,384])],
+defaultActions: {5:[2,196],6:[2,197],8:[2,195],26:[2,1],27:[2,3],28:[2,207],77:[2,47],86:[2,286],100:[2,243],107:[2,349],210:[2,402],238:[2,423],277:[2,227],278:[2,90],408:[2,310],409:[2,311],464:[2,426],465:[2,427],478:[2,11],479:[2,219],480:[2,12],481:[2,221],488:[2,336],489:[2,337],513:[2,433],518:[2,313],523:[2,335],526:[2,340],527:[2,341],577:[2,171]},
 parseError: function parseError (str, hash) {
     if (hash.recoverable) {
         this.trace(str);
@@ -100401,6 +99083,8 @@ parse: function parse(input) {
     SPARQL parser in the Jison parser generator format.
   */
 
+  var Wildcard = __webpack_require__(/*! ./Wildcard */ "./node_modules/sparqljs/lib/Wildcard.js").Wildcard;
+
   // Common namespaces and entities
   var RDF = 'http://www.w3.org/1999/02/22-rdf-syntax-ns#',
       RDF_TYPE  = RDF + 'type',
@@ -100411,9 +99095,7 @@ parse: function parse(input) {
       XSD_INTEGER  = XSD + 'integer',
       XSD_DECIMAL  = XSD + 'decimal',
       XSD_DOUBLE   = XSD + 'double',
-      XSD_BOOLEAN  = XSD + 'boolean',
-      XSD_TRUE =  '"true"^^'  + XSD_BOOLEAN,
-      XSD_FALSE = '"false"^^' + XSD_BOOLEAN;
+      XSD_BOOLEAN  = XSD + 'boolean';
 
   var base = '', basePath = '', baseRoot = '';
 
@@ -100487,8 +99169,7 @@ parse: function parse(input) {
   function toVar(variable) {
     if (variable) {
       var first = variable[0];
-      if (first === '?') return variable;
-      if (first === '$') return '?' + variable.substr(1);
+      if (first === '?' || first === '$') return Parser.factory.variable(variable.substr(1));
     }
     return variable;
   }
@@ -100500,7 +99181,7 @@ parse: function parse(input) {
 
   // Creates an expression with the given type and attributes
   function expression(expr, attr) {
-    var expression = { expression: expr };
+    var expression = { expression: expr === '*'? new Wildcard() : expr };
     if (attr)
       for (var a in attr)
         expression[a] = attr[a];
@@ -100538,8 +99219,16 @@ parse: function parse(input) {
   }
 
   // Creates a literal with the given value and type
-  function createLiteral(value, type) {
-    return '"' + value + '"^^' + type;
+  function createTypedLiteral(value, type) {
+    if (type && type.termType !== 'NamedNode'){
+      type = Parser.factory.namedNode(type);
+    }
+    return Parser.factory.literal(value, type);
+  }
+
+  // Creates a literal with the given value and language
+  function createLangLiteral(value, lang) {
+    return Parser.factory.literal(value, lang);
   }
 
   // Creates a triple with the given subject, predicate, and object
@@ -100551,9 +99240,13 @@ parse: function parse(input) {
     return triple;
   }
 
-  // Creates a new blank node identifier
-  function blank() {
-    return '_:b' + blankId++;
+  // Creates a new blank node
+  function blank(name) {
+    if (typeof name === 'string') {  // Only use name if a name is given
+      if (name.startsWith('e_')) return Parser.factory.blankNode(name);
+      return Parser.factory.blankNode('e_' + name);
+    }
+    return Parser.factory.blankNode('g_' + blankId++);
   };
   var blankId = 0;
   Parser._resetBlanks = function () { blankId = 0; }
@@ -100589,7 +99282,7 @@ parse: function parse(input) {
       });
     }
     catch (error) { return ''; }
-    return '"' + string + '"';
+    return string;
   }
 
   // Creates a list, collecting its (possibly blank) items and triples associated with those items
@@ -100599,8 +99292,8 @@ parse: function parse(input) {
 
     // Build an RDF list out of the items
     for (var i = 0, j = 0, l = listItems.length, listTriples = Array(l * 2); i < l;)
-      listTriples[j++] = triple(head, RDF_FIRST, listItems[i]),
-      listTriples[j++] = triple(head, RDF_REST,  head = ++i < l ? blank() : RDF_NIL);
+      listTriples[j++] = triple(head, Parser.factory.namedNode(RDF_FIRST), listItems[i]),
+      listTriples[j++] = triple(head, Parser.factory.namedNode(RDF_REST),  head = ++i < l ? blank() : Parser.factory.namedNode(RDF_NIL));
 
     // Return the list's identifier, its triples, and the triples associated with its items
     return { entity: list, triples: appendAllTo(listTriples, triples) };
@@ -100984,246 +99677,244 @@ case 1:return 12
 break;
 case 2:return 15
 break;
-case 3:return 24
+case 3:return 28
 break;
-case 4:return 290
+case 4:return 295
 break;
-case 5:return 291
+case 5:return 296
 break;
-case 6:return 29
+case 6:return 35
 break;
-case 7:return 31
+case 7:return 37
 break;
-case 8:return 32
+case 8:return 38
 break;
-case 9:return 293
+case 9:return 26
 break;
-case 10:return 34
+case 10:return 40
 break;
-case 11:return 38
+case 11:return 44
 break;
-case 12:return 39
+case 12:return 45
 break;
-case 13:return 41
+case 13:return 47
 break;
-case 14:return 43
+case 14:return 49
 break;
-case 15:return 48
+case 15:return 54
 break;
-case 16:return 51
+case 16:return 57
 break;
-case 17:return 296
+case 17:return 299
 break;
-case 18:return 61
+case 18:return 67
 break;
-case 19:return 62
+case 19:return 68
 break;
-case 20:return 68
+case 20:return 74
 break;
-case 21:return 71
+case 21:return 77
 break;
-case 22:return 74
+case 22:return 80
 break;
-case 23:return 76
+case 23:return 82
 break;
-case 24:return 79
+case 24:return 85
 break;
-case 25:return 81
+case 25:return 87
 break;
-case 26:return 83
+case 26:return 89
 break;
-case 27:return 183
+case 27:return 189
 break;
-case 28:return 99
+case 28:return 105
 break;
-case 29:return 297
+case 29:return 300
 break;
-case 30:return 132
+case 30:return 138
 break;
-case 31:return 298
+case 31:return 301
 break;
-case 32:return 299
+case 32:return 302
 break;
-case 33:return 109
+case 33:return 115
 break;
-case 34:return 300
+case 34:return 303
 break;
-case 35:return 108
+case 35:return 114
 break;
-case 36:return 301
+case 36:return 304
 break;
-case 37:return 302
+case 37:return 305
 break;
-case 38:return 112
+case 38:return 118
 break;
-case 39:return 114
+case 39:return 120
 break;
-case 40:return 115
+case 40:return 121
 break;
-case 41:return 130
+case 41:return 136
 break;
-case 42:return 124
+case 42:return 130
 break;
-case 43:return 125
+case 43:return 131
 break;
-case 44:return 127
+case 44:return 133
 break;
-case 45:return 133
+case 45:return 139
 break;
-case 46:return 111
+case 46:return 117
 break;
-case 47:return 303
+case 47:return 306
 break;
-case 48:return 304
+case 48:return 307
 break;
-case 49:return 159
+case 49:return 165
 break;
-case 50:return 162
+case 50:return 168
 break;
-case 51:return 166
+case 51:return 172
 break;
-case 52:return 92
+case 52:return 98
 break;
-case 53:return 160
+case 53:return 166
 break;
-case 54:return 305
+case 54:return 308
 break;
-case 55:return 165
+case 55:return 171
 break;
-case 56:return 251
+case 56:return 257
 break;
-case 57:return 187
+case 57:return 193
 break;
-case 58:return 306
+case 58:return 309
 break;
-case 59:return 307
+case 59:return 310
 break;
-case 60:return 213
+case 60:return 219
 break;
-case 61:return 309
+case 61:return 312
 break;
-case 62:return 310
+case 62:return 313
 break;
-case 63:return 208
+case 63:return 214
 break;
-case 64:return 215
+case 64:return 221
 break;
-case 65:return 216
+case 65:return 222
 break;
-case 66:return 223
+case 66:return 229
 break;
-case 67:return 227
+case 67:return 233
 break;
-case 68:return 268
+case 68:return 274
 break;
-case 69:return 311
+case 69:return 314
 break;
-case 70:return 312
+case 70:return 315
 break;
-case 71:return 313
+case 71:return 316
 break;
-case 72:return 314
+case 72:return 317
 break;
-case 73:return 315
+case 73:return 318
 break;
-case 74:return 231
+case 74:return 237
 break;
-case 75:return 316
+case 75:return 319
 break;
-case 76:return 246
+case 76:return 252
 break;
-case 77:return 254
+case 77:return 260
 break;
-case 78:return 255
+case 78:return 261
 break;
-case 79:return 248
+case 79:return 254
 break;
-case 80:return 249
+case 80:return 255
 break;
-case 81:return 250
+case 81:return 256
 break;
-case 82:return 317
+case 82:return 320
 break;
-case 83:return 318
+case 83:return 321
 break;
-case 84:return 252
+case 84:return 258
 break;
-case 85:return 320
+case 85:return 323
 break;
-case 86:return 319
+case 86:return 322
 break;
-case 87:return 321
+case 87:return 324
 break;
-case 88:return 257
+case 88:return 263
 break;
-case 89:return 258
+case 89:return 264
 break;
-case 90:return 261
+case 90:return 267
 break;
-case 91:return 263
+case 91:return 269
 break;
-case 92:return 267
+case 92:return 273
 break;
-case 93:return 271
+case 93:return 277
 break;
-case 94:return 274
+case 94:return 280
 break;
-case 95:return 275
+case 95:return 13
 break;
-case 96:return 13
+case 96:return 16
 break;
-case 97:return 16
+case 97:return 291
 break;
-case 98:return 286
+case 98:return 224
 break;
-case 99:return 218
+case 99:return 34
 break;
-case 100:return 28
+case 100:return 276
 break;
-case 101:return 270
+case 101:return 86
 break;
-case 102:return 80
+case 102:return 278
 break;
-case 103:return 272
+case 103:return 279
 break;
-case 104:return 273
+case 104:return 285
 break;
-case 105:return 280
+case 105:return 286
 break;
-case 106:return 281
+case 106:return 287
 break;
-case 107:return 282
+case 107:return 288
 break;
-case 108:return 283
+case 108:return 289
 break;
-case 109:return 284
+case 109:return 290
 break;
-case 110:return 285
+case 110:return 'EXPONENT'
 break;
-case 111:return 'EXPONENT'
+case 111:return 281
 break;
-case 112:return 276
+case 112:return 282
 break;
-case 113:return 277
+case 113:return 283
 break;
-case 114:return 278
+case 114:return 284
 break;
-case 115:return 279
+case 115:return 92
 break;
-case 116:return 86
+case 116:return 225
 break;
-case 117:return 219
+case 117:return 6
 break;
-case 118:return 6
+case 118:return 'INVALID'
 break;
-case 119:return 'INVALID'
-break;
-case 120:console.log(yy_.yytext);
+case 119:console.log(yy_.yytext);
 break;
 }
 },
-rules: [/^(?:\s+|#[^\n\r]*)/i,/^(?:BASE)/i,/^(?:PREFIX)/i,/^(?:SELECT)/i,/^(?:DISTINCT)/i,/^(?:REDUCED)/i,/^(?:\()/i,/^(?:AS)/i,/^(?:\))/i,/^(?:\*)/i,/^(?:CONSTRUCT)/i,/^(?:WHERE)/i,/^(?:\{)/i,/^(?:\})/i,/^(?:DESCRIBE)/i,/^(?:ASK)/i,/^(?:FROM)/i,/^(?:NAMED)/i,/^(?:GROUP)/i,/^(?:BY)/i,/^(?:HAVING)/i,/^(?:ORDER)/i,/^(?:ASC)/i,/^(?:DESC)/i,/^(?:LIMIT)/i,/^(?:OFFSET)/i,/^(?:VALUES)/i,/^(?:;)/i,/^(?:LOAD)/i,/^(?:SILENT)/i,/^(?:INTO)/i,/^(?:CLEAR)/i,/^(?:DROP)/i,/^(?:CREATE)/i,/^(?:ADD)/i,/^(?:TO)/i,/^(?:MOVE)/i,/^(?:COPY)/i,/^(?:INSERT\s+DATA)/i,/^(?:DELETE\s+DATA)/i,/^(?:DELETE\s+WHERE)/i,/^(?:WITH)/i,/^(?:DELETE)/i,/^(?:INSERT)/i,/^(?:USING)/i,/^(?:DEFAULT)/i,/^(?:GRAPH)/i,/^(?:ALL)/i,/^(?:\.)/i,/^(?:OPTIONAL)/i,/^(?:SERVICE)/i,/^(?:BIND)/i,/^(?:UNDEF)/i,/^(?:MINUS)/i,/^(?:UNION)/i,/^(?:FILTER)/i,/^(?:,)/i,/^(?:a)/i,/^(?:\|)/i,/^(?:\/)/i,/^(?:\^)/i,/^(?:\?)/i,/^(?:\+)/i,/^(?:!)/i,/^(?:\[)/i,/^(?:\])/i,/^(?:\|\|)/i,/^(?:&&)/i,/^(?:=)/i,/^(?:!=)/i,/^(?:<)/i,/^(?:>)/i,/^(?:<=)/i,/^(?:>=)/i,/^(?:IN)/i,/^(?:NOT)/i,/^(?:-)/i,/^(?:BOUND)/i,/^(?:BNODE)/i,/^(?:(RAND|NOW|UUID|STRUUID))/i,/^(?:(LANG|DATATYPE|IRI|URI|ABS|CEIL|FLOOR|ROUND|STRLEN|STR|UCASE|LCASE|ENCODE_FOR_URI|YEAR|MONTH|DAY|HOURS|MINUTES|SECONDS|TIMEZONE|TZ|MD5|SHA1|SHA256|SHA384|SHA512|isIRI|isURI|isBLANK|isLITERAL|isNUMERIC))/i,/^(?:(LANGMATCHES|CONTAINS|STRSTARTS|STRENDS|STRBEFORE|STRAFTER|STRLANG|STRDT|sameTerm))/i,/^(?:CONCAT)/i,/^(?:COALESCE)/i,/^(?:IF)/i,/^(?:REGEX)/i,/^(?:SUBSTR)/i,/^(?:REPLACE)/i,/^(?:EXISTS)/i,/^(?:COUNT)/i,/^(?:SUM|MIN|MAX|AVG|SAMPLE)/i,/^(?:GROUP_CONCAT)/i,/^(?:SEPARATOR)/i,/^(?:\^\^)/i,/^(?:true)/i,/^(?:false)/i,/^(?:(<([^<>\"\{\}\|\^`\\\u0000-\u0020])*>))/i,/^(?:((([A-Z]|[a-z]|[\u00C0-\u00D6]|[\u00D8-\u00F6]|[\u00F8-\u02FF]|[\u0370-\u037D]|[\u037F-\u1FFF]|[\u200C-\u200D]|[\u2070-\u218F]|[\u2C00-\u2FEF]|[\u3001-\uD7FF]|[\uF900-\uFDCF]|[\uFDF0-\uFFFD]|[\uD800-\uDB7F][\uDC00-\uDFFF])(((((?:([A-Z]|[a-z]|[\u00C0-\u00D6]|[\u00D8-\u00F6]|[\u00F8-\u02FF]|[\u0370-\u037D]|[\u037F-\u1FFF]|[\u200C-\u200D]|[\u2070-\u218F]|[\u2C00-\u2FEF]|[\u3001-\uD7FF]|[\uF900-\uFDCF]|[\uFDF0-\uFFFD]|[\uD800-\uDB7F][\uDC00-\uDFFF])|_))|-|[0-9]|\u00B7|[\u0300-\u036F]|[\u203F-\u2040])|\.)*(((?:([A-Z]|[a-z]|[\u00C0-\u00D6]|[\u00D8-\u00F6]|[\u00F8-\u02FF]|[\u0370-\u037D]|[\u037F-\u1FFF]|[\u200C-\u200D]|[\u2070-\u218F]|[\u2C00-\u2FEF]|[\u3001-\uD7FF]|[\uF900-\uFDCF]|[\uFDF0-\uFFFD]|[\uD800-\uDB7F][\uDC00-\uDFFF])|_))|-|[0-9]|\u00B7|[\u0300-\u036F]|[\u203F-\u2040]))?)?:))/i,/^(?:(((([A-Z]|[a-z]|[\u00C0-\u00D6]|[\u00D8-\u00F6]|[\u00F8-\u02FF]|[\u0370-\u037D]|[\u037F-\u1FFF]|[\u200C-\u200D]|[\u2070-\u218F]|[\u2C00-\u2FEF]|[\u3001-\uD7FF]|[\uF900-\uFDCF]|[\uFDF0-\uFFFD]|[\uD800-\uDB7F][\uDC00-\uDFFF])(((((?:([A-Z]|[a-z]|[\u00C0-\u00D6]|[\u00D8-\u00F6]|[\u00F8-\u02FF]|[\u0370-\u037D]|[\u037F-\u1FFF]|[\u200C-\u200D]|[\u2070-\u218F]|[\u2C00-\u2FEF]|[\u3001-\uD7FF]|[\uF900-\uFDCF]|[\uFDF0-\uFFFD]|[\uD800-\uDB7F][\uDC00-\uDFFF])|_))|-|[0-9]|\u00B7|[\u0300-\u036F]|[\u203F-\u2040])|\.)*(((?:([A-Z]|[a-z]|[\u00C0-\u00D6]|[\u00D8-\u00F6]|[\u00F8-\u02FF]|[\u0370-\u037D]|[\u037F-\u1FFF]|[\u200C-\u200D]|[\u2070-\u218F]|[\u2C00-\u2FEF]|[\u3001-\uD7FF]|[\uF900-\uFDCF]|[\uFDF0-\uFFFD]|[\uD800-\uDB7F][\uDC00-\uDFFF])|_))|-|[0-9]|\u00B7|[\u0300-\u036F]|[\u203F-\u2040]))?)?:)((((?:([A-Z]|[a-z]|[\u00C0-\u00D6]|[\u00D8-\u00F6]|[\u00F8-\u02FF]|[\u0370-\u037D]|[\u037F-\u1FFF]|[\u200C-\u200D]|[\u2070-\u218F]|[\u2C00-\u2FEF]|[\u3001-\uD7FF]|[\uF900-\uFDCF]|[\uFDF0-\uFFFD]|[\uD800-\uDB7F][\uDC00-\uDFFF])|_))|:|[0-9]|((%([0-9]|[A-F]|[a-f])([0-9]|[A-F]|[a-f]))|(\\(_|~|\.|-|!|\$|&|'|\(|\)|\*|\+|,|;|=|\/|\?|#|@|%))))(((((?:([A-Z]|[a-z]|[\u00C0-\u00D6]|[\u00D8-\u00F6]|[\u00F8-\u02FF]|[\u0370-\u037D]|[\u037F-\u1FFF]|[\u200C-\u200D]|[\u2070-\u218F]|[\u2C00-\u2FEF]|[\u3001-\uD7FF]|[\uF900-\uFDCF]|[\uFDF0-\uFFFD]|[\uD800-\uDB7F][\uDC00-\uDFFF])|_))|-|[0-9]|\u00B7|[\u0300-\u036F]|[\u203F-\u2040])|\.|:|((%([0-9]|[A-F]|[a-f])([0-9]|[A-F]|[a-f]))|(\\(_|~|\.|-|!|\$|&|'|\(|\)|\*|\+|,|;|=|\/|\?|#|@|%))))*((((?:([A-Z]|[a-z]|[\u00C0-\u00D6]|[\u00D8-\u00F6]|[\u00F8-\u02FF]|[\u0370-\u037D]|[\u037F-\u1FFF]|[\u200C-\u200D]|[\u2070-\u218F]|[\u2C00-\u2FEF]|[\u3001-\uD7FF]|[\uF900-\uFDCF]|[\uFDF0-\uFFFD]|[\uD800-\uDB7F][\uDC00-\uDFFF])|_))|-|[0-9]|\u00B7|[\u0300-\u036F]|[\u203F-\u2040])|:|((%([0-9]|[A-F]|[a-f])([0-9]|[A-F]|[a-f]))|(\\(_|~|\.|-|!|\$|&|'|\(|\)|\*|\+|,|;|=|\/|\?|#|@|%)))))?)))/i,/^(?:(_:(((?:([A-Z]|[a-z]|[\u00C0-\u00D6]|[\u00D8-\u00F6]|[\u00F8-\u02FF]|[\u0370-\u037D]|[\u037F-\u1FFF]|[\u200C-\u200D]|[\u2070-\u218F]|[\u2C00-\u2FEF]|[\u3001-\uD7FF]|[\uF900-\uFDCF]|[\uFDF0-\uFFFD]|[\uD800-\uDB7F][\uDC00-\uDFFF])|_))|[0-9])(((((?:([A-Z]|[a-z]|[\u00C0-\u00D6]|[\u00D8-\u00F6]|[\u00F8-\u02FF]|[\u0370-\u037D]|[\u037F-\u1FFF]|[\u200C-\u200D]|[\u2070-\u218F]|[\u2C00-\u2FEF]|[\u3001-\uD7FF]|[\uF900-\uFDCF]|[\uFDF0-\uFFFD]|[\uD800-\uDB7F][\uDC00-\uDFFF])|_))|-|[0-9]|\u00B7|[\u0300-\u036F]|[\u203F-\u2040])|\.)*(((?:([A-Z]|[a-z]|[\u00C0-\u00D6]|[\u00D8-\u00F6]|[\u00F8-\u02FF]|[\u0370-\u037D]|[\u037F-\u1FFF]|[\u200C-\u200D]|[\u2070-\u218F]|[\u2C00-\u2FEF]|[\u3001-\uD7FF]|[\uF900-\uFDCF]|[\uFDF0-\uFFFD]|[\uD800-\uDB7F][\uDC00-\uDFFF])|_))|-|[0-9]|\u00B7|[\u0300-\u036F]|[\u203F-\u2040]))?))/i,/^(?:([\?\$]((((?:([A-Z]|[a-z]|[\u00C0-\u00D6]|[\u00D8-\u00F6]|[\u00F8-\u02FF]|[\u0370-\u037D]|[\u037F-\u1FFF]|[\u200C-\u200D]|[\u2070-\u218F]|[\u2C00-\u2FEF]|[\u3001-\uD7FF]|[\uF900-\uFDCF]|[\uFDF0-\uFFFD]|[\uD800-\uDB7F][\uDC00-\uDFFF])|_))|[0-9])(((?:([A-Z]|[a-z]|[\u00C0-\u00D6]|[\u00D8-\u00F6]|[\u00F8-\u02FF]|[\u0370-\u037D]|[\u037F-\u1FFF]|[\u200C-\u200D]|[\u2070-\u218F]|[\u2C00-\u2FEF]|[\u3001-\uD7FF]|[\uF900-\uFDCF]|[\uFDF0-\uFFFD]|[\uD800-\uDB7F][\uDC00-\uDFFF])|_))|[0-9]|\u00B7|[\u0300-\u036F]|[\u203F-\u2040])*)))/i,/^(?:(@[a-zA-Z]+(-[a-zA-Z0-9]+)*))/i,/^(?:([0-9]+))/i,/^(?:([0-9]*\.[0-9]+))/i,/^(?:([0-9]+\.[0-9]*([eE][+-]?[0-9]+)|\.([0-9])+([eE][+-]?[0-9]+)|([0-9])+([eE][+-]?[0-9]+)))/i,/^(?:(\+([0-9]+)))/i,/^(?:(\+([0-9]*\.[0-9]+)))/i,/^(?:(\+([0-9]+\.[0-9]*([eE][+-]?[0-9]+)|\.([0-9])+([eE][+-]?[0-9]+)|([0-9])+([eE][+-]?[0-9]+))))/i,/^(?:(-([0-9]+)))/i,/^(?:(-([0-9]*\.[0-9]+)))/i,/^(?:(-([0-9]+\.[0-9]*([eE][+-]?[0-9]+)|\.([0-9])+([eE][+-]?[0-9]+)|([0-9])+([eE][+-]?[0-9]+))))/i,/^(?:([eE][+-]?[0-9]+))/i,/^(?:('(([^\u0027\u005C\u000A\u000D])|(\\[tbnrf\\\"']|\\u([0-9]|[A-F]|[a-f])([0-9]|[A-F]|[a-f])([0-9]|[A-F]|[a-f])([0-9]|[A-F]|[a-f])|\\U([0-9]|[A-F]|[a-f])([0-9]|[A-F]|[a-f])([0-9]|[A-F]|[a-f])([0-9]|[A-F]|[a-f])([0-9]|[A-F]|[a-f])([0-9]|[A-F]|[a-f])([0-9]|[A-F]|[a-f])([0-9]|[A-F]|[a-f])))*'))/i,/^(?:("(([^\u0022\u005C\u000A\u000D])|(\\[tbnrf\\\"']|\\u([0-9]|[A-F]|[a-f])([0-9]|[A-F]|[a-f])([0-9]|[A-F]|[a-f])([0-9]|[A-F]|[a-f])|\\U([0-9]|[A-F]|[a-f])([0-9]|[A-F]|[a-f])([0-9]|[A-F]|[a-f])([0-9]|[A-F]|[a-f])([0-9]|[A-F]|[a-f])([0-9]|[A-F]|[a-f])([0-9]|[A-F]|[a-f])([0-9]|[A-F]|[a-f])))*"))/i,/^(?:('''(('|'')?([^'\\]|(\\[tbnrf\\\"']|\\u([0-9]|[A-F]|[a-f])([0-9]|[A-F]|[a-f])([0-9]|[A-F]|[a-f])([0-9]|[A-F]|[a-f])|\\U([0-9]|[A-F]|[a-f])([0-9]|[A-F]|[a-f])([0-9]|[A-F]|[a-f])([0-9]|[A-F]|[a-f])([0-9]|[A-F]|[a-f])([0-9]|[A-F]|[a-f])([0-9]|[A-F]|[a-f])([0-9]|[A-F]|[a-f]))))*'''))/i,/^(?:("""(("|"")?([^\"\\]|(\\[tbnrf\\\"']|\\u([0-9]|[A-F]|[a-f])([0-9]|[A-F]|[a-f])([0-9]|[A-F]|[a-f])([0-9]|[A-F]|[a-f])|\\U([0-9]|[A-F]|[a-f])([0-9]|[A-F]|[a-f])([0-9]|[A-F]|[a-f])([0-9]|[A-F]|[a-f])([0-9]|[A-F]|[a-f])([0-9]|[A-F]|[a-f])([0-9]|[A-F]|[a-f])([0-9]|[A-F]|[a-f]))))*"""))/i,/^(?:(\((\u0020|\u0009|\u000D|\u000A)*\)))/i,/^(?:(\[(\u0020|\u0009|\u000D|\u000A)*\]))/i,/^(?:$)/i,/^(?:.)/i,/^(?:.)/i],
-conditions: {"INITIAL":{"rules":[0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,42,43,44,45,46,47,48,49,50,51,52,53,54,55,56,57,58,59,60,61,62,63,64,65,66,67,68,69,70,71,72,73,74,75,76,77,78,79,80,81,82,83,84,85,86,87,88,89,90,91,92,93,94,95,96,97,98,99,100,101,102,103,104,105,106,107,108,109,110,111,112,113,114,115,116,117,118,119,120],"inclusive":true}}
+rules: [/^(?:\s+|#[^\n\r]*)/i,/^(?:BASE)/i,/^(?:PREFIX)/i,/^(?:SELECT)/i,/^(?:DISTINCT)/i,/^(?:REDUCED)/i,/^(?:\()/i,/^(?:AS)/i,/^(?:\))/i,/^(?:\*)/i,/^(?:CONSTRUCT)/i,/^(?:WHERE)/i,/^(?:\{)/i,/^(?:\})/i,/^(?:DESCRIBE)/i,/^(?:ASK)/i,/^(?:FROM)/i,/^(?:NAMED)/i,/^(?:GROUP)/i,/^(?:BY)/i,/^(?:HAVING)/i,/^(?:ORDER)/i,/^(?:ASC)/i,/^(?:DESC)/i,/^(?:LIMIT)/i,/^(?:OFFSET)/i,/^(?:VALUES)/i,/^(?:;)/i,/^(?:LOAD)/i,/^(?:SILENT)/i,/^(?:INTO)/i,/^(?:CLEAR)/i,/^(?:DROP)/i,/^(?:CREATE)/i,/^(?:ADD)/i,/^(?:TO)/i,/^(?:MOVE)/i,/^(?:COPY)/i,/^(?:INSERT\s+DATA)/i,/^(?:DELETE\s+DATA)/i,/^(?:DELETE\s+WHERE)/i,/^(?:WITH)/i,/^(?:DELETE)/i,/^(?:INSERT)/i,/^(?:USING)/i,/^(?:DEFAULT)/i,/^(?:GRAPH)/i,/^(?:ALL)/i,/^(?:\.)/i,/^(?:OPTIONAL)/i,/^(?:SERVICE)/i,/^(?:BIND)/i,/^(?:UNDEF)/i,/^(?:MINUS)/i,/^(?:UNION)/i,/^(?:FILTER)/i,/^(?:,)/i,/^(?:a)/i,/^(?:\|)/i,/^(?:\/)/i,/^(?:\^)/i,/^(?:\?)/i,/^(?:\+)/i,/^(?:!)/i,/^(?:\[)/i,/^(?:\])/i,/^(?:\|\|)/i,/^(?:&&)/i,/^(?:=)/i,/^(?:!=)/i,/^(?:<)/i,/^(?:>)/i,/^(?:<=)/i,/^(?:>=)/i,/^(?:IN)/i,/^(?:NOT)/i,/^(?:-)/i,/^(?:BOUND)/i,/^(?:BNODE)/i,/^(?:(RAND|NOW|UUID|STRUUID))/i,/^(?:(LANG|DATATYPE|IRI|URI|ABS|CEIL|FLOOR|ROUND|STRLEN|STR|UCASE|LCASE|ENCODE_FOR_URI|YEAR|MONTH|DAY|HOURS|MINUTES|SECONDS|TIMEZONE|TZ|MD5|SHA1|SHA256|SHA384|SHA512|isIRI|isURI|isBLANK|isLITERAL|isNUMERIC))/i,/^(?:(LANGMATCHES|CONTAINS|STRSTARTS|STRENDS|STRBEFORE|STRAFTER|STRLANG|STRDT|sameTerm))/i,/^(?:CONCAT)/i,/^(?:COALESCE)/i,/^(?:IF)/i,/^(?:REGEX)/i,/^(?:SUBSTR)/i,/^(?:REPLACE)/i,/^(?:EXISTS)/i,/^(?:COUNT)/i,/^(?:SUM|MIN|MAX|AVG|SAMPLE)/i,/^(?:GROUP_CONCAT)/i,/^(?:SEPARATOR)/i,/^(?:\^\^)/i,/^(?:true|false)/i,/^(?:(<([^<>\"\{\}\|\^`\\\u0000-\u0020])*>))/i,/^(?:((([A-Z]|[a-z]|[\u00C0-\u00D6]|[\u00D8-\u00F6]|[\u00F8-\u02FF]|[\u0370-\u037D]|[\u037F-\u1FFF]|[\u200C-\u200D]|[\u2070-\u218F]|[\u2C00-\u2FEF]|[\u3001-\uD7FF]|[\uF900-\uFDCF]|[\uFDF0-\uFFFD]|[\uD800-\uDB7F][\uDC00-\uDFFF])(((((?:([A-Z]|[a-z]|[\u00C0-\u00D6]|[\u00D8-\u00F6]|[\u00F8-\u02FF]|[\u0370-\u037D]|[\u037F-\u1FFF]|[\u200C-\u200D]|[\u2070-\u218F]|[\u2C00-\u2FEF]|[\u3001-\uD7FF]|[\uF900-\uFDCF]|[\uFDF0-\uFFFD]|[\uD800-\uDB7F][\uDC00-\uDFFF])|_))|-|[0-9]|\u00B7|[\u0300-\u036F]|[\u203F-\u2040])|\.)*(((?:([A-Z]|[a-z]|[\u00C0-\u00D6]|[\u00D8-\u00F6]|[\u00F8-\u02FF]|[\u0370-\u037D]|[\u037F-\u1FFF]|[\u200C-\u200D]|[\u2070-\u218F]|[\u2C00-\u2FEF]|[\u3001-\uD7FF]|[\uF900-\uFDCF]|[\uFDF0-\uFFFD]|[\uD800-\uDB7F][\uDC00-\uDFFF])|_))|-|[0-9]|\u00B7|[\u0300-\u036F]|[\u203F-\u2040]))?)?:))/i,/^(?:(((([A-Z]|[a-z]|[\u00C0-\u00D6]|[\u00D8-\u00F6]|[\u00F8-\u02FF]|[\u0370-\u037D]|[\u037F-\u1FFF]|[\u200C-\u200D]|[\u2070-\u218F]|[\u2C00-\u2FEF]|[\u3001-\uD7FF]|[\uF900-\uFDCF]|[\uFDF0-\uFFFD]|[\uD800-\uDB7F][\uDC00-\uDFFF])(((((?:([A-Z]|[a-z]|[\u00C0-\u00D6]|[\u00D8-\u00F6]|[\u00F8-\u02FF]|[\u0370-\u037D]|[\u037F-\u1FFF]|[\u200C-\u200D]|[\u2070-\u218F]|[\u2C00-\u2FEF]|[\u3001-\uD7FF]|[\uF900-\uFDCF]|[\uFDF0-\uFFFD]|[\uD800-\uDB7F][\uDC00-\uDFFF])|_))|-|[0-9]|\u00B7|[\u0300-\u036F]|[\u203F-\u2040])|\.)*(((?:([A-Z]|[a-z]|[\u00C0-\u00D6]|[\u00D8-\u00F6]|[\u00F8-\u02FF]|[\u0370-\u037D]|[\u037F-\u1FFF]|[\u200C-\u200D]|[\u2070-\u218F]|[\u2C00-\u2FEF]|[\u3001-\uD7FF]|[\uF900-\uFDCF]|[\uFDF0-\uFFFD]|[\uD800-\uDB7F][\uDC00-\uDFFF])|_))|-|[0-9]|\u00B7|[\u0300-\u036F]|[\u203F-\u2040]))?)?:)((((?:([A-Z]|[a-z]|[\u00C0-\u00D6]|[\u00D8-\u00F6]|[\u00F8-\u02FF]|[\u0370-\u037D]|[\u037F-\u1FFF]|[\u200C-\u200D]|[\u2070-\u218F]|[\u2C00-\u2FEF]|[\u3001-\uD7FF]|[\uF900-\uFDCF]|[\uFDF0-\uFFFD]|[\uD800-\uDB7F][\uDC00-\uDFFF])|_))|:|[0-9]|((%([0-9]|[A-F]|[a-f])([0-9]|[A-F]|[a-f]))|(\\(_|~|\.|-|!|\$|&|'|\(|\)|\*|\+|,|;|=|\/|\?|#|@|%))))(((((?:([A-Z]|[a-z]|[\u00C0-\u00D6]|[\u00D8-\u00F6]|[\u00F8-\u02FF]|[\u0370-\u037D]|[\u037F-\u1FFF]|[\u200C-\u200D]|[\u2070-\u218F]|[\u2C00-\u2FEF]|[\u3001-\uD7FF]|[\uF900-\uFDCF]|[\uFDF0-\uFFFD]|[\uD800-\uDB7F][\uDC00-\uDFFF])|_))|-|[0-9]|\u00B7|[\u0300-\u036F]|[\u203F-\u2040])|\.|:|((%([0-9]|[A-F]|[a-f])([0-9]|[A-F]|[a-f]))|(\\(_|~|\.|-|!|\$|&|'|\(|\)|\*|\+|,|;|=|\/|\?|#|@|%))))*((((?:([A-Z]|[a-z]|[\u00C0-\u00D6]|[\u00D8-\u00F6]|[\u00F8-\u02FF]|[\u0370-\u037D]|[\u037F-\u1FFF]|[\u200C-\u200D]|[\u2070-\u218F]|[\u2C00-\u2FEF]|[\u3001-\uD7FF]|[\uF900-\uFDCF]|[\uFDF0-\uFFFD]|[\uD800-\uDB7F][\uDC00-\uDFFF])|_))|-|[0-9]|\u00B7|[\u0300-\u036F]|[\u203F-\u2040])|:|((%([0-9]|[A-F]|[a-f])([0-9]|[A-F]|[a-f]))|(\\(_|~|\.|-|!|\$|&|'|\(|\)|\*|\+|,|;|=|\/|\?|#|@|%)))))?)))/i,/^(?:(_:(((?:([A-Z]|[a-z]|[\u00C0-\u00D6]|[\u00D8-\u00F6]|[\u00F8-\u02FF]|[\u0370-\u037D]|[\u037F-\u1FFF]|[\u200C-\u200D]|[\u2070-\u218F]|[\u2C00-\u2FEF]|[\u3001-\uD7FF]|[\uF900-\uFDCF]|[\uFDF0-\uFFFD]|[\uD800-\uDB7F][\uDC00-\uDFFF])|_))|[0-9])(((((?:([A-Z]|[a-z]|[\u00C0-\u00D6]|[\u00D8-\u00F6]|[\u00F8-\u02FF]|[\u0370-\u037D]|[\u037F-\u1FFF]|[\u200C-\u200D]|[\u2070-\u218F]|[\u2C00-\u2FEF]|[\u3001-\uD7FF]|[\uF900-\uFDCF]|[\uFDF0-\uFFFD]|[\uD800-\uDB7F][\uDC00-\uDFFF])|_))|-|[0-9]|\u00B7|[\u0300-\u036F]|[\u203F-\u2040])|\.)*(((?:([A-Z]|[a-z]|[\u00C0-\u00D6]|[\u00D8-\u00F6]|[\u00F8-\u02FF]|[\u0370-\u037D]|[\u037F-\u1FFF]|[\u200C-\u200D]|[\u2070-\u218F]|[\u2C00-\u2FEF]|[\u3001-\uD7FF]|[\uF900-\uFDCF]|[\uFDF0-\uFFFD]|[\uD800-\uDB7F][\uDC00-\uDFFF])|_))|-|[0-9]|\u00B7|[\u0300-\u036F]|[\u203F-\u2040]))?))/i,/^(?:([\?\$]((((?:([A-Z]|[a-z]|[\u00C0-\u00D6]|[\u00D8-\u00F6]|[\u00F8-\u02FF]|[\u0370-\u037D]|[\u037F-\u1FFF]|[\u200C-\u200D]|[\u2070-\u218F]|[\u2C00-\u2FEF]|[\u3001-\uD7FF]|[\uF900-\uFDCF]|[\uFDF0-\uFFFD]|[\uD800-\uDB7F][\uDC00-\uDFFF])|_))|[0-9])(((?:([A-Z]|[a-z]|[\u00C0-\u00D6]|[\u00D8-\u00F6]|[\u00F8-\u02FF]|[\u0370-\u037D]|[\u037F-\u1FFF]|[\u200C-\u200D]|[\u2070-\u218F]|[\u2C00-\u2FEF]|[\u3001-\uD7FF]|[\uF900-\uFDCF]|[\uFDF0-\uFFFD]|[\uD800-\uDB7F][\uDC00-\uDFFF])|_))|[0-9]|\u00B7|[\u0300-\u036F]|[\u203F-\u2040])*)))/i,/^(?:(@[a-zA-Z]+(-[a-zA-Z0-9]+)*))/i,/^(?:([0-9]+))/i,/^(?:([0-9]*\.[0-9]+))/i,/^(?:([0-9]+\.[0-9]*([eE][+-]?[0-9]+)|\.([0-9])+([eE][+-]?[0-9]+)|([0-9])+([eE][+-]?[0-9]+)))/i,/^(?:(\+([0-9]+)))/i,/^(?:(\+([0-9]*\.[0-9]+)))/i,/^(?:(\+([0-9]+\.[0-9]*([eE][+-]?[0-9]+)|\.([0-9])+([eE][+-]?[0-9]+)|([0-9])+([eE][+-]?[0-9]+))))/i,/^(?:(-([0-9]+)))/i,/^(?:(-([0-9]*\.[0-9]+)))/i,/^(?:(-([0-9]+\.[0-9]*([eE][+-]?[0-9]+)|\.([0-9])+([eE][+-]?[0-9]+)|([0-9])+([eE][+-]?[0-9]+))))/i,/^(?:([eE][+-]?[0-9]+))/i,/^(?:('(([^\u0027\u005C\u000A\u000D])|(\\[tbnrf\\\"']|\\u([0-9]|[A-F]|[a-f])([0-9]|[A-F]|[a-f])([0-9]|[A-F]|[a-f])([0-9]|[A-F]|[a-f])|\\U([0-9]|[A-F]|[a-f])([0-9]|[A-F]|[a-f])([0-9]|[A-F]|[a-f])([0-9]|[A-F]|[a-f])([0-9]|[A-F]|[a-f])([0-9]|[A-F]|[a-f])([0-9]|[A-F]|[a-f])([0-9]|[A-F]|[a-f])))*'))/i,/^(?:("(([^\u0022\u005C\u000A\u000D])|(\\[tbnrf\\\"']|\\u([0-9]|[A-F]|[a-f])([0-9]|[A-F]|[a-f])([0-9]|[A-F]|[a-f])([0-9]|[A-F]|[a-f])|\\U([0-9]|[A-F]|[a-f])([0-9]|[A-F]|[a-f])([0-9]|[A-F]|[a-f])([0-9]|[A-F]|[a-f])([0-9]|[A-F]|[a-f])([0-9]|[A-F]|[a-f])([0-9]|[A-F]|[a-f])([0-9]|[A-F]|[a-f])))*"))/i,/^(?:('''(('|'')?([^'\\]|(\\[tbnrf\\\"']|\\u([0-9]|[A-F]|[a-f])([0-9]|[A-F]|[a-f])([0-9]|[A-F]|[a-f])([0-9]|[A-F]|[a-f])|\\U([0-9]|[A-F]|[a-f])([0-9]|[A-F]|[a-f])([0-9]|[A-F]|[a-f])([0-9]|[A-F]|[a-f])([0-9]|[A-F]|[a-f])([0-9]|[A-F]|[a-f])([0-9]|[A-F]|[a-f])([0-9]|[A-F]|[a-f]))))*'''))/i,/^(?:("""(("|"")?([^\"\\]|(\\[tbnrf\\\"']|\\u([0-9]|[A-F]|[a-f])([0-9]|[A-F]|[a-f])([0-9]|[A-F]|[a-f])([0-9]|[A-F]|[a-f])|\\U([0-9]|[A-F]|[a-f])([0-9]|[A-F]|[a-f])([0-9]|[A-F]|[a-f])([0-9]|[A-F]|[a-f])([0-9]|[A-F]|[a-f])([0-9]|[A-F]|[a-f])([0-9]|[A-F]|[a-f])([0-9]|[A-F]|[a-f]))))*"""))/i,/^(?:(\((\u0020|\u0009|\u000D|\u000A)*\)))/i,/^(?:(\[(\u0020|\u0009|\u000D|\u000A)*\]))/i,/^(?:$)/i,/^(?:.)/i,/^(?:.)/i],
+conditions: {"INITIAL":{"rules":[0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,42,43,44,45,46,47,48,49,50,51,52,53,54,55,56,57,58,59,60,61,62,63,64,65,66,67,68,69,70,71,72,73,74,75,76,77,78,79,80,81,82,83,84,85,86,87,88,89,90,91,92,93,94,95,96,97,98,99,100,101,102,103,104,105,106,107,108,109,110,111,112,113,114,115,116,117,118,119],"inclusive":true}}
 });
 return lexer;
 })();
@@ -101245,7 +99936,7 @@ exports.main = function commonjsMain (args) {
         console.log('Usage: '+args[0]+' FILE');
         process.exit(1);
     }
-    var source = __webpack_require__(/*! fs */ 4).readFileSync(__webpack_require__(/*! path */ 5).normalize(args[1]), "utf8");
+    var source = __webpack_require__(/*! fs */ 3).readFileSync(__webpack_require__(/*! path */ 4).normalize(args[1]), "utf8");
     return exports.parser.parse(source);
 };
 if ( true && __webpack_require__.c[__webpack_require__.s] === module) {
@@ -101253,6 +99944,46 @@ if ( true && __webpack_require__.c[__webpack_require__.s] === module) {
 }
 }
 /* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./../../process/browser.js */ "./node_modules/process/browser.js"), __webpack_require__(/*! ./../../webpack/buildin/module.js */ "./node_modules/webpack/buildin/module.js")(module)))
+
+/***/ }),
+
+/***/ "./node_modules/sparqljs/lib/Wildcard.js":
+/*!***********************************************!*\
+  !*** ./node_modules/sparqljs/lib/Wildcard.js ***!
+  \***********************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+var Term = __webpack_require__(/*! n3 */ "./node_modules/n3/src/index.js").DataFactory.internal.Term;
+
+// Wildcard constructor
+class Wildcard extends Term {
+  constructor() {
+    super('');
+    return WILDCARD || this;
+  }
+
+  equals(other) {
+    return other && (this.termType === other.termType);
+  }
+}
+
+Object.defineProperty(Wildcard.prototype, 'value', {
+  enumerable: true,
+  value: '*',
+});
+
+Object.defineProperty(Wildcard.prototype, 'termType', {
+  enumerable: true,
+  value: 'Wildcard',
+});
+
+
+// Wildcard singleton
+var WILDCARD = new Wildcard();
+
+module.exports.Wildcard = Wildcard;
+
 
 /***/ }),
 
@@ -101265,6 +99996,8 @@ if ( true && __webpack_require__.c[__webpack_require__.s] === module) {
 
 var Parser = __webpack_require__(/*! ./lib/SparqlParser */ "./node_modules/sparqljs/lib/SparqlParser.js").Parser;
 var Generator = __webpack_require__(/*! ./lib/SparqlGenerator */ "./node_modules/sparqljs/lib/SparqlGenerator.js");
+var Wildcard = __webpack_require__(/*! ./lib/Wildcard */ "./node_modules/sparqljs/lib/Wildcard.js").Wildcard;
+var N3 = __webpack_require__(/*! n3 */ "./node_modules/n3/src/index.js");
 
 module.exports = {
   /**
@@ -101272,7 +100005,7 @@ module.exports = {
    * @param prefixes { [prefix: string]: string }
    * @param baseIRI string
    */
-  Parser: function (prefixes, baseIRI) {
+  Parser: function ({ prefixes, baseIRI, factory } = {}) {
     // Create a copy of the prefixes
     var prefixesCopy = {};
     for (var prefix in prefixes || {})
@@ -101284,12 +100017,14 @@ module.exports = {
     parser.parse = function () {
       Parser.base = baseIRI || '';
       Parser.prefixes = Object.create(prefixesCopy);
+      Parser.factory = factory || N3.DataFactory;
       return Parser.prototype.parse.apply(parser, arguments);
     };
     parser._resetBlanks = Parser._resetBlanks;
     return parser;
   },
   Generator: Generator,
+  Wildcard: Wildcard,
 };
 
 
@@ -101875,11 +100610,11 @@ var EE = __webpack_require__(/*! events */ "./node_modules/events/events.js").Ev
 var inherits = __webpack_require__(/*! inherits */ "./node_modules/inherits/inherits_browser.js");
 
 inherits(Stream, EE);
-Stream.Readable = __webpack_require__(/*! readable-stream/readable.js */ "./node_modules/stream-browserify/node_modules/readable-stream/readable-browser.js");
-Stream.Writable = __webpack_require__(/*! readable-stream/writable.js */ "./node_modules/stream-browserify/node_modules/readable-stream/writable-browser.js");
-Stream.Duplex = __webpack_require__(/*! readable-stream/duplex.js */ "./node_modules/stream-browserify/node_modules/readable-stream/duplex-browser.js");
-Stream.Transform = __webpack_require__(/*! readable-stream/transform.js */ "./node_modules/stream-browserify/node_modules/readable-stream/transform.js");
-Stream.PassThrough = __webpack_require__(/*! readable-stream/passthrough.js */ "./node_modules/stream-browserify/node_modules/readable-stream/passthrough.js");
+Stream.Readable = __webpack_require__(/*! readable-stream/readable.js */ "./node_modules/readable-stream/readable-browser.js");
+Stream.Writable = __webpack_require__(/*! readable-stream/writable.js */ "./node_modules/readable-stream/writable-browser.js");
+Stream.Duplex = __webpack_require__(/*! readable-stream/duplex.js */ "./node_modules/readable-stream/duplex-browser.js");
+Stream.Transform = __webpack_require__(/*! readable-stream/transform.js */ "./node_modules/readable-stream/transform.js");
+Stream.PassThrough = __webpack_require__(/*! readable-stream/passthrough.js */ "./node_modules/readable-stream/passthrough.js");
 
 // Backwards-compat with node 0.4.x
 Stream.Stream = Stream;
@@ -101979,2487 +100714,6 @@ Stream.prototype.pipe = function(dest, options) {
 
 /***/ }),
 
-/***/ "./node_modules/stream-browserify/node_modules/readable-stream/duplex-browser.js":
-/*!***************************************************************************************!*\
-  !*** ./node_modules/stream-browserify/node_modules/readable-stream/duplex-browser.js ***!
-  \***************************************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-module.exports = __webpack_require__(/*! ./lib/_stream_duplex.js */ "./node_modules/stream-browserify/node_modules/readable-stream/lib/_stream_duplex.js");
-
-
-/***/ }),
-
-/***/ "./node_modules/stream-browserify/node_modules/readable-stream/lib/_stream_duplex.js":
-/*!*******************************************************************************************!*\
-  !*** ./node_modules/stream-browserify/node_modules/readable-stream/lib/_stream_duplex.js ***!
-  \*******************************************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-// Copyright Joyent, Inc. and other Node contributors.
-//
-// Permission is hereby granted, free of charge, to any person obtaining a
-// copy of this software and associated documentation files (the
-// "Software"), to deal in the Software without restriction, including
-// without limitation the rights to use, copy, modify, merge, publish,
-// distribute, sublicense, and/or sell copies of the Software, and to permit
-// persons to whom the Software is furnished to do so, subject to the
-// following conditions:
-//
-// The above copyright notice and this permission notice shall be included
-// in all copies or substantial portions of the Software.
-//
-// THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS
-// OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
-// MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN
-// NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM,
-// DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR
-// OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE
-// USE OR OTHER DEALINGS IN THE SOFTWARE.
-
-// a duplex stream is just a stream that is both readable and writable.
-// Since JS doesn't have multiple prototypal inheritance, this class
-// prototypally inherits from Readable, and then parasitically from
-// Writable.
-
-
-
-/*<replacement>*/
-
-var pna = __webpack_require__(/*! process-nextick-args */ "./node_modules/process-nextick-args/index.js");
-/*</replacement>*/
-
-/*<replacement>*/
-var objectKeys = Object.keys || function (obj) {
-  var keys = [];
-  for (var key in obj) {
-    keys.push(key);
-  }return keys;
-};
-/*</replacement>*/
-
-module.exports = Duplex;
-
-/*<replacement>*/
-var util = __webpack_require__(/*! core-util-is */ "./node_modules/core-util-is/lib/util.js");
-util.inherits = __webpack_require__(/*! inherits */ "./node_modules/inherits/inherits_browser.js");
-/*</replacement>*/
-
-var Readable = __webpack_require__(/*! ./_stream_readable */ "./node_modules/stream-browserify/node_modules/readable-stream/lib/_stream_readable.js");
-var Writable = __webpack_require__(/*! ./_stream_writable */ "./node_modules/stream-browserify/node_modules/readable-stream/lib/_stream_writable.js");
-
-util.inherits(Duplex, Readable);
-
-{
-  // avoid scope creep, the keys array can then be collected
-  var keys = objectKeys(Writable.prototype);
-  for (var v = 0; v < keys.length; v++) {
-    var method = keys[v];
-    if (!Duplex.prototype[method]) Duplex.prototype[method] = Writable.prototype[method];
-  }
-}
-
-function Duplex(options) {
-  if (!(this instanceof Duplex)) return new Duplex(options);
-
-  Readable.call(this, options);
-  Writable.call(this, options);
-
-  if (options && options.readable === false) this.readable = false;
-
-  if (options && options.writable === false) this.writable = false;
-
-  this.allowHalfOpen = true;
-  if (options && options.allowHalfOpen === false) this.allowHalfOpen = false;
-
-  this.once('end', onend);
-}
-
-Object.defineProperty(Duplex.prototype, 'writableHighWaterMark', {
-  // making it explicit this property is not enumerable
-  // because otherwise some prototype manipulation in
-  // userland will fail
-  enumerable: false,
-  get: function () {
-    return this._writableState.highWaterMark;
-  }
-});
-
-// the no-half-open enforcer
-function onend() {
-  // if we allow half-open state, or if the writable side ended,
-  // then we're ok.
-  if (this.allowHalfOpen || this._writableState.ended) return;
-
-  // no more data can be written.
-  // But allow more writes to happen in this tick.
-  pna.nextTick(onEndNT, this);
-}
-
-function onEndNT(self) {
-  self.end();
-}
-
-Object.defineProperty(Duplex.prototype, 'destroyed', {
-  get: function () {
-    if (this._readableState === undefined || this._writableState === undefined) {
-      return false;
-    }
-    return this._readableState.destroyed && this._writableState.destroyed;
-  },
-  set: function (value) {
-    // we ignore the value if the stream
-    // has not been initialized yet
-    if (this._readableState === undefined || this._writableState === undefined) {
-      return;
-    }
-
-    // backward compatibility, the user is explicitly
-    // managing destroyed
-    this._readableState.destroyed = value;
-    this._writableState.destroyed = value;
-  }
-});
-
-Duplex.prototype._destroy = function (err, cb) {
-  this.push(null);
-  this.end();
-
-  pna.nextTick(cb, err);
-};
-
-/***/ }),
-
-/***/ "./node_modules/stream-browserify/node_modules/readable-stream/lib/_stream_passthrough.js":
-/*!************************************************************************************************!*\
-  !*** ./node_modules/stream-browserify/node_modules/readable-stream/lib/_stream_passthrough.js ***!
-  \************************************************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-// Copyright Joyent, Inc. and other Node contributors.
-//
-// Permission is hereby granted, free of charge, to any person obtaining a
-// copy of this software and associated documentation files (the
-// "Software"), to deal in the Software without restriction, including
-// without limitation the rights to use, copy, modify, merge, publish,
-// distribute, sublicense, and/or sell copies of the Software, and to permit
-// persons to whom the Software is furnished to do so, subject to the
-// following conditions:
-//
-// The above copyright notice and this permission notice shall be included
-// in all copies or substantial portions of the Software.
-//
-// THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS
-// OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
-// MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN
-// NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM,
-// DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR
-// OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE
-// USE OR OTHER DEALINGS IN THE SOFTWARE.
-
-// a passthrough stream.
-// basically just the most minimal sort of Transform stream.
-// Every written chunk gets output as-is.
-
-
-
-module.exports = PassThrough;
-
-var Transform = __webpack_require__(/*! ./_stream_transform */ "./node_modules/stream-browserify/node_modules/readable-stream/lib/_stream_transform.js");
-
-/*<replacement>*/
-var util = __webpack_require__(/*! core-util-is */ "./node_modules/core-util-is/lib/util.js");
-util.inherits = __webpack_require__(/*! inherits */ "./node_modules/inherits/inherits_browser.js");
-/*</replacement>*/
-
-util.inherits(PassThrough, Transform);
-
-function PassThrough(options) {
-  if (!(this instanceof PassThrough)) return new PassThrough(options);
-
-  Transform.call(this, options);
-}
-
-PassThrough.prototype._transform = function (chunk, encoding, cb) {
-  cb(null, chunk);
-};
-
-/***/ }),
-
-/***/ "./node_modules/stream-browserify/node_modules/readable-stream/lib/_stream_readable.js":
-/*!*********************************************************************************************!*\
-  !*** ./node_modules/stream-browserify/node_modules/readable-stream/lib/_stream_readable.js ***!
-  \*********************************************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-/* WEBPACK VAR INJECTION */(function(global, process) {// Copyright Joyent, Inc. and other Node contributors.
-//
-// Permission is hereby granted, free of charge, to any person obtaining a
-// copy of this software and associated documentation files (the
-// "Software"), to deal in the Software without restriction, including
-// without limitation the rights to use, copy, modify, merge, publish,
-// distribute, sublicense, and/or sell copies of the Software, and to permit
-// persons to whom the Software is furnished to do so, subject to the
-// following conditions:
-//
-// The above copyright notice and this permission notice shall be included
-// in all copies or substantial portions of the Software.
-//
-// THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS
-// OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
-// MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN
-// NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM,
-// DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR
-// OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE
-// USE OR OTHER DEALINGS IN THE SOFTWARE.
-
-
-
-/*<replacement>*/
-
-var pna = __webpack_require__(/*! process-nextick-args */ "./node_modules/process-nextick-args/index.js");
-/*</replacement>*/
-
-module.exports = Readable;
-
-/*<replacement>*/
-var isArray = __webpack_require__(/*! isarray */ "./node_modules/isarray/index.js");
-/*</replacement>*/
-
-/*<replacement>*/
-var Duplex;
-/*</replacement>*/
-
-Readable.ReadableState = ReadableState;
-
-/*<replacement>*/
-var EE = __webpack_require__(/*! events */ "./node_modules/events/events.js").EventEmitter;
-
-var EElistenerCount = function (emitter, type) {
-  return emitter.listeners(type).length;
-};
-/*</replacement>*/
-
-/*<replacement>*/
-var Stream = __webpack_require__(/*! ./internal/streams/stream */ "./node_modules/stream-browserify/node_modules/readable-stream/lib/internal/streams/stream-browser.js");
-/*</replacement>*/
-
-/*<replacement>*/
-
-var Buffer = __webpack_require__(/*! safe-buffer */ "./node_modules/stream-browserify/node_modules/safe-buffer/index.js").Buffer;
-var OurUint8Array = global.Uint8Array || function () {};
-function _uint8ArrayToBuffer(chunk) {
-  return Buffer.from(chunk);
-}
-function _isUint8Array(obj) {
-  return Buffer.isBuffer(obj) || obj instanceof OurUint8Array;
-}
-
-/*</replacement>*/
-
-/*<replacement>*/
-var util = __webpack_require__(/*! core-util-is */ "./node_modules/core-util-is/lib/util.js");
-util.inherits = __webpack_require__(/*! inherits */ "./node_modules/inherits/inherits_browser.js");
-/*</replacement>*/
-
-/*<replacement>*/
-var debugUtil = __webpack_require__(/*! util */ 0);
-var debug = void 0;
-if (debugUtil && debugUtil.debuglog) {
-  debug = debugUtil.debuglog('stream');
-} else {
-  debug = function () {};
-}
-/*</replacement>*/
-
-var BufferList = __webpack_require__(/*! ./internal/streams/BufferList */ "./node_modules/stream-browserify/node_modules/readable-stream/lib/internal/streams/BufferList.js");
-var destroyImpl = __webpack_require__(/*! ./internal/streams/destroy */ "./node_modules/stream-browserify/node_modules/readable-stream/lib/internal/streams/destroy.js");
-var StringDecoder;
-
-util.inherits(Readable, Stream);
-
-var kProxyEvents = ['error', 'close', 'destroy', 'pause', 'resume'];
-
-function prependListener(emitter, event, fn) {
-  // Sadly this is not cacheable as some libraries bundle their own
-  // event emitter implementation with them.
-  if (typeof emitter.prependListener === 'function') return emitter.prependListener(event, fn);
-
-  // This is a hack to make sure that our error handler is attached before any
-  // userland ones.  NEVER DO THIS. This is here only because this code needs
-  // to continue to work with older versions of Node.js that do not include
-  // the prependListener() method. The goal is to eventually remove this hack.
-  if (!emitter._events || !emitter._events[event]) emitter.on(event, fn);else if (isArray(emitter._events[event])) emitter._events[event].unshift(fn);else emitter._events[event] = [fn, emitter._events[event]];
-}
-
-function ReadableState(options, stream) {
-  Duplex = Duplex || __webpack_require__(/*! ./_stream_duplex */ "./node_modules/stream-browserify/node_modules/readable-stream/lib/_stream_duplex.js");
-
-  options = options || {};
-
-  // Duplex streams are both readable and writable, but share
-  // the same options object.
-  // However, some cases require setting options to different
-  // values for the readable and the writable sides of the duplex stream.
-  // These options can be provided separately as readableXXX and writableXXX.
-  var isDuplex = stream instanceof Duplex;
-
-  // object stream flag. Used to make read(n) ignore n and to
-  // make all the buffer merging and length checks go away
-  this.objectMode = !!options.objectMode;
-
-  if (isDuplex) this.objectMode = this.objectMode || !!options.readableObjectMode;
-
-  // the point at which it stops calling _read() to fill the buffer
-  // Note: 0 is a valid value, means "don't call _read preemptively ever"
-  var hwm = options.highWaterMark;
-  var readableHwm = options.readableHighWaterMark;
-  var defaultHwm = this.objectMode ? 16 : 16 * 1024;
-
-  if (hwm || hwm === 0) this.highWaterMark = hwm;else if (isDuplex && (readableHwm || readableHwm === 0)) this.highWaterMark = readableHwm;else this.highWaterMark = defaultHwm;
-
-  // cast to ints.
-  this.highWaterMark = Math.floor(this.highWaterMark);
-
-  // A linked list is used to store data chunks instead of an array because the
-  // linked list can remove elements from the beginning faster than
-  // array.shift()
-  this.buffer = new BufferList();
-  this.length = 0;
-  this.pipes = null;
-  this.pipesCount = 0;
-  this.flowing = null;
-  this.ended = false;
-  this.endEmitted = false;
-  this.reading = false;
-
-  // a flag to be able to tell if the event 'readable'/'data' is emitted
-  // immediately, or on a later tick.  We set this to true at first, because
-  // any actions that shouldn't happen until "later" should generally also
-  // not happen before the first read call.
-  this.sync = true;
-
-  // whenever we return null, then we set a flag to say
-  // that we're awaiting a 'readable' event emission.
-  this.needReadable = false;
-  this.emittedReadable = false;
-  this.readableListening = false;
-  this.resumeScheduled = false;
-
-  // has it been destroyed
-  this.destroyed = false;
-
-  // Crypto is kind of old and crusty.  Historically, its default string
-  // encoding is 'binary' so we have to make this configurable.
-  // Everything else in the universe uses 'utf8', though.
-  this.defaultEncoding = options.defaultEncoding || 'utf8';
-
-  // the number of writers that are awaiting a drain event in .pipe()s
-  this.awaitDrain = 0;
-
-  // if true, a maybeReadMore has been scheduled
-  this.readingMore = false;
-
-  this.decoder = null;
-  this.encoding = null;
-  if (options.encoding) {
-    if (!StringDecoder) StringDecoder = __webpack_require__(/*! string_decoder/ */ "./node_modules/string_decoder/lib/string_decoder.js").StringDecoder;
-    this.decoder = new StringDecoder(options.encoding);
-    this.encoding = options.encoding;
-  }
-}
-
-function Readable(options) {
-  Duplex = Duplex || __webpack_require__(/*! ./_stream_duplex */ "./node_modules/stream-browserify/node_modules/readable-stream/lib/_stream_duplex.js");
-
-  if (!(this instanceof Readable)) return new Readable(options);
-
-  this._readableState = new ReadableState(options, this);
-
-  // legacy
-  this.readable = true;
-
-  if (options) {
-    if (typeof options.read === 'function') this._read = options.read;
-
-    if (typeof options.destroy === 'function') this._destroy = options.destroy;
-  }
-
-  Stream.call(this);
-}
-
-Object.defineProperty(Readable.prototype, 'destroyed', {
-  get: function () {
-    if (this._readableState === undefined) {
-      return false;
-    }
-    return this._readableState.destroyed;
-  },
-  set: function (value) {
-    // we ignore the value if the stream
-    // has not been initialized yet
-    if (!this._readableState) {
-      return;
-    }
-
-    // backward compatibility, the user is explicitly
-    // managing destroyed
-    this._readableState.destroyed = value;
-  }
-});
-
-Readable.prototype.destroy = destroyImpl.destroy;
-Readable.prototype._undestroy = destroyImpl.undestroy;
-Readable.prototype._destroy = function (err, cb) {
-  this.push(null);
-  cb(err);
-};
-
-// Manually shove something into the read() buffer.
-// This returns true if the highWaterMark has not been hit yet,
-// similar to how Writable.write() returns true if you should
-// write() some more.
-Readable.prototype.push = function (chunk, encoding) {
-  var state = this._readableState;
-  var skipChunkCheck;
-
-  if (!state.objectMode) {
-    if (typeof chunk === 'string') {
-      encoding = encoding || state.defaultEncoding;
-      if (encoding !== state.encoding) {
-        chunk = Buffer.from(chunk, encoding);
-        encoding = '';
-      }
-      skipChunkCheck = true;
-    }
-  } else {
-    skipChunkCheck = true;
-  }
-
-  return readableAddChunk(this, chunk, encoding, false, skipChunkCheck);
-};
-
-// Unshift should *always* be something directly out of read()
-Readable.prototype.unshift = function (chunk) {
-  return readableAddChunk(this, chunk, null, true, false);
-};
-
-function readableAddChunk(stream, chunk, encoding, addToFront, skipChunkCheck) {
-  var state = stream._readableState;
-  if (chunk === null) {
-    state.reading = false;
-    onEofChunk(stream, state);
-  } else {
-    var er;
-    if (!skipChunkCheck) er = chunkInvalid(state, chunk);
-    if (er) {
-      stream.emit('error', er);
-    } else if (state.objectMode || chunk && chunk.length > 0) {
-      if (typeof chunk !== 'string' && !state.objectMode && Object.getPrototypeOf(chunk) !== Buffer.prototype) {
-        chunk = _uint8ArrayToBuffer(chunk);
-      }
-
-      if (addToFront) {
-        if (state.endEmitted) stream.emit('error', new Error('stream.unshift() after end event'));else addChunk(stream, state, chunk, true);
-      } else if (state.ended) {
-        stream.emit('error', new Error('stream.push() after EOF'));
-      } else {
-        state.reading = false;
-        if (state.decoder && !encoding) {
-          chunk = state.decoder.write(chunk);
-          if (state.objectMode || chunk.length !== 0) addChunk(stream, state, chunk, false);else maybeReadMore(stream, state);
-        } else {
-          addChunk(stream, state, chunk, false);
-        }
-      }
-    } else if (!addToFront) {
-      state.reading = false;
-    }
-  }
-
-  return needMoreData(state);
-}
-
-function addChunk(stream, state, chunk, addToFront) {
-  if (state.flowing && state.length === 0 && !state.sync) {
-    stream.emit('data', chunk);
-    stream.read(0);
-  } else {
-    // update the buffer info.
-    state.length += state.objectMode ? 1 : chunk.length;
-    if (addToFront) state.buffer.unshift(chunk);else state.buffer.push(chunk);
-
-    if (state.needReadable) emitReadable(stream);
-  }
-  maybeReadMore(stream, state);
-}
-
-function chunkInvalid(state, chunk) {
-  var er;
-  if (!_isUint8Array(chunk) && typeof chunk !== 'string' && chunk !== undefined && !state.objectMode) {
-    er = new TypeError('Invalid non-string/buffer chunk');
-  }
-  return er;
-}
-
-// if it's past the high water mark, we can push in some more.
-// Also, if we have no data yet, we can stand some
-// more bytes.  This is to work around cases where hwm=0,
-// such as the repl.  Also, if the push() triggered a
-// readable event, and the user called read(largeNumber) such that
-// needReadable was set, then we ought to push more, so that another
-// 'readable' event will be triggered.
-function needMoreData(state) {
-  return !state.ended && (state.needReadable || state.length < state.highWaterMark || state.length === 0);
-}
-
-Readable.prototype.isPaused = function () {
-  return this._readableState.flowing === false;
-};
-
-// backwards compatibility.
-Readable.prototype.setEncoding = function (enc) {
-  if (!StringDecoder) StringDecoder = __webpack_require__(/*! string_decoder/ */ "./node_modules/string_decoder/lib/string_decoder.js").StringDecoder;
-  this._readableState.decoder = new StringDecoder(enc);
-  this._readableState.encoding = enc;
-  return this;
-};
-
-// Don't raise the hwm > 8MB
-var MAX_HWM = 0x800000;
-function computeNewHighWaterMark(n) {
-  if (n >= MAX_HWM) {
-    n = MAX_HWM;
-  } else {
-    // Get the next highest power of 2 to prevent increasing hwm excessively in
-    // tiny amounts
-    n--;
-    n |= n >>> 1;
-    n |= n >>> 2;
-    n |= n >>> 4;
-    n |= n >>> 8;
-    n |= n >>> 16;
-    n++;
-  }
-  return n;
-}
-
-// This function is designed to be inlinable, so please take care when making
-// changes to the function body.
-function howMuchToRead(n, state) {
-  if (n <= 0 || state.length === 0 && state.ended) return 0;
-  if (state.objectMode) return 1;
-  if (n !== n) {
-    // Only flow one buffer at a time
-    if (state.flowing && state.length) return state.buffer.head.data.length;else return state.length;
-  }
-  // If we're asking for more than the current hwm, then raise the hwm.
-  if (n > state.highWaterMark) state.highWaterMark = computeNewHighWaterMark(n);
-  if (n <= state.length) return n;
-  // Don't have enough
-  if (!state.ended) {
-    state.needReadable = true;
-    return 0;
-  }
-  return state.length;
-}
-
-// you can override either this method, or the async _read(n) below.
-Readable.prototype.read = function (n) {
-  debug('read', n);
-  n = parseInt(n, 10);
-  var state = this._readableState;
-  var nOrig = n;
-
-  if (n !== 0) state.emittedReadable = false;
-
-  // if we're doing read(0) to trigger a readable event, but we
-  // already have a bunch of data in the buffer, then just trigger
-  // the 'readable' event and move on.
-  if (n === 0 && state.needReadable && (state.length >= state.highWaterMark || state.ended)) {
-    debug('read: emitReadable', state.length, state.ended);
-    if (state.length === 0 && state.ended) endReadable(this);else emitReadable(this);
-    return null;
-  }
-
-  n = howMuchToRead(n, state);
-
-  // if we've ended, and we're now clear, then finish it up.
-  if (n === 0 && state.ended) {
-    if (state.length === 0) endReadable(this);
-    return null;
-  }
-
-  // All the actual chunk generation logic needs to be
-  // *below* the call to _read.  The reason is that in certain
-  // synthetic stream cases, such as passthrough streams, _read
-  // may be a completely synchronous operation which may change
-  // the state of the read buffer, providing enough data when
-  // before there was *not* enough.
-  //
-  // So, the steps are:
-  // 1. Figure out what the state of things will be after we do
-  // a read from the buffer.
-  //
-  // 2. If that resulting state will trigger a _read, then call _read.
-  // Note that this may be asynchronous, or synchronous.  Yes, it is
-  // deeply ugly to write APIs this way, but that still doesn't mean
-  // that the Readable class should behave improperly, as streams are
-  // designed to be sync/async agnostic.
-  // Take note if the _read call is sync or async (ie, if the read call
-  // has returned yet), so that we know whether or not it's safe to emit
-  // 'readable' etc.
-  //
-  // 3. Actually pull the requested chunks out of the buffer and return.
-
-  // if we need a readable event, then we need to do some reading.
-  var doRead = state.needReadable;
-  debug('need readable', doRead);
-
-  // if we currently have less than the highWaterMark, then also read some
-  if (state.length === 0 || state.length - n < state.highWaterMark) {
-    doRead = true;
-    debug('length less than watermark', doRead);
-  }
-
-  // however, if we've ended, then there's no point, and if we're already
-  // reading, then it's unnecessary.
-  if (state.ended || state.reading) {
-    doRead = false;
-    debug('reading or ended', doRead);
-  } else if (doRead) {
-    debug('do read');
-    state.reading = true;
-    state.sync = true;
-    // if the length is currently zero, then we *need* a readable event.
-    if (state.length === 0) state.needReadable = true;
-    // call internal read method
-    this._read(state.highWaterMark);
-    state.sync = false;
-    // If _read pushed data synchronously, then `reading` will be false,
-    // and we need to re-evaluate how much data we can return to the user.
-    if (!state.reading) n = howMuchToRead(nOrig, state);
-  }
-
-  var ret;
-  if (n > 0) ret = fromList(n, state);else ret = null;
-
-  if (ret === null) {
-    state.needReadable = true;
-    n = 0;
-  } else {
-    state.length -= n;
-  }
-
-  if (state.length === 0) {
-    // If we have nothing in the buffer, then we want to know
-    // as soon as we *do* get something into the buffer.
-    if (!state.ended) state.needReadable = true;
-
-    // If we tried to read() past the EOF, then emit end on the next tick.
-    if (nOrig !== n && state.ended) endReadable(this);
-  }
-
-  if (ret !== null) this.emit('data', ret);
-
-  return ret;
-};
-
-function onEofChunk(stream, state) {
-  if (state.ended) return;
-  if (state.decoder) {
-    var chunk = state.decoder.end();
-    if (chunk && chunk.length) {
-      state.buffer.push(chunk);
-      state.length += state.objectMode ? 1 : chunk.length;
-    }
-  }
-  state.ended = true;
-
-  // emit 'readable' now to make sure it gets picked up.
-  emitReadable(stream);
-}
-
-// Don't emit readable right away in sync mode, because this can trigger
-// another read() call => stack overflow.  This way, it might trigger
-// a nextTick recursion warning, but that's not so bad.
-function emitReadable(stream) {
-  var state = stream._readableState;
-  state.needReadable = false;
-  if (!state.emittedReadable) {
-    debug('emitReadable', state.flowing);
-    state.emittedReadable = true;
-    if (state.sync) pna.nextTick(emitReadable_, stream);else emitReadable_(stream);
-  }
-}
-
-function emitReadable_(stream) {
-  debug('emit readable');
-  stream.emit('readable');
-  flow(stream);
-}
-
-// at this point, the user has presumably seen the 'readable' event,
-// and called read() to consume some data.  that may have triggered
-// in turn another _read(n) call, in which case reading = true if
-// it's in progress.
-// However, if we're not ended, or reading, and the length < hwm,
-// then go ahead and try to read some more preemptively.
-function maybeReadMore(stream, state) {
-  if (!state.readingMore) {
-    state.readingMore = true;
-    pna.nextTick(maybeReadMore_, stream, state);
-  }
-}
-
-function maybeReadMore_(stream, state) {
-  var len = state.length;
-  while (!state.reading && !state.flowing && !state.ended && state.length < state.highWaterMark) {
-    debug('maybeReadMore read 0');
-    stream.read(0);
-    if (len === state.length)
-      // didn't get any data, stop spinning.
-      break;else len = state.length;
-  }
-  state.readingMore = false;
-}
-
-// abstract method.  to be overridden in specific implementation classes.
-// call cb(er, data) where data is <= n in length.
-// for virtual (non-string, non-buffer) streams, "length" is somewhat
-// arbitrary, and perhaps not very meaningful.
-Readable.prototype._read = function (n) {
-  this.emit('error', new Error('_read() is not implemented'));
-};
-
-Readable.prototype.pipe = function (dest, pipeOpts) {
-  var src = this;
-  var state = this._readableState;
-
-  switch (state.pipesCount) {
-    case 0:
-      state.pipes = dest;
-      break;
-    case 1:
-      state.pipes = [state.pipes, dest];
-      break;
-    default:
-      state.pipes.push(dest);
-      break;
-  }
-  state.pipesCount += 1;
-  debug('pipe count=%d opts=%j', state.pipesCount, pipeOpts);
-
-  var doEnd = (!pipeOpts || pipeOpts.end !== false) && dest !== process.stdout && dest !== process.stderr;
-
-  var endFn = doEnd ? onend : unpipe;
-  if (state.endEmitted) pna.nextTick(endFn);else src.once('end', endFn);
-
-  dest.on('unpipe', onunpipe);
-  function onunpipe(readable, unpipeInfo) {
-    debug('onunpipe');
-    if (readable === src) {
-      if (unpipeInfo && unpipeInfo.hasUnpiped === false) {
-        unpipeInfo.hasUnpiped = true;
-        cleanup();
-      }
-    }
-  }
-
-  function onend() {
-    debug('onend');
-    dest.end();
-  }
-
-  // when the dest drains, it reduces the awaitDrain counter
-  // on the source.  This would be more elegant with a .once()
-  // handler in flow(), but adding and removing repeatedly is
-  // too slow.
-  var ondrain = pipeOnDrain(src);
-  dest.on('drain', ondrain);
-
-  var cleanedUp = false;
-  function cleanup() {
-    debug('cleanup');
-    // cleanup event handlers once the pipe is broken
-    dest.removeListener('close', onclose);
-    dest.removeListener('finish', onfinish);
-    dest.removeListener('drain', ondrain);
-    dest.removeListener('error', onerror);
-    dest.removeListener('unpipe', onunpipe);
-    src.removeListener('end', onend);
-    src.removeListener('end', unpipe);
-    src.removeListener('data', ondata);
-
-    cleanedUp = true;
-
-    // if the reader is waiting for a drain event from this
-    // specific writer, then it would cause it to never start
-    // flowing again.
-    // So, if this is awaiting a drain, then we just call it now.
-    // If we don't know, then assume that we are waiting for one.
-    if (state.awaitDrain && (!dest._writableState || dest._writableState.needDrain)) ondrain();
-  }
-
-  // If the user pushes more data while we're writing to dest then we'll end up
-  // in ondata again. However, we only want to increase awaitDrain once because
-  // dest will only emit one 'drain' event for the multiple writes.
-  // => Introduce a guard on increasing awaitDrain.
-  var increasedAwaitDrain = false;
-  src.on('data', ondata);
-  function ondata(chunk) {
-    debug('ondata');
-    increasedAwaitDrain = false;
-    var ret = dest.write(chunk);
-    if (false === ret && !increasedAwaitDrain) {
-      // If the user unpiped during `dest.write()`, it is possible
-      // to get stuck in a permanently paused state if that write
-      // also returned false.
-      // => Check whether `dest` is still a piping destination.
-      if ((state.pipesCount === 1 && state.pipes === dest || state.pipesCount > 1 && indexOf(state.pipes, dest) !== -1) && !cleanedUp) {
-        debug('false write response, pause', src._readableState.awaitDrain);
-        src._readableState.awaitDrain++;
-        increasedAwaitDrain = true;
-      }
-      src.pause();
-    }
-  }
-
-  // if the dest has an error, then stop piping into it.
-  // however, don't suppress the throwing behavior for this.
-  function onerror(er) {
-    debug('onerror', er);
-    unpipe();
-    dest.removeListener('error', onerror);
-    if (EElistenerCount(dest, 'error') === 0) dest.emit('error', er);
-  }
-
-  // Make sure our error handler is attached before userland ones.
-  prependListener(dest, 'error', onerror);
-
-  // Both close and finish should trigger unpipe, but only once.
-  function onclose() {
-    dest.removeListener('finish', onfinish);
-    unpipe();
-  }
-  dest.once('close', onclose);
-  function onfinish() {
-    debug('onfinish');
-    dest.removeListener('close', onclose);
-    unpipe();
-  }
-  dest.once('finish', onfinish);
-
-  function unpipe() {
-    debug('unpipe');
-    src.unpipe(dest);
-  }
-
-  // tell the dest that it's being piped to
-  dest.emit('pipe', src);
-
-  // start the flow if it hasn't been started already.
-  if (!state.flowing) {
-    debug('pipe resume');
-    src.resume();
-  }
-
-  return dest;
-};
-
-function pipeOnDrain(src) {
-  return function () {
-    var state = src._readableState;
-    debug('pipeOnDrain', state.awaitDrain);
-    if (state.awaitDrain) state.awaitDrain--;
-    if (state.awaitDrain === 0 && EElistenerCount(src, 'data')) {
-      state.flowing = true;
-      flow(src);
-    }
-  };
-}
-
-Readable.prototype.unpipe = function (dest) {
-  var state = this._readableState;
-  var unpipeInfo = { hasUnpiped: false };
-
-  // if we're not piping anywhere, then do nothing.
-  if (state.pipesCount === 0) return this;
-
-  // just one destination.  most common case.
-  if (state.pipesCount === 1) {
-    // passed in one, but it's not the right one.
-    if (dest && dest !== state.pipes) return this;
-
-    if (!dest) dest = state.pipes;
-
-    // got a match.
-    state.pipes = null;
-    state.pipesCount = 0;
-    state.flowing = false;
-    if (dest) dest.emit('unpipe', this, unpipeInfo);
-    return this;
-  }
-
-  // slow case. multiple pipe destinations.
-
-  if (!dest) {
-    // remove all.
-    var dests = state.pipes;
-    var len = state.pipesCount;
-    state.pipes = null;
-    state.pipesCount = 0;
-    state.flowing = false;
-
-    for (var i = 0; i < len; i++) {
-      dests[i].emit('unpipe', this, unpipeInfo);
-    }return this;
-  }
-
-  // try to find the right one.
-  var index = indexOf(state.pipes, dest);
-  if (index === -1) return this;
-
-  state.pipes.splice(index, 1);
-  state.pipesCount -= 1;
-  if (state.pipesCount === 1) state.pipes = state.pipes[0];
-
-  dest.emit('unpipe', this, unpipeInfo);
-
-  return this;
-};
-
-// set up data events if they are asked for
-// Ensure readable listeners eventually get something
-Readable.prototype.on = function (ev, fn) {
-  var res = Stream.prototype.on.call(this, ev, fn);
-
-  if (ev === 'data') {
-    // Start flowing on next tick if stream isn't explicitly paused
-    if (this._readableState.flowing !== false) this.resume();
-  } else if (ev === 'readable') {
-    var state = this._readableState;
-    if (!state.endEmitted && !state.readableListening) {
-      state.readableListening = state.needReadable = true;
-      state.emittedReadable = false;
-      if (!state.reading) {
-        pna.nextTick(nReadingNextTick, this);
-      } else if (state.length) {
-        emitReadable(this);
-      }
-    }
-  }
-
-  return res;
-};
-Readable.prototype.addListener = Readable.prototype.on;
-
-function nReadingNextTick(self) {
-  debug('readable nexttick read 0');
-  self.read(0);
-}
-
-// pause() and resume() are remnants of the legacy readable stream API
-// If the user uses them, then switch into old mode.
-Readable.prototype.resume = function () {
-  var state = this._readableState;
-  if (!state.flowing) {
-    debug('resume');
-    state.flowing = true;
-    resume(this, state);
-  }
-  return this;
-};
-
-function resume(stream, state) {
-  if (!state.resumeScheduled) {
-    state.resumeScheduled = true;
-    pna.nextTick(resume_, stream, state);
-  }
-}
-
-function resume_(stream, state) {
-  if (!state.reading) {
-    debug('resume read 0');
-    stream.read(0);
-  }
-
-  state.resumeScheduled = false;
-  state.awaitDrain = 0;
-  stream.emit('resume');
-  flow(stream);
-  if (state.flowing && !state.reading) stream.read(0);
-}
-
-Readable.prototype.pause = function () {
-  debug('call pause flowing=%j', this._readableState.flowing);
-  if (false !== this._readableState.flowing) {
-    debug('pause');
-    this._readableState.flowing = false;
-    this.emit('pause');
-  }
-  return this;
-};
-
-function flow(stream) {
-  var state = stream._readableState;
-  debug('flow', state.flowing);
-  while (state.flowing && stream.read() !== null) {}
-}
-
-// wrap an old-style stream as the async data source.
-// This is *not* part of the readable stream interface.
-// It is an ugly unfortunate mess of history.
-Readable.prototype.wrap = function (stream) {
-  var _this = this;
-
-  var state = this._readableState;
-  var paused = false;
-
-  stream.on('end', function () {
-    debug('wrapped end');
-    if (state.decoder && !state.ended) {
-      var chunk = state.decoder.end();
-      if (chunk && chunk.length) _this.push(chunk);
-    }
-
-    _this.push(null);
-  });
-
-  stream.on('data', function (chunk) {
-    debug('wrapped data');
-    if (state.decoder) chunk = state.decoder.write(chunk);
-
-    // don't skip over falsy values in objectMode
-    if (state.objectMode && (chunk === null || chunk === undefined)) return;else if (!state.objectMode && (!chunk || !chunk.length)) return;
-
-    var ret = _this.push(chunk);
-    if (!ret) {
-      paused = true;
-      stream.pause();
-    }
-  });
-
-  // proxy all the other methods.
-  // important when wrapping filters and duplexes.
-  for (var i in stream) {
-    if (this[i] === undefined && typeof stream[i] === 'function') {
-      this[i] = function (method) {
-        return function () {
-          return stream[method].apply(stream, arguments);
-        };
-      }(i);
-    }
-  }
-
-  // proxy certain important events.
-  for (var n = 0; n < kProxyEvents.length; n++) {
-    stream.on(kProxyEvents[n], this.emit.bind(this, kProxyEvents[n]));
-  }
-
-  // when we try to consume some more bytes, simply unpause the
-  // underlying stream.
-  this._read = function (n) {
-    debug('wrapped _read', n);
-    if (paused) {
-      paused = false;
-      stream.resume();
-    }
-  };
-
-  return this;
-};
-
-Object.defineProperty(Readable.prototype, 'readableHighWaterMark', {
-  // making it explicit this property is not enumerable
-  // because otherwise some prototype manipulation in
-  // userland will fail
-  enumerable: false,
-  get: function () {
-    return this._readableState.highWaterMark;
-  }
-});
-
-// exposed for testing purposes only.
-Readable._fromList = fromList;
-
-// Pluck off n bytes from an array of buffers.
-// Length is the combined lengths of all the buffers in the list.
-// This function is designed to be inlinable, so please take care when making
-// changes to the function body.
-function fromList(n, state) {
-  // nothing buffered
-  if (state.length === 0) return null;
-
-  var ret;
-  if (state.objectMode) ret = state.buffer.shift();else if (!n || n >= state.length) {
-    // read it all, truncate the list
-    if (state.decoder) ret = state.buffer.join('');else if (state.buffer.length === 1) ret = state.buffer.head.data;else ret = state.buffer.concat(state.length);
-    state.buffer.clear();
-  } else {
-    // read part of list
-    ret = fromListPartial(n, state.buffer, state.decoder);
-  }
-
-  return ret;
-}
-
-// Extracts only enough buffered data to satisfy the amount requested.
-// This function is designed to be inlinable, so please take care when making
-// changes to the function body.
-function fromListPartial(n, list, hasStrings) {
-  var ret;
-  if (n < list.head.data.length) {
-    // slice is the same for buffers and strings
-    ret = list.head.data.slice(0, n);
-    list.head.data = list.head.data.slice(n);
-  } else if (n === list.head.data.length) {
-    // first chunk is a perfect match
-    ret = list.shift();
-  } else {
-    // result spans more than one buffer
-    ret = hasStrings ? copyFromBufferString(n, list) : copyFromBuffer(n, list);
-  }
-  return ret;
-}
-
-// Copies a specified amount of characters from the list of buffered data
-// chunks.
-// This function is designed to be inlinable, so please take care when making
-// changes to the function body.
-function copyFromBufferString(n, list) {
-  var p = list.head;
-  var c = 1;
-  var ret = p.data;
-  n -= ret.length;
-  while (p = p.next) {
-    var str = p.data;
-    var nb = n > str.length ? str.length : n;
-    if (nb === str.length) ret += str;else ret += str.slice(0, n);
-    n -= nb;
-    if (n === 0) {
-      if (nb === str.length) {
-        ++c;
-        if (p.next) list.head = p.next;else list.head = list.tail = null;
-      } else {
-        list.head = p;
-        p.data = str.slice(nb);
-      }
-      break;
-    }
-    ++c;
-  }
-  list.length -= c;
-  return ret;
-}
-
-// Copies a specified amount of bytes from the list of buffered data chunks.
-// This function is designed to be inlinable, so please take care when making
-// changes to the function body.
-function copyFromBuffer(n, list) {
-  var ret = Buffer.allocUnsafe(n);
-  var p = list.head;
-  var c = 1;
-  p.data.copy(ret);
-  n -= p.data.length;
-  while (p = p.next) {
-    var buf = p.data;
-    var nb = n > buf.length ? buf.length : n;
-    buf.copy(ret, ret.length - n, 0, nb);
-    n -= nb;
-    if (n === 0) {
-      if (nb === buf.length) {
-        ++c;
-        if (p.next) list.head = p.next;else list.head = list.tail = null;
-      } else {
-        list.head = p;
-        p.data = buf.slice(nb);
-      }
-      break;
-    }
-    ++c;
-  }
-  list.length -= c;
-  return ret;
-}
-
-function endReadable(stream) {
-  var state = stream._readableState;
-
-  // If we get here before consuming all the bytes, then that is a
-  // bug in node.  Should never happen.
-  if (state.length > 0) throw new Error('"endReadable()" called on non-empty stream');
-
-  if (!state.endEmitted) {
-    state.ended = true;
-    pna.nextTick(endReadableNT, state, stream);
-  }
-}
-
-function endReadableNT(state, stream) {
-  // Check that we didn't get one last unshift.
-  if (!state.endEmitted && state.length === 0) {
-    state.endEmitted = true;
-    stream.readable = false;
-    stream.emit('end');
-  }
-}
-
-function indexOf(xs, x) {
-  for (var i = 0, l = xs.length; i < l; i++) {
-    if (xs[i] === x) return i;
-  }
-  return -1;
-}
-/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./../../../../webpack/buildin/global.js */ "./node_modules/webpack/buildin/global.js"), __webpack_require__(/*! ./../../../../process/browser.js */ "./node_modules/process/browser.js")))
-
-/***/ }),
-
-/***/ "./node_modules/stream-browserify/node_modules/readable-stream/lib/_stream_transform.js":
-/*!**********************************************************************************************!*\
-  !*** ./node_modules/stream-browserify/node_modules/readable-stream/lib/_stream_transform.js ***!
-  \**********************************************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-// Copyright Joyent, Inc. and other Node contributors.
-//
-// Permission is hereby granted, free of charge, to any person obtaining a
-// copy of this software and associated documentation files (the
-// "Software"), to deal in the Software without restriction, including
-// without limitation the rights to use, copy, modify, merge, publish,
-// distribute, sublicense, and/or sell copies of the Software, and to permit
-// persons to whom the Software is furnished to do so, subject to the
-// following conditions:
-//
-// The above copyright notice and this permission notice shall be included
-// in all copies or substantial portions of the Software.
-//
-// THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS
-// OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
-// MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN
-// NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM,
-// DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR
-// OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE
-// USE OR OTHER DEALINGS IN THE SOFTWARE.
-
-// a transform stream is a readable/writable stream where you do
-// something with the data.  Sometimes it's called a "filter",
-// but that's not a great name for it, since that implies a thing where
-// some bits pass through, and others are simply ignored.  (That would
-// be a valid example of a transform, of course.)
-//
-// While the output is causally related to the input, it's not a
-// necessarily symmetric or synchronous transformation.  For example,
-// a zlib stream might take multiple plain-text writes(), and then
-// emit a single compressed chunk some time in the future.
-//
-// Here's how this works:
-//
-// The Transform stream has all the aspects of the readable and writable
-// stream classes.  When you write(chunk), that calls _write(chunk,cb)
-// internally, and returns false if there's a lot of pending writes
-// buffered up.  When you call read(), that calls _read(n) until
-// there's enough pending readable data buffered up.
-//
-// In a transform stream, the written data is placed in a buffer.  When
-// _read(n) is called, it transforms the queued up data, calling the
-// buffered _write cb's as it consumes chunks.  If consuming a single
-// written chunk would result in multiple output chunks, then the first
-// outputted bit calls the readcb, and subsequent chunks just go into
-// the read buffer, and will cause it to emit 'readable' if necessary.
-//
-// This way, back-pressure is actually determined by the reading side,
-// since _read has to be called to start processing a new chunk.  However,
-// a pathological inflate type of transform can cause excessive buffering
-// here.  For example, imagine a stream where every byte of input is
-// interpreted as an integer from 0-255, and then results in that many
-// bytes of output.  Writing the 4 bytes {ff,ff,ff,ff} would result in
-// 1kb of data being output.  In this case, you could write a very small
-// amount of input, and end up with a very large amount of output.  In
-// such a pathological inflating mechanism, there'd be no way to tell
-// the system to stop doing the transform.  A single 4MB write could
-// cause the system to run out of memory.
-//
-// However, even in such a pathological case, only a single written chunk
-// would be consumed, and then the rest would wait (un-transformed) until
-// the results of the previous transformed chunk were consumed.
-
-
-
-module.exports = Transform;
-
-var Duplex = __webpack_require__(/*! ./_stream_duplex */ "./node_modules/stream-browserify/node_modules/readable-stream/lib/_stream_duplex.js");
-
-/*<replacement>*/
-var util = __webpack_require__(/*! core-util-is */ "./node_modules/core-util-is/lib/util.js");
-util.inherits = __webpack_require__(/*! inherits */ "./node_modules/inherits/inherits_browser.js");
-/*</replacement>*/
-
-util.inherits(Transform, Duplex);
-
-function afterTransform(er, data) {
-  var ts = this._transformState;
-  ts.transforming = false;
-
-  var cb = ts.writecb;
-
-  if (!cb) {
-    return this.emit('error', new Error('write callback called multiple times'));
-  }
-
-  ts.writechunk = null;
-  ts.writecb = null;
-
-  if (data != null) // single equals check for both `null` and `undefined`
-    this.push(data);
-
-  cb(er);
-
-  var rs = this._readableState;
-  rs.reading = false;
-  if (rs.needReadable || rs.length < rs.highWaterMark) {
-    this._read(rs.highWaterMark);
-  }
-}
-
-function Transform(options) {
-  if (!(this instanceof Transform)) return new Transform(options);
-
-  Duplex.call(this, options);
-
-  this._transformState = {
-    afterTransform: afterTransform.bind(this),
-    needTransform: false,
-    transforming: false,
-    writecb: null,
-    writechunk: null,
-    writeencoding: null
-  };
-
-  // start out asking for a readable event once data is transformed.
-  this._readableState.needReadable = true;
-
-  // we have implemented the _read method, and done the other things
-  // that Readable wants before the first _read call, so unset the
-  // sync guard flag.
-  this._readableState.sync = false;
-
-  if (options) {
-    if (typeof options.transform === 'function') this._transform = options.transform;
-
-    if (typeof options.flush === 'function') this._flush = options.flush;
-  }
-
-  // When the writable side finishes, then flush out anything remaining.
-  this.on('prefinish', prefinish);
-}
-
-function prefinish() {
-  var _this = this;
-
-  if (typeof this._flush === 'function') {
-    this._flush(function (er, data) {
-      done(_this, er, data);
-    });
-  } else {
-    done(this, null, null);
-  }
-}
-
-Transform.prototype.push = function (chunk, encoding) {
-  this._transformState.needTransform = false;
-  return Duplex.prototype.push.call(this, chunk, encoding);
-};
-
-// This is the part where you do stuff!
-// override this function in implementation classes.
-// 'chunk' is an input chunk.
-//
-// Call `push(newChunk)` to pass along transformed output
-// to the readable side.  You may call 'push' zero or more times.
-//
-// Call `cb(err)` when you are done with this chunk.  If you pass
-// an error, then that'll put the hurt on the whole operation.  If you
-// never call cb(), then you'll never get another chunk.
-Transform.prototype._transform = function (chunk, encoding, cb) {
-  throw new Error('_transform() is not implemented');
-};
-
-Transform.prototype._write = function (chunk, encoding, cb) {
-  var ts = this._transformState;
-  ts.writecb = cb;
-  ts.writechunk = chunk;
-  ts.writeencoding = encoding;
-  if (!ts.transforming) {
-    var rs = this._readableState;
-    if (ts.needTransform || rs.needReadable || rs.length < rs.highWaterMark) this._read(rs.highWaterMark);
-  }
-};
-
-// Doesn't matter what the args are here.
-// _transform does all the work.
-// That we got here means that the readable side wants more data.
-Transform.prototype._read = function (n) {
-  var ts = this._transformState;
-
-  if (ts.writechunk !== null && ts.writecb && !ts.transforming) {
-    ts.transforming = true;
-    this._transform(ts.writechunk, ts.writeencoding, ts.afterTransform);
-  } else {
-    // mark that we need a transform, so that any data that comes in
-    // will get processed, now that we've asked for it.
-    ts.needTransform = true;
-  }
-};
-
-Transform.prototype._destroy = function (err, cb) {
-  var _this2 = this;
-
-  Duplex.prototype._destroy.call(this, err, function (err2) {
-    cb(err2);
-    _this2.emit('close');
-  });
-};
-
-function done(stream, er, data) {
-  if (er) return stream.emit('error', er);
-
-  if (data != null) // single equals check for both `null` and `undefined`
-    stream.push(data);
-
-  // if there's nothing in the write buffer, then that means
-  // that nothing more will ever be provided
-  if (stream._writableState.length) throw new Error('Calling transform done when ws.length != 0');
-
-  if (stream._transformState.transforming) throw new Error('Calling transform done when still transforming');
-
-  return stream.push(null);
-}
-
-/***/ }),
-
-/***/ "./node_modules/stream-browserify/node_modules/readable-stream/lib/_stream_writable.js":
-/*!*********************************************************************************************!*\
-  !*** ./node_modules/stream-browserify/node_modules/readable-stream/lib/_stream_writable.js ***!
-  \*********************************************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-/* WEBPACK VAR INJECTION */(function(process, setImmediate, global) {// Copyright Joyent, Inc. and other Node contributors.
-//
-// Permission is hereby granted, free of charge, to any person obtaining a
-// copy of this software and associated documentation files (the
-// "Software"), to deal in the Software without restriction, including
-// without limitation the rights to use, copy, modify, merge, publish,
-// distribute, sublicense, and/or sell copies of the Software, and to permit
-// persons to whom the Software is furnished to do so, subject to the
-// following conditions:
-//
-// The above copyright notice and this permission notice shall be included
-// in all copies or substantial portions of the Software.
-//
-// THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS
-// OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
-// MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN
-// NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM,
-// DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR
-// OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE
-// USE OR OTHER DEALINGS IN THE SOFTWARE.
-
-// A bit simpler than readable streams.
-// Implement an async ._write(chunk, encoding, cb), and it'll handle all
-// the drain event emission and buffering.
-
-
-
-/*<replacement>*/
-
-var pna = __webpack_require__(/*! process-nextick-args */ "./node_modules/process-nextick-args/index.js");
-/*</replacement>*/
-
-module.exports = Writable;
-
-/* <replacement> */
-function WriteReq(chunk, encoding, cb) {
-  this.chunk = chunk;
-  this.encoding = encoding;
-  this.callback = cb;
-  this.next = null;
-}
-
-// It seems a linked list but it is not
-// there will be only 2 of these for each stream
-function CorkedRequest(state) {
-  var _this = this;
-
-  this.next = null;
-  this.entry = null;
-  this.finish = function () {
-    onCorkedFinish(_this, state);
-  };
-}
-/* </replacement> */
-
-/*<replacement>*/
-var asyncWrite = !process.browser && ['v0.10', 'v0.9.'].indexOf(process.version.slice(0, 5)) > -1 ? setImmediate : pna.nextTick;
-/*</replacement>*/
-
-/*<replacement>*/
-var Duplex;
-/*</replacement>*/
-
-Writable.WritableState = WritableState;
-
-/*<replacement>*/
-var util = __webpack_require__(/*! core-util-is */ "./node_modules/core-util-is/lib/util.js");
-util.inherits = __webpack_require__(/*! inherits */ "./node_modules/inherits/inherits_browser.js");
-/*</replacement>*/
-
-/*<replacement>*/
-var internalUtil = {
-  deprecate: __webpack_require__(/*! util-deprecate */ "./node_modules/util-deprecate/browser.js")
-};
-/*</replacement>*/
-
-/*<replacement>*/
-var Stream = __webpack_require__(/*! ./internal/streams/stream */ "./node_modules/stream-browserify/node_modules/readable-stream/lib/internal/streams/stream-browser.js");
-/*</replacement>*/
-
-/*<replacement>*/
-
-var Buffer = __webpack_require__(/*! safe-buffer */ "./node_modules/stream-browserify/node_modules/safe-buffer/index.js").Buffer;
-var OurUint8Array = global.Uint8Array || function () {};
-function _uint8ArrayToBuffer(chunk) {
-  return Buffer.from(chunk);
-}
-function _isUint8Array(obj) {
-  return Buffer.isBuffer(obj) || obj instanceof OurUint8Array;
-}
-
-/*</replacement>*/
-
-var destroyImpl = __webpack_require__(/*! ./internal/streams/destroy */ "./node_modules/stream-browserify/node_modules/readable-stream/lib/internal/streams/destroy.js");
-
-util.inherits(Writable, Stream);
-
-function nop() {}
-
-function WritableState(options, stream) {
-  Duplex = Duplex || __webpack_require__(/*! ./_stream_duplex */ "./node_modules/stream-browserify/node_modules/readable-stream/lib/_stream_duplex.js");
-
-  options = options || {};
-
-  // Duplex streams are both readable and writable, but share
-  // the same options object.
-  // However, some cases require setting options to different
-  // values for the readable and the writable sides of the duplex stream.
-  // These options can be provided separately as readableXXX and writableXXX.
-  var isDuplex = stream instanceof Duplex;
-
-  // object stream flag to indicate whether or not this stream
-  // contains buffers or objects.
-  this.objectMode = !!options.objectMode;
-
-  if (isDuplex) this.objectMode = this.objectMode || !!options.writableObjectMode;
-
-  // the point at which write() starts returning false
-  // Note: 0 is a valid value, means that we always return false if
-  // the entire buffer is not flushed immediately on write()
-  var hwm = options.highWaterMark;
-  var writableHwm = options.writableHighWaterMark;
-  var defaultHwm = this.objectMode ? 16 : 16 * 1024;
-
-  if (hwm || hwm === 0) this.highWaterMark = hwm;else if (isDuplex && (writableHwm || writableHwm === 0)) this.highWaterMark = writableHwm;else this.highWaterMark = defaultHwm;
-
-  // cast to ints.
-  this.highWaterMark = Math.floor(this.highWaterMark);
-
-  // if _final has been called
-  this.finalCalled = false;
-
-  // drain event flag.
-  this.needDrain = false;
-  // at the start of calling end()
-  this.ending = false;
-  // when end() has been called, and returned
-  this.ended = false;
-  // when 'finish' is emitted
-  this.finished = false;
-
-  // has it been destroyed
-  this.destroyed = false;
-
-  // should we decode strings into buffers before passing to _write?
-  // this is here so that some node-core streams can optimize string
-  // handling at a lower level.
-  var noDecode = options.decodeStrings === false;
-  this.decodeStrings = !noDecode;
-
-  // Crypto is kind of old and crusty.  Historically, its default string
-  // encoding is 'binary' so we have to make this configurable.
-  // Everything else in the universe uses 'utf8', though.
-  this.defaultEncoding = options.defaultEncoding || 'utf8';
-
-  // not an actual buffer we keep track of, but a measurement
-  // of how much we're waiting to get pushed to some underlying
-  // socket or file.
-  this.length = 0;
-
-  // a flag to see when we're in the middle of a write.
-  this.writing = false;
-
-  // when true all writes will be buffered until .uncork() call
-  this.corked = 0;
-
-  // a flag to be able to tell if the onwrite cb is called immediately,
-  // or on a later tick.  We set this to true at first, because any
-  // actions that shouldn't happen until "later" should generally also
-  // not happen before the first write call.
-  this.sync = true;
-
-  // a flag to know if we're processing previously buffered items, which
-  // may call the _write() callback in the same tick, so that we don't
-  // end up in an overlapped onwrite situation.
-  this.bufferProcessing = false;
-
-  // the callback that's passed to _write(chunk,cb)
-  this.onwrite = function (er) {
-    onwrite(stream, er);
-  };
-
-  // the callback that the user supplies to write(chunk,encoding,cb)
-  this.writecb = null;
-
-  // the amount that is being written when _write is called.
-  this.writelen = 0;
-
-  this.bufferedRequest = null;
-  this.lastBufferedRequest = null;
-
-  // number of pending user-supplied write callbacks
-  // this must be 0 before 'finish' can be emitted
-  this.pendingcb = 0;
-
-  // emit prefinish if the only thing we're waiting for is _write cbs
-  // This is relevant for synchronous Transform streams
-  this.prefinished = false;
-
-  // True if the error was already emitted and should not be thrown again
-  this.errorEmitted = false;
-
-  // count buffered requests
-  this.bufferedRequestCount = 0;
-
-  // allocate the first CorkedRequest, there is always
-  // one allocated and free to use, and we maintain at most two
-  this.corkedRequestsFree = new CorkedRequest(this);
-}
-
-WritableState.prototype.getBuffer = function getBuffer() {
-  var current = this.bufferedRequest;
-  var out = [];
-  while (current) {
-    out.push(current);
-    current = current.next;
-  }
-  return out;
-};
-
-(function () {
-  try {
-    Object.defineProperty(WritableState.prototype, 'buffer', {
-      get: internalUtil.deprecate(function () {
-        return this.getBuffer();
-      }, '_writableState.buffer is deprecated. Use _writableState.getBuffer ' + 'instead.', 'DEP0003')
-    });
-  } catch (_) {}
-})();
-
-// Test _writableState for inheritance to account for Duplex streams,
-// whose prototype chain only points to Readable.
-var realHasInstance;
-if (typeof Symbol === 'function' && Symbol.hasInstance && typeof Function.prototype[Symbol.hasInstance] === 'function') {
-  realHasInstance = Function.prototype[Symbol.hasInstance];
-  Object.defineProperty(Writable, Symbol.hasInstance, {
-    value: function (object) {
-      if (realHasInstance.call(this, object)) return true;
-      if (this !== Writable) return false;
-
-      return object && object._writableState instanceof WritableState;
-    }
-  });
-} else {
-  realHasInstance = function (object) {
-    return object instanceof this;
-  };
-}
-
-function Writable(options) {
-  Duplex = Duplex || __webpack_require__(/*! ./_stream_duplex */ "./node_modules/stream-browserify/node_modules/readable-stream/lib/_stream_duplex.js");
-
-  // Writable ctor is applied to Duplexes, too.
-  // `realHasInstance` is necessary because using plain `instanceof`
-  // would return false, as no `_writableState` property is attached.
-
-  // Trying to use the custom `instanceof` for Writable here will also break the
-  // Node.js LazyTransform implementation, which has a non-trivial getter for
-  // `_writableState` that would lead to infinite recursion.
-  if (!realHasInstance.call(Writable, this) && !(this instanceof Duplex)) {
-    return new Writable(options);
-  }
-
-  this._writableState = new WritableState(options, this);
-
-  // legacy.
-  this.writable = true;
-
-  if (options) {
-    if (typeof options.write === 'function') this._write = options.write;
-
-    if (typeof options.writev === 'function') this._writev = options.writev;
-
-    if (typeof options.destroy === 'function') this._destroy = options.destroy;
-
-    if (typeof options.final === 'function') this._final = options.final;
-  }
-
-  Stream.call(this);
-}
-
-// Otherwise people can pipe Writable streams, which is just wrong.
-Writable.prototype.pipe = function () {
-  this.emit('error', new Error('Cannot pipe, not readable'));
-};
-
-function writeAfterEnd(stream, cb) {
-  var er = new Error('write after end');
-  // TODO: defer error events consistently everywhere, not just the cb
-  stream.emit('error', er);
-  pna.nextTick(cb, er);
-}
-
-// Checks that a user-supplied chunk is valid, especially for the particular
-// mode the stream is in. Currently this means that `null` is never accepted
-// and undefined/non-string values are only allowed in object mode.
-function validChunk(stream, state, chunk, cb) {
-  var valid = true;
-  var er = false;
-
-  if (chunk === null) {
-    er = new TypeError('May not write null values to stream');
-  } else if (typeof chunk !== 'string' && chunk !== undefined && !state.objectMode) {
-    er = new TypeError('Invalid non-string/buffer chunk');
-  }
-  if (er) {
-    stream.emit('error', er);
-    pna.nextTick(cb, er);
-    valid = false;
-  }
-  return valid;
-}
-
-Writable.prototype.write = function (chunk, encoding, cb) {
-  var state = this._writableState;
-  var ret = false;
-  var isBuf = !state.objectMode && _isUint8Array(chunk);
-
-  if (isBuf && !Buffer.isBuffer(chunk)) {
-    chunk = _uint8ArrayToBuffer(chunk);
-  }
-
-  if (typeof encoding === 'function') {
-    cb = encoding;
-    encoding = null;
-  }
-
-  if (isBuf) encoding = 'buffer';else if (!encoding) encoding = state.defaultEncoding;
-
-  if (typeof cb !== 'function') cb = nop;
-
-  if (state.ended) writeAfterEnd(this, cb);else if (isBuf || validChunk(this, state, chunk, cb)) {
-    state.pendingcb++;
-    ret = writeOrBuffer(this, state, isBuf, chunk, encoding, cb);
-  }
-
-  return ret;
-};
-
-Writable.prototype.cork = function () {
-  var state = this._writableState;
-
-  state.corked++;
-};
-
-Writable.prototype.uncork = function () {
-  var state = this._writableState;
-
-  if (state.corked) {
-    state.corked--;
-
-    if (!state.writing && !state.corked && !state.finished && !state.bufferProcessing && state.bufferedRequest) clearBuffer(this, state);
-  }
-};
-
-Writable.prototype.setDefaultEncoding = function setDefaultEncoding(encoding) {
-  // node::ParseEncoding() requires lower case.
-  if (typeof encoding === 'string') encoding = encoding.toLowerCase();
-  if (!(['hex', 'utf8', 'utf-8', 'ascii', 'binary', 'base64', 'ucs2', 'ucs-2', 'utf16le', 'utf-16le', 'raw'].indexOf((encoding + '').toLowerCase()) > -1)) throw new TypeError('Unknown encoding: ' + encoding);
-  this._writableState.defaultEncoding = encoding;
-  return this;
-};
-
-function decodeChunk(state, chunk, encoding) {
-  if (!state.objectMode && state.decodeStrings !== false && typeof chunk === 'string') {
-    chunk = Buffer.from(chunk, encoding);
-  }
-  return chunk;
-}
-
-Object.defineProperty(Writable.prototype, 'writableHighWaterMark', {
-  // making it explicit this property is not enumerable
-  // because otherwise some prototype manipulation in
-  // userland will fail
-  enumerable: false,
-  get: function () {
-    return this._writableState.highWaterMark;
-  }
-});
-
-// if we're already writing something, then just put this
-// in the queue, and wait our turn.  Otherwise, call _write
-// If we return false, then we need a drain event, so set that flag.
-function writeOrBuffer(stream, state, isBuf, chunk, encoding, cb) {
-  if (!isBuf) {
-    var newChunk = decodeChunk(state, chunk, encoding);
-    if (chunk !== newChunk) {
-      isBuf = true;
-      encoding = 'buffer';
-      chunk = newChunk;
-    }
-  }
-  var len = state.objectMode ? 1 : chunk.length;
-
-  state.length += len;
-
-  var ret = state.length < state.highWaterMark;
-  // we must ensure that previous needDrain will not be reset to false.
-  if (!ret) state.needDrain = true;
-
-  if (state.writing || state.corked) {
-    var last = state.lastBufferedRequest;
-    state.lastBufferedRequest = {
-      chunk: chunk,
-      encoding: encoding,
-      isBuf: isBuf,
-      callback: cb,
-      next: null
-    };
-    if (last) {
-      last.next = state.lastBufferedRequest;
-    } else {
-      state.bufferedRequest = state.lastBufferedRequest;
-    }
-    state.bufferedRequestCount += 1;
-  } else {
-    doWrite(stream, state, false, len, chunk, encoding, cb);
-  }
-
-  return ret;
-}
-
-function doWrite(stream, state, writev, len, chunk, encoding, cb) {
-  state.writelen = len;
-  state.writecb = cb;
-  state.writing = true;
-  state.sync = true;
-  if (writev) stream._writev(chunk, state.onwrite);else stream._write(chunk, encoding, state.onwrite);
-  state.sync = false;
-}
-
-function onwriteError(stream, state, sync, er, cb) {
-  --state.pendingcb;
-
-  if (sync) {
-    // defer the callback if we are being called synchronously
-    // to avoid piling up things on the stack
-    pna.nextTick(cb, er);
-    // this can emit finish, and it will always happen
-    // after error
-    pna.nextTick(finishMaybe, stream, state);
-    stream._writableState.errorEmitted = true;
-    stream.emit('error', er);
-  } else {
-    // the caller expect this to happen before if
-    // it is async
-    cb(er);
-    stream._writableState.errorEmitted = true;
-    stream.emit('error', er);
-    // this can emit finish, but finish must
-    // always follow error
-    finishMaybe(stream, state);
-  }
-}
-
-function onwriteStateUpdate(state) {
-  state.writing = false;
-  state.writecb = null;
-  state.length -= state.writelen;
-  state.writelen = 0;
-}
-
-function onwrite(stream, er) {
-  var state = stream._writableState;
-  var sync = state.sync;
-  var cb = state.writecb;
-
-  onwriteStateUpdate(state);
-
-  if (er) onwriteError(stream, state, sync, er, cb);else {
-    // Check if we're actually ready to finish, but don't emit yet
-    var finished = needFinish(state);
-
-    if (!finished && !state.corked && !state.bufferProcessing && state.bufferedRequest) {
-      clearBuffer(stream, state);
-    }
-
-    if (sync) {
-      /*<replacement>*/
-      asyncWrite(afterWrite, stream, state, finished, cb);
-      /*</replacement>*/
-    } else {
-      afterWrite(stream, state, finished, cb);
-    }
-  }
-}
-
-function afterWrite(stream, state, finished, cb) {
-  if (!finished) onwriteDrain(stream, state);
-  state.pendingcb--;
-  cb();
-  finishMaybe(stream, state);
-}
-
-// Must force callback to be called on nextTick, so that we don't
-// emit 'drain' before the write() consumer gets the 'false' return
-// value, and has a chance to attach a 'drain' listener.
-function onwriteDrain(stream, state) {
-  if (state.length === 0 && state.needDrain) {
-    state.needDrain = false;
-    stream.emit('drain');
-  }
-}
-
-// if there's something in the buffer waiting, then process it
-function clearBuffer(stream, state) {
-  state.bufferProcessing = true;
-  var entry = state.bufferedRequest;
-
-  if (stream._writev && entry && entry.next) {
-    // Fast case, write everything using _writev()
-    var l = state.bufferedRequestCount;
-    var buffer = new Array(l);
-    var holder = state.corkedRequestsFree;
-    holder.entry = entry;
-
-    var count = 0;
-    var allBuffers = true;
-    while (entry) {
-      buffer[count] = entry;
-      if (!entry.isBuf) allBuffers = false;
-      entry = entry.next;
-      count += 1;
-    }
-    buffer.allBuffers = allBuffers;
-
-    doWrite(stream, state, true, state.length, buffer, '', holder.finish);
-
-    // doWrite is almost always async, defer these to save a bit of time
-    // as the hot path ends with doWrite
-    state.pendingcb++;
-    state.lastBufferedRequest = null;
-    if (holder.next) {
-      state.corkedRequestsFree = holder.next;
-      holder.next = null;
-    } else {
-      state.corkedRequestsFree = new CorkedRequest(state);
-    }
-    state.bufferedRequestCount = 0;
-  } else {
-    // Slow case, write chunks one-by-one
-    while (entry) {
-      var chunk = entry.chunk;
-      var encoding = entry.encoding;
-      var cb = entry.callback;
-      var len = state.objectMode ? 1 : chunk.length;
-
-      doWrite(stream, state, false, len, chunk, encoding, cb);
-      entry = entry.next;
-      state.bufferedRequestCount--;
-      // if we didn't call the onwrite immediately, then
-      // it means that we need to wait until it does.
-      // also, that means that the chunk and cb are currently
-      // being processed, so move the buffer counter past them.
-      if (state.writing) {
-        break;
-      }
-    }
-
-    if (entry === null) state.lastBufferedRequest = null;
-  }
-
-  state.bufferedRequest = entry;
-  state.bufferProcessing = false;
-}
-
-Writable.prototype._write = function (chunk, encoding, cb) {
-  cb(new Error('_write() is not implemented'));
-};
-
-Writable.prototype._writev = null;
-
-Writable.prototype.end = function (chunk, encoding, cb) {
-  var state = this._writableState;
-
-  if (typeof chunk === 'function') {
-    cb = chunk;
-    chunk = null;
-    encoding = null;
-  } else if (typeof encoding === 'function') {
-    cb = encoding;
-    encoding = null;
-  }
-
-  if (chunk !== null && chunk !== undefined) this.write(chunk, encoding);
-
-  // .end() fully uncorks
-  if (state.corked) {
-    state.corked = 1;
-    this.uncork();
-  }
-
-  // ignore unnecessary end() calls.
-  if (!state.ending && !state.finished) endWritable(this, state, cb);
-};
-
-function needFinish(state) {
-  return state.ending && state.length === 0 && state.bufferedRequest === null && !state.finished && !state.writing;
-}
-function callFinal(stream, state) {
-  stream._final(function (err) {
-    state.pendingcb--;
-    if (err) {
-      stream.emit('error', err);
-    }
-    state.prefinished = true;
-    stream.emit('prefinish');
-    finishMaybe(stream, state);
-  });
-}
-function prefinish(stream, state) {
-  if (!state.prefinished && !state.finalCalled) {
-    if (typeof stream._final === 'function') {
-      state.pendingcb++;
-      state.finalCalled = true;
-      pna.nextTick(callFinal, stream, state);
-    } else {
-      state.prefinished = true;
-      stream.emit('prefinish');
-    }
-  }
-}
-
-function finishMaybe(stream, state) {
-  var need = needFinish(state);
-  if (need) {
-    prefinish(stream, state);
-    if (state.pendingcb === 0) {
-      state.finished = true;
-      stream.emit('finish');
-    }
-  }
-  return need;
-}
-
-function endWritable(stream, state, cb) {
-  state.ending = true;
-  finishMaybe(stream, state);
-  if (cb) {
-    if (state.finished) pna.nextTick(cb);else stream.once('finish', cb);
-  }
-  state.ended = true;
-  stream.writable = false;
-}
-
-function onCorkedFinish(corkReq, state, err) {
-  var entry = corkReq.entry;
-  corkReq.entry = null;
-  while (entry) {
-    var cb = entry.callback;
-    state.pendingcb--;
-    cb(err);
-    entry = entry.next;
-  }
-  if (state.corkedRequestsFree) {
-    state.corkedRequestsFree.next = corkReq;
-  } else {
-    state.corkedRequestsFree = corkReq;
-  }
-}
-
-Object.defineProperty(Writable.prototype, 'destroyed', {
-  get: function () {
-    if (this._writableState === undefined) {
-      return false;
-    }
-    return this._writableState.destroyed;
-  },
-  set: function (value) {
-    // we ignore the value if the stream
-    // has not been initialized yet
-    if (!this._writableState) {
-      return;
-    }
-
-    // backward compatibility, the user is explicitly
-    // managing destroyed
-    this._writableState.destroyed = value;
-  }
-});
-
-Writable.prototype.destroy = destroyImpl.destroy;
-Writable.prototype._undestroy = destroyImpl.undestroy;
-Writable.prototype._destroy = function (err, cb) {
-  this.end();
-  cb(err);
-};
-/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./../../../../process/browser.js */ "./node_modules/process/browser.js"), __webpack_require__(/*! ./../../../../timers-browserify/main.js */ "./node_modules/timers-browserify/main.js").setImmediate, __webpack_require__(/*! ./../../../../webpack/buildin/global.js */ "./node_modules/webpack/buildin/global.js")))
-
-/***/ }),
-
-/***/ "./node_modules/stream-browserify/node_modules/readable-stream/lib/internal/streams/BufferList.js":
-/*!********************************************************************************************************!*\
-  !*** ./node_modules/stream-browserify/node_modules/readable-stream/lib/internal/streams/BufferList.js ***!
-  \********************************************************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-var Buffer = __webpack_require__(/*! safe-buffer */ "./node_modules/stream-browserify/node_modules/safe-buffer/index.js").Buffer;
-var util = __webpack_require__(/*! util */ 1);
-
-function copyBuffer(src, target, offset) {
-  src.copy(target, offset);
-}
-
-module.exports = function () {
-  function BufferList() {
-    _classCallCheck(this, BufferList);
-
-    this.head = null;
-    this.tail = null;
-    this.length = 0;
-  }
-
-  BufferList.prototype.push = function push(v) {
-    var entry = { data: v, next: null };
-    if (this.length > 0) this.tail.next = entry;else this.head = entry;
-    this.tail = entry;
-    ++this.length;
-  };
-
-  BufferList.prototype.unshift = function unshift(v) {
-    var entry = { data: v, next: this.head };
-    if (this.length === 0) this.tail = entry;
-    this.head = entry;
-    ++this.length;
-  };
-
-  BufferList.prototype.shift = function shift() {
-    if (this.length === 0) return;
-    var ret = this.head.data;
-    if (this.length === 1) this.head = this.tail = null;else this.head = this.head.next;
-    --this.length;
-    return ret;
-  };
-
-  BufferList.prototype.clear = function clear() {
-    this.head = this.tail = null;
-    this.length = 0;
-  };
-
-  BufferList.prototype.join = function join(s) {
-    if (this.length === 0) return '';
-    var p = this.head;
-    var ret = '' + p.data;
-    while (p = p.next) {
-      ret += s + p.data;
-    }return ret;
-  };
-
-  BufferList.prototype.concat = function concat(n) {
-    if (this.length === 0) return Buffer.alloc(0);
-    if (this.length === 1) return this.head.data;
-    var ret = Buffer.allocUnsafe(n >>> 0);
-    var p = this.head;
-    var i = 0;
-    while (p) {
-      copyBuffer(p.data, ret, i);
-      i += p.data.length;
-      p = p.next;
-    }
-    return ret;
-  };
-
-  return BufferList;
-}();
-
-if (util && util.inspect && util.inspect.custom) {
-  module.exports.prototype[util.inspect.custom] = function () {
-    var obj = util.inspect({ length: this.length });
-    return this.constructor.name + ' ' + obj;
-  };
-}
-
-/***/ }),
-
-/***/ "./node_modules/stream-browserify/node_modules/readable-stream/lib/internal/streams/destroy.js":
-/*!*****************************************************************************************************!*\
-  !*** ./node_modules/stream-browserify/node_modules/readable-stream/lib/internal/streams/destroy.js ***!
-  \*****************************************************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-/*<replacement>*/
-
-var pna = __webpack_require__(/*! process-nextick-args */ "./node_modules/process-nextick-args/index.js");
-/*</replacement>*/
-
-// undocumented cb() API, needed for core, not for public API
-function destroy(err, cb) {
-  var _this = this;
-
-  var readableDestroyed = this._readableState && this._readableState.destroyed;
-  var writableDestroyed = this._writableState && this._writableState.destroyed;
-
-  if (readableDestroyed || writableDestroyed) {
-    if (cb) {
-      cb(err);
-    } else if (err && (!this._writableState || !this._writableState.errorEmitted)) {
-      pna.nextTick(emitErrorNT, this, err);
-    }
-    return this;
-  }
-
-  // we set destroyed to true before firing error callbacks in order
-  // to make it re-entrance safe in case destroy() is called within callbacks
-
-  if (this._readableState) {
-    this._readableState.destroyed = true;
-  }
-
-  // if this is a duplex stream mark the writable part as destroyed as well
-  if (this._writableState) {
-    this._writableState.destroyed = true;
-  }
-
-  this._destroy(err || null, function (err) {
-    if (!cb && err) {
-      pna.nextTick(emitErrorNT, _this, err);
-      if (_this._writableState) {
-        _this._writableState.errorEmitted = true;
-      }
-    } else if (cb) {
-      cb(err);
-    }
-  });
-
-  return this;
-}
-
-function undestroy() {
-  if (this._readableState) {
-    this._readableState.destroyed = false;
-    this._readableState.reading = false;
-    this._readableState.ended = false;
-    this._readableState.endEmitted = false;
-  }
-
-  if (this._writableState) {
-    this._writableState.destroyed = false;
-    this._writableState.ended = false;
-    this._writableState.ending = false;
-    this._writableState.finished = false;
-    this._writableState.errorEmitted = false;
-  }
-}
-
-function emitErrorNT(self, err) {
-  self.emit('error', err);
-}
-
-module.exports = {
-  destroy: destroy,
-  undestroy: undestroy
-};
-
-/***/ }),
-
-/***/ "./node_modules/stream-browserify/node_modules/readable-stream/lib/internal/streams/stream-browser.js":
-/*!************************************************************************************************************!*\
-  !*** ./node_modules/stream-browserify/node_modules/readable-stream/lib/internal/streams/stream-browser.js ***!
-  \************************************************************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-module.exports = __webpack_require__(/*! events */ "./node_modules/events/events.js").EventEmitter;
-
-
-/***/ }),
-
-/***/ "./node_modules/stream-browserify/node_modules/readable-stream/passthrough.js":
-/*!************************************************************************************!*\
-  !*** ./node_modules/stream-browserify/node_modules/readable-stream/passthrough.js ***!
-  \************************************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-module.exports = __webpack_require__(/*! ./readable */ "./node_modules/stream-browserify/node_modules/readable-stream/readable-browser.js").PassThrough
-
-
-/***/ }),
-
-/***/ "./node_modules/stream-browserify/node_modules/readable-stream/readable-browser.js":
-/*!*****************************************************************************************!*\
-  !*** ./node_modules/stream-browserify/node_modules/readable-stream/readable-browser.js ***!
-  \*****************************************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-exports = module.exports = __webpack_require__(/*! ./lib/_stream_readable.js */ "./node_modules/stream-browserify/node_modules/readable-stream/lib/_stream_readable.js");
-exports.Stream = exports;
-exports.Readable = exports;
-exports.Writable = __webpack_require__(/*! ./lib/_stream_writable.js */ "./node_modules/stream-browserify/node_modules/readable-stream/lib/_stream_writable.js");
-exports.Duplex = __webpack_require__(/*! ./lib/_stream_duplex.js */ "./node_modules/stream-browserify/node_modules/readable-stream/lib/_stream_duplex.js");
-exports.Transform = __webpack_require__(/*! ./lib/_stream_transform.js */ "./node_modules/stream-browserify/node_modules/readable-stream/lib/_stream_transform.js");
-exports.PassThrough = __webpack_require__(/*! ./lib/_stream_passthrough.js */ "./node_modules/stream-browserify/node_modules/readable-stream/lib/_stream_passthrough.js");
-
-
-/***/ }),
-
-/***/ "./node_modules/stream-browserify/node_modules/readable-stream/transform.js":
-/*!**********************************************************************************!*\
-  !*** ./node_modules/stream-browserify/node_modules/readable-stream/transform.js ***!
-  \**********************************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-module.exports = __webpack_require__(/*! ./readable */ "./node_modules/stream-browserify/node_modules/readable-stream/readable-browser.js").Transform
-
-
-/***/ }),
-
-/***/ "./node_modules/stream-browserify/node_modules/readable-stream/writable-browser.js":
-/*!*****************************************************************************************!*\
-  !*** ./node_modules/stream-browserify/node_modules/readable-stream/writable-browser.js ***!
-  \*****************************************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-module.exports = __webpack_require__(/*! ./lib/_stream_writable.js */ "./node_modules/stream-browserify/node_modules/readable-stream/lib/_stream_writable.js");
-
-
-/***/ }),
-
-/***/ "./node_modules/stream-browserify/node_modules/safe-buffer/index.js":
-/*!**************************************************************************!*\
-  !*** ./node_modules/stream-browserify/node_modules/safe-buffer/index.js ***!
-  \**************************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-/* eslint-disable node/no-deprecated-api */
-var buffer = __webpack_require__(/*! buffer */ "./node_modules/buffer/index.js")
-var Buffer = buffer.Buffer
-
-// alternative to using Object.keys for old browsers
-function copyProps (src, dst) {
-  for (var key in src) {
-    dst[key] = src[key]
-  }
-}
-if (Buffer.from && Buffer.alloc && Buffer.allocUnsafe && Buffer.allocUnsafeSlow) {
-  module.exports = buffer
-} else {
-  // Copy properties from require('buffer')
-  copyProps(buffer, exports)
-  exports.Buffer = SafeBuffer
-}
-
-function SafeBuffer (arg, encodingOrOffset, length) {
-  return Buffer(arg, encodingOrOffset, length)
-}
-
-// Copy static methods from Buffer
-copyProps(Buffer, SafeBuffer)
-
-SafeBuffer.from = function (arg, encodingOrOffset, length) {
-  if (typeof arg === 'number') {
-    throw new TypeError('Argument must not be a number')
-  }
-  return Buffer(arg, encodingOrOffset, length)
-}
-
-SafeBuffer.alloc = function (size, fill, encoding) {
-  if (typeof size !== 'number') {
-    throw new TypeError('Argument must be a number')
-  }
-  var buf = Buffer(size)
-  if (fill !== undefined) {
-    if (typeof encoding === 'string') {
-      buf.fill(fill, encoding)
-    } else {
-      buf.fill(fill)
-    }
-  } else {
-    buf.fill(0)
-  }
-  return buf
-}
-
-SafeBuffer.allocUnsafe = function (size) {
-  if (typeof size !== 'number') {
-    throw new TypeError('Argument must be a number')
-  }
-  return Buffer(size)
-}
-
-SafeBuffer.allocUnsafeSlow = function (size) {
-  if (typeof size !== 'number') {
-    throw new TypeError('Argument must be a number')
-  }
-  return buffer.SlowBuffer(size)
-}
-
-
-/***/ }),
-
 /***/ "./node_modules/stream-to-string/index.js":
 /*!************************************************!*\
   !*** ./node_modules/stream-to-string/index.js ***!
@@ -104529,7 +100783,7 @@ module.exports = function (stream, enc, cb) {
 
 /*<replacement>*/
 
-var Buffer = __webpack_require__(/*! safe-buffer */ "./node_modules/safe-buffer/index.js").Buffer;
+var Buffer = __webpack_require__(/*! safe-buffer */ "./node_modules/string_decoder/node_modules/safe-buffer/index.js").Buffer;
 /*</replacement>*/
 
 var isEncoding = Buffer.isEncoding || function (encoding) {
@@ -104800,6 +101054,79 @@ function simpleWrite(buf) {
 function simpleEnd(buf) {
   return buf && buf.length ? this.write(buf) : '';
 }
+
+/***/ }),
+
+/***/ "./node_modules/string_decoder/node_modules/safe-buffer/index.js":
+/*!***********************************************************************!*\
+  !*** ./node_modules/string_decoder/node_modules/safe-buffer/index.js ***!
+  \***********************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+/* eslint-disable node/no-deprecated-api */
+var buffer = __webpack_require__(/*! buffer */ "./node_modules/buffer/index.js")
+var Buffer = buffer.Buffer
+
+// alternative to using Object.keys for old browsers
+function copyProps (src, dst) {
+  for (var key in src) {
+    dst[key] = src[key]
+  }
+}
+if (Buffer.from && Buffer.alloc && Buffer.allocUnsafe && Buffer.allocUnsafeSlow) {
+  module.exports = buffer
+} else {
+  // Copy properties from require('buffer')
+  copyProps(buffer, exports)
+  exports.Buffer = SafeBuffer
+}
+
+function SafeBuffer (arg, encodingOrOffset, length) {
+  return Buffer(arg, encodingOrOffset, length)
+}
+
+// Copy static methods from Buffer
+copyProps(Buffer, SafeBuffer)
+
+SafeBuffer.from = function (arg, encodingOrOffset, length) {
+  if (typeof arg === 'number') {
+    throw new TypeError('Argument must not be a number')
+  }
+  return Buffer(arg, encodingOrOffset, length)
+}
+
+SafeBuffer.alloc = function (size, fill, encoding) {
+  if (typeof size !== 'number') {
+    throw new TypeError('Argument must be a number')
+  }
+  var buf = Buffer(size)
+  if (fill !== undefined) {
+    if (typeof encoding === 'string') {
+      buf.fill(fill, encoding)
+    } else {
+      buf.fill(fill)
+    }
+  } else {
+    buf.fill(0)
+  }
+  return buf
+}
+
+SafeBuffer.allocUnsafe = function (size) {
+  if (typeof size !== 'number') {
+    throw new TypeError('Argument must be a number')
+  }
+  return Buffer(size)
+}
+
+SafeBuffer.allocUnsafeSlow = function (size) {
+  if (typeof size !== 'number') {
+    throw new TypeError('Argument must be a number')
+  }
+  return buffer.SlowBuffer(size)
+}
+
 
 /***/ }),
 
@@ -110381,6 +106708,8 @@ Yallist.prototype.removeNode = function (node) {
   node.next = null
   node.prev = null
   node.list = null
+
+  return next
 }
 
 Yallist.prototype.unshiftNode = function (node) {
@@ -110645,6 +106974,37 @@ Yallist.prototype.sliceReverse = function (from, to) {
   return ret
 }
 
+Yallist.prototype.splice = function (start, deleteCount /*, ...nodes */) {
+  if (start > this.length) {
+    start = this.length - 1
+  }
+  if (start < 0) {
+    start = this.length + start;
+  }
+
+  for (var i = 0, walker = this.head; walker !== null && i < start; i++) {
+    walker = walker.next
+  }
+
+  var ret = []
+  for (var i = 0; walker && i < deleteCount; i++) {
+    ret.push(walker.value)
+    walker = this.removeNode(walker)
+  }
+  if (walker === null) {
+    walker = this.tail
+  }
+
+  if (walker !== this.head && walker !== this.tail) {
+    walker = walker.prev
+  }
+
+  for (var i = 2; i < arguments.length; i++) {
+    walker = insert(this, walker, arguments[i])
+  }
+  return ret;
+}
+
 Yallist.prototype.reverse = function () {
   var head = this.head
   var tail = this.tail
@@ -110656,6 +107016,23 @@ Yallist.prototype.reverse = function () {
   this.head = tail
   this.tail = head
   return this
+}
+
+function insert (self, node, value) {
+  var inserted = node === self.head ?
+    new Node(value, null, node, self) :
+    new Node(value, node, node.next, self)
+
+  if (inserted.next === null) {
+    self.tail = inserted
+  }
+  if (inserted.prev === null) {
+    self.head = inserted
+  }
+
+  self.length++
+
+  return inserted
 }
 
 function push (self, item) {
@@ -110756,11 +107133,9 @@ const {
  */
 
 class ActivityHandler {
-  constructor() {
-    let {
-      activitiesPath = '/public/activities'
-    } = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
-
+  constructor({
+    activitiesPath = '/public/activities'
+  } = {}) {
     _defineProperty(this, "requireUser", true);
 
     this.activitiesPath = activitiesPath;
@@ -110777,88 +107152,85 @@ class ActivityHandler {
       }
     } = pathData; // Return an iterator over the activity paths
 
-    return function () {
-      let type = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : "".concat(as, "Like");
-      return Object(ldflex__WEBPACK_IMPORTED_MODULE_0__["toIterablePromise"])(
-      /*#__PURE__*/
-      _wrapAsyncGenerator(function* () {
-        // Only process activities if a user is logged in
-        let user;
+    return (type = "".concat(as, "Like")) => Object(ldflex__WEBPACK_IMPORTED_MODULE_0__["toIterablePromise"])(
+    /*#__PURE__*/
+    _wrapAsyncGenerator(function* () {
+      // Only process activities if a user is logged in
+      let user;
 
-        try {
-          user = yield _awaitAsyncGenerator(root.user);
-        } catch (error) {
-          if (self.requireUser) throw error;
-          return;
-        } // Determine the storage location
+      try {
+        user = yield _awaitAsyncGenerator(root.user);
+      } catch (error) {
+        if (self.requireUser) throw error;
+        return;
+      } // Determine the storage location
 
 
-        const storage = yield _awaitAsyncGenerator(root.user.pim$storage);
-        const document = new URL(self.activitiesPath, storage || user).href; // Obtain results for every activity on the path
+      const storage = yield _awaitAsyncGenerator(root.user.pim$storage);
+      const document = new URL(self.activitiesPath, storage || user).href; // Obtain results for every activity on the path
 
-        const results = [];
-        const actor = Object(_rdfjs_data_model__WEBPACK_IMPORTED_MODULE_1__["namedNode"])(user);
-        type = Object(_rdfjs_data_model__WEBPACK_IMPORTED_MODULE_1__["namedNode"])(type);
-        var _iteratorNormalCompletion = true;
-        var _didIteratorError = false;
+      const results = [];
+      const actor = Object(_rdfjs_data_model__WEBPACK_IMPORTED_MODULE_1__["namedNode"])(user);
+      type = Object(_rdfjs_data_model__WEBPACK_IMPORTED_MODULE_1__["namedNode"])(type);
+      var _iteratorNormalCompletion = true;
+      var _didIteratorError = false;
 
-        var _iteratorError;
+      var _iteratorError;
 
-        try {
-          for (var _iterator = _asyncIterator(path), _step, _value; _step = yield _awaitAsyncGenerator(_iterator.next()), _iteratorNormalCompletion = _step.done, _value = yield _awaitAsyncGenerator(_step.value), !_iteratorNormalCompletion; _iteratorNormalCompletion = true) {
-            const object = _value;
+      try {
+        for (var _iterator = _asyncIterator(path), _step, _value; _step = yield _awaitAsyncGenerator(_iterator.next()), _iteratorNormalCompletion = _step.done, _value = yield _awaitAsyncGenerator(_step.value), !_iteratorNormalCompletion; _iteratorNormalCompletion = true) {
+          const object = _value;
 
-            if (object.termType === 'NamedNode') {
-              const activity = {
-                actor,
-                type,
-                object
-              };
-              var _iteratorNormalCompletion2 = true;
-              var _didIteratorError2 = false;
+          if (object.termType === 'NamedNode') {
+            const activity = {
+              actor,
+              type,
+              object
+            };
+            var _iteratorNormalCompletion2 = true;
+            var _didIteratorError2 = false;
 
-              var _iteratorError2;
+            var _iteratorError2;
 
+            try {
+              for (var _iterator2 = _asyncIterator(self.createResults(activity, document, queryEngine)), _step2, _value2; _step2 = yield _awaitAsyncGenerator(_iterator2.next()), _iteratorNormalCompletion2 = _step2.done, _value2 = yield _awaitAsyncGenerator(_step2.value), !_iteratorNormalCompletion2; _iteratorNormalCompletion2 = true) {
+                const result = _value2;
+                results.push(result);
+              }
+            } catch (err) {
+              _didIteratorError2 = true;
+              _iteratorError2 = err;
+            } finally {
               try {
-                for (var _iterator2 = _asyncIterator(self.createResults(activity, document, queryEngine)), _step2, _value2; _step2 = yield _awaitAsyncGenerator(_iterator2.next()), _iteratorNormalCompletion2 = _step2.done, _value2 = yield _awaitAsyncGenerator(_step2.value), !_iteratorNormalCompletion2; _iteratorNormalCompletion2 = true) {
-                  const result = _value2;
-                  results.push(result);
+                if (!_iteratorNormalCompletion2 && _iterator2.return != null) {
+                  yield _awaitAsyncGenerator(_iterator2.return());
                 }
-              } catch (err) {
-                _didIteratorError2 = true;
-                _iteratorError2 = err;
               } finally {
-                try {
-                  if (!_iteratorNormalCompletion2 && _iterator2.return != null) {
-                    yield _awaitAsyncGenerator(_iterator2.return());
-                  }
-                } finally {
-                  if (_didIteratorError2) {
-                    throw _iteratorError2;
-                  }
+                if (_didIteratorError2) {
+                  throw _iteratorError2;
                 }
               }
             }
-          } // Process all results and return paths starting from the returned terms
+          }
+        } // Process all results and return paths starting from the returned terms
 
-        } catch (err) {
-          _didIteratorError = true;
-          _iteratorError = err;
+      } catch (err) {
+        _didIteratorError = true;
+        _iteratorError = err;
+      } finally {
+        try {
+          if (!_iteratorNormalCompletion && _iterator.return != null) {
+            yield _awaitAsyncGenerator(_iterator.return());
+          }
         } finally {
-          try {
-            if (!_iteratorNormalCompletion && _iterator.return != null) {
-              yield _awaitAsyncGenerator(_iterator.return());
-            }
-          } finally {
-            if (_didIteratorError) {
-              throw _iteratorError;
-            }
+          if (_didIteratorError) {
+            throw _iteratorError;
           }
         }
+      }
 
-        for (const term of yield _awaitAsyncGenerator(self.processResults(results, document, queryEngine))) yield root[term.value];
-      }));
-    };
+      for (const term of yield _awaitAsyncGenerator(self.processResults(results, document, queryEngine))) yield root[term.value];
+    }));
   }
 
   async processResults(results) {
@@ -110982,17 +107354,12 @@ __webpack_require__.r(__webpack_exports__);
 
 class ContextResolver extends ldflex__WEBPACK_IMPORTED_MODULE_0__["JSONLDResolver"] {
   constructor(context) {
-    var _this;
+    super(context); // Create an exposed version of the initial context, with additional functionality
 
-    super(context);
-    _this = this;
-    // Create an exposed version of the initial context, with additional functionality
     const exposedContext = this._exposedContext = Object.create(context['@context']); // Allow extending the context
 
     Object.defineProperty(exposedContext, 'extend', {
-      value: function value() {
-        return _this.extendContext(...arguments);
-      }
+      value: (...contexts) => this.extendContext(...contexts)
     }); // Resolve to the expanded context
 
     Object.defineProperty(exposedContext, 'then', {
@@ -111230,8 +107597,8 @@ const queryTemplate = "SELECT ?activity WHERE {\n  ?activity a _:type;\n      <h
  */
 
 class FindActivityHandler extends _ActivityHandler__WEBPACK_IMPORTED_MODULE_0__["default"] {
-  constructor() {
-    super(...arguments);
+  constructor(...args) {
+    super(...args);
 
     _defineProperty(this, "requireUser", false);
   }
@@ -111547,12 +107914,9 @@ const subjectPathFactory = new ldflex__WEBPACK_IMPORTED_MODULE_0__["PathFactory"
     // The `user` property starts a path with the current user as subject
     user: new _UserPathHandler__WEBPACK_IMPORTED_MODULE_8__["default"](subjectPathFactory),
     // Clears the cache for the given document (or everything, if undefined)
-    clearCache: (_ref) => {
-      let {
-        settings
-      } = _ref;
-      return doc => settings.queryEngine.clearCache(doc);
-    },
+    clearCache: ({
+      settings
+    }) => doc => settings.queryEngine.clearCache(doc),
     // Expose the JSON-LD context
     context: contextResolver
   }),
@@ -111589,11 +107953,7 @@ function replaceVariables(template, terms) {
   return template;
 } // Imitate Comunica's response for bindings as a Immutable.js object.
 
-function createBindings() {
-  for (var _len = arguments.length, items = new Array(_len), _key = 0; _key < _len; _key++) {
-    items[_key] = arguments[_key];
-  }
-
+function createBindings(...items) {
   return {
     size: items.length,
     values: () => ({
@@ -111640,17 +108000,6 @@ function createBindings() {
 /***/ }),
 
 /***/ 3:
-/*!*********************************!*\
-  !*** readable-stream (ignored) ***!
-  \*********************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-/* (ignored) */
-
-/***/ }),
-
-/***/ 4:
 /*!********************!*\
   !*** fs (ignored) ***!
   \********************/
@@ -111661,7 +108010,7 @@ function createBindings() {
 
 /***/ }),
 
-/***/ 5:
+/***/ 4:
 /*!**********************!*\
   !*** path (ignored) ***!
   \**********************/
@@ -111672,7 +108021,7 @@ function createBindings() {
 
 /***/ }),
 
-/***/ 6:
+/***/ 5:
 /*!***********************!*\
   !*** vertx (ignored) ***!
   \***********************/
@@ -111683,7 +108032,7 @@ function createBindings() {
 
 /***/ }),
 
-/***/ 7:
+/***/ 6:
 /*!************************!*\
   !*** buffer (ignored) ***!
   \************************/
@@ -111694,7 +108043,7 @@ function createBindings() {
 
 /***/ }),
 
-/***/ 8:
+/***/ 7:
 /*!************************!*\
   !*** crypto (ignored) ***!
   \************************/
