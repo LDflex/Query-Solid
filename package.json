@@ -9,11 +9,15 @@
     "url": "https://github.com/solid/query-ldflex/"
   },
   "main": "lib/index.js",
+  "module": "module/index.js",
+  "sideEffects": false,
   "files": [
     "src",
     "lib",
+    "module",
     "dist",
-    "!dist/demo"
+    "!dist/demo",
+    ".babelrc"
   ],
   "dependencies": {
     "@rdfjs/data-model": "^1.1.1",
@@ -42,10 +46,11 @@
     "webpack-dev-server": "^3.1.14"
   },
   "scripts": {
-    "build": "npm run build:lib && npm run build:dist && npm run build:demo",
+    "build": "npm run build:lib && npm run build:module && npm run build:dist && npm run build:demo",
     "build:demo": "webpack --config=./webpack/webpack.demo.config.js",
     "build:dist": "webpack --mode=production --config=./webpack/webpack.lib.config.js",
     "build:lib": "babel src --out-dir lib --copy-files",
+    "build:module": "BABEL_ENV=module babel src --out-dir module",
     "jest": "jest",
     "lint": "eslint src test demo webpack",
     "precommit": "npm test",

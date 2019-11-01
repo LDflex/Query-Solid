@@ -1,8 +1,12 @@
 # Build for Node
-node 8
-# Build for most browsers
-> 1%
+node >=10
 
-# No Proxy support
+# Build for most browsers
+>2%
+last 2 Chrome versions
+last 2 Firefox versions
+last 2 iOS versions
+
+# Drop browsers without Proxy support
 not ie <= 11
 not operamini all

@@ -1,9 +1,9 @@
 {
   presets: [
-    ["@babel/env"],
+    ["@babel/preset-env"],
   ],
   plugins: [
-    ["@babel/plugin-proposal-class-properties"],
+    ["@babel/plugin-proposal-class-properties", { loose: true }],
     ["babel-plugin-inline-import", {
       extensions: [
         ".ttl",
@@ -11,4 +11,12 @@
       ],
     }],
   ],
+
+  env: {
+    module: {
+      presets: [
+        ["@babel/preset-env", { modules: false }],
+      ],
+    },
+  },
 }
