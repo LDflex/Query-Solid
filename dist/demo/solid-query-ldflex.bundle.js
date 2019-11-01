@@ -107107,26 +107107,6 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _rdfjs_data_model__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_rdfjs_data_model__WEBPACK_IMPORTED_MODULE_1__);
 /* harmony import */ var _solid_context__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @solid/context */ "./node_modules/@solid/context/context.json");
 var _solid_context__WEBPACK_IMPORTED_MODULE_2___namespace = /*#__PURE__*/__webpack_require__.t(/*! @solid/context */ "./node_modules/@solid/context/context.json", 1);
-function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
-
-function _awaitAsyncGenerator(value) { return new _AwaitValue(value); }
-
-function _wrapAsyncGenerator(fn) { return function () { return new _AsyncGenerator(fn.apply(this, arguments)); }; }
-
-function _AsyncGenerator(gen) { var front, back; function send(key, arg) { return new Promise(function (resolve, reject) { var request = { key: key, arg: arg, resolve: resolve, reject: reject, next: null }; if (back) { back = back.next = request; } else { front = back = request; resume(key, arg); } }); } function resume(key, arg) { try { var result = gen[key](arg); var value = result.value; var wrappedAwait = value instanceof _AwaitValue; Promise.resolve(wrappedAwait ? value.wrapped : value).then(function (arg) { if (wrappedAwait) { resume("next", arg); return; } settle(result.done ? "return" : "normal", arg); }, function (err) { resume("throw", err); }); } catch (err) { settle("throw", err); } } function settle(type, value) { switch (type) { case "return": front.resolve({ value: value, done: true }); break; case "throw": front.reject(value); break; default: front.resolve({ value: value, done: false }); break; } front = front.next; if (front) { resume(front.key, front.arg); } else { back = null; } } this._invoke = send; if (typeof gen.return !== "function") { this.return = undefined; } }
-
-if (typeof Symbol === "function" && Symbol.asyncIterator) { _AsyncGenerator.prototype[Symbol.asyncIterator] = function () { return this; }; }
-
-_AsyncGenerator.prototype.next = function (arg) { return this._invoke("next", arg); };
-
-_AsyncGenerator.prototype.throw = function (arg) { return this._invoke("throw", arg); };
-
-_AsyncGenerator.prototype.return = function (arg) { return this._invoke("return", arg); };
-
-function _AwaitValue(value) { this.wrapped = value; }
-
-function _asyncIterator(iterable) { var method; if (typeof Symbol !== "undefined") { if (Symbol.asyncIterator) { method = iterable[Symbol.asyncIterator]; if (method != null) return method.call(iterable); } if (Symbol.iterator) { method = iterable[Symbol.iterator]; if (method != null) return method.call(iterable); } } throw new TypeError("Object is not async iterable"); }
-
 
 
 
@@ -107145,8 +107125,7 @@ class ActivityHandler {
   constructor({
     activitiesPath = '/public/activities'
   } = {}) {
-    _defineProperty(this, "requireUser", true);
-
+    this.requireUser = true;
     this.activitiesPath = activitiesPath;
   }
 
@@ -107161,85 +107140,40 @@ class ActivityHandler {
       }
     } = pathData; // Return an iterator over the activity paths
 
-    return (type = "".concat(as, "Like")) => Object(ldflex__WEBPACK_IMPORTED_MODULE_0__["toIterablePromise"])(
-    /*#__PURE__*/
-    _wrapAsyncGenerator(function* () {
+    return (type = "".concat(as, "Like")) => Object(ldflex__WEBPACK_IMPORTED_MODULE_0__["toIterablePromise"])(async function* () {
       // Only process activities if a user is logged in
       let user;
 
       try {
-        user = yield _awaitAsyncGenerator(root.user);
+        user = await root.user;
       } catch (error) {
         if (self.requireUser) throw error;
         return;
       } // Determine the storage location
 
 
-      const storage = yield _awaitAsyncGenerator(root.user.pim$storage);
+      const storage = await root.user.pim$storage;
       const document = new URL(self.activitiesPath, storage || user).href; // Obtain results for every activity on the path
 
       const results = [];
       const actor = Object(_rdfjs_data_model__WEBPACK_IMPORTED_MODULE_1__["namedNode"])(user);
       type = Object(_rdfjs_data_model__WEBPACK_IMPORTED_MODULE_1__["namedNode"])(type);
-      var _iteratorNormalCompletion = true;
-      var _didIteratorError = false;
 
-      var _iteratorError;
+      for await (const object of path) {
+        if (object.termType === 'NamedNode') {
+          const activity = {
+            actor,
+            type,
+            object
+          };
 
-      try {
-        for (var _iterator = _asyncIterator(path), _step, _value; _step = yield _awaitAsyncGenerator(_iterator.next()), _iteratorNormalCompletion = _step.done, _value = yield _awaitAsyncGenerator(_step.value), !_iteratorNormalCompletion; _iteratorNormalCompletion = true) {
-          const object = _value;
-
-          if (object.termType === 'NamedNode') {
-            const activity = {
-              actor,
-              type,
-              object
-            };
-            var _iteratorNormalCompletion2 = true;
-            var _didIteratorError2 = false;
-
-            var _iteratorError2;
-
-            try {
-              for (var _iterator2 = _asyncIterator(self.createResults(activity, document, queryEngine)), _step2, _value2; _step2 = yield _awaitAsyncGenerator(_iterator2.next()), _iteratorNormalCompletion2 = _step2.done, _value2 = yield _awaitAsyncGenerator(_step2.value), !_iteratorNormalCompletion2; _iteratorNormalCompletion2 = true) {
-                const result = _value2;
-                results.push(result);
-              }
-            } catch (err) {
-              _didIteratorError2 = true;
-              _iteratorError2 = err;
-            } finally {
-              try {
-                if (!_iteratorNormalCompletion2 && _iterator2.return != null) {
-                  yield _awaitAsyncGenerator(_iterator2.return());
-                }
-              } finally {
-                if (_didIteratorError2) {
-                  throw _iteratorError2;
-                }
-              }
-            }
-          }
-        } // Process all results and return paths starting from the returned terms
-
-      } catch (err) {
-        _didIteratorError = true;
-        _iteratorError = err;
-      } finally {
-        try {
-          if (!_iteratorNormalCompletion && _iterator.return != null) {
-            yield _awaitAsyncGenerator(_iterator.return());
-          }
-        } finally {
-          if (_didIteratorError) {
-            throw _iteratorError;
-          }
+          for await (const result of self.createResults(activity, document, queryEngine)) results.push(result);
         }
-      }
+      } // Process all results and return paths starting from the returned terms
 
-      for (const term of yield _awaitAsyncGenerator(self.processResults(results, document, queryEngine))) yield root[term.value];
-    }));
+
+      for (const term of await self.processResults(results, document, queryEngine)) yield root[term.value];
+    });
   }
 
   async processResults(results) {
@@ -107402,28 +107336,6 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var uuid_v4__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(uuid_v4__WEBPACK_IMPORTED_MODULE_3__);
 /* harmony import */ var _solid_context__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @solid/context */ "./node_modules/@solid/context/context.json");
 var _solid_context__WEBPACK_IMPORTED_MODULE_4___namespace = /*#__PURE__*/__webpack_require__.t(/*! @solid/context */ "./node_modules/@solid/context/context.json", 1);
-function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
-
-function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(source, true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(source).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
-
-function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
-
-function _awaitAsyncGenerator(value) { return new _AwaitValue(value); }
-
-function _wrapAsyncGenerator(fn) { return function () { return new _AsyncGenerator(fn.apply(this, arguments)); }; }
-
-function _AsyncGenerator(gen) { var front, back; function send(key, arg) { return new Promise(function (resolve, reject) { var request = { key: key, arg: arg, resolve: resolve, reject: reject, next: null }; if (back) { back = back.next = request; } else { front = back = request; resume(key, arg); } }); } function resume(key, arg) { try { var result = gen[key](arg); var value = result.value; var wrappedAwait = value instanceof _AwaitValue; Promise.resolve(wrappedAwait ? value.wrapped : value).then(function (arg) { if (wrappedAwait) { resume("next", arg); return; } settle(result.done ? "return" : "normal", arg); }, function (err) { resume("throw", err); }); } catch (err) { settle("throw", err); } } function settle(type, value) { switch (type) { case "return": front.resolve({ value: value, done: true }); break; case "throw": front.reject(value); break; default: front.resolve({ value: value, done: false }); break; } front = front.next; if (front) { resume(front.key, front.arg); } else { back = null; } } this._invoke = send; if (typeof gen.return !== "function") { this.return = undefined; } }
-
-if (typeof Symbol === "function" && Symbol.asyncIterator) { _AsyncGenerator.prototype[Symbol.asyncIterator] = function () { return this; }; }
-
-_AsyncGenerator.prototype.next = function (arg) { return this._invoke("next", arg); };
-
-_AsyncGenerator.prototype.throw = function (arg) { return this._invoke("throw", arg); };
-
-_AsyncGenerator.prototype.return = function (arg) { return this._invoke("return", arg); };
-
-function _AwaitValue(value) { this.wrapped = value; }
-
 
 
 /* babel-plugin-inline-import './activity.ttl' */
@@ -107445,20 +107357,19 @@ const {
 
 class CreateActivityHandler extends _ActivityHandler__WEBPACK_IMPORTED_MODULE_0__["default"] {
   // Creates an activity for insertion in the given document
-  createResults(activity, document) {
-    return _wrapAsyncGenerator(function* () {
-      const id = Object(_rdfjs_data_model__WEBPACK_IMPORTED_MODULE_2__["namedNode"])(new URL("#".concat(uuid_v4__WEBPACK_IMPORTED_MODULE_3___default()()), document).href);
-      const published = Object(_rdfjs_data_model__WEBPACK_IMPORTED_MODULE_2__["literal"])(new Date().toISOString(), "".concat(xsd, "dateTime"));
-      activity = _objectSpread({
-        id,
-        published
-      }, activity);
-      const insert = Object(_util__WEBPACK_IMPORTED_MODULE_1__["replaceVariables"])(activityTemplate, activity);
-      yield {
-        id,
-        insert
-      };
-    })();
+  async *createResults(activity, document) {
+    const id = Object(_rdfjs_data_model__WEBPACK_IMPORTED_MODULE_2__["namedNode"])(new URL("#".concat(uuid_v4__WEBPACK_IMPORTED_MODULE_3___default()()), document).href);
+    const published = Object(_rdfjs_data_model__WEBPACK_IMPORTED_MODULE_2__["literal"])(new Date().toISOString(), "".concat(xsd, "dateTime"));
+    activity = {
+      id,
+      published,
+      ...activity
+    };
+    const insert = Object(_util__WEBPACK_IMPORTED_MODULE_1__["replaceVariables"])(activityTemplate, activity);
+    yield {
+      id,
+      insert
+    };
   } // Inserts the activities into the document
 
 
@@ -107484,24 +107395,6 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return DeleteActivityHandler; });
 /* harmony import */ var _ActivityHandler__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./ActivityHandler */ "./src/ActivityHandler.js");
 /* harmony import */ var _util__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./util */ "./src/util.js");
-function _awaitAsyncGenerator(value) { return new _AwaitValue(value); }
-
-function _wrapAsyncGenerator(fn) { return function () { return new _AsyncGenerator(fn.apply(this, arguments)); }; }
-
-function _AsyncGenerator(gen) { var front, back; function send(key, arg) { return new Promise(function (resolve, reject) { var request = { key: key, arg: arg, resolve: resolve, reject: reject, next: null }; if (back) { back = back.next = request; } else { front = back = request; resume(key, arg); } }); } function resume(key, arg) { try { var result = gen[key](arg); var value = result.value; var wrappedAwait = value instanceof _AwaitValue; Promise.resolve(wrappedAwait ? value.wrapped : value).then(function (arg) { if (wrappedAwait) { resume("next", arg); return; } settle(result.done ? "return" : "normal", arg); }, function (err) { resume("throw", err); }); } catch (err) { settle("throw", err); } } function settle(type, value) { switch (type) { case "return": front.resolve({ value: value, done: true }); break; case "throw": front.reject(value); break; default: front.resolve({ value: value, done: false }); break; } front = front.next; if (front) { resume(front.key, front.arg); } else { back = null; } } this._invoke = send; if (typeof gen.return !== "function") { this.return = undefined; } }
-
-if (typeof Symbol === "function" && Symbol.asyncIterator) { _AsyncGenerator.prototype[Symbol.asyncIterator] = function () { return this; }; }
-
-_AsyncGenerator.prototype.next = function (arg) { return this._invoke("next", arg); };
-
-_AsyncGenerator.prototype.throw = function (arg) { return this._invoke("throw", arg); };
-
-_AsyncGenerator.prototype.return = function (arg) { return this._invoke("return", arg); };
-
-function _AwaitValue(value) { this.wrapped = value; }
-
-function _asyncIterator(iterable) { var method; if (typeof Symbol !== "undefined") { if (Symbol.asyncIterator) { method = iterable[Symbol.asyncIterator]; if (method != null) return method.call(iterable); } if (Symbol.iterator) { method = iterable[Symbol.iterator]; if (method != null) return method.call(iterable); } } throw new TypeError("Object is not async iterable"); }
-
 
 
 /* babel-plugin-inline-import './activity-triples.sparql' */
@@ -107518,35 +107411,13 @@ const components = ['?subject', '?predicate', '?object'];
 
 class DeleteActivityHandler extends _ActivityHandler__WEBPACK_IMPORTED_MODULE_0__["default"] {
   // Finds activity triples for deletion
-  createResults(activity, document, queryEngine) {
-    return _wrapAsyncGenerator(function* () {
-      const query = Object(_util__WEBPACK_IMPORTED_MODULE_1__["replaceVariables"])(queryTemplate, activity);
-      var _iteratorNormalCompletion = true;
-      var _didIteratorError = false;
+  async *createResults(activity, document, queryEngine) {
+    const query = Object(_util__WEBPACK_IMPORTED_MODULE_1__["replaceVariables"])(queryTemplate, activity);
 
-      var _iteratorError;
-
-      try {
-        for (var _iterator = _asyncIterator(queryEngine.execute(query, document)), _step, _value; _step = yield _awaitAsyncGenerator(_iterator.next()), _iteratorNormalCompletion = _step.done, _value = yield _awaitAsyncGenerator(_step.value), !_iteratorNormalCompletion; _iteratorNormalCompletion = true) {
-          const triple = _value;
-          const terms = components.map(c => Object(_util__WEBPACK_IMPORTED_MODULE_1__["termToString"])(triple.get(c)));
-          yield "".concat(terms.join(' '), ".\n");
-        }
-      } catch (err) {
-        _didIteratorError = true;
-        _iteratorError = err;
-      } finally {
-        try {
-          if (!_iteratorNormalCompletion && _iterator.return != null) {
-            yield _awaitAsyncGenerator(_iterator.return());
-          }
-        } finally {
-          if (_didIteratorError) {
-            throw _iteratorError;
-          }
-        }
-      }
-    })();
+    for await (const triple of queryEngine.execute(query, document)) {
+      const terms = components.map(c => Object(_util__WEBPACK_IMPORTED_MODULE_1__["termToString"])(triple.get(c)));
+      yield "".concat(terms.join(' '), ".\n");
+    }
   } // Deletes the activity triples from the document
 
 
@@ -107572,26 +107443,6 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return FindActivityHandler; });
 /* harmony import */ var _ActivityHandler__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./ActivityHandler */ "./src/ActivityHandler.js");
 /* harmony import */ var _util__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./util */ "./src/util.js");
-function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
-
-function _awaitAsyncGenerator(value) { return new _AwaitValue(value); }
-
-function _wrapAsyncGenerator(fn) { return function () { return new _AsyncGenerator(fn.apply(this, arguments)); }; }
-
-function _AsyncGenerator(gen) { var front, back; function send(key, arg) { return new Promise(function (resolve, reject) { var request = { key: key, arg: arg, resolve: resolve, reject: reject, next: null }; if (back) { back = back.next = request; } else { front = back = request; resume(key, arg); } }); } function resume(key, arg) { try { var result = gen[key](arg); var value = result.value; var wrappedAwait = value instanceof _AwaitValue; Promise.resolve(wrappedAwait ? value.wrapped : value).then(function (arg) { if (wrappedAwait) { resume("next", arg); return; } settle(result.done ? "return" : "normal", arg); }, function (err) { resume("throw", err); }); } catch (err) { settle("throw", err); } } function settle(type, value) { switch (type) { case "return": front.resolve({ value: value, done: true }); break; case "throw": front.reject(value); break; default: front.resolve({ value: value, done: false }); break; } front = front.next; if (front) { resume(front.key, front.arg); } else { back = null; } } this._invoke = send; if (typeof gen.return !== "function") { this.return = undefined; } }
-
-if (typeof Symbol === "function" && Symbol.asyncIterator) { _AsyncGenerator.prototype[Symbol.asyncIterator] = function () { return this; }; }
-
-_AsyncGenerator.prototype.next = function (arg) { return this._invoke("next", arg); };
-
-_AsyncGenerator.prototype.throw = function (arg) { return this._invoke("throw", arg); };
-
-_AsyncGenerator.prototype.return = function (arg) { return this._invoke("return", arg); };
-
-function _AwaitValue(value) { this.wrapped = value; }
-
-function _asyncIterator(iterable) { var method; if (typeof Symbol !== "undefined") { if (Symbol.asyncIterator) { method = iterable[Symbol.asyncIterator]; if (method != null) return method.call(iterable); } if (Symbol.iterator) { method = iterable[Symbol.iterator]; if (method != null) return method.call(iterable); } } throw new TypeError("Object is not async iterable"); }
-
 
 
 /* babel-plugin-inline-import './activity.sparql' */
@@ -107608,39 +107459,14 @@ const queryTemplate = "SELECT ?activity WHERE {\n  ?activity a _:type;\n      <h
 class FindActivityHandler extends _ActivityHandler__WEBPACK_IMPORTED_MODULE_0__["default"] {
   constructor(...args) {
     super(...args);
-
-    _defineProperty(this, "requireUser", false);
+    this.requireUser = false;
   }
 
   // Finds all activities in the document matching the given pattern
-  createResults(activity, document, queryEngine) {
-    return _wrapAsyncGenerator(function* () {
-      const query = Object(_util__WEBPACK_IMPORTED_MODULE_1__["replaceVariables"])(queryTemplate, activity);
-      var _iteratorNormalCompletion = true;
-      var _didIteratorError = false;
+  async *createResults(activity, document, queryEngine) {
+    const query = Object(_util__WEBPACK_IMPORTED_MODULE_1__["replaceVariables"])(queryTemplate, activity);
 
-      var _iteratorError;
-
-      try {
-        for (var _iterator = _asyncIterator(queryEngine.execute(query, document)), _step, _value; _step = yield _awaitAsyncGenerator(_iterator.next()), _iteratorNormalCompletion = _step.done, _value = yield _awaitAsyncGenerator(_step.value), !_iteratorNormalCompletion; _iteratorNormalCompletion = true) {
-          const binding = _value;
-          yield binding.values().next().value;
-        }
-      } catch (err) {
-        _didIteratorError = true;
-        _iteratorError = err;
-      } finally {
-        try {
-          if (!_iteratorNormalCompletion && _iterator.return != null) {
-            yield _awaitAsyncGenerator(_iterator.return());
-          }
-        } finally {
-          if (_didIteratorError) {
-            throw _iteratorError;
-          }
-        }
-      }
-    })();
+    for await (const binding of queryEngine.execute(query, document)) yield binding.values().next().value;
   }
 
 }
@@ -107659,8 +107485,6 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return SolidDeleteFunctionHandler; });
 /* harmony import */ var ldflex__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ldflex */ "./node_modules/ldflex/lib/index.js");
 /* harmony import */ var ldflex__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(ldflex__WEBPACK_IMPORTED_MODULE_0__);
-function _asyncIterator(iterable) { var method; if (typeof Symbol !== "undefined") { if (Symbol.asyncIterator) { method = iterable[Symbol.asyncIterator]; if (method != null) return method.call(iterable); } if (Symbol.iterator) { method = iterable[Symbol.iterator]; if (method != null) return method.call(iterable); } } throw new TypeError("Object is not async iterable"); }
-
 
 /**
  * node-solid-server deviates from the SPARQL UPDATE spec:
@@ -107678,31 +107502,11 @@ class SolidDeleteFunctionHandler extends ldflex__WEBPACK_IMPORTED_MODULE_0__["De
     const objects = await super.extractObjects(pathData, path, args); // Obtain all values that currently exist
 
     const existing = [];
-    var _iteratorNormalCompletion = true;
-    var _didIteratorError = false;
 
-    var _iteratorError;
+    for await (const term of path) {
+      if (term.termType !== 'BlankNode') existing.push(term);
+    } // Perform deletions only for values that exist
 
-    try {
-      for (var _iterator = _asyncIterator(path), _step, _value; _step = await _iterator.next(), _iteratorNormalCompletion = _step.done, _value = await _step.value, !_iteratorNormalCompletion; _iteratorNormalCompletion = true) {
-        const term = _value;
-        if (term.termType !== 'BlankNode') existing.push(term);
-      } // Perform deletions only for values that exist
-
-    } catch (err) {
-      _didIteratorError = true;
-      _iteratorError = err;
-    } finally {
-      try {
-        if (!_iteratorNormalCompletion && _iterator.return != null) {
-          await _iterator.return();
-        }
-      } finally {
-        if (_didIteratorError) {
-          throw _iteratorError;
-        }
-      }
-    }
 
     return !objects ? existing : existing.filter(e => objects.some(o => o.equals(e)));
   }
@@ -107724,12 +107528,6 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var ldflex__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ldflex */ "./node_modules/ldflex/lib/index.js");
 /* harmony import */ var ldflex__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(ldflex__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var _SubjectPathResolver__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./SubjectPathResolver */ "./src/SubjectPathResolver.js");
-function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
-
-function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(source, true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(source).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
-
-function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
-
 
 
 class SourcePathHandler {
@@ -107739,7 +107537,8 @@ class SourcePathHandler {
 
   handle() {
     return source => new ldflex__WEBPACK_IMPORTED_MODULE_0__["PathFactory"]({
-      handlers: _objectSpread({}, ldflex__WEBPACK_IMPORTED_MODULE_0__["defaultHandlers"]),
+      handlers: { ...ldflex__WEBPACK_IMPORTED_MODULE_0__["defaultHandlers"]
+      },
       resolvers: [new _SubjectPathResolver__WEBPACK_IMPORTED_MODULE_1__["default"](this._paths, source)]
     }).create();
   }
@@ -107867,12 +107666,6 @@ var _solid_context__WEBPACK_IMPORTED_MODULE_1___namespace = /*#__PURE__*/__webpa
 /* harmony import */ var _UserPathHandler__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./UserPathHandler */ "./src/UserPathHandler.js");
 /* harmony import */ var _SubjectPathResolver__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./SubjectPathResolver */ "./src/SubjectPathResolver.js");
 /* harmony import */ var _ComunicaUpdateEngine__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ./ComunicaUpdateEngine */ "./src/ComunicaUpdateEngine.js");
-function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
-
-function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(source, true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(source).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
-
-function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
-
 
 
 
@@ -107891,7 +107684,7 @@ const contextResolver = new _ContextResolver__WEBPACK_IMPORTED_MODULE_2__["defau
 let rootPath; // Creates data paths that start from a given subject
 
 const subjectPathFactory = new ldflex__WEBPACK_IMPORTED_MODULE_0__["PathFactory"]({
-  handlers: _objectSpread({}, ldflex__WEBPACK_IMPORTED_MODULE_0__["defaultHandlers"], {
+  handlers: { ...ldflex__WEBPACK_IMPORTED_MODULE_0__["defaultHandlers"],
     // Custom delete handler to match node-solid-server behavior
     delete: new _SolidDeleteFunctionHandler__WEBPACK_IMPORTED_MODULE_3__["default"](),
     // Find activities
@@ -107911,13 +107704,13 @@ const subjectPathFactory = new ldflex__WEBPACK_IMPORTED_MODULE_0__["PathFactory"
     unfollow: (_, path) => () => path.deleteActivity("".concat(as, "Follow")),
     // The `root` property restarts the path from the root
     root: () => rootPath
-  }),
+  },
   resolvers: [contextResolver]
 }); // Export the root path that resolves the first property access
 
 /* harmony default export */ __webpack_exports__["default"] = (rootPath = new ldflex__WEBPACK_IMPORTED_MODULE_0__["PathFactory"]({
   // Handlers of specific named properties
-  handlers: _objectSpread({}, ldflex__WEBPACK_IMPORTED_MODULE_0__["defaultHandlers"], {
+  handlers: { ...ldflex__WEBPACK_IMPORTED_MODULE_0__["defaultHandlers"],
     // The `from` property takes a source URI as input
     from: new _SourcePathHandler__WEBPACK_IMPORTED_MODULE_7__["default"](subjectPathFactory),
     // The `user` property starts a path with the current user as subject
@@ -107928,7 +107721,7 @@ const subjectPathFactory = new ldflex__WEBPACK_IMPORTED_MODULE_0__["PathFactory"
     }) => doc => settings.queryEngine.clearCache(doc),
     // Expose the JSON-LD context
     context: contextResolver
-  }),
+  },
   // Handlers of all remaining properties
   resolvers: [// `data[url]` starts a path with the property as subject
   new _SubjectPathResolver__WEBPACK_IMPORTED_MODULE_9__["default"](subjectPathFactory)],
