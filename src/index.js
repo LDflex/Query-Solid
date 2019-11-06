@@ -1,7 +1,5 @@
-import ComunicaEngine from 'ldflex-comunica';
+import ComunicaEngine from 'ldflex-comunica/lib/comunica-engine';
 import { Store } from 'n3';
-
-const engine = new ComunicaEngine()._engine;
 
 const sparql = `
 SELECT ?label WHERE {
@@ -11,9 +9,9 @@ SELECT ?label WHERE {
 
 (async function() {
   console.time('query')
-  for (var i = 0; i < 100; i++) {
-    const result = await engine.query(sparql, {
-      sources: [{ value: new Store(), type: 'rdfjsSource' }],
+  for (var i = 0; i < 500; i++) {
+    const result = await ComunicaEngine.query(sparql, {
+      source: { value: new Store(), type: 'rdfjsSource' },
     });
     const bindings = result.bindingsStream;
     await readBindings(bindings);
