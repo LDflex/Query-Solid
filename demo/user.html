@@ -24,17 +24,17 @@ function timeEnd(label) {
 // console.timeEnd = timeEnd;
 
 (async function() {
-  const container = solid.data["https://apiprod.happy-dev.fr/clients/"];
-  console.time('total');
-  console.time(container);
+  let container = solid.data["http://localhost:8080/users.jsonld"];
   await container.ldp_contains;
-  console.timeEnd(container)
-  for await (const r of container.ldp_contains) {
-    console.time(r);
-    await r['rdfs:label'];
-    console.timeEnd(r);
+  for (var i = 0; i < 10; i++) {
+    console.time(container.toString())
+    for await (const r of container.ldp_contains) {
+      await r['rdfs:label']
+      await r['http://happy-dev.fr/owl/#username']
+      await r['http://happy-dev.fr/owl/#email']
+    }
+    console.timeEnd(container.toString())
   }
-  console.timeEnd('total');
 })()
 
 

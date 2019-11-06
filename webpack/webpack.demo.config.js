@@ -6,6 +6,7 @@ const outputDir = './dist/demo/';
 
 const localAssets = [
   'user.html',
+  'users.jsonld',
 ];
 const externalAssets = [
   'solid-auth-client/dist-popup/popup.html',
