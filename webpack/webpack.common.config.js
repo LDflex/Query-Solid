@@ -23,6 +23,7 @@ module.exports = ({ outputDir }) => ({
   },
   externals: {
     'solid-auth-client': 'this',
+    'setimmediate': 'setImmediate',
   },
   devtool: 'source-map',
 });
