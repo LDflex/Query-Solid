@@ -1,0 +1,8 @@
+#!/usr/bin/env bash
+set -e
+npm run build:lib
+npx webpack --config=./webpack/webpack.lib.config.js
+echo BROWSER
+node browser.js
+echo NODE
+node lib/index.js
