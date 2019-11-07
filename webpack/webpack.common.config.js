@@ -29,6 +29,8 @@ module.exports = ({ outputDir }) => ({
     new NormalModuleReplacementPlugin(/^stream$/, require.resolve('readable-stream/readable-browser')),
     // Shim process to use faster process.nextTick implementation
     new NormalModuleReplacementPlugin(/process\/browser\.js$/, require.resolve('../browser/process')),
+    // Shim setImmediate to a faster implementation
+    new NormalModuleReplacementPlugin(/^setimmediate$/, require.resolve('../browser/setImmediate')),
   ],
   externals: {
     'solid-auth-client': ['solid', 'auth'],
