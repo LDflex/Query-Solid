@@ -30,7 +30,7 @@ module.exports = ({ outputDir }) => ({
     new NormalModuleReplacementPlugin(/^setimmediate$/, require.resolve('../setimmediate')),
   ],
   externals: {
-    'solid-auth-client': 'this',
+    'solid-auth-client': ['solid', 'auth'],
   },
   devtool: 'source-map',
 });
