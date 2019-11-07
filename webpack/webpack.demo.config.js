@@ -1,22 +1,22 @@
-const common = require('./webpack.common.config');
-const CleanWebpackPlugin = require('clean-webpack-plugin');
-const CopyWebpackPlugin = require('copy-webpack-plugin');
-
 const outputDir = './dist/demo/';
+const common = require('./webpack.common.config')({ outputDir });
+
+const CopyWebpackPlugin = require('copy-webpack-plugin');
 
 const localAssets = [
   'user.html',
   'users.jsonld',
 ];
+
 const externalAssets = [
   'solid-auth-client/dist-popup/popup.html',
   'solid-auth-client/dist-lib/solid-auth-client.bundle.js',
   'solid-auth-client/dist-lib/solid-auth-client.bundle.js.map',
 ];
 
-module.exports = Object.assign({
+module.exports = Object.assign({}, common, {
   plugins: [
-    new CleanWebpackPlugin([outputDir]),
+    ...common.plugins,
     new CopyWebpackPlugin(localAssets, { context: 'demo' }),
     new CopyWebpackPlugin(externalAssets.map(a => require.resolve(a))),
   ],
@@ -24,4 +24,4 @@ module.exports = Object.assign({
     index: 'user.html',
     contentBase: outputDir,
   },
-}, common({ outputDir }));
+});

@@ -1,4 +1,6 @@
 const { resolve } = require('path');
+const { NormalModuleReplacementPlugin } = require('webpack');
+const CleanWebpackPlugin = require('clean-webpack-plugin');
 
 module.exports = ({ outputDir }) => ({
   mode: 'development',
@@ -21,6 +23,11 @@ module.exports = ({ outputDir }) => ({
       },
     ],
   },
+  plugins: [
+    new CleanWebpackPlugin([outputDir]),
+    new NormalModuleReplacementPlugin(/^stream$/, require.resolve('readable-stream/readable-browser')),
+    new NormalModuleReplacementPlugin(/process\/browser\.js$/, require.resolve('../process')),
+  ],
   externals: {
     'solid-auth-client': 'this',
     'setimmediate': 'setImmediate',

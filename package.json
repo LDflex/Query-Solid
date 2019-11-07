@@ -24,6 +24,7 @@
     "@solid/context": "^1.0.0",
     "ldflex": "^2.5.0",
     "ldflex-comunica": "^3.2.0",
+    "readable-stream": "^3.4.0",
     "solid-auth-client": "^2.3.1",
     "uuid": "^3.3.2"
   },
