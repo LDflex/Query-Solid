@@ -1,4 +1,5 @@
 const { resolve } = require('path');
+const CleanWebpackPlugin = require('clean-webpack-plugin');
 
 module.exports = ({ outputDir }) => ({
   mode: 'development',
@@ -21,6 +22,9 @@ module.exports = ({ outputDir }) => ({
       },
     ],
   },
+  plugins: [
+    new CleanWebpackPlugin([outputDir]),
+  ],
   externals: {
     'solid-auth-client': ['solid', 'auth'],
   },

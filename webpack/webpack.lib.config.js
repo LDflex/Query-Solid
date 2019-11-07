@@ -1,10 +1,4 @@
-const common = require('./webpack.common.config');
-const CleanWebpackPlugin = require('clean-webpack-plugin');
-
 const outputDir = './dist/';
+const common = require('./webpack.common.config')({ outputDir });
 
-module.exports = Object.assign({
-  plugins: [
-    new CleanWebpackPlugin([outputDir]),
-  ],
-}, common({ outputDir }));
+module.exports = Object.assign({}, common);
