@@ -27,10 +27,10 @@ module.exports = ({ outputDir }) => ({
     new CleanWebpackPlugin([outputDir]),
     new NormalModuleReplacementPlugin(/^stream$/, require.resolve('readable-stream/readable-browser')),
     new NormalModuleReplacementPlugin(/process\/browser\.js$/, require.resolve('../process')),
+    new NormalModuleReplacementPlugin(/^setimmediate$/, require.resolve('../setimmediate')),
   ],
   externals: {
     'solid-auth-client': 'this',
-    'setimmediate': 'setImmediate',
   },
   devtool: 'source-map',
 });
