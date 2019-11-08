@@ -1,5 +1,5 @@
 # LDflex for Solid
-Simple access to data in [Solid](https://solid.mit.edu/) pods
+Simple access to data in [Solid](https://solidproject.org/) pods
 through [LDflex](https://github.com/RubenVerborgh/LDflex) expressions
 
 [![npm version](https://img.shields.io/npm/v/@solid/query-ldflex.svg)](https://www.npmjs.com/package/@solid/query-ldflex)
