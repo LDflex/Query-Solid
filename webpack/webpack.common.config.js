@@ -35,7 +35,13 @@ module.exports = ({ outputDir }) => ({
     new NormalModuleReplacementPlugin(/^setimmediate$/, require.resolve('../browser/setImmediate')),
   ],
   externals: {
+    // Rely on external solid-auth-client at window.solid.auth
     'solid-auth-client': ['solid', 'auth'],
+    // Exclude the following unneeded modules
+    '@comunica/actor-rdf-serialize-jsonld': 'null',
+    'graphql': 'null',
+    'graphql-to-sparql': 'null',
+    'sparqlee': 'null',
   },
   devtool: 'source-map',
 });
