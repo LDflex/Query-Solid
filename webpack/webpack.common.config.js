@@ -27,6 +27,8 @@ module.exports = ({ outputDir }) => ({
     new CleanWebpackPlugin([outputDir]),
     // Use latest readable-stream version (as opposed to stream-browserify)
     new NormalModuleReplacementPlugin(/^stream$/, require.resolve('readable-stream/readable-browser')),
+    // Shim crypto for smaller bundle size
+    new NormalModuleReplacementPlugin(/^crypto$/, require.resolve('../browser/crypto')),
     // Shim process to use faster process.nextTick implementation
     new NormalModuleReplacementPlugin(/process\/browser\.js$/, require.resolve('../browser/process')),
     // Shim setImmediate to a faster implementation
