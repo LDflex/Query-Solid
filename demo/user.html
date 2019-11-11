@@ -26,14 +26,21 @@ function timeEnd(label) {
 (async function() {
   const container = solid.data["https://apiprod.happy-dev.fr/clients/"];
   console.time('total');
-  console.time(container);
+
+  console.time('container');
+  const items = container.ldp_contains;
   await container.ldp_contains;
-  console.timeEnd(container)
-  for await (const r of container.ldp_contains) {
-    console.time(r);
+  console.timeEnd('container')
+
+  console.time('preload');
+  await items.preload('rdfs:label', "http://happy-dev.fr/owl/#img");
+  console.timeEnd('preload')
+
+  for await (const r of items) {
     await r['rdfs:label'];
-    console.timeEnd(r);
+    await r["http://happy-dev.fr/owl/#img"];
   }
+
   console.timeEnd('total');
 })()
 
