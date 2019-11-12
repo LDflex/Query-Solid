@@ -41,7 +41,6 @@ module.exports = ({ outputDir }) => ({
     '@comunica/actor-rdf-serialize-jsonld': 'null',
     'graphql': 'null',
     'graphql-to-sparql': 'null',
-    'sparqlee': 'null',
   },
   devtool: 'source-map',
 });
