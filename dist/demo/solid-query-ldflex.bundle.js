@@ -2896,7 +2896,7 @@ __export(__webpack_require__(/*! ./lib/ActorQueryOperationExtend */ "./node_modu
 
 Object.defineProperty(exports, "__esModule", { value: true });
 const rdf_string_1 = __webpack_require__(/*! rdf-string */ "./node_modules/rdf-string/index.js");
-const sparqlee_1 = __webpack_require__(/*! sparqlee */ "@comunica/actor-rdf-serialize-jsonld");
+const sparqlee_1 = __webpack_require__(/*! sparqlee */ "./node_modules/sparqlee/dist/index.js");
 const bus_query_operation_1 = __webpack_require__(/*! @comunica/bus-query-operation */ "./node_modules/@comunica/bus-query-operation/index.js");
 /**
  * A comunica Extend Query Operation Actor.
@@ -2981,7 +2981,7 @@ __export(__webpack_require__(/*! ./lib/ActorQueryOperationFilterSparqlee */ "./n
 Object.defineProperty(exports, "__esModule", { value: true });
 const rdf_string_1 = __webpack_require__(/*! rdf-string */ "./node_modules/rdf-string/index.js");
 const sparqlalgebrajs_1 = __webpack_require__(/*! sparqlalgebrajs */ "./node_modules/sparqlalgebrajs/index.js");
-const sparqlee_1 = __webpack_require__(/*! sparqlee */ "@comunica/actor-rdf-serialize-jsonld");
+const sparqlee_1 = __webpack_require__(/*! sparqlee */ "./node_modules/sparqlee/dist/index.js");
 const bus_query_operation_1 = __webpack_require__(/*! @comunica/bus-query-operation */ "./node_modules/@comunica/bus-query-operation/index.js");
 /**
  * A comunica Filter Sparqlee Query Operation Actor.
@@ -3329,7 +3329,7 @@ __export(__webpack_require__(/*! ./lib/ActorQueryOperationGroup */ "./node_modul
 Object.defineProperty(exports, "__esModule", { value: true });
 const asynciterator_1 = __webpack_require__(/*! asynciterator */ "./node_modules/asynciterator/asynciterator.js");
 const rdf_string_1 = __webpack_require__(/*! rdf-string */ "./node_modules/rdf-string/index.js");
-const sparqlee_1 = __webpack_require__(/*! sparqlee */ "@comunica/actor-rdf-serialize-jsonld");
+const sparqlee_1 = __webpack_require__(/*! sparqlee */ "./node_modules/sparqlee/dist/index.js");
 const bus_query_operation_1 = __webpack_require__(/*! @comunica/bus-query-operation */ "./node_modules/@comunica/bus-query-operation/index.js");
 const GroupsState_1 = __webpack_require__(/*! ./GroupsState */ "./node_modules/@comunica/actor-query-operation-group/lib/GroupsState.js");
 /**
@@ -3408,7 +3408,7 @@ exports.ActorQueryOperationGroup = ActorQueryOperationGroup;
 
 Object.defineProperty(exports, "__esModule", { value: true });
 const rdf_string_1 = __webpack_require__(/*! rdf-string */ "./node_modules/rdf-string/index.js");
-const sparqlee_1 = __webpack_require__(/*! sparqlee */ "@comunica/actor-rdf-serialize-jsonld");
+const sparqlee_1 = __webpack_require__(/*! sparqlee */ "./node_modules/sparqlee/dist/index.js");
 const actor_abstract_bindings_hash_1 = __webpack_require__(/*! @comunica/actor-abstract-bindings-hash */ "./node_modules/@comunica/actor-abstract-bindings-hash/index.js");
 const bus_query_operation_1 = __webpack_require__(/*! @comunica/bus-query-operation */ "./node_modules/@comunica/bus-query-operation/index.js");
 /**
@@ -3606,7 +3606,7 @@ __export(__webpack_require__(/*! ./lib/ActorQueryOperationLeftJoinNestedLoop */ 
 Object.defineProperty(exports, "__esModule", { value: true });
 const bus_query_operation_1 = __webpack_require__(/*! @comunica/bus-query-operation */ "./node_modules/@comunica/bus-query-operation/index.js");
 const bus_rdf_join_1 = __webpack_require__(/*! @comunica/bus-rdf-join */ "./node_modules/@comunica/bus-rdf-join/index.js");
-const sparqlee_1 = __webpack_require__(/*! sparqlee */ "@comunica/actor-rdf-serialize-jsonld");
+const sparqlee_1 = __webpack_require__(/*! sparqlee */ "./node_modules/sparqlee/dist/index.js");
 /**
  * A comunica LeftJoin NestedLoop Query Operation Actor.
  */
@@ -3892,7 +3892,7 @@ __export(__webpack_require__(/*! ./lib/ActorQueryOperationOrderBySparqlee */ "./
 Object.defineProperty(exports, "__esModule", { value: true });
 const rdf_string_1 = __webpack_require__(/*! rdf-string */ "./node_modules/rdf-string/index.js");
 const sparqlalgebrajs_1 = __webpack_require__(/*! sparqlalgebrajs */ "./node_modules/sparqlalgebrajs/index.js");
-const sparqlee_1 = __webpack_require__(/*! sparqlee */ "@comunica/actor-rdf-serialize-jsonld");
+const sparqlee_1 = __webpack_require__(/*! sparqlee */ "./node_modules/sparqlee/dist/index.js");
 const bus_query_operation_1 = __webpack_require__(/*! @comunica/bus-query-operation */ "./node_modules/@comunica/bus-query-operation/index.js");
 const SortIterator_1 = __webpack_require__(/*! ./SortIterator */ "./node_modules/@comunica/actor-query-operation-orderby-sparqlee/lib/SortIterator.js");
 /**
@@ -16497,6 +16497,5026 @@ function isnan (val) {
 
 /***/ }),
 
+/***/ "./node_modules/cipher-base/index.js":
+/*!*******************************************!*\
+  !*** ./node_modules/cipher-base/index.js ***!
+  \*******************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+var Buffer = __webpack_require__(/*! safe-buffer */ "./node_modules/safe-buffer/index.js").Buffer
+var Transform = __webpack_require__(/*! stream */ "./node_modules/readable-stream/readable-browser.js").Transform
+var StringDecoder = __webpack_require__(/*! string_decoder */ "./node_modules/string_decoder/lib/string_decoder.js").StringDecoder
+var inherits = __webpack_require__(/*! inherits */ "./node_modules/inherits/inherits_browser.js")
+
+function CipherBase (hashMode) {
+  Transform.call(this)
+  this.hashMode = typeof hashMode === 'string'
+  if (this.hashMode) {
+    this[hashMode] = this._finalOrDigest
+  } else {
+    this.final = this._finalOrDigest
+  }
+  if (this._final) {
+    this.__final = this._final
+    this._final = null
+  }
+  this._decoder = null
+  this._encoding = null
+}
+inherits(CipherBase, Transform)
+
+CipherBase.prototype.update = function (data, inputEnc, outputEnc) {
+  if (typeof data === 'string') {
+    data = Buffer.from(data, inputEnc)
+  }
+
+  var outData = this._update(data)
+  if (this.hashMode) return this
+
+  if (outputEnc) {
+    outData = this._toString(outData, outputEnc)
+  }
+
+  return outData
+}
+
+CipherBase.prototype.setAutoPadding = function () {}
+CipherBase.prototype.getAuthTag = function () {
+  throw new Error('trying to get auth tag in unsupported state')
+}
+
+CipherBase.prototype.setAuthTag = function () {
+  throw new Error('trying to set auth tag in unsupported state')
+}
+
+CipherBase.prototype.setAAD = function () {
+  throw new Error('trying to set aad in unsupported state')
+}
+
+CipherBase.prototype._transform = function (data, _, next) {
+  var err
+  try {
+    if (this.hashMode) {
+      this._update(data)
+    } else {
+      this.push(this._update(data))
+    }
+  } catch (e) {
+    err = e
+  } finally {
+    next(err)
+  }
+}
+CipherBase.prototype._flush = function (done) {
+  var err
+  try {
+    this.push(this.__final())
+  } catch (e) {
+    err = e
+  }
+
+  done(err)
+}
+CipherBase.prototype._finalOrDigest = function (outputEnc) {
+  var outData = this.__final() || Buffer.alloc(0)
+  if (outputEnc) {
+    outData = this._toString(outData, outputEnc, true)
+  }
+  return outData
+}
+
+CipherBase.prototype._toString = function (value, enc, fin) {
+  if (!this._decoder) {
+    this._decoder = new StringDecoder(enc)
+    this._encoding = enc
+  }
+
+  if (this._encoding !== enc) throw new Error('can\'t switch encodings')
+
+  var out = this._decoder.write(value)
+  if (fin) {
+    out += this._decoder.end()
+  }
+
+  return out
+}
+
+module.exports = CipherBase
+
+
+/***/ }),
+
+/***/ "./node_modules/create-hash/browser.js":
+/*!*********************************************!*\
+  !*** ./node_modules/create-hash/browser.js ***!
+  \*********************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+var inherits = __webpack_require__(/*! inherits */ "./node_modules/inherits/inherits_browser.js")
+var MD5 = __webpack_require__(/*! md5.js */ "./node_modules/md5.js/index.js")
+var RIPEMD160 = __webpack_require__(/*! ripemd160 */ "./node_modules/ripemd160/index.js")
+var sha = __webpack_require__(/*! sha.js */ "./node_modules/sha.js/index.js")
+var Base = __webpack_require__(/*! cipher-base */ "./node_modules/cipher-base/index.js")
+
+function Hash (hash) {
+  Base.call(this, 'digest')
+
+  this._hash = hash
+}
+
+inherits(Hash, Base)
+
+Hash.prototype._update = function (data) {
+  this._hash.update(data)
+}
+
+Hash.prototype._final = function () {
+  return this._hash.digest()
+}
+
+module.exports = function createHash (alg) {
+  alg = alg.toLowerCase()
+  if (alg === 'md5') return new MD5()
+  if (alg === 'rmd160' || alg === 'ripemd160') return new RIPEMD160()
+
+  return new Hash(sha(alg))
+}
+
+
+/***/ }),
+
+/***/ "./node_modules/decimal.js/decimal.js":
+/*!********************************************!*\
+  !*** ./node_modules/decimal.js/decimal.js ***!
+  \********************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+var __WEBPACK_AMD_DEFINE_RESULT__;;(function (globalScope) {
+  'use strict';
+
+
+  /*
+   *  decimal.js v10.2.0
+   *  An arbitrary-precision Decimal type for JavaScript.
+   *  https://github.com/MikeMcl/decimal.js
+   *  Copyright (c) 2019 Michael Mclaughlin <M8ch88l@gmail.com>
+   *  MIT Licence
+   */
+
+
+  // -----------------------------------  EDITABLE DEFAULTS  ------------------------------------ //
+
+
+    // The maximum exponent magnitude.
+    // The limit on the value of `toExpNeg`, `toExpPos`, `minE` and `maxE`.
+  var EXP_LIMIT = 9e15,                      // 0 to 9e15
+
+    // The limit on the value of `precision`, and on the value of the first argument to
+    // `toDecimalPlaces`, `toExponential`, `toFixed`, `toPrecision` and `toSignificantDigits`.
+    MAX_DIGITS = 1e9,                        // 0 to 1e9
+
+    // Base conversion alphabet.
+    NUMERALS = '0123456789abcdef',
+
+    // The natural logarithm of 10 (1025 digits).
+    LN10 = '2.3025850929940456840179914546843642076011014886287729760333279009675726096773524802359972050895982983419677840422862486334095254650828067566662873690987816894829072083255546808437998948262331985283935053089653777326288461633662222876982198867465436674744042432743651550489343149393914796194044002221051017141748003688084012647080685567743216228355220114804663715659121373450747856947683463616792101806445070648000277502684916746550586856935673420670581136429224554405758925724208241314695689016758940256776311356919292033376587141660230105703089634572075440370847469940168269282808481184289314848524948644871927809676271275775397027668605952496716674183485704422507197965004714951050492214776567636938662976979522110718264549734772662425709429322582798502585509785265383207606726317164309505995087807523710333101197857547331541421808427543863591778117054309827482385045648019095610299291824318237525357709750539565187697510374970888692180205189339507238539205144634197265287286965110862571492198849978748873771345686209167058',
+
+    // Pi (1025 digits).
+    PI = '3.1415926535897932384626433832795028841971693993751058209749445923078164062862089986280348253421170679821480865132823066470938446095505822317253594081284811174502841027019385211055596446229489549303819644288109756659334461284756482337867831652712019091456485669234603486104543266482133936072602491412737245870066063155881748815209209628292540917153643678925903600113305305488204665213841469519415116094330572703657595919530921861173819326117931051185480744623799627495673518857527248912279381830119491298336733624406566430860213949463952247371907021798609437027705392171762931767523846748184676694051320005681271452635608277857713427577896091736371787214684409012249534301465495853710507922796892589235420199561121290219608640344181598136297747713099605187072113499999983729780499510597317328160963185950244594553469083026425223082533446850352619311881710100031378387528865875332083814206171776691473035982534904287554687311595628638823537875937519577818577805321712268066130019278766111959092164201989380952572010654858632789',
+
+
+    // The initial configuration properties of the Decimal constructor.
+    DEFAULTS = {
+
+      // These values must be integers within the stated ranges (inclusive).
+      // Most of these values can be changed at run-time using the `Decimal.config` method.
+
+      // The maximum number of significant digits of the result of a calculation or base conversion.
+      // E.g. `Decimal.config({ precision: 20 });`
+      precision: 20,                         // 1 to MAX_DIGITS
+
+      // The rounding mode used when rounding to `precision`.
+      //
+      // ROUND_UP         0 Away from zero.
+      // ROUND_DOWN       1 Towards zero.
+      // ROUND_CEIL       2 Towards +Infinity.
+      // ROUND_FLOOR      3 Towards -Infinity.
+      // ROUND_HALF_UP    4 Towards nearest neighbour. If equidistant, up.
+      // ROUND_HALF_DOWN  5 Towards nearest neighbour. If equidistant, down.
+      // ROUND_HALF_EVEN  6 Towards nearest neighbour. If equidistant, towards even neighbour.
+      // ROUND_HALF_CEIL  7 Towards nearest neighbour. If equidistant, towards +Infinity.
+      // ROUND_HALF_FLOOR 8 Towards nearest neighbour. If equidistant, towards -Infinity.
+      //
+      // E.g.
+      // `Decimal.rounding = 4;`
+      // `Decimal.rounding = Decimal.ROUND_HALF_UP;`
+      rounding: 4,                           // 0 to 8
+
+      // The modulo mode used when calculating the modulus: a mod n.
+      // The quotient (q = a / n) is calculated according to the corresponding rounding mode.
+      // The remainder (r) is calculated as: r = a - n * q.
+      //
+      // UP         0 The remainder is positive if the dividend is negative, else is negative.
+      // DOWN       1 The remainder has the same sign as the dividend (JavaScript %).
+      // FLOOR      3 The remainder has the same sign as the divisor (Python %).
+      // HALF_EVEN  6 The IEEE 754 remainder function.
+      // EUCLID     9 Euclidian division. q = sign(n) * floor(a / abs(n)). Always positive.
+      //
+      // Truncated division (1), floored division (3), the IEEE 754 remainder (6), and Euclidian
+      // division (9) are commonly used for the modulus operation. The other rounding modes can also
+      // be used, but they may not give useful results.
+      modulo: 1,                             // 0 to 9
+
+      // The exponent value at and beneath which `toString` returns exponential notation.
+      // JavaScript numbers: -7
+      toExpNeg: -7,                          // 0 to -EXP_LIMIT
+
+      // The exponent value at and above which `toString` returns exponential notation.
+      // JavaScript numbers: 21
+      toExpPos:  21,                         // 0 to EXP_LIMIT
+
+      // The minimum exponent value, beneath which underflow to zero occurs.
+      // JavaScript numbers: -324  (5e-324)
+      minE: -EXP_LIMIT,                      // -1 to -EXP_LIMIT
+
+      // The maximum exponent value, above which overflow to Infinity occurs.
+      // JavaScript numbers: 308  (1.7976931348623157e+308)
+      maxE: EXP_LIMIT,                       // 1 to EXP_LIMIT
+
+      // Whether to use cryptographically-secure random number generation, if available.
+      crypto: false                          // true/false
+    },
+
+
+  // ----------------------------------- END OF EDITABLE DEFAULTS ------------------------------- //
+
+
+    Decimal, inexact, noConflict, quadrant,
+    external = true,
+
+    decimalError = '[DecimalError] ',
+    invalidArgument = decimalError + 'Invalid argument: ',
+    precisionLimitExceeded = decimalError + 'Precision limit exceeded',
+    cryptoUnavailable = decimalError + 'crypto unavailable',
+
+    mathfloor = Math.floor,
+    mathpow = Math.pow,
+
+    isBinary = /^0b([01]+(\.[01]*)?|\.[01]+)(p[+-]?\d+)?$/i,
+    isHex = /^0x([0-9a-f]+(\.[0-9a-f]*)?|\.[0-9a-f]+)(p[+-]?\d+)?$/i,
+    isOctal = /^0o([0-7]+(\.[0-7]*)?|\.[0-7]+)(p[+-]?\d+)?$/i,
+    isDecimal = /^(\d+(\.\d*)?|\.\d+)(e[+-]?\d+)?$/i,
+
+    BASE = 1e7,
+    LOG_BASE = 7,
+    MAX_SAFE_INTEGER = 9007199254740991,
+
+    LN10_PRECISION = LN10.length - 1,
+    PI_PRECISION = PI.length - 1,
+
+    // Decimal.prototype object
+    P = { name: '[object Decimal]' };
+
+
+  // Decimal prototype methods
+
+
+  /*
+   *  absoluteValue             abs
+   *  ceil
+   *  comparedTo                cmp
+   *  cosine                    cos
+   *  cubeRoot                  cbrt
+   *  decimalPlaces             dp
+   *  dividedBy                 div
+   *  dividedToIntegerBy        divToInt
+   *  equals                    eq
+   *  floor
+   *  greaterThan               gt
+   *  greaterThanOrEqualTo      gte
+   *  hyperbolicCosine          cosh
+   *  hyperbolicSine            sinh
+   *  hyperbolicTangent         tanh
+   *  inverseCosine             acos
+   *  inverseHyperbolicCosine   acosh
+   *  inverseHyperbolicSine     asinh
+   *  inverseHyperbolicTangent  atanh
+   *  inverseSine               asin
+   *  inverseTangent            atan
+   *  isFinite
+   *  isInteger                 isInt
+   *  isNaN
+   *  isNegative                isNeg
+   *  isPositive                isPos
+   *  isZero
+   *  lessThan                  lt
+   *  lessThanOrEqualTo         lte
+   *  logarithm                 log
+   *  [maximum]                 [max]
+   *  [minimum]                 [min]
+   *  minus                     sub
+   *  modulo                    mod
+   *  naturalExponential        exp
+   *  naturalLogarithm          ln
+   *  negated                   neg
+   *  plus                      add
+   *  precision                 sd
+   *  round
+   *  sine                      sin
+   *  squareRoot                sqrt
+   *  tangent                   tan
+   *  times                     mul
+   *  toBinary
+   *  toDecimalPlaces           toDP
+   *  toExponential
+   *  toFixed
+   *  toFraction
+   *  toHexadecimal             toHex
+   *  toNearest
+   *  toNumber
+   *  toOctal
+   *  toPower                   pow
+   *  toPrecision
+   *  toSignificantDigits       toSD
+   *  toString
+   *  truncated                 trunc
+   *  valueOf                   toJSON
+   */
+
+
+  /*
+   * Return a new Decimal whose value is the absolute value of this Decimal.
+   *
+   */
+  P.absoluteValue = P.abs = function () {
+    var x = new this.constructor(this);
+    if (x.s < 0) x.s = 1;
+    return finalise(x);
+  };
+
+
+  /*
+   * Return a new Decimal whose value is the value of this Decimal rounded to a whole number in the
+   * direction of positive Infinity.
+   *
+   */
+  P.ceil = function () {
+    return finalise(new this.constructor(this), this.e + 1, 2);
+  };
+
+
+  /*
+   * Return
+   *   1    if the value of this Decimal is greater than the value of `y`,
+   *  -1    if the value of this Decimal is less than the value of `y`,
+   *   0    if they have the same value,
+   *   NaN  if the value of either Decimal is NaN.
+   *
+   */
+  P.comparedTo = P.cmp = function (y) {
+    var i, j, xdL, ydL,
+      x = this,
+      xd = x.d,
+      yd = (y = new x.constructor(y)).d,
+      xs = x.s,
+      ys = y.s;
+
+    // Either NaN or ±Infinity?
+    if (!xd || !yd) {
+      return !xs || !ys ? NaN : xs !== ys ? xs : xd === yd ? 0 : !xd ^ xs < 0 ? 1 : -1;
+    }
+
+    // Either zero?
+    if (!xd[0] || !yd[0]) return xd[0] ? xs : yd[0] ? -ys : 0;
+
+    // Signs differ?
+    if (xs !== ys) return xs;
+
+    // Compare exponents.
+    if (x.e !== y.e) return x.e > y.e ^ xs < 0 ? 1 : -1;
+
+    xdL = xd.length;
+    ydL = yd.length;
+
+    // Compare digit by digit.
+    for (i = 0, j = xdL < ydL ? xdL : ydL; i < j; ++i) {
+      if (xd[i] !== yd[i]) return xd[i] > yd[i] ^ xs < 0 ? 1 : -1;
+    }
+
+    // Compare lengths.
+    return xdL === ydL ? 0 : xdL > ydL ^ xs < 0 ? 1 : -1;
+  };
+
+
+  /*
+   * Return a new Decimal whose value is the cosine of the value in radians of this Decimal.
+   *
+   * Domain: [-Infinity, Infinity]
+   * Range: [-1, 1]
+   *
+   * cos(0)         = 1
+   * cos(-0)        = 1
+   * cos(Infinity)  = NaN
+   * cos(-Infinity) = NaN
+   * cos(NaN)       = NaN
+   *
+   */
+  P.cosine = P.cos = function () {
+    var pr, rm,
+      x = this,
+      Ctor = x.constructor;
+
+    if (!x.d) return new Ctor(NaN);
+
+    // cos(0) = cos(-0) = 1
+    if (!x.d[0]) return new Ctor(1);
+
+    pr = Ctor.precision;
+    rm = Ctor.rounding;
+    Ctor.precision = pr + Math.max(x.e, x.sd()) + LOG_BASE;
+    Ctor.rounding = 1;
+
+    x = cosine(Ctor, toLessThanHalfPi(Ctor, x));
+
+    Ctor.precision = pr;
+    Ctor.rounding = rm;
+
+    return finalise(quadrant == 2 || quadrant == 3 ? x.neg() : x, pr, rm, true);
+  };
+
+
+  /*
+   *
+   * Return a new Decimal whose value is the cube root of the value of this Decimal, rounded to
+   * `precision` significant digits using rounding mode `rounding`.
+   *
+   *  cbrt(0)  =  0
+   *  cbrt(-0) = -0
+   *  cbrt(1)  =  1
+   *  cbrt(-1) = -1
+   *  cbrt(N)  =  N
+   *  cbrt(-I) = -I
+   *  cbrt(I)  =  I
+   *
+   * Math.cbrt(x) = (x < 0 ? -Math.pow(-x, 1/3) : Math.pow(x, 1/3))
+   *
+   */
+  P.cubeRoot = P.cbrt = function () {
+    var e, m, n, r, rep, s, sd, t, t3, t3plusx,
+      x = this,
+      Ctor = x.constructor;
+
+    if (!x.isFinite() || x.isZero()) return new Ctor(x);
+    external = false;
+
+    // Initial estimate.
+    s = x.s * mathpow(x.s * x, 1 / 3);
+
+     // Math.cbrt underflow/overflow?
+     // Pass x to Math.pow as integer, then adjust the exponent of the result.
+    if (!s || Math.abs(s) == 1 / 0) {
+      n = digitsToString(x.d);
+      e = x.e;
+
+      // Adjust n exponent so it is a multiple of 3 away from x exponent.
+      if (s = (e - n.length + 1) % 3) n += (s == 1 || s == -2 ? '0' : '00');
+      s = mathpow(n, 1 / 3);
+
+      // Rarely, e may be one less than the result exponent value.
+      e = mathfloor((e + 1) / 3) - (e % 3 == (e < 0 ? -1 : 2));
+
+      if (s == 1 / 0) {
+        n = '5e' + e;
+      } else {
+        n = s.toExponential();
+        n = n.slice(0, n.indexOf('e') + 1) + e;
+      }
+
+      r = new Ctor(n);
+      r.s = x.s;
+    } else {
+      r = new Ctor(s.toString());
+    }
+
+    sd = (e = Ctor.precision) + 3;
+
+    // Halley's method.
+    // TODO? Compare Newton's method.
+    for (;;) {
+      t = r;
+      t3 = t.times(t).times(t);
+      t3plusx = t3.plus(x);
+      r = divide(t3plusx.plus(x).times(t), t3plusx.plus(t3), sd + 2, 1);
+
+      // TODO? Replace with for-loop and checkRoundingDigits.
+      if (digitsToString(t.d).slice(0, sd) === (n = digitsToString(r.d)).slice(0, sd)) {
+        n = n.slice(sd - 3, sd + 1);
+
+        // The 4th rounding digit may be in error by -1 so if the 4 rounding digits are 9999 or 4999
+        // , i.e. approaching a rounding boundary, continue the iteration.
+        if (n == '9999' || !rep && n == '4999') {
+
+          // On the first iteration only, check to see if rounding up gives the exact result as the
+          // nines may infinitely repeat.
+          if (!rep) {
+            finalise(t, e + 1, 0);
+
+            if (t.times(t).times(t).eq(x)) {
+              r = t;
+              break;
+            }
+          }
+
+          sd += 4;
+          rep = 1;
+        } else {
+
+          // If the rounding digits are null, 0{0,4} or 50{0,3}, check for an exact result.
+          // If not, then there are further digits and m will be truthy.
+          if (!+n || !+n.slice(1) && n.charAt(0) == '5') {
+
+            // Truncate to the first rounding digit.
+            finalise(r, e + 1, 1);
+            m = !r.times(r).times(r).eq(x);
+          }
+
+          break;
+        }
+      }
+    }
+
+    external = true;
+
+    return finalise(r, e, Ctor.rounding, m);
+  };
+
+
+  /*
+   * Return the number of decimal places of the value of this Decimal.
+   *
+   */
+  P.decimalPlaces = P.dp = function () {
+    var w,
+      d = this.d,
+      n = NaN;
+
+    if (d) {
+      w = d.length - 1;
+      n = (w - mathfloor(this.e / LOG_BASE)) * LOG_BASE;
+
+      // Subtract the number of trailing zeros of the last word.
+      w = d[w];
+      if (w) for (; w % 10 == 0; w /= 10) n--;
+      if (n < 0) n = 0;
+    }
+
+    return n;
+  };
+
+
+  /*
+   *  n / 0 = I
+   *  n / N = N
+   *  n / I = 0
+   *  0 / n = 0
+   *  0 / 0 = N
+   *  0 / N = N
+   *  0 / I = 0
+   *  N / n = N
+   *  N / 0 = N
+   *  N / N = N
+   *  N / I = N
+   *  I / n = I
+   *  I / 0 = I
+   *  I / N = N
+   *  I / I = N
+   *
+   * Return a new Decimal whose value is the value of this Decimal divided by `y`, rounded to
+   * `precision` significant digits using rounding mode `rounding`.
+   *
+   */
+  P.dividedBy = P.div = function (y) {
+    return divide(this, new this.constructor(y));
+  };
+
+
+  /*
+   * Return a new Decimal whose value is the integer part of dividing the value of this Decimal
+   * by the value of `y`, rounded to `precision` significant digits using rounding mode `rounding`.
+   *
+   */
+  P.dividedToIntegerBy = P.divToInt = function (y) {
+    var x = this,
+      Ctor = x.constructor;
+    return finalise(divide(x, new Ctor(y), 0, 1, 1), Ctor.precision, Ctor.rounding);
+  };
+
+
+  /*
+   * Return true if the value of this Decimal is equal to the value of `y`, otherwise return false.
+   *
+   */
+  P.equals = P.eq = function (y) {
+    return this.cmp(y) === 0;
+  };
+
+
+  /*
+   * Return a new Decimal whose value is the value of this Decimal rounded to a whole number in the
+   * direction of negative Infinity.
+   *
+   */
+  P.floor = function () {
+    return finalise(new this.constructor(this), this.e + 1, 3);
+  };
+
+
+  /*
+   * Return true if the value of this Decimal is greater than the value of `y`, otherwise return
+   * false.
+   *
+   */
+  P.greaterThan = P.gt = function (y) {
+    return this.cmp(y) > 0;
+  };
+
+
+  /*
+   * Return true if the value of this Decimal is greater than or equal to the value of `y`,
+   * otherwise return false.
+   *
+   */
+  P.greaterThanOrEqualTo = P.gte = function (y) {
+    var k = this.cmp(y);
+    return k == 1 || k === 0;
+  };
+
+
+  /*
+   * Return a new Decimal whose value is the hyperbolic cosine of the value in radians of this
+   * Decimal.
+   *
+   * Domain: [-Infinity, Infinity]
+   * Range: [1, Infinity]
+   *
+   * cosh(x) = 1 + x^2/2! + x^4/4! + x^6/6! + ...
+   *
+   * cosh(0)         = 1
+   * cosh(-0)        = 1
+   * cosh(Infinity)  = Infinity
+   * cosh(-Infinity) = Infinity
+   * cosh(NaN)       = NaN
+   *
+   *  x        time taken (ms)   result
+   * 1000      9                 9.8503555700852349694e+433
+   * 10000     25                4.4034091128314607936e+4342
+   * 100000    171               1.4033316802130615897e+43429
+   * 1000000   3817              1.5166076984010437725e+434294
+   * 10000000  abandoned after 2 minute wait
+   *
+   * TODO? Compare performance of cosh(x) = 0.5 * (exp(x) + exp(-x))
+   *
+   */
+  P.hyperbolicCosine = P.cosh = function () {
+    var k, n, pr, rm, len,
+      x = this,
+      Ctor = x.constructor,
+      one = new Ctor(1);
+
+    if (!x.isFinite()) return new Ctor(x.s ? 1 / 0 : NaN);
+    if (x.isZero()) return one;
+
+    pr = Ctor.precision;
+    rm = Ctor.rounding;
+    Ctor.precision = pr + Math.max(x.e, x.sd()) + 4;
+    Ctor.rounding = 1;
+    len = x.d.length;
+
+    // Argument reduction: cos(4x) = 1 - 8cos^2(x) + 8cos^4(x) + 1
+    // i.e. cos(x) = 1 - cos^2(x/4)(8 - 8cos^2(x/4))
+
+    // Estimate the optimum number of times to use the argument reduction.
+    // TODO? Estimation reused from cosine() and may not be optimal here.
+    if (len < 32) {
+      k = Math.ceil(len / 3);
+      n = (1 / tinyPow(4, k)).toString();
+    } else {
+      k = 16;
+      n = '2.3283064365386962890625e-10';
+    }
+
+    x = taylorSeries(Ctor, 1, x.times(n), new Ctor(1), true);
+
+    // Reverse argument reduction
+    var cosh2_x,
+      i = k,
+      d8 = new Ctor(8);
+    for (; i--;) {
+      cosh2_x = x.times(x);
+      x = one.minus(cosh2_x.times(d8.minus(cosh2_x.times(d8))));
+    }
+
+    return finalise(x, Ctor.precision = pr, Ctor.rounding = rm, true);
+  };
+
+
+  /*
+   * Return a new Decimal whose value is the hyperbolic sine of the value in radians of this
+   * Decimal.
+   *
+   * Domain: [-Infinity, Infinity]
+   * Range: [-Infinity, Infinity]
+   *
+   * sinh(x) = x + x^3/3! + x^5/5! + x^7/7! + ...
+   *
+   * sinh(0)         = 0
+   * sinh(-0)        = -0
+   * sinh(Infinity)  = Infinity
+   * sinh(-Infinity) = -Infinity
+   * sinh(NaN)       = NaN
+   *
+   * x        time taken (ms)
+   * 10       2 ms
+   * 100      5 ms
+   * 1000     14 ms
+   * 10000    82 ms
+   * 100000   886 ms            1.4033316802130615897e+43429
+   * 200000   2613 ms
+   * 300000   5407 ms
+   * 400000   8824 ms
+   * 500000   13026 ms          8.7080643612718084129e+217146
+   * 1000000  48543 ms
+   *
+   * TODO? Compare performance of sinh(x) = 0.5 * (exp(x) - exp(-x))
+   *
+   */
+  P.hyperbolicSine = P.sinh = function () {
+    var k, pr, rm, len,
+      x = this,
+      Ctor = x.constructor;
+
+    if (!x.isFinite() || x.isZero()) return new Ctor(x);
+
+    pr = Ctor.precision;
+    rm = Ctor.rounding;
+    Ctor.precision = pr + Math.max(x.e, x.sd()) + 4;
+    Ctor.rounding = 1;
+    len = x.d.length;
+
+    if (len < 3) {
+      x = taylorSeries(Ctor, 2, x, x, true);
+    } else {
+
+      // Alternative argument reduction: sinh(3x) = sinh(x)(3 + 4sinh^2(x))
+      // i.e. sinh(x) = sinh(x/3)(3 + 4sinh^2(x/3))
+      // 3 multiplications and 1 addition
+
+      // Argument reduction: sinh(5x) = sinh(x)(5 + sinh^2(x)(20 + 16sinh^2(x)))
+      // i.e. sinh(x) = sinh(x/5)(5 + sinh^2(x/5)(20 + 16sinh^2(x/5)))
+      // 4 multiplications and 2 additions
+
+      // Estimate the optimum number of times to use the argument reduction.
+      k = 1.4 * Math.sqrt(len);
+      k = k > 16 ? 16 : k | 0;
+
+      x = x.times(1 / tinyPow(5, k));
+      x = taylorSeries(Ctor, 2, x, x, true);
+
+      // Reverse argument reduction
+      var sinh2_x,
+        d5 = new Ctor(5),
+        d16 = new Ctor(16),
+        d20 = new Ctor(20);
+      for (; k--;) {
+        sinh2_x = x.times(x);
+        x = x.times(d5.plus(sinh2_x.times(d16.times(sinh2_x).plus(d20))));
+      }
+    }
+
+    Ctor.precision = pr;
+    Ctor.rounding = rm;
+
+    return finalise(x, pr, rm, true);
+  };
+
+
+  /*
+   * Return a new Decimal whose value is the hyperbolic tangent of the value in radians of this
+   * Decimal.
+   *
+   * Domain: [-Infinity, Infinity]
+   * Range: [-1, 1]
+   *
+   * tanh(x) = sinh(x) / cosh(x)
+   *
+   * tanh(0)         = 0
+   * tanh(-0)        = -0
+   * tanh(Infinity)  = 1
+   * tanh(-Infinity) = -1
+   * tanh(NaN)       = NaN
+   *
+   */
+  P.hyperbolicTangent = P.tanh = function () {
+    var pr, rm,
+      x = this,
+      Ctor = x.constructor;
+
+    if (!x.isFinite()) return new Ctor(x.s);
+    if (x.isZero()) return new Ctor(x);
+
+    pr = Ctor.precision;
+    rm = Ctor.rounding;
+    Ctor.precision = pr + 7;
+    Ctor.rounding = 1;
+
+    return divide(x.sinh(), x.cosh(), Ctor.precision = pr, Ctor.rounding = rm);
+  };
+
+
+  /*
+   * Return a new Decimal whose value is the arccosine (inverse cosine) in radians of the value of
+   * this Decimal.
+   *
+   * Domain: [-1, 1]
+   * Range: [0, pi]
+   *
+   * acos(x) = pi/2 - asin(x)
+   *
+   * acos(0)       = pi/2
+   * acos(-0)      = pi/2
+   * acos(1)       = 0
+   * acos(-1)      = pi
+   * acos(1/2)     = pi/3
+   * acos(-1/2)    = 2*pi/3
+   * acos(|x| > 1) = NaN
+   * acos(NaN)     = NaN
+   *
+   */
+  P.inverseCosine = P.acos = function () {
+    var halfPi,
+      x = this,
+      Ctor = x.constructor,
+      k = x.abs().cmp(1),
+      pr = Ctor.precision,
+      rm = Ctor.rounding;
+
+    if (k !== -1) {
+      return k === 0
+        // |x| is 1
+        ? x.isNeg() ? getPi(Ctor, pr, rm) : new Ctor(0)
+        // |x| > 1 or x is NaN
+        : new Ctor(NaN);
+    }
+
+    if (x.isZero()) return getPi(Ctor, pr + 4, rm).times(0.5);
+
+    // TODO? Special case acos(0.5) = pi/3 and acos(-0.5) = 2*pi/3
+
+    Ctor.precision = pr + 6;
+    Ctor.rounding = 1;
+
+    x = x.asin();
+    halfPi = getPi(Ctor, pr + 4, rm).times(0.5);
+
+    Ctor.precision = pr;
+    Ctor.rounding = rm;
+
+    return halfPi.minus(x);
+  };
+
+
+  /*
+   * Return a new Decimal whose value is the inverse of the hyperbolic cosine in radians of the
+   * value of this Decimal.
+   *
+   * Domain: [1, Infinity]
+   * Range: [0, Infinity]
+   *
+   * acosh(x) = ln(x + sqrt(x^2 - 1))
+   *
+   * acosh(x < 1)     = NaN
+   * acosh(NaN)       = NaN
+   * acosh(Infinity)  = Infinity
+   * acosh(-Infinity) = NaN
+   * acosh(0)         = NaN
+   * acosh(-0)        = NaN
+   * acosh(1)         = 0
+   * acosh(-1)        = NaN
+   *
+   */
+  P.inverseHyperbolicCosine = P.acosh = function () {
+    var pr, rm,
+      x = this,
+      Ctor = x.constructor;
+
+    if (x.lte(1)) return new Ctor(x.eq(1) ? 0 : NaN);
+    if (!x.isFinite()) return new Ctor(x);
+
+    pr = Ctor.precision;
+    rm = Ctor.rounding;
+    Ctor.precision = pr + Math.max(Math.abs(x.e), x.sd()) + 4;
+    Ctor.rounding = 1;
+    external = false;
+
+    x = x.times(x).minus(1).sqrt().plus(x);
+
+    external = true;
+    Ctor.precision = pr;
+    Ctor.rounding = rm;
+
+    return x.ln();
+  };
+
+
+  /*
+   * Return a new Decimal whose value is the inverse of the hyperbolic sine in radians of the value
+   * of this Decimal.
+   *
+   * Domain: [-Infinity, Infinity]
+   * Range: [-Infinity, Infinity]
+   *
+   * asinh(x) = ln(x + sqrt(x^2 + 1))
+   *
+   * asinh(NaN)       = NaN
+   * asinh(Infinity)  = Infinity
+   * asinh(-Infinity) = -Infinity
+   * asinh(0)         = 0
+   * asinh(-0)        = -0
+   *
+   */
+  P.inverseHyperbolicSine = P.asinh = function () {
+    var pr, rm,
+      x = this,
+      Ctor = x.constructor;
+
+    if (!x.isFinite() || x.isZero()) return new Ctor(x);
+
+    pr = Ctor.precision;
+    rm = Ctor.rounding;
+    Ctor.precision = pr + 2 * Math.max(Math.abs(x.e), x.sd()) + 6;
+    Ctor.rounding = 1;
+    external = false;
+
+    x = x.times(x).plus(1).sqrt().plus(x);
+
+    external = true;
+    Ctor.precision = pr;
+    Ctor.rounding = rm;
+
+    return x.ln();
+  };
+
+
+  /*
+   * Return a new Decimal whose value is the inverse of the hyperbolic tangent in radians of the
+   * value of this Decimal.
+   *
+   * Domain: [-1, 1]
+   * Range: [-Infinity, Infinity]
+   *
+   * atanh(x) = 0.5 * ln((1 + x) / (1 - x))
+   *
+   * atanh(|x| > 1)   = NaN
+   * atanh(NaN)       = NaN
+   * atanh(Infinity)  = NaN
+   * atanh(-Infinity) = NaN
+   * atanh(0)         = 0
+   * atanh(-0)        = -0
+   * atanh(1)         = Infinity
+   * atanh(-1)        = -Infinity
+   *
+   */
+  P.inverseHyperbolicTangent = P.atanh = function () {
+    var pr, rm, wpr, xsd,
+      x = this,
+      Ctor = x.constructor;
+
+    if (!x.isFinite()) return new Ctor(NaN);
+    if (x.e >= 0) return new Ctor(x.abs().eq(1) ? x.s / 0 : x.isZero() ? x : NaN);
+
+    pr = Ctor.precision;
+    rm = Ctor.rounding;
+    xsd = x.sd();
+
+    if (Math.max(xsd, pr) < 2 * -x.e - 1) return finalise(new Ctor(x), pr, rm, true);
+
+    Ctor.precision = wpr = xsd - x.e;
+
+    x = divide(x.plus(1), new Ctor(1).minus(x), wpr + pr, 1);
+
+    Ctor.precision = pr + 4;
+    Ctor.rounding = 1;
+
+    x = x.ln();
+
+    Ctor.precision = pr;
+    Ctor.rounding = rm;
+
+    return x.times(0.5);
+  };
+
+
+  /*
+   * Return a new Decimal whose value is the arcsine (inverse sine) in radians of the value of this
+   * Decimal.
+   *
+   * Domain: [-Infinity, Infinity]
+   * Range: [-pi/2, pi/2]
+   *
+   * asin(x) = 2*atan(x/(1 + sqrt(1 - x^2)))
+   *
+   * asin(0)       = 0
+   * asin(-0)      = -0
+   * asin(1/2)     = pi/6
+   * asin(-1/2)    = -pi/6
+   * asin(1)       = pi/2
+   * asin(-1)      = -pi/2
+   * asin(|x| > 1) = NaN
+   * asin(NaN)     = NaN
+   *
+   * TODO? Compare performance of Taylor series.
+   *
+   */
+  P.inverseSine = P.asin = function () {
+    var halfPi, k,
+      pr, rm,
+      x = this,
+      Ctor = x.constructor;
+
+    if (x.isZero()) return new Ctor(x);
+
+    k = x.abs().cmp(1);
+    pr = Ctor.precision;
+    rm = Ctor.rounding;
+
+    if (k !== -1) {
+
+      // |x| is 1
+      if (k === 0) {
+        halfPi = getPi(Ctor, pr + 4, rm).times(0.5);
+        halfPi.s = x.s;
+        return halfPi;
+      }
+
+      // |x| > 1 or x is NaN
+      return new Ctor(NaN);
+    }
+
+    // TODO? Special case asin(1/2) = pi/6 and asin(-1/2) = -pi/6
+
+    Ctor.precision = pr + 6;
+    Ctor.rounding = 1;
+
+    x = x.div(new Ctor(1).minus(x.times(x)).sqrt().plus(1)).atan();
+
+    Ctor.precision = pr;
+    Ctor.rounding = rm;
+
+    return x.times(2);
+  };
+
+
+  /*
+   * Return a new Decimal whose value is the arctangent (inverse tangent) in radians of the value
+   * of this Decimal.
+   *
+   * Domain: [-Infinity, Infinity]
+   * Range: [-pi/2, pi/2]
+   *
+   * atan(x) = x - x^3/3 + x^5/5 - x^7/7 + ...
+   *
+   * atan(0)         = 0
+   * atan(-0)        = -0
+   * atan(1)         = pi/4
+   * atan(-1)        = -pi/4
+   * atan(Infinity)  = pi/2
+   * atan(-Infinity) = -pi/2
+   * atan(NaN)       = NaN
+   *
+   */
+  P.inverseTangent = P.atan = function () {
+    var i, j, k, n, px, t, r, wpr, x2,
+      x = this,
+      Ctor = x.constructor,
+      pr = Ctor.precision,
+      rm = Ctor.rounding;
+
+    if (!x.isFinite()) {
+      if (!x.s) return new Ctor(NaN);
+      if (pr + 4 <= PI_PRECISION) {
+        r = getPi(Ctor, pr + 4, rm).times(0.5);
+        r.s = x.s;
+        return r;
+      }
+    } else if (x.isZero()) {
+      return new Ctor(x);
+    } else if (x.abs().eq(1) && pr + 4 <= PI_PRECISION) {
+      r = getPi(Ctor, pr + 4, rm).times(0.25);
+      r.s = x.s;
+      return r;
+    }
+
+    Ctor.precision = wpr = pr + 10;
+    Ctor.rounding = 1;
+
+    // TODO? if (x >= 1 && pr <= PI_PRECISION) atan(x) = halfPi * x.s - atan(1 / x);
+
+    // Argument reduction
+    // Ensure |x| < 0.42
+    // atan(x) = 2 * atan(x / (1 + sqrt(1 + x^2)))
+
+    k = Math.min(28, wpr / LOG_BASE + 2 | 0);
+
+    for (i = k; i; --i) x = x.div(x.times(x).plus(1).sqrt().plus(1));
+
+    external = false;
+
+    j = Math.ceil(wpr / LOG_BASE);
+    n = 1;
+    x2 = x.times(x);
+    r = new Ctor(x);
+    px = x;
+
+    // atan(x) = x - x^3/3 + x^5/5 - x^7/7 + ...
+    for (; i !== -1;) {
+      px = px.times(x2);
+      t = r.minus(px.div(n += 2));
+
+      px = px.times(x2);
+      r = t.plus(px.div(n += 2));
+
+      if (r.d[j] !== void 0) for (i = j; r.d[i] === t.d[i] && i--;);
+    }
+
+    if (k) r = r.times(2 << (k - 1));
+
+    external = true;
+
+    return finalise(r, Ctor.precision = pr, Ctor.rounding = rm, true);
+  };
+
+
+  /*
+   * Return true if the value of this Decimal is a finite number, otherwise return false.
+   *
+   */
+  P.isFinite = function () {
+    return !!this.d;
+  };
+
+
+  /*
+   * Return true if the value of this Decimal is an integer, otherwise return false.
+   *
+   */
+  P.isInteger = P.isInt = function () {
+    return !!this.d && mathfloor(this.e / LOG_BASE) > this.d.length - 2;
+  };
+
+
+  /*
+   * Return true if the value of this Decimal is NaN, otherwise return false.
+   *
+   */
+  P.isNaN = function () {
+    return !this.s;
+  };
+
+
+  /*
+   * Return true if the value of this Decimal is negative, otherwise return false.
+   *
+   */
+  P.isNegative = P.isNeg = function () {
+    return this.s < 0;
+  };
+
+
+  /*
+   * Return true if the value of this Decimal is positive, otherwise return false.
+   *
+   */
+  P.isPositive = P.isPos = function () {
+    return this.s > 0;
+  };
+
+
+  /*
+   * Return true if the value of this Decimal is 0 or -0, otherwise return false.
+   *
+   */
+  P.isZero = function () {
+    return !!this.d && this.d[0] === 0;
+  };
+
+
+  /*
+   * Return true if the value of this Decimal is less than `y`, otherwise return false.
+   *
+   */
+  P.lessThan = P.lt = function (y) {
+    return this.cmp(y) < 0;
+  };
+
+
+  /*
+   * Return true if the value of this Decimal is less than or equal to `y`, otherwise return false.
+   *
+   */
+  P.lessThanOrEqualTo = P.lte = function (y) {
+    return this.cmp(y) < 1;
+  };
+
+
+  /*
+   * Return the logarithm of the value of this Decimal to the specified base, rounded to `precision`
+   * significant digits using rounding mode `rounding`.
+   *
+   * If no base is specified, return log[10](arg).
+   *
+   * log[base](arg) = ln(arg) / ln(base)
+   *
+   * The result will always be correctly rounded if the base of the log is 10, and 'almost always'
+   * otherwise:
+   *
+   * Depending on the rounding mode, the result may be incorrectly rounded if the first fifteen
+   * rounding digits are [49]99999999999999 or [50]00000000000000. In that case, the maximum error
+   * between the result and the correctly rounded result will be one ulp (unit in the last place).
+   *
+   * log[-b](a)       = NaN
+   * log[0](a)        = NaN
+   * log[1](a)        = NaN
+   * log[NaN](a)      = NaN
+   * log[Infinity](a) = NaN
+   * log[b](0)        = -Infinity
+   * log[b](-0)       = -Infinity
+   * log[b](-a)       = NaN
+   * log[b](1)        = 0
+   * log[b](Infinity) = Infinity
+   * log[b](NaN)      = NaN
+   *
+   * [base] {number|string|Decimal} The base of the logarithm.
+   *
+   */
+  P.logarithm = P.log = function (base) {
+    var isBase10, d, denominator, k, inf, num, sd, r,
+      arg = this,
+      Ctor = arg.constructor,
+      pr = Ctor.precision,
+      rm = Ctor.rounding,
+      guard = 5;
+
+    // Default base is 10.
+    if (base == null) {
+      base = new Ctor(10);
+      isBase10 = true;
+    } else {
+      base = new Ctor(base);
+      d = base.d;
+
+      // Return NaN if base is negative, or non-finite, or is 0 or 1.
+      if (base.s < 0 || !d || !d[0] || base.eq(1)) return new Ctor(NaN);
+
+      isBase10 = base.eq(10);
+    }
+
+    d = arg.d;
+
+    // Is arg negative, non-finite, 0 or 1?
+    if (arg.s < 0 || !d || !d[0] || arg.eq(1)) {
+      return new Ctor(d && !d[0] ? -1 / 0 : arg.s != 1 ? NaN : d ? 0 : 1 / 0);
+    }
+
+    // The result will have a non-terminating decimal expansion if base is 10 and arg is not an
+    // integer power of 10.
+    if (isBase10) {
+      if (d.length > 1) {
+        inf = true;
+      } else {
+        for (k = d[0]; k % 10 === 0;) k /= 10;
+        inf = k !== 1;
+      }
+    }
+
+    external = false;
+    sd = pr + guard;
+    num = naturalLogarithm(arg, sd);
+    denominator = isBase10 ? getLn10(Ctor, sd + 10) : naturalLogarithm(base, sd);
+
+    // The result will have 5 rounding digits.
+    r = divide(num, denominator, sd, 1);
+
+    // If at a rounding boundary, i.e. the result's rounding digits are [49]9999 or [50]0000,
+    // calculate 10 further digits.
+    //
+    // If the result is known to have an infinite decimal expansion, repeat this until it is clear
+    // that the result is above or below the boundary. Otherwise, if after calculating the 10
+    // further digits, the last 14 are nines, round up and assume the result is exact.
+    // Also assume the result is exact if the last 14 are zero.
+    //
+    // Example of a result that will be incorrectly rounded:
+    // log[1048576](4503599627370502) = 2.60000000000000009610279511444746...
+    // The above result correctly rounded using ROUND_CEIL to 1 decimal place should be 2.7, but it
+    // will be given as 2.6 as there are 15 zeros immediately after the requested decimal place, so
+    // the exact result would be assumed to be 2.6, which rounded using ROUND_CEIL to 1 decimal
+    // place is still 2.6.
+    if (checkRoundingDigits(r.d, k = pr, rm)) {
+
+      do {
+        sd += 10;
+        num = naturalLogarithm(arg, sd);
+        denominator = isBase10 ? getLn10(Ctor, sd + 10) : naturalLogarithm(base, sd);
+        r = divide(num, denominator, sd, 1);
+
+        if (!inf) {
+
+          // Check for 14 nines from the 2nd rounding digit, as the first may be 4.
+          if (+digitsToString(r.d).slice(k + 1, k + 15) + 1 == 1e14) {
+            r = finalise(r, pr + 1, 0);
+          }
+
+          break;
+        }
+      } while (checkRoundingDigits(r.d, k += 10, rm));
+    }
+
+    external = true;
+
+    return finalise(r, pr, rm);
+  };
+
+
+  /*
+   * Return a new Decimal whose value is the maximum of the arguments and the value of this Decimal.
+   *
+   * arguments {number|string|Decimal}
+   *
+  P.max = function () {
+    Array.prototype.push.call(arguments, this);
+    return maxOrMin(this.constructor, arguments, 'lt');
+  };
+   */
+
+
+  /*
+   * Return a new Decimal whose value is the minimum of the arguments and the value of this Decimal.
+   *
+   * arguments {number|string|Decimal}
+   *
+  P.min = function () {
+    Array.prototype.push.call(arguments, this);
+    return maxOrMin(this.constructor, arguments, 'gt');
+  };
+   */
+
+
+  /*
+   *  n - 0 = n
+   *  n - N = N
+   *  n - I = -I
+   *  0 - n = -n
+   *  0 - 0 = 0
+   *  0 - N = N
+   *  0 - I = -I
+   *  N - n = N
+   *  N - 0 = N
+   *  N - N = N
+   *  N - I = N
+   *  I - n = I
+   *  I - 0 = I
+   *  I - N = N
+   *  I - I = N
+   *
+   * Return a new Decimal whose value is the value of this Decimal minus `y`, rounded to `precision`
+   * significant digits using rounding mode `rounding`.
+   *
+   */
+  P.minus = P.sub = function (y) {
+    var d, e, i, j, k, len, pr, rm, xd, xe, xLTy, yd,
+      x = this,
+      Ctor = x.constructor;
+
+    y = new Ctor(y);
+
+    // If either is not finite...
+    if (!x.d || !y.d) {
+
+      // Return NaN if either is NaN.
+      if (!x.s || !y.s) y = new Ctor(NaN);
+
+      // Return y negated if x is finite and y is ±Infinity.
+      else if (x.d) y.s = -y.s;
+
+      // Return x if y is finite and x is ±Infinity.
+      // Return x if both are ±Infinity with different signs.
+      // Return NaN if both are ±Infinity with the same sign.
+      else y = new Ctor(y.d || x.s !== y.s ? x : NaN);
+
+      return y;
+    }
+
+    // If signs differ...
+    if (x.s != y.s) {
+      y.s = -y.s;
+      return x.plus(y);
+    }
+
+    xd = x.d;
+    yd = y.d;
+    pr = Ctor.precision;
+    rm = Ctor.rounding;
+
+    // If either is zero...
+    if (!xd[0] || !yd[0]) {
+
+      // Return y negated if x is zero and y is non-zero.
+      if (yd[0]) y.s = -y.s;
+
+      // Return x if y is zero and x is non-zero.
+      else if (xd[0]) y = new Ctor(x);
+
+      // Return zero if both are zero.
+      // From IEEE 754 (2008) 6.3: 0 - 0 = -0 - -0 = -0 when rounding to -Infinity.
+      else return new Ctor(rm === 3 ? -0 : 0);
+
+      return external ? finalise(y, pr, rm) : y;
+    }
+
+    // x and y are finite, non-zero numbers with the same sign.
+
+    // Calculate base 1e7 exponents.
+    e = mathfloor(y.e / LOG_BASE);
+    xe = mathfloor(x.e / LOG_BASE);
+
+    xd = xd.slice();
+    k = xe - e;
+
+    // If base 1e7 exponents differ...
+    if (k) {
+      xLTy = k < 0;
+
+      if (xLTy) {
+        d = xd;
+        k = -k;
+        len = yd.length;
+      } else {
+        d = yd;
+        e = xe;
+        len = xd.length;
+      }
+
+      // Numbers with massively different exponents would result in a very high number of
+      // zeros needing to be prepended, but this can be avoided while still ensuring correct
+      // rounding by limiting the number of zeros to `Math.ceil(pr / LOG_BASE) + 2`.
+      i = Math.max(Math.ceil(pr / LOG_BASE), len) + 2;
+
+      if (k > i) {
+        k = i;
+        d.length = 1;
+      }
+
+      // Prepend zeros to equalise exponents.
+      d.reverse();
+      for (i = k; i--;) d.push(0);
+      d.reverse();
+
+    // Base 1e7 exponents equal.
+    } else {
+
+      // Check digits to determine which is the bigger number.
+
+      i = xd.length;
+      len = yd.length;
+      xLTy = i < len;
+      if (xLTy) len = i;
+
+      for (i = 0; i < len; i++) {
+        if (xd[i] != yd[i]) {
+          xLTy = xd[i] < yd[i];
+          break;
+        }
+      }
+
+      k = 0;
+    }
+
+    if (xLTy) {
+      d = xd;
+      xd = yd;
+      yd = d;
+      y.s = -y.s;
+    }
+
+    len = xd.length;
+
+    // Append zeros to `xd` if shorter.
+    // Don't add zeros to `yd` if shorter as subtraction only needs to start at `yd` length.
+    for (i = yd.length - len; i > 0; --i) xd[len++] = 0;
+
+    // Subtract yd from xd.
+    for (i = yd.length; i > k;) {
+
+      if (xd[--i] < yd[i]) {
+        for (j = i; j && xd[--j] === 0;) xd[j] = BASE - 1;
+        --xd[j];
+        xd[i] += BASE;
+      }
+
+      xd[i] -= yd[i];
+    }
+
+    // Remove trailing zeros.
+    for (; xd[--len] === 0;) xd.pop();
+
+    // Remove leading zeros and adjust exponent accordingly.
+    for (; xd[0] === 0; xd.shift()) --e;
+
+    // Zero?
+    if (!xd[0]) return new Ctor(rm === 3 ? -0 : 0);
+
+    y.d = xd;
+    y.e = getBase10Exponent(xd, e);
+
+    return external ? finalise(y, pr, rm) : y;
+  };
+
+
+  /*
+   *   n % 0 =  N
+   *   n % N =  N
+   *   n % I =  n
+   *   0 % n =  0
+   *  -0 % n = -0
+   *   0 % 0 =  N
+   *   0 % N =  N
+   *   0 % I =  0
+   *   N % n =  N
+   *   N % 0 =  N
+   *   N % N =  N
+   *   N % I =  N
+   *   I % n =  N
+   *   I % 0 =  N
+   *   I % N =  N
+   *   I % I =  N
+   *
+   * Return a new Decimal whose value is the value of this Decimal modulo `y`, rounded to
+   * `precision` significant digits using rounding mode `rounding`.
+   *
+   * The result depends on the modulo mode.
+   *
+   */
+  P.modulo = P.mod = function (y) {
+    var q,
+      x = this,
+      Ctor = x.constructor;
+
+    y = new Ctor(y);
+
+    // Return NaN if x is ±Infinity or NaN, or y is NaN or ±0.
+    if (!x.d || !y.s || y.d && !y.d[0]) return new Ctor(NaN);
+
+    // Return x if y is ±Infinity or x is ±0.
+    if (!y.d || x.d && !x.d[0]) {
+      return finalise(new Ctor(x), Ctor.precision, Ctor.rounding);
+    }
+
+    // Prevent rounding of intermediate calculations.
+    external = false;
+
+    if (Ctor.modulo == 9) {
+
+      // Euclidian division: q = sign(y) * floor(x / abs(y))
+      // result = x - q * y    where  0 <= result < abs(y)
+      q = divide(x, y.abs(), 0, 3, 1);
+      q.s *= y.s;
+    } else {
+      q = divide(x, y, 0, Ctor.modulo, 1);
+    }
+
+    q = q.times(y);
+
+    external = true;
+
+    return x.minus(q);
+  };
+
+
+  /*
+   * Return a new Decimal whose value is the natural exponential of the value of this Decimal,
+   * i.e. the base e raised to the power the value of this Decimal, rounded to `precision`
+   * significant digits using rounding mode `rounding`.
+   *
+   */
+  P.naturalExponential = P.exp = function () {
+    return naturalExponential(this);
+  };
+
+
+  /*
+   * Return a new Decimal whose value is the natural logarithm of the value of this Decimal,
+   * rounded to `precision` significant digits using rounding mode `rounding`.
+   *
+   */
+  P.naturalLogarithm = P.ln = function () {
+    return naturalLogarithm(this);
+  };
+
+
+  /*
+   * Return a new Decimal whose value is the value of this Decimal negated, i.e. as if multiplied by
+   * -1.
+   *
+   */
+  P.negated = P.neg = function () {
+    var x = new this.constructor(this);
+    x.s = -x.s;
+    return finalise(x);
+  };
+
+
+  /*
+   *  n + 0 = n
+   *  n + N = N
+   *  n + I = I
+   *  0 + n = n
+   *  0 + 0 = 0
+   *  0 + N = N
+   *  0 + I = I
+   *  N + n = N
+   *  N + 0 = N
+   *  N + N = N
+   *  N + I = N
+   *  I + n = I
+   *  I + 0 = I
+   *  I + N = N
+   *  I + I = I
+   *
+   * Return a new Decimal whose value is the value of this Decimal plus `y`, rounded to `precision`
+   * significant digits using rounding mode `rounding`.
+   *
+   */
+  P.plus = P.add = function (y) {
+    var carry, d, e, i, k, len, pr, rm, xd, yd,
+      x = this,
+      Ctor = x.constructor;
+
+    y = new Ctor(y);
+
+    // If either is not finite...
+    if (!x.d || !y.d) {
+
+      // Return NaN if either is NaN.
+      if (!x.s || !y.s) y = new Ctor(NaN);
+
+      // Return x if y is finite and x is ±Infinity.
+      // Return x if both are ±Infinity with the same sign.
+      // Return NaN if both are ±Infinity with different signs.
+      // Return y if x is finite and y is ±Infinity.
+      else if (!x.d) y = new Ctor(y.d || x.s === y.s ? x : NaN);
+
+      return y;
+    }
+
+     // If signs differ...
+    if (x.s != y.s) {
+      y.s = -y.s;
+      return x.minus(y);
+    }
+
+    xd = x.d;
+    yd = y.d;
+    pr = Ctor.precision;
+    rm = Ctor.rounding;
+
+    // If either is zero...
+    if (!xd[0] || !yd[0]) {
+
+      // Return x if y is zero.
+      // Return y if y is non-zero.
+      if (!yd[0]) y = new Ctor(x);
+
+      return external ? finalise(y, pr, rm) : y;
+    }
+
+    // x and y are finite, non-zero numbers with the same sign.
+
+    // Calculate base 1e7 exponents.
+    k = mathfloor(x.e / LOG_BASE);
+    e = mathfloor(y.e / LOG_BASE);
+
+    xd = xd.slice();
+    i = k - e;
+
+    // If base 1e7 exponents differ...
+    if (i) {
+
+      if (i < 0) {
+        d = xd;
+        i = -i;
+        len = yd.length;
+      } else {
+        d = yd;
+        e = k;
+        len = xd.length;
+      }
+
+      // Limit number of zeros prepended to max(ceil(pr / LOG_BASE), len) + 1.
+      k = Math.ceil(pr / LOG_BASE);
+      len = k > len ? k + 1 : len + 1;
+
+      if (i > len) {
+        i = len;
+        d.length = 1;
+      }
+
+      // Prepend zeros to equalise exponents. Note: Faster to use reverse then do unshifts.
+      d.reverse();
+      for (; i--;) d.push(0);
+      d.reverse();
+    }
+
+    len = xd.length;
+    i = yd.length;
+
+    // If yd is longer than xd, swap xd and yd so xd points to the longer array.
+    if (len - i < 0) {
+      i = len;
+      d = yd;
+      yd = xd;
+      xd = d;
+    }
+
+    // Only start adding at yd.length - 1 as the further digits of xd can be left as they are.
+    for (carry = 0; i;) {
+      carry = (xd[--i] = xd[i] + yd[i] + carry) / BASE | 0;
+      xd[i] %= BASE;
+    }
+
+    if (carry) {
+      xd.unshift(carry);
+      ++e;
+    }
+
+    // Remove trailing zeros.
+    // No need to check for zero, as +x + +y != 0 && -x + -y != 0
+    for (len = xd.length; xd[--len] == 0;) xd.pop();
+
+    y.d = xd;
+    y.e = getBase10Exponent(xd, e);
+
+    return external ? finalise(y, pr, rm) : y;
+  };
+
+
+  /*
+   * Return the number of significant digits of the value of this Decimal.
+   *
+   * [z] {boolean|number} Whether to count integer-part trailing zeros: true, false, 1 or 0.
+   *
+   */
+  P.precision = P.sd = function (z) {
+    var k,
+      x = this;
+
+    if (z !== void 0 && z !== !!z && z !== 1 && z !== 0) throw Error(invalidArgument + z);
+
+    if (x.d) {
+      k = getPrecision(x.d);
+      if (z && x.e + 1 > k) k = x.e + 1;
+    } else {
+      k = NaN;
+    }
+
+    return k;
+  };
+
+
+  /*
+   * Return a new Decimal whose value is the value of this Decimal rounded to a whole number using
+   * rounding mode `rounding`.
+   *
+   */
+  P.round = function () {
+    var x = this,
+      Ctor = x.constructor;
+
+    return finalise(new Ctor(x), x.e + 1, Ctor.rounding);
+  };
+
+
+  /*
+   * Return a new Decimal whose value is the sine of the value in radians of this Decimal.
+   *
+   * Domain: [-Infinity, Infinity]
+   * Range: [-1, 1]
+   *
+   * sin(x) = x - x^3/3! + x^5/5! - ...
+   *
+   * sin(0)         = 0
+   * sin(-0)        = -0
+   * sin(Infinity)  = NaN
+   * sin(-Infinity) = NaN
+   * sin(NaN)       = NaN
+   *
+   */
+  P.sine = P.sin = function () {
+    var pr, rm,
+      x = this,
+      Ctor = x.constructor;
+
+    if (!x.isFinite()) return new Ctor(NaN);
+    if (x.isZero()) return new Ctor(x);
+
+    pr = Ctor.precision;
+    rm = Ctor.rounding;
+    Ctor.precision = pr + Math.max(x.e, x.sd()) + LOG_BASE;
+    Ctor.rounding = 1;
+
+    x = sine(Ctor, toLessThanHalfPi(Ctor, x));
+
+    Ctor.precision = pr;
+    Ctor.rounding = rm;
+
+    return finalise(quadrant > 2 ? x.neg() : x, pr, rm, true);
+  };
+
+
+  /*
+   * Return a new Decimal whose value is the square root of this Decimal, rounded to `precision`
+   * significant digits using rounding mode `rounding`.
+   *
+   *  sqrt(-n) =  N
+   *  sqrt(N)  =  N
+   *  sqrt(-I) =  N
+   *  sqrt(I)  =  I
+   *  sqrt(0)  =  0
+   *  sqrt(-0) = -0
+   *
+   */
+  P.squareRoot = P.sqrt = function () {
+    var m, n, sd, r, rep, t,
+      x = this,
+      d = x.d,
+      e = x.e,
+      s = x.s,
+      Ctor = x.constructor;
+
+    // Negative/NaN/Infinity/zero?
+    if (s !== 1 || !d || !d[0]) {
+      return new Ctor(!s || s < 0 && (!d || d[0]) ? NaN : d ? x : 1 / 0);
+    }
+
+    external = false;
+
+    // Initial estimate.
+    s = Math.sqrt(+x);
+
+    // Math.sqrt underflow/overflow?
+    // Pass x to Math.sqrt as integer, then adjust the exponent of the result.
+    if (s == 0 || s == 1 / 0) {
+      n = digitsToString(d);
+
+      if ((n.length + e) % 2 == 0) n += '0';
+      s = Math.sqrt(n);
+      e = mathfloor((e + 1) / 2) - (e < 0 || e % 2);
+
+      if (s == 1 / 0) {
+        n = '1e' + e;
+      } else {
+        n = s.toExponential();
+        n = n.slice(0, n.indexOf('e') + 1) + e;
+      }
+
+      r = new Ctor(n);
+    } else {
+      r = new Ctor(s.toString());
+    }
+
+    sd = (e = Ctor.precision) + 3;
+
+    // Newton-Raphson iteration.
+    for (;;) {
+      t = r;
+      r = t.plus(divide(x, t, sd + 2, 1)).times(0.5);
+
+      // TODO? Replace with for-loop and checkRoundingDigits.
+      if (digitsToString(t.d).slice(0, sd) === (n = digitsToString(r.d)).slice(0, sd)) {
+        n = n.slice(sd - 3, sd + 1);
+
+        // The 4th rounding digit may be in error by -1 so if the 4 rounding digits are 9999 or
+        // 4999, i.e. approaching a rounding boundary, continue the iteration.
+        if (n == '9999' || !rep && n == '4999') {
+
+          // On the first iteration only, check to see if rounding up gives the exact result as the
+          // nines may infinitely repeat.
+          if (!rep) {
+            finalise(t, e + 1, 0);
+
+            if (t.times(t).eq(x)) {
+              r = t;
+              break;
+            }
+          }
+
+          sd += 4;
+          rep = 1;
+        } else {
+
+          // If the rounding digits are null, 0{0,4} or 50{0,3}, check for an exact result.
+          // If not, then there are further digits and m will be truthy.
+          if (!+n || !+n.slice(1) && n.charAt(0) == '5') {
+
+            // Truncate to the first rounding digit.
+            finalise(r, e + 1, 1);
+            m = !r.times(r).eq(x);
+          }
+
+          break;
+        }
+      }
+    }
+
+    external = true;
+
+    return finalise(r, e, Ctor.rounding, m);
+  };
+
+
+  /*
+   * Return a new Decimal whose value is the tangent of the value in radians of this Decimal.
+   *
+   * Domain: [-Infinity, Infinity]
+   * Range: [-Infinity, Infinity]
+   *
+   * tan(0)         = 0
+   * tan(-0)        = -0
+   * tan(Infinity)  = NaN
+   * tan(-Infinity) = NaN
+   * tan(NaN)       = NaN
+   *
+   */
+  P.tangent = P.tan = function () {
+    var pr, rm,
+      x = this,
+      Ctor = x.constructor;
+
+    if (!x.isFinite()) return new Ctor(NaN);
+    if (x.isZero()) return new Ctor(x);
+
+    pr = Ctor.precision;
+    rm = Ctor.rounding;
+    Ctor.precision = pr + 10;
+    Ctor.rounding = 1;
+
+    x = x.sin();
+    x.s = 1;
+    x = divide(x, new Ctor(1).minus(x.times(x)).sqrt(), pr + 10, 0);
+
+    Ctor.precision = pr;
+    Ctor.rounding = rm;
+
+    return finalise(quadrant == 2 || quadrant == 4 ? x.neg() : x, pr, rm, true);
+  };
+
+
+  /*
+   *  n * 0 = 0
+   *  n * N = N
+   *  n * I = I
+   *  0 * n = 0
+   *  0 * 0 = 0
+   *  0 * N = N
+   *  0 * I = N
+   *  N * n = N
+   *  N * 0 = N
+   *  N * N = N
+   *  N * I = N
+   *  I * n = I
+   *  I * 0 = N
+   *  I * N = N
+   *  I * I = I
+   *
+   * Return a new Decimal whose value is this Decimal times `y`, rounded to `precision` significant
+   * digits using rounding mode `rounding`.
+   *
+   */
+  P.times = P.mul = function (y) {
+    var carry, e, i, k, r, rL, t, xdL, ydL,
+      x = this,
+      Ctor = x.constructor,
+      xd = x.d,
+      yd = (y = new Ctor(y)).d;
+
+    y.s *= x.s;
+
+     // If either is NaN, ±Infinity or ±0...
+    if (!xd || !xd[0] || !yd || !yd[0]) {
+
+      return new Ctor(!y.s || xd && !xd[0] && !yd || yd && !yd[0] && !xd
+
+        // Return NaN if either is NaN.
+        // Return NaN if x is ±0 and y is ±Infinity, or y is ±0 and x is ±Infinity.
+        ? NaN
+
+        // Return ±Infinity if either is ±Infinity.
+        // Return ±0 if either is ±0.
+        : !xd || !yd ? y.s / 0 : y.s * 0);
+    }
+
+    e = mathfloor(x.e / LOG_BASE) + mathfloor(y.e / LOG_BASE);
+    xdL = xd.length;
+    ydL = yd.length;
+
+    // Ensure xd points to the longer array.
+    if (xdL < ydL) {
+      r = xd;
+      xd = yd;
+      yd = r;
+      rL = xdL;
+      xdL = ydL;
+      ydL = rL;
+    }
+
+    // Initialise the result array with zeros.
+    r = [];
+    rL = xdL + ydL;
+    for (i = rL; i--;) r.push(0);
+
+    // Multiply!
+    for (i = ydL; --i >= 0;) {
+      carry = 0;
+      for (k = xdL + i; k > i;) {
+        t = r[k] + yd[i] * xd[k - i - 1] + carry;
+        r[k--] = t % BASE | 0;
+        carry = t / BASE | 0;
+      }
+
+      r[k] = (r[k] + carry) % BASE | 0;
+    }
+
+    // Remove trailing zeros.
+    for (; !r[--rL];) r.pop();
+
+    if (carry) ++e;
+    else r.shift();
+
+    y.d = r;
+    y.e = getBase10Exponent(r, e);
+
+    return external ? finalise(y, Ctor.precision, Ctor.rounding) : y;
+  };
+
+
+  /*
+   * Return a string representing the value of this Decimal in base 2, round to `sd` significant
+   * digits using rounding mode `rm`.
+   *
+   * If the optional `sd` argument is present then return binary exponential notation.
+   *
+   * [sd] {number} Significant digits. Integer, 1 to MAX_DIGITS inclusive.
+   * [rm] {number} Rounding mode. Integer, 0 to 8 inclusive.
+   *
+   */
+  P.toBinary = function (sd, rm) {
+    return toStringBinary(this, 2, sd, rm);
+  };
+
+
+  /*
+   * Return a new Decimal whose value is the value of this Decimal rounded to a maximum of `dp`
+   * decimal places using rounding mode `rm` or `rounding` if `rm` is omitted.
+   *
+   * If `dp` is omitted, return a new Decimal whose value is the value of this Decimal.
+   *
+   * [dp] {number} Decimal places. Integer, 0 to MAX_DIGITS inclusive.
+   * [rm] {number} Rounding mode. Integer, 0 to 8 inclusive.
+   *
+   */
+  P.toDecimalPlaces = P.toDP = function (dp, rm) {
+    var x = this,
+      Ctor = x.constructor;
+
+    x = new Ctor(x);
+    if (dp === void 0) return x;
+
+    checkInt32(dp, 0, MAX_DIGITS);
+
+    if (rm === void 0) rm = Ctor.rounding;
+    else checkInt32(rm, 0, 8);
+
+    return finalise(x, dp + x.e + 1, rm);
+  };
+
+
+  /*
+   * Return a string representing the value of this Decimal in exponential notation rounded to
+   * `dp` fixed decimal places using rounding mode `rounding`.
+   *
+   * [dp] {number} Decimal places. Integer, 0 to MAX_DIGITS inclusive.
+   * [rm] {number} Rounding mode. Integer, 0 to 8 inclusive.
+   *
+   */
+  P.toExponential = function (dp, rm) {
+    var str,
+      x = this,
+      Ctor = x.constructor;
+
+    if (dp === void 0) {
+      str = finiteToString(x, true);
+    } else {
+      checkInt32(dp, 0, MAX_DIGITS);
+
+      if (rm === void 0) rm = Ctor.rounding;
+      else checkInt32(rm, 0, 8);
+
+      x = finalise(new Ctor(x), dp + 1, rm);
+      str = finiteToString(x, true, dp + 1);
+    }
+
+    return x.isNeg() && !x.isZero() ? '-' + str : str;
+  };
+
+
+  /*
+   * Return a string representing the value of this Decimal in normal (fixed-point) notation to
+   * `dp` fixed decimal places and rounded using rounding mode `rm` or `rounding` if `rm` is
+   * omitted.
+   *
+   * As with JavaScript numbers, (-0).toFixed(0) is '0', but e.g. (-0.00001).toFixed(0) is '-0'.
+   *
+   * [dp] {number} Decimal places. Integer, 0 to MAX_DIGITS inclusive.
+   * [rm] {number} Rounding mode. Integer, 0 to 8 inclusive.
+   *
+   * (-0).toFixed(0) is '0', but (-0.1).toFixed(0) is '-0'.
+   * (-0).toFixed(1) is '0.0', but (-0.01).toFixed(1) is '-0.0'.
+   * (-0).toFixed(3) is '0.000'.
+   * (-0.5).toFixed(0) is '-0'.
+   *
+   */
+  P.toFixed = function (dp, rm) {
+    var str, y,
+      x = this,
+      Ctor = x.constructor;
+
+    if (dp === void 0) {
+      str = finiteToString(x);
+    } else {
+      checkInt32(dp, 0, MAX_DIGITS);
+
+      if (rm === void 0) rm = Ctor.rounding;
+      else checkInt32(rm, 0, 8);
+
+      y = finalise(new Ctor(x), dp + x.e + 1, rm);
+      str = finiteToString(y, false, dp + y.e + 1);
+    }
+
+    // To determine whether to add the minus sign look at the value before it was rounded,
+    // i.e. look at `x` rather than `y`.
+    return x.isNeg() && !x.isZero() ? '-' + str : str;
+  };
+
+
+  /*
+   * Return an array representing the value of this Decimal as a simple fraction with an integer
+   * numerator and an integer denominator.
+   *
+   * The denominator will be a positive non-zero value less than or equal to the specified maximum
+   * denominator. If a maximum denominator is not specified, the denominator will be the lowest
+   * value necessary to represent the number exactly.
+   *
+   * [maxD] {number|string|Decimal} Maximum denominator. Integer >= 1 and < Infinity.
+   *
+   */
+  P.toFraction = function (maxD) {
+    var d, d0, d1, d2, e, k, n, n0, n1, pr, q, r,
+      x = this,
+      xd = x.d,
+      Ctor = x.constructor;
+
+    if (!xd) return new Ctor(x);
+
+    n1 = d0 = new Ctor(1);
+    d1 = n0 = new Ctor(0);
+
+    d = new Ctor(d1);
+    e = d.e = getPrecision(xd) - x.e - 1;
+    k = e % LOG_BASE;
+    d.d[0] = mathpow(10, k < 0 ? LOG_BASE + k : k);
+
+    if (maxD == null) {
+
+      // d is 10**e, the minimum max-denominator needed.
+      maxD = e > 0 ? d : n1;
+    } else {
+      n = new Ctor(maxD);
+      if (!n.isInt() || n.lt(n1)) throw Error(invalidArgument + n);
+      maxD = n.gt(d) ? (e > 0 ? d : n1) : n;
+    }
+
+    external = false;
+    n = new Ctor(digitsToString(xd));
+    pr = Ctor.precision;
+    Ctor.precision = e = xd.length * LOG_BASE * 2;
+
+    for (;;)  {
+      q = divide(n, d, 0, 1, 1);
+      d2 = d0.plus(q.times(d1));
+      if (d2.cmp(maxD) == 1) break;
+      d0 = d1;
+      d1 = d2;
+      d2 = n1;
+      n1 = n0.plus(q.times(d2));
+      n0 = d2;
+      d2 = d;
+      d = n.minus(q.times(d2));
+      n = d2;
+    }
+
+    d2 = divide(maxD.minus(d0), d1, 0, 1, 1);
+    n0 = n0.plus(d2.times(n1));
+    d0 = d0.plus(d2.times(d1));
+    n0.s = n1.s = x.s;
+
+    // Determine which fraction is closer to x, n0/d0 or n1/d1?
+    r = divide(n1, d1, e, 1).minus(x).abs().cmp(divide(n0, d0, e, 1).minus(x).abs()) < 1
+        ? [n1, d1] : [n0, d0];
+
+    Ctor.precision = pr;
+    external = true;
+
+    return r;
+  };
+
+
+  /*
+   * Return a string representing the value of this Decimal in base 16, round to `sd` significant
+   * digits using rounding mode `rm`.
+   *
+   * If the optional `sd` argument is present then return binary exponential notation.
+   *
+   * [sd] {number} Significant digits. Integer, 1 to MAX_DIGITS inclusive.
+   * [rm] {number} Rounding mode. Integer, 0 to 8 inclusive.
+   *
+   */
+  P.toHexadecimal = P.toHex = function (sd, rm) {
+    return toStringBinary(this, 16, sd, rm);
+  };
+
+
+  /*
+   * Returns a new Decimal whose value is the nearest multiple of `y` in the direction of rounding
+   * mode `rm`, or `Decimal.rounding` if `rm` is omitted, to the value of this Decimal.
+   *
+   * The return value will always have the same sign as this Decimal, unless either this Decimal
+   * or `y` is NaN, in which case the return value will be also be NaN.
+   *
+   * The return value is not affected by the value of `precision`.
+   *
+   * y {number|string|Decimal} The magnitude to round to a multiple of.
+   * [rm] {number} Rounding mode. Integer, 0 to 8 inclusive.
+   *
+   * 'toNearest() rounding mode not an integer: {rm}'
+   * 'toNearest() rounding mode out of range: {rm}'
+   *
+   */
+  P.toNearest = function (y, rm) {
+    var x = this,
+      Ctor = x.constructor;
+
+    x = new Ctor(x);
+
+    if (y == null) {
+
+      // If x is not finite, return x.
+      if (!x.d) return x;
+
+      y = new Ctor(1);
+      rm = Ctor.rounding;
+    } else {
+      y = new Ctor(y);
+      if (rm === void 0) {
+        rm = Ctor.rounding;
+      } else {
+        checkInt32(rm, 0, 8);
+      }
+
+      // If x is not finite, return x if y is not NaN, else NaN.
+      if (!x.d) return y.s ? x : y;
+
+      // If y is not finite, return Infinity with the sign of x if y is Infinity, else NaN.
+      if (!y.d) {
+        if (y.s) y.s = x.s;
+        return y;
+      }
+    }
+
+    // If y is not zero, calculate the nearest multiple of y to x.
+    if (y.d[0]) {
+      external = false;
+      x = divide(x, y, 0, rm, 1).times(y);
+      external = true;
+      finalise(x);
+
+    // If y is zero, return zero with the sign of x.
+    } else {
+      y.s = x.s;
+      x = y;
+    }
+
+    return x;
+  };
+
+
+  /*
+   * Return the value of this Decimal converted to a number primitive.
+   * Zero keeps its sign.
+   *
+   */
+  P.toNumber = function () {
+    return +this;
+  };
+
+
+  /*
+   * Return a string representing the value of this Decimal in base 8, round to `sd` significant
+   * digits using rounding mode `rm`.
+   *
+   * If the optional `sd` argument is present then return binary exponential notation.
+   *
+   * [sd] {number} Significant digits. Integer, 1 to MAX_DIGITS inclusive.
+   * [rm] {number} Rounding mode. Integer, 0 to 8 inclusive.
+   *
+   */
+  P.toOctal = function (sd, rm) {
+    return toStringBinary(this, 8, sd, rm);
+  };
+
+
+  /*
+   * Return a new Decimal whose value is the value of this Decimal raised to the power `y`, rounded
+   * to `precision` significant digits using rounding mode `rounding`.
+   *
+   * ECMAScript compliant.
+   *
+   *   pow(x, NaN)                           = NaN
+   *   pow(x, ±0)                            = 1
+
+   *   pow(NaN, non-zero)                    = NaN
+   *   pow(abs(x) > 1, +Infinity)            = +Infinity
+   *   pow(abs(x) > 1, -Infinity)            = +0
+   *   pow(abs(x) == 1, ±Infinity)           = NaN
+   *   pow(abs(x) < 1, +Infinity)            = +0
+   *   pow(abs(x) < 1, -Infinity)            = +Infinity
+   *   pow(+Infinity, y > 0)                 = +Infinity
+   *   pow(+Infinity, y < 0)                 = +0
+   *   pow(-Infinity, odd integer > 0)       = -Infinity
+   *   pow(-Infinity, even integer > 0)      = +Infinity
+   *   pow(-Infinity, odd integer < 0)       = -0
+   *   pow(-Infinity, even integer < 0)      = +0
+   *   pow(+0, y > 0)                        = +0
+   *   pow(+0, y < 0)                        = +Infinity
+   *   pow(-0, odd integer > 0)              = -0
+   *   pow(-0, even integer > 0)             = +0
+   *   pow(-0, odd integer < 0)              = -Infinity
+   *   pow(-0, even integer < 0)             = +Infinity
+   *   pow(finite x < 0, finite non-integer) = NaN
+   *
+   * For non-integer or very large exponents pow(x, y) is calculated using
+   *
+   *   x^y = exp(y*ln(x))
+   *
+   * Assuming the first 15 rounding digits are each equally likely to be any digit 0-9, the
+   * probability of an incorrectly rounded result
+   * P([49]9{14} | [50]0{14}) = 2 * 0.2 * 10^-14 = 4e-15 = 1/2.5e+14
+   * i.e. 1 in 250,000,000,000,000
+   *
+   * If a result is incorrectly rounded the maximum error will be 1 ulp (unit in last place).
+   *
+   * y {number|string|Decimal} The power to which to raise this Decimal.
+   *
+   */
+  P.toPower = P.pow = function (y) {
+    var e, k, pr, r, rm, s,
+      x = this,
+      Ctor = x.constructor,
+      yn = +(y = new Ctor(y));
+
+    // Either ±Infinity, NaN or ±0?
+    if (!x.d || !y.d || !x.d[0] || !y.d[0]) return new Ctor(mathpow(+x, yn));
+
+    x = new Ctor(x);
+
+    if (x.eq(1)) return x;
+
+    pr = Ctor.precision;
+    rm = Ctor.rounding;
+
+    if (y.eq(1)) return finalise(x, pr, rm);
+
+    // y exponent
+    e = mathfloor(y.e / LOG_BASE);
+
+    // If y is a small integer use the 'exponentiation by squaring' algorithm.
+    if (e >= y.d.length - 1 && (k = yn < 0 ? -yn : yn) <= MAX_SAFE_INTEGER) {
+      r = intPow(Ctor, x, k, pr);
+      return y.s < 0 ? new Ctor(1).div(r) : finalise(r, pr, rm);
+    }
+
+    s = x.s;
+
+    // if x is negative
+    if (s < 0) {
+
+      // if y is not an integer
+      if (e < y.d.length - 1) return new Ctor(NaN);
+
+      // Result is positive if x is negative and the last digit of integer y is even.
+      if ((y.d[e] & 1) == 0) s = 1;
+
+      // if x.eq(-1)
+      if (x.e == 0 && x.d[0] == 1 && x.d.length == 1) {
+        x.s = s;
+        return x;
+      }
+    }
+
+    // Estimate result exponent.
+    // x^y = 10^e,  where e = y * log10(x)
+    // log10(x) = log10(x_significand) + x_exponent
+    // log10(x_significand) = ln(x_significand) / ln(10)
+    k = mathpow(+x, yn);
+    e = k == 0 || !isFinite(k)
+      ? mathfloor(yn * (Math.log('0.' + digitsToString(x.d)) / Math.LN10 + x.e + 1))
+      : new Ctor(k + '').e;
+
+    // Exponent estimate may be incorrect e.g. x: 0.999999999999999999, y: 2.29, e: 0, r.e: -1.
+
+    // Overflow/underflow?
+    if (e > Ctor.maxE + 1 || e < Ctor.minE - 1) return new Ctor(e > 0 ? s / 0 : 0);
+
+    external = false;
+    Ctor.rounding = x.s = 1;
+
+    // Estimate the extra guard digits needed to ensure five correct rounding digits from
+    // naturalLogarithm(x). Example of failure without these extra digits (precision: 10):
+    // new Decimal(2.32456).pow('2087987436534566.46411')
+    // should be 1.162377823e+764914905173815, but is 1.162355823e+764914905173815
+    k = Math.min(12, (e + '').length);
+
+    // r = x^y = exp(y*ln(x))
+    r = naturalExponential(y.times(naturalLogarithm(x, pr + k)), pr);
+
+    // r may be Infinity, e.g. (0.9999999999999999).pow(-1e+40)
+    if (r.d) {
+
+      // Truncate to the required precision plus five rounding digits.
+      r = finalise(r, pr + 5, 1);
+
+      // If the rounding digits are [49]9999 or [50]0000 increase the precision by 10 and recalculate
+      // the result.
+      if (checkRoundingDigits(r.d, pr, rm)) {
+        e = pr + 10;
+
+        // Truncate to the increased precision plus five rounding digits.
+        r = finalise(naturalExponential(y.times(naturalLogarithm(x, e + k)), e), e + 5, 1);
+
+        // Check for 14 nines from the 2nd rounding digit (the first rounding digit may be 4 or 9).
+        if (+digitsToString(r.d).slice(pr + 1, pr + 15) + 1 == 1e14) {
+          r = finalise(r, pr + 1, 0);
+        }
+      }
+    }
+
+    r.s = s;
+    external = true;
+    Ctor.rounding = rm;
+
+    return finalise(r, pr, rm);
+  };
+
+
+  /*
+   * Return a string representing the value of this Decimal rounded to `sd` significant digits
+   * using rounding mode `rounding`.
+   *
+   * Return exponential notation if `sd` is less than the number of digits necessary to represent
+   * the integer part of the value in normal notation.
+   *
+   * [sd] {number} Significant digits. Integer, 1 to MAX_DIGITS inclusive.
+   * [rm] {number} Rounding mode. Integer, 0 to 8 inclusive.
+   *
+   */
+  P.toPrecision = function (sd, rm) {
+    var str,
+      x = this,
+      Ctor = x.constructor;
+
+    if (sd === void 0) {
+      str = finiteToString(x, x.e <= Ctor.toExpNeg || x.e >= Ctor.toExpPos);
+    } else {
+      checkInt32(sd, 1, MAX_DIGITS);
+
+      if (rm === void 0) rm = Ctor.rounding;
+      else checkInt32(rm, 0, 8);
+
+      x = finalise(new Ctor(x), sd, rm);
+      str = finiteToString(x, sd <= x.e || x.e <= Ctor.toExpNeg, sd);
+    }
+
+    return x.isNeg() && !x.isZero() ? '-' + str : str;
+  };
+
+
+  /*
+   * Return a new Decimal whose value is the value of this Decimal rounded to a maximum of `sd`
+   * significant digits using rounding mode `rm`, or to `precision` and `rounding` respectively if
+   * omitted.
+   *
+   * [sd] {number} Significant digits. Integer, 1 to MAX_DIGITS inclusive.
+   * [rm] {number} Rounding mode. Integer, 0 to 8 inclusive.
+   *
+   * 'toSD() digits out of range: {sd}'
+   * 'toSD() digits not an integer: {sd}'
+   * 'toSD() rounding mode not an integer: {rm}'
+   * 'toSD() rounding mode out of range: {rm}'
+   *
+   */
+  P.toSignificantDigits = P.toSD = function (sd, rm) {
+    var x = this,
+      Ctor = x.constructor;
+
+    if (sd === void 0) {
+      sd = Ctor.precision;
+      rm = Ctor.rounding;
+    } else {
+      checkInt32(sd, 1, MAX_DIGITS);
+
+      if (rm === void 0) rm = Ctor.rounding;
+      else checkInt32(rm, 0, 8);
+    }
+
+    return finalise(new Ctor(x), sd, rm);
+  };
+
+
+  /*
+   * Return a string representing the value of this Decimal.
+   *
+   * Return exponential notation if this Decimal has a positive exponent equal to or greater than
+   * `toExpPos`, or a negative exponent equal to or less than `toExpNeg`.
+   *
+   */
+  P.toString = function () {
+    var x = this,
+      Ctor = x.constructor,
+      str = finiteToString(x, x.e <= Ctor.toExpNeg || x.e >= Ctor.toExpPos);
+
+    return x.isNeg() && !x.isZero() ? '-' + str : str;
+  };
+
+
+  /*
+   * Return a new Decimal whose value is the value of this Decimal truncated to a whole number.
+   *
+   */
+  P.truncated = P.trunc = function () {
+    return finalise(new this.constructor(this), this.e + 1, 1);
+  };
+
+
+  /*
+   * Return a string representing the value of this Decimal.
+   * Unlike `toString`, negative zero will include the minus sign.
+   *
+   */
+  P.valueOf = P.toJSON = function () {
+    var x = this,
+      Ctor = x.constructor,
+      str = finiteToString(x, x.e <= Ctor.toExpNeg || x.e >= Ctor.toExpPos);
+
+    return x.isNeg() ? '-' + str : str;
+  };
+
+
+  /*
+  // Add aliases to match BigDecimal method names.
+  // P.add = P.plus;
+  P.subtract = P.minus;
+  P.multiply = P.times;
+  P.divide = P.div;
+  P.remainder = P.mod;
+  P.compareTo = P.cmp;
+  P.negate = P.neg;
+   */
+
+
+  // Helper functions for Decimal.prototype (P) and/or Decimal methods, and their callers.
+
+
+  /*
+   *  digitsToString           P.cubeRoot, P.logarithm, P.squareRoot, P.toFraction, P.toPower,
+   *                           finiteToString, naturalExponential, naturalLogarithm
+   *  checkInt32               P.toDecimalPlaces, P.toExponential, P.toFixed, P.toNearest,
+   *                           P.toPrecision, P.toSignificantDigits, toStringBinary, random
+   *  checkRoundingDigits      P.logarithm, P.toPower, naturalExponential, naturalLogarithm
+   *  convertBase              toStringBinary, parseOther
+   *  cos                      P.cos
+   *  divide                   P.atanh, P.cubeRoot, P.dividedBy, P.dividedToIntegerBy,
+   *                           P.logarithm, P.modulo, P.squareRoot, P.tan, P.tanh, P.toFraction,
+   *                           P.toNearest, toStringBinary, naturalExponential, naturalLogarithm,
+   *                           taylorSeries, atan2, parseOther
+   *  finalise                 P.absoluteValue, P.atan, P.atanh, P.ceil, P.cos, P.cosh,
+   *                           P.cubeRoot, P.dividedToIntegerBy, P.floor, P.logarithm, P.minus,
+   *                           P.modulo, P.negated, P.plus, P.round, P.sin, P.sinh, P.squareRoot,
+   *                           P.tan, P.times, P.toDecimalPlaces, P.toExponential, P.toFixed,
+   *                           P.toNearest, P.toPower, P.toPrecision, P.toSignificantDigits,
+   *                           P.truncated, divide, getLn10, getPi, naturalExponential,
+   *                           naturalLogarithm, ceil, floor, round, trunc
+   *  finiteToString           P.toExponential, P.toFixed, P.toPrecision, P.toString, P.valueOf,
+   *                           toStringBinary
+   *  getBase10Exponent        P.minus, P.plus, P.times, parseOther
+   *  getLn10                  P.logarithm, naturalLogarithm
+   *  getPi                    P.acos, P.asin, P.atan, toLessThanHalfPi, atan2
+   *  getPrecision             P.precision, P.toFraction
+   *  getZeroString            digitsToString, finiteToString
+   *  intPow                   P.toPower, parseOther
+   *  isOdd                    toLessThanHalfPi
+   *  maxOrMin                 max, min
+   *  naturalExponential       P.naturalExponential, P.toPower
+   *  naturalLogarithm         P.acosh, P.asinh, P.atanh, P.logarithm, P.naturalLogarithm,
+   *                           P.toPower, naturalExponential
+   *  nonFiniteToString        finiteToString, toStringBinary
+   *  parseDecimal             Decimal
+   *  parseOther               Decimal
+   *  sin                      P.sin
+   *  taylorSeries             P.cosh, P.sinh, cos, sin
+   *  toLessThanHalfPi         P.cos, P.sin
+   *  toStringBinary           P.toBinary, P.toHexadecimal, P.toOctal
+   *  truncate                 intPow
+   *
+   *  Throws:                  P.logarithm, P.precision, P.toFraction, checkInt32, getLn10, getPi,
+   *                           naturalLogarithm, config, parseOther, random, Decimal
+   */
+
+
+  function digitsToString(d) {
+    var i, k, ws,
+      indexOfLastWord = d.length - 1,
+      str = '',
+      w = d[0];
+
+    if (indexOfLastWord > 0) {
+      str += w;
+      for (i = 1; i < indexOfLastWord; i++) {
+        ws = d[i] + '';
+        k = LOG_BASE - ws.length;
+        if (k) str += getZeroString(k);
+        str += ws;
+      }
+
+      w = d[i];
+      ws = w + '';
+      k = LOG_BASE - ws.length;
+      if (k) str += getZeroString(k);
+    } else if (w === 0) {
+      return '0';
+    }
+
+    // Remove trailing zeros of last w.
+    for (; w % 10 === 0;) w /= 10;
+
+    return str + w;
+  }
+
+
+  function checkInt32(i, min, max) {
+    if (i !== ~~i || i < min || i > max) {
+      throw Error(invalidArgument + i);
+    }
+  }
+
+
+  /*
+   * Check 5 rounding digits if `repeating` is null, 4 otherwise.
+   * `repeating == null` if caller is `log` or `pow`,
+   * `repeating != null` if caller is `naturalLogarithm` or `naturalExponential`.
+   */
+  function checkRoundingDigits(d, i, rm, repeating) {
+    var di, k, r, rd;
+
+    // Get the length of the first word of the array d.
+    for (k = d[0]; k >= 10; k /= 10) --i;
+
+    // Is the rounding digit in the first word of d?
+    if (--i < 0) {
+      i += LOG_BASE;
+      di = 0;
+    } else {
+      di = Math.ceil((i + 1) / LOG_BASE);
+      i %= LOG_BASE;
+    }
+
+    // i is the index (0 - 6) of the rounding digit.
+    // E.g. if within the word 3487563 the first rounding digit is 5,
+    // then i = 4, k = 1000, rd = 3487563 % 1000 = 563
+    k = mathpow(10, LOG_BASE - i);
+    rd = d[di] % k | 0;
+
+    if (repeating == null) {
+      if (i < 3) {
+        if (i == 0) rd = rd / 100 | 0;
+        else if (i == 1) rd = rd / 10 | 0;
+        r = rm < 4 && rd == 99999 || rm > 3 && rd == 49999 || rd == 50000 || rd == 0;
+      } else {
+        r = (rm < 4 && rd + 1 == k || rm > 3 && rd + 1 == k / 2) &&
+          (d[di + 1] / k / 100 | 0) == mathpow(10, i - 2) - 1 ||
+            (rd == k / 2 || rd == 0) && (d[di + 1] / k / 100 | 0) == 0;
+      }
+    } else {
+      if (i < 4) {
+        if (i == 0) rd = rd / 1000 | 0;
+        else if (i == 1) rd = rd / 100 | 0;
+        else if (i == 2) rd = rd / 10 | 0;
+        r = (repeating || rm < 4) && rd == 9999 || !repeating && rm > 3 && rd == 4999;
+      } else {
+        r = ((repeating || rm < 4) && rd + 1 == k ||
+        (!repeating && rm > 3) && rd + 1 == k / 2) &&
+          (d[di + 1] / k / 1000 | 0) == mathpow(10, i - 3) - 1;
+      }
+    }
+
+    return r;
+  }
+
+
+  // Convert string of `baseIn` to an array of numbers of `baseOut`.
+  // Eg. convertBase('255', 10, 16) returns [15, 15].
+  // Eg. convertBase('ff', 16, 10) returns [2, 5, 5].
+  function convertBase(str, baseIn, baseOut) {
+    var j,
+      arr = [0],
+      arrL,
+      i = 0,
+      strL = str.length;
+
+    for (; i < strL;) {
+      for (arrL = arr.length; arrL--;) arr[arrL] *= baseIn;
+      arr[0] += NUMERALS.indexOf(str.charAt(i++));
+      for (j = 0; j < arr.length; j++) {
+        if (arr[j] > baseOut - 1) {
+          if (arr[j + 1] === void 0) arr[j + 1] = 0;
+          arr[j + 1] += arr[j] / baseOut | 0;
+          arr[j] %= baseOut;
+        }
+      }
+    }
+
+    return arr.reverse();
+  }
+
+
+  /*
+   * cos(x) = 1 - x^2/2! + x^4/4! - ...
+   * |x| < pi/2
+   *
+   */
+  function cosine(Ctor, x) {
+    var k, y,
+      len = x.d.length;
+
+    // Argument reduction: cos(4x) = 8*(cos^4(x) - cos^2(x)) + 1
+    // i.e. cos(x) = 8*(cos^4(x/4) - cos^2(x/4)) + 1
+
+    // Estimate the optimum number of times to use the argument reduction.
+    if (len < 32) {
+      k = Math.ceil(len / 3);
+      y = (1 / tinyPow(4, k)).toString();
+    } else {
+      k = 16;
+      y = '2.3283064365386962890625e-10';
+    }
+
+    Ctor.precision += k;
+
+    x = taylorSeries(Ctor, 1, x.times(y), new Ctor(1));
+
+    // Reverse argument reduction
+    for (var i = k; i--;) {
+      var cos2x = x.times(x);
+      x = cos2x.times(cos2x).minus(cos2x).times(8).plus(1);
+    }
+
+    Ctor.precision -= k;
+
+    return x;
+  }
+
+
+  /*
+   * Perform division in the specified base.
+   */
+  var divide = (function () {
+
+    // Assumes non-zero x and k, and hence non-zero result.
+    function multiplyInteger(x, k, base) {
+      var temp,
+        carry = 0,
+        i = x.length;
+
+      for (x = x.slice(); i--;) {
+        temp = x[i] * k + carry;
+        x[i] = temp % base | 0;
+        carry = temp / base | 0;
+      }
+
+      if (carry) x.unshift(carry);
+
+      return x;
+    }
+
+    function compare(a, b, aL, bL) {
+      var i, r;
+
+      if (aL != bL) {
+        r = aL > bL ? 1 : -1;
+      } else {
+        for (i = r = 0; i < aL; i++) {
+          if (a[i] != b[i]) {
+            r = a[i] > b[i] ? 1 : -1;
+            break;
+          }
+        }
+      }
+
+      return r;
+    }
+
+    function subtract(a, b, aL, base) {
+      var i = 0;
+
+      // Subtract b from a.
+      for (; aL--;) {
+        a[aL] -= i;
+        i = a[aL] < b[aL] ? 1 : 0;
+        a[aL] = i * base + a[aL] - b[aL];
+      }
+
+      // Remove leading zeros.
+      for (; !a[0] && a.length > 1;) a.shift();
+    }
+
+    return function (x, y, pr, rm, dp, base) {
+      var cmp, e, i, k, logBase, more, prod, prodL, q, qd, rem, remL, rem0, sd, t, xi, xL, yd0,
+        yL, yz,
+        Ctor = x.constructor,
+        sign = x.s == y.s ? 1 : -1,
+        xd = x.d,
+        yd = y.d;
+
+      // Either NaN, Infinity or 0?
+      if (!xd || !xd[0] || !yd || !yd[0]) {
+
+        return new Ctor(// Return NaN if either NaN, or both Infinity or 0.
+          !x.s || !y.s || (xd ? yd && xd[0] == yd[0] : !yd) ? NaN :
+
+          // Return ±0 if x is 0 or y is ±Infinity, or return ±Infinity as y is 0.
+          xd && xd[0] == 0 || !yd ? sign * 0 : sign / 0);
+      }
+
+      if (base) {
+        logBase = 1;
+        e = x.e - y.e;
+      } else {
+        base = BASE;
+        logBase = LOG_BASE;
+        e = mathfloor(x.e / logBase) - mathfloor(y.e / logBase);
+      }
+
+      yL = yd.length;
+      xL = xd.length;
+      q = new Ctor(sign);
+      qd = q.d = [];
+
+      // Result exponent may be one less than e.
+      // The digit array of a Decimal from toStringBinary may have trailing zeros.
+      for (i = 0; yd[i] == (xd[i] || 0); i++);
+
+      if (yd[i] > (xd[i] || 0)) e--;
+
+      if (pr == null) {
+        sd = pr = Ctor.precision;
+        rm = Ctor.rounding;
+      } else if (dp) {
+        sd = pr + (x.e - y.e) + 1;
+      } else {
+        sd = pr;
+      }
+
+      if (sd < 0) {
+        qd.push(1);
+        more = true;
+      } else {
+
+        // Convert precision in number of base 10 digits to base 1e7 digits.
+        sd = sd / logBase + 2 | 0;
+        i = 0;
+
+        // divisor < 1e7
+        if (yL == 1) {
+          k = 0;
+          yd = yd[0];
+          sd++;
+
+          // k is the carry.
+          for (; (i < xL || k) && sd--; i++) {
+            t = k * base + (xd[i] || 0);
+            qd[i] = t / yd | 0;
+            k = t % yd | 0;
+          }
+
+          more = k || i < xL;
+
+        // divisor >= 1e7
+        } else {
+
+          // Normalise xd and yd so highest order digit of yd is >= base/2
+          k = base / (yd[0] + 1) | 0;
+
+          if (k > 1) {
+            yd = multiplyInteger(yd, k, base);
+            xd = multiplyInteger(xd, k, base);
+            yL = yd.length;
+            xL = xd.length;
+          }
+
+          xi = yL;
+          rem = xd.slice(0, yL);
+          remL = rem.length;
+
+          // Add zeros to make remainder as long as divisor.
+          for (; remL < yL;) rem[remL++] = 0;
+
+          yz = yd.slice();
+          yz.unshift(0);
+          yd0 = yd[0];
+
+          if (yd[1] >= base / 2) ++yd0;
+
+          do {
+            k = 0;
+
+            // Compare divisor and remainder.
+            cmp = compare(yd, rem, yL, remL);
+
+            // If divisor < remainder.
+            if (cmp < 0) {
+
+              // Calculate trial digit, k.
+              rem0 = rem[0];
+              if (yL != remL) rem0 = rem0 * base + (rem[1] || 0);
+
+              // k will be how many times the divisor goes into the current remainder.
+              k = rem0 / yd0 | 0;
+
+              //  Algorithm:
+              //  1. product = divisor * trial digit (k)
+              //  2. if product > remainder: product -= divisor, k--
+              //  3. remainder -= product
+              //  4. if product was < remainder at 2:
+              //    5. compare new remainder and divisor
+              //    6. If remainder > divisor: remainder -= divisor, k++
+
+              if (k > 1) {
+                if (k >= base) k = base - 1;
+
+                // product = divisor * trial digit.
+                prod = multiplyInteger(yd, k, base);
+                prodL = prod.length;
+                remL = rem.length;
+
+                // Compare product and remainder.
+                cmp = compare(prod, rem, prodL, remL);
+
+                // product > remainder.
+                if (cmp == 1) {
+                  k--;
+
+                  // Subtract divisor from product.
+                  subtract(prod, yL < prodL ? yz : yd, prodL, base);
+                }
+              } else {
+
+                // cmp is -1.
+                // If k is 0, there is no need to compare yd and rem again below, so change cmp to 1
+                // to avoid it. If k is 1 there is a need to compare yd and rem again below.
+                if (k == 0) cmp = k = 1;
+                prod = yd.slice();
+              }
+
+              prodL = prod.length;
+              if (prodL < remL) prod.unshift(0);
+
+              // Subtract product from remainder.
+              subtract(rem, prod, remL, base);
+
+              // If product was < previous remainder.
+              if (cmp == -1) {
+                remL = rem.length;
+
+                // Compare divisor and new remainder.
+                cmp = compare(yd, rem, yL, remL);
+
+                // If divisor < new remainder, subtract divisor from remainder.
+                if (cmp < 1) {
+                  k++;
+
+                  // Subtract divisor from remainder.
+                  subtract(rem, yL < remL ? yz : yd, remL, base);
+                }
+              }
+
+              remL = rem.length;
+            } else if (cmp === 0) {
+              k++;
+              rem = [0];
+            }    // if cmp === 1, k will be 0
+
+            // Add the next digit, k, to the result array.
+            qd[i++] = k;
+
+            // Update the remainder.
+            if (cmp && rem[0]) {
+              rem[remL++] = xd[xi] || 0;
+            } else {
+              rem = [xd[xi]];
+              remL = 1;
+            }
+
+          } while ((xi++ < xL || rem[0] !== void 0) && sd--);
+
+          more = rem[0] !== void 0;
+        }
+
+        // Leading zero?
+        if (!qd[0]) qd.shift();
+      }
+
+      // logBase is 1 when divide is being used for base conversion.
+      if (logBase == 1) {
+        q.e = e;
+        inexact = more;
+      } else {
+
+        // To calculate q.e, first get the number of digits of qd[0].
+        for (i = 1, k = qd[0]; k >= 10; k /= 10) i++;
+        q.e = i + e * logBase - 1;
+
+        finalise(q, dp ? pr + q.e + 1 : pr, rm, more);
+      }
+
+      return q;
+    };
+  })();
+
+
+  /*
+   * Round `x` to `sd` significant digits using rounding mode `rm`.
+   * Check for over/under-flow.
+   */
+   function finalise(x, sd, rm, isTruncated) {
+    var digits, i, j, k, rd, roundUp, w, xd, xdi,
+      Ctor = x.constructor;
+
+    // Don't round if sd is null or undefined.
+    out: if (sd != null) {
+      xd = x.d;
+
+      // Infinity/NaN.
+      if (!xd) return x;
+
+      // rd: the rounding digit, i.e. the digit after the digit that may be rounded up.
+      // w: the word of xd containing rd, a base 1e7 number.
+      // xdi: the index of w within xd.
+      // digits: the number of digits of w.
+      // i: what would be the index of rd within w if all the numbers were 7 digits long (i.e. if
+      // they had leading zeros)
+      // j: if > 0, the actual index of rd within w (if < 0, rd is a leading zero).
+
+      // Get the length of the first word of the digits array xd.
+      for (digits = 1, k = xd[0]; k >= 10; k /= 10) digits++;
+      i = sd - digits;
+
+      // Is the rounding digit in the first word of xd?
+      if (i < 0) {
+        i += LOG_BASE;
+        j = sd;
+        w = xd[xdi = 0];
+
+        // Get the rounding digit at index j of w.
+        rd = w / mathpow(10, digits - j - 1) % 10 | 0;
+      } else {
+        xdi = Math.ceil((i + 1) / LOG_BASE);
+        k = xd.length;
+        if (xdi >= k) {
+          if (isTruncated) {
+
+            // Needed by `naturalExponential`, `naturalLogarithm` and `squareRoot`.
+            for (; k++ <= xdi;) xd.push(0);
+            w = rd = 0;
+            digits = 1;
+            i %= LOG_BASE;
+            j = i - LOG_BASE + 1;
+          } else {
+            break out;
+          }
+        } else {
+          w = k = xd[xdi];
+
+          // Get the number of digits of w.
+          for (digits = 1; k >= 10; k /= 10) digits++;
+
+          // Get the index of rd within w.
+          i %= LOG_BASE;
+
+          // Get the index of rd within w, adjusted for leading zeros.
+          // The number of leading zeros of w is given by LOG_BASE - digits.
+          j = i - LOG_BASE + digits;
+
+          // Get the rounding digit at index j of w.
+          rd = j < 0 ? 0 : w / mathpow(10, digits - j - 1) % 10 | 0;
+        }
+      }
+
+      // Are there any non-zero digits after the rounding digit?
+      isTruncated = isTruncated || sd < 0 ||
+        xd[xdi + 1] !== void 0 || (j < 0 ? w : w % mathpow(10, digits - j - 1));
+
+      // The expression `w % mathpow(10, digits - j - 1)` returns all the digits of w to the right
+      // of the digit at (left-to-right) index j, e.g. if w is 908714 and j is 2, the expression
+      // will give 714.
+
+      roundUp = rm < 4
+        ? (rd || isTruncated) && (rm == 0 || rm == (x.s < 0 ? 3 : 2))
+        : rd > 5 || rd == 5 && (rm == 4 || isTruncated || rm == 6 &&
+
+          // Check whether the digit to the left of the rounding digit is odd.
+          ((i > 0 ? j > 0 ? w / mathpow(10, digits - j) : 0 : xd[xdi - 1]) % 10) & 1 ||
+            rm == (x.s < 0 ? 8 : 7));
+
+      if (sd < 1 || !xd[0]) {
+        xd.length = 0;
+        if (roundUp) {
+
+          // Convert sd to decimal places.
+          sd -= x.e + 1;
+
+          // 1, 0.1, 0.01, 0.001, 0.0001 etc.
+          xd[0] = mathpow(10, (LOG_BASE - sd % LOG_BASE) % LOG_BASE);
+          x.e = -sd || 0;
+        } else {
+
+          // Zero.
+          xd[0] = x.e = 0;
+        }
+
+        return x;
+      }
+
+      // Remove excess digits.
+      if (i == 0) {
+        xd.length = xdi;
+        k = 1;
+        xdi--;
+      } else {
+        xd.length = xdi + 1;
+        k = mathpow(10, LOG_BASE - i);
+
+        // E.g. 56700 becomes 56000 if 7 is the rounding digit.
+        // j > 0 means i > number of leading zeros of w.
+        xd[xdi] = j > 0 ? (w / mathpow(10, digits - j) % mathpow(10, j) | 0) * k : 0;
+      }
+
+      if (roundUp) {
+        for (;;) {
+
+          // Is the digit to be rounded up in the first word of xd?
+          if (xdi == 0) {
+
+            // i will be the length of xd[0] before k is added.
+            for (i = 1, j = xd[0]; j >= 10; j /= 10) i++;
+            j = xd[0] += k;
+            for (k = 1; j >= 10; j /= 10) k++;
+
+            // if i != k the length has increased.
+            if (i != k) {
+              x.e++;
+              if (xd[0] == BASE) xd[0] = 1;
+            }
+
+            break;
+          } else {
+            xd[xdi] += k;
+            if (xd[xdi] != BASE) break;
+            xd[xdi--] = 0;
+            k = 1;
+          }
+        }
+      }
+
+      // Remove trailing zeros.
+      for (i = xd.length; xd[--i] === 0;) xd.pop();
+    }
+
+    if (external) {
+
+      // Overflow?
+      if (x.e > Ctor.maxE) {
+
+        // Infinity.
+        x.d = null;
+        x.e = NaN;
+
+      // Underflow?
+      } else if (x.e < Ctor.minE) {
+
+        // Zero.
+        x.e = 0;
+        x.d = [0];
+        // Ctor.underflow = true;
+      } // else Ctor.underflow = false;
+    }
+
+    return x;
+  }
+
+
+  function finiteToString(x, isExp, sd) {
+    if (!x.isFinite()) return nonFiniteToString(x);
+    var k,
+      e = x.e,
+      str = digitsToString(x.d),
+      len = str.length;
+
+    if (isExp) {
+      if (sd && (k = sd - len) > 0) {
+        str = str.charAt(0) + '.' + str.slice(1) + getZeroString(k);
+      } else if (len > 1) {
+        str = str.charAt(0) + '.' + str.slice(1);
+      }
+
+      str = str + (x.e < 0 ? 'e' : 'e+') + x.e;
+    } else if (e < 0) {
+      str = '0.' + getZeroString(-e - 1) + str;
+      if (sd && (k = sd - len) > 0) str += getZeroString(k);
+    } else if (e >= len) {
+      str += getZeroString(e + 1 - len);
+      if (sd && (k = sd - e - 1) > 0) str = str + '.' + getZeroString(k);
+    } else {
+      if ((k = e + 1) < len) str = str.slice(0, k) + '.' + str.slice(k);
+      if (sd && (k = sd - len) > 0) {
+        if (e + 1 === len) str += '.';
+        str += getZeroString(k);
+      }
+    }
+
+    return str;
+  }
+
+
+  // Calculate the base 10 exponent from the base 1e7 exponent.
+  function getBase10Exponent(digits, e) {
+    var w = digits[0];
+
+    // Add the number of digits of the first word of the digits array.
+    for ( e *= LOG_BASE; w >= 10; w /= 10) e++;
+    return e;
+  }
+
+
+  function getLn10(Ctor, sd, pr) {
+    if (sd > LN10_PRECISION) {
+
+      // Reset global state in case the exception is caught.
+      external = true;
+      if (pr) Ctor.precision = pr;
+      throw Error(precisionLimitExceeded);
+    }
+    return finalise(new Ctor(LN10), sd, 1, true);
+  }
+
+
+  function getPi(Ctor, sd, rm) {
+    if (sd > PI_PRECISION) throw Error(precisionLimitExceeded);
+    return finalise(new Ctor(PI), sd, rm, true);
+  }
+
+
+  function getPrecision(digits) {
+    var w = digits.length - 1,
+      len = w * LOG_BASE + 1;
+
+    w = digits[w];
+
+    // If non-zero...
+    if (w) {
+
+      // Subtract the number of trailing zeros of the last word.
+      for (; w % 10 == 0; w /= 10) len--;
+
+      // Add the number of digits of the first word.
+      for (w = digits[0]; w >= 10; w /= 10) len++;
+    }
+
+    return len;
+  }
+
+
+  function getZeroString(k) {
+    var zs = '';
+    for (; k--;) zs += '0';
+    return zs;
+  }
+
+
+  /*
+   * Return a new Decimal whose value is the value of Decimal `x` to the power `n`, where `n` is an
+   * integer of type number.
+   *
+   * Implements 'exponentiation by squaring'. Called by `pow` and `parseOther`.
+   *
+   */
+  function intPow(Ctor, x, n, pr) {
+    var isTruncated,
+      r = new Ctor(1),
+
+      // Max n of 9007199254740991 takes 53 loop iterations.
+      // Maximum digits array length; leaves [28, 34] guard digits.
+      k = Math.ceil(pr / LOG_BASE + 4);
+
+    external = false;
+
+    for (;;) {
+      if (n % 2) {
+        r = r.times(x);
+        if (truncate(r.d, k)) isTruncated = true;
+      }
+
+      n = mathfloor(n / 2);
+      if (n === 0) {
+
+        // To ensure correct rounding when r.d is truncated, increment the last word if it is zero.
+        n = r.d.length - 1;
+        if (isTruncated && r.d[n] === 0) ++r.d[n];
+        break;
+      }
+
+      x = x.times(x);
+      truncate(x.d, k);
+    }
+
+    external = true;
+
+    return r;
+  }
+
+
+  function isOdd(n) {
+    return n.d[n.d.length - 1] & 1;
+  }
+
+
+  /*
+   * Handle `max` and `min`. `ltgt` is 'lt' or 'gt'.
+   */
+  function maxOrMin(Ctor, args, ltgt) {
+    var y,
+      x = new Ctor(args[0]),
+      i = 0;
+
+    for (; ++i < args.length;) {
+      y = new Ctor(args[i]);
+      if (!y.s) {
+        x = y;
+        break;
+      } else if (x[ltgt](y)) {
+        x = y;
+      }
+    }
+
+    return x;
+  }
+
+
+  /*
+   * Return a new Decimal whose value is the natural exponential of `x` rounded to `sd` significant
+   * digits.
+   *
+   * Taylor/Maclaurin series.
+   *
+   * exp(x) = x^0/0! + x^1/1! + x^2/2! + x^3/3! + ...
+   *
+   * Argument reduction:
+   *   Repeat x = x / 32, k += 5, until |x| < 0.1
+   *   exp(x) = exp(x / 2^k)^(2^k)
+   *
+   * Previously, the argument was initially reduced by
+   * exp(x) = exp(r) * 10^k  where r = x - k * ln10, k = floor(x / ln10)
+   * to first put r in the range [0, ln10], before dividing by 32 until |x| < 0.1, but this was
+   * found to be slower than just dividing repeatedly by 32 as above.
+   *
+   * Max integer argument: exp('20723265836946413') = 6.3e+9000000000000000
+   * Min integer argument: exp('-20723265836946411') = 1.2e-9000000000000000
+   * (Math object integer min/max: Math.exp(709) = 8.2e+307, Math.exp(-745) = 5e-324)
+   *
+   *  exp(Infinity)  = Infinity
+   *  exp(-Infinity) = 0
+   *  exp(NaN)       = NaN
+   *  exp(±0)        = 1
+   *
+   *  exp(x) is non-terminating for any finite, non-zero x.
+   *
+   *  The result will always be correctly rounded.
+   *
+   */
+  function naturalExponential(x, sd) {
+    var denominator, guard, j, pow, sum, t, wpr,
+      rep = 0,
+      i = 0,
+      k = 0,
+      Ctor = x.constructor,
+      rm = Ctor.rounding,
+      pr = Ctor.precision;
+
+    // 0/NaN/Infinity?
+    if (!x.d || !x.d[0] || x.e > 17) {
+
+      return new Ctor(x.d
+        ? !x.d[0] ? 1 : x.s < 0 ? 0 : 1 / 0
+        : x.s ? x.s < 0 ? 0 : x : 0 / 0);
+    }
+
+    if (sd == null) {
+      external = false;
+      wpr = pr;
+    } else {
+      wpr = sd;
+    }
+
+    t = new Ctor(0.03125);
+
+    // while abs(x) >= 0.1
+    while (x.e > -2) {
+
+      // x = x / 2^5
+      x = x.times(t);
+      k += 5;
+    }
+
+    // Use 2 * log10(2^k) + 5 (empirically derived) to estimate the increase in precision
+    // necessary to ensure the first 4 rounding digits are correct.
+    guard = Math.log(mathpow(2, k)) / Math.LN10 * 2 + 5 | 0;
+    wpr += guard;
+    denominator = pow = sum = new Ctor(1);
+    Ctor.precision = wpr;
+
+    for (;;) {
+      pow = finalise(pow.times(x), wpr, 1);
+      denominator = denominator.times(++i);
+      t = sum.plus(divide(pow, denominator, wpr, 1));
+
+      if (digitsToString(t.d).slice(0, wpr) === digitsToString(sum.d).slice(0, wpr)) {
+        j = k;
+        while (j--) sum = finalise(sum.times(sum), wpr, 1);
+
+        // Check to see if the first 4 rounding digits are [49]999.
+        // If so, repeat the summation with a higher precision, otherwise
+        // e.g. with precision: 18, rounding: 1
+        // exp(18.404272462595034083567793919843761) = 98372560.1229999999 (should be 98372560.123)
+        // `wpr - guard` is the index of first rounding digit.
+        if (sd == null) {
+
+          if (rep < 3 && checkRoundingDigits(sum.d, wpr - guard, rm, rep)) {
+            Ctor.precision = wpr += 10;
+            denominator = pow = t = new Ctor(1);
+            i = 0;
+            rep++;
+          } else {
+            return finalise(sum, Ctor.precision = pr, rm, external = true);
+          }
+        } else {
+          Ctor.precision = pr;
+          return sum;
+        }
+      }
+
+      sum = t;
+    }
+  }
+
+
+  /*
+   * Return a new Decimal whose value is the natural logarithm of `x` rounded to `sd` significant
+   * digits.
+   *
+   *  ln(-n)        = NaN
+   *  ln(0)         = -Infinity
+   *  ln(-0)        = -Infinity
+   *  ln(1)         = 0
+   *  ln(Infinity)  = Infinity
+   *  ln(-Infinity) = NaN
+   *  ln(NaN)       = NaN
+   *
+   *  ln(n) (n != 1) is non-terminating.
+   *
+   */
+  function naturalLogarithm(y, sd) {
+    var c, c0, denominator, e, numerator, rep, sum, t, wpr, x1, x2,
+      n = 1,
+      guard = 10,
+      x = y,
+      xd = x.d,
+      Ctor = x.constructor,
+      rm = Ctor.rounding,
+      pr = Ctor.precision;
+
+    // Is x negative or Infinity, NaN, 0 or 1?
+    if (x.s < 0 || !xd || !xd[0] || !x.e && xd[0] == 1 && xd.length == 1) {
+      return new Ctor(xd && !xd[0] ? -1 / 0 : x.s != 1 ? NaN : xd ? 0 : x);
+    }
+
+    if (sd == null) {
+      external = false;
+      wpr = pr;
+    } else {
+      wpr = sd;
+    }
+
+    Ctor.precision = wpr += guard;
+    c = digitsToString(xd);
+    c0 = c.charAt(0);
+
+    if (Math.abs(e = x.e) < 1.5e15) {
+
+      // Argument reduction.
+      // The series converges faster the closer the argument is to 1, so using
+      // ln(a^b) = b * ln(a),   ln(a) = ln(a^b) / b
+      // multiply the argument by itself until the leading digits of the significand are 7, 8, 9,
+      // 10, 11, 12 or 13, recording the number of multiplications so the sum of the series can
+      // later be divided by this number, then separate out the power of 10 using
+      // ln(a*10^b) = ln(a) + b*ln(10).
+
+      // max n is 21 (gives 0.9, 1.0 or 1.1) (9e15 / 21 = 4.2e14).
+      //while (c0 < 9 && c0 != 1 || c0 == 1 && c.charAt(1) > 1) {
+      // max n is 6 (gives 0.7 - 1.3)
+      while (c0 < 7 && c0 != 1 || c0 == 1 && c.charAt(1) > 3) {
+        x = x.times(y);
+        c = digitsToString(x.d);
+        c0 = c.charAt(0);
+        n++;
+      }
+
+      e = x.e;
+
+      if (c0 > 1) {
+        x = new Ctor('0.' + c);
+        e++;
+      } else {
+        x = new Ctor(c0 + '.' + c.slice(1));
+      }
+    } else {
+
+      // The argument reduction method above may result in overflow if the argument y is a massive
+      // number with exponent >= 1500000000000000 (9e15 / 6 = 1.5e15), so instead recall this
+      // function using ln(x*10^e) = ln(x) + e*ln(10).
+      t = getLn10(Ctor, wpr + 2, pr).times(e + '');
+      x = naturalLogarithm(new Ctor(c0 + '.' + c.slice(1)), wpr - guard).plus(t);
+      Ctor.precision = pr;
+
+      return sd == null ? finalise(x, pr, rm, external = true) : x;
+    }
+
+    // x1 is x reduced to a value near 1.
+    x1 = x;
+
+    // Taylor series.
+    // ln(y) = ln((1 + x)/(1 - x)) = 2(x + x^3/3 + x^5/5 + x^7/7 + ...)
+    // where x = (y - 1)/(y + 1)    (|x| < 1)
+    sum = numerator = x = divide(x.minus(1), x.plus(1), wpr, 1);
+    x2 = finalise(x.times(x), wpr, 1);
+    denominator = 3;
+
+    for (;;) {
+      numerator = finalise(numerator.times(x2), wpr, 1);
+      t = sum.plus(divide(numerator, new Ctor(denominator), wpr, 1));
+
+      if (digitsToString(t.d).slice(0, wpr) === digitsToString(sum.d).slice(0, wpr)) {
+        sum = sum.times(2);
+
+        // Reverse the argument reduction. Check that e is not 0 because, besides preventing an
+        // unnecessary calculation, -0 + 0 = +0 and to ensure correct rounding -0 needs to stay -0.
+        if (e !== 0) sum = sum.plus(getLn10(Ctor, wpr + 2, pr).times(e + ''));
+        sum = divide(sum, new Ctor(n), wpr, 1);
+
+        // Is rm > 3 and the first 4 rounding digits 4999, or rm < 4 (or the summation has
+        // been repeated previously) and the first 4 rounding digits 9999?
+        // If so, restart the summation with a higher precision, otherwise
+        // e.g. with precision: 12, rounding: 1
+        // ln(135520028.6126091714265381533) = 18.7246299999 when it should be 18.72463.
+        // `wpr - guard` is the index of first rounding digit.
+        if (sd == null) {
+          if (checkRoundingDigits(sum.d, wpr - guard, rm, rep)) {
+            Ctor.precision = wpr += guard;
+            t = numerator = x = divide(x1.minus(1), x1.plus(1), wpr, 1);
+            x2 = finalise(x.times(x), wpr, 1);
+            denominator = rep = 1;
+          } else {
+            return finalise(sum, Ctor.precision = pr, rm, external = true);
+          }
+        } else {
+          Ctor.precision = pr;
+          return sum;
+        }
+      }
+
+      sum = t;
+      denominator += 2;
+    }
+  }
+
+
+  // ±Infinity, NaN.
+  function nonFiniteToString(x) {
+    // Unsigned.
+    return String(x.s * x.s / 0);
+  }
+
+
+  /*
+   * Parse the value of a new Decimal `x` from string `str`.
+   */
+  function parseDecimal(x, str) {
+    var e, i, len;
+
+    // Decimal point?
+    if ((e = str.indexOf('.')) > -1) str = str.replace('.', '');
+
+    // Exponential form?
+    if ((i = str.search(/e/i)) > 0) {
+
+      // Determine exponent.
+      if (e < 0) e = i;
+      e += +str.slice(i + 1);
+      str = str.substring(0, i);
+    } else if (e < 0) {
+
+      // Integer.
+      e = str.length;
+    }
+
+    // Determine leading zeros.
+    for (i = 0; str.charCodeAt(i) === 48; i++);
+
+    // Determine trailing zeros.
+    for (len = str.length; str.charCodeAt(len - 1) === 48; --len);
+    str = str.slice(i, len);
+
+    if (str) {
+      len -= i;
+      x.e = e = e - i - 1;
+      x.d = [];
+
+      // Transform base
+
+      // e is the base 10 exponent.
+      // i is where to slice str to get the first word of the digits array.
+      i = (e + 1) % LOG_BASE;
+      if (e < 0) i += LOG_BASE;
+
+      if (i < len) {
+        if (i) x.d.push(+str.slice(0, i));
+        for (len -= LOG_BASE; i < len;) x.d.push(+str.slice(i, i += LOG_BASE));
+        str = str.slice(i);
+        i = LOG_BASE - str.length;
+      } else {
+        i -= len;
+      }
+
+      for (; i--;) str += '0';
+      x.d.push(+str);
+
+      if (external) {
+
+        // Overflow?
+        if (x.e > x.constructor.maxE) {
+
+          // Infinity.
+          x.d = null;
+          x.e = NaN;
+
+        // Underflow?
+        } else if (x.e < x.constructor.minE) {
+
+          // Zero.
+          x.e = 0;
+          x.d = [0];
+          // x.constructor.underflow = true;
+        } // else x.constructor.underflow = false;
+      }
+    } else {
+
+      // Zero.
+      x.e = 0;
+      x.d = [0];
+    }
+
+    return x;
+  }
+
+
+  /*
+   * Parse the value of a new Decimal `x` from a string `str`, which is not a decimal value.
+   */
+  function parseOther(x, str) {
+    var base, Ctor, divisor, i, isFloat, len, p, xd, xe;
+
+    if (str === 'Infinity' || str === 'NaN') {
+      if (!+str) x.s = NaN;
+      x.e = NaN;
+      x.d = null;
+      return x;
+    }
+
+    if (isHex.test(str))  {
+      base = 16;
+      str = str.toLowerCase();
+    } else if (isBinary.test(str))  {
+      base = 2;
+    } else if (isOctal.test(str))  {
+      base = 8;
+    } else {
+      throw Error(invalidArgument + str);
+    }
+
+    // Is there a binary exponent part?
+    i = str.search(/p/i);
+
+    if (i > 0) {
+      p = +str.slice(i + 1);
+      str = str.substring(2, i);
+    } else {
+      str = str.slice(2);
+    }
+
+    // Convert `str` as an integer then divide the result by `base` raised to a power such that the
+    // fraction part will be restored.
+    i = str.indexOf('.');
+    isFloat = i >= 0;
+    Ctor = x.constructor;
+
+    if (isFloat) {
+      str = str.replace('.', '');
+      len = str.length;
+      i = len - i;
+
+      // log[10](16) = 1.2041... , log[10](88) = 1.9444....
+      divisor = intPow(Ctor, new Ctor(base), i, i * 2);
+    }
+
+    xd = convertBase(str, base, BASE);
+    xe = xd.length - 1;
+
+    // Remove trailing zeros.
+    for (i = xe; xd[i] === 0; --i) xd.pop();
+    if (i < 0) return new Ctor(x.s * 0);
+    x.e = getBase10Exponent(xd, xe);
+    x.d = xd;
+    external = false;
+
+    // At what precision to perform the division to ensure exact conversion?
+    // maxDecimalIntegerPartDigitCount = ceil(log[10](b) * otherBaseIntegerPartDigitCount)
+    // log[10](2) = 0.30103, log[10](8) = 0.90309, log[10](16) = 1.20412
+    // E.g. ceil(1.2 * 3) = 4, so up to 4 decimal digits are needed to represent 3 hex int digits.
+    // maxDecimalFractionPartDigitCount = {Hex:4|Oct:3|Bin:1} * otherBaseFractionPartDigitCount
+    // Therefore using 4 * the number of digits of str will always be enough.
+    if (isFloat) x = divide(x, divisor, len * 4);
+
+    // Multiply by the binary exponent part if present.
+    if (p) x = x.times(Math.abs(p) < 54 ? mathpow(2, p) : Decimal.pow(2, p));
+    external = true;
+
+    return x;
+  }
+
+
+  /*
+   * sin(x) = x - x^3/3! + x^5/5! - ...
+   * |x| < pi/2
+   *
+   */
+  function sine(Ctor, x) {
+    var k,
+      len = x.d.length;
+
+    if (len < 3) return taylorSeries(Ctor, 2, x, x);
+
+    // Argument reduction: sin(5x) = 16*sin^5(x) - 20*sin^3(x) + 5*sin(x)
+    // i.e. sin(x) = 16*sin^5(x/5) - 20*sin^3(x/5) + 5*sin(x/5)
+    // and  sin(x) = sin(x/5)(5 + sin^2(x/5)(16sin^2(x/5) - 20))
+
+    // Estimate the optimum number of times to use the argument reduction.
+    k = 1.4 * Math.sqrt(len);
+    k = k > 16 ? 16 : k | 0;
+
+    x = x.times(1 / tinyPow(5, k));
+    x = taylorSeries(Ctor, 2, x, x);
+
+    // Reverse argument reduction
+    var sin2_x,
+      d5 = new Ctor(5),
+      d16 = new Ctor(16),
+      d20 = new Ctor(20);
+    for (; k--;) {
+      sin2_x = x.times(x);
+      x = x.times(d5.plus(sin2_x.times(d16.times(sin2_x).minus(d20))));
+    }
+
+    return x;
+  }
+
+
+  // Calculate Taylor series for `cos`, `cosh`, `sin` and `sinh`.
+  function taylorSeries(Ctor, n, x, y, isHyperbolic) {
+    var j, t, u, x2,
+      i = 1,
+      pr = Ctor.precision,
+      k = Math.ceil(pr / LOG_BASE);
+
+    external = false;
+    x2 = x.times(x);
+    u = new Ctor(y);
+
+    for (;;) {
+      t = divide(u.times(x2), new Ctor(n++ * n++), pr, 1);
+      u = isHyperbolic ? y.plus(t) : y.minus(t);
+      y = divide(t.times(x2), new Ctor(n++ * n++), pr, 1);
+      t = u.plus(y);
+
+      if (t.d[k] !== void 0) {
+        for (j = k; t.d[j] === u.d[j] && j--;);
+        if (j == -1) break;
+      }
+
+      j = u;
+      u = y;
+      y = t;
+      t = j;
+      i++;
+    }
+
+    external = true;
+    t.d.length = k + 1;
+
+    return t;
+  }
+
+
+  // Exponent e must be positive and non-zero.
+  function tinyPow(b, e) {
+    var n = b;
+    while (--e) n *= b;
+    return n;
+  }
+
+
+  // Return the absolute value of `x` reduced to less than or equal to half pi.
+  function toLessThanHalfPi(Ctor, x) {
+    var t,
+      isNeg = x.s < 0,
+      pi = getPi(Ctor, Ctor.precision, 1),
+      halfPi = pi.times(0.5);
+
+    x = x.abs();
+
+    if (x.lte(halfPi)) {
+      quadrant = isNeg ? 4 : 1;
+      return x;
+    }
+
+    t = x.divToInt(pi);
+
+    if (t.isZero()) {
+      quadrant = isNeg ? 3 : 2;
+    } else {
+      x = x.minus(t.times(pi));
+
+      // 0 <= x < pi
+      if (x.lte(halfPi)) {
+        quadrant = isOdd(t) ? (isNeg ? 2 : 3) : (isNeg ? 4 : 1);
+        return x;
+      }
+
+      quadrant = isOdd(t) ? (isNeg ? 1 : 4) : (isNeg ? 3 : 2);
+    }
+
+    return x.minus(pi).abs();
+  }
+
+
+  /*
+   * Return the value of Decimal `x` as a string in base `baseOut`.
+   *
+   * If the optional `sd` argument is present include a binary exponent suffix.
+   */
+  function toStringBinary(x, baseOut, sd, rm) {
+    var base, e, i, k, len, roundUp, str, xd, y,
+      Ctor = x.constructor,
+      isExp = sd !== void 0;
+
+    if (isExp) {
+      checkInt32(sd, 1, MAX_DIGITS);
+      if (rm === void 0) rm = Ctor.rounding;
+      else checkInt32(rm, 0, 8);
+    } else {
+      sd = Ctor.precision;
+      rm = Ctor.rounding;
+    }
+
+    if (!x.isFinite()) {
+      str = nonFiniteToString(x);
+    } else {
+      str = finiteToString(x);
+      i = str.indexOf('.');
+
+      // Use exponential notation according to `toExpPos` and `toExpNeg`? No, but if required:
+      // maxBinaryExponent = floor((decimalExponent + 1) * log[2](10))
+      // minBinaryExponent = floor(decimalExponent * log[2](10))
+      // log[2](10) = 3.321928094887362347870319429489390175864
+
+      if (isExp) {
+        base = 2;
+        if (baseOut == 16) {
+          sd = sd * 4 - 3;
+        } else if (baseOut == 8) {
+          sd = sd * 3 - 2;
+        }
+      } else {
+        base = baseOut;
+      }
+
+      // Convert the number as an integer then divide the result by its base raised to a power such
+      // that the fraction part will be restored.
+
+      // Non-integer.
+      if (i >= 0) {
+        str = str.replace('.', '');
+        y = new Ctor(1);
+        y.e = str.length - i;
+        y.d = convertBase(finiteToString(y), 10, base);
+        y.e = y.d.length;
+      }
+
+      xd = convertBase(str, 10, base);
+      e = len = xd.length;
+
+      // Remove trailing zeros.
+      for (; xd[--len] == 0;) xd.pop();
+
+      if (!xd[0]) {
+        str = isExp ? '0p+0' : '0';
+      } else {
+        if (i < 0) {
+          e--;
+        } else {
+          x = new Ctor(x);
+          x.d = xd;
+          x.e = e;
+          x = divide(x, y, sd, rm, 0, base);
+          xd = x.d;
+          e = x.e;
+          roundUp = inexact;
+        }
+
+        // The rounding digit, i.e. the digit after the digit that may be rounded up.
+        i = xd[sd];
+        k = base / 2;
+        roundUp = roundUp || xd[sd + 1] !== void 0;
+
+        roundUp = rm < 4
+          ? (i !== void 0 || roundUp) && (rm === 0 || rm === (x.s < 0 ? 3 : 2))
+          : i > k || i === k && (rm === 4 || roundUp || rm === 6 && xd[sd - 1] & 1 ||
+            rm === (x.s < 0 ? 8 : 7));
+
+        xd.length = sd;
+
+        if (roundUp) {
+
+          // Rounding up may mean the previous digit has to be rounded up and so on.
+          for (; ++xd[--sd] > base - 1;) {
+            xd[sd] = 0;
+            if (!sd) {
+              ++e;
+              xd.unshift(1);
+            }
+          }
+        }
+
+        // Determine trailing zeros.
+        for (len = xd.length; !xd[len - 1]; --len);
+
+        // E.g. [4, 11, 15] becomes 4bf.
+        for (i = 0, str = ''; i < len; i++) str += NUMERALS.charAt(xd[i]);
+
+        // Add binary exponent suffix?
+        if (isExp) {
+          if (len > 1) {
+            if (baseOut == 16 || baseOut == 8) {
+              i = baseOut == 16 ? 4 : 3;
+              for (--len; len % i; len++) str += '0';
+              xd = convertBase(str, base, baseOut);
+              for (len = xd.length; !xd[len - 1]; --len);
+
+              // xd[0] will always be be 1
+              for (i = 1, str = '1.'; i < len; i++) str += NUMERALS.charAt(xd[i]);
+            } else {
+              str = str.charAt(0) + '.' + str.slice(1);
+            }
+          }
+
+          str =  str + (e < 0 ? 'p' : 'p+') + e;
+        } else if (e < 0) {
+          for (; ++e;) str = '0' + str;
+          str = '0.' + str;
+        } else {
+          if (++e > len) for (e -= len; e-- ;) str += '0';
+          else if (e < len) str = str.slice(0, e) + '.' + str.slice(e);
+        }
+      }
+
+      str = (baseOut == 16 ? '0x' : baseOut == 2 ? '0b' : baseOut == 8 ? '0o' : '') + str;
+    }
+
+    return x.s < 0 ? '-' + str : str;
+  }
+
+
+  // Does not strip trailing zeros.
+  function truncate(arr, len) {
+    if (arr.length > len) {
+      arr.length = len;
+      return true;
+    }
+  }
+
+
+  // Decimal methods
+
+
+  /*
+   *  abs
+   *  acos
+   *  acosh
+   *  add
+   *  asin
+   *  asinh
+   *  atan
+   *  atanh
+   *  atan2
+   *  cbrt
+   *  ceil
+   *  clone
+   *  config
+   *  cos
+   *  cosh
+   *  div
+   *  exp
+   *  floor
+   *  hypot
+   *  ln
+   *  log
+   *  log2
+   *  log10
+   *  max
+   *  min
+   *  mod
+   *  mul
+   *  pow
+   *  random
+   *  round
+   *  set
+   *  sign
+   *  sin
+   *  sinh
+   *  sqrt
+   *  sub
+   *  tan
+   *  tanh
+   *  trunc
+   */
+
+
+  /*
+   * Return a new Decimal whose value is the absolute value of `x`.
+   *
+   * x {number|string|Decimal}
+   *
+   */
+  function abs(x) {
+    return new this(x).abs();
+  }
+
+
+  /*
+   * Return a new Decimal whose value is the arccosine in radians of `x`.
+   *
+   * x {number|string|Decimal}
+   *
+   */
+  function acos(x) {
+    return new this(x).acos();
+  }
+
+
+  /*
+   * Return a new Decimal whose value is the inverse of the hyperbolic cosine of `x`, rounded to
+   * `precision` significant digits using rounding mode `rounding`.
+   *
+   * x {number|string|Decimal} A value in radians.
+   *
+   */
+  function acosh(x) {
+    return new this(x).acosh();
+  }
+
+
+  /*
+   * Return a new Decimal whose value is the sum of `x` and `y`, rounded to `precision` significant
+   * digits using rounding mode `rounding`.
+   *
+   * x {number|string|Decimal}
+   * y {number|string|Decimal}
+   *
+   */
+  function add(x, y) {
+    return new this(x).plus(y);
+  }
+
+
+  /*
+   * Return a new Decimal whose value is the arcsine in radians of `x`, rounded to `precision`
+   * significant digits using rounding mode `rounding`.
+   *
+   * x {number|string|Decimal}
+   *
+   */
+  function asin(x) {
+    return new this(x).asin();
+  }
+
+
+  /*
+   * Return a new Decimal whose value is the inverse of the hyperbolic sine of `x`, rounded to
+   * `precision` significant digits using rounding mode `rounding`.
+   *
+   * x {number|string|Decimal} A value in radians.
+   *
+   */
+  function asinh(x) {
+    return new this(x).asinh();
+  }
+
+
+  /*
+   * Return a new Decimal whose value is the arctangent in radians of `x`, rounded to `precision`
+   * significant digits using rounding mode `rounding`.
+   *
+   * x {number|string|Decimal}
+   *
+   */
+  function atan(x) {
+    return new this(x).atan();
+  }
+
+
+  /*
+   * Return a new Decimal whose value is the inverse of the hyperbolic tangent of `x`, rounded to
+   * `precision` significant digits using rounding mode `rounding`.
+   *
+   * x {number|string|Decimal} A value in radians.
+   *
+   */
+  function atanh(x) {
+    return new this(x).atanh();
+  }
+
+
+  /*
+   * Return a new Decimal whose value is the arctangent in radians of `y/x` in the range -pi to pi
+   * (inclusive), rounded to `precision` significant digits using rounding mode `rounding`.
+   *
+   * Domain: [-Infinity, Infinity]
+   * Range: [-pi, pi]
+   *
+   * y {number|string|Decimal} The y-coordinate.
+   * x {number|string|Decimal} The x-coordinate.
+   *
+   * atan2(±0, -0)               = ±pi
+   * atan2(±0, +0)               = ±0
+   * atan2(±0, -x)               = ±pi for x > 0
+   * atan2(±0, x)                = ±0 for x > 0
+   * atan2(-y, ±0)               = -pi/2 for y > 0
+   * atan2(y, ±0)                = pi/2 for y > 0
+   * atan2(±y, -Infinity)        = ±pi for finite y > 0
+   * atan2(±y, +Infinity)        = ±0 for finite y > 0
+   * atan2(±Infinity, x)         = ±pi/2 for finite x
+   * atan2(±Infinity, -Infinity) = ±3*pi/4
+   * atan2(±Infinity, +Infinity) = ±pi/4
+   * atan2(NaN, x) = NaN
+   * atan2(y, NaN) = NaN
+   *
+   */
+  function atan2(y, x) {
+    y = new this(y);
+    x = new this(x);
+    var r,
+      pr = this.precision,
+      rm = this.rounding,
+      wpr = pr + 4;
+
+    // Either NaN
+    if (!y.s || !x.s) {
+      r = new this(NaN);
+
+    // Both ±Infinity
+    } else if (!y.d && !x.d) {
+      r = getPi(this, wpr, 1).times(x.s > 0 ? 0.25 : 0.75);
+      r.s = y.s;
+
+    // x is ±Infinity or y is ±0
+    } else if (!x.d || y.isZero()) {
+      r = x.s < 0 ? getPi(this, pr, rm) : new this(0);
+      r.s = y.s;
+
+    // y is ±Infinity or x is ±0
+    } else if (!y.d || x.isZero()) {
+      r = getPi(this, wpr, 1).times(0.5);
+      r.s = y.s;
+
+    // Both non-zero and finite
+    } else if (x.s < 0) {
+      this.precision = wpr;
+      this.rounding = 1;
+      r = this.atan(divide(y, x, wpr, 1));
+      x = getPi(this, wpr, 1);
+      this.precision = pr;
+      this.rounding = rm;
+      r = y.s < 0 ? r.minus(x) : r.plus(x);
+    } else {
+      r = this.atan(divide(y, x, wpr, 1));
+    }
+
+    return r;
+  }
+
+
+  /*
+   * Return a new Decimal whose value is the cube root of `x`, rounded to `precision` significant
+   * digits using rounding mode `rounding`.
+   *
+   * x {number|string|Decimal}
+   *
+   */
+  function cbrt(x) {
+    return new this(x).cbrt();
+  }
+
+
+  /*
+   * Return a new Decimal whose value is `x` rounded to an integer using `ROUND_CEIL`.
+   *
+   * x {number|string|Decimal}
+   *
+   */
+  function ceil(x) {
+    return finalise(x = new this(x), x.e + 1, 2);
+  }
+
+
+  /*
+   * Configure global settings for a Decimal constructor.
+   *
+   * `obj` is an object with one or more of the following properties,
+   *
+   *   precision  {number}
+   *   rounding   {number}
+   *   toExpNeg   {number}
+   *   toExpPos   {number}
+   *   maxE       {number}
+   *   minE       {number}
+   *   modulo     {number}
+   *   crypto     {boolean|number}
+   *   defaults   {true}
+   *
+   * E.g. Decimal.config({ precision: 20, rounding: 4 })
+   *
+   */
+  function config(obj) {
+    if (!obj || typeof obj !== 'object') throw Error(decimalError + 'Object expected');
+    var i, p, v,
+      useDefaults = obj.defaults === true,
+      ps = [
+        'precision', 1, MAX_DIGITS,
+        'rounding', 0, 8,
+        'toExpNeg', -EXP_LIMIT, 0,
+        'toExpPos', 0, EXP_LIMIT,
+        'maxE', 0, EXP_LIMIT,
+        'minE', -EXP_LIMIT, 0,
+        'modulo', 0, 9
+      ];
+
+    for (i = 0; i < ps.length; i += 3) {
+      if (p = ps[i], useDefaults) this[p] = DEFAULTS[p];
+      if ((v = obj[p]) !== void 0) {
+        if (mathfloor(v) === v && v >= ps[i + 1] && v <= ps[i + 2]) this[p] = v;
+        else throw Error(invalidArgument + p + ': ' + v);
+      }
+    }
+
+    if (p = 'crypto', useDefaults) this[p] = DEFAULTS[p];
+    if ((v = obj[p]) !== void 0) {
+      if (v === true || v === false || v === 0 || v === 1) {
+        if (v) {
+          if (typeof crypto != 'undefined' && crypto &&
+            (crypto.getRandomValues || crypto.randomBytes)) {
+            this[p] = true;
+          } else {
+            throw Error(cryptoUnavailable);
+          }
+        } else {
+          this[p] = false;
+        }
+      } else {
+        throw Error(invalidArgument + p + ': ' + v);
+      }
+    }
+
+    return this;
+  }
+
+
+  /*
+   * Return a new Decimal whose value is the cosine of `x`, rounded to `precision` significant
+   * digits using rounding mode `rounding`.
+   *
+   * x {number|string|Decimal} A value in radians.
+   *
+   */
+  function cos(x) {
+    return new this(x).cos();
+  }
+
+
+  /*
+   * Return a new Decimal whose value is the hyperbolic cosine of `x`, rounded to precision
+   * significant digits using rounding mode `rounding`.
+   *
+   * x {number|string|Decimal} A value in radians.
+   *
+   */
+  function cosh(x) {
+    return new this(x).cosh();
+  }
+
+
+  /*
+   * Create and return a Decimal constructor with the same configuration properties as this Decimal
+   * constructor.
+   *
+   */
+  function clone(obj) {
+    var i, p, ps;
+
+    /*
+     * The Decimal constructor and exported function.
+     * Return a new Decimal instance.
+     *
+     * v {number|string|Decimal} A numeric value.
+     *
+     */
+    function Decimal(v) {
+      var e, i, t,
+        x = this;
+
+      // Decimal called without new.
+      if (!(x instanceof Decimal)) return new Decimal(v);
+
+      // Retain a reference to this Decimal constructor, and shadow Decimal.prototype.constructor
+      // which points to Object.
+      x.constructor = Decimal;
+
+      // Duplicate.
+      if (v instanceof Decimal) {
+        x.s = v.s;
+
+        if (external) {
+          if (!v.d || v.e > Decimal.maxE) {
+
+            // Infinity.
+            x.e = NaN;
+            x.d = null;
+          } else if (v.e < Decimal.minE) {
+
+            // Zero.
+            x.e = 0;
+            x.d = [0];
+          } else {
+            x.e = v.e;
+            x.d = v.d.slice();
+          }
+        } else {
+          x.e = v.e;
+          x.d = v.d ? v.d.slice() : v.d;
+        }
+
+        return;
+      }
+
+      t = typeof v;
+
+      if (t === 'number') {
+        if (v === 0) {
+          x.s = 1 / v < 0 ? -1 : 1;
+          x.e = 0;
+          x.d = [0];
+          return;
+        }
+
+        if (v < 0) {
+          v = -v;
+          x.s = -1;
+        } else {
+          x.s = 1;
+        }
+
+        // Fast path for small integers.
+        if (v === ~~v && v < 1e7) {
+          for (e = 0, i = v; i >= 10; i /= 10) e++;
+
+          if (external) {
+            if (e > Decimal.maxE) {
+              x.e = NaN;
+              x.d = null;
+            } else if (e < Decimal.minE) {
+              x.e = 0;
+              x.d = [0];
+            } else {
+              x.e = e;
+              x.d = [v];
+            }
+          } else {
+            x.e = e;
+            x.d = [v];
+          }
+
+          return;
+
+        // Infinity, NaN.
+        } else if (v * 0 !== 0) {
+          if (!v) x.s = NaN;
+          x.e = NaN;
+          x.d = null;
+          return;
+        }
+
+        return parseDecimal(x, v.toString());
+
+      } else if (t !== 'string') {
+        throw Error(invalidArgument + v);
+      }
+
+      // Minus sign?
+      if ((i = v.charCodeAt(0)) === 45) {
+        v = v.slice(1);
+        x.s = -1;
+      } else {
+        // Plus sign?
+        if (i === 43) v = v.slice(1);
+        x.s = 1;
+      }
+
+      return isDecimal.test(v) ? parseDecimal(x, v) : parseOther(x, v);
+    }
+
+    Decimal.prototype = P;
+
+    Decimal.ROUND_UP = 0;
+    Decimal.ROUND_DOWN = 1;
+    Decimal.ROUND_CEIL = 2;
+    Decimal.ROUND_FLOOR = 3;
+    Decimal.ROUND_HALF_UP = 4;
+    Decimal.ROUND_HALF_DOWN = 5;
+    Decimal.ROUND_HALF_EVEN = 6;
+    Decimal.ROUND_HALF_CEIL = 7;
+    Decimal.ROUND_HALF_FLOOR = 8;
+    Decimal.EUCLID = 9;
+
+    Decimal.config = Decimal.set = config;
+    Decimal.clone = clone;
+    Decimal.isDecimal = isDecimalInstance;
+
+    Decimal.abs = abs;
+    Decimal.acos = acos;
+    Decimal.acosh = acosh;        // ES6
+    Decimal.add = add;
+    Decimal.asin = asin;
+    Decimal.asinh = asinh;        // ES6
+    Decimal.atan = atan;
+    Decimal.atanh = atanh;        // ES6
+    Decimal.atan2 = atan2;
+    Decimal.cbrt = cbrt;          // ES6
+    Decimal.ceil = ceil;
+    Decimal.cos = cos;
+    Decimal.cosh = cosh;          // ES6
+    Decimal.div = div;
+    Decimal.exp = exp;
+    Decimal.floor = floor;
+    Decimal.hypot = hypot;        // ES6
+    Decimal.ln = ln;
+    Decimal.log = log;
+    Decimal.log10 = log10;        // ES6
+    Decimal.log2 = log2;          // ES6
+    Decimal.max = max;
+    Decimal.min = min;
+    Decimal.mod = mod;
+    Decimal.mul = mul;
+    Decimal.pow = pow;
+    Decimal.random = random;
+    Decimal.round = round;
+    Decimal.sign = sign;          // ES6
+    Decimal.sin = sin;
+    Decimal.sinh = sinh;          // ES6
+    Decimal.sqrt = sqrt;
+    Decimal.sub = sub;
+    Decimal.tan = tan;
+    Decimal.tanh = tanh;          // ES6
+    Decimal.trunc = trunc;        // ES6
+
+    if (obj === void 0) obj = {};
+    if (obj) {
+      if (obj.defaults !== true) {
+        ps = ['precision', 'rounding', 'toExpNeg', 'toExpPos', 'maxE', 'minE', 'modulo', 'crypto'];
+        for (i = 0; i < ps.length;) if (!obj.hasOwnProperty(p = ps[i++])) obj[p] = this[p];
+      }
+    }
+
+    Decimal.config(obj);
+
+    return Decimal;
+  }
+
+
+  /*
+   * Return a new Decimal whose value is `x` divided by `y`, rounded to `precision` significant
+   * digits using rounding mode `rounding`.
+   *
+   * x {number|string|Decimal}
+   * y {number|string|Decimal}
+   *
+   */
+  function div(x, y) {
+    return new this(x).div(y);
+  }
+
+
+  /*
+   * Return a new Decimal whose value is the natural exponential of `x`, rounded to `precision`
+   * significant digits using rounding mode `rounding`.
+   *
+   * x {number|string|Decimal} The power to which to raise the base of the natural log.
+   *
+   */
+  function exp(x) {
+    return new this(x).exp();
+  }
+
+
+  /*
+   * Return a new Decimal whose value is `x` round to an integer using `ROUND_FLOOR`.
+   *
+   * x {number|string|Decimal}
+   *
+   */
+  function floor(x) {
+    return finalise(x = new this(x), x.e + 1, 3);
+  }
+
+
+  /*
+   * Return a new Decimal whose value is the square root of the sum of the squares of the arguments,
+   * rounded to `precision` significant digits using rounding mode `rounding`.
+   *
+   * hypot(a, b, ...) = sqrt(a^2 + b^2 + ...)
+   *
+   * arguments {number|string|Decimal}
+   *
+   */
+  function hypot() {
+    var i, n,
+      t = new this(0);
+
+    external = false;
+
+    for (i = 0; i < arguments.length;) {
+      n = new this(arguments[i++]);
+      if (!n.d) {
+        if (n.s) {
+          external = true;
+          return new this(1 / 0);
+        }
+        t = n;
+      } else if (t.d) {
+        t = t.plus(n.times(n));
+      }
+    }
+
+    external = true;
+
+    return t.sqrt();
+  }
+
+
+  /*
+   * Return true if object is a Decimal instance (where Decimal is any Decimal constructor),
+   * otherwise return false.
+   *
+   */
+  function isDecimalInstance(obj) {
+    return obj instanceof Decimal || obj && obj.name === '[object Decimal]' || false;
+  }
+
+
+  /*
+   * Return a new Decimal whose value is the natural logarithm of `x`, rounded to `precision`
+   * significant digits using rounding mode `rounding`.
+   *
+   * x {number|string|Decimal}
+   *
+   */
+  function ln(x) {
+    return new this(x).ln();
+  }
+
+
+  /*
+   * Return a new Decimal whose value is the log of `x` to the base `y`, or to base 10 if no base
+   * is specified, rounded to `precision` significant digits using rounding mode `rounding`.
+   *
+   * log[y](x)
+   *
+   * x {number|string|Decimal} The argument of the logarithm.
+   * y {number|string|Decimal} The base of the logarithm.
+   *
+   */
+  function log(x, y) {
+    return new this(x).log(y);
+  }
+
+
+  /*
+   * Return a new Decimal whose value is the base 2 logarithm of `x`, rounded to `precision`
+   * significant digits using rounding mode `rounding`.
+   *
+   * x {number|string|Decimal}
+   *
+   */
+  function log2(x) {
+    return new this(x).log(2);
+  }
+
+
+  /*
+   * Return a new Decimal whose value is the base 10 logarithm of `x`, rounded to `precision`
+   * significant digits using rounding mode `rounding`.
+   *
+   * x {number|string|Decimal}
+   *
+   */
+  function log10(x) {
+    return new this(x).log(10);
+  }
+
+
+  /*
+   * Return a new Decimal whose value is the maximum of the arguments.
+   *
+   * arguments {number|string|Decimal}
+   *
+   */
+  function max() {
+    return maxOrMin(this, arguments, 'lt');
+  }
+
+
+  /*
+   * Return a new Decimal whose value is the minimum of the arguments.
+   *
+   * arguments {number|string|Decimal}
+   *
+   */
+  function min() {
+    return maxOrMin(this, arguments, 'gt');
+  }
+
+
+  /*
+   * Return a new Decimal whose value is `x` modulo `y`, rounded to `precision` significant digits
+   * using rounding mode `rounding`.
+   *
+   * x {number|string|Decimal}
+   * y {number|string|Decimal}
+   *
+   */
+  function mod(x, y) {
+    return new this(x).mod(y);
+  }
+
+
+  /*
+   * Return a new Decimal whose value is `x` multiplied by `y`, rounded to `precision` significant
+   * digits using rounding mode `rounding`.
+   *
+   * x {number|string|Decimal}
+   * y {number|string|Decimal}
+   *
+   */
+  function mul(x, y) {
+    return new this(x).mul(y);
+  }
+
+
+  /*
+   * Return a new Decimal whose value is `x` raised to the power `y`, rounded to precision
+   * significant digits using rounding mode `rounding`.
+   *
+   * x {number|string|Decimal} The base.
+   * y {number|string|Decimal} The exponent.
+   *
+   */
+  function pow(x, y) {
+    return new this(x).pow(y);
+  }
+
+
+  /*
+   * Returns a new Decimal with a random value equal to or greater than 0 and less than 1, and with
+   * `sd`, or `Decimal.precision` if `sd` is omitted, significant digits (or less if trailing zeros
+   * are produced).
+   *
+   * [sd] {number} Significant digits. Integer, 0 to MAX_DIGITS inclusive.
+   *
+   */
+  function random(sd) {
+    var d, e, k, n,
+      i = 0,
+      r = new this(1),
+      rd = [];
+
+    if (sd === void 0) sd = this.precision;
+    else checkInt32(sd, 1, MAX_DIGITS);
+
+    k = Math.ceil(sd / LOG_BASE);
+
+    if (!this.crypto) {
+      for (; i < k;) rd[i++] = Math.random() * 1e7 | 0;
+
+    // Browsers supporting crypto.getRandomValues.
+    } else if (crypto.getRandomValues) {
+      d = crypto.getRandomValues(new Uint32Array(k));
+
+      for (; i < k;) {
+        n = d[i];
+
+        // 0 <= n < 4294967296
+        // Probability n >= 4.29e9, is 4967296 / 4294967296 = 0.00116 (1 in 865).
+        if (n >= 4.29e9) {
+          d[i] = crypto.getRandomValues(new Uint32Array(1))[0];
+        } else {
+
+          // 0 <= n <= 4289999999
+          // 0 <= (n % 1e7) <= 9999999
+          rd[i++] = n % 1e7;
+        }
+      }
+
+    // Node.js supporting crypto.randomBytes.
+    } else if (crypto.randomBytes) {
+
+      // buffer
+      d = crypto.randomBytes(k *= 4);
+
+      for (; i < k;) {
+
+        // 0 <= n < 2147483648
+        n = d[i] + (d[i + 1] << 8) + (d[i + 2] << 16) + ((d[i + 3] & 0x7f) << 24);
+
+        // Probability n >= 2.14e9, is 7483648 / 2147483648 = 0.0035 (1 in 286).
+        if (n >= 2.14e9) {
+          crypto.randomBytes(4).copy(d, i);
+        } else {
+
+          // 0 <= n <= 2139999999
+          // 0 <= (n % 1e7) <= 9999999
+          rd.push(n % 1e7);
+          i += 4;
+        }
+      }
+
+      i = k / 4;
+    } else {
+      throw Error(cryptoUnavailable);
+    }
+
+    k = rd[--i];
+    sd %= LOG_BASE;
+
+    // Convert trailing digits to zeros according to sd.
+    if (k && sd) {
+      n = mathpow(10, LOG_BASE - sd);
+      rd[i] = (k / n | 0) * n;
+    }
+
+    // Remove trailing words which are zero.
+    for (; rd[i] === 0; i--) rd.pop();
+
+    // Zero?
+    if (i < 0) {
+      e = 0;
+      rd = [0];
+    } else {
+      e = -1;
+
+      // Remove leading words which are zero and adjust exponent accordingly.
+      for (; rd[0] === 0; e -= LOG_BASE) rd.shift();
+
+      // Count the digits of the first word of rd to determine leading zeros.
+      for (k = 1, n = rd[0]; n >= 10; n /= 10) k++;
+
+      // Adjust the exponent for leading zeros of the first word of rd.
+      if (k < LOG_BASE) e -= LOG_BASE - k;
+    }
+
+    r.e = e;
+    r.d = rd;
+
+    return r;
+  }
+
+
+  /*
+   * Return a new Decimal whose value is `x` rounded to an integer using rounding mode `rounding`.
+   *
+   * To emulate `Math.round`, set rounding to 7 (ROUND_HALF_CEIL).
+   *
+   * x {number|string|Decimal}
+   *
+   */
+  function round(x) {
+    return finalise(x = new this(x), x.e + 1, this.rounding);
+  }
+
+
+  /*
+   * Return
+   *   1    if x > 0,
+   *  -1    if x < 0,
+   *   0    if x is 0,
+   *  -0    if x is -0,
+   *   NaN  otherwise
+   *
+   * x {number|string|Decimal}
+   *
+   */
+  function sign(x) {
+    x = new this(x);
+    return x.d ? (x.d[0] ? x.s : 0 * x.s) : x.s || NaN;
+  }
+
+
+  /*
+   * Return a new Decimal whose value is the sine of `x`, rounded to `precision` significant digits
+   * using rounding mode `rounding`.
+   *
+   * x {number|string|Decimal} A value in radians.
+   *
+   */
+  function sin(x) {
+    return new this(x).sin();
+  }
+
+
+  /*
+   * Return a new Decimal whose value is the hyperbolic sine of `x`, rounded to `precision`
+   * significant digits using rounding mode `rounding`.
+   *
+   * x {number|string|Decimal} A value in radians.
+   *
+   */
+  function sinh(x) {
+    return new this(x).sinh();
+  }
+
+
+  /*
+   * Return a new Decimal whose value is the square root of `x`, rounded to `precision` significant
+   * digits using rounding mode `rounding`.
+   *
+   * x {number|string|Decimal}
+   *
+   */
+  function sqrt(x) {
+    return new this(x).sqrt();
+  }
+
+
+  /*
+   * Return a new Decimal whose value is `x` minus `y`, rounded to `precision` significant digits
+   * using rounding mode `rounding`.
+   *
+   * x {number|string|Decimal}
+   * y {number|string|Decimal}
+   *
+   */
+  function sub(x, y) {
+    return new this(x).sub(y);
+  }
+
+
+  /*
+   * Return a new Decimal whose value is the tangent of `x`, rounded to `precision` significant
+   * digits using rounding mode `rounding`.
+   *
+   * x {number|string|Decimal} A value in radians.
+   *
+   */
+  function tan(x) {
+    return new this(x).tan();
+  }
+
+
+  /*
+   * Return a new Decimal whose value is the hyperbolic tangent of `x`, rounded to `precision`
+   * significant digits using rounding mode `rounding`.
+   *
+   * x {number|string|Decimal} A value in radians.
+   *
+   */
+  function tanh(x) {
+    return new this(x).tanh();
+  }
+
+
+  /*
+   * Return a new Decimal whose value is `x` truncated to an integer.
+   *
+   * x {number|string|Decimal}
+   *
+   */
+  function trunc(x) {
+    return finalise(x = new this(x), x.e + 1, 1);
+  }
+
+
+  // Create and configure initial Decimal constructor.
+  Decimal = clone(DEFAULTS);
+
+  Decimal['default'] = Decimal.Decimal = Decimal;
+
+  // Create the internal constants from their string values.
+  LN10 = new Decimal(LN10);
+  PI = new Decimal(PI);
+
+
+  // Export.
+
+
+  // AMD.
+  if (true) {
+    !(__WEBPACK_AMD_DEFINE_RESULT__ = (function () {
+      return Decimal;
+    }).call(exports, __webpack_require__, exports, module),
+				__WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));
+
+  // Node and other environments that support module.exports.
+  } else {}
+})(this);
+
+
+/***/ }),
+
 /***/ "./node_modules/dom-serializer/foreignNames.json":
 /*!*******************************************************!*\
   !*** ./node_modules/dom-serializer/foreignNames.json ***!
@@ -18817,6 +23837,113 @@ class Client {
 }
 exports.Client = Client;
 //# sourceMappingURL=Client.js.map
+
+/***/ }),
+
+/***/ "./node_modules/hash-base/index.js":
+/*!*****************************************!*\
+  !*** ./node_modules/hash-base/index.js ***!
+  \*****************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+var Buffer = __webpack_require__(/*! safe-buffer */ "./node_modules/safe-buffer/index.js").Buffer
+var Transform = __webpack_require__(/*! stream */ "./node_modules/readable-stream/readable-browser.js").Transform
+var inherits = __webpack_require__(/*! inherits */ "./node_modules/inherits/inherits_browser.js")
+
+function throwIfNotStringOrBuffer (val, prefix) {
+  if (!Buffer.isBuffer(val) && typeof val !== 'string') {
+    throw new TypeError(prefix + ' must be a string or a buffer')
+  }
+}
+
+function HashBase (blockSize) {
+  Transform.call(this)
+
+  this._block = Buffer.allocUnsafe(blockSize)
+  this._blockSize = blockSize
+  this._blockOffset = 0
+  this._length = [0, 0, 0, 0]
+
+  this._finalized = false
+}
+
+inherits(HashBase, Transform)
+
+HashBase.prototype._transform = function (chunk, encoding, callback) {
+  var error = null
+  try {
+    this.update(chunk, encoding)
+  } catch (err) {
+    error = err
+  }
+
+  callback(error)
+}
+
+HashBase.prototype._flush = function (callback) {
+  var error = null
+  try {
+    this.push(this.digest())
+  } catch (err) {
+    error = err
+  }
+
+  callback(error)
+}
+
+HashBase.prototype.update = function (data, encoding) {
+  throwIfNotStringOrBuffer(data, 'Data')
+  if (this._finalized) throw new Error('Digest already called')
+  if (!Buffer.isBuffer(data)) data = Buffer.from(data, encoding)
+
+  // consume data
+  var block = this._block
+  var offset = 0
+  while (this._blockOffset + data.length - offset >= this._blockSize) {
+    for (var i = this._blockOffset; i < this._blockSize;) block[i++] = data[offset++]
+    this._update()
+    this._blockOffset = 0
+  }
+  while (offset < data.length) block[this._blockOffset++] = data[offset++]
+
+  // update length
+  for (var j = 0, carry = data.length * 8; carry > 0; ++j) {
+    this._length[j] += carry
+    carry = (this._length[j] / 0x0100000000) | 0
+    if (carry > 0) this._length[j] -= 0x0100000000 * carry
+  }
+
+  return this
+}
+
+HashBase.prototype._update = function () {
+  throw new Error('_update is not implemented')
+}
+
+HashBase.prototype.digest = function (encoding) {
+  if (this._finalized) throw new Error('Digest already called')
+  this._finalized = true
+
+  var digest = this._digest()
+  if (encoding !== undefined) digest = digest.toString(encoding)
+
+  // reset state
+  this._block.fill(0)
+  this._blockOffset = 0
+  for (var i = 0; i < 4; ++i) this._length[i] = 0
+
+  return digest
+}
+
+HashBase.prototype._digest = function () {
+  throw new Error('_digest is not implemented')
+}
+
+module.exports = HashBase
+
 
 /***/ }),
 
@@ -42344,6 +47471,164 @@ module.exports = LRUCache
 
 /***/ }),
 
+/***/ "./node_modules/md5.js/index.js":
+/*!**************************************!*\
+  !*** ./node_modules/md5.js/index.js ***!
+  \**************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+var inherits = __webpack_require__(/*! inherits */ "./node_modules/inherits/inherits_browser.js")
+var HashBase = __webpack_require__(/*! hash-base */ "./node_modules/hash-base/index.js")
+var Buffer = __webpack_require__(/*! safe-buffer */ "./node_modules/safe-buffer/index.js").Buffer
+
+var ARRAY16 = new Array(16)
+
+function MD5 () {
+  HashBase.call(this, 64)
+
+  // state
+  this._a = 0x67452301
+  this._b = 0xefcdab89
+  this._c = 0x98badcfe
+  this._d = 0x10325476
+}
+
+inherits(MD5, HashBase)
+
+MD5.prototype._update = function () {
+  var M = ARRAY16
+  for (var i = 0; i < 16; ++i) M[i] = this._block.readInt32LE(i * 4)
+
+  var a = this._a
+  var b = this._b
+  var c = this._c
+  var d = this._d
+
+  a = fnF(a, b, c, d, M[0], 0xd76aa478, 7)
+  d = fnF(d, a, b, c, M[1], 0xe8c7b756, 12)
+  c = fnF(c, d, a, b, M[2], 0x242070db, 17)
+  b = fnF(b, c, d, a, M[3], 0xc1bdceee, 22)
+  a = fnF(a, b, c, d, M[4], 0xf57c0faf, 7)
+  d = fnF(d, a, b, c, M[5], 0x4787c62a, 12)
+  c = fnF(c, d, a, b, M[6], 0xa8304613, 17)
+  b = fnF(b, c, d, a, M[7], 0xfd469501, 22)
+  a = fnF(a, b, c, d, M[8], 0x698098d8, 7)
+  d = fnF(d, a, b, c, M[9], 0x8b44f7af, 12)
+  c = fnF(c, d, a, b, M[10], 0xffff5bb1, 17)
+  b = fnF(b, c, d, a, M[11], 0x895cd7be, 22)
+  a = fnF(a, b, c, d, M[12], 0x6b901122, 7)
+  d = fnF(d, a, b, c, M[13], 0xfd987193, 12)
+  c = fnF(c, d, a, b, M[14], 0xa679438e, 17)
+  b = fnF(b, c, d, a, M[15], 0x49b40821, 22)
+
+  a = fnG(a, b, c, d, M[1], 0xf61e2562, 5)
+  d = fnG(d, a, b, c, M[6], 0xc040b340, 9)
+  c = fnG(c, d, a, b, M[11], 0x265e5a51, 14)
+  b = fnG(b, c, d, a, M[0], 0xe9b6c7aa, 20)
+  a = fnG(a, b, c, d, M[5], 0xd62f105d, 5)
+  d = fnG(d, a, b, c, M[10], 0x02441453, 9)
+  c = fnG(c, d, a, b, M[15], 0xd8a1e681, 14)
+  b = fnG(b, c, d, a, M[4], 0xe7d3fbc8, 20)
+  a = fnG(a, b, c, d, M[9], 0x21e1cde6, 5)
+  d = fnG(d, a, b, c, M[14], 0xc33707d6, 9)
+  c = fnG(c, d, a, b, M[3], 0xf4d50d87, 14)
+  b = fnG(b, c, d, a, M[8], 0x455a14ed, 20)
+  a = fnG(a, b, c, d, M[13], 0xa9e3e905, 5)
+  d = fnG(d, a, b, c, M[2], 0xfcefa3f8, 9)
+  c = fnG(c, d, a, b, M[7], 0x676f02d9, 14)
+  b = fnG(b, c, d, a, M[12], 0x8d2a4c8a, 20)
+
+  a = fnH(a, b, c, d, M[5], 0xfffa3942, 4)
+  d = fnH(d, a, b, c, M[8], 0x8771f681, 11)
+  c = fnH(c, d, a, b, M[11], 0x6d9d6122, 16)
+  b = fnH(b, c, d, a, M[14], 0xfde5380c, 23)
+  a = fnH(a, b, c, d, M[1], 0xa4beea44, 4)
+  d = fnH(d, a, b, c, M[4], 0x4bdecfa9, 11)
+  c = fnH(c, d, a, b, M[7], 0xf6bb4b60, 16)
+  b = fnH(b, c, d, a, M[10], 0xbebfbc70, 23)
+  a = fnH(a, b, c, d, M[13], 0x289b7ec6, 4)
+  d = fnH(d, a, b, c, M[0], 0xeaa127fa, 11)
+  c = fnH(c, d, a, b, M[3], 0xd4ef3085, 16)
+  b = fnH(b, c, d, a, M[6], 0x04881d05, 23)
+  a = fnH(a, b, c, d, M[9], 0xd9d4d039, 4)
+  d = fnH(d, a, b, c, M[12], 0xe6db99e5, 11)
+  c = fnH(c, d, a, b, M[15], 0x1fa27cf8, 16)
+  b = fnH(b, c, d, a, M[2], 0xc4ac5665, 23)
+
+  a = fnI(a, b, c, d, M[0], 0xf4292244, 6)
+  d = fnI(d, a, b, c, M[7], 0x432aff97, 10)
+  c = fnI(c, d, a, b, M[14], 0xab9423a7, 15)
+  b = fnI(b, c, d, a, M[5], 0xfc93a039, 21)
+  a = fnI(a, b, c, d, M[12], 0x655b59c3, 6)
+  d = fnI(d, a, b, c, M[3], 0x8f0ccc92, 10)
+  c = fnI(c, d, a, b, M[10], 0xffeff47d, 15)
+  b = fnI(b, c, d, a, M[1], 0x85845dd1, 21)
+  a = fnI(a, b, c, d, M[8], 0x6fa87e4f, 6)
+  d = fnI(d, a, b, c, M[15], 0xfe2ce6e0, 10)
+  c = fnI(c, d, a, b, M[6], 0xa3014314, 15)
+  b = fnI(b, c, d, a, M[13], 0x4e0811a1, 21)
+  a = fnI(a, b, c, d, M[4], 0xf7537e82, 6)
+  d = fnI(d, a, b, c, M[11], 0xbd3af235, 10)
+  c = fnI(c, d, a, b, M[2], 0x2ad7d2bb, 15)
+  b = fnI(b, c, d, a, M[9], 0xeb86d391, 21)
+
+  this._a = (this._a + a) | 0
+  this._b = (this._b + b) | 0
+  this._c = (this._c + c) | 0
+  this._d = (this._d + d) | 0
+}
+
+MD5.prototype._digest = function () {
+  // create padding and handle blocks
+  this._block[this._blockOffset++] = 0x80
+  if (this._blockOffset > 56) {
+    this._block.fill(0, this._blockOffset, 64)
+    this._update()
+    this._blockOffset = 0
+  }
+
+  this._block.fill(0, this._blockOffset, 56)
+  this._block.writeUInt32LE(this._length[0], 56)
+  this._block.writeUInt32LE(this._length[1], 60)
+  this._update()
+
+  // produce result
+  var buffer = Buffer.allocUnsafe(16)
+  buffer.writeInt32LE(this._a, 0)
+  buffer.writeInt32LE(this._b, 4)
+  buffer.writeInt32LE(this._c, 8)
+  buffer.writeInt32LE(this._d, 12)
+  return buffer
+}
+
+function rotl (x, n) {
+  return (x << n) | (x >>> (32 - n))
+}
+
+function fnF (a, b, c, d, m, k, s) {
+  return (rotl((a + ((b & c) | ((~b) & d)) + m + k) | 0, s) + b) | 0
+}
+
+function fnG (a, b, c, d, m, k, s) {
+  return (rotl((a + ((b & d) | (c & (~d))) + m + k) | 0, s) + b) | 0
+}
+
+function fnH (a, b, c, d, m, k, s) {
+  return (rotl((a + (b ^ c ^ d) + m + k) | 0, s) + b) | 0
+}
+
+function fnI (a, b, c, d, m, k, s) {
+  return (rotl((a + ((c ^ (b | (~d)))) + m + k) | 0, s) + b) | 0
+}
+
+module.exports = MD5
+
+
+/***/ }),
+
 /***/ "./node_modules/n3/src/IRIs.js":
 /*!*************************************!*\
   !*** ./node_modules/n3/src/IRIs.js ***!
@@ -53010,6 +58295,256 @@ function isCharacterAllowedAfterRelativePathSegment(character) {
 
 /***/ }),
 
+/***/ "./node_modules/ripemd160/index.js":
+/*!*****************************************!*\
+  !*** ./node_modules/ripemd160/index.js ***!
+  \*****************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+var Buffer = __webpack_require__(/*! buffer */ "./node_modules/buffer/index.js").Buffer
+var inherits = __webpack_require__(/*! inherits */ "./node_modules/inherits/inherits_browser.js")
+var HashBase = __webpack_require__(/*! hash-base */ "./node_modules/hash-base/index.js")
+
+var ARRAY16 = new Array(16)
+
+var zl = [
+  0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15,
+  7, 4, 13, 1, 10, 6, 15, 3, 12, 0, 9, 5, 2, 14, 11, 8,
+  3, 10, 14, 4, 9, 15, 8, 1, 2, 7, 0, 6, 13, 11, 5, 12,
+  1, 9, 11, 10, 0, 8, 12, 4, 13, 3, 7, 15, 14, 5, 6, 2,
+  4, 0, 5, 9, 7, 12, 2, 10, 14, 1, 3, 8, 11, 6, 15, 13
+]
+
+var zr = [
+  5, 14, 7, 0, 9, 2, 11, 4, 13, 6, 15, 8, 1, 10, 3, 12,
+  6, 11, 3, 7, 0, 13, 5, 10, 14, 15, 8, 12, 4, 9, 1, 2,
+  15, 5, 1, 3, 7, 14, 6, 9, 11, 8, 12, 2, 10, 0, 4, 13,
+  8, 6, 4, 1, 3, 11, 15, 0, 5, 12, 2, 13, 9, 7, 10, 14,
+  12, 15, 10, 4, 1, 5, 8, 7, 6, 2, 13, 14, 0, 3, 9, 11
+]
+
+var sl = [
+  11, 14, 15, 12, 5, 8, 7, 9, 11, 13, 14, 15, 6, 7, 9, 8,
+  7, 6, 8, 13, 11, 9, 7, 15, 7, 12, 15, 9, 11, 7, 13, 12,
+  11, 13, 6, 7, 14, 9, 13, 15, 14, 8, 13, 6, 5, 12, 7, 5,
+  11, 12, 14, 15, 14, 15, 9, 8, 9, 14, 5, 6, 8, 6, 5, 12,
+  9, 15, 5, 11, 6, 8, 13, 12, 5, 12, 13, 14, 11, 8, 5, 6
+]
+
+var sr = [
+  8, 9, 9, 11, 13, 15, 15, 5, 7, 7, 8, 11, 14, 14, 12, 6,
+  9, 13, 15, 7, 12, 8, 9, 11, 7, 7, 12, 7, 6, 15, 13, 11,
+  9, 7, 15, 11, 8, 6, 6, 14, 12, 13, 5, 14, 13, 13, 7, 5,
+  15, 5, 8, 11, 14, 14, 6, 14, 6, 9, 12, 9, 12, 5, 15, 8,
+  8, 5, 12, 9, 12, 5, 14, 6, 8, 13, 6, 5, 15, 13, 11, 11
+]
+
+var hl = [0x00000000, 0x5a827999, 0x6ed9eba1, 0x8f1bbcdc, 0xa953fd4e]
+var hr = [0x50a28be6, 0x5c4dd124, 0x6d703ef3, 0x7a6d76e9, 0x00000000]
+
+function RIPEMD160 () {
+  HashBase.call(this, 64)
+
+  // state
+  this._a = 0x67452301
+  this._b = 0xefcdab89
+  this._c = 0x98badcfe
+  this._d = 0x10325476
+  this._e = 0xc3d2e1f0
+}
+
+inherits(RIPEMD160, HashBase)
+
+RIPEMD160.prototype._update = function () {
+  var words = ARRAY16
+  for (var j = 0; j < 16; ++j) words[j] = this._block.readInt32LE(j * 4)
+
+  var al = this._a | 0
+  var bl = this._b | 0
+  var cl = this._c | 0
+  var dl = this._d | 0
+  var el = this._e | 0
+
+  var ar = this._a | 0
+  var br = this._b | 0
+  var cr = this._c | 0
+  var dr = this._d | 0
+  var er = this._e | 0
+
+  // computation
+  for (var i = 0; i < 80; i += 1) {
+    var tl
+    var tr
+    if (i < 16) {
+      tl = fn1(al, bl, cl, dl, el, words[zl[i]], hl[0], sl[i])
+      tr = fn5(ar, br, cr, dr, er, words[zr[i]], hr[0], sr[i])
+    } else if (i < 32) {
+      tl = fn2(al, bl, cl, dl, el, words[zl[i]], hl[1], sl[i])
+      tr = fn4(ar, br, cr, dr, er, words[zr[i]], hr[1], sr[i])
+    } else if (i < 48) {
+      tl = fn3(al, bl, cl, dl, el, words[zl[i]], hl[2], sl[i])
+      tr = fn3(ar, br, cr, dr, er, words[zr[i]], hr[2], sr[i])
+    } else if (i < 64) {
+      tl = fn4(al, bl, cl, dl, el, words[zl[i]], hl[3], sl[i])
+      tr = fn2(ar, br, cr, dr, er, words[zr[i]], hr[3], sr[i])
+    } else { // if (i<80) {
+      tl = fn5(al, bl, cl, dl, el, words[zl[i]], hl[4], sl[i])
+      tr = fn1(ar, br, cr, dr, er, words[zr[i]], hr[4], sr[i])
+    }
+
+    al = el
+    el = dl
+    dl = rotl(cl, 10)
+    cl = bl
+    bl = tl
+
+    ar = er
+    er = dr
+    dr = rotl(cr, 10)
+    cr = br
+    br = tr
+  }
+
+  // update state
+  var t = (this._b + cl + dr) | 0
+  this._b = (this._c + dl + er) | 0
+  this._c = (this._d + el + ar) | 0
+  this._d = (this._e + al + br) | 0
+  this._e = (this._a + bl + cr) | 0
+  this._a = t
+}
+
+RIPEMD160.prototype._digest = function () {
+  // create padding and handle blocks
+  this._block[this._blockOffset++] = 0x80
+  if (this._blockOffset > 56) {
+    this._block.fill(0, this._blockOffset, 64)
+    this._update()
+    this._blockOffset = 0
+  }
+
+  this._block.fill(0, this._blockOffset, 56)
+  this._block.writeUInt32LE(this._length[0], 56)
+  this._block.writeUInt32LE(this._length[1], 60)
+  this._update()
+
+  // produce result
+  var buffer = Buffer.alloc ? Buffer.alloc(20) : new Buffer(20)
+  buffer.writeInt32LE(this._a, 0)
+  buffer.writeInt32LE(this._b, 4)
+  buffer.writeInt32LE(this._c, 8)
+  buffer.writeInt32LE(this._d, 12)
+  buffer.writeInt32LE(this._e, 16)
+  return buffer
+}
+
+function rotl (x, n) {
+  return (x << n) | (x >>> (32 - n))
+}
+
+function fn1 (a, b, c, d, e, m, k, s) {
+  return (rotl((a + (b ^ c ^ d) + m + k) | 0, s) + e) | 0
+}
+
+function fn2 (a, b, c, d, e, m, k, s) {
+  return (rotl((a + ((b & c) | ((~b) & d)) + m + k) | 0, s) + e) | 0
+}
+
+function fn3 (a, b, c, d, e, m, k, s) {
+  return (rotl((a + ((b | (~c)) ^ d) + m + k) | 0, s) + e) | 0
+}
+
+function fn4 (a, b, c, d, e, m, k, s) {
+  return (rotl((a + ((b & d) | (c & (~d))) + m + k) | 0, s) + e) | 0
+}
+
+function fn5 (a, b, c, d, e, m, k, s) {
+  return (rotl((a + (b ^ (c | (~d))) + m + k) | 0, s) + e) | 0
+}
+
+module.exports = RIPEMD160
+
+
+/***/ }),
+
+/***/ "./node_modules/safe-buffer/index.js":
+/*!*******************************************!*\
+  !*** ./node_modules/safe-buffer/index.js ***!
+  \*******************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+/* eslint-disable node/no-deprecated-api */
+var buffer = __webpack_require__(/*! buffer */ "./node_modules/buffer/index.js")
+var Buffer = buffer.Buffer
+
+// alternative to using Object.keys for old browsers
+function copyProps (src, dst) {
+  for (var key in src) {
+    dst[key] = src[key]
+  }
+}
+if (Buffer.from && Buffer.alloc && Buffer.allocUnsafe && Buffer.allocUnsafeSlow) {
+  module.exports = buffer
+} else {
+  // Copy properties from require('buffer')
+  copyProps(buffer, exports)
+  exports.Buffer = SafeBuffer
+}
+
+function SafeBuffer (arg, encodingOrOffset, length) {
+  return Buffer(arg, encodingOrOffset, length)
+}
+
+SafeBuffer.prototype = Object.create(Buffer.prototype)
+
+// Copy static methods from Buffer
+copyProps(Buffer, SafeBuffer)
+
+SafeBuffer.from = function (arg, encodingOrOffset, length) {
+  if (typeof arg === 'number') {
+    throw new TypeError('Argument must not be a number')
+  }
+  return Buffer(arg, encodingOrOffset, length)
+}
+
+SafeBuffer.alloc = function (size, fill, encoding) {
+  if (typeof size !== 'number') {
+    throw new TypeError('Argument must be a number')
+  }
+  var buf = Buffer(size)
+  if (fill !== undefined) {
+    if (typeof encoding === 'string') {
+      buf.fill(fill, encoding)
+    } else {
+      buf.fill(fill)
+    }
+  } else {
+    buf.fill(0)
+  }
+  return buf
+}
+
+SafeBuffer.allocUnsafe = function (size) {
+  if (typeof size !== 'number') {
+    throw new TypeError('Argument must be a number')
+  }
+  return Buffer(size)
+}
+
+SafeBuffer.allocUnsafeSlow = function (size) {
+  if (typeof size !== 'number') {
+    throw new TypeError('Argument must be a number')
+  }
+  return buffer.SlowBuffer(size)
+}
+
+
+/***/ }),
+
 /***/ "./node_modules/sax-stream/index.js":
 /*!******************************************!*\
   !*** ./node_modules/sax-stream/index.js ***!
@@ -55405,6 +60940,888 @@ function plural(ms, n, name) {
 
 /***/ }),
 
+/***/ "./node_modules/sha.js/hash.js":
+/*!*************************************!*\
+  !*** ./node_modules/sha.js/hash.js ***!
+  \*************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+var Buffer = __webpack_require__(/*! safe-buffer */ "./node_modules/safe-buffer/index.js").Buffer
+
+// prototype class for hash functions
+function Hash (blockSize, finalSize) {
+  this._block = Buffer.alloc(blockSize)
+  this._finalSize = finalSize
+  this._blockSize = blockSize
+  this._len = 0
+}
+
+Hash.prototype.update = function (data, enc) {
+  if (typeof data === 'string') {
+    enc = enc || 'utf8'
+    data = Buffer.from(data, enc)
+  }
+
+  var block = this._block
+  var blockSize = this._blockSize
+  var length = data.length
+  var accum = this._len
+
+  for (var offset = 0; offset < length;) {
+    var assigned = accum % blockSize
+    var remainder = Math.min(length - offset, blockSize - assigned)
+
+    for (var i = 0; i < remainder; i++) {
+      block[assigned + i] = data[offset + i]
+    }
+
+    accum += remainder
+    offset += remainder
+
+    if ((accum % blockSize) === 0) {
+      this._update(block)
+    }
+  }
+
+  this._len += length
+  return this
+}
+
+Hash.prototype.digest = function (enc) {
+  var rem = this._len % this._blockSize
+
+  this._block[rem] = 0x80
+
+  // zero (rem + 1) trailing bits, where (rem + 1) is the smallest
+  // non-negative solution to the equation (length + 1 + (rem + 1)) === finalSize mod blockSize
+  this._block.fill(0, rem + 1)
+
+  if (rem >= this._finalSize) {
+    this._update(this._block)
+    this._block.fill(0)
+  }
+
+  var bits = this._len * 8
+
+  // uint32
+  if (bits <= 0xffffffff) {
+    this._block.writeUInt32BE(bits, this._blockSize - 4)
+
+  // uint64
+  } else {
+    var lowBits = (bits & 0xffffffff) >>> 0
+    var highBits = (bits - lowBits) / 0x100000000
+
+    this._block.writeUInt32BE(highBits, this._blockSize - 8)
+    this._block.writeUInt32BE(lowBits, this._blockSize - 4)
+  }
+
+  this._update(this._block)
+  var hash = this._hash()
+
+  return enc ? hash.toString(enc) : hash
+}
+
+Hash.prototype._update = function () {
+  throw new Error('_update must be implemented by subclass')
+}
+
+module.exports = Hash
+
+
+/***/ }),
+
+/***/ "./node_modules/sha.js/index.js":
+/*!**************************************!*\
+  !*** ./node_modules/sha.js/index.js ***!
+  \**************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+var exports = module.exports = function SHA (algorithm) {
+  algorithm = algorithm.toLowerCase()
+
+  var Algorithm = exports[algorithm]
+  if (!Algorithm) throw new Error(algorithm + ' is not supported (we accept pull requests)')
+
+  return new Algorithm()
+}
+
+exports.sha = __webpack_require__(/*! ./sha */ "./node_modules/sha.js/sha.js")
+exports.sha1 = __webpack_require__(/*! ./sha1 */ "./node_modules/sha.js/sha1.js")
+exports.sha224 = __webpack_require__(/*! ./sha224 */ "./node_modules/sha.js/sha224.js")
+exports.sha256 = __webpack_require__(/*! ./sha256 */ "./node_modules/sha.js/sha256.js")
+exports.sha384 = __webpack_require__(/*! ./sha384 */ "./node_modules/sha.js/sha384.js")
+exports.sha512 = __webpack_require__(/*! ./sha512 */ "./node_modules/sha.js/sha512.js")
+
+
+/***/ }),
+
+/***/ "./node_modules/sha.js/sha.js":
+/*!************************************!*\
+  !*** ./node_modules/sha.js/sha.js ***!
+  \************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+/*
+ * A JavaScript implementation of the Secure Hash Algorithm, SHA-0, as defined
+ * in FIPS PUB 180-1
+ * This source code is derived from sha1.js of the same repository.
+ * The difference between SHA-0 and SHA-1 is just a bitwise rotate left
+ * operation was added.
+ */
+
+var inherits = __webpack_require__(/*! inherits */ "./node_modules/inherits/inherits_browser.js")
+var Hash = __webpack_require__(/*! ./hash */ "./node_modules/sha.js/hash.js")
+var Buffer = __webpack_require__(/*! safe-buffer */ "./node_modules/safe-buffer/index.js").Buffer
+
+var K = [
+  0x5a827999, 0x6ed9eba1, 0x8f1bbcdc | 0, 0xca62c1d6 | 0
+]
+
+var W = new Array(80)
+
+function Sha () {
+  this.init()
+  this._w = W
+
+  Hash.call(this, 64, 56)
+}
+
+inherits(Sha, Hash)
+
+Sha.prototype.init = function () {
+  this._a = 0x67452301
+  this._b = 0xefcdab89
+  this._c = 0x98badcfe
+  this._d = 0x10325476
+  this._e = 0xc3d2e1f0
+
+  return this
+}
+
+function rotl5 (num) {
+  return (num << 5) | (num >>> 27)
+}
+
+function rotl30 (num) {
+  return (num << 30) | (num >>> 2)
+}
+
+function ft (s, b, c, d) {
+  if (s === 0) return (b & c) | ((~b) & d)
+  if (s === 2) return (b & c) | (b & d) | (c & d)
+  return b ^ c ^ d
+}
+
+Sha.prototype._update = function (M) {
+  var W = this._w
+
+  var a = this._a | 0
+  var b = this._b | 0
+  var c = this._c | 0
+  var d = this._d | 0
+  var e = this._e | 0
+
+  for (var i = 0; i < 16; ++i) W[i] = M.readInt32BE(i * 4)
+  for (; i < 80; ++i) W[i] = W[i - 3] ^ W[i - 8] ^ W[i - 14] ^ W[i - 16]
+
+  for (var j = 0; j < 80; ++j) {
+    var s = ~~(j / 20)
+    var t = (rotl5(a) + ft(s, b, c, d) + e + W[j] + K[s]) | 0
+
+    e = d
+    d = c
+    c = rotl30(b)
+    b = a
+    a = t
+  }
+
+  this._a = (a + this._a) | 0
+  this._b = (b + this._b) | 0
+  this._c = (c + this._c) | 0
+  this._d = (d + this._d) | 0
+  this._e = (e + this._e) | 0
+}
+
+Sha.prototype._hash = function () {
+  var H = Buffer.allocUnsafe(20)
+
+  H.writeInt32BE(this._a | 0, 0)
+  H.writeInt32BE(this._b | 0, 4)
+  H.writeInt32BE(this._c | 0, 8)
+  H.writeInt32BE(this._d | 0, 12)
+  H.writeInt32BE(this._e | 0, 16)
+
+  return H
+}
+
+module.exports = Sha
+
+
+/***/ }),
+
+/***/ "./node_modules/sha.js/sha1.js":
+/*!*************************************!*\
+  !*** ./node_modules/sha.js/sha1.js ***!
+  \*************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+/*
+ * A JavaScript implementation of the Secure Hash Algorithm, SHA-1, as defined
+ * in FIPS PUB 180-1
+ * Version 2.1a Copyright Paul Johnston 2000 - 2002.
+ * Other contributors: Greg Holt, Andrew Kepert, Ydnar, Lostinet
+ * Distributed under the BSD License
+ * See http://pajhome.org.uk/crypt/md5 for details.
+ */
+
+var inherits = __webpack_require__(/*! inherits */ "./node_modules/inherits/inherits_browser.js")
+var Hash = __webpack_require__(/*! ./hash */ "./node_modules/sha.js/hash.js")
+var Buffer = __webpack_require__(/*! safe-buffer */ "./node_modules/safe-buffer/index.js").Buffer
+
+var K = [
+  0x5a827999, 0x6ed9eba1, 0x8f1bbcdc | 0, 0xca62c1d6 | 0
+]
+
+var W = new Array(80)
+
+function Sha1 () {
+  this.init()
+  this._w = W
+
+  Hash.call(this, 64, 56)
+}
+
+inherits(Sha1, Hash)
+
+Sha1.prototype.init = function () {
+  this._a = 0x67452301
+  this._b = 0xefcdab89
+  this._c = 0x98badcfe
+  this._d = 0x10325476
+  this._e = 0xc3d2e1f0
+
+  return this
+}
+
+function rotl1 (num) {
+  return (num << 1) | (num >>> 31)
+}
+
+function rotl5 (num) {
+  return (num << 5) | (num >>> 27)
+}
+
+function rotl30 (num) {
+  return (num << 30) | (num >>> 2)
+}
+
+function ft (s, b, c, d) {
+  if (s === 0) return (b & c) | ((~b) & d)
+  if (s === 2) return (b & c) | (b & d) | (c & d)
+  return b ^ c ^ d
+}
+
+Sha1.prototype._update = function (M) {
+  var W = this._w
+
+  var a = this._a | 0
+  var b = this._b | 0
+  var c = this._c | 0
+  var d = this._d | 0
+  var e = this._e | 0
+
+  for (var i = 0; i < 16; ++i) W[i] = M.readInt32BE(i * 4)
+  for (; i < 80; ++i) W[i] = rotl1(W[i - 3] ^ W[i - 8] ^ W[i - 14] ^ W[i - 16])
+
+  for (var j = 0; j < 80; ++j) {
+    var s = ~~(j / 20)
+    var t = (rotl5(a) + ft(s, b, c, d) + e + W[j] + K[s]) | 0
+
+    e = d
+    d = c
+    c = rotl30(b)
+    b = a
+    a = t
+  }
+
+  this._a = (a + this._a) | 0
+  this._b = (b + this._b) | 0
+  this._c = (c + this._c) | 0
+  this._d = (d + this._d) | 0
+  this._e = (e + this._e) | 0
+}
+
+Sha1.prototype._hash = function () {
+  var H = Buffer.allocUnsafe(20)
+
+  H.writeInt32BE(this._a | 0, 0)
+  H.writeInt32BE(this._b | 0, 4)
+  H.writeInt32BE(this._c | 0, 8)
+  H.writeInt32BE(this._d | 0, 12)
+  H.writeInt32BE(this._e | 0, 16)
+
+  return H
+}
+
+module.exports = Sha1
+
+
+/***/ }),
+
+/***/ "./node_modules/sha.js/sha224.js":
+/*!***************************************!*\
+  !*** ./node_modules/sha.js/sha224.js ***!
+  \***************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+/**
+ * A JavaScript implementation of the Secure Hash Algorithm, SHA-256, as defined
+ * in FIPS 180-2
+ * Version 2.2-beta Copyright Angel Marin, Paul Johnston 2000 - 2009.
+ * Other contributors: Greg Holt, Andrew Kepert, Ydnar, Lostinet
+ *
+ */
+
+var inherits = __webpack_require__(/*! inherits */ "./node_modules/inherits/inherits_browser.js")
+var Sha256 = __webpack_require__(/*! ./sha256 */ "./node_modules/sha.js/sha256.js")
+var Hash = __webpack_require__(/*! ./hash */ "./node_modules/sha.js/hash.js")
+var Buffer = __webpack_require__(/*! safe-buffer */ "./node_modules/safe-buffer/index.js").Buffer
+
+var W = new Array(64)
+
+function Sha224 () {
+  this.init()
+
+  this._w = W // new Array(64)
+
+  Hash.call(this, 64, 56)
+}
+
+inherits(Sha224, Sha256)
+
+Sha224.prototype.init = function () {
+  this._a = 0xc1059ed8
+  this._b = 0x367cd507
+  this._c = 0x3070dd17
+  this._d = 0xf70e5939
+  this._e = 0xffc00b31
+  this._f = 0x68581511
+  this._g = 0x64f98fa7
+  this._h = 0xbefa4fa4
+
+  return this
+}
+
+Sha224.prototype._hash = function () {
+  var H = Buffer.allocUnsafe(28)
+
+  H.writeInt32BE(this._a, 0)
+  H.writeInt32BE(this._b, 4)
+  H.writeInt32BE(this._c, 8)
+  H.writeInt32BE(this._d, 12)
+  H.writeInt32BE(this._e, 16)
+  H.writeInt32BE(this._f, 20)
+  H.writeInt32BE(this._g, 24)
+
+  return H
+}
+
+module.exports = Sha224
+
+
+/***/ }),
+
+/***/ "./node_modules/sha.js/sha256.js":
+/*!***************************************!*\
+  !*** ./node_modules/sha.js/sha256.js ***!
+  \***************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+/**
+ * A JavaScript implementation of the Secure Hash Algorithm, SHA-256, as defined
+ * in FIPS 180-2
+ * Version 2.2-beta Copyright Angel Marin, Paul Johnston 2000 - 2009.
+ * Other contributors: Greg Holt, Andrew Kepert, Ydnar, Lostinet
+ *
+ */
+
+var inherits = __webpack_require__(/*! inherits */ "./node_modules/inherits/inherits_browser.js")
+var Hash = __webpack_require__(/*! ./hash */ "./node_modules/sha.js/hash.js")
+var Buffer = __webpack_require__(/*! safe-buffer */ "./node_modules/safe-buffer/index.js").Buffer
+
+var K = [
+  0x428A2F98, 0x71374491, 0xB5C0FBCF, 0xE9B5DBA5,
+  0x3956C25B, 0x59F111F1, 0x923F82A4, 0xAB1C5ED5,
+  0xD807AA98, 0x12835B01, 0x243185BE, 0x550C7DC3,
+  0x72BE5D74, 0x80DEB1FE, 0x9BDC06A7, 0xC19BF174,
+  0xE49B69C1, 0xEFBE4786, 0x0FC19DC6, 0x240CA1CC,
+  0x2DE92C6F, 0x4A7484AA, 0x5CB0A9DC, 0x76F988DA,
+  0x983E5152, 0xA831C66D, 0xB00327C8, 0xBF597FC7,
+  0xC6E00BF3, 0xD5A79147, 0x06CA6351, 0x14292967,
+  0x27B70A85, 0x2E1B2138, 0x4D2C6DFC, 0x53380D13,
+  0x650A7354, 0x766A0ABB, 0x81C2C92E, 0x92722C85,
+  0xA2BFE8A1, 0xA81A664B, 0xC24B8B70, 0xC76C51A3,
+  0xD192E819, 0xD6990624, 0xF40E3585, 0x106AA070,
+  0x19A4C116, 0x1E376C08, 0x2748774C, 0x34B0BCB5,
+  0x391C0CB3, 0x4ED8AA4A, 0x5B9CCA4F, 0x682E6FF3,
+  0x748F82EE, 0x78A5636F, 0x84C87814, 0x8CC70208,
+  0x90BEFFFA, 0xA4506CEB, 0xBEF9A3F7, 0xC67178F2
+]
+
+var W = new Array(64)
+
+function Sha256 () {
+  this.init()
+
+  this._w = W // new Array(64)
+
+  Hash.call(this, 64, 56)
+}
+
+inherits(Sha256, Hash)
+
+Sha256.prototype.init = function () {
+  this._a = 0x6a09e667
+  this._b = 0xbb67ae85
+  this._c = 0x3c6ef372
+  this._d = 0xa54ff53a
+  this._e = 0x510e527f
+  this._f = 0x9b05688c
+  this._g = 0x1f83d9ab
+  this._h = 0x5be0cd19
+
+  return this
+}
+
+function ch (x, y, z) {
+  return z ^ (x & (y ^ z))
+}
+
+function maj (x, y, z) {
+  return (x & y) | (z & (x | y))
+}
+
+function sigma0 (x) {
+  return (x >>> 2 | x << 30) ^ (x >>> 13 | x << 19) ^ (x >>> 22 | x << 10)
+}
+
+function sigma1 (x) {
+  return (x >>> 6 | x << 26) ^ (x >>> 11 | x << 21) ^ (x >>> 25 | x << 7)
+}
+
+function gamma0 (x) {
+  return (x >>> 7 | x << 25) ^ (x >>> 18 | x << 14) ^ (x >>> 3)
+}
+
+function gamma1 (x) {
+  return (x >>> 17 | x << 15) ^ (x >>> 19 | x << 13) ^ (x >>> 10)
+}
+
+Sha256.prototype._update = function (M) {
+  var W = this._w
+
+  var a = this._a | 0
+  var b = this._b | 0
+  var c = this._c | 0
+  var d = this._d | 0
+  var e = this._e | 0
+  var f = this._f | 0
+  var g = this._g | 0
+  var h = this._h | 0
+
+  for (var i = 0; i < 16; ++i) W[i] = M.readInt32BE(i * 4)
+  for (; i < 64; ++i) W[i] = (gamma1(W[i - 2]) + W[i - 7] + gamma0(W[i - 15]) + W[i - 16]) | 0
+
+  for (var j = 0; j < 64; ++j) {
+    var T1 = (h + sigma1(e) + ch(e, f, g) + K[j] + W[j]) | 0
+    var T2 = (sigma0(a) + maj(a, b, c)) | 0
+
+    h = g
+    g = f
+    f = e
+    e = (d + T1) | 0
+    d = c
+    c = b
+    b = a
+    a = (T1 + T2) | 0
+  }
+
+  this._a = (a + this._a) | 0
+  this._b = (b + this._b) | 0
+  this._c = (c + this._c) | 0
+  this._d = (d + this._d) | 0
+  this._e = (e + this._e) | 0
+  this._f = (f + this._f) | 0
+  this._g = (g + this._g) | 0
+  this._h = (h + this._h) | 0
+}
+
+Sha256.prototype._hash = function () {
+  var H = Buffer.allocUnsafe(32)
+
+  H.writeInt32BE(this._a, 0)
+  H.writeInt32BE(this._b, 4)
+  H.writeInt32BE(this._c, 8)
+  H.writeInt32BE(this._d, 12)
+  H.writeInt32BE(this._e, 16)
+  H.writeInt32BE(this._f, 20)
+  H.writeInt32BE(this._g, 24)
+  H.writeInt32BE(this._h, 28)
+
+  return H
+}
+
+module.exports = Sha256
+
+
+/***/ }),
+
+/***/ "./node_modules/sha.js/sha384.js":
+/*!***************************************!*\
+  !*** ./node_modules/sha.js/sha384.js ***!
+  \***************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+var inherits = __webpack_require__(/*! inherits */ "./node_modules/inherits/inherits_browser.js")
+var SHA512 = __webpack_require__(/*! ./sha512 */ "./node_modules/sha.js/sha512.js")
+var Hash = __webpack_require__(/*! ./hash */ "./node_modules/sha.js/hash.js")
+var Buffer = __webpack_require__(/*! safe-buffer */ "./node_modules/safe-buffer/index.js").Buffer
+
+var W = new Array(160)
+
+function Sha384 () {
+  this.init()
+  this._w = W
+
+  Hash.call(this, 128, 112)
+}
+
+inherits(Sha384, SHA512)
+
+Sha384.prototype.init = function () {
+  this._ah = 0xcbbb9d5d
+  this._bh = 0x629a292a
+  this._ch = 0x9159015a
+  this._dh = 0x152fecd8
+  this._eh = 0x67332667
+  this._fh = 0x8eb44a87
+  this._gh = 0xdb0c2e0d
+  this._hh = 0x47b5481d
+
+  this._al = 0xc1059ed8
+  this._bl = 0x367cd507
+  this._cl = 0x3070dd17
+  this._dl = 0xf70e5939
+  this._el = 0xffc00b31
+  this._fl = 0x68581511
+  this._gl = 0x64f98fa7
+  this._hl = 0xbefa4fa4
+
+  return this
+}
+
+Sha384.prototype._hash = function () {
+  var H = Buffer.allocUnsafe(48)
+
+  function writeInt64BE (h, l, offset) {
+    H.writeInt32BE(h, offset)
+    H.writeInt32BE(l, offset + 4)
+  }
+
+  writeInt64BE(this._ah, this._al, 0)
+  writeInt64BE(this._bh, this._bl, 8)
+  writeInt64BE(this._ch, this._cl, 16)
+  writeInt64BE(this._dh, this._dl, 24)
+  writeInt64BE(this._eh, this._el, 32)
+  writeInt64BE(this._fh, this._fl, 40)
+
+  return H
+}
+
+module.exports = Sha384
+
+
+/***/ }),
+
+/***/ "./node_modules/sha.js/sha512.js":
+/*!***************************************!*\
+  !*** ./node_modules/sha.js/sha512.js ***!
+  \***************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+var inherits = __webpack_require__(/*! inherits */ "./node_modules/inherits/inherits_browser.js")
+var Hash = __webpack_require__(/*! ./hash */ "./node_modules/sha.js/hash.js")
+var Buffer = __webpack_require__(/*! safe-buffer */ "./node_modules/safe-buffer/index.js").Buffer
+
+var K = [
+  0x428a2f98, 0xd728ae22, 0x71374491, 0x23ef65cd,
+  0xb5c0fbcf, 0xec4d3b2f, 0xe9b5dba5, 0x8189dbbc,
+  0x3956c25b, 0xf348b538, 0x59f111f1, 0xb605d019,
+  0x923f82a4, 0xaf194f9b, 0xab1c5ed5, 0xda6d8118,
+  0xd807aa98, 0xa3030242, 0x12835b01, 0x45706fbe,
+  0x243185be, 0x4ee4b28c, 0x550c7dc3, 0xd5ffb4e2,
+  0x72be5d74, 0xf27b896f, 0x80deb1fe, 0x3b1696b1,
+  0x9bdc06a7, 0x25c71235, 0xc19bf174, 0xcf692694,
+  0xe49b69c1, 0x9ef14ad2, 0xefbe4786, 0x384f25e3,
+  0x0fc19dc6, 0x8b8cd5b5, 0x240ca1cc, 0x77ac9c65,
+  0x2de92c6f, 0x592b0275, 0x4a7484aa, 0x6ea6e483,
+  0x5cb0a9dc, 0xbd41fbd4, 0x76f988da, 0x831153b5,
+  0x983e5152, 0xee66dfab, 0xa831c66d, 0x2db43210,
+  0xb00327c8, 0x98fb213f, 0xbf597fc7, 0xbeef0ee4,
+  0xc6e00bf3, 0x3da88fc2, 0xd5a79147, 0x930aa725,
+  0x06ca6351, 0xe003826f, 0x14292967, 0x0a0e6e70,
+  0x27b70a85, 0x46d22ffc, 0x2e1b2138, 0x5c26c926,
+  0x4d2c6dfc, 0x5ac42aed, 0x53380d13, 0x9d95b3df,
+  0x650a7354, 0x8baf63de, 0x766a0abb, 0x3c77b2a8,
+  0x81c2c92e, 0x47edaee6, 0x92722c85, 0x1482353b,
+  0xa2bfe8a1, 0x4cf10364, 0xa81a664b, 0xbc423001,
+  0xc24b8b70, 0xd0f89791, 0xc76c51a3, 0x0654be30,
+  0xd192e819, 0xd6ef5218, 0xd6990624, 0x5565a910,
+  0xf40e3585, 0x5771202a, 0x106aa070, 0x32bbd1b8,
+  0x19a4c116, 0xb8d2d0c8, 0x1e376c08, 0x5141ab53,
+  0x2748774c, 0xdf8eeb99, 0x34b0bcb5, 0xe19b48a8,
+  0x391c0cb3, 0xc5c95a63, 0x4ed8aa4a, 0xe3418acb,
+  0x5b9cca4f, 0x7763e373, 0x682e6ff3, 0xd6b2b8a3,
+  0x748f82ee, 0x5defb2fc, 0x78a5636f, 0x43172f60,
+  0x84c87814, 0xa1f0ab72, 0x8cc70208, 0x1a6439ec,
+  0x90befffa, 0x23631e28, 0xa4506ceb, 0xde82bde9,
+  0xbef9a3f7, 0xb2c67915, 0xc67178f2, 0xe372532b,
+  0xca273ece, 0xea26619c, 0xd186b8c7, 0x21c0c207,
+  0xeada7dd6, 0xcde0eb1e, 0xf57d4f7f, 0xee6ed178,
+  0x06f067aa, 0x72176fba, 0x0a637dc5, 0xa2c898a6,
+  0x113f9804, 0xbef90dae, 0x1b710b35, 0x131c471b,
+  0x28db77f5, 0x23047d84, 0x32caab7b, 0x40c72493,
+  0x3c9ebe0a, 0x15c9bebc, 0x431d67c4, 0x9c100d4c,
+  0x4cc5d4be, 0xcb3e42b6, 0x597f299c, 0xfc657e2a,
+  0x5fcb6fab, 0x3ad6faec, 0x6c44198c, 0x4a475817
+]
+
+var W = new Array(160)
+
+function Sha512 () {
+  this.init()
+  this._w = W
+
+  Hash.call(this, 128, 112)
+}
+
+inherits(Sha512, Hash)
+
+Sha512.prototype.init = function () {
+  this._ah = 0x6a09e667
+  this._bh = 0xbb67ae85
+  this._ch = 0x3c6ef372
+  this._dh = 0xa54ff53a
+  this._eh = 0x510e527f
+  this._fh = 0x9b05688c
+  this._gh = 0x1f83d9ab
+  this._hh = 0x5be0cd19
+
+  this._al = 0xf3bcc908
+  this._bl = 0x84caa73b
+  this._cl = 0xfe94f82b
+  this._dl = 0x5f1d36f1
+  this._el = 0xade682d1
+  this._fl = 0x2b3e6c1f
+  this._gl = 0xfb41bd6b
+  this._hl = 0x137e2179
+
+  return this
+}
+
+function Ch (x, y, z) {
+  return z ^ (x & (y ^ z))
+}
+
+function maj (x, y, z) {
+  return (x & y) | (z & (x | y))
+}
+
+function sigma0 (x, xl) {
+  return (x >>> 28 | xl << 4) ^ (xl >>> 2 | x << 30) ^ (xl >>> 7 | x << 25)
+}
+
+function sigma1 (x, xl) {
+  return (x >>> 14 | xl << 18) ^ (x >>> 18 | xl << 14) ^ (xl >>> 9 | x << 23)
+}
+
+function Gamma0 (x, xl) {
+  return (x >>> 1 | xl << 31) ^ (x >>> 8 | xl << 24) ^ (x >>> 7)
+}
+
+function Gamma0l (x, xl) {
+  return (x >>> 1 | xl << 31) ^ (x >>> 8 | xl << 24) ^ (x >>> 7 | xl << 25)
+}
+
+function Gamma1 (x, xl) {
+  return (x >>> 19 | xl << 13) ^ (xl >>> 29 | x << 3) ^ (x >>> 6)
+}
+
+function Gamma1l (x, xl) {
+  return (x >>> 19 | xl << 13) ^ (xl >>> 29 | x << 3) ^ (x >>> 6 | xl << 26)
+}
+
+function getCarry (a, b) {
+  return (a >>> 0) < (b >>> 0) ? 1 : 0
+}
+
+Sha512.prototype._update = function (M) {
+  var W = this._w
+
+  var ah = this._ah | 0
+  var bh = this._bh | 0
+  var ch = this._ch | 0
+  var dh = this._dh | 0
+  var eh = this._eh | 0
+  var fh = this._fh | 0
+  var gh = this._gh | 0
+  var hh = this._hh | 0
+
+  var al = this._al | 0
+  var bl = this._bl | 0
+  var cl = this._cl | 0
+  var dl = this._dl | 0
+  var el = this._el | 0
+  var fl = this._fl | 0
+  var gl = this._gl | 0
+  var hl = this._hl | 0
+
+  for (var i = 0; i < 32; i += 2) {
+    W[i] = M.readInt32BE(i * 4)
+    W[i + 1] = M.readInt32BE(i * 4 + 4)
+  }
+  for (; i < 160; i += 2) {
+    var xh = W[i - 15 * 2]
+    var xl = W[i - 15 * 2 + 1]
+    var gamma0 = Gamma0(xh, xl)
+    var gamma0l = Gamma0l(xl, xh)
+
+    xh = W[i - 2 * 2]
+    xl = W[i - 2 * 2 + 1]
+    var gamma1 = Gamma1(xh, xl)
+    var gamma1l = Gamma1l(xl, xh)
+
+    // W[i] = gamma0 + W[i - 7] + gamma1 + W[i - 16]
+    var Wi7h = W[i - 7 * 2]
+    var Wi7l = W[i - 7 * 2 + 1]
+
+    var Wi16h = W[i - 16 * 2]
+    var Wi16l = W[i - 16 * 2 + 1]
+
+    var Wil = (gamma0l + Wi7l) | 0
+    var Wih = (gamma0 + Wi7h + getCarry(Wil, gamma0l)) | 0
+    Wil = (Wil + gamma1l) | 0
+    Wih = (Wih + gamma1 + getCarry(Wil, gamma1l)) | 0
+    Wil = (Wil + Wi16l) | 0
+    Wih = (Wih + Wi16h + getCarry(Wil, Wi16l)) | 0
+
+    W[i] = Wih
+    W[i + 1] = Wil
+  }
+
+  for (var j = 0; j < 160; j += 2) {
+    Wih = W[j]
+    Wil = W[j + 1]
+
+    var majh = maj(ah, bh, ch)
+    var majl = maj(al, bl, cl)
+
+    var sigma0h = sigma0(ah, al)
+    var sigma0l = sigma0(al, ah)
+    var sigma1h = sigma1(eh, el)
+    var sigma1l = sigma1(el, eh)
+
+    // t1 = h + sigma1 + ch + K[j] + W[j]
+    var Kih = K[j]
+    var Kil = K[j + 1]
+
+    var chh = Ch(eh, fh, gh)
+    var chl = Ch(el, fl, gl)
+
+    var t1l = (hl + sigma1l) | 0
+    var t1h = (hh + sigma1h + getCarry(t1l, hl)) | 0
+    t1l = (t1l + chl) | 0
+    t1h = (t1h + chh + getCarry(t1l, chl)) | 0
+    t1l = (t1l + Kil) | 0
+    t1h = (t1h + Kih + getCarry(t1l, Kil)) | 0
+    t1l = (t1l + Wil) | 0
+    t1h = (t1h + Wih + getCarry(t1l, Wil)) | 0
+
+    // t2 = sigma0 + maj
+    var t2l = (sigma0l + majl) | 0
+    var t2h = (sigma0h + majh + getCarry(t2l, sigma0l)) | 0
+
+    hh = gh
+    hl = gl
+    gh = fh
+    gl = fl
+    fh = eh
+    fl = el
+    el = (dl + t1l) | 0
+    eh = (dh + t1h + getCarry(el, dl)) | 0
+    dh = ch
+    dl = cl
+    ch = bh
+    cl = bl
+    bh = ah
+    bl = al
+    al = (t1l + t2l) | 0
+    ah = (t1h + t2h + getCarry(al, t1l)) | 0
+  }
+
+  this._al = (this._al + al) | 0
+  this._bl = (this._bl + bl) | 0
+  this._cl = (this._cl + cl) | 0
+  this._dl = (this._dl + dl) | 0
+  this._el = (this._el + el) | 0
+  this._fl = (this._fl + fl) | 0
+  this._gl = (this._gl + gl) | 0
+  this._hl = (this._hl + hl) | 0
+
+  this._ah = (this._ah + ah + getCarry(this._al, al)) | 0
+  this._bh = (this._bh + bh + getCarry(this._bl, bl)) | 0
+  this._ch = (this._ch + ch + getCarry(this._cl, cl)) | 0
+  this._dh = (this._dh + dh + getCarry(this._dl, dl)) | 0
+  this._eh = (this._eh + eh + getCarry(this._el, el)) | 0
+  this._fh = (this._fh + fh + getCarry(this._fl, fl)) | 0
+  this._gh = (this._gh + gh + getCarry(this._gl, gl)) | 0
+  this._hh = (this._hh + hh + getCarry(this._hl, hl)) | 0
+}
+
+Sha512.prototype._hash = function () {
+  var H = Buffer.allocUnsafe(64)
+
+  function writeInt64BE (h, l, offset) {
+    H.writeInt32BE(h, offset)
+    H.writeInt32BE(l, offset + 4)
+  }
+
+  writeInt64BE(this._ah, this._al, 0)
+  writeInt64BE(this._bh, this._bl, 8)
+  writeInt64BE(this._ch, this._cl, 16)
+  writeInt64BE(this._dh, this._dl, 24)
+  writeInt64BE(this._eh, this._el, 32)
+  writeInt64BE(this._fh, this._fl, 40)
+  writeInt64BE(this._gh, this._gl, 48)
+  writeInt64BE(this._hh, this._hl, 56)
+
+  return H
+}
+
+module.exports = Sha512
+
+
+/***/ }),
+
 /***/ "./node_modules/sparqlalgebrajs/index.js":
 /*!***********************************************!*\
   !*** ./node_modules/sparqlalgebrajs/index.js ***!
@@ -57128,6 +63545,3513 @@ class Util {
 }
 exports.default = Util;
 //# sourceMappingURL=util.js.map
+
+/***/ }),
+
+/***/ "./node_modules/sparqlee/dist/index.js":
+/*!*********************************************!*\
+  !*** ./node_modules/sparqlee/dist/index.js ***!
+  \*********************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+Object.defineProperty(exports, "__esModule", { value: true });
+var AsyncEvaluator_1 = __webpack_require__(/*! ./lib/evaluators/AsyncEvaluator */ "./node_modules/sparqlee/dist/lib/evaluators/AsyncEvaluator.js");
+exports.AsyncEvaluator = AsyncEvaluator_1.AsyncEvaluator;
+var SyncEvaluator_1 = __webpack_require__(/*! ./lib/evaluators/SyncEvaluator */ "./node_modules/sparqlee/dist/lib/evaluators/SyncEvaluator.js");
+exports.SyncEvaluator = SyncEvaluator_1.SyncEvaluator;
+var AggregateEvaluator_1 = __webpack_require__(/*! ./lib/evaluators/AggregateEvaluator */ "./node_modules/sparqlee/dist/lib/evaluators/AggregateEvaluator.js");
+exports.AggregateEvaluator = AggregateEvaluator_1.AggregateEvaluator;
+var Errors_1 = __webpack_require__(/*! ./lib/util/Errors */ "./node_modules/sparqlee/dist/lib/util/Errors.js");
+exports.ExpressionError = Errors_1.ExpressionError;
+exports.isExpressionError = Errors_1.isExpressionError;
+//# sourceMappingURL=index.js.map
+
+/***/ }),
+
+/***/ "./node_modules/sparqlee/dist/lib/Transformation.js":
+/*!**********************************************************!*\
+  !*** ./node_modules/sparqlee/dist/lib/Transformation.js ***!
+  \**********************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+Object.defineProperty(exports, "__esModule", { value: true });
+const RDFString = __webpack_require__(/*! rdf-string */ "./node_modules/rdf-string/index.js");
+const sparqlalgebrajs_1 = __webpack_require__(/*! sparqlalgebrajs */ "./node_modules/sparqlalgebrajs/index.js");
+const E = __webpack_require__(/*! ./expressions */ "./node_modules/sparqlee/dist/lib/expressions/index.js");
+const C = __webpack_require__(/*! ./util/Consts */ "./node_modules/sparqlee/dist/lib/util/Consts.js");
+const Err = __webpack_require__(/*! ./util/Errors */ "./node_modules/sparqlee/dist/lib/util/Errors.js");
+const P = __webpack_require__(/*! ./util/Parsing */ "./node_modules/sparqlee/dist/lib/util/Parsing.js");
+const functions_1 = __webpack_require__(/*! ./functions */ "./node_modules/sparqlee/dist/lib/functions/index.js");
+const Consts_1 = __webpack_require__(/*! ./util/Consts */ "./node_modules/sparqlee/dist/lib/util/Consts.js");
+function transformAlgebra(expr) {
+    if (!expr) {
+        throw new Err.InvalidExpression(expr);
+    }
+    const types = sparqlalgebrajs_1.Algebra.expressionTypes;
+    switch (expr.expressionType) {
+        case types.TERM:
+            return transformTerm(expr);
+        case types.OPERATOR:
+            return transformOperator(expr);
+        case types.NAMED:
+            return transformNamed(expr);
+        case types.EXISTENCE:
+            return transformExistence(expr);
+        case types.AGGREGATE:
+            return transformAggregate(expr);
+        case types.WILDCARD:
+            return transformWildcard(expr);
+        default: throw new Err.InvalidExpressionType(expr);
+    }
+}
+exports.transformAlgebra = transformAlgebra;
+/**
+ * Transforms an RDF term to the internal representation of a term,
+ * assuming it is not a variable, which would be an expression (internally).
+ *
+ * @param term RDF term to transform into internal representation of a term
+ */
+function transformRDFTermUnsafe(term) {
+    return transformTerm({
+        term,
+        type: 'expression',
+        expressionType: 'term',
+    });
+}
+exports.transformRDFTermUnsafe = transformRDFTermUnsafe;
+function transformTerm(term) {
+    if (!term.term) {
+        throw new Err.InvalidExpression(term);
+    }
+    switch (term.term.termType) {
+        case 'Variable': return new E.Variable(RDFString.termToString(term.term));
+        case 'Literal': return transformLiteral(term.term);
+        case 'NamedNode': return new E.NamedNode(term.term.value);
+        case 'BlankNode': return new E.BlankNode(term.term.value);
+        default: throw new Err.InvalidTermType(term);
+    }
+}
+function transformWildcard(term) {
+    if (!term.wildcard) {
+        throw new Err.InvalidExpression(term);
+    }
+    return new E.NamedNode(term.wildcard.value);
+}
+// TODO: Maybe do this with a map?
+// tslint:disable-next-line:no-any
+function transformLiteral(lit) {
+    if (!lit.datatype) {
+        return (lit.language)
+            ? new E.LangStringLiteral(lit.value, lit.language)
+            : new E.StringLiteral(lit.value);
+    }
+    switch (lit.datatype.value) {
+        case null:
+        case undefined:
+        case '': {
+            return (lit.language)
+                ? new E.LangStringLiteral(lit.value, lit.language)
+                : new E.StringLiteral(lit.value);
+        }
+        case Consts_1.TypeURL.XSD_STRING:
+            return new E.StringLiteral(lit.value);
+        case Consts_1.TypeURL.RDF_LANG_STRING:
+            return new E.LangStringLiteral(lit.value, lit.language);
+        case Consts_1.TypeURL.XSD_DATE_TIME:
+        case Consts_1.TypeURL.XSD_DATE: {
+            const val = new Date(lit.value);
+            if (isNaN(val.getTime())) {
+                return new E.NonLexicalLiteral(undefined, lit.datatype, lit.value);
+            }
+            return new E.DateTimeLiteral(new Date(lit.value), lit.value);
+        }
+        case Consts_1.TypeURL.XSD_BOOLEAN: {
+            if (lit.value !== 'true' && lit.value !== 'false') {
+                return new E.NonLexicalLiteral(undefined, lit.datatype, lit.value);
+            }
+            return new E.BooleanLiteral(lit.value === 'true', lit.value);
+        }
+        case Consts_1.TypeURL.XSD_INTEGER:
+        case Consts_1.TypeURL.XSD_DECIMAL:
+        case Consts_1.TypeURL.XSD_NEGATIVE_INTEGER:
+        case Consts_1.TypeURL.XSD_NON_NEGATIVE_INTEGER:
+        case Consts_1.TypeURL.XSD_NON_POSITIVE_INTEGER:
+        case Consts_1.TypeURL.XSD_POSITIVE_INTEGER:
+        case Consts_1.TypeURL.XSD_LONG:
+        case Consts_1.TypeURL.XSD_SHORT:
+        case Consts_1.TypeURL.XSD_BYTE:
+        case Consts_1.TypeURL.XSD_UNSIGNED_LONG:
+        case Consts_1.TypeURL.XSD_UNSIGNED_INT:
+        case Consts_1.TypeURL.XSD_UNSIGNED_SHORT:
+        case Consts_1.TypeURL.XSD_UNSIGNED_BYTE:
+        case Consts_1.TypeURL.XSD_INT: {
+            const val = P.parseXSDDecimal(lit.value);
+            if (val === undefined) {
+                return new E.NonLexicalLiteral(undefined, lit.datatype, lit.value);
+            }
+            return new E.NumericLiteral(val, lit.datatype, lit.value);
+        }
+        case Consts_1.TypeURL.XSD_FLOAT:
+        case Consts_1.TypeURL.XSD_DOUBLE: {
+            const val = P.parseXSDFloat(lit.value);
+            if (val === undefined) {
+                return new E.NonLexicalLiteral(undefined, lit.datatype, lit.value);
+            }
+            return new E.NumericLiteral(val, lit.datatype, lit.value);
+        }
+        default: return new E.Literal(lit.value, lit.datatype, lit.value);
+    }
+}
+exports.transformLiteral = transformLiteral;
+function transformOperator(expr) {
+    if (C.SpecialOperators.contains(expr.operator)) {
+        const op = expr.operator;
+        const args = expr.args.map((a) => transformAlgebra(a));
+        const func = functions_1.specialFunctions.get(op);
+        if (!func.checkArity(args)) {
+            throw new Err.InvalidArity(args, op);
+        }
+        return new E.SpecialOperator(args, func.applyAsync, func.applySync);
+    }
+    else {
+        if (!C.Operators.contains(expr.operator)) {
+            throw new Err.UnknownOperator(expr.operator);
+        }
+        const op = expr.operator;
+        const args = expr.args.map((a) => transformAlgebra(a));
+        const func = functions_1.regularFunctions.get(op);
+        if (!hasCorrectArity(args, func.arity)) {
+            throw new Err.InvalidArity(args, op);
+        }
+        return new E.Operator(args, func.apply);
+    }
+}
+// TODO: Support passing functions to override default behaviour;
+function transformNamed(expr) {
+    const funcName = expr.name.value;
+    if (!C.NamedOperators.contains(funcName)) {
+        throw new Err.UnknownNamedOperator(expr.name.value);
+    }
+    // tslint:disable-next-line:no-any
+    const op = expr.name.value;
+    const args = expr.args.map((a) => transformAlgebra(a));
+    const func = functions_1.namedFunctions.get(op);
+    return new E.Named(expr.name, args, func.apply);
+}
+exports.transformNamed = transformNamed;
+function hasCorrectArity(args, arity) {
+    // Infinity is used to represent var-args, so it's always correct.
+    if (arity === Infinity) {
+        return true;
+    }
+    // If the function has overloaded arity, the actual arity needs to be present.
+    if (Array.isArray(arity)) {
+        return arity.indexOf(args.length) >= 0;
+    }
+    return args.length === arity;
+}
+function transformAggregate(expr) {
+    const name = expr.aggregator;
+    return new E.Aggregate(name, expr);
+}
+exports.transformAggregate = transformAggregate;
+function transformExistence(expr) {
+    return new E.Existence(expr);
+}
+exports.transformExistence = transformExistence;
+//# sourceMappingURL=Transformation.js.map
+
+/***/ }),
+
+/***/ "./node_modules/sparqlee/dist/lib/evaluators/AggregateEvaluator.js":
+/*!*************************************************************************!*\
+  !*** ./node_modules/sparqlee/dist/lib/evaluators/AggregateEvaluator.js ***!
+  \*************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+// tslint:disable:object-literal-sort-keys
+// tslint:disable:max-classes-per-file
+Object.defineProperty(exports, "__esModule", { value: true });
+const RDFDM = __webpack_require__(/*! @rdfjs/data-model */ "./node_modules/@rdfjs/data-model/index.js");
+const E = __webpack_require__(/*! ../expressions */ "./node_modules/sparqlee/dist/lib/expressions/index.js");
+const C = __webpack_require__(/*! ../util/Consts */ "./node_modules/sparqlee/dist/lib/util/Consts.js");
+const Err = __webpack_require__(/*! ../util/Errors */ "./node_modules/sparqlee/dist/lib/util/Errors.js");
+const functions_1 = __webpack_require__(/*! ../functions */ "./node_modules/sparqlee/dist/lib/functions/index.js");
+const Helpers_1 = __webpack_require__(/*! ../functions/Helpers */ "./node_modules/sparqlee/dist/lib/functions/Helpers.js");
+const Parsing_1 = __webpack_require__(/*! ../util/Parsing */ "./node_modules/sparqlee/dist/lib/util/Parsing.js");
+const Consts_1 = __webpack_require__(/*! ./../util/Consts */ "./node_modules/sparqlee/dist/lib/util/Consts.js");
+const SyncEvaluator_1 = __webpack_require__(/*! ./SyncEvaluator */ "./node_modules/sparqlee/dist/lib/evaluators/SyncEvaluator.js");
+// TODO: Support hooks
+class AggregateEvaluator {
+    constructor(expr, config, throwError) {
+        this.throwError = false;
+        this.expression = expr;
+        this.evaluator = new SyncEvaluator_1.SyncEvaluator(expr.expression, config);
+        this.aggregator = new exports.aggregators[expr.aggregator](expr);
+        this.throwError = throwError;
+    }
+    /**
+     * The spec says to throw an error when a set function is called on an empty
+     * set (unless explicitly mentioned otherwise like COUNT).
+     * However, aggregate error handling says to not bind the result in case of an
+     * error. So to simplify logic in the caller, we return undefined by default.
+     *
+     * @param throwError wether this function should respect the spec and throw an error if no empty value is defined
+     */
+    static emptyValue(expr, throwError = false) {
+        const val = exports.aggregators[expr.aggregator].emptyValue();
+        if (val === undefined && throwError) {
+            throw new Err.EmptyAggregateError();
+        }
+        return val;
+    }
+    /**
+     * Put a binding from the result stream in the aggregate state.
+     *
+     * If any binding evaluation errors, the corresponding aggregate variable should be unbound.
+     * If this happens, calling @see result() will return @constant undefined
+     *
+     * @param bindings the bindings to pass to the expression
+     */
+    put(bindings) {
+        this.init(bindings);
+        if (this.state) {
+            this.put = this.__put;
+            this.result = this.__result;
+        }
+    }
+    result() {
+        return this.aggregator.constructor.emptyValue();
+    }
+    /**
+     * The actual put method. When the first binding has been given, and the state
+     * of the evaluators initialised. The .put API function will be replaced with this
+     * function, which implements the behaviour we want.
+     *
+     * @param bindings the bindings to pass to the expression
+     */
+    __put(bindings) {
+        try {
+            const term = this.evaluator.evaluate(bindings);
+            this.state = this.aggregator.put(this.state, term);
+        }
+        catch (err) {
+            this.safeThrow(err);
+        }
+    }
+    /**
+     * The actual result method. When the first binding has been given, and the state
+     * of the evaluators initialised. The .result API function will be replaced with this
+     * function, which implements the behaviour we want.
+     *
+     * @param bindings the bindings to pass to the expression
+     */
+    __result() {
+        return this.aggregator.result(this.state);
+    }
+    init(start) {
+        try {
+            const startTerm = this.evaluator.evaluate(start);
+            this.state = this.aggregator.init(startTerm);
+        }
+        catch (err) {
+            this.safeThrow(err);
+        }
+    }
+    safeThrow(err) {
+        if (this.throwError) {
+            throw err;
+        }
+        else {
+            this.put = () => { return; };
+            this.result = () => undefined;
+        }
+    }
+}
+exports.AggregateEvaluator = AggregateEvaluator;
+class BaseAggregator {
+    constructor(expr) {
+        this.distinct = expr.distinct;
+        this.separator = expr.separator || ' ';
+    }
+    static emptyValue() {
+        return undefined;
+    }
+}
+class Count extends BaseAggregator {
+    static emptyValue() {
+        return Helpers_1.number(0, Consts_1.TypeURL.XSD_INTEGER).toRDF();
+    }
+    init(start) {
+        return 1;
+    }
+    put(state, term) {
+        return state + 1;
+    }
+    result(state) {
+        return Helpers_1.number(state, Consts_1.TypeURL.XSD_INTEGER).toRDF();
+    }
+}
+class Sum extends BaseAggregator {
+    constructor() {
+        super(...arguments);
+        this.summer = functions_1.regularFunctions.get(C.RegularOperator.ADDITION);
+    }
+    static emptyValue() {
+        return Helpers_1.number(0, Consts_1.TypeURL.XSD_INTEGER).toRDF();
+    }
+    init(start) {
+        const { value, type } = extractNumericValueAndTypeOrError(start);
+        return new E.NumericLiteral(value, RDFDM.namedNode(type));
+    }
+    put(state, term) {
+        const { value, type } = extractNumericValueAndTypeOrError(term);
+        const internalTerm = new E.NumericLiteral(value, RDFDM.namedNode(type));
+        const sum = this.summer.apply([state, internalTerm]);
+        return sum;
+    }
+    result(state) {
+        return state.toRDF();
+    }
+}
+class Min extends BaseAggregator {
+    init(start) {
+        const { value } = extractNumericValueAndTypeOrError(start);
+        return { minNum: value, minTerm: start };
+    }
+    put(state, term) {
+        const { value } = extractNumericValueAndTypeOrError(term);
+        if (value < state.minNum) {
+            return {
+                minNum: value,
+                minTerm: term,
+            };
+        }
+        return state;
+    }
+    result(state) {
+        return state.minTerm;
+    }
+}
+class Max extends BaseAggregator {
+    init(start) {
+        const { value } = extractNumericValueAndTypeOrError(start);
+        return { maxNum: value, maxTerm: start };
+    }
+    put(state, term) {
+        const { value } = extractNumericValueAndTypeOrError(term);
+        if (value >= state.maxNum) {
+            return {
+                maxNum: value,
+                maxTerm: term,
+            };
+        }
+        return state;
+    }
+    result(state) {
+        return state.maxTerm;
+    }
+}
+class Average extends BaseAggregator {
+    constructor() {
+        super(...arguments);
+        this.summer = functions_1.regularFunctions.get(C.RegularOperator.ADDITION);
+        this.divider = functions_1.regularFunctions.get(C.RegularOperator.DIVISION);
+    }
+    static emptyValue() {
+        return Helpers_1.number(0, Consts_1.TypeURL.XSD_INTEGER).toRDF();
+    }
+    init(start) {
+        const { value, type } = extractNumericValueAndTypeOrError(start);
+        const sum = new E.NumericLiteral(value, RDFDM.namedNode(type));
+        return { sum, count: 1 };
+    }
+    put(state, term) {
+        const { value, type } = extractNumericValueAndTypeOrError(term);
+        const internalTerm = new E.NumericLiteral(value, RDFDM.namedNode(type));
+        const sum = this.summer.apply([state.sum, internalTerm]);
+        return {
+            sum,
+            count: state.count + 1,
+        };
+    }
+    result(state) {
+        const count = new E.NumericLiteral(state.count, RDFDM.namedNode(C.TypeURL.XSD_INTEGER));
+        const result = this.divider.apply([state.sum, count]);
+        return result.toRDF();
+    }
+}
+class GroupConcat extends BaseAggregator {
+    static emptyValue() {
+        return Helpers_1.string('').toRDF();
+    }
+    init(start) {
+        return start.value;
+    }
+    put(state, term) {
+        return state + this.separator + term.value;
+    }
+    result(state) {
+        return Helpers_1.string(state).toRDF();
+    }
+}
+class Sample extends BaseAggregator {
+    init(start) {
+        return start;
+    }
+    put(state, term) {
+        return state; // First value is our sample
+    }
+    result(state) {
+        return state;
+    }
+}
+exports.aggregators = {
+    count: Count,
+    sum: Sum,
+    min: Min,
+    max: Max,
+    avg: Average,
+    group_concat: GroupConcat,
+    sample: Sample,
+};
+function extractNumericValueAndTypeOrError(term) {
+    // TODO: Check behaviour
+    if (term.termType !== 'Literal' || !C.NumericTypeURLs.contains(term.datatype.value)) {
+        throw new Error('Term is not numeric');
+    }
+    const type = term.datatype.value;
+    const value = Parsing_1.parseXSDFloat(term.value);
+    return { type, value };
+}
+//# sourceMappingURL=AggregateEvaluator.js.map
+
+/***/ }),
+
+/***/ "./node_modules/sparqlee/dist/lib/evaluators/AsyncEvaluator.js":
+/*!*********************************************************************!*\
+  !*** ./node_modules/sparqlee/dist/lib/evaluators/AsyncEvaluator.js ***!
+  \*********************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+Object.defineProperty(exports, "__esModule", { value: true });
+const Transformation_1 = __webpack_require__(/*! ../Transformation */ "./node_modules/sparqlee/dist/lib/Transformation.js");
+const RecursiveExpressionEvaluator_1 = __webpack_require__(/*! ./RecursiveExpressionEvaluator */ "./node_modules/sparqlee/dist/lib/evaluators/RecursiveExpressionEvaluator.js");
+class AsyncEvaluator {
+    constructor(algExpr, config = {}) {
+        this.algExpr = algExpr;
+        this.config = config;
+        this.expr = Transformation_1.transformAlgebra(algExpr);
+        const context = {
+            now: config.now || new Date(Date.now()),
+            baseIRI: config.baseIRI || undefined,
+            exists: config.exists,
+            aggregate: config.aggregate,
+        };
+        this.evaluator = new RecursiveExpressionEvaluator_1.AsyncRecursiveEvaluator(context);
+    }
+    async evaluate(mapping) {
+        const result = await this.evaluator.evaluate(this.expr, mapping);
+        return log(result).toRDF();
+    }
+    async evaluateAsEBV(mapping) {
+        const result = await this.evaluator.evaluate(this.expr, mapping);
+        return log(result).coerceEBV();
+    }
+    async evaluateAsInternal(mapping) {
+        const result = await this.evaluator.evaluate(this.expr, mapping);
+        return log(result);
+    }
+}
+exports.AsyncEvaluator = AsyncEvaluator;
+function log(val) {
+    // console.log(val);
+    return val;
+}
+//# sourceMappingURL=AsyncEvaluator.js.map
+
+/***/ }),
+
+/***/ "./node_modules/sparqlee/dist/lib/evaluators/RecursiveExpressionEvaluator.js":
+/*!***********************************************************************************!*\
+  !*** ./node_modules/sparqlee/dist/lib/evaluators/RecursiveExpressionEvaluator.js ***!
+  \***********************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+Object.defineProperty(exports, "__esModule", { value: true });
+const E = __webpack_require__(/*! ../expressions */ "./node_modules/sparqlee/dist/lib/expressions/index.js");
+const Err = __webpack_require__(/*! ../util/Errors */ "./node_modules/sparqlee/dist/lib/util/Errors.js");
+const Transformation_1 = __webpack_require__(/*! ../Transformation */ "./node_modules/sparqlee/dist/lib/Transformation.js");
+const sharedEvaluators = {
+    term(expr, mapping) {
+        return expr;
+    },
+    variable(expr, mapping) {
+        const term = mapping.get(expr.name);
+        if (!term) {
+            throw new Err.UnboundVariableError(expr.name, mapping);
+        }
+        return Transformation_1.transformRDFTermUnsafe(term);
+    },
+};
+class AsyncRecursiveEvaluator {
+    constructor(context) {
+        this.context = context;
+        this.subEvaluators = {
+            // Shared
+            [E.ExpressionType.Term]: sharedEvaluators.term,
+            [E.ExpressionType.Variable]: sharedEvaluators.variable,
+            // Async
+            [E.ExpressionType.Operator]: this.evalOperator,
+            [E.ExpressionType.SpecialOperator]: this.evalSpecialOperator,
+            [E.ExpressionType.Named]: this.evalNamed,
+            [E.ExpressionType.Existence]: this.evalExistence,
+            [E.ExpressionType.Aggregate]: this.evalAggregate,
+        };
+    }
+    async evaluate(expr, mapping) {
+        const evaluator = this.subEvaluators[expr.expressionType];
+        if (!evaluator) {
+            throw new Err.InvalidExpressionType(expr);
+        }
+        return evaluator.bind(this)(expr, mapping);
+    }
+    async evalOperator(expr, mapping) {
+        const argPromises = expr.args.map((arg) => this.evaluate(arg, mapping));
+        const argResults = await Promise.all(argPromises);
+        return expr.apply(argResults);
+    }
+    async evalSpecialOperator(expr, mapping) {
+        const evaluate = this.evaluate.bind(this);
+        const context = {
+            args: expr.args,
+            mapping,
+            evaluate,
+            context: {
+                now: this.context.now,
+                baseIRI: this.context.baseIRI,
+                bnode: this.context.bnode,
+            },
+        };
+        return expr.applyAsync(context);
+    }
+    async evalNamed(expr, mapping) {
+        const argPromises = expr.args.map((arg) => this.evaluate(arg, mapping));
+        const argResults = await Promise.all(argPromises);
+        return expr.apply(argResults);
+    }
+    async evalExistence(expr, mapping) {
+        if (!this.context.exists) {
+            throw new Err.NoExistenceHook();
+        }
+        return new E.BooleanLiteral(await this
+            .context
+            .exists(expr.expression, mapping));
+    }
+    // TODO: Remove?
+    async evalAggregate(expr, _mapping) {
+        if (!this.context.aggregate) {
+            throw new Err.NoExistenceHook();
+        }
+        return Transformation_1.transformRDFTermUnsafe(await this
+            .context
+            .aggregate(expr.expression));
+    }
+}
+exports.AsyncRecursiveEvaluator = AsyncRecursiveEvaluator;
+class SyncRecursiveEvaluator {
+    constructor(context) {
+        this.context = context;
+        this.subEvaluators = {
+            // Shared
+            [E.ExpressionType.Term]: sharedEvaluators.term,
+            [E.ExpressionType.Variable]: sharedEvaluators.variable,
+            // Sync
+            [E.ExpressionType.Operator]: this.evalOperator,
+            [E.ExpressionType.SpecialOperator]: this.evalSpecialOperator,
+            [E.ExpressionType.Named]: this.evalNamed,
+            [E.ExpressionType.Existence]: this.evalExistence,
+            [E.ExpressionType.Aggregate]: this.evalAggregate,
+        };
+    }
+    evaluate(expr, mapping) {
+        const evaluator = this.subEvaluators[expr.expressionType];
+        if (!evaluator) {
+            throw new Err.InvalidExpressionType(expr);
+        }
+        return evaluator.bind(this)(expr, mapping);
+    }
+    evalOperator(expr, mapping) {
+        const args = expr.args.map((arg) => this.evaluate(arg, mapping));
+        return expr.apply(args);
+    }
+    evalSpecialOperator(expr, mapping) {
+        const evaluate = this.evaluate.bind(this);
+        const context = {
+            args: expr.args,
+            mapping,
+            evaluate,
+            context: {
+                now: this.context.now,
+                baseIRI: this.context.baseIRI,
+                bnode: this.context.bnode,
+            },
+        };
+        return expr.applySync(context);
+    }
+    evalNamed(expr, mapping) {
+        const args = expr.args.map((arg) => this.evaluate(arg, mapping));
+        return expr.apply(args);
+    }
+    evalExistence(expr, mapping) {
+        if (!this.context.exists) {
+            throw new Err.NoExistenceHook();
+        }
+        return new E.BooleanLiteral(this
+            .context
+            .exists(expr.expression, mapping));
+    }
+    evalAggregate(expr, mapping) {
+        if (!this.context.aggregate) {
+            throw new Err.NoAggregator();
+        }
+        return Transformation_1.transformRDFTermUnsafe(this
+            .context
+            .aggregate(expr.expression));
+    }
+}
+exports.SyncRecursiveEvaluator = SyncRecursiveEvaluator;
+class UnsupportedOperation extends Error {
+    constructor(operation) {
+        super(`Operation '${operation}' is unsupported in SimpleEvaluator`);
+    }
+}
+exports.UnsupportedOperation = UnsupportedOperation;
+//# sourceMappingURL=RecursiveExpressionEvaluator.js.map
+
+/***/ }),
+
+/***/ "./node_modules/sparqlee/dist/lib/evaluators/SyncEvaluator.js":
+/*!********************************************************************!*\
+  !*** ./node_modules/sparqlee/dist/lib/evaluators/SyncEvaluator.js ***!
+  \********************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+Object.defineProperty(exports, "__esModule", { value: true });
+const Transformation_1 = __webpack_require__(/*! ../Transformation */ "./node_modules/sparqlee/dist/lib/Transformation.js");
+const RecursiveExpressionEvaluator_1 = __webpack_require__(/*! ./RecursiveExpressionEvaluator */ "./node_modules/sparqlee/dist/lib/evaluators/RecursiveExpressionEvaluator.js");
+class SyncEvaluator {
+    constructor(algExpr, config = {}) {
+        this.algExpr = algExpr;
+        this.config = config;
+        this.expr = Transformation_1.transformAlgebra(algExpr);
+        const context = {
+            now: config.now || new Date(Date.now()),
+            baseIRI: config.baseIRI || undefined,
+            exists: config.exists,
+            aggregate: config.aggregate,
+        };
+        this.evaluator = new RecursiveExpressionEvaluator_1.SyncRecursiveEvaluator(context);
+    }
+    evaluate(mapping) {
+        const result = this.evaluator.evaluate(this.expr, mapping);
+        return log(result).toRDF();
+    }
+    evaluateAsEBV(mapping) {
+        const result = this.evaluator.evaluate(this.expr, mapping);
+        return log(result).coerceEBV();
+    }
+    evaluateAsInternal(mapping) {
+        const result = this.evaluator.evaluate(this.expr, mapping);
+        return log(result);
+    }
+}
+exports.SyncEvaluator = SyncEvaluator;
+function log(val) {
+    // console.log(val);
+    return val;
+}
+//# sourceMappingURL=SyncEvaluator.js.map
+
+/***/ }),
+
+/***/ "./node_modules/sparqlee/dist/lib/expressions/Aggregate.js":
+/*!*****************************************************************!*\
+  !*** ./node_modules/sparqlee/dist/lib/expressions/Aggregate.js ***!
+  \*****************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+Object.defineProperty(exports, "__esModule", { value: true });
+const Expressions_1 = __webpack_require__(/*! ./Expressions */ "./node_modules/sparqlee/dist/lib/expressions/Expressions.js");
+class Aggregate {
+    constructor(name, expression) {
+        this.name = name;
+        this.expression = expression;
+        this.expressionType = Expressions_1.ExpressionType.Aggregate;
+    }
+}
+exports.Aggregate = Aggregate;
+//# sourceMappingURL=Aggregate.js.map
+
+/***/ }),
+
+/***/ "./node_modules/sparqlee/dist/lib/expressions/Existence.js":
+/*!*****************************************************************!*\
+  !*** ./node_modules/sparqlee/dist/lib/expressions/Existence.js ***!
+  \*****************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+Object.defineProperty(exports, "__esModule", { value: true });
+const Expressions_1 = __webpack_require__(/*! ./Expressions */ "./node_modules/sparqlee/dist/lib/expressions/Expressions.js");
+class Existence {
+    constructor(expression) {
+        this.expression = expression;
+        this.expressionType = Expressions_1.ExpressionType.Existence;
+    }
+}
+exports.Existence = Existence;
+//# sourceMappingURL=Existence.js.map
+
+/***/ }),
+
+/***/ "./node_modules/sparqlee/dist/lib/expressions/Expressions.js":
+/*!*******************************************************************!*\
+  !*** ./node_modules/sparqlee/dist/lib/expressions/Expressions.js ***!
+  \*******************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+Object.defineProperty(exports, "__esModule", { value: true });
+var ExpressionType;
+(function (ExpressionType) {
+    ExpressionType["Aggregate"] = "aggregate";
+    ExpressionType["Existence"] = "existence";
+    ExpressionType["Named"] = "named";
+    ExpressionType["Operator"] = "operator";
+    ExpressionType["SpecialOperator"] = "specialOperator";
+    ExpressionType["Term"] = "term";
+    ExpressionType["Variable"] = "variable";
+})(ExpressionType = exports.ExpressionType || (exports.ExpressionType = {}));
+//# sourceMappingURL=Expressions.js.map
+
+/***/ }),
+
+/***/ "./node_modules/sparqlee/dist/lib/expressions/Named.js":
+/*!*************************************************************!*\
+  !*** ./node_modules/sparqlee/dist/lib/expressions/Named.js ***!
+  \*************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+Object.defineProperty(exports, "__esModule", { value: true });
+const Expressions_1 = __webpack_require__(/*! ./Expressions */ "./node_modules/sparqlee/dist/lib/expressions/Expressions.js");
+class Named {
+    constructor(name, args, apply) {
+        this.name = name;
+        this.args = args;
+        this.apply = apply;
+        this.expressionType = Expressions_1.ExpressionType.Named;
+    }
+}
+exports.Named = Named;
+//# sourceMappingURL=Named.js.map
+
+/***/ }),
+
+/***/ "./node_modules/sparqlee/dist/lib/expressions/Operator.js":
+/*!****************************************************************!*\
+  !*** ./node_modules/sparqlee/dist/lib/expressions/Operator.js ***!
+  \****************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+Object.defineProperty(exports, "__esModule", { value: true });
+const Expressions_1 = __webpack_require__(/*! ./Expressions */ "./node_modules/sparqlee/dist/lib/expressions/Expressions.js");
+class Operator {
+    constructor(args, apply) {
+        this.args = args;
+        this.apply = apply;
+        this.expressionType = Expressions_1.ExpressionType.Operator;
+    }
+}
+exports.Operator = Operator;
+//# sourceMappingURL=Operator.js.map
+
+/***/ }),
+
+/***/ "./node_modules/sparqlee/dist/lib/expressions/SpecialOperator.js":
+/*!***********************************************************************!*\
+  !*** ./node_modules/sparqlee/dist/lib/expressions/SpecialOperator.js ***!
+  \***********************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+Object.defineProperty(exports, "__esModule", { value: true });
+const Expressions_1 = __webpack_require__(/*! ./Expressions */ "./node_modules/sparqlee/dist/lib/expressions/Expressions.js");
+class SpecialOperator {
+    constructor(args, applyAsync, applySync) {
+        this.args = args;
+        this.applyAsync = applyAsync;
+        this.applySync = applySync;
+        this.expressionType = Expressions_1.ExpressionType.SpecialOperator;
+    }
+}
+exports.SpecialOperator = SpecialOperator;
+//# sourceMappingURL=SpecialOperator.js.map
+
+/***/ }),
+
+/***/ "./node_modules/sparqlee/dist/lib/expressions/Term.js":
+/*!************************************************************!*\
+  !*** ./node_modules/sparqlee/dist/lib/expressions/Term.js ***!
+  \************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+Object.defineProperty(exports, "__esModule", { value: true });
+const RDFDM = __webpack_require__(/*! @rdfjs/data-model */ "./node_modules/@rdfjs/data-model/index.js");
+const Expressions_1 = __webpack_require__(/*! ./Expressions */ "./node_modules/sparqlee/dist/lib/expressions/Expressions.js");
+const C = __webpack_require__(/*! ../util/Consts */ "./node_modules/sparqlee/dist/lib/util/Consts.js");
+const Err = __webpack_require__(/*! ../util/Errors */ "./node_modules/sparqlee/dist/lib/util/Errors.js");
+class Term {
+    constructor() {
+        this.expressionType = Expressions_1.ExpressionType.Term;
+    }
+    str() {
+        throw new Err.InvalidArgumentTypes([this], C.RegularOperator.STR);
+    }
+    coerceEBV() {
+        throw new Err.EBVCoercionError(this);
+    }
+}
+exports.Term = Term;
+// NamedNodes -----------------------------------------------------------------
+class NamedNode extends Term {
+    constructor(value) {
+        super();
+        this.value = value;
+        this.termType = 'namedNode';
+    }
+    toRDF() {
+        return RDFDM.namedNode(this.value);
+    }
+    str() {
+        return this.value;
+    }
+}
+exports.NamedNode = NamedNode;
+// BlankNodes -----------------------------------------------------------------
+class BlankNode extends Term {
+    constructor(value) {
+        super();
+        this.value = value;
+        this.termType = 'blankNode';
+        this.value = value;
+    }
+    static nextID() {
+        BlankNode._nextID += 1;
+        return BlankNode.nextID.toString();
+    }
+    toRDF() {
+        return RDFDM.blankNode(this.value);
+    }
+}
+BlankNode._nextID = 0;
+exports.BlankNode = BlankNode;
+// Literals-- -----------------------------------------------------------------
+class Literal extends Term {
+    constructor(typedValue, typeURL, strValue, language) {
+        super();
+        this.typedValue = typedValue;
+        this.typeURL = typeURL;
+        this.strValue = strValue;
+        this.language = language;
+        this.termType = 'literal';
+        this.type = C.type(typeURL.value);
+    }
+    toRDF() {
+        return RDFDM.literal(this.strValue || this.str(), this.language || this.typeURL);
+    }
+    str() {
+        return this.strValue || this.typedValue.toString();
+    }
+}
+exports.Literal = Literal;
+class NumericLiteral extends Literal {
+    coerceEBV() {
+        return !!this.typedValue;
+    }
+    toRDF() {
+        const term = super.toRDF();
+        if (!isFinite(this.typedValue)) {
+            term.value = term.value.replace('Infinity', 'INF');
+        }
+        return term;
+    }
+    str() {
+        return this.strValue
+            || NumericLiteral.specificFormatters[this.type](this.typedValue);
+    }
+}
+NumericLiteral.specificFormatters = {
+    integer: (value) => value.toFixed(),
+    float: (value) => value.toString(),
+    decimal: (value) => value.toString(),
+    // // Be consistent with float
+    // decimal: (value) => {
+    //   const jsDecimal = value.toString();
+    //   return jsDecimal.match(/\./)
+    //     ? jsDecimal
+    //     : jsDecimal + '.0';
+    // },
+    // https://www.w3.org/TR/xmlschema-2/#double
+    double: (value) => {
+        const jsExponential = value.toExponential();
+        const [jsMantisse, jsExponent] = jsExponential.split('e');
+        // leading + must be removed for integer
+        // https://www.w3.org/TR/xmlschema-2/#integer
+        const exponent = jsExponent.replace(/\+/, '');
+        // SPARQL test suite prefers trailing zero's
+        const mantisse = jsMantisse.match(/\./)
+            ? jsMantisse
+            : jsMantisse + '.0';
+        return `${mantisse}E${exponent}`;
+    },
+};
+exports.NumericLiteral = NumericLiteral;
+class BooleanLiteral extends Literal {
+    constructor(typedValue, strValue) {
+        super(typedValue, C.make(C.TypeURL.XSD_BOOLEAN), strValue);
+        this.typedValue = typedValue;
+        this.strValue = strValue;
+    }
+    coerceEBV() {
+        return !!this.typedValue;
+    }
+}
+exports.BooleanLiteral = BooleanLiteral;
+class DateTimeLiteral extends Literal {
+    // strValue is mandatory here because toISOString will always add
+    // milliseconds, even if they were not present.
+    constructor(typedValue, strValue) {
+        super(typedValue, C.make(C.TypeURL.XSD_DATE_TIME), strValue);
+        this.typedValue = typedValue;
+        this.strValue = strValue;
+    }
+}
+exports.DateTimeLiteral = DateTimeLiteral;
+class LangStringLiteral extends Literal {
+    constructor(typedValue, language) {
+        super(typedValue, C.make(C.TypeURL.RDF_LANG_STRING), typedValue, language);
+        this.typedValue = typedValue;
+        this.language = language;
+    }
+    coerceEBV() {
+        return this.strValue.length !== 0;
+    }
+}
+exports.LangStringLiteral = LangStringLiteral;
+// https://www.w3.org/TR/2004/REC-rdf-concepts-20040210/#dfn-plain-literal
+// https://www.w3.org/TR/sparql11-query/#defn_SimpleLiteral
+// https://www.w3.org/TR/sparql11-query/#func-strings
+// This does not include language tagged literals
+class StringLiteral extends Literal {
+    constructor(typedValue) {
+        super(typedValue, C.make(C.TypeURL.XSD_STRING), typedValue);
+        this.typedValue = typedValue;
+    }
+    coerceEBV() {
+        return this.strValue.length !== 0;
+    }
+}
+exports.StringLiteral = StringLiteral;
+/*
+ * This class is used when a literal is parsed, and it's value is
+ * an invalid lexical form for it's datatype. The spec defines value with
+ * invalid lexical form are still valid terms, and as such we can not error
+ * immediately. This class makes sure that the typedValue will remain undefined,
+ * and the category 'nonlexical'. This way, only when operators apply to the
+ * 'nonlexical' category, they will keep working, otherwise they will throw a
+ * type error.
+ * This seems to match the spec, except maybe for functions that accept
+ * non-lexical values for their datatype.
+ *
+ * See:
+ *  - https://www.w3.org/TR/xquery/#dt-type-error
+ *  - https://www.w3.org/TR/rdf-concepts/#section-Literal-Value
+ *  - https://www.w3.org/TR/xquery/#dt-ebv
+ *  - ... some other more precise thing i can't find...
+ */
+class NonLexicalLiteral extends Literal {
+    constructor(typedValue, typeURL, strValue, language) {
+        super(typedValue, typeURL, strValue, language);
+        this.typedValue = undefined;
+        this.type = 'nonlexical';
+        this.shouldBeCategory = C.type(typeURL.value);
+    }
+    coerceEBV() {
+        const isNumericOrBool = C.PrimitiveNumericTypes.contains(this.shouldBeCategory)
+            || this.shouldBeCategory === 'boolean';
+        if (isNumericOrBool) {
+            return false;
+        }
+        throw new Err.EBVCoercionError(this);
+    }
+}
+exports.NonLexicalLiteral = NonLexicalLiteral;
+//# sourceMappingURL=Term.js.map
+
+/***/ }),
+
+/***/ "./node_modules/sparqlee/dist/lib/expressions/Variable.js":
+/*!****************************************************************!*\
+  !*** ./node_modules/sparqlee/dist/lib/expressions/Variable.js ***!
+  \****************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+Object.defineProperty(exports, "__esModule", { value: true });
+const Expressions_1 = __webpack_require__(/*! ./Expressions */ "./node_modules/sparqlee/dist/lib/expressions/Expressions.js");
+class Variable {
+    constructor(name) {
+        this.expressionType = Expressions_1.ExpressionType.Variable;
+        this.name = name;
+    }
+}
+exports.Variable = Variable;
+//# sourceMappingURL=Variable.js.map
+
+/***/ }),
+
+/***/ "./node_modules/sparqlee/dist/lib/expressions/index.js":
+/*!*************************************************************!*\
+  !*** ./node_modules/sparqlee/dist/lib/expressions/index.js ***!
+  \*************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+function __export(m) {
+    for (var p in m) if (!exports.hasOwnProperty(p)) exports[p] = m[p];
+}
+Object.defineProperty(exports, "__esModule", { value: true });
+__export(__webpack_require__(/*! ./Expressions */ "./node_modules/sparqlee/dist/lib/expressions/Expressions.js"));
+__export(__webpack_require__(/*! ./Variable */ "./node_modules/sparqlee/dist/lib/expressions/Variable.js"));
+__export(__webpack_require__(/*! ./Term */ "./node_modules/sparqlee/dist/lib/expressions/Term.js"));
+__export(__webpack_require__(/*! ./Operator */ "./node_modules/sparqlee/dist/lib/expressions/Operator.js"));
+__export(__webpack_require__(/*! ./SpecialOperator */ "./node_modules/sparqlee/dist/lib/expressions/SpecialOperator.js"));
+__export(__webpack_require__(/*! ./Named */ "./node_modules/sparqlee/dist/lib/expressions/Named.js"));
+__export(__webpack_require__(/*! ./Aggregate */ "./node_modules/sparqlee/dist/lib/expressions/Aggregate.js"));
+__export(__webpack_require__(/*! ./Existence */ "./node_modules/sparqlee/dist/lib/expressions/Existence.js"));
+//# sourceMappingURL=index.js.map
+
+/***/ }),
+
+/***/ "./node_modules/sparqlee/dist/lib/functions/Core.js":
+/*!**********************************************************!*\
+  !*** ./node_modules/sparqlee/dist/lib/functions/Core.js ***!
+  \**********************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+Object.defineProperty(exports, "__esModule", { value: true });
+const immutable_1 = __webpack_require__(/*! immutable */ "./node_modules/immutable/dist/immutable.js");
+const Err = __webpack_require__(/*! ../util/Errors */ "./node_modules/sparqlee/dist/lib/util/Errors.js");
+class BaseFunction {
+    constructor(operator, definition) {
+        this.operator = operator;
+        /**
+         * A function application works by monomorphing the function to a specific
+         * instance depending on the runtime types. We then just apply this function
+         * to the args.
+         */
+        this.apply = (args) => {
+            const concreteFunction = this.monomorph(args) || this.handleInvalidTypes(args);
+            return concreteFunction(args);
+        };
+        this.arity = definition.arity;
+        this.overloads = definition.overloads;
+    }
+    /**
+     * We monomorph by checking the map of overloads for keys corresponding
+     * to the runtime types. We start by checking for an implementation for the
+     * most concrete types (integer, string, date, IRI), if we find none,
+     * we consider their term types (literal, blank, IRI), and lastly we consider
+     * all arguments as generic terms.
+     *
+     * Another option would be to populate the overloads with an implementation
+     * for every concrete type when the function is generic over termtypes or
+     * terms.
+     */
+    monomorph(args) {
+        return ( false
+            // TODO: Maybe use non primitive types first?
+            || this.overloads.get(Typer.asConcreteTypes(args))
+            || this.overloads.get(Typer.asTermTypes(args))
+            || this.overloads.get(Typer.asGenericTerms(args)));
+    }
+}
+exports.BaseFunction = BaseFunction;
+class Typer {
+    static asConcreteTypes(args) {
+        // tslint:disable-next-line:no-any
+        return immutable_1.List(args.map((a) => a.type || a.termType));
+    }
+    static asTermTypes(args) {
+        return immutable_1.List(args.map((a) => a.termType));
+    }
+    static asGenericTerms(args) {
+        return immutable_1.List(Array(args.length).fill('term'));
+    }
+}
+// Regular Functions ----------------------------------------------------------
+/**
+ * Varying kinds of functions take arguments of different types on which the
+ * specific behaviour is dependant. Although their behaviour is often varying,
+ * it is always relatively simple, and better suited for synced behaviour.
+ * The types of their arguments are always terms, but might differ in
+ * their term-type (eg: iri, literal),
+ * their specific literal type (eg: string, integer),
+ * their arity (see BNODE),
+ * or even their specific numeric type (eg: integer, float).
+ *
+ * Examples include:
+ *  - Arithmetic operations such as: *, -, /, +
+ *  - Bool operators such as: =, !=, <=, <, ...
+ *  - Functions such as: str, IRI
+ *
+ * See also: https://www.w3.org/TR/sparql11-query/#func-rdfTerms
+ * and https://www.w3.org/TR/sparql11-query/#OperatorMapping
+ */
+class RegularFunction extends BaseFunction {
+    constructor(op, definition) {
+        super(op, definition);
+        this.functionClass = 'regular';
+    }
+    handleInvalidTypes(args) {
+        throw new Err.InvalidArgumentTypes(args, this.operator);
+    }
+}
+exports.RegularFunction = RegularFunction;
+// Named Functions ------------------------------------------------------------
+class NamedFunction extends BaseFunction {
+    constructor(op, definition) {
+        super(op, definition);
+        this.functionClass = 'named';
+    }
+    handleInvalidTypes(args) {
+        throw new Err.InvalidArgumentTypes(args, this.operator);
+    }
+}
+exports.NamedFunction = NamedFunction;
+// Special Functions ----------------------------------------------------------
+/*
+ * Special Functions are those that don't really fit in sensible categories and
+ * have extremely heterogeneous signatures that make them impossible to abstract
+ * over. They are small in number, and their behaviour is often complex and open
+ * for multiple correct implementations with different trade-offs.
+ *
+ * Due to their varying nature, they need all available information present
+ * during evaluation. This reflects in the signature of the apply() method.
+ *
+ * They need access to an evaluator to be able to even implement their logic.
+ * Especially relevant for IF, and the logical connectives.
+ *
+ * They can have both sync and async implementations, and both would make sense
+ * in some contexts.
+ */
+class SpecialFunction {
+    constructor(operator, definition) {
+        this.operator = operator;
+        this.functionClass = 'special';
+        this.arity = definition.arity;
+        this.applySync = definition.applySync;
+        this.applyAsync = definition.applyAsync;
+        this.checkArity = definition.checkArity || defaultArityCheck(this.arity);
+    }
+}
+exports.SpecialFunction = SpecialFunction;
+function defaultArityCheck(arity) {
+    return (args) => {
+        // Infinity is used to represent var-args, so it's always correct.
+        if (arity === Infinity) {
+            return true;
+        }
+        // If the function has overloaded arity, the actual arity needs to be present.
+        if (Array.isArray(arity)) {
+            return arity.indexOf(args.length) >= 0;
+        }
+        return args.length === arity;
+    };
+}
+// Type Promotion -------------------------------------------------------------
+const _promote = {
+    integer: {
+        integer: 'integer',
+        decimal: 'decimal',
+        float: 'float',
+        double: 'double',
+    },
+    decimal: {
+        integer: 'decimal',
+        decimal: 'decimal',
+        float: 'float',
+        double: 'double',
+    },
+    float: {
+        integer: 'float',
+        decimal: 'float',
+        float: 'float',
+        double: 'double',
+    },
+    double: {
+        integer: 'double',
+        decimal: 'double',
+        float: 'double',
+        double: 'double',
+    },
+};
+function promote(left, right) {
+    return _promote[left][right];
+}
+exports.promote = promote;
+//# sourceMappingURL=Core.js.map
+
+/***/ }),
+
+/***/ "./node_modules/sparqlee/dist/lib/functions/Helpers.js":
+/*!*************************************************************!*\
+  !*** ./node_modules/sparqlee/dist/lib/functions/Helpers.js ***!
+  \*************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+/**
+ * These helpers provide a (albeit inflexible) DSL for writing function
+ * definitions for the SPARQL functions.
+ */
+Object.defineProperty(exports, "__esModule", { value: true });
+const immutable_1 = __webpack_require__(/*! immutable */ "./node_modules/immutable/dist/immutable.js");
+const E = __webpack_require__(/*! ../expressions */ "./node_modules/sparqlee/dist/lib/expressions/index.js");
+const C = __webpack_require__(/*! ../util/Consts */ "./node_modules/sparqlee/dist/lib/util/Consts.js");
+const Err = __webpack_require__(/*! ../util/Errors */ "./node_modules/sparqlee/dist/lib/util/Errors.js");
+const Consts_1 = __webpack_require__(/*! ../util/Consts */ "./node_modules/sparqlee/dist/lib/util/Consts.js");
+const Core_1 = __webpack_require__(/*! ./Core */ "./node_modules/sparqlee/dist/lib/functions/Core.js");
+function declare() {
+    return new Builder();
+}
+exports.declare = declare;
+class Builder {
+    constructor() {
+        this.implementations = [];
+    }
+    collect() {
+        return map(this.implementations);
+    }
+    log() {
+        // tslint:disable-next-line:no-console
+        console.log(this.implementations);
+        return this;
+    }
+    add(impl) {
+        this.implementations.push(impl);
+        return this;
+    }
+    set(argTypes, func) {
+        const types = immutable_1.List(argTypes);
+        return this.add(new Impl({ types, func }));
+    }
+    copy({ from, to }) {
+        const last = this.implementations.length - 1;
+        const _from = immutable_1.List(from);
+        for (let i = last; i >= 0; i--) {
+            const impl = this.implementations[i];
+            if (impl.get('types').equals(_from)) {
+                return this.set(to, impl.get('func'));
+            }
+        }
+        throw new Err.UnexpectedError('Tried to copy implementation, but types not found', { from, to });
+    }
+    onUnary(type, op) {
+        return this.set([type], ([val]) => {
+            return op(val);
+        });
+    }
+    onUnaryTyped(type, op) {
+        return this.set([type], ([val]) => {
+            return op(val.typedValue);
+        });
+    }
+    onBinary(types, op) {
+        return this.set(types, ([left, right]) => {
+            return op(left, right);
+        });
+    }
+    onBinaryTyped(types, op) {
+        return this.set(types, ([left, right]) => {
+            return op(left.typedValue, right.typedValue);
+        });
+    }
+    onTernaryTyped(types, op) {
+        return this.set(types, ([a1, a2, a3]) => {
+            return op(a1.typedValue, a2.typedValue, a3.typedValue);
+        });
+    }
+    onTernary(types, op) {
+        return this.set(types, ([a1, a2, a3]) => {
+            return op(a1, a2, a3);
+        });
+    }
+    onQuaternaryTyped(types, op) {
+        return this.set(types, ([a1, a2, a3, a4]) => {
+            return op(a1.typedValue, a2.typedValue, a3.typedValue, a4.typedValue);
+        });
+    }
+    unimplemented(msg) {
+        for (let arity = 0; arity <= 5; arity++) {
+            const types = Array(arity).fill('term');
+            const func = (_args) => { throw new Err.UnimplementedError(msg); };
+            this.set(types, func);
+        }
+        return this;
+    }
+    onTerm1(op) {
+        return this.set(['term'], ([term]) => op(term));
+    }
+    onLiteral1(op) {
+        return this.set(['literal'], ([term]) => op(term));
+    }
+    onBoolean1(op) {
+        return this
+            .set(['boolean'], ([lit]) => op(lit));
+    }
+    onBoolean1Typed(op) {
+        return this
+            .set(['boolean'], ([lit]) => op(lit.typedValue));
+    }
+    onString1(op) {
+        return this
+            .set(['string'], ([lit]) => op(lit));
+    }
+    onString1Typed(op) {
+        return this
+            .set(['string'], ([lit]) => op(lit.typedValue));
+    }
+    onLangString1(op) {
+        return this
+            .set(['langString'], ([lit]) => op(lit));
+    }
+    onStringly1(op) {
+        return this
+            .set(['string'], ([lit]) => op(lit))
+            .set(['langString'], ([lit]) => op(lit));
+    }
+    onStringly1Typed(op) {
+        return this
+            .set(['string'], ([lit]) => op(lit.typedValue))
+            .set(['langString'], ([lit]) => op(lit.typedValue));
+    }
+    onNumeric1(op) {
+        return this
+            .set(['integer'], ([val]) => op(val))
+            .set(['decimal'], ([val]) => op(val))
+            .set(['float'], ([val]) => op(val))
+            .set(['double'], ([val]) => op(val))
+            .invalidLexicalForm(['nonlexical'], 1);
+    }
+    onDateTime1(op) {
+        return this
+            .set(['date'], ([val]) => op(val))
+            .invalidLexicalForm(['nonlexical'], 1);
+    }
+    /**
+     * Arithmetic operators take 2 numeric arguments, and return a single numerical
+     * value. The type of the return value is heavily dependant on the types of the
+     * input arguments. In JS everything is a double, but in SPARQL it is not.
+     *
+     * {@link https://www.w3.org/TR/sparql11-query/#OperatorMapping}
+     * {@link https://www.w3.org/TR/xpath-functions/#op.numeric}
+     *
+     * @param op the (simple) binary mathematical operator that
+     */
+    arithmetic(op) {
+        return this.numeric(([left, right]) => {
+            const promotionType = Core_1.promote(left.type, right.type);
+            const resultType = C.decategorize(promotionType);
+            return number(op(left.typedValue, right.typedValue), resultType);
+        });
+    }
+    numberTest(test) {
+        return this.numeric(([left, right]) => {
+            const result = test(left.typedValue, right.typedValue);
+            return bool(result);
+        });
+    }
+    stringTest(test) {
+        return this
+            .set(['string', 'string'], ([left, right]) => {
+            const result = test(left.typedValue, right.typedValue);
+            return bool(result);
+        })
+            .invalidLexicalForm(['nonlexical', 'string'], 1)
+            .invalidLexicalForm(['string', 'nonlexical'], 2);
+    }
+    booleanTest(test) {
+        return this
+            .set(['boolean', 'boolean'], ([left, right]) => {
+            const result = test(left.typedValue, right.typedValue);
+            return bool(result);
+        })
+            .invalidLexicalForm(['nonlexical', 'boolean'], 1)
+            .invalidLexicalForm(['boolean', 'nonlexical'], 2);
+    }
+    dateTimeTest(test) {
+        return this
+            .set(['date', 'date'], ([left, right]) => {
+            const result = test(left.typedValue, right.typedValue);
+            return bool(result);
+        })
+            .invalidLexicalForm(['nonlexical', 'date'], 1)
+            .invalidLexicalForm(['date', 'nonlexical'], 2);
+    }
+    numeric(op) {
+        return this
+            .set(['integer', 'integer'], op)
+            .set(['integer', 'decimal'], op)
+            .set(['integer', 'float'], op)
+            .set(['integer', 'double'], op)
+            .invalidLexicalForm(['integer', 'nonlexical'], 2)
+            .set(['decimal', 'integer'], op)
+            .set(['decimal', 'decimal'], op)
+            .set(['decimal', 'float'], op)
+            .set(['decimal', 'double'], op)
+            .invalidLexicalForm(['decimal', 'nonlexical'], 2)
+            .set(['float', 'integer'], op)
+            .set(['float', 'decimal'], op)
+            .set(['float', 'float'], op)
+            .set(['float', 'double'], op)
+            .invalidLexicalForm(['float', 'nonlexical'], 2)
+            .set(['double', 'integer'], op)
+            .set(['double', 'decimal'], op)
+            .set(['double', 'float'], op)
+            .set(['double', 'double'], op)
+            .invalidLexicalForm(['double', 'nonlexical'], 2)
+            .invalidLexicalForm(['nonlexical', 'integer'], 1)
+            .invalidLexicalForm(['nonlexical', 'decimal'], 1)
+            .invalidLexicalForm(['nonlexical', 'float'], 1)
+            .invalidLexicalForm(['nonlexical', 'double'], 1);
+    }
+    invalidLexicalForm(types, index) {
+        return this.set(types, (args) => {
+            throw new Err.InvalidLexicalForm(args[index - 1].toRDF());
+        });
+    }
+    chain(impls) {
+        this.implementations = this.implementations.concat(impls);
+        return this;
+    }
+}
+exports.Builder = Builder;
+const implDefaults = {
+    types: [],
+    func() {
+        const msg = 'Implementation not set yet declared as implemented';
+        throw new Err.UnexpectedError(msg);
+    },
+};
+class Impl extends immutable_1.Record(implDefaults) {
+    constructor(params) { super(params); }
+    get(value) {
+        return super.get(value);
+    }
+    toPair() {
+        return [this.get('types'), this.get('func')];
+    }
+}
+exports.Impl = Impl;
+function map(implementations) {
+    const typeImplPair = implementations.map((i) => i.toPair());
+    return immutable_1.Map(typeImplPair);
+}
+exports.map = map;
+// ----------------------------------------------------------------------------
+// Literal Construction helpers
+// ----------------------------------------------------------------------------
+function bool(val) {
+    return new E.BooleanLiteral(val);
+}
+exports.bool = bool;
+function number(num, dt) {
+    return new E.NumericLiteral(num, C.make(dt || Consts_1.TypeURL.XSD_FLOAT), undefined);
+}
+exports.number = number;
+function numberFromString(str, dt) {
+    const num = Number(str);
+    return new E.NumericLiteral(num, C.make(dt || Consts_1.TypeURL.XSD_FLOAT), undefined);
+}
+exports.numberFromString = numberFromString;
+function string(s) {
+    return new E.StringLiteral(s);
+}
+exports.string = string;
+function langString(s, lang) {
+    return new E.LangStringLiteral(s, lang);
+}
+exports.langString = langString;
+function dateTime(date, str) {
+    return new E.DateTimeLiteral(date, str);
+}
+exports.dateTime = dateTime;
+// ----------------------------------------------------------------------------
+// Util
+// ----------------------------------------------------------------------------
+// tslint:disable-next-line:no-any
+function log(val, ...args) {
+    // tslint:disable-next-line:no-console
+    console.log(val, args);
+    return val;
+}
+exports.log = log;
+function typeCheckLit(term, allowed, args, op) {
+    if (term.termType !== 'literal') {
+        throw new Err.InvalidArgumentTypes(args, op);
+    }
+    // tslint:disable-next-line:no-any
+    const lit = term;
+    if (!allowed.includes(lit.type)) {
+        throw new Err.InvalidArgumentTypes(args, op);
+    }
+    return lit;
+}
+exports.typeCheckLit = typeCheckLit;
+//# sourceMappingURL=Helpers.js.map
+
+/***/ }),
+
+/***/ "./node_modules/sparqlee/dist/lib/functions/NamedFunctions.js":
+/*!********************************************************************!*\
+  !*** ./node_modules/sparqlee/dist/lib/functions/NamedFunctions.js ***!
+  \********************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+Object.defineProperty(exports, "__esModule", { value: true });
+const immutable_1 = __webpack_require__(/*! immutable */ "./node_modules/immutable/dist/immutable.js");
+const Err = __webpack_require__(/*! ../util/Errors */ "./node_modules/sparqlee/dist/lib/util/Errors.js");
+const Consts_1 = __webpack_require__(/*! ../util/Consts */ "./node_modules/sparqlee/dist/lib/util/Consts.js");
+const Parsing_1 = __webpack_require__(/*! ../util/Parsing */ "./node_modules/sparqlee/dist/lib/util/Parsing.js");
+const Helpers_1 = __webpack_require__(/*! ./Helpers */ "./node_modules/sparqlee/dist/lib/functions/Helpers.js");
+// ----------------------------------------------------------------------------
+// ----------------------------------------------------------------------------
+// ----------------------------------------------------------------------------
+// Begin definitions.
+// ----------------------------------------------------------------------------
+// XPath Constructor functions
+// https://www.w3.org/TR/sparql11-query/#
+// https://www.w3.org/TR/xpath-functions/#casting-from-primitive-to-primitive
+// ----------------------------------------------------------------------------
+const toString = {
+    arity: 1,
+    overloads: Helpers_1.declare()
+        .onTerm1((term) => Helpers_1.string(term.str()))
+        .collect(),
+};
+const toFloat = {
+    arity: 1,
+    overloads: Helpers_1.declare()
+        .onNumeric1((val) => Helpers_1.number(val.typedValue))
+        .onBoolean1Typed((val) => Helpers_1.number(val ? 1 : 0))
+        .onUnary('string', (val) => {
+        const result = Parsing_1.parseXSDFloat(val.str());
+        if (!result) {
+            throw new Err.CastError(val, Consts_1.TypeURL.XSD_FLOAT);
+        }
+        return Helpers_1.number(result);
+    })
+        .copy({ from: ['string'], to: ['nonlexical'] })
+        .collect(),
+};
+const toDouble = {
+    arity: 1,
+    overloads: Helpers_1.declare()
+        .onNumeric1((val) => Helpers_1.number(val.typedValue, Consts_1.TypeURL.XSD_DOUBLE))
+        .onBoolean1Typed((val) => Helpers_1.number(val ? 1 : 0, Consts_1.TypeURL.XSD_DOUBLE))
+        .onUnary('string', (val) => {
+        const result = Parsing_1.parseXSDFloat(val.str());
+        if (!result) {
+            throw new Err.CastError(val, Consts_1.TypeURL.XSD_DOUBLE);
+        }
+        return Helpers_1.number(result, Consts_1.TypeURL.XSD_DOUBLE);
+    })
+        .copy({ from: ['string'], to: ['nonlexical'] })
+        .collect(),
+};
+const toDecimal = {
+    arity: 1,
+    overloads: Helpers_1.declare()
+        .onNumeric1((val) => {
+        const result = Parsing_1.parseXSDDecimal(val.str());
+        if (!result) {
+            throw new Err.CastError(val, Consts_1.TypeURL.XSD_DECIMAL);
+        }
+        return Helpers_1.number(result, Consts_1.TypeURL.XSD_DECIMAL);
+    })
+        .copy({ from: ['integer'], to: ['string'] })
+        .copy({ from: ['integer'], to: ['nonlexical'] })
+        .onBoolean1Typed((val) => Helpers_1.number(val ? 1 : 0, Consts_1.TypeURL.XSD_DECIMAL))
+        .collect(),
+};
+const toInteger = {
+    arity: 1,
+    overloads: Helpers_1.declare()
+        .onBoolean1Typed((val) => Helpers_1.number(val ? 1 : 0, Consts_1.TypeURL.XSD_INTEGER))
+        .onNumeric1((val) => {
+        const result = Parsing_1.parseXSDInteger(val.str());
+        if (!result) {
+            throw new Err.CastError(val, Consts_1.TypeURL.XSD_INTEGER);
+        }
+        return Helpers_1.number(result, Consts_1.TypeURL.XSD_INTEGER);
+    })
+        .copy({ from: ['integer'], to: ['string'] })
+        .copy({ from: ['integer'], to: ['nonlexical'] })
+        .collect(),
+};
+const toDatetime = {
+    arity: 1,
+    overloads: Helpers_1.declare()
+        .onUnary('date', (val) => val)
+        .onUnary('string', (val) => {
+        const date = new Date(val.str());
+        if (isNaN(date.getTime())) {
+            throw new Err.CastError(val, Consts_1.TypeURL.XSD_DATE_TIME);
+        }
+        return Helpers_1.dateTime(date, val.str());
+    })
+        .copy({ from: ['string'], to: ['nonlexical'] })
+        .collect(),
+};
+const toBoolean = {
+    arity: 1,
+    overloads: Helpers_1.declare()
+        .onNumeric1((val) => Helpers_1.bool(val.coerceEBV()))
+        .onUnary('boolean', (val) => val)
+        .onUnary('string', (val) => {
+        const str = val.str();
+        if (str !== 'true' && str !== 'false') {
+            throw new Err.CastError(val, Consts_1.TypeURL.XSD_BOOLEAN);
+        }
+        return Helpers_1.bool((str === 'true'));
+    })
+        .copy({ from: ['string'], to: ['nonlexical'] })
+        .collect(),
+};
+// End definitions.
+// ----------------------------------------------------------------------------
+// ----------------------------------------------------------------------------
+// ----------------------------------------------------------------------------
+const _definitions = {
+    // --------------------------------------------------------------------------
+    // XPath Constructor functions
+    // https://www.w3.org/TR/sparql11-query/#FunctionMapping
+    // --------------------------------------------------------------------------
+    [Consts_1.TypeURL.XSD_STRING]: toString,
+    [Consts_1.TypeURL.XSD_FLOAT]: toFloat,
+    [Consts_1.TypeURL.XSD_DOUBLE]: toDouble,
+    [Consts_1.TypeURL.XSD_DECIMAL]: toDecimal,
+    [Consts_1.TypeURL.XSD_INTEGER]: toInteger,
+    [Consts_1.TypeURL.XSD_DATE_TIME]: toDatetime,
+    [Consts_1.TypeURL.XSD_DATE]: toDatetime,
+    [Consts_1.TypeURL.XSD_BOOLEAN]: toBoolean,
+};
+exports.namedDefinitions = immutable_1.Map(_definitions);
+//# sourceMappingURL=NamedFunctions.js.map
+
+/***/ }),
+
+/***/ "./node_modules/sparqlee/dist/lib/functions/RegularFunctions.js":
+/*!**********************************************************************!*\
+  !*** ./node_modules/sparqlee/dist/lib/functions/RegularFunctions.js ***!
+  \**********************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+Object.defineProperty(exports, "__esModule", { value: true });
+const RDFDM = __webpack_require__(/*! @rdfjs/data-model */ "./node_modules/@rdfjs/data-model/index.js");
+const hash = __webpack_require__(/*! create-hash */ "./node_modules/create-hash/browser.js");
+const decimal_js_1 = __webpack_require__(/*! decimal.js */ "./node_modules/decimal.js/decimal.js");
+const uuid = __webpack_require__(/*! uuid */ "./node_modules/uuid/index.js");
+const immutable_1 = __webpack_require__(/*! immutable */ "./node_modules/immutable/dist/immutable.js");
+const E = __webpack_require__(/*! ../expressions */ "./node_modules/sparqlee/dist/lib/expressions/index.js");
+const C = __webpack_require__(/*! ../util/Consts */ "./node_modules/sparqlee/dist/lib/util/Consts.js");
+const Err = __webpack_require__(/*! ../util/Errors */ "./node_modules/sparqlee/dist/lib/util/Errors.js");
+const P = __webpack_require__(/*! ../util/Parsing */ "./node_modules/sparqlee/dist/lib/util/Parsing.js");
+const X = __webpack_require__(/*! ./XPathFunctions */ "./node_modules/sparqlee/dist/lib/functions/XPathFunctions.js");
+const Consts_1 = __webpack_require__(/*! ../util/Consts */ "./node_modules/sparqlee/dist/lib/util/Consts.js");
+const Transformation_1 = __webpack_require__(/*! ../Transformation */ "./node_modules/sparqlee/dist/lib/Transformation.js");
+const Helpers_1 = __webpack_require__(/*! ./Helpers */ "./node_modules/sparqlee/dist/lib/functions/Helpers.js");
+// ----------------------------------------------------------------------------
+// ----------------------------------------------------------------------------
+// ----------------------------------------------------------------------------
+// Begin definitions
+// ----------------------------------------------------------------------------
+// Operator Mapping
+// https://www.w3.org/TR/sparql11-query/#OperatorMapping
+// ----------------------------------------------------------------------------
+const not = {
+    arity: 1,
+    overloads: Helpers_1.declare()
+        .onTerm1((val) => Helpers_1.bool(!val.coerceEBV()))
+        .collect(),
+};
+const unaryPlus = {
+    arity: 1,
+    overloads: Helpers_1.declare()
+        .onNumeric1((val) => Helpers_1.number(val.typedValue, val.typeURL.value))
+        .collect(),
+};
+const unaryMinus = {
+    arity: 1,
+    overloads: Helpers_1.declare()
+        .onNumeric1((val) => Helpers_1.number(-val.typedValue, val.typeURL.value))
+        .collect(),
+};
+const multiplication = {
+    arity: 2,
+    overloads: Helpers_1.declare()
+        .arithmetic((left, right) => decimal_js_1.Decimal.mul(left, right).toNumber())
+        .collect(),
+};
+const division = {
+    arity: 2,
+    overloads: Helpers_1.declare()
+        .arithmetic((left, right) => decimal_js_1.Decimal.div(left, right).toNumber())
+        .onBinaryTyped(['integer', 'integer'], (left, right) => {
+        if (right === 0) {
+            throw new Err.ExpressionError('Integer division by 0');
+        }
+        return Helpers_1.number(decimal_js_1.Decimal.div(left, right).toNumber(), Consts_1.TypeURL.XSD_DECIMAL);
+    })
+        .collect(),
+};
+const addition = {
+    arity: 2,
+    overloads: Helpers_1.declare()
+        .arithmetic((left, right) => decimal_js_1.Decimal.add(left, right).toNumber())
+        .collect(),
+};
+const subtraction = {
+    arity: 2,
+    overloads: Helpers_1.declare()
+        .arithmetic((left, right) => decimal_js_1.Decimal.sub(left, right).toNumber())
+        .collect(),
+};
+// https://www.w3.org/TR/sparql11-query/#func-RDFterm-equal
+const equality = {
+    arity: 2,
+    overloads: Helpers_1.declare()
+        .numberTest((left, right) => left === right)
+        .stringTest((left, right) => left.localeCompare(right) === 0)
+        .booleanTest((left, right) => left === right)
+        .dateTimeTest((left, right) => left.getTime() === right.getTime())
+        .set(['term', 'term'], ([left, right]) => Helpers_1.bool(RDFTermEqual(left, right)))
+        .collect(),
+};
+function RDFTermEqual(_left, _right) {
+    const left = _left.toRDF();
+    const right = _right.toRDF();
+    const val = left.equals(right);
+    if ((left.termType === 'Literal') && (right.termType === 'Literal')) {
+        throw new Err.RDFEqualTypeError([_left, _right]);
+    }
+    return val;
+}
+const inequality = {
+    arity: 2,
+    overloads: Helpers_1.declare()
+        .numberTest((left, right) => left !== right)
+        .stringTest((left, right) => left.localeCompare(right) !== 0)
+        .booleanTest((left, right) => left !== right)
+        .dateTimeTest((left, right) => left.getTime() !== right.getTime())
+        .set(['term', 'term'], ([left, right]) => Helpers_1.bool(!RDFTermEqual(left, right)))
+        .collect(),
+};
+const lesserThan = {
+    arity: 2,
+    overloads: Helpers_1.declare()
+        .numberTest((left, right) => left < right)
+        .stringTest((left, right) => left.localeCompare(right) === -1)
+        .booleanTest((left, right) => left < right)
+        .dateTimeTest((left, right) => left.getTime() < right.getTime())
+        .collect(),
+};
+const greaterThan = {
+    arity: 2,
+    overloads: Helpers_1.declare()
+        .numberTest((left, right) => left > right)
+        .stringTest((left, right) => left.localeCompare(right) === 1)
+        .booleanTest((left, right) => left > right)
+        .dateTimeTest((left, right) => left.getTime() > right.getTime())
+        .collect(),
+};
+const lesserThanEqual = {
+    arity: 2,
+    overloads: Helpers_1.declare()
+        .numberTest((left, right) => left <= right)
+        .stringTest((left, right) => left.localeCompare(right) !== 1)
+        .booleanTest((left, right) => left <= right)
+        .dateTimeTest((left, right) => left.getTime() <= right.getTime())
+        .collect(),
+};
+const greaterThanEqual = {
+    arity: 2,
+    overloads: Helpers_1.declare()
+        .numberTest((left, right) => left >= right)
+        .stringTest((left, right) => left.localeCompare(right) !== -1)
+        .booleanTest((left, right) => left >= right)
+        .dateTimeTest((left, right) => left.getTime() >= right.getTime())
+        .collect(),
+};
+// ----------------------------------------------------------------------------
+// Functions on RDF Terms
+// https://www.w3.org/TR/sparql11-query/#func-rdfTerms
+// ----------------------------------------------------------------------------
+const isIRI = {
+    arity: 1,
+    overloads: Helpers_1.declare()
+        .onTerm1((term) => Helpers_1.bool(term.termType === 'namedNode'))
+        .collect(),
+};
+const isBlank = {
+    arity: 1,
+    overloads: Helpers_1.declare()
+        .onTerm1((term) => Helpers_1.bool(term.termType === 'blankNode'))
+        .collect(),
+};
+const isLiteral = {
+    arity: 1,
+    overloads: Helpers_1.declare()
+        .onTerm1((term) => Helpers_1.bool(term.termType === 'literal'))
+        .collect(),
+};
+const isNumeric = {
+    arity: 1,
+    overloads: Helpers_1.declare()
+        .onNumeric1((term) => Helpers_1.bool(true))
+        .onTerm1((term) => Helpers_1.bool(false))
+        .collect(),
+};
+const toString = {
+    arity: 1,
+    overloads: Helpers_1.declare()
+        .onTerm1((term) => Helpers_1.string(term.str()))
+        .collect(),
+};
+const lang = {
+    arity: 1,
+    overloads: Helpers_1.declare()
+        .onLiteral1((lit) => Helpers_1.string(lit.language || ''))
+        .collect(),
+};
+const datatype = {
+    arity: 1,
+    overloads: Helpers_1.declare()
+        .onLiteral1((lit) => new E.NamedNode(lit.typeURL.value))
+        .collect(),
+};
+// See special operators
+// const IRI = {};
+// See special functions
+// const BNODE = {};
+const STRDT = {
+    arity: 2,
+    overloads: Helpers_1.declare()
+        .onBinary(['string', 'namedNode'], (str, iri) => {
+        const lit = RDFDM.literal(str.typedValue, RDFDM.namedNode(iri.value));
+        return Transformation_1.transformLiteral(lit);
+    })
+        .collect(),
+};
+const STRLANG = {
+    arity: 2,
+    overloads: Helpers_1.declare()
+        .onBinaryTyped(['string', 'string'], (val, language) => new E.LangStringLiteral(val, language.toLowerCase()))
+        .collect(),
+};
+const UUID = {
+    arity: 0,
+    overloads: Helpers_1.declare()
+        .set([], () => new E.NamedNode(`urn:uuid:${uuid.v4()}`))
+        .collect(),
+};
+const STRUUID = {
+    arity: 0,
+    overloads: Helpers_1.declare()
+        .set([], () => Helpers_1.string(uuid.v4()))
+        .collect(),
+};
+// ----------------------------------------------------------------------------
+// Functions on strings
+// https://www.w3.org/TR/sparql11-query/#func-forms
+// ----------------------------------------------------------------------------
+const STRLEN = {
+    arity: 1,
+    overloads: Helpers_1.declare()
+        .onStringly1((str) => Helpers_1.number(str.typedValue.length, Consts_1.TypeURL.XSD_INTEGER))
+        .collect(),
+};
+const SUBSTR = {
+    arity: [2, 3],
+    overloads: Helpers_1.declare()
+        .onBinaryTyped(['string', 'integer'], (source, startingLoc) => {
+        return Helpers_1.string(source.substr(startingLoc - 1));
+    })
+        .onBinary(['langString', 'integer'], (source, startingLoc) => {
+        const sub = source.typedValue.substr(startingLoc.typedValue - 1);
+        return Helpers_1.langString(sub, source.language);
+    })
+        .onTernaryTyped(['string', 'integer', 'integer'], (source, startingLoc, length) => {
+        return Helpers_1.string(source.substr(startingLoc - 1, length));
+    })
+        .onTernary(['langString', 'integer', 'integer'], (source, startingLoc, length) => {
+        const sub = source.typedValue.substr(startingLoc.typedValue - 1, length.typedValue);
+        return Helpers_1.langString(sub, source.language);
+    })
+        .collect(),
+};
+const UCASE = {
+    arity: 1,
+    overloads: Helpers_1.declare()
+        .onString1Typed((lit) => Helpers_1.string(lit.toUpperCase()))
+        .onLangString1((lit) => Helpers_1.langString(lit.typedValue.toUpperCase(), lit.language))
+        .collect(),
+};
+const LCASE = {
+    arity: 1,
+    overloads: Helpers_1.declare()
+        .onString1Typed((lit) => Helpers_1.string(lit.toLowerCase()))
+        .onLangString1((lit) => Helpers_1.langString(lit.typedValue.toLowerCase(), lit.language))
+        .collect(),
+};
+const STRSTARTS = {
+    arity: 2,
+    overloads: Helpers_1.declare()
+        .onBinaryTyped(['string', 'string'], (arg1, arg2) => Helpers_1.bool(arg1.startsWith(arg2)))
+        .onBinaryTyped(['langString', 'string'], (arg1, arg2) => Helpers_1.bool(arg1.includes(arg2)))
+        .onBinary(['langString', 'langString'], (arg1, arg2) => {
+        if (arg1.language !== arg2.language) {
+            throw new Err.IncompatibleLanguageOperation(arg1, arg2);
+        }
+        return Helpers_1.bool(arg1.typedValue.startsWith(arg2.typedValue));
+    })
+        .collect(),
+};
+const STRENDS = {
+    arity: 2,
+    overloads: Helpers_1.declare()
+        .onBinaryTyped(['string', 'string'], (arg1, arg2) => Helpers_1.bool(arg1.endsWith(arg2)))
+        .onBinaryTyped(['langString', 'string'], (arg1, arg2) => Helpers_1.bool(arg1.includes(arg2)))
+        .onBinary(['langString', 'langString'], (arg1, arg2) => {
+        if (arg1.language !== arg2.language) {
+            throw new Err.IncompatibleLanguageOperation(arg1, arg2);
+        }
+        return Helpers_1.bool(arg1.typedValue.endsWith(arg2.typedValue));
+    })
+        .collect(),
+};
+const CONTAINS = {
+    arity: 2,
+    overloads: Helpers_1.declare()
+        .onBinaryTyped(['string', 'string'], (arg1, arg2) => Helpers_1.bool(arg1.includes(arg2)))
+        .onBinaryTyped(['langString', 'string'], (arg1, arg2) => Helpers_1.bool(arg1.includes(arg2)))
+        .onBinary(['langString', 'langString'], (arg1, arg2) => {
+        if (arg1.language !== arg2.language) {
+            throw new Err.IncompatibleLanguageOperation(arg1, arg2);
+        }
+        return Helpers_1.bool(arg1.typedValue.includes(arg2.typedValue));
+    })
+        .collect(),
+};
+const STRBEFORE = {
+    arity: 2,
+    overloads: Helpers_1.declare()
+        .onBinaryTyped(['string', 'string'], (arg1, arg2) => Helpers_1.string(arg1.substr(0, arg1.indexOf(arg2))))
+        .onBinary(['langString', 'string'], (arg1, arg2) => {
+        const [a1, a2] = [arg1.typedValue, arg2.typedValue];
+        const sub = arg1.typedValue.substr(0, a1.indexOf(a2));
+        return (sub || !a2) ? Helpers_1.langString(sub, arg1.language) : Helpers_1.string(sub);
+    })
+        .onBinary(['langString', 'langString'], (arg1, arg2) => {
+        if (arg1.language !== arg2.language) {
+            throw new Err.IncompatibleLanguageOperation(arg1, arg2);
+        }
+        const [a1, a2] = [arg1.typedValue, arg2.typedValue];
+        const sub = arg1.typedValue.substr(0, a1.indexOf(a2));
+        return (sub || !a2) ? Helpers_1.langString(sub, arg1.language) : Helpers_1.string(sub);
+    })
+        .collect(),
+};
+const STRAFTER = {
+    arity: 2,
+    overloads: Helpers_1.declare()
+        .onBinaryTyped(['string', 'string'], (arg1, arg2) => Helpers_1.string(arg1.substr(arg1.indexOf(arg2)).substr(arg2.length)))
+        .onBinary(['langString', 'string'], (arg1, arg2) => {
+        const [a1, a2] = [arg1.typedValue, arg2.typedValue];
+        const sub = a1.substr(a1.indexOf(a2)).substr(a2.length);
+        return (sub || !a2) ? Helpers_1.langString(sub, arg1.language) : Helpers_1.string(sub);
+    })
+        .onBinary(['langString', 'langString'], (arg1, arg2) => {
+        if (arg1.language !== arg2.language) {
+            throw new Err.IncompatibleLanguageOperation(arg1, arg2);
+        }
+        const [a1, a2] = [arg1.typedValue, arg2.typedValue];
+        const sub = a1.substr(a1.indexOf(a2)).substr(a2.length);
+        return (sub || !a2) ? Helpers_1.langString(sub, arg1.language) : Helpers_1.string(sub);
+    })
+        .collect(),
+};
+const ENCODE_FOR_URI = {
+    arity: 1,
+    overloads: Helpers_1.declare()
+        .onStringly1Typed((val) => Helpers_1.string(encodeURI(val))).collect(),
+};
+// See special operators
+// const CONCAT = {}
+const langmatches = {
+    arity: 2,
+    overloads: Helpers_1.declare()
+        .onBinaryTyped(['string', 'string'], (tag, range) => Helpers_1.bool(X.langMatches(tag, range))).collect(),
+};
+const regex2 = (text, pattern) => Helpers_1.bool(X.matches(text, pattern));
+const regex3 = (text, pattern, flags) => Helpers_1.bool(X.matches(text, pattern, flags));
+const REGEX = {
+    arity: [2, 3],
+    overloads: Helpers_1.declare()
+        .onBinaryTyped(['string', 'string'], regex2)
+        .onBinaryTyped(['langString', 'string'], regex2)
+        .onTernaryTyped(['string', 'string', 'string'], regex3)
+        .onTernaryTyped(['langString', 'string', 'string'], regex3)
+        .collect(),
+};
+const REPLACE = {
+    arity: [3, 4],
+    overloads: Helpers_1.declare()
+        .onTernaryTyped(['string', 'string', 'string'], (arg, pattern, replacement) => Helpers_1.string(X.replace(arg, pattern, replacement)))
+        .set(['langString', 'string', 'string'], ([arg, pattern, replacement]) => {
+        const result = X.replace(arg.typedValue, pattern.typedValue, replacement.typedValue);
+        return Helpers_1.langString(result, arg.language);
+    })
+        .onQuaternaryTyped(['string', 'string', 'string', 'string'], (arg, pattern, replacement, flags) => Helpers_1.string(X.replace(arg, pattern, replacement, flags)))
+        .set(['langString', 'string', 'string', 'string'], ([arg, pattern, replacement, flags]) => {
+        const result = X.replace(arg.typedValue, pattern.typedValue, replacement.typedValue, flags.typedValue);
+        return Helpers_1.langString(result, arg.language);
+    })
+        .collect(),
+};
+// ----------------------------------------------------------------------------
+// Functions on numerics
+// https://www.w3.org/TR/sparql11-query/#func-numerics
+// ----------------------------------------------------------------------------
+const abs = {
+    arity: 1,
+    overloads: Helpers_1.declare()
+        .onNumeric1((num) => Helpers_1.number(Math.abs(num.typedValue), num.typeURL.value))
+        .collect(),
+};
+const round = {
+    arity: 1,
+    overloads: Helpers_1.declare()
+        .onNumeric1((num) => Helpers_1.number(Math.round(num.typedValue), num.typeURL.value))
+        .collect(),
+};
+const ceil = {
+    arity: 1,
+    overloads: Helpers_1.declare()
+        .onNumeric1((num) => Helpers_1.number(Math.ceil(num.typedValue), num.typeURL.value))
+        .collect(),
+};
+const floor = {
+    arity: 1,
+    overloads: Helpers_1.declare()
+        .onNumeric1((num) => Helpers_1.number(Math.floor(num.typedValue), num.typeURL.value))
+        .collect(),
+};
+const rand = {
+    arity: 0,
+    overloads: Helpers_1.declare()
+        .set([], () => Helpers_1.number(Math.random(), Consts_1.TypeURL.XSD_DOUBLE))
+        .collect(),
+};
+// ----------------------------------------------------------------------------
+// Functions on Dates and Times
+// https://www.w3.org/TR/sparql11-query/#func-date-time
+// ----------------------------------------------------------------------------
+function parseDate(dateLit) {
+    return P.parseXSDDateTime(dateLit.str());
+}
+// See special operators
+// const now = {};
+const year = {
+    arity: 1,
+    overloads: Helpers_1.declare()
+        .onDateTime1((date) => Helpers_1.number(Number(parseDate(date).year), Consts_1.TypeURL.XSD_INTEGER))
+        .collect(),
+};
+const month = {
+    arity: 1,
+    overloads: Helpers_1.declare()
+        .onDateTime1((date) => Helpers_1.number(Number(parseDate(date).month), Consts_1.TypeURL.XSD_INTEGER))
+        .collect(),
+};
+const day = {
+    arity: 1,
+    overloads: Helpers_1.declare()
+        .onDateTime1((date) => Helpers_1.number(Number(parseDate(date).day), Consts_1.TypeURL.XSD_INTEGER))
+        .collect(),
+};
+const hours = {
+    arity: 1,
+    overloads: Helpers_1.declare()
+        .onDateTime1((date) => Helpers_1.number(Number(parseDate(date).hours), Consts_1.TypeURL.XSD_INTEGER))
+        .collect(),
+};
+const minutes = {
+    arity: 1,
+    overloads: Helpers_1.declare()
+        .onDateTime1((date) => Helpers_1.number(Number(parseDate(date).minutes), Consts_1.TypeURL.XSD_INTEGER))
+        .collect(),
+};
+const seconds = {
+    arity: 1,
+    overloads: Helpers_1.declare()
+        .onDateTime1((date) => Helpers_1.number(Number(parseDate(date).seconds), Consts_1.TypeURL.XSD_DECIMAL))
+        .collect(),
+};
+const timezone = {
+    arity: 1,
+    overloads: Helpers_1.declare()
+        .onDateTime1((date) => {
+        const duration = X.formatDayTimeDuration(parseDate(date).timezone);
+        if (!duration) {
+            throw new Err.InvalidTimezoneCall(date.strValue);
+        }
+        return new E.Literal(duration, C.make(Consts_1.TypeURL.XSD_DAYTIME_DURATION), duration);
+    })
+        .collect(),
+};
+const tz = {
+    arity: 1,
+    overloads: Helpers_1.declare()
+        .onDateTime1((date) => Helpers_1.string(parseDate(date).timezone))
+        .collect(),
+};
+// ----------------------------------------------------------------------------
+// Hash functions
+// https://www.w3.org/TR/sparql11-query/#func-hash
+// ----------------------------------------------------------------------------
+const MD5 = {
+    arity: 1,
+    overloads: Helpers_1.declare()
+        .onString1Typed((str) => Helpers_1.string(hash('md5').update(str).digest('hex')))
+        .collect(),
+};
+const SHA1 = {
+    arity: 1,
+    overloads: Helpers_1.declare()
+        .onString1Typed((str) => Helpers_1.string(hash('sha1').update(str).digest('hex')))
+        .collect(),
+};
+const SHA256 = {
+    arity: 1,
+    overloads: Helpers_1.declare()
+        .onString1Typed((str) => Helpers_1.string(hash('sha256').update(str).digest('hex')))
+        .collect(),
+};
+const SHA384 = {
+    arity: 1,
+    overloads: Helpers_1.declare()
+        .onString1Typed((str) => Helpers_1.string(hash('sha384').update(str).digest('hex')))
+        .collect(),
+};
+const SHA512 = {
+    arity: 1,
+    overloads: Helpers_1.declare()
+        .onString1Typed((str) => Helpers_1.string(hash('sha512').update(str).digest('hex')))
+        .collect(),
+};
+// End definitions.
+// ----------------------------------------------------------------------------
+// ----------------------------------------------------------------------------
+// ----------------------------------------------------------------------------
+/*
+ * Collect all the definitions from above into an object
+ */
+const _definitions = {
+    // --------------------------------------------------------------------------
+    // Operator Mapping
+    // https://www.w3.org/TR/sparql11-query/#OperatorMapping
+    // --------------------------------------------------------------------------
+    '!': not,
+    'UPLUS': unaryPlus,
+    'UMINUS': unaryMinus,
+    '*': multiplication,
+    '/': division,
+    '+': addition,
+    '-': subtraction,
+    '=': equality,
+    '!=': inequality,
+    '<': lesserThan,
+    '>': greaterThan,
+    '<=': lesserThanEqual,
+    '>=': greaterThanEqual,
+    // --------------------------------------------------------------------------
+    // Functions on RDF Terms
+    // https://www.w3.org/TR/sparql11-query/#func-rdfTerms
+    // --------------------------------------------------------------------------
+    'isiri': isIRI,
+    'isblank': isBlank,
+    'isliteral': isLiteral,
+    'isnumeric': isNumeric,
+    'str': toString,
+    'lang': lang,
+    'datatype': datatype,
+    // 'iri': IRI (see special operators),
+    // 'uri': IRI (see special operators),
+    // 'BNODE': BNODE (see special operators),
+    'strdt': STRDT,
+    'strlang': STRLANG,
+    'uuid': UUID,
+    'struuid': STRUUID,
+    // --------------------------------------------------------------------------
+    // Functions on strings
+    // https://www.w3.org/TR/sparql11-query/#func-forms
+    // --------------------------------------------------------------------------
+    'strlen': STRLEN,
+    'substr': SUBSTR,
+    'ucase': UCASE,
+    'lcase': LCASE,
+    'strstarts': STRSTARTS,
+    'strends': STRENDS,
+    'contains': CONTAINS,
+    'strbefore': STRBEFORE,
+    'strafter': STRAFTER,
+    'encode_for_uri': ENCODE_FOR_URI,
+    // 'concat': CONCAT (see special operators)
+    'langmatches': langmatches,
+    'regex': REGEX,
+    'replace': REPLACE,
+    // --------------------------------------------------------------------------
+    // Functions on numerics
+    // https://www.w3.org/TR/sparql11-query/#func-numerics
+    // --------------------------------------------------------------------------
+    'abs': abs,
+    'round': round,
+    'ceil': ceil,
+    'floor': floor,
+    'rand': rand,
+    // --------------------------------------------------------------------------
+    // Functions on Dates and Times
+    // https://www.w3.org/TR/sparql11-query/#func-date-time
+    // --------------------------------------------------------------------------
+    // 'now': now (see special operators),
+    'year': year,
+    'month': month,
+    'day': day,
+    'hours': hours,
+    'minutes': minutes,
+    'seconds': seconds,
+    'timezone': timezone,
+    'tz': tz,
+    // --------------------------------------------------------------------------
+    // Hash functions
+    // https://www.w3.org/TR/sparql11-query/#func-hash
+    // --------------------------------------------------------------------------
+    'md5': MD5,
+    'sha1': SHA1,
+    'sha256': SHA256,
+    'sha384': SHA384,
+    'sha512': SHA512,
+};
+exports.definitions = immutable_1.Map(_definitions);
+//# sourceMappingURL=RegularFunctions.js.map
+
+/***/ }),
+
+/***/ "./node_modules/sparqlee/dist/lib/functions/SpecialFunctions.js":
+/*!**********************************************************************!*\
+  !*** ./node_modules/sparqlee/dist/lib/functions/SpecialFunctions.js ***!
+  \**********************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+Object.defineProperty(exports, "__esModule", { value: true });
+const immutable_1 = __webpack_require__(/*! immutable */ "./node_modules/immutable/dist/immutable.js");
+const URI = __webpack_require__(/*! uri-js */ "./node_modules/uri-js/dist/es5/uri.all.js");
+const uuid = __webpack_require__(/*! uuid */ "./node_modules/uuid/index.js");
+const E = __webpack_require__(/*! ../expressions */ "./node_modules/sparqlee/dist/lib/expressions/index.js");
+const C = __webpack_require__(/*! ../util/Consts */ "./node_modules/sparqlee/dist/lib/util/Consts.js");
+const Err = __webpack_require__(/*! ../util/Errors */ "./node_modules/sparqlee/dist/lib/util/Errors.js");
+const Helpers_1 = __webpack_require__(/*! ./Helpers */ "./node_modules/sparqlee/dist/lib/functions/Helpers.js");
+const index_1 = __webpack_require__(/*! ./index */ "./node_modules/sparqlee/dist/lib/functions/index.js");
+// ----------------------------------------------------------------------------
+// Functional forms
+// ----------------------------------------------------------------------------
+function _bound({ args, mapping }) {
+    const variable = args[0];
+    if (variable.expressionType !== E.ExpressionType.Variable) {
+        throw new Err.InvalidArgumentTypes(args, C.SpecialOperator.BOUND);
+    }
+    const val = mapping.has(variable.name) && !!mapping.get(variable.name);
+    return Helpers_1.bool(val);
+}
+// BOUND ----------------------------------------------------------------------
+const bound = {
+    arity: 1,
+    async applyAsync({ args, mapping }) {
+        return _bound({ args, mapping });
+    },
+    applySync({ args, mapping }) {
+        return _bound({ args, mapping });
+    },
+};
+// IF -------------------------------------------------------------------------
+const ifSPARQL = {
+    arity: 3,
+    async applyAsync({ args, mapping, evaluate }) {
+        const valFirst = await evaluate(args[0], mapping);
+        const ebv = valFirst.coerceEBV();
+        return (ebv)
+            ? evaluate(args[1], mapping)
+            : evaluate(args[2], mapping);
+    },
+    applySync({ args, mapping, evaluate }) {
+        const valFirst = evaluate(args[0], mapping);
+        const ebv = valFirst.coerceEBV();
+        return (ebv)
+            ? evaluate(args[1], mapping)
+            : evaluate(args[2], mapping);
+    },
+};
+// COALESCE -------------------------------------------------------------------
+const coalesce = {
+    arity: Infinity,
+    async applyAsync({ args, mapping, evaluate }) {
+        const errors = [];
+        for (const expr of args) {
+            try {
+                return await evaluate(expr, mapping);
+            }
+            catch (err) {
+                errors.push(err);
+            }
+        }
+        throw new Err.CoalesceError(errors);
+    },
+    applySync({ args, mapping, evaluate }) {
+        const errors = [];
+        for (const expr of args) {
+            try {
+                return evaluate(expr, mapping);
+            }
+            catch (err) {
+                errors.push(err);
+            }
+        }
+        throw new Err.CoalesceError(errors);
+    },
+};
+// logical-or (||) ------------------------------------------------------------
+// https://www.w3.org/TR/sparql11-query/#func-logical-or
+const logicalOr = {
+    arity: 2,
+    async applyAsync({ args, mapping, evaluate }) {
+        const [leftExpr, rightExpr] = args;
+        try {
+            const leftTerm = await evaluate(leftExpr, mapping);
+            const left = leftTerm.coerceEBV();
+            if (left) {
+                return Helpers_1.bool(true);
+            }
+            const rightTerm = await evaluate(rightExpr, mapping);
+            const right = rightTerm.coerceEBV();
+            return Helpers_1.bool(right);
+        }
+        catch (leftErr) {
+            const rightTerm = await evaluate(rightExpr, mapping);
+            const right = rightTerm.coerceEBV();
+            if (!right) {
+                throw leftErr;
+            }
+            return Helpers_1.bool(true);
+        }
+    },
+    applySync({ args, mapping, evaluate }) {
+        const [leftExpr, rightExpr] = args;
+        try {
+            const leftTerm = evaluate(leftExpr, mapping);
+            const left = leftTerm.coerceEBV();
+            if (left) {
+                return Helpers_1.bool(true);
+            }
+            const rightTerm = evaluate(rightExpr, mapping);
+            const right = rightTerm.coerceEBV();
+            return Helpers_1.bool(right);
+        }
+        catch (leftErr) {
+            const rightTerm = evaluate(rightExpr, mapping);
+            const right = rightTerm.coerceEBV();
+            if (!right) {
+                throw leftErr;
+            }
+            return Helpers_1.bool(true);
+        }
+    },
+};
+// logical-and (&&) -----------------------------------------------------------
+// https://www.w3.org/TR/sparql11-query/#func-logical-and
+const logicalAnd = {
+    arity: 2,
+    async applyAsync({ args, mapping, evaluate }) {
+        const [leftExpr, rightExpr] = args;
+        try {
+            const leftTerm = await evaluate(leftExpr, mapping);
+            const left = leftTerm.coerceEBV();
+            if (!left) {
+                return Helpers_1.bool(false);
+            }
+            const rightTerm = await evaluate(rightExpr, mapping);
+            const right = rightTerm.coerceEBV();
+            return Helpers_1.bool(right);
+        }
+        catch (leftErr) {
+            const rightTerm = await evaluate(rightExpr, mapping);
+            const right = rightTerm.coerceEBV();
+            if (right) {
+                throw leftErr;
+            }
+            return Helpers_1.bool(false);
+        }
+    },
+    applySync({ args, mapping, evaluate }) {
+        const [leftExpr, rightExpr] = args;
+        try {
+            const leftTerm = evaluate(leftExpr, mapping);
+            const left = leftTerm.coerceEBV();
+            if (!left) {
+                return Helpers_1.bool(false);
+            }
+            const rightTerm = evaluate(rightExpr, mapping);
+            const right = rightTerm.coerceEBV();
+            return Helpers_1.bool(right);
+        }
+        catch (leftErr) {
+            const rightTerm = evaluate(rightExpr, mapping);
+            const right = rightTerm.coerceEBV();
+            if (right) {
+                throw leftErr;
+            }
+            return Helpers_1.bool(false);
+        }
+    },
+};
+// sameTerm -------------------------------------------------------------------
+const sameTerm = {
+    arity: 2,
+    async applyAsync({ args, mapping, evaluate }) {
+        const [leftExpr, rightExpr] = args.map((a) => evaluate(a, mapping));
+        const left = await leftExpr;
+        const right = await rightExpr;
+        return Helpers_1.bool(left.toRDF().equals(right.toRDF()));
+    },
+    applySync({ args, mapping, evaluate }) {
+        const [left, right] = args.map((a) => evaluate(a, mapping));
+        return Helpers_1.bool(left.toRDF().equals(right.toRDF()));
+    },
+};
+// IN -------------------------------------------------------------------------
+const inSPARQL = {
+    arity: Infinity,
+    checkArity(args) { return args.length >= 1; },
+    async applyAsync({ args, mapping, evaluate, context }) {
+        const [leftExpr, ...remaining] = args;
+        const left = await evaluate(leftExpr, mapping);
+        return inRecursiveAsync(left, { args: remaining, mapping, evaluate, context }, []);
+    },
+    applySync({ args, mapping, evaluate, context }) {
+        const [leftExpr, ...remaining] = args;
+        const left = evaluate(leftExpr, mapping);
+        return inRecursiveSync(left, { args: remaining, mapping, evaluate, context }, []);
+    },
+};
+async function inRecursiveAsync(needle, { args, mapping, evaluate, context }, results) {
+    if (args.length === 0) {
+        const noErrors = results.every((v) => !v);
+        return (noErrors) ? Helpers_1.bool(false) : Promise.reject(new Err.InError(results));
+    }
+    try {
+        const next = await evaluate(args.shift(), mapping);
+        const isEqual = index_1.regularFunctions.get(C.RegularOperator.EQUAL);
+        if (isEqual.apply([needle, next]).typedValue === true) {
+            return Helpers_1.bool(true);
+        }
+        else {
+            return inRecursiveAsync(needle, { args, mapping, evaluate, context }, [...results, false]);
+        }
+    }
+    catch (err) {
+        return inRecursiveAsync(needle, { args, mapping, evaluate, context }, [...results, err]);
+    }
+}
+function inRecursiveSync(needle, { args, mapping, evaluate, context }, results) {
+    if (args.length === 0) {
+        const noErrors = results.every((v) => !v);
+        if (noErrors) {
+            Helpers_1.bool(false);
+        }
+        else {
+            throw new Err.InError(results);
+        }
+    }
+    try {
+        const next = evaluate(args.shift(), mapping);
+        const isEqual = index_1.regularFunctions.get(C.RegularOperator.EQUAL);
+        if (isEqual.apply([needle, next]).typedValue === true) {
+            return Helpers_1.bool(true);
+        }
+        else {
+            return inRecursiveSync(needle, { args, mapping, evaluate, context }, [...results, false]);
+        }
+    }
+    catch (err) {
+        return inRecursiveSync(needle, { args, mapping, evaluate, context }, [...results, err]);
+    }
+}
+// NOT IN ---------------------------------------------------------------------
+const notInSPARQL = {
+    arity: Infinity,
+    checkArity(args) { return args.length >= 1; },
+    async applyAsync(context) {
+        const _in = index_1.specialFunctions.get(C.SpecialOperator.IN);
+        const isIn = await _in.applyAsync(context);
+        return Helpers_1.bool(!isIn.typedValue);
+    },
+    applySync(context) {
+        const _in = index_1.specialFunctions.get(C.SpecialOperator.IN);
+        const isIn = _in.applySync(context);
+        return Helpers_1.bool(!isIn.typedValue);
+    },
+};
+// ----------------------------------------------------------------------------
+// Annoying functions
+// ----------------------------------------------------------------------------
+// CONCAT
+const concat = {
+    arity: Infinity,
+    async applyAsync({ args, evaluate, mapping }) {
+        const pLits = args
+            .map(async (expr) => evaluate(expr, mapping))
+            .map(async (pTerm) => Helpers_1.typeCheckLit(await pTerm, ['string', 'langString'], args, C.SpecialOperator.CONCAT));
+        const lits = await Promise.all(pLits);
+        const strings = lits.map((lit) => lit.typedValue);
+        const joined = strings.join('');
+        const lang = langAllEqual(lits) ? lits[0].language : undefined;
+        return (lang) ? Helpers_1.langString(joined, lang) : Helpers_1.string(joined);
+    },
+    applySync({ args, evaluate, mapping }) {
+        const lits = args
+            .map((expr) => evaluate(expr, mapping))
+            .map((pTerm) => Helpers_1.typeCheckLit(pTerm, ['string', 'langString'], args, C.SpecialOperator.CONCAT));
+        const strings = lits.map((lit) => lit.typedValue);
+        const joined = strings.join('');
+        const lang = langAllEqual(lits) ? lits[0].language : undefined;
+        return (lang) ? Helpers_1.langString(joined, lang) : Helpers_1.string(joined);
+    },
+};
+function langAllEqual(lits) {
+    return lits.length > 0 && lits.every((lit) => lit.language === lits[0].language);
+}
+// ----------------------------------------------------------------------------
+// Context dependant functions
+// ----------------------------------------------------------------------------
+const now = {
+    arity: 0,
+    async applyAsync({ context }) {
+        return new E.DateTimeLiteral(context.now, context.now.toUTCString());
+    },
+    applySync({ context }) {
+        return new E.DateTimeLiteral(context.now, context.now.toUTCString());
+    },
+};
+// https://www.w3.org/TR/sparql11-query/#func-iri
+const IRI = {
+    arity: 1,
+    async applyAsync({ args, evaluate, mapping, context }) {
+        const input = await evaluate(args[0], mapping);
+        return IRI_(input, context.baseIRI, args);
+    },
+    applySync({ args, evaluate, mapping, context }) {
+        const input = evaluate(args[0], mapping);
+        return IRI_(input, context.baseIRI, args);
+    },
+};
+function IRI_(input, baseIRI, args) {
+    const lit = (input.termType !== 'namedNode')
+        ? Helpers_1.typeCheckLit(input, ['string'], args, C.SpecialOperator.IRI)
+        : input;
+    const iri = URI.resolve(baseIRI || '', lit.str());
+    return new E.NamedNode(iri);
+}
+// https://www.w3.org/TR/sparql11-query/#func-bnode
+// id has to be distinct over all id's in dataset
+const BNODE = {
+    arity: Infinity,
+    checkArity(args) { return args.length === 0 || args.length === 1; },
+    async applyAsync({ args, evaluate, mapping, context }) {
+        const input = (args.length === 1)
+            ? await evaluate(args[0], mapping)
+            : undefined;
+        const strInput = (input)
+            ? Helpers_1.typeCheckLit(input, ['string'], args, C.SpecialOperator.BNODE).str()
+            : undefined;
+        if (context.bnode) {
+            const bnode = await context.bnode(strInput);
+            return new E.BlankNode(bnode.value);
+        }
+        return BNODE_(strInput);
+    },
+    applySync({ args, evaluate, mapping, context }) {
+        const input = (args.length === 1)
+            ? evaluate(args[0], mapping)
+            : undefined;
+        const strInput = (input)
+            ? Helpers_1.typeCheckLit(input, ['string'], args, C.SpecialOperator.BNODE).str()
+            : undefined;
+        if (context.bnode) {
+            const bnode = context.bnode(strInput);
+            return new E.BlankNode(bnode.value);
+        }
+        return BNODE_(strInput);
+    },
+};
+function BNODE_(input) {
+    return new E.BlankNode(input || uuid.v4());
+}
+const _specialDefinitions = {
+    // --------------------------------------------------------------------------
+    // Functional Forms
+    // https://www.w3.org/TR/sparql11-query/#func-forms
+    // --------------------------------------------------------------------------
+    'bound': bound,
+    'if': ifSPARQL,
+    'coalesce': coalesce,
+    '&&': logicalAnd,
+    '||': logicalOr,
+    'sameterm': sameTerm,
+    'in': inSPARQL,
+    'notin': notInSPARQL,
+    // Annoying functions
+    'concat': concat,
+    // Context dependent functions
+    'now': now,
+    'iri': IRI,
+    'uri': IRI,
+    'BNODE': BNODE,
+};
+exports.specialDefinitions = immutable_1.Map(_specialDefinitions);
+//# sourceMappingURL=SpecialFunctions.js.map
+
+/***/ }),
+
+/***/ "./node_modules/sparqlee/dist/lib/functions/XPathFunctions.js":
+/*!********************************************************************!*\
+  !*** ./node_modules/sparqlee/dist/lib/functions/XPathFunctions.js ***!
+  \********************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+Object.defineProperty(exports, "__esModule", { value: true });
+// https://www.w3.org/TR/xpath-functions/#func-matches
+// https://www.w3.org/TR/xpath-functions/#flags
+function matches(text, pattern, flags) {
+    // TODO: Only flags 'i' and 'm' match between XPath and JS.
+    // 's', 'x', 'q', would need proper implementation.
+    const reg = new RegExp(pattern, flags);
+    return reg.test(text);
+}
+exports.matches = matches;
+// TODO: Fix flags
+// https://www.w3.org/TR/xpath-functions/#func-replace
+function replace(arg, pattern, replacement, flags) {
+    let reg = new RegExp(pattern, flags);
+    if (!reg.global) {
+        const flags_ = flags || '';
+        reg = new RegExp(pattern, flags_ + 'g');
+    }
+    return arg.replace(reg, replacement);
+}
+exports.replace = replace;
+// TODO: Not an XPath function
+// TODO: Publish as package
+// https://www.ietf.org/rfc/rfc4647.txt
+// https://www.w3.org/TR/sparql11-query/#func-langMatches
+function langMatches(tag, range) {
+    const langTags = tag.split('-');
+    const rangeTags = range.split('-');
+    if (!_matchLangTag(rangeTags[0], langTags[0])
+        && !_isWildCard(langTags[0])) {
+        return false;
+    }
+    let lI = 1;
+    let rI = 1;
+    while (rI < rangeTags.length) {
+        if (_isWildCard(rangeTags[rI])) {
+            rI++;
+            continue;
+        }
+        if (lI === langTags.length) {
+            return false;
+        }
+        if (_matchLangTag(rangeTags[rI], langTags[lI])) {
+            lI++;
+            rI++;
+            continue;
+        }
+        if (langTags[lI].length === 1) {
+            return false;
+        }
+        lI++;
+    }
+    return true;
+}
+exports.langMatches = langMatches;
+function _isWildCard(tag) {
+    return tag === '*';
+}
+function _matchLangTag(left, right) {
+    const matchInitial = new RegExp(`/${left}/`, 'i');
+    return matchInitial.test(`/${right}/`);
+}
+/**
+ * Formats a timezone string into a XML DayTimeDuration
+ *
+ * TODO: Test
+ * Used in fn:timezone
+ * http://www.datypic.com/sc/xsd/t-xsd_dayTimeDuration.html
+ */
+function formatDayTimeDuration(timezone) {
+    if (!timezone) {
+        return undefined;
+    }
+    if (timezone[0] === 'Z') {
+        return 'PT0S';
+    }
+    else {
+        // Split string
+        const [sign, h1Raw, h2Raw, _, m1Raw, m2Raw] = timezone;
+        // Cut of leading zero, set to empty string if 0, and append H;
+        const h1 = (h1Raw !== '0') ? h1Raw : '';
+        const h2 = (h1 || h2Raw !== '0') ? h2Raw : '';
+        const hours = (h1 + h2) ? h1 + h2 + 'H' : '';
+        // Same as in hours
+        const m1 = (m1Raw !== '0') ? m1Raw : '';
+        const m2 = (m1 || m2Raw !== '0') ? m2Raw : '';
+        const minutes = (m1 + m2) ? m1 + m2 + 'M' : '';
+        // Concat sign and time and mandatory separators
+        const time = `${hours}${minutes}`;
+        const signNoPlus = (sign === '-') ? '-' : '';
+        return `${signNoPlus}PT${time}`;
+    }
+}
+exports.formatDayTimeDuration = formatDayTimeDuration;
+//# sourceMappingURL=XPathFunctions.js.map
+
+/***/ }),
+
+/***/ "./node_modules/sparqlee/dist/lib/functions/index.js":
+/*!***********************************************************!*\
+  !*** ./node_modules/sparqlee/dist/lib/functions/index.js ***!
+  \***********************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+function __export(m) {
+    for (var p in m) if (!exports.hasOwnProperty(p)) exports[p] = m[p];
+}
+Object.defineProperty(exports, "__esModule", { value: true });
+const Core_1 = __webpack_require__(/*! ./Core */ "./node_modules/sparqlee/dist/lib/functions/Core.js");
+const NamedFunctions_1 = __webpack_require__(/*! ./NamedFunctions */ "./node_modules/sparqlee/dist/lib/functions/NamedFunctions.js");
+const RegularFunctions_1 = __webpack_require__(/*! ./RegularFunctions */ "./node_modules/sparqlee/dist/lib/functions/RegularFunctions.js");
+const SpecialFunctions_1 = __webpack_require__(/*! ./SpecialFunctions */ "./node_modules/sparqlee/dist/lib/functions/SpecialFunctions.js");
+__export(__webpack_require__(/*! ./Core */ "./node_modules/sparqlee/dist/lib/functions/Core.js"));
+exports.regularFunctions = RegularFunctions_1.definitions
+    .map((def, op) => new Core_1.RegularFunction(op, def))
+    .toMap();
+exports.specialFunctions = SpecialFunctions_1.specialDefinitions
+    .map((def, op) => new Core_1.SpecialFunction(op, def))
+    .toMap();
+exports.namedFunctions = NamedFunctions_1.namedDefinitions
+    .map((def, op) => new Core_1.NamedFunction(op, def))
+    .toMap();
+//# sourceMappingURL=index.js.map
+
+/***/ }),
+
+/***/ "./node_modules/sparqlee/dist/lib/util/Consts.js":
+/*!*******************************************************!*\
+  !*** ./node_modules/sparqlee/dist/lib/util/Consts.js ***!
+  \*******************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+Object.defineProperty(exports, "__esModule", { value: true });
+// tslint:disable:variable-name
+const RDFDM = __webpack_require__(/*! @rdfjs/data-model */ "./node_modules/@rdfjs/data-model/index.js");
+const immutable_1 = __webpack_require__(/*! immutable */ "./node_modules/immutable/dist/immutable.js");
+exports.TRUE_STR = '"true"^^xsd:boolean';
+exports.FALSE_STR = '"false"^^xsd:boolean';
+exports.EVB_ERR_STR = '"not an dateTime"^^xsd:dateTime';
+// TODO: Consider inlining all with 'const enum'
+var TypeURL;
+(function (TypeURL) {
+    TypeURL["XSD_ANY_URI"] = "http://www.w3.org/2001/XMLSchema#anyURI";
+    TypeURL["XSD_STRING"] = "http://www.w3.org/2001/XMLSchema#string";
+    TypeURL["RDF_LANG_STRING"] = "http://www.w3.org/1999/02/22-rdf-syntax-ns#langString";
+    TypeURL["XSD_BOOLEAN"] = "http://www.w3.org/2001/XMLSchema#boolean";
+    TypeURL["XSD_DATE_TIME"] = "http://www.w3.org/2001/XMLSchema#dateTime";
+    TypeURL["XSD_DATE"] = "http://www.w3.org/2001/XMLSchema#date";
+    // Numeric types
+    TypeURL["XSD_INTEGER"] = "http://www.w3.org/2001/XMLSchema#integer";
+    TypeURL["XSD_DECIMAL"] = "http://www.w3.org/2001/XMLSchema#decimal";
+    TypeURL["XSD_FLOAT"] = "http://www.w3.org/2001/XMLSchema#float";
+    TypeURL["XSD_DOUBLE"] = "http://www.w3.org/2001/XMLSchema#double";
+    // Derived numeric types
+    TypeURL["XSD_NON_POSITIVE_INTEGER"] = "http://www.w3.org/2001/XMLSchema#nonPositiveInteger";
+    TypeURL["XSD_NEGATIVE_INTEGER"] = "http://www.w3.org/2001/XMLSchema#negativeInteger";
+    TypeURL["XSD_LONG"] = "http://www.w3.org/2001/XMLSchema#long";
+    TypeURL["XSD_INT"] = "http://www.w3.org/2001/XMLSchema#int";
+    TypeURL["XSD_SHORT"] = "http://www.w3.org/2001/XMLSchema#short";
+    TypeURL["XSD_BYTE"] = "http://www.w3.org/2001/XMLSchema#byte";
+    TypeURL["XSD_NON_NEGATIVE_INTEGER"] = "http://www.w3.org/2001/XMLSchema#nonNegativeInteger";
+    TypeURL["XSD_UNSIGNED_LONG"] = "http://www.w3.org/2001/XMLSchema#unsignedLong";
+    TypeURL["XSD_UNSIGNED_INT"] = "http://www.w3.org/2001/XMLSchema#unsignedInt";
+    TypeURL["XSD_UNSIGNED_SHORT"] = "http://www.w3.org/2001/XMLSchema#unsignedShort";
+    TypeURL["XSD_UNSIGNED_BYTE"] = "http://www.w3.org/2001/XMLSchema#unsignedByte";
+    TypeURL["XSD_POSITIVE_INTEGER"] = "http://www.w3.org/2001/XMLSchema#positiveInteger";
+    // Other types
+    TypeURL["XSD_DAYTIME_DURATION"] = "http://www.w3.org/2001/XMLSchema#dayTimeDuration";
+})(TypeURL = exports.TypeURL || (exports.TypeURL = {}));
+function make(dt) {
+    return RDFDM.namedNode(dt);
+}
+exports.make = make;
+// https://www.w3.org/TR/sparql11-query/#operandDataTypes
+var NumericTypeURL;
+(function (NumericTypeURL) {
+    // Numeric types
+    NumericTypeURL["XSD_INTEGER"] = "http://www.w3.org/2001/XMLSchema#integer";
+    NumericTypeURL["XSD_DECIMAL"] = "http://www.w3.org/2001/XMLSchema#decimal";
+    NumericTypeURL["XSD_FLOAT"] = "http://www.w3.org/2001/XMLSchema#float";
+    NumericTypeURL["XSD_DOUBLE"] = "http://www.w3.org/2001/XMLSchema#double";
+    // Derived numeric types
+    NumericTypeURL["XSD_NON_POSITIVE_INTEGER"] = "http://www.w3.org/2001/XMLSchema#nonPositiveInteger";
+    NumericTypeURL["XSD_NEGATIVE_INTEGER"] = "http://www.w3.org/2001/XMLSchema#negativeInteger";
+    NumericTypeURL["XSD_LONG"] = "http://www.w3.org/2001/XMLSchema#long";
+    NumericTypeURL["XSD_INT"] = "http://www.w3.org/2001/XMLSchema#int";
+    NumericTypeURL["XSD_SHORT"] = "http://www.w3.org/2001/XMLSchema#short";
+    NumericTypeURL["XSD_BYTE"] = "http://www.w3.org/2001/XMLSchema#byte";
+    NumericTypeURL["XSD_NON_NEGATIVE_INTEGER"] = "http://www.w3.org/2001/XMLSchema#nonNegativeInteger";
+    NumericTypeURL["XSD_UNSIGNED_LONG"] = "http://www.w3.org/2001/XMLSchema#unsignedLong";
+    NumericTypeURL["XSD_UNSIGNED_INT"] = "http://www.w3.org/2001/XMLSchema#unsignedInt";
+    NumericTypeURL["XSD_UNSIGNED_SHORT"] = "http://www.w3.org/2001/XMLSchema#unsignedShort";
+    NumericTypeURL["XSD_UNSIGNED_BYTE"] = "http://www.w3.org/2001/XMLSchema#unsignedByte";
+    NumericTypeURL["XSD_POSITIVE_INTEGER"] = "http://www.w3.org/2001/XMLSchema#positiveInteger";
+})(NumericTypeURL = exports.NumericTypeURL || (exports.NumericTypeURL = {}));
+var DerivedIntegerTypeURL;
+(function (DerivedIntegerTypeURL) {
+    DerivedIntegerTypeURL["XSD_NON_POSITIVE_INTEGER"] = "http://www.w3.org/2001/XMLSchema#nonPositiveInteger";
+    DerivedIntegerTypeURL["XSD_NEGATIVE_INTEGER"] = "http://www.w3.org/2001/XMLSchema#negativeInteger";
+    DerivedIntegerTypeURL["XSD_LONG"] = "http://www.w3.org/2001/XMLSchema#long";
+    DerivedIntegerTypeURL["XSD_INT"] = "http://www.w3.org/2001/XMLSchema#int";
+    DerivedIntegerTypeURL["XSD_SHORT"] = "http://www.w3.org/2001/XMLSchema#short";
+    DerivedIntegerTypeURL["XSD_BYTE"] = "http://www.w3.org/2001/XMLSchema#byte";
+    DerivedIntegerTypeURL["XSD_NON_NEGATIVE_INTEGER"] = "http://www.w3.org/2001/XMLSchema#nonNegativeInteger";
+    DerivedIntegerTypeURL["XSD_UNSIGNED_LONG"] = "http://www.w3.org/2001/XMLSchema#unsignedLong";
+    DerivedIntegerTypeURL["XSD_UNSIGNED_INT"] = "http://www.w3.org/2001/XMLSchema#unsignedInt";
+    DerivedIntegerTypeURL["XSD_UNSIGNED_SHORT"] = "http://www.w3.org/2001/XMLSchema#unsignedShort";
+    DerivedIntegerTypeURL["XSD_UNSIGNED_BYTE"] = "http://www.w3.org/2001/XMLSchema#unsignedByte";
+    DerivedIntegerTypeURL["XSD_POSITIVE_INTEGER"] = "http://www.w3.org/2001/XMLSchema#positiveInteger";
+})(DerivedIntegerTypeURL = exports.DerivedIntegerTypeURL || (exports.DerivedIntegerTypeURL = {}));
+exports.NumericTypeURLs = immutable_1.Set(Object.values(NumericTypeURL));
+exports.DerivedIntegerTypeURLs = immutable_1.Set(Object.values(DerivedIntegerTypeURL));
+exports.commonTerms = {
+    true: RDFDM.literal('true', RDFDM.namedNode(TypeURL.XSD_BOOLEAN)),
+    false: RDFDM.literal('false', RDFDM.namedNode(TypeURL.XSD_BOOLEAN)),
+};
+exports.PrimitiveNumericTypes = immutable_1.Set(['integer', 'decimal', 'float', 'double']);
+function type(typeURL) {
+    switch (typeURL) {
+        case null:
+        case undefined:
+        case '':
+        case TypeURL.XSD_ANY_URI: return 'string';
+        case TypeURL.XSD_STRING: return 'string';
+        case TypeURL.RDF_LANG_STRING: return 'langString';
+        case TypeURL.XSD_DATE_TIME: return 'date';
+        case TypeURL.XSD_BOOLEAN: return 'boolean';
+        case TypeURL.XSD_DECIMAL: return 'decimal';
+        case TypeURL.XSD_FLOAT: return 'float';
+        case TypeURL.XSD_DOUBLE: return 'double';
+        case TypeURL.XSD_INTEGER:
+        case TypeURL.XSD_NON_POSITIVE_INTEGER:
+        case TypeURL.XSD_NEGATIVE_INTEGER:
+        case TypeURL.XSD_LONG:
+        case TypeURL.XSD_INT:
+        case TypeURL.XSD_SHORT:
+        case TypeURL.XSD_BYTE:
+        case TypeURL.XSD_NON_NEGATIVE_INTEGER:
+        case TypeURL.XSD_UNSIGNED_LONG:
+        case TypeURL.XSD_UNSIGNED_INT:
+        case TypeURL.XSD_UNSIGNED_SHORT:
+        case TypeURL.XSD_UNSIGNED_BYTE:
+        case TypeURL.XSD_POSITIVE_INTEGER: return 'integer';
+        default: return 'other';
+    }
+}
+exports.type = type;
+// If datatypes get lost or lose specificity during operations, we can insert a
+// concrete type, since categories should remain the same. This mostly (only)
+// relevant for integer subtypes.
+const _decategorize = immutable_1.Map([
+    ['integer', TypeURL.XSD_INTEGER],
+    ['float', TypeURL.XSD_FLOAT],
+    ['double', TypeURL.XSD_DOUBLE],
+    ['decimal', TypeURL.XSD_DECIMAL],
+]);
+function decategorize(cat) {
+    return _decategorize.get(cat);
+}
+exports.decategorize = decategorize;
+// TODO: Remove unneeded double typing
+var RegularOperator;
+(function (RegularOperator) {
+    // Operator mapping
+    // https://www.w3.org/TR/sparql11-query/#OperatorMapping
+    RegularOperator["NOT"] = "!";
+    RegularOperator["UMINUS"] = "UMINUS";
+    RegularOperator["UPLUS"] = "UPLUS";
+    // LOGICAL_AND // See SpecialOperators
+    // LOGICAL_OR  // See SpecialOperators
+    RegularOperator["EQUAL"] = "=";
+    RegularOperator["NOT_EQUAL"] = "!=";
+    RegularOperator["LT"] = "<";
+    RegularOperator["GT"] = ">";
+    RegularOperator["LTE"] = "<=";
+    RegularOperator["GTE"] = ">=";
+    RegularOperator["MULTIPLICATION"] = "*";
+    RegularOperator["DIVISION"] = "/";
+    RegularOperator["ADDITION"] = "+";
+    RegularOperator["SUBTRACTION"] = "-";
+    // Functional Forms
+    // https://www.w3.org/TR/sparql11-query/#func-forms
+    // See SpecialOperators
+    // Functions on RDF Terms
+    // https://www.w3.org/TR/sparql11-query/#func-rdfTerms
+    RegularOperator["IS_IRI"] = "isiri";
+    RegularOperator["IS_BLANK"] = "isblank";
+    RegularOperator["IS_LITERAL"] = "isliteral";
+    RegularOperator["IS_NUMERIC"] = "isnumeric";
+    RegularOperator["STR"] = "str";
+    RegularOperator["LANG"] = "lang";
+    RegularOperator["DATATYPE"] = "datatype";
+    // IRI = 'iri', (see special operators)
+    // URI = 'uri', (see special operators)
+    // BNODE = 'BNODE', (see special operators)
+    RegularOperator["STRDT"] = "strdt";
+    RegularOperator["STRLANG"] = "strlang";
+    RegularOperator["UUID"] = "uuid";
+    RegularOperator["STRUUID"] = "struuid";
+    // Functions on strings
+    // https://www.w3.org/TR/sparql11-query/#func-strings
+    RegularOperator["STRLEN"] = "strlen";
+    RegularOperator["SUBSTR"] = "substr";
+    RegularOperator["UCASE"] = "ucase";
+    RegularOperator["LCASE"] = "lcase";
+    RegularOperator["STRSTARTS"] = "strstarts";
+    RegularOperator["STRENDS"] = "strends";
+    RegularOperator["CONTAINS"] = "contains";
+    RegularOperator["STRBEFORE"] = "strbefore";
+    RegularOperator["STRAFTER"] = "strafter";
+    RegularOperator["ENCODE_FOR_URI"] = "encode_for_uri";
+    // CONCAT = 'concat' (see special operators)
+    RegularOperator["LANG_MATCHES"] = "langmatches";
+    RegularOperator["REGEX"] = "regex";
+    RegularOperator["REPLACE"] = "replace";
+    // Functions on numerics
+    // https://www.w3.org/TR/sparql11-query/#func-numerics
+    RegularOperator["ABS"] = "abs";
+    RegularOperator["ROUND"] = "round";
+    RegularOperator["CEIL"] = "ceil";
+    RegularOperator["FLOOR"] = "floor";
+    RegularOperator["RAND"] = "rand";
+    // Functions on Dates and Times
+    // https://www.w3.org/TR/sparql11-query/#func-date-time
+    // NOW = 'now' (see special operators)
+    RegularOperator["YEAR"] = "year";
+    RegularOperator["MONTH"] = "month";
+    RegularOperator["DAY"] = "day";
+    RegularOperator["HOURS"] = "hours";
+    RegularOperator["MINUTES"] = "minutes";
+    RegularOperator["SECONDS"] = "seconds";
+    RegularOperator["TIMEZONE"] = "timezone";
+    RegularOperator["TZ"] = "tz";
+    // Hash functions
+    // https://www.w3.org/TR/sparql11-query/#func-hash
+    RegularOperator["MD5"] = "md5";
+    RegularOperator["SHA1"] = "sha1";
+    RegularOperator["SHA256"] = "sha256";
+    RegularOperator["SHA384"] = "sha384";
+    RegularOperator["SHA512"] = "sha512";
+    // XPath Constructor functions
+    // https://www.w3.org/TR/sparql11-query/#FunctionMapping
+    // See Named Operators
+})(RegularOperator = exports.RegularOperator || (exports.RegularOperator = {}));
+var SpecialOperator;
+(function (SpecialOperator) {
+    // Functional Forms
+    // https://www.w3.org/TR/sparql11-query/#func-forms
+    SpecialOperator["BOUND"] = "bound";
+    SpecialOperator["IF"] = "if";
+    SpecialOperator["COALESCE"] = "coalesce";
+    // EXISTENCE = 'existence',
+    SpecialOperator["LOGICAL_OR"] = "||";
+    SpecialOperator["LOGICAL_AND"] = "&&";
+    // EQUAL = '=', // See RegularOperators
+    SpecialOperator["SAME_TERM"] = "sameterm";
+    SpecialOperator["IN"] = "in";
+    SpecialOperator["NOT_IN"] = "notin";
+    // Annoying functions
+    SpecialOperator["CONCAT"] = "concat";
+    // Context dependant functions
+    SpecialOperator["NOW"] = "now";
+    SpecialOperator["IRI"] = "iri";
+    SpecialOperator["URI"] = "uri";
+    SpecialOperator["BNODE"] = "BNODE";
+})(SpecialOperator = exports.SpecialOperator || (exports.SpecialOperator = {}));
+exports.RegularOperators = immutable_1.Set(Object.values(RegularOperator));
+exports.SpecialOperators = immutable_1.Set(Object.values(SpecialOperator));
+exports.Operators = exports.RegularOperators.union(exports.SpecialOperators);
+var SetFunction;
+(function (SetFunction) {
+    SetFunction["COUNT"] = "count";
+    SetFunction["SUM"] = "sum";
+    SetFunction["MIN"] = "min";
+    SetFunction["MAX"] = "max";
+    SetFunction["AVG"] = "avg";
+    SetFunction["GROUP_CONCAT"] = "group_concat";
+    SetFunction["SAMPLE"] = "sample";
+})(SetFunction = exports.SetFunction || (exports.SetFunction = {}));
+exports.SetFunctions = immutable_1.Set(Object.values(SetFunction));
+exports.NamedOperators = immutable_1.Set([
+    TypeURL.XSD_STRING,
+    TypeURL.XSD_FLOAT,
+    TypeURL.XSD_DOUBLE,
+    TypeURL.XSD_DECIMAL,
+    TypeURL.XSD_INTEGER,
+    TypeURL.XSD_DATE_TIME,
+    TypeURL.XSD_DATE,
+    TypeURL.XSD_BOOLEAN,
+]);
+//# sourceMappingURL=Consts.js.map
+
+/***/ }),
+
+/***/ "./node_modules/sparqlee/dist/lib/util/Errors.js":
+/*!*******************************************************!*\
+  !*** ./node_modules/sparqlee/dist/lib/util/Errors.js ***!
+  \*******************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+Object.defineProperty(exports, "__esModule", { value: true });
+/**
+ * This class of error will be thrown when an expression errors.
+ * Various reasons this could happen are:
+ *   - invalid types for the given operator
+ *   - unbound variables
+ *   - invalid lexical forms
+ *   - ...
+ *
+ * The distinction is made so that one can catch this specific type
+ * and handle it accordingly to the SPARQL spec (relevant for e.g. FILTER, EXTEND),
+ * while others (programming errors) can be re-thrown.
+ *
+ * @see isExpressionError
+ */
+class ExpressionError extends Error {
+}
+exports.ExpressionError = ExpressionError;
+/**
+ * Checks whether a given error is an {@link ExpressionError}.
+ * Also useful for mocking in tests for covering all branches.
+ *
+ * @see ExpressionError
+ */
+function isExpressionError(error) {
+    return error instanceof ExpressionError;
+}
+exports.isExpressionError = isExpressionError;
+/**
+ * A literal has an invalid lexical form for the datatype it is accompanied by.
+ * This error is only thrown when the term is as function argument that requires
+ * a valid lexical form.
+ */
+class InvalidLexicalForm extends ExpressionError {
+    constructor(arg) {
+        super(`Invalid lexical form '${pp(arg)}'`);
+        this.arg = arg;
+    }
+}
+exports.InvalidLexicalForm = InvalidLexicalForm;
+/**
+ * A variable in the expression was not bound.
+ */
+class UnboundVariableError extends ExpressionError {
+    constructor(variable, bindings) {
+        super(`Unbound variable '${pp(variable)}'`);
+        this.variable = variable;
+        this.bindings = bindings;
+    }
+}
+exports.UnboundVariableError = UnboundVariableError;
+/**
+ * An invalid term was being coerced to an Effective Boolean Value.
+ *
+ * See the {@link https://www.w3.org/TR/sparql11-query/#ebv | SPARQL docs}
+ * on EBVs.
+ */
+class EBVCoercionError extends ExpressionError {
+    constructor(arg) {
+        super(`Cannot coerce term to EBV '${pp(arg)}'`);
+        this.arg = arg;
+    }
+}
+exports.EBVCoercionError = EBVCoercionError;
+/**
+ * An equality test was done on literals with unsupported datatypes.
+ *
+ * See {@link https://www.w3.org/TR/sparql11-query/#func-RDFterm-equal | term equality spec}.
+ */
+class RDFEqualTypeError extends ExpressionError {
+    constructor(args) {
+        super('Equality test for literals with unsupported datatypes');
+        this.args = args;
+    }
+}
+exports.RDFEqualTypeError = RDFEqualTypeError;
+/**
+ * All the expressions in a COALESCE call threw errors.
+ */
+class CoalesceError extends ExpressionError {
+    constructor(errors) {
+        super('All COALESCE arguments threw errors');
+        this.errors = errors;
+    }
+}
+exports.CoalesceError = CoalesceError;
+/**
+ * No arguments to an IN call where equal, and at least one threw an error.
+ */
+class InError extends ExpressionError {
+    constructor(errors) {
+        super('Some argument to IN errorred and none where equal. ' +
+            errors.map((err) => `(${err.toString()}) `).join('and '));
+        this.errors = errors;
+    }
+}
+exports.InError = InError;
+/**
+ * Literals were passed to an operator that doesn't support their datatypes.
+ */
+class InvalidArgumentTypes extends ExpressionError {
+    constructor(args, op) {
+        super(`Argument types not valid for operator: '${pp(op)}' with '${pp(args)}`);
+        this.args = args;
+        this.op = op;
+    }
+}
+exports.InvalidArgumentTypes = InvalidArgumentTypes;
+/**
+ * An invalid typecast happened.
+ */
+class CastError extends ExpressionError {
+    constructor(arg, cast) {
+        super(`Invalid cast: '${pp(arg)}' to '${pp(cast)}'`);
+        this.arg = arg;
+    }
+}
+exports.CastError = CastError;
+class InvalidTimezoneCall extends ExpressionError {
+    constructor(dateString) {
+        super(`TIMEZONE call on ${dateString} which has no timezone`);
+        this.dateString = dateString;
+    }
+}
+exports.InvalidTimezoneCall = InvalidTimezoneCall;
+class IncompatibleLanguageOperation extends ExpressionError {
+    constructor(arg1, arg2) {
+        super(`Operation on incompatible language literals '${pp(arg1)}' and '${pp(arg2)}'`);
+        this.arg1 = arg1;
+        this.arg2 = arg2;
+    }
+}
+exports.IncompatibleLanguageOperation = IncompatibleLanguageOperation;
+class EmptyAggregateError extends ExpressionError {
+    constructor() {
+        super('Empty aggregate expression');
+    }
+}
+exports.EmptyAggregateError = EmptyAggregateError;
+// Non Expression Errors ------------------------------------------------------
+/**
+ * An error that arises when we detect a 'should-be-impossible' state.
+ * Given that this error is thrown, it clearly wasn't impossible, and some
+ * mistake has been made.
+ */
+class UnexpectedError extends Error {
+    constructor(message, payload) {
+        super(`Programmer Error '${message}'`);
+        this.payload = payload;
+    }
+}
+exports.UnexpectedError = UnexpectedError;
+/**
+ * An Error that signals a feature or function is yet unimplemented.
+ */
+class UnimplementedError extends Error {
+    constructor(feature) {
+        super(`Unimplemented feature '${feature}!'`);
+    }
+}
+exports.UnimplementedError = UnimplementedError;
+class InvalidArity extends Error {
+    constructor(args, op) {
+        super(`The number of args does not match the arity of the operator '${pp(op)}'.`);
+        this.args = args;
+        this.op = op;
+    }
+}
+exports.InvalidArity = InvalidArity;
+class InvalidExpression extends Error {
+    constructor(expr) {
+        super(`Invalid SPARQL Expression '${pp(expr)}'`);
+    }
+}
+exports.InvalidExpression = InvalidExpression;
+class InvalidExpressionType extends Error {
+    constructor(expr) {
+        super(`Invalid expression type for SPARQL Expression '${pp(expr)}'`);
+        this.expr = expr;
+    }
+}
+exports.InvalidExpressionType = InvalidExpressionType;
+class InvalidTermType extends Error {
+    constructor(term) {
+        super(`Invalid term type for term '${pp(term)}'`);
+        this.term = term;
+    }
+}
+exports.InvalidTermType = InvalidTermType;
+class UnknownOperator extends Error {
+    constructor(name) {
+        super(`Unknown operator: '${pp(name)}`);
+    }
+}
+exports.UnknownOperator = UnknownOperator;
+class UnknownNamedOperator extends Error {
+    constructor(name) {
+        super(`Unknown named operator: '${pp(name)}'`);
+    }
+}
+exports.UnknownNamedOperator = UnknownNamedOperator;
+class NoAggregator extends Error {
+    constructor(name) {
+        super(`Aggregate expression ${pp(name)} found, but no aggregate hook provided.`);
+    }
+}
+exports.NoAggregator = NoAggregator;
+class NoExistenceHook extends Error {
+    constructor() {
+        super('EXISTS found, but no existence hook provided.');
+    }
+}
+exports.NoExistenceHook = NoExistenceHook;
+function pp(o) {
+    return JSON.stringify(o);
+}
+//# sourceMappingURL=Errors.js.map
+
+/***/ }),
+
+/***/ "./node_modules/sparqlee/dist/lib/util/Parsing.js":
+/*!********************************************************!*\
+  !*** ./node_modules/sparqlee/dist/lib/util/Parsing.js ***!
+  \********************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+// TODO: Find a library for this
+Object.defineProperty(exports, "__esModule", { value: true });
+/**
+ * TODO: Fix decently
+ * Parses float datatypes (double, float).
+ *
+ * All invalid lexical values return undefined.
+ *
+ * @param value the string to interpret as a number
+ */
+function parseXSDFloat(value) {
+    const numb = Number(value);
+    if (isNaN(numb)) {
+        if (value === 'NaN') {
+            return NaN;
+        }
+        if (value === 'INF') {
+            return Infinity;
+        }
+        if (value === '-INF') {
+            return -Infinity;
+        }
+        return undefined;
+    }
+    return numb;
+}
+exports.parseXSDFloat = parseXSDFloat;
+/**
+ * Parses decimal datatypes (decimal, int, byte, nonPositiveInteger, etc...).
+ *
+ * All other values, including NaN, INF, and floating point numbers all
+ * return undefined;
+ *
+ * @param value the string to interpret as a number
+ */
+function parseXSDDecimal(value) {
+    if (/^(\-|\+)?([0-9]+(\.[0-9]+)?)$/.test(value)) {
+        const numb = Number(value);
+        return (isNaN(numb)) ? undefined : numb;
+    }
+    return undefined;
+}
+exports.parseXSDDecimal = parseXSDDecimal;
+/**
+ * Parses integer datatypes (decimal, int, byte, nonPositiveInteger, etc...).
+ *
+ * All other values, including NaN, INF, and floating point numbers all
+ * return undefined;
+ *
+ * @param value the string to interpret as a number
+ */
+function parseXSDInteger(value) {
+    if (/^(\-|\+)?([0-9]+)$/.test(value)) {
+        const numb = Number(value);
+        return (isNaN(numb)) ? undefined : numb;
+    }
+    return undefined;
+}
+exports.parseXSDInteger = parseXSDInteger;
+/**
+ * Parses ISO date or date time strings into it's parts.
+ * I found no lib providing this functionality online, but it's needed heavily
+ * by the spec (functions on dates), using any form of JS DateTime will lose the
+ * original timezone notation.
+ *
+ * Example strings:
+ *  - "2011-01-10T14:45:13.815-05:00"
+ *  - "2011-01-10T14:45:13.815Z"
+ *  - "2011-01-10T14:45:13Z"
+ *  - "2011-01-10"
+ * @param value the ISO date time string
+ */
+function parseXSDDateTime(value) {
+    const posT = value.indexOf('T');
+    const date = posT >= 0 ? value.substr(0, posT) : value;
+    const [year, month, day] = date.split('-');
+    let hours = '';
+    let minutes = '';
+    let seconds = '';
+    let timezone = '';
+    if (posT >= 0) {
+        const timeAndTimeZone = value.substr(posT + 1);
+        const [time, _timeZoneChopped] = timeAndTimeZone.split(/[\+\-Z]/);
+        [hours, minutes, seconds] = time.split(':');
+        const timezoneOrNull = new RegExp(/([\+\-Z].*)/).exec(timeAndTimeZone);
+        timezone = (timezoneOrNull) ? timezoneOrNull[0] : '';
+    }
+    else {
+        hours = '00';
+        minutes = '00';
+        seconds = '00';
+        timezone = '';
+    }
+    return { year, month, day, hours, minutes, seconds, timezone };
+}
+exports.parseXSDDateTime = parseXSDDateTime;
+//# sourceMappingURL=Parsing.js.map
 
 /***/ }),
 
@@ -60336,6 +70260,1405 @@ exports.clearImmediate = (typeof self !== "undefined" && self.clearImmediate) ||
 
 /***/ }),
 
+/***/ "./node_modules/uri-js/dist/es5/uri.all.js":
+/*!*************************************************!*\
+  !*** ./node_modules/uri-js/dist/es5/uri.all.js ***!
+  \*************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+/** @license URI.js v4.2.1 (c) 2011 Gary Court. License: http://github.com/garycourt/uri-js */
+(function (global, factory) {
+	 true ? factory(exports) :
+	undefined;
+}(this, (function (exports) { 'use strict';
+
+function merge() {
+    for (var _len = arguments.length, sets = Array(_len), _key = 0; _key < _len; _key++) {
+        sets[_key] = arguments[_key];
+    }
+
+    if (sets.length > 1) {
+        sets[0] = sets[0].slice(0, -1);
+        var xl = sets.length - 1;
+        for (var x = 1; x < xl; ++x) {
+            sets[x] = sets[x].slice(1, -1);
+        }
+        sets[xl] = sets[xl].slice(1);
+        return sets.join('');
+    } else {
+        return sets[0];
+    }
+}
+function subexp(str) {
+    return "(?:" + str + ")";
+}
+function typeOf(o) {
+    return o === undefined ? "undefined" : o === null ? "null" : Object.prototype.toString.call(o).split(" ").pop().split("]").shift().toLowerCase();
+}
+function toUpperCase(str) {
+    return str.toUpperCase();
+}
+function toArray(obj) {
+    return obj !== undefined && obj !== null ? obj instanceof Array ? obj : typeof obj.length !== "number" || obj.split || obj.setInterval || obj.call ? [obj] : Array.prototype.slice.call(obj) : [];
+}
+function assign(target, source) {
+    var obj = target;
+    if (source) {
+        for (var key in source) {
+            obj[key] = source[key];
+        }
+    }
+    return obj;
+}
+
+function buildExps(isIRI) {
+    var ALPHA$$ = "[A-Za-z]",
+        CR$ = "[\\x0D]",
+        DIGIT$$ = "[0-9]",
+        DQUOTE$$ = "[\\x22]",
+        HEXDIG$$ = merge(DIGIT$$, "[A-Fa-f]"),
+        //case-insensitive
+    LF$$ = "[\\x0A]",
+        SP$$ = "[\\x20]",
+        PCT_ENCODED$ = subexp(subexp("%[EFef]" + HEXDIG$$ + "%" + HEXDIG$$ + HEXDIG$$ + "%" + HEXDIG$$ + HEXDIG$$) + "|" + subexp("%[89A-Fa-f]" + HEXDIG$$ + "%" + HEXDIG$$ + HEXDIG$$) + "|" + subexp("%" + HEXDIG$$ + HEXDIG$$)),
+        //expanded
+    GEN_DELIMS$$ = "[\\:\\/\\?\\#\\[\\]\\@]",
+        SUB_DELIMS$$ = "[\\!\\$\\&\\'\\(\\)\\*\\+\\,\\;\\=]",
+        RESERVED$$ = merge(GEN_DELIMS$$, SUB_DELIMS$$),
+        UCSCHAR$$ = isIRI ? "[\\xA0-\\u200D\\u2010-\\u2029\\u202F-\\uD7FF\\uF900-\\uFDCF\\uFDF0-\\uFFEF]" : "[]",
+        //subset, excludes bidi control characters
+    IPRIVATE$$ = isIRI ? "[\\uE000-\\uF8FF]" : "[]",
+        //subset
+    UNRESERVED$$ = merge(ALPHA$$, DIGIT$$, "[\\-\\.\\_\\~]", UCSCHAR$$),
+        SCHEME$ = subexp(ALPHA$$ + merge(ALPHA$$, DIGIT$$, "[\\+\\-\\.]") + "*"),
+        USERINFO$ = subexp(subexp(PCT_ENCODED$ + "|" + merge(UNRESERVED$$, SUB_DELIMS$$, "[\\:]")) + "*"),
+        DEC_OCTET$ = subexp(subexp("25[0-5]") + "|" + subexp("2[0-4]" + DIGIT$$) + "|" + subexp("1" + DIGIT$$ + DIGIT$$) + "|" + subexp("[1-9]" + DIGIT$$) + "|" + DIGIT$$),
+        DEC_OCTET_RELAXED$ = subexp(subexp("25[0-5]") + "|" + subexp("2[0-4]" + DIGIT$$) + "|" + subexp("1" + DIGIT$$ + DIGIT$$) + "|" + subexp("0?[1-9]" + DIGIT$$) + "|0?0?" + DIGIT$$),
+        //relaxed parsing rules
+    IPV4ADDRESS$ = subexp(DEC_OCTET_RELAXED$ + "\\." + DEC_OCTET_RELAXED$ + "\\." + DEC_OCTET_RELAXED$ + "\\." + DEC_OCTET_RELAXED$),
+        H16$ = subexp(HEXDIG$$ + "{1,4}"),
+        LS32$ = subexp(subexp(H16$ + "\\:" + H16$) + "|" + IPV4ADDRESS$),
+        IPV6ADDRESS1$ = subexp(subexp(H16$ + "\\:") + "{6}" + LS32$),
+        //                           6( h16 ":" ) ls32
+    IPV6ADDRESS2$ = subexp("\\:\\:" + subexp(H16$ + "\\:") + "{5}" + LS32$),
+        //                      "::" 5( h16 ":" ) ls32
+    IPV6ADDRESS3$ = subexp(subexp(H16$) + "?\\:\\:" + subexp(H16$ + "\\:") + "{4}" + LS32$),
+        //[               h16 ] "::" 4( h16 ":" ) ls32
+    IPV6ADDRESS4$ = subexp(subexp(subexp(H16$ + "\\:") + "{0,1}" + H16$) + "?\\:\\:" + subexp(H16$ + "\\:") + "{3}" + LS32$),
+        //[ *1( h16 ":" ) h16 ] "::" 3( h16 ":" ) ls32
+    IPV6ADDRESS5$ = subexp(subexp(subexp(H16$ + "\\:") + "{0,2}" + H16$) + "?\\:\\:" + subexp(H16$ + "\\:") + "{2}" + LS32$),
+        //[ *2( h16 ":" ) h16 ] "::" 2( h16 ":" ) ls32
+    IPV6ADDRESS6$ = subexp(subexp(subexp(H16$ + "\\:") + "{0,3}" + H16$) + "?\\:\\:" + H16$ + "\\:" + LS32$),
+        //[ *3( h16 ":" ) h16 ] "::"    h16 ":"   ls32
+    IPV6ADDRESS7$ = subexp(subexp(subexp(H16$ + "\\:") + "{0,4}" + H16$) + "?\\:\\:" + LS32$),
+        //[ *4( h16 ":" ) h16 ] "::"              ls32
+    IPV6ADDRESS8$ = subexp(subexp(subexp(H16$ + "\\:") + "{0,5}" + H16$) + "?\\:\\:" + H16$),
+        //[ *5( h16 ":" ) h16 ] "::"              h16
+    IPV6ADDRESS9$ = subexp(subexp(subexp(H16$ + "\\:") + "{0,6}" + H16$) + "?\\:\\:"),
+        //[ *6( h16 ":" ) h16 ] "::"
+    IPV6ADDRESS$ = subexp([IPV6ADDRESS1$, IPV6ADDRESS2$, IPV6ADDRESS3$, IPV6ADDRESS4$, IPV6ADDRESS5$, IPV6ADDRESS6$, IPV6ADDRESS7$, IPV6ADDRESS8$, IPV6ADDRESS9$].join("|")),
+        ZONEID$ = subexp(subexp(UNRESERVED$$ + "|" + PCT_ENCODED$) + "+"),
+        //RFC 6874
+    IPV6ADDRZ$ = subexp(IPV6ADDRESS$ + "\\%25" + ZONEID$),
+        //RFC 6874
+    IPV6ADDRZ_RELAXED$ = subexp(IPV6ADDRESS$ + subexp("\\%25|\\%(?!" + HEXDIG$$ + "{2})") + ZONEID$),
+        //RFC 6874, with relaxed parsing rules
+    IPVFUTURE$ = subexp("[vV]" + HEXDIG$$ + "+\\." + merge(UNRESERVED$$, SUB_DELIMS$$, "[\\:]") + "+"),
+        IP_LITERAL$ = subexp("\\[" + subexp(IPV6ADDRZ_RELAXED$ + "|" + IPV6ADDRESS$ + "|" + IPVFUTURE$) + "\\]"),
+        //RFC 6874
+    REG_NAME$ = subexp(subexp(PCT_ENCODED$ + "|" + merge(UNRESERVED$$, SUB_DELIMS$$)) + "*"),
+        HOST$ = subexp(IP_LITERAL$ + "|" + IPV4ADDRESS$ + "(?!" + REG_NAME$ + ")" + "|" + REG_NAME$),
+        PORT$ = subexp(DIGIT$$ + "*"),
+        AUTHORITY$ = subexp(subexp(USERINFO$ + "@") + "?" + HOST$ + subexp("\\:" + PORT$) + "?"),
+        PCHAR$ = subexp(PCT_ENCODED$ + "|" + merge(UNRESERVED$$, SUB_DELIMS$$, "[\\:\\@]")),
+        SEGMENT$ = subexp(PCHAR$ + "*"),
+        SEGMENT_NZ$ = subexp(PCHAR$ + "+"),
+        SEGMENT_NZ_NC$ = subexp(subexp(PCT_ENCODED$ + "|" + merge(UNRESERVED$$, SUB_DELIMS$$, "[\\@]")) + "+"),
+        PATH_ABEMPTY$ = subexp(subexp("\\/" + SEGMENT$) + "*"),
+        PATH_ABSOLUTE$ = subexp("\\/" + subexp(SEGMENT_NZ$ + PATH_ABEMPTY$) + "?"),
+        //simplified
+    PATH_NOSCHEME$ = subexp(SEGMENT_NZ_NC$ + PATH_ABEMPTY$),
+        //simplified
+    PATH_ROOTLESS$ = subexp(SEGMENT_NZ$ + PATH_ABEMPTY$),
+        //simplified
+    PATH_EMPTY$ = "(?!" + PCHAR$ + ")",
+        PATH$ = subexp(PATH_ABEMPTY$ + "|" + PATH_ABSOLUTE$ + "|" + PATH_NOSCHEME$ + "|" + PATH_ROOTLESS$ + "|" + PATH_EMPTY$),
+        QUERY$ = subexp(subexp(PCHAR$ + "|" + merge("[\\/\\?]", IPRIVATE$$)) + "*"),
+        FRAGMENT$ = subexp(subexp(PCHAR$ + "|[\\/\\?]") + "*"),
+        HIER_PART$ = subexp(subexp("\\/\\/" + AUTHORITY$ + PATH_ABEMPTY$) + "|" + PATH_ABSOLUTE$ + "|" + PATH_ROOTLESS$ + "|" + PATH_EMPTY$),
+        URI$ = subexp(SCHEME$ + "\\:" + HIER_PART$ + subexp("\\?" + QUERY$) + "?" + subexp("\\#" + FRAGMENT$) + "?"),
+        RELATIVE_PART$ = subexp(subexp("\\/\\/" + AUTHORITY$ + PATH_ABEMPTY$) + "|" + PATH_ABSOLUTE$ + "|" + PATH_NOSCHEME$ + "|" + PATH_EMPTY$),
+        RELATIVE$ = subexp(RELATIVE_PART$ + subexp("\\?" + QUERY$) + "?" + subexp("\\#" + FRAGMENT$) + "?"),
+        URI_REFERENCE$ = subexp(URI$ + "|" + RELATIVE$),
+        ABSOLUTE_URI$ = subexp(SCHEME$ + "\\:" + HIER_PART$ + subexp("\\?" + QUERY$) + "?"),
+        GENERIC_REF$ = "^(" + SCHEME$ + ")\\:" + subexp(subexp("\\/\\/(" + subexp("(" + USERINFO$ + ")@") + "?(" + HOST$ + ")" + subexp("\\:(" + PORT$ + ")") + "?)") + "?(" + PATH_ABEMPTY$ + "|" + PATH_ABSOLUTE$ + "|" + PATH_ROOTLESS$ + "|" + PATH_EMPTY$ + ")") + subexp("\\?(" + QUERY$ + ")") + "?" + subexp("\\#(" + FRAGMENT$ + ")") + "?$",
+        RELATIVE_REF$ = "^(){0}" + subexp(subexp("\\/\\/(" + subexp("(" + USERINFO$ + ")@") + "?(" + HOST$ + ")" + subexp("\\:(" + PORT$ + ")") + "?)") + "?(" + PATH_ABEMPTY$ + "|" + PATH_ABSOLUTE$ + "|" + PATH_NOSCHEME$ + "|" + PATH_EMPTY$ + ")") + subexp("\\?(" + QUERY$ + ")") + "?" + subexp("\\#(" + FRAGMENT$ + ")") + "?$",
+        ABSOLUTE_REF$ = "^(" + SCHEME$ + ")\\:" + subexp(subexp("\\/\\/(" + subexp("(" + USERINFO$ + ")@") + "?(" + HOST$ + ")" + subexp("\\:(" + PORT$ + ")") + "?)") + "?(" + PATH_ABEMPTY$ + "|" + PATH_ABSOLUTE$ + "|" + PATH_ROOTLESS$ + "|" + PATH_EMPTY$ + ")") + subexp("\\?(" + QUERY$ + ")") + "?$",
+        SAMEDOC_REF$ = "^" + subexp("\\#(" + FRAGMENT$ + ")") + "?$",
+        AUTHORITY_REF$ = "^" + subexp("(" + USERINFO$ + ")@") + "?(" + HOST$ + ")" + subexp("\\:(" + PORT$ + ")") + "?$";
+    return {
+        NOT_SCHEME: new RegExp(merge("[^]", ALPHA$$, DIGIT$$, "[\\+\\-\\.]"), "g"),
+        NOT_USERINFO: new RegExp(merge("[^\\%\\:]", UNRESERVED$$, SUB_DELIMS$$), "g"),
+        NOT_HOST: new RegExp(merge("[^\\%\\[\\]\\:]", UNRESERVED$$, SUB_DELIMS$$), "g"),
+        NOT_PATH: new RegExp(merge("[^\\%\\/\\:\\@]", UNRESERVED$$, SUB_DELIMS$$), "g"),
+        NOT_PATH_NOSCHEME: new RegExp(merge("[^\\%\\/\\@]", UNRESERVED$$, SUB_DELIMS$$), "g"),
+        NOT_QUERY: new RegExp(merge("[^\\%]", UNRESERVED$$, SUB_DELIMS$$, "[\\:\\@\\/\\?]", IPRIVATE$$), "g"),
+        NOT_FRAGMENT: new RegExp(merge("[^\\%]", UNRESERVED$$, SUB_DELIMS$$, "[\\:\\@\\/\\?]"), "g"),
+        ESCAPE: new RegExp(merge("[^]", UNRESERVED$$, SUB_DELIMS$$), "g"),
+        UNRESERVED: new RegExp(UNRESERVED$$, "g"),
+        OTHER_CHARS: new RegExp(merge("[^\\%]", UNRESERVED$$, RESERVED$$), "g"),
+        PCT_ENCODED: new RegExp(PCT_ENCODED$, "g"),
+        IPV4ADDRESS: new RegExp("^(" + IPV4ADDRESS$ + ")$"),
+        IPV6ADDRESS: new RegExp("^\\[?(" + IPV6ADDRESS$ + ")" + subexp(subexp("\\%25|\\%(?!" + HEXDIG$$ + "{2})") + "(" + ZONEID$ + ")") + "?\\]?$") //RFC 6874, with relaxed parsing rules
+    };
+}
+var URI_PROTOCOL = buildExps(false);
+
+var IRI_PROTOCOL = buildExps(true);
+
+var slicedToArray = function () {
+  function sliceIterator(arr, i) {
+    var _arr = [];
+    var _n = true;
+    var _d = false;
+    var _e = undefined;
+
+    try {
+      for (var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next()).done); _n = true) {
+        _arr.push(_s.value);
+
+        if (i && _arr.length === i) break;
+      }
+    } catch (err) {
+      _d = true;
+      _e = err;
+    } finally {
+      try {
+        if (!_n && _i["return"]) _i["return"]();
+      } finally {
+        if (_d) throw _e;
+      }
+    }
+
+    return _arr;
+  }
+
+  return function (arr, i) {
+    if (Array.isArray(arr)) {
+      return arr;
+    } else if (Symbol.iterator in Object(arr)) {
+      return sliceIterator(arr, i);
+    } else {
+      throw new TypeError("Invalid attempt to destructure non-iterable instance");
+    }
+  };
+}();
+
+
+
+
+
+
+
+
+
+
+
+
+
+var toConsumableArray = function (arr) {
+  if (Array.isArray(arr)) {
+    for (var i = 0, arr2 = Array(arr.length); i < arr.length; i++) arr2[i] = arr[i];
+
+    return arr2;
+  } else {
+    return Array.from(arr);
+  }
+};
+
+/** Highest positive signed 32-bit float value */
+
+var maxInt = 2147483647; // aka. 0x7FFFFFFF or 2^31-1
+
+/** Bootstring parameters */
+var base = 36;
+var tMin = 1;
+var tMax = 26;
+var skew = 38;
+var damp = 700;
+var initialBias = 72;
+var initialN = 128; // 0x80
+var delimiter = '-'; // '\x2D'
+
+/** Regular expressions */
+var regexPunycode = /^xn--/;
+var regexNonASCII = /[^\0-\x7E]/; // non-ASCII chars
+var regexSeparators = /[\x2E\u3002\uFF0E\uFF61]/g; // RFC 3490 separators
+
+/** Error messages */
+var errors = {
+	'overflow': 'Overflow: input needs wider integers to process',
+	'not-basic': 'Illegal input >= 0x80 (not a basic code point)',
+	'invalid-input': 'Invalid input'
+};
+
+/** Convenience shortcuts */
+var baseMinusTMin = base - tMin;
+var floor = Math.floor;
+var stringFromCharCode = String.fromCharCode;
+
+/*--------------------------------------------------------------------------*/
+
+/**
+ * A generic error utility function.
+ * @private
+ * @param {String} type The error type.
+ * @returns {Error} Throws a `RangeError` with the applicable error message.
+ */
+function error$1(type) {
+	throw new RangeError(errors[type]);
+}
+
+/**
+ * A generic `Array#map` utility function.
+ * @private
+ * @param {Array} array The array to iterate over.
+ * @param {Function} callback The function that gets called for every array
+ * item.
+ * @returns {Array} A new array of values returned by the callback function.
+ */
+function map(array, fn) {
+	var result = [];
+	var length = array.length;
+	while (length--) {
+		result[length] = fn(array[length]);
+	}
+	return result;
+}
+
+/**
+ * A simple `Array#map`-like wrapper to work with domain name strings or email
+ * addresses.
+ * @private
+ * @param {String} domain The domain name or email address.
+ * @param {Function} callback The function that gets called for every
+ * character.
+ * @returns {Array} A new string of characters returned by the callback
+ * function.
+ */
+function mapDomain(string, fn) {
+	var parts = string.split('@');
+	var result = '';
+	if (parts.length > 1) {
+		// In email addresses, only the domain name should be punycoded. Leave
+		// the local part (i.e. everything up to `@`) intact.
+		result = parts[0] + '@';
+		string = parts[1];
+	}
+	// Avoid `split(regex)` for IE8 compatibility. See #17.
+	string = string.replace(regexSeparators, '\x2E');
+	var labels = string.split('.');
+	var encoded = map(labels, fn).join('.');
+	return result + encoded;
+}
+
+/**
+ * Creates an array containing the numeric code points of each Unicode
+ * character in the string. While JavaScript uses UCS-2 internally,
+ * this function will convert a pair of surrogate halves (each of which
+ * UCS-2 exposes as separate characters) into a single code point,
+ * matching UTF-16.
+ * @see `punycode.ucs2.encode`
+ * @see <https://mathiasbynens.be/notes/javascript-encoding>
+ * @memberOf punycode.ucs2
+ * @name decode
+ * @param {String} string The Unicode input string (UCS-2).
+ * @returns {Array} The new array of code points.
+ */
+function ucs2decode(string) {
+	var output = [];
+	var counter = 0;
+	var length = string.length;
+	while (counter < length) {
+		var value = string.charCodeAt(counter++);
+		if (value >= 0xD800 && value <= 0xDBFF && counter < length) {
+			// It's a high surrogate, and there is a next character.
+			var extra = string.charCodeAt(counter++);
+			if ((extra & 0xFC00) == 0xDC00) {
+				// Low surrogate.
+				output.push(((value & 0x3FF) << 10) + (extra & 0x3FF) + 0x10000);
+			} else {
+				// It's an unmatched surrogate; only append this code unit, in case the
+				// next code unit is the high surrogate of a surrogate pair.
+				output.push(value);
+				counter--;
+			}
+		} else {
+			output.push(value);
+		}
+	}
+	return output;
+}
+
+/**
+ * Creates a string based on an array of numeric code points.
+ * @see `punycode.ucs2.decode`
+ * @memberOf punycode.ucs2
+ * @name encode
+ * @param {Array} codePoints The array of numeric code points.
+ * @returns {String} The new Unicode string (UCS-2).
+ */
+var ucs2encode = function ucs2encode(array) {
+	return String.fromCodePoint.apply(String, toConsumableArray(array));
+};
+
+/**
+ * Converts a basic code point into a digit/integer.
+ * @see `digitToBasic()`
+ * @private
+ * @param {Number} codePoint The basic numeric code point value.
+ * @returns {Number} The numeric value of a basic code point (for use in
+ * representing integers) in the range `0` to `base - 1`, or `base` if
+ * the code point does not represent a value.
+ */
+var basicToDigit = function basicToDigit(codePoint) {
+	if (codePoint - 0x30 < 0x0A) {
+		return codePoint - 0x16;
+	}
+	if (codePoint - 0x41 < 0x1A) {
+		return codePoint - 0x41;
+	}
+	if (codePoint - 0x61 < 0x1A) {
+		return codePoint - 0x61;
+	}
+	return base;
+};
+
+/**
+ * Converts a digit/integer into a basic code point.
+ * @see `basicToDigit()`
+ * @private
+ * @param {Number} digit The numeric value of a basic code point.
+ * @returns {Number} The basic code point whose value (when used for
+ * representing integers) is `digit`, which needs to be in the range
+ * `0` to `base - 1`. If `flag` is non-zero, the uppercase form is
+ * used; else, the lowercase form is used. The behavior is undefined
+ * if `flag` is non-zero and `digit` has no uppercase form.
+ */
+var digitToBasic = function digitToBasic(digit, flag) {
+	//  0..25 map to ASCII a..z or A..Z
+	// 26..35 map to ASCII 0..9
+	return digit + 22 + 75 * (digit < 26) - ((flag != 0) << 5);
+};
+
+/**
+ * Bias adaptation function as per section 3.4 of RFC 3492.
+ * https://tools.ietf.org/html/rfc3492#section-3.4
+ * @private
+ */
+var adapt = function adapt(delta, numPoints, firstTime) {
+	var k = 0;
+	delta = firstTime ? floor(delta / damp) : delta >> 1;
+	delta += floor(delta / numPoints);
+	for (; /* no initialization */delta > baseMinusTMin * tMax >> 1; k += base) {
+		delta = floor(delta / baseMinusTMin);
+	}
+	return floor(k + (baseMinusTMin + 1) * delta / (delta + skew));
+};
+
+/**
+ * Converts a Punycode string of ASCII-only symbols to a string of Unicode
+ * symbols.
+ * @memberOf punycode
+ * @param {String} input The Punycode string of ASCII-only symbols.
+ * @returns {String} The resulting string of Unicode symbols.
+ */
+var decode = function decode(input) {
+	// Don't use UCS-2.
+	var output = [];
+	var inputLength = input.length;
+	var i = 0;
+	var n = initialN;
+	var bias = initialBias;
+
+	// Handle the basic code points: let `basic` be the number of input code
+	// points before the last delimiter, or `0` if there is none, then copy
+	// the first basic code points to the output.
+
+	var basic = input.lastIndexOf(delimiter);
+	if (basic < 0) {
+		basic = 0;
+	}
+
+	for (var j = 0; j < basic; ++j) {
+		// if it's not a basic code point
+		if (input.charCodeAt(j) >= 0x80) {
+			error$1('not-basic');
+		}
+		output.push(input.charCodeAt(j));
+	}
+
+	// Main decoding loop: start just after the last delimiter if any basic code
+	// points were copied; start at the beginning otherwise.
+
+	for (var index = basic > 0 ? basic + 1 : 0; index < inputLength;) /* no final expression */{
+
+		// `index` is the index of the next character to be consumed.
+		// Decode a generalized variable-length integer into `delta`,
+		// which gets added to `i`. The overflow checking is easier
+		// if we increase `i` as we go, then subtract off its starting
+		// value at the end to obtain `delta`.
+		var oldi = i;
+		for (var w = 1, k = base;; /* no condition */k += base) {
+
+			if (index >= inputLength) {
+				error$1('invalid-input');
+			}
+
+			var digit = basicToDigit(input.charCodeAt(index++));
+
+			if (digit >= base || digit > floor((maxInt - i) / w)) {
+				error$1('overflow');
+			}
+
+			i += digit * w;
+			var t = k <= bias ? tMin : k >= bias + tMax ? tMax : k - bias;
+
+			if (digit < t) {
+				break;
+			}
+
+			var baseMinusT = base - t;
+			if (w > floor(maxInt / baseMinusT)) {
+				error$1('overflow');
+			}
+
+			w *= baseMinusT;
+		}
+
+		var out = output.length + 1;
+		bias = adapt(i - oldi, out, oldi == 0);
+
+		// `i` was supposed to wrap around from `out` to `0`,
+		// incrementing `n` each time, so we'll fix that now:
+		if (floor(i / out) > maxInt - n) {
+			error$1('overflow');
+		}
+
+		n += floor(i / out);
+		i %= out;
+
+		// Insert `n` at position `i` of the output.
+		output.splice(i++, 0, n);
+	}
+
+	return String.fromCodePoint.apply(String, output);
+};
+
+/**
+ * Converts a string of Unicode symbols (e.g. a domain name label) to a
+ * Punycode string of ASCII-only symbols.
+ * @memberOf punycode
+ * @param {String} input The string of Unicode symbols.
+ * @returns {String} The resulting Punycode string of ASCII-only symbols.
+ */
+var encode = function encode(input) {
+	var output = [];
+
+	// Convert the input in UCS-2 to an array of Unicode code points.
+	input = ucs2decode(input);
+
+	// Cache the length.
+	var inputLength = input.length;
+
+	// Initialize the state.
+	var n = initialN;
+	var delta = 0;
+	var bias = initialBias;
+
+	// Handle the basic code points.
+	var _iteratorNormalCompletion = true;
+	var _didIteratorError = false;
+	var _iteratorError = undefined;
+
+	try {
+		for (var _iterator = input[Symbol.iterator](), _step; !(_iteratorNormalCompletion = (_step = _iterator.next()).done); _iteratorNormalCompletion = true) {
+			var _currentValue2 = _step.value;
+
+			if (_currentValue2 < 0x80) {
+				output.push(stringFromCharCode(_currentValue2));
+			}
+		}
+	} catch (err) {
+		_didIteratorError = true;
+		_iteratorError = err;
+	} finally {
+		try {
+			if (!_iteratorNormalCompletion && _iterator.return) {
+				_iterator.return();
+			}
+		} finally {
+			if (_didIteratorError) {
+				throw _iteratorError;
+			}
+		}
+	}
+
+	var basicLength = output.length;
+	var handledCPCount = basicLength;
+
+	// `handledCPCount` is the number of code points that have been handled;
+	// `basicLength` is the number of basic code points.
+
+	// Finish the basic string with a delimiter unless it's empty.
+	if (basicLength) {
+		output.push(delimiter);
+	}
+
+	// Main encoding loop:
+	while (handledCPCount < inputLength) {
+
+		// All non-basic code points < n have been handled already. Find the next
+		// larger one:
+		var m = maxInt;
+		var _iteratorNormalCompletion2 = true;
+		var _didIteratorError2 = false;
+		var _iteratorError2 = undefined;
+
+		try {
+			for (var _iterator2 = input[Symbol.iterator](), _step2; !(_iteratorNormalCompletion2 = (_step2 = _iterator2.next()).done); _iteratorNormalCompletion2 = true) {
+				var currentValue = _step2.value;
+
+				if (currentValue >= n && currentValue < m) {
+					m = currentValue;
+				}
+			}
+
+			// Increase `delta` enough to advance the decoder's <n,i> state to <m,0>,
+			// but guard against overflow.
+		} catch (err) {
+			_didIteratorError2 = true;
+			_iteratorError2 = err;
+		} finally {
+			try {
+				if (!_iteratorNormalCompletion2 && _iterator2.return) {
+					_iterator2.return();
+				}
+			} finally {
+				if (_didIteratorError2) {
+					throw _iteratorError2;
+				}
+			}
+		}
+
+		var handledCPCountPlusOne = handledCPCount + 1;
+		if (m - n > floor((maxInt - delta) / handledCPCountPlusOne)) {
+			error$1('overflow');
+		}
+
+		delta += (m - n) * handledCPCountPlusOne;
+		n = m;
+
+		var _iteratorNormalCompletion3 = true;
+		var _didIteratorError3 = false;
+		var _iteratorError3 = undefined;
+
+		try {
+			for (var _iterator3 = input[Symbol.iterator](), _step3; !(_iteratorNormalCompletion3 = (_step3 = _iterator3.next()).done); _iteratorNormalCompletion3 = true) {
+				var _currentValue = _step3.value;
+
+				if (_currentValue < n && ++delta > maxInt) {
+					error$1('overflow');
+				}
+				if (_currentValue == n) {
+					// Represent delta as a generalized variable-length integer.
+					var q = delta;
+					for (var k = base;; /* no condition */k += base) {
+						var t = k <= bias ? tMin : k >= bias + tMax ? tMax : k - bias;
+						if (q < t) {
+							break;
+						}
+						var qMinusT = q - t;
+						var baseMinusT = base - t;
+						output.push(stringFromCharCode(digitToBasic(t + qMinusT % baseMinusT, 0)));
+						q = floor(qMinusT / baseMinusT);
+					}
+
+					output.push(stringFromCharCode(digitToBasic(q, 0)));
+					bias = adapt(delta, handledCPCountPlusOne, handledCPCount == basicLength);
+					delta = 0;
+					++handledCPCount;
+				}
+			}
+		} catch (err) {
+			_didIteratorError3 = true;
+			_iteratorError3 = err;
+		} finally {
+			try {
+				if (!_iteratorNormalCompletion3 && _iterator3.return) {
+					_iterator3.return();
+				}
+			} finally {
+				if (_didIteratorError3) {
+					throw _iteratorError3;
+				}
+			}
+		}
+
+		++delta;
+		++n;
+	}
+	return output.join('');
+};
+
+/**
+ * Converts a Punycode string representing a domain name or an email address
+ * to Unicode. Only the Punycoded parts of the input will be converted, i.e.
+ * it doesn't matter if you call it on a string that has already been
+ * converted to Unicode.
+ * @memberOf punycode
+ * @param {String} input The Punycoded domain name or email address to
+ * convert to Unicode.
+ * @returns {String} The Unicode representation of the given Punycode
+ * string.
+ */
+var toUnicode = function toUnicode(input) {
+	return mapDomain(input, function (string) {
+		return regexPunycode.test(string) ? decode(string.slice(4).toLowerCase()) : string;
+	});
+};
+
+/**
+ * Converts a Unicode string representing a domain name or an email address to
+ * Punycode. Only the non-ASCII parts of the domain name will be converted,
+ * i.e. it doesn't matter if you call it with a domain that's already in
+ * ASCII.
+ * @memberOf punycode
+ * @param {String} input The domain name or email address to convert, as a
+ * Unicode string.
+ * @returns {String} The Punycode representation of the given domain name or
+ * email address.
+ */
+var toASCII = function toASCII(input) {
+	return mapDomain(input, function (string) {
+		return regexNonASCII.test(string) ? 'xn--' + encode(string) : string;
+	});
+};
+
+/*--------------------------------------------------------------------------*/
+
+/** Define the public API */
+var punycode = {
+	/**
+  * A string representing the current Punycode.js version number.
+  * @memberOf punycode
+  * @type String
+  */
+	'version': '2.1.0',
+	/**
+  * An object of methods to convert from JavaScript's internal character
+  * representation (UCS-2) to Unicode code points, and back.
+  * @see <https://mathiasbynens.be/notes/javascript-encoding>
+  * @memberOf punycode
+  * @type Object
+  */
+	'ucs2': {
+		'decode': ucs2decode,
+		'encode': ucs2encode
+	},
+	'decode': decode,
+	'encode': encode,
+	'toASCII': toASCII,
+	'toUnicode': toUnicode
+};
+
+/**
+ * URI.js
+ *
+ * @fileoverview An RFC 3986 compliant, scheme extendable URI parsing/validating/resolving library for JavaScript.
+ * @author <a href="mailto:gary.court@gmail.com">Gary Court</a>
+ * @see http://github.com/garycourt/uri-js
+ */
+/**
+ * Copyright 2011 Gary Court. All rights reserved.
+ *
+ * Redistribution and use in source and binary forms, with or without modification, are
+ * permitted provided that the following conditions are met:
+ *
+ *    1. Redistributions of source code must retain the above copyright notice, this list of
+ *       conditions and the following disclaimer.
+ *
+ *    2. Redistributions in binary form must reproduce the above copyright notice, this list
+ *       of conditions and the following disclaimer in the documentation and/or other materials
+ *       provided with the distribution.
+ *
+ * THIS SOFTWARE IS PROVIDED BY GARY COURT ``AS IS'' AND ANY EXPRESS OR IMPLIED
+ * WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND
+ * FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL GARY COURT OR
+ * CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR
+ * CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR
+ * SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON
+ * ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING
+ * NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF
+ * ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+ *
+ * The views and conclusions contained in the software and documentation are those of the
+ * authors and should not be interpreted as representing official policies, either expressed
+ * or implied, of Gary Court.
+ */
+var SCHEMES = {};
+function pctEncChar(chr) {
+    var c = chr.charCodeAt(0);
+    var e = void 0;
+    if (c < 16) e = "%0" + c.toString(16).toUpperCase();else if (c < 128) e = "%" + c.toString(16).toUpperCase();else if (c < 2048) e = "%" + (c >> 6 | 192).toString(16).toUpperCase() + "%" + (c & 63 | 128).toString(16).toUpperCase();else e = "%" + (c >> 12 | 224).toString(16).toUpperCase() + "%" + (c >> 6 & 63 | 128).toString(16).toUpperCase() + "%" + (c & 63 | 128).toString(16).toUpperCase();
+    return e;
+}
+function pctDecChars(str) {
+    var newStr = "";
+    var i = 0;
+    var il = str.length;
+    while (i < il) {
+        var c = parseInt(str.substr(i + 1, 2), 16);
+        if (c < 128) {
+            newStr += String.fromCharCode(c);
+            i += 3;
+        } else if (c >= 194 && c < 224) {
+            if (il - i >= 6) {
+                var c2 = parseInt(str.substr(i + 4, 2), 16);
+                newStr += String.fromCharCode((c & 31) << 6 | c2 & 63);
+            } else {
+                newStr += str.substr(i, 6);
+            }
+            i += 6;
+        } else if (c >= 224) {
+            if (il - i >= 9) {
+                var _c = parseInt(str.substr(i + 4, 2), 16);
+                var c3 = parseInt(str.substr(i + 7, 2), 16);
+                newStr += String.fromCharCode((c & 15) << 12 | (_c & 63) << 6 | c3 & 63);
+            } else {
+                newStr += str.substr(i, 9);
+            }
+            i += 9;
+        } else {
+            newStr += str.substr(i, 3);
+            i += 3;
+        }
+    }
+    return newStr;
+}
+function _normalizeComponentEncoding(components, protocol) {
+    function decodeUnreserved(str) {
+        var decStr = pctDecChars(str);
+        return !decStr.match(protocol.UNRESERVED) ? str : decStr;
+    }
+    if (components.scheme) components.scheme = String(components.scheme).replace(protocol.PCT_ENCODED, decodeUnreserved).toLowerCase().replace(protocol.NOT_SCHEME, "");
+    if (components.userinfo !== undefined) components.userinfo = String(components.userinfo).replace(protocol.PCT_ENCODED, decodeUnreserved).replace(protocol.NOT_USERINFO, pctEncChar).replace(protocol.PCT_ENCODED, toUpperCase);
+    if (components.host !== undefined) components.host = String(components.host).replace(protocol.PCT_ENCODED, decodeUnreserved).toLowerCase().replace(protocol.NOT_HOST, pctEncChar).replace(protocol.PCT_ENCODED, toUpperCase);
+    if (components.path !== undefined) components.path = String(components.path).replace(protocol.PCT_ENCODED, decodeUnreserved).replace(components.scheme ? protocol.NOT_PATH : protocol.NOT_PATH_NOSCHEME, pctEncChar).replace(protocol.PCT_ENCODED, toUpperCase);
+    if (components.query !== undefined) components.query = String(components.query).replace(protocol.PCT_ENCODED, decodeUnreserved).replace(protocol.NOT_QUERY, pctEncChar).replace(protocol.PCT_ENCODED, toUpperCase);
+    if (components.fragment !== undefined) components.fragment = String(components.fragment).replace(protocol.PCT_ENCODED, decodeUnreserved).replace(protocol.NOT_FRAGMENT, pctEncChar).replace(protocol.PCT_ENCODED, toUpperCase);
+    return components;
+}
+
+function _stripLeadingZeros(str) {
+    return str.replace(/^0*(.*)/, "$1") || "0";
+}
+function _normalizeIPv4(host, protocol) {
+    var matches = host.match(protocol.IPV4ADDRESS) || [];
+
+    var _matches = slicedToArray(matches, 2),
+        address = _matches[1];
+
+    if (address) {
+        return address.split(".").map(_stripLeadingZeros).join(".");
+    } else {
+        return host;
+    }
+}
+function _normalizeIPv6(host, protocol) {
+    var matches = host.match(protocol.IPV6ADDRESS) || [];
+
+    var _matches2 = slicedToArray(matches, 3),
+        address = _matches2[1],
+        zone = _matches2[2];
+
+    if (address) {
+        var _address$toLowerCase$ = address.toLowerCase().split('::').reverse(),
+            _address$toLowerCase$2 = slicedToArray(_address$toLowerCase$, 2),
+            last = _address$toLowerCase$2[0],
+            first = _address$toLowerCase$2[1];
+
+        var firstFields = first ? first.split(":").map(_stripLeadingZeros) : [];
+        var lastFields = last.split(":").map(_stripLeadingZeros);
+        var isLastFieldIPv4Address = protocol.IPV4ADDRESS.test(lastFields[lastFields.length - 1]);
+        var fieldCount = isLastFieldIPv4Address ? 7 : 8;
+        var lastFieldsStart = lastFields.length - fieldCount;
+        var fields = Array(fieldCount);
+        for (var x = 0; x < fieldCount; ++x) {
+            fields[x] = firstFields[x] || lastFields[lastFieldsStart + x] || '';
+        }
+        if (isLastFieldIPv4Address) {
+            fields[fieldCount - 1] = _normalizeIPv4(fields[fieldCount - 1], protocol);
+        }
+        var allZeroFields = fields.reduce(function (acc, field, index) {
+            if (!field || field === "0") {
+                var lastLongest = acc[acc.length - 1];
+                if (lastLongest && lastLongest.index + lastLongest.length === index) {
+                    lastLongest.length++;
+                } else {
+                    acc.push({ index: index, length: 1 });
+                }
+            }
+            return acc;
+        }, []);
+        var longestZeroFields = allZeroFields.sort(function (a, b) {
+            return b.length - a.length;
+        })[0];
+        var newHost = void 0;
+        if (longestZeroFields && longestZeroFields.length > 1) {
+            var newFirst = fields.slice(0, longestZeroFields.index);
+            var newLast = fields.slice(longestZeroFields.index + longestZeroFields.length);
+            newHost = newFirst.join(":") + "::" + newLast.join(":");
+        } else {
+            newHost = fields.join(":");
+        }
+        if (zone) {
+            newHost += "%" + zone;
+        }
+        return newHost;
+    } else {
+        return host;
+    }
+}
+var URI_PARSE = /^(?:([^:\/?#]+):)?(?:\/\/((?:([^\/?#@]*)@)?(\[[^\/?#\]]+\]|[^\/?#:]*)(?:\:(\d*))?))?([^?#]*)(?:\?([^#]*))?(?:#((?:.|\n|\r)*))?/i;
+var NO_MATCH_IS_UNDEFINED = "".match(/(){0}/)[1] === undefined;
+function parse(uriString) {
+    var options = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : {};
+
+    var components = {};
+    var protocol = options.iri !== false ? IRI_PROTOCOL : URI_PROTOCOL;
+    if (options.reference === "suffix") uriString = (options.scheme ? options.scheme + ":" : "") + "//" + uriString;
+    var matches = uriString.match(URI_PARSE);
+    if (matches) {
+        if (NO_MATCH_IS_UNDEFINED) {
+            //store each component
+            components.scheme = matches[1];
+            components.userinfo = matches[3];
+            components.host = matches[4];
+            components.port = parseInt(matches[5], 10);
+            components.path = matches[6] || "";
+            components.query = matches[7];
+            components.fragment = matches[8];
+            //fix port number
+            if (isNaN(components.port)) {
+                components.port = matches[5];
+            }
+        } else {
+            //IE FIX for improper RegExp matching
+            //store each component
+            components.scheme = matches[1] || undefined;
+            components.userinfo = uriString.indexOf("@") !== -1 ? matches[3] : undefined;
+            components.host = uriString.indexOf("//") !== -1 ? matches[4] : undefined;
+            components.port = parseInt(matches[5], 10);
+            components.path = matches[6] || "";
+            components.query = uriString.indexOf("?") !== -1 ? matches[7] : undefined;
+            components.fragment = uriString.indexOf("#") !== -1 ? matches[8] : undefined;
+            //fix port number
+            if (isNaN(components.port)) {
+                components.port = uriString.match(/\/\/(?:.|\n)*\:(?:\/|\?|\#|$)/) ? matches[4] : undefined;
+            }
+        }
+        if (components.host) {
+            //normalize IP hosts
+            components.host = _normalizeIPv6(_normalizeIPv4(components.host, protocol), protocol);
+        }
+        //determine reference type
+        if (components.scheme === undefined && components.userinfo === undefined && components.host === undefined && components.port === undefined && !components.path && components.query === undefined) {
+            components.reference = "same-document";
+        } else if (components.scheme === undefined) {
+            components.reference = "relative";
+        } else if (components.fragment === undefined) {
+            components.reference = "absolute";
+        } else {
+            components.reference = "uri";
+        }
+        //check for reference errors
+        if (options.reference && options.reference !== "suffix" && options.reference !== components.reference) {
+            components.error = components.error || "URI is not a " + options.reference + " reference.";
+        }
+        //find scheme handler
+        var schemeHandler = SCHEMES[(options.scheme || components.scheme || "").toLowerCase()];
+        //check if scheme can't handle IRIs
+        if (!options.unicodeSupport && (!schemeHandler || !schemeHandler.unicodeSupport)) {
+            //if host component is a domain name
+            if (components.host && (options.domainHost || schemeHandler && schemeHandler.domainHost)) {
+                //convert Unicode IDN -> ASCII IDN
+                try {
+                    components.host = punycode.toASCII(components.host.replace(protocol.PCT_ENCODED, pctDecChars).toLowerCase());
+                } catch (e) {
+                    components.error = components.error || "Host's domain name can not be converted to ASCII via punycode: " + e;
+                }
+            }
+            //convert IRI -> URI
+            _normalizeComponentEncoding(components, URI_PROTOCOL);
+        } else {
+            //normalize encodings
+            _normalizeComponentEncoding(components, protocol);
+        }
+        //perform scheme specific parsing
+        if (schemeHandler && schemeHandler.parse) {
+            schemeHandler.parse(components, options);
+        }
+    } else {
+        components.error = components.error || "URI can not be parsed.";
+    }
+    return components;
+}
+
+function _recomposeAuthority(components, options) {
+    var protocol = options.iri !== false ? IRI_PROTOCOL : URI_PROTOCOL;
+    var uriTokens = [];
+    if (components.userinfo !== undefined) {
+        uriTokens.push(components.userinfo);
+        uriTokens.push("@");
+    }
+    if (components.host !== undefined) {
+        //normalize IP hosts, add brackets and escape zone separator for IPv6
+        uriTokens.push(_normalizeIPv6(_normalizeIPv4(String(components.host), protocol), protocol).replace(protocol.IPV6ADDRESS, function (_, $1, $2) {
+            return "[" + $1 + ($2 ? "%25" + $2 : "") + "]";
+        }));
+    }
+    if (typeof components.port === "number") {
+        uriTokens.push(":");
+        uriTokens.push(components.port.toString(10));
+    }
+    return uriTokens.length ? uriTokens.join("") : undefined;
+}
+
+var RDS1 = /^\.\.?\//;
+var RDS2 = /^\/\.(\/|$)/;
+var RDS3 = /^\/\.\.(\/|$)/;
+var RDS5 = /^\/?(?:.|\n)*?(?=\/|$)/;
+function removeDotSegments(input) {
+    var output = [];
+    while (input.length) {
+        if (input.match(RDS1)) {
+            input = input.replace(RDS1, "");
+        } else if (input.match(RDS2)) {
+            input = input.replace(RDS2, "/");
+        } else if (input.match(RDS3)) {
+            input = input.replace(RDS3, "/");
+            output.pop();
+        } else if (input === "." || input === "..") {
+            input = "";
+        } else {
+            var im = input.match(RDS5);
+            if (im) {
+                var s = im[0];
+                input = input.slice(s.length);
+                output.push(s);
+            } else {
+                throw new Error("Unexpected dot segment condition");
+            }
+        }
+    }
+    return output.join("");
+}
+
+function serialize(components) {
+    var options = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : {};
+
+    var protocol = options.iri ? IRI_PROTOCOL : URI_PROTOCOL;
+    var uriTokens = [];
+    //find scheme handler
+    var schemeHandler = SCHEMES[(options.scheme || components.scheme || "").toLowerCase()];
+    //perform scheme specific serialization
+    if (schemeHandler && schemeHandler.serialize) schemeHandler.serialize(components, options);
+    if (components.host) {
+        //if host component is an IPv6 address
+        if (protocol.IPV6ADDRESS.test(components.host)) {}
+        //TODO: normalize IPv6 address as per RFC 5952
+
+        //if host component is a domain name
+        else if (options.domainHost || schemeHandler && schemeHandler.domainHost) {
+                //convert IDN via punycode
+                try {
+                    components.host = !options.iri ? punycode.toASCII(components.host.replace(protocol.PCT_ENCODED, pctDecChars).toLowerCase()) : punycode.toUnicode(components.host);
+                } catch (e) {
+                    components.error = components.error || "Host's domain name can not be converted to " + (!options.iri ? "ASCII" : "Unicode") + " via punycode: " + e;
+                }
+            }
+    }
+    //normalize encoding
+    _normalizeComponentEncoding(components, protocol);
+    if (options.reference !== "suffix" && components.scheme) {
+        uriTokens.push(components.scheme);
+        uriTokens.push(":");
+    }
+    var authority = _recomposeAuthority(components, options);
+    if (authority !== undefined) {
+        if (options.reference !== "suffix") {
+            uriTokens.push("//");
+        }
+        uriTokens.push(authority);
+        if (components.path && components.path.charAt(0) !== "/") {
+            uriTokens.push("/");
+        }
+    }
+    if (components.path !== undefined) {
+        var s = components.path;
+        if (!options.absolutePath && (!schemeHandler || !schemeHandler.absolutePath)) {
+            s = removeDotSegments(s);
+        }
+        if (authority === undefined) {
+            s = s.replace(/^\/\//, "/%2F"); //don't allow the path to start with "//"
+        }
+        uriTokens.push(s);
+    }
+    if (components.query !== undefined) {
+        uriTokens.push("?");
+        uriTokens.push(components.query);
+    }
+    if (components.fragment !== undefined) {
+        uriTokens.push("#");
+        uriTokens.push(components.fragment);
+    }
+    return uriTokens.join(""); //merge tokens into a string
+}
+
+function resolveComponents(base, relative) {
+    var options = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : {};
+    var skipNormalization = arguments[3];
+
+    var target = {};
+    if (!skipNormalization) {
+        base = parse(serialize(base, options), options); //normalize base components
+        relative = parse(serialize(relative, options), options); //normalize relative components
+    }
+    options = options || {};
+    if (!options.tolerant && relative.scheme) {
+        target.scheme = relative.scheme;
+        //target.authority = relative.authority;
+        target.userinfo = relative.userinfo;
+        target.host = relative.host;
+        target.port = relative.port;
+        target.path = removeDotSegments(relative.path || "");
+        target.query = relative.query;
+    } else {
+        if (relative.userinfo !== undefined || relative.host !== undefined || relative.port !== undefined) {
+            //target.authority = relative.authority;
+            target.userinfo = relative.userinfo;
+            target.host = relative.host;
+            target.port = relative.port;
+            target.path = removeDotSegments(relative.path || "");
+            target.query = relative.query;
+        } else {
+            if (!relative.path) {
+                target.path = base.path;
+                if (relative.query !== undefined) {
+                    target.query = relative.query;
+                } else {
+                    target.query = base.query;
+                }
+            } else {
+                if (relative.path.charAt(0) === "/") {
+                    target.path = removeDotSegments(relative.path);
+                } else {
+                    if ((base.userinfo !== undefined || base.host !== undefined || base.port !== undefined) && !base.path) {
+                        target.path = "/" + relative.path;
+                    } else if (!base.path) {
+                        target.path = relative.path;
+                    } else {
+                        target.path = base.path.slice(0, base.path.lastIndexOf("/") + 1) + relative.path;
+                    }
+                    target.path = removeDotSegments(target.path);
+                }
+                target.query = relative.query;
+            }
+            //target.authority = base.authority;
+            target.userinfo = base.userinfo;
+            target.host = base.host;
+            target.port = base.port;
+        }
+        target.scheme = base.scheme;
+    }
+    target.fragment = relative.fragment;
+    return target;
+}
+
+function resolve(baseURI, relativeURI, options) {
+    var schemelessOptions = assign({ scheme: 'null' }, options);
+    return serialize(resolveComponents(parse(baseURI, schemelessOptions), parse(relativeURI, schemelessOptions), schemelessOptions, true), schemelessOptions);
+}
+
+function normalize(uri, options) {
+    if (typeof uri === "string") {
+        uri = serialize(parse(uri, options), options);
+    } else if (typeOf(uri) === "object") {
+        uri = parse(serialize(uri, options), options);
+    }
+    return uri;
+}
+
+function equal(uriA, uriB, options) {
+    if (typeof uriA === "string") {
+        uriA = serialize(parse(uriA, options), options);
+    } else if (typeOf(uriA) === "object") {
+        uriA = serialize(uriA, options);
+    }
+    if (typeof uriB === "string") {
+        uriB = serialize(parse(uriB, options), options);
+    } else if (typeOf(uriB) === "object") {
+        uriB = serialize(uriB, options);
+    }
+    return uriA === uriB;
+}
+
+function escapeComponent(str, options) {
+    return str && str.toString().replace(!options || !options.iri ? URI_PROTOCOL.ESCAPE : IRI_PROTOCOL.ESCAPE, pctEncChar);
+}
+
+function unescapeComponent(str, options) {
+    return str && str.toString().replace(!options || !options.iri ? URI_PROTOCOL.PCT_ENCODED : IRI_PROTOCOL.PCT_ENCODED, pctDecChars);
+}
+
+var handler = {
+    scheme: "http",
+    domainHost: true,
+    parse: function parse(components, options) {
+        //report missing host
+        if (!components.host) {
+            components.error = components.error || "HTTP URIs must have a host.";
+        }
+        return components;
+    },
+    serialize: function serialize(components, options) {
+        //normalize the default port
+        if (components.port === (String(components.scheme).toLowerCase() !== "https" ? 80 : 443) || components.port === "") {
+            components.port = undefined;
+        }
+        //normalize the empty path
+        if (!components.path) {
+            components.path = "/";
+        }
+        //NOTE: We do not parse query strings for HTTP URIs
+        //as WWW Form Url Encoded query strings are part of the HTML4+ spec,
+        //and not the HTTP spec.
+        return components;
+    }
+};
+
+var handler$1 = {
+    scheme: "https",
+    domainHost: handler.domainHost,
+    parse: handler.parse,
+    serialize: handler.serialize
+};
+
+var O = {};
+var isIRI = true;
+//RFC 3986
+var UNRESERVED$$ = "[A-Za-z0-9\\-\\.\\_\\~" + (isIRI ? "\\xA0-\\u200D\\u2010-\\u2029\\u202F-\\uD7FF\\uF900-\\uFDCF\\uFDF0-\\uFFEF" : "") + "]";
+var HEXDIG$$ = "[0-9A-Fa-f]"; //case-insensitive
+var PCT_ENCODED$ = subexp(subexp("%[EFef]" + HEXDIG$$ + "%" + HEXDIG$$ + HEXDIG$$ + "%" + HEXDIG$$ + HEXDIG$$) + "|" + subexp("%[89A-Fa-f]" + HEXDIG$$ + "%" + HEXDIG$$ + HEXDIG$$) + "|" + subexp("%" + HEXDIG$$ + HEXDIG$$)); //expanded
+//RFC 5322, except these symbols as per RFC 6068: @ : / ? # [ ] & ; =
+//const ATEXT$$ = "[A-Za-z0-9\\!\\#\\$\\%\\&\\'\\*\\+\\-\\/\\=\\?\\^\\_\\`\\{\\|\\}\\~]";
+//const WSP$$ = "[\\x20\\x09]";
+//const OBS_QTEXT$$ = "[\\x01-\\x08\\x0B\\x0C\\x0E-\\x1F\\x7F]";  //(%d1-8 / %d11-12 / %d14-31 / %d127)
+//const QTEXT$$ = merge("[\\x21\\x23-\\x5B\\x5D-\\x7E]", OBS_QTEXT$$);  //%d33 / %d35-91 / %d93-126 / obs-qtext
+//const VCHAR$$ = "[\\x21-\\x7E]";
+//const WSP$$ = "[\\x20\\x09]";
+//const OBS_QP$ = subexp("\\\\" + merge("[\\x00\\x0D\\x0A]", OBS_QTEXT$$));  //%d0 / CR / LF / obs-qtext
+//const FWS$ = subexp(subexp(WSP$$ + "*" + "\\x0D\\x0A") + "?" + WSP$$ + "+");
+//const QUOTED_PAIR$ = subexp(subexp("\\\\" + subexp(VCHAR$$ + "|" + WSP$$)) + "|" + OBS_QP$);
+//const QUOTED_STRING$ = subexp('\\"' + subexp(FWS$ + "?" + QCONTENT$) + "*" + FWS$ + "?" + '\\"');
+var ATEXT$$ = "[A-Za-z0-9\\!\\$\\%\\'\\*\\+\\-\\^\\_\\`\\{\\|\\}\\~]";
+var QTEXT$$ = "[\\!\\$\\%\\'\\(\\)\\*\\+\\,\\-\\.0-9\\<\\>A-Z\\x5E-\\x7E]";
+var VCHAR$$ = merge(QTEXT$$, "[\\\"\\\\]");
+var SOME_DELIMS$$ = "[\\!\\$\\'\\(\\)\\*\\+\\,\\;\\:\\@]";
+var UNRESERVED = new RegExp(UNRESERVED$$, "g");
+var PCT_ENCODED = new RegExp(PCT_ENCODED$, "g");
+var NOT_LOCAL_PART = new RegExp(merge("[^]", ATEXT$$, "[\\.]", '[\\"]', VCHAR$$), "g");
+var NOT_HFNAME = new RegExp(merge("[^]", UNRESERVED$$, SOME_DELIMS$$), "g");
+var NOT_HFVALUE = NOT_HFNAME;
+function decodeUnreserved(str) {
+    var decStr = pctDecChars(str);
+    return !decStr.match(UNRESERVED) ? str : decStr;
+}
+var handler$2 = {
+    scheme: "mailto",
+    parse: function parse$$1(components, options) {
+        var mailtoComponents = components;
+        var to = mailtoComponents.to = mailtoComponents.path ? mailtoComponents.path.split(",") : [];
+        mailtoComponents.path = undefined;
+        if (mailtoComponents.query) {
+            var unknownHeaders = false;
+            var headers = {};
+            var hfields = mailtoComponents.query.split("&");
+            for (var x = 0, xl = hfields.length; x < xl; ++x) {
+                var hfield = hfields[x].split("=");
+                switch (hfield[0]) {
+                    case "to":
+                        var toAddrs = hfield[1].split(",");
+                        for (var _x = 0, _xl = toAddrs.length; _x < _xl; ++_x) {
+                            to.push(toAddrs[_x]);
+                        }
+                        break;
+                    case "subject":
+                        mailtoComponents.subject = unescapeComponent(hfield[1], options);
+                        break;
+                    case "body":
+                        mailtoComponents.body = unescapeComponent(hfield[1], options);
+                        break;
+                    default:
+                        unknownHeaders = true;
+                        headers[unescapeComponent(hfield[0], options)] = unescapeComponent(hfield[1], options);
+                        break;
+                }
+            }
+            if (unknownHeaders) mailtoComponents.headers = headers;
+        }
+        mailtoComponents.query = undefined;
+        for (var _x2 = 0, _xl2 = to.length; _x2 < _xl2; ++_x2) {
+            var addr = to[_x2].split("@");
+            addr[0] = unescapeComponent(addr[0]);
+            if (!options.unicodeSupport) {
+                //convert Unicode IDN -> ASCII IDN
+                try {
+                    addr[1] = punycode.toASCII(unescapeComponent(addr[1], options).toLowerCase());
+                } catch (e) {
+                    mailtoComponents.error = mailtoComponents.error || "Email address's domain name can not be converted to ASCII via punycode: " + e;
+                }
+            } else {
+                addr[1] = unescapeComponent(addr[1], options).toLowerCase();
+            }
+            to[_x2] = addr.join("@");
+        }
+        return mailtoComponents;
+    },
+    serialize: function serialize$$1(mailtoComponents, options) {
+        var components = mailtoComponents;
+        var to = toArray(mailtoComponents.to);
+        if (to) {
+            for (var x = 0, xl = to.length; x < xl; ++x) {
+                var toAddr = String(to[x]);
+                var atIdx = toAddr.lastIndexOf("@");
+                var localPart = toAddr.slice(0, atIdx).replace(PCT_ENCODED, decodeUnreserved).replace(PCT_ENCODED, toUpperCase).replace(NOT_LOCAL_PART, pctEncChar);
+                var domain = toAddr.slice(atIdx + 1);
+                //convert IDN via punycode
+                try {
+                    domain = !options.iri ? punycode.toASCII(unescapeComponent(domain, options).toLowerCase()) : punycode.toUnicode(domain);
+                } catch (e) {
+                    components.error = components.error || "Email address's domain name can not be converted to " + (!options.iri ? "ASCII" : "Unicode") + " via punycode: " + e;
+                }
+                to[x] = localPart + "@" + domain;
+            }
+            components.path = to.join(",");
+        }
+        var headers = mailtoComponents.headers = mailtoComponents.headers || {};
+        if (mailtoComponents.subject) headers["subject"] = mailtoComponents.subject;
+        if (mailtoComponents.body) headers["body"] = mailtoComponents.body;
+        var fields = [];
+        for (var name in headers) {
+            if (headers[name] !== O[name]) {
+                fields.push(name.replace(PCT_ENCODED, decodeUnreserved).replace(PCT_ENCODED, toUpperCase).replace(NOT_HFNAME, pctEncChar) + "=" + headers[name].replace(PCT_ENCODED, decodeUnreserved).replace(PCT_ENCODED, toUpperCase).replace(NOT_HFVALUE, pctEncChar));
+            }
+        }
+        if (fields.length) {
+            components.query = fields.join("&");
+        }
+        return components;
+    }
+};
+
+var URN_PARSE = /^([^\:]+)\:(.*)/;
+//RFC 2141
+var handler$3 = {
+    scheme: "urn",
+    parse: function parse$$1(components, options) {
+        var matches = components.path && components.path.match(URN_PARSE);
+        var urnComponents = components;
+        if (matches) {
+            var scheme = options.scheme || urnComponents.scheme || "urn";
+            var nid = matches[1].toLowerCase();
+            var nss = matches[2];
+            var urnScheme = scheme + ":" + (options.nid || nid);
+            var schemeHandler = SCHEMES[urnScheme];
+            urnComponents.nid = nid;
+            urnComponents.nss = nss;
+            urnComponents.path = undefined;
+            if (schemeHandler) {
+                urnComponents = schemeHandler.parse(urnComponents, options);
+            }
+        } else {
+            urnComponents.error = urnComponents.error || "URN can not be parsed.";
+        }
+        return urnComponents;
+    },
+    serialize: function serialize$$1(urnComponents, options) {
+        var scheme = options.scheme || urnComponents.scheme || "urn";
+        var nid = urnComponents.nid;
+        var urnScheme = scheme + ":" + (options.nid || nid);
+        var schemeHandler = SCHEMES[urnScheme];
+        if (schemeHandler) {
+            urnComponents = schemeHandler.serialize(urnComponents, options);
+        }
+        var uriComponents = urnComponents;
+        var nss = urnComponents.nss;
+        uriComponents.path = (nid || options.nid) + ":" + nss;
+        return uriComponents;
+    }
+};
+
+var UUID = /^[0-9A-Fa-f]{8}(?:\-[0-9A-Fa-f]{4}){3}\-[0-9A-Fa-f]{12}$/;
+//RFC 4122
+var handler$4 = {
+    scheme: "urn:uuid",
+    parse: function parse(urnComponents, options) {
+        var uuidComponents = urnComponents;
+        uuidComponents.uuid = uuidComponents.nss;
+        uuidComponents.nss = undefined;
+        if (!options.tolerant && (!uuidComponents.uuid || !uuidComponents.uuid.match(UUID))) {
+            uuidComponents.error = uuidComponents.error || "UUID is not valid.";
+        }
+        return uuidComponents;
+    },
+    serialize: function serialize(uuidComponents, options) {
+        var urnComponents = uuidComponents;
+        //normalize UUID
+        urnComponents.nss = (uuidComponents.uuid || "").toLowerCase();
+        return urnComponents;
+    }
+};
+
+SCHEMES[handler.scheme] = handler;
+SCHEMES[handler$1.scheme] = handler$1;
+SCHEMES[handler$2.scheme] = handler$2;
+SCHEMES[handler$3.scheme] = handler$3;
+SCHEMES[handler$4.scheme] = handler$4;
+
+exports.SCHEMES = SCHEMES;
+exports.pctEncChar = pctEncChar;
+exports.pctDecChars = pctDecChars;
+exports.parse = parse;
+exports.removeDotSegments = removeDotSegments;
+exports.serialize = serialize;
+exports.resolveComponents = resolveComponents;
+exports.resolve = resolve;
+exports.normalize = normalize;
+exports.equal = equal;
+exports.escapeComponent = escapeComponent;
+exports.unescapeComponent = unescapeComponent;
+
+Object.defineProperty(exports, '__esModule', { value: true });
+
+})));
+//# sourceMappingURL=uri.all.js.map
+
+
+/***/ }),
+
 /***/ "./node_modules/uritemplate/bin/uritemplate.js":
 /*!*****************************************************!*\
   !*** ./node_modules/uritemplate/bin/uritemplate.js ***!
@@ -62838,6 +74161,25 @@ exports.callbackify = callbackify;
 
 /***/ }),
 
+/***/ "./node_modules/uuid/index.js":
+/*!************************************!*\
+  !*** ./node_modules/uuid/index.js ***!
+  \************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+var v1 = __webpack_require__(/*! ./v1 */ "./node_modules/uuid/v1.js");
+var v4 = __webpack_require__(/*! ./v4 */ "./node_modules/uuid/v4.js");
+
+var uuid = v4;
+uuid.v1 = v1;
+uuid.v4 = v4;
+
+module.exports = uuid;
+
+
+/***/ }),
+
 /***/ "./node_modules/uuid/lib/bytesToUuid.js":
 /*!**********************************************!*\
   !*** ./node_modules/uuid/lib/bytesToUuid.js ***!
@@ -62914,6 +74256,126 @@ if (getRandomValues) {
     return rnds;
   };
 }
+
+
+/***/ }),
+
+/***/ "./node_modules/uuid/v1.js":
+/*!*********************************!*\
+  !*** ./node_modules/uuid/v1.js ***!
+  \*********************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+var rng = __webpack_require__(/*! ./lib/rng */ "./node_modules/uuid/lib/rng-browser.js");
+var bytesToUuid = __webpack_require__(/*! ./lib/bytesToUuid */ "./node_modules/uuid/lib/bytesToUuid.js");
+
+// **`v1()` - Generate time-based UUID**
+//
+// Inspired by https://github.com/LiosK/UUID.js
+// and http://docs.python.org/library/uuid.html
+
+var _nodeId;
+var _clockseq;
+
+// Previous uuid creation time
+var _lastMSecs = 0;
+var _lastNSecs = 0;
+
+// See https://github.com/broofa/node-uuid for API details
+function v1(options, buf, offset) {
+  var i = buf && offset || 0;
+  var b = buf || [];
+
+  options = options || {};
+  var node = options.node || _nodeId;
+  var clockseq = options.clockseq !== undefined ? options.clockseq : _clockseq;
+
+  // node and clockseq need to be initialized to random values if they're not
+  // specified.  We do this lazily to minimize issues related to insufficient
+  // system entropy.  See #189
+  if (node == null || clockseq == null) {
+    var seedBytes = rng();
+    if (node == null) {
+      // Per 4.5, create and 48-bit node id, (47 random bits + multicast bit = 1)
+      node = _nodeId = [
+        seedBytes[0] | 0x01,
+        seedBytes[1], seedBytes[2], seedBytes[3], seedBytes[4], seedBytes[5]
+      ];
+    }
+    if (clockseq == null) {
+      // Per 4.2.2, randomize (14 bit) clockseq
+      clockseq = _clockseq = (seedBytes[6] << 8 | seedBytes[7]) & 0x3fff;
+    }
+  }
+
+  // UUID timestamps are 100 nano-second units since the Gregorian epoch,
+  // (1582-10-15 00:00).  JSNumbers aren't precise enough for this, so
+  // time is handled internally as 'msecs' (integer milliseconds) and 'nsecs'
+  // (100-nanoseconds offset from msecs) since unix epoch, 1970-01-01 00:00.
+  var msecs = options.msecs !== undefined ? options.msecs : new Date().getTime();
+
+  // Per 4.2.1.2, use count of uuid's generated during the current clock
+  // cycle to simulate higher resolution clock
+  var nsecs = options.nsecs !== undefined ? options.nsecs : _lastNSecs + 1;
+
+  // Time since last uuid creation (in msecs)
+  var dt = (msecs - _lastMSecs) + (nsecs - _lastNSecs)/10000;
+
+  // Per 4.2.1.2, Bump clockseq on clock regression
+  if (dt < 0 && options.clockseq === undefined) {
+    clockseq = clockseq + 1 & 0x3fff;
+  }
+
+  // Reset nsecs if clock regresses (new clockseq) or we've moved onto a new
+  // time interval
+  if ((dt < 0 || msecs > _lastMSecs) && options.nsecs === undefined) {
+    nsecs = 0;
+  }
+
+  // Per 4.2.1.2 Throw error if too many uuids are requested
+  if (nsecs >= 10000) {
+    throw new Error('uuid.v1(): Can\'t create more than 10M uuids/sec');
+  }
+
+  _lastMSecs = msecs;
+  _lastNSecs = nsecs;
+  _clockseq = clockseq;
+
+  // Per 4.1.4 - Convert from unix epoch to Gregorian epoch
+  msecs += 12219292800000;
+
+  // `time_low`
+  var tl = ((msecs & 0xfffffff) * 10000 + nsecs) % 0x100000000;
+  b[i++] = tl >>> 24 & 0xff;
+  b[i++] = tl >>> 16 & 0xff;
+  b[i++] = tl >>> 8 & 0xff;
+  b[i++] = tl & 0xff;
+
+  // `time_mid`
+  var tmh = (msecs / 0x100000000 * 10000) & 0xfffffff;
+  b[i++] = tmh >>> 8 & 0xff;
+  b[i++] = tmh & 0xff;
+
+  // `time_high_and_version`
+  b[i++] = tmh >>> 24 & 0xf | 0x10; // include version
+  b[i++] = tmh >>> 16 & 0xff;
+
+  // `clock_seq_hi_and_reserved` (Per 4.2.2 - include variant)
+  b[i++] = clockseq >>> 8 | 0x80;
+
+  // `clock_seq_low`
+  b[i++] = clockseq & 0xff;
+
+  // `node`
+  for (var n = 0; n < 6; ++n) {
+    b[i + n] = node[n];
+  }
+
+  return buf ? buf : bytesToUuid(b);
+}
+
+module.exports = v1;
 
 
 /***/ }),
