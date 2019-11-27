@@ -18,6 +18,7 @@
     "dist",
     "!dist/demo",
     "browser",
+    "webpack",
     ".babelrc"
   ],
   "dependencies": {
