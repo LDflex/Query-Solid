@@ -37,6 +37,8 @@ module.exports = ({ outputDir }) => ({
   externals: {
     // Rely on external solid-auth-client at window.solid.auth
     'solid-auth-client': ['solid', 'auth'],
+    // Disable shims for supported browser features
+    'web-streams-polyfill': 'window',
     // Exclude the following unneeded modules
     '@comunica/actor-rdf-serialize-jsonld': 'null',
     'graphql': 'null',
