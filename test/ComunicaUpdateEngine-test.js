@@ -52,17 +52,17 @@ describe('a ComunicaUpdateEngine instance', () => {
   });
 
   test('executing an invalid query throws an error', async () => {
-    expect(engine.executeUpdate('error').next()).rejects
+    await expect(engine.executeUpdate('error').next()).rejects
       .toThrow(new Error('Update query failed (123): Status'));
   });
 
   test('executing a query on multiple sources throws an error', async () => {
-    expect(engine.executeUpdate('', [1, 2]).next()).rejects
+    await expect(engine.executeUpdate('', [1, 2]).next()).rejects
       .toThrow(new Error('Can only update a single source.'));
   });
 
   test('executing a query on a non-document source throws an error', async () => {
-    expect(engine.executeUpdate('', {}).next()).rejects
+    await expect(engine.executeUpdate('', {}).next()).rejects
       .toThrow(new Error('Can only update an HTTP(s) document.'));
   });
 });

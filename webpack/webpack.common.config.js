@@ -1,6 +1,6 @@
 const { resolve } = require('path');
 const { NormalModuleReplacementPlugin } = require('webpack');
-const CleanWebpackPlugin = require('clean-webpack-plugin');
+const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 
 module.exports = ({ outputDir }) => ({
   mode: 'development',
@@ -24,7 +24,7 @@ module.exports = ({ outputDir }) => ({
     ],
   },
   plugins: [
-    new CleanWebpackPlugin([outputDir]),
+    new CleanWebpackPlugin(),
     // Use latest readable-stream version (as opposed to stream-browserify)
     new NormalModuleReplacementPlugin(/^stream$/, require.resolve('readable-stream/readable-browser')),
     // Shim crypto for smaller bundle size
