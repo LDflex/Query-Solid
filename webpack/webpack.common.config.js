@@ -1,5 +1,5 @@
 const { resolve } = require('path');
-const { NormalModuleReplacementPlugin } = require('webpack');
+const { ProgressPlugin, NormalModuleReplacementPlugin } = require('webpack');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 
 module.exports = ({ outputDir }) => ({
@@ -24,6 +24,9 @@ module.exports = ({ outputDir }) => ({
     ],
   },
   plugins: [
+    // Report progress
+    new ProgressPlugin(),
+    // Ensure the target folder is empty
     new CleanWebpackPlugin(),
     // Use latest readable-stream version (as opposed to stream-browserify)
     new NormalModuleReplacementPlugin(/^stream$/, require.resolve('readable-stream/readable-browser')),
