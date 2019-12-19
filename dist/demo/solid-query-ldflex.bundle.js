@@ -988,7 +988,7 @@ class ActorHttpProxy extends bus_http_1.ActorHttp {
         const requestedUrl = typeof action.input === 'string' ? action.input : action.input.url;
         const proxyHandler = action.context.get(exports.KEY_CONTEXT_HTTPPROXYHANDLER);
         // Send a request for the modified request
-        const output = await this.mediatorHttp.mediate(Object.assign({}, await proxyHandler.getProxy(action), { context: action.context.delete(exports.KEY_CONTEXT_HTTPPROXYHANDLER) }));
+        const output = await this.mediatorHttp.mediate(Object.assign(Object.assign({}, await proxyHandler.getProxy(action)), { context: action.context.delete(exports.KEY_CONTEXT_HTTPPROXYHANDLER) }));
         // Modify the response URL
         output.url = output.headers.get('x-final-url') || requestedUrl;
         return output;
@@ -1103,11 +1103,11 @@ const https___linkedsoftwaredependencies_org_bundles_npm__comunica_bus_rdf_join_
 const https___linkedsoftwaredependencies_org_bundles_npm__comunica_bus_rdf_parse_Bus_RdfParse = new (__webpack_require__(/*! @comunica/core */ "./node_modules/@comunica/core/index.js").Bus)({
   'name': 'https://linkedsoftwaredependencies.org/bundles/npm/@comunica/bus-rdf-parse/Bus/RdfParse'
 });
-const https___linkedsoftwaredependencies_org_bundles_npm__comunica_bus_rdf_parse_html_Bus_RdfParseHtml = new (__webpack_require__(/*! @comunica/core */ "./node_modules/@comunica/core/index.js").Bus)({
-  'name': 'https://linkedsoftwaredependencies.org/bundles/npm/@comunica/bus-rdf-parse-html/Bus/RdfParseHtml'
-});
 const https___linkedsoftwaredependencies_org_bundles_npm__comunica_bus_rdf_dereference_Bus_RdfDereference = new (__webpack_require__(/*! @comunica/core */ "./node_modules/@comunica/core/index.js").Bus)({
   'name': 'https://linkedsoftwaredependencies.org/bundles/npm/@comunica/bus-rdf-dereference/Bus/RdfDereference'
+});
+const https___linkedsoftwaredependencies_org_bundles_npm__comunica_bus_rdf_parse_html_Bus_RdfParseHtml = new (__webpack_require__(/*! @comunica/core */ "./node_modules/@comunica/core/index.js").Bus)({
+  'name': 'https://linkedsoftwaredependencies.org/bundles/npm/@comunica/bus-rdf-parse-html/Bus/RdfParseHtml'
 });
 const https___linkedsoftwaredependencies_org_bundles_npm__comunica_bus_rdf_serialize_Bus_RdfSerialize = new (__webpack_require__(/*! @comunica/core */ "./node_modules/@comunica/core/index.js").Bus)({
   'name': 'https://linkedsoftwaredependencies.org/bundles/npm/@comunica/bus-rdf-serialize/Bus/RdfSerialize'
@@ -1164,13 +1164,22 @@ const https___linkedsoftwaredependencies_org_bundles_npm__comunica_actor_init_sp
   'name': 'https://linkedsoftwaredependencies.org/bundles/npm/@comunica/actor-init-sparql/^1.0.0/config/sets/http.json#myHttpFetcher',
   'bus': https___linkedsoftwaredependencies_org_bundles_npm__comunica_bus_http_Bus_Http
 });
-const https___linkedsoftwaredependencies_org_bundles_npm__comunica_actor_init_sparql__1_0_0_config_sets_join_json_myRdfJoinActor = new (__webpack_require__(/*! @comunica/actor-rdf-join-nestedloop */ "./node_modules/@comunica/actor-rdf-join-nestedloop/index.js").ActorRdfJoinNestedLoop)({
-  'name': 'https://linkedsoftwaredependencies.org/bundles/npm/@comunica/actor-init-sparql/^1.0.0/config/sets/join.json#myRdfJoinActor',
-  'bus': https___linkedsoftwaredependencies_org_bundles_npm__comunica_bus_rdf_join_Bus_RdfJoin
-});
 const https___linkedsoftwaredependencies_org_bundles_npm__comunica_actor_init_sparql__1_0_0_config_sets_sparql_queryoperators_json_mediatorRdfJoin = new (__webpack_require__(/*! @comunica/mediator-race */ "./node_modules/@comunica/mediator-race/index.js").MediatorRace)({
   'name': 'https://linkedsoftwaredependencies.org/bundles/npm/@comunica/actor-init-sparql/^1.0.0/config/sets/sparql-queryoperators.json#mediatorRdfJoin',
   'bus': https___linkedsoftwaredependencies_org_bundles_npm__comunica_bus_rdf_join_Bus_RdfJoin
+});
+const https___linkedsoftwaredependencies_org_bundles_npm__comunica_actor_init_sparql__1_0_0_config_sets_join_json_myRdfJoinActor = new (__webpack_require__(/*! @comunica/actor-rdf-join-symmetrichash */ "./node_modules/@comunica/actor-rdf-join-symmetrichash/index.js").ActorRdfJoinSymmetricHash)({
+  'name': 'https://linkedsoftwaredependencies.org/bundles/npm/@comunica/actor-init-sparql/^1.0.0/config/sets/join.json#myRdfJoinActor',
+  'bus': https___linkedsoftwaredependencies_org_bundles_npm__comunica_bus_rdf_join_Bus_RdfJoin
+});
+const https___linkedsoftwaredependencies_org_bundles_npm__comunica_actor_init_sparql__1_0_0_config_sets_rdf_dereference_json_mediatorRdfParseMediatypes = new (__webpack_require__(/*! @comunica/mediator-combine-union */ "./node_modules/@comunica/mediator-combine-union/index.js").MediatorCombineUnion)({
+  'field': 'mediaTypes',
+  'name': 'https://linkedsoftwaredependencies.org/bundles/npm/@comunica/actor-init-sparql/^1.0.0/config/sets/rdf-dereference.json#mediatorRdfParseMediatypes',
+  'bus': https___linkedsoftwaredependencies_org_bundles_npm__comunica_bus_rdf_parse_Bus_RdfParse
+});
+const https___linkedsoftwaredependencies_org_bundles_npm__comunica_actor_init_sparql__1_0_0_config_sets_rdf_dereference_json_mediatorRdfParseHandle = new (__webpack_require__(/*! @comunica/mediator-race */ "./node_modules/@comunica/mediator-race/index.js").MediatorRace)({
+  'name': 'https://linkedsoftwaredependencies.org/bundles/npm/@comunica/actor-init-sparql/^1.0.0/config/sets/rdf-dereference.json#mediatorRdfParseHandle',
+  'bus': https___linkedsoftwaredependencies_org_bundles_npm__comunica_bus_rdf_parse_Bus_RdfParse
 });
 const https___linkedsoftwaredependencies_org_bundles_npm__comunica_actor_init_sparql__1_0_0_config_sets_rdf_parsers_json_myRdfParserN3 = new (__webpack_require__(/*! @comunica/actor-rdf-parse-n3 */ "./node_modules/@comunica/actor-rdf-parse-n3/index.js").ActorRdfParseN3)({
   'mediaTypes': {
@@ -1211,14 +1220,9 @@ const https___linkedsoftwaredependencies_org_bundles_npm__comunica_actor_init_sp
   'name': 'https://linkedsoftwaredependencies.org/bundles/npm/@comunica/actor-init-sparql/^1.0.0/config/sets/rdf-parsers.json#mediatorRdfParseHandle',
   'bus': https___linkedsoftwaredependencies_org_bundles_npm__comunica_bus_rdf_parse_Bus_RdfParse
 });
-const https___linkedsoftwaredependencies_org_bundles_npm__comunica_actor_init_sparql__1_0_0_config_sets_rdf_dereference_json_mediatorRdfParseMediatypes = new (__webpack_require__(/*! @comunica/mediator-combine-union */ "./node_modules/@comunica/mediator-combine-union/index.js").MediatorCombineUnion)({
-  'field': 'mediaTypes',
-  'name': 'https://linkedsoftwaredependencies.org/bundles/npm/@comunica/actor-init-sparql/^1.0.0/config/sets/rdf-dereference.json#mediatorRdfParseMediatypes',
-  'bus': https___linkedsoftwaredependencies_org_bundles_npm__comunica_bus_rdf_parse_Bus_RdfParse
-});
-const https___linkedsoftwaredependencies_org_bundles_npm__comunica_actor_init_sparql__1_0_0_config_sets_rdf_dereference_json_mediatorRdfParseHandle = new (__webpack_require__(/*! @comunica/mediator-race */ "./node_modules/@comunica/mediator-race/index.js").MediatorRace)({
-  'name': 'https://linkedsoftwaredependencies.org/bundles/npm/@comunica/actor-init-sparql/^1.0.0/config/sets/rdf-dereference.json#mediatorRdfParseHandle',
-  'bus': https___linkedsoftwaredependencies_org_bundles_npm__comunica_bus_rdf_parse_Bus_RdfParse
+const https___linkedsoftwaredependencies_org_bundles_npm__comunica_actor_init_sparql__1_0_0_config_sets_resolve_hypermedia_json_mediatorRdfDereference = new (__webpack_require__(/*! @comunica/mediator-race */ "./node_modules/@comunica/mediator-race/index.js").MediatorRace)({
+  'name': 'https://linkedsoftwaredependencies.org/bundles/npm/@comunica/actor-init-sparql/^1.0.0/config/sets/resolve-hypermedia.json#mediatorRdfDereference',
+  'bus': https___linkedsoftwaredependencies_org_bundles_npm__comunica_bus_rdf_dereference_Bus_RdfDereference
 });
 const https___linkedsoftwaredependencies_org_bundles_npm__comunica_actor_init_sparql__1_0_0_config_sets_rdf_parsers_json_myRdfParserHtml = new (__webpack_require__(/*! @comunica/actor-rdf-parse-html */ "./node_modules/@comunica/actor-rdf-parse-html/index.js").ActorRdfParseHtml)({
   'busRdfParseHtml': https___linkedsoftwaredependencies_org_bundles_npm__comunica_bus_rdf_parse_html_Bus_RdfParseHtml,
@@ -1233,10 +1237,6 @@ const https___linkedsoftwaredependencies_org_bundles_npm__comunica_actor_init_sp
 const https___linkedsoftwaredependencies_org_bundles_npm__comunica_actor_init_sparql__1_0_0_config_sets_rdf_parsers_json_myRdfParserHtmlRdfa = new (__webpack_require__(/*! @comunica/actor-rdf-parse-html-rdfa */ "./node_modules/@comunica/actor-rdf-parse-html-rdfa/index.js").ActorRdfParseHtmlRdfa)({
   'name': 'https://linkedsoftwaredependencies.org/bundles/npm/@comunica/actor-init-sparql/^1.0.0/config/sets/rdf-parsers.json#myRdfParserHtmlRdfa',
   'bus': https___linkedsoftwaredependencies_org_bundles_npm__comunica_bus_rdf_parse_html_Bus_RdfParseHtml
-});
-const https___linkedsoftwaredependencies_org_bundles_npm__comunica_actor_init_sparql__1_0_0_config_sets_resolve_hypermedia_json_mediatorRdfDereference = new (__webpack_require__(/*! @comunica/mediator-race */ "./node_modules/@comunica/mediator-race/index.js").MediatorRace)({
-  'name': 'https://linkedsoftwaredependencies.org/bundles/npm/@comunica/actor-init-sparql/^1.0.0/config/sets/resolve-hypermedia.json#mediatorRdfDereference',
-  'bus': https___linkedsoftwaredependencies_org_bundles_npm__comunica_bus_rdf_dereference_Bus_RdfDereference
 });
 const https___linkedsoftwaredependencies_org_bundles_npm__comunica_actor_init_sparql__1_0_0_config_sets_rdf_serializers_json_myRdfSerializerN3 = new (__webpack_require__(/*! @comunica/actor-rdf-serialize-n3 */ "./node_modules/@comunica/actor-rdf-serialize-n3/index.js").ActorRdfSerializeN3)({
   'mediaTypes': {
@@ -1262,9 +1262,9 @@ const https___linkedsoftwaredependencies_org_bundles_npm__comunica_actor_init_sp
   'name': 'https://linkedsoftwaredependencies.org/bundles/npm/@comunica/actor-init-sparql/^1.0.0/config/sets/sparql-serializers.json#mediatorRdfSerialize',
   'bus': https___linkedsoftwaredependencies_org_bundles_npm__comunica_bus_rdf_serialize_Bus_RdfSerialize
 });
-const __b0bnode311 = new (__webpack_require__(/*! @comunica/mediator-combine-union */ "./node_modules/@comunica/mediator-combine-union/index.js").MediatorCombineUnion)({
+const __b0bnode315 = new (__webpack_require__(/*! @comunica/mediator-combine-union */ "./node_modules/@comunica/mediator-combine-union/index.js").MediatorCombineUnion)({
   'field': 'mediaTypes',
-  'name': '_:b0bnode311',
+  'name': '_:b0bnode315',
   'bus': https___linkedsoftwaredependencies_org_bundles_npm__comunica_bus_rdf_serialize_Bus_RdfSerialize
 });
 const https___linkedsoftwaredependencies_org_bundles_npm__comunica_actor_init_sparql__1_0_0_config_sets_sparql_queryoperators_json_mediatorResolveQuadPattern = new (__webpack_require__(/*! @comunica/mediator-race */ "./node_modules/@comunica/mediator-race/index.js").MediatorRace)({
@@ -1377,9 +1377,9 @@ const https___linkedsoftwaredependencies_org_bundles_npm__comunica_actor_init_sp
   'name': 'https://linkedsoftwaredependencies.org/bundles/npm/@comunica/actor-init-sparql/^1.0.0/config/sets/sparql-init.json#mediatorSparqlSerialize',
   'bus': https___linkedsoftwaredependencies_org_bundles_npm__comunica_bus_sparql_serialize_Bus_SparqlSerialize
 });
-const __b0bnode305 = new (__webpack_require__(/*! @comunica/mediator-combine-union */ "./node_modules/@comunica/mediator-combine-union/index.js").MediatorCombineUnion)({
+const __b0bnode309 = new (__webpack_require__(/*! @comunica/mediator-combine-union */ "./node_modules/@comunica/mediator-combine-union/index.js").MediatorCombineUnion)({
   'field': 'mediaTypes',
-  'name': '_:b0bnode305',
+  'name': '_:b0bnode309',
   'bus': https___linkedsoftwaredependencies_org_bundles_npm__comunica_bus_sparql_serialize_Bus_SparqlSerialize
 });
 const https___linkedsoftwaredependencies_org_bundles_npm__comunica_actor_init_sparql__1_0_0_config_sets_sparql_serializers_json_myJsonSparqlSerializer = new (__webpack_require__(/*! @comunica/actor-sparql-serialize-json */ "./node_modules/@comunica/actor-sparql-serialize-json/index.js").ActorSparqlSerializeJson)({
@@ -1476,11 +1476,10 @@ const https___linkedsoftwaredependencies_org_bundles_npm__comunica_actor_init_sp
   'name': 'https://linkedsoftwaredependencies.org/bundles/npm/@comunica/actor-init-sparql/^1.0.0/config/sets/resolve-sparql.json#mySparqlEndpointResolver',
   'bus': https___linkedsoftwaredependencies_org_bundles_npm__comunica_bus_query_operation_Bus_QueryOperation
 });
-const https___linkedsoftwaredependencies_org_bundles_npm__comunica_actor_init_sparql__1_0_0_config_sets_rdf_parsers_json_myRdfParserHtmlScript = new (__webpack_require__(/*! @comunica/actor-rdf-parse-html-script */ "./node_modules/@comunica/actor-rdf-parse-html-script/index.js").ActorRdfParseHtmlScript)({
-  'mediatorRdfParseMediatypes': https___linkedsoftwaredependencies_org_bundles_npm__comunica_actor_init_sparql__1_0_0_config_sets_rdf_parsers_json_mediatorRdfParseMediatypes,
-  'mediatorRdfParseHandle': https___linkedsoftwaredependencies_org_bundles_npm__comunica_actor_init_sparql__1_0_0_config_sets_rdf_parsers_json_mediatorRdfParseHandle,
-  'name': 'https://linkedsoftwaredependencies.org/bundles/npm/@comunica/actor-init-sparql/^1.0.0/config/sets/rdf-parsers.json#myRdfParserHtmlScript',
-  'bus': https___linkedsoftwaredependencies_org_bundles_npm__comunica_bus_rdf_parse_html_Bus_RdfParseHtml
+const https___linkedsoftwaredependencies_org_bundles_npm__comunica_actor_init_sparql__1_0_0_config_sets_join_json_myRdfJoinMultiActor = new (__webpack_require__(/*! @comunica/actor-rdf-join-multi-smallest */ "./node_modules/@comunica/actor-rdf-join-multi-smallest/index.js").ActorRdfJoinMultiSmallest)({
+  'mediatorJoin': https___linkedsoftwaredependencies_org_bundles_npm__comunica_actor_init_sparql__1_0_0_config_sets_sparql_queryoperators_json_mediatorRdfJoin,
+  'name': 'https://linkedsoftwaredependencies.org/bundles/npm/@comunica/actor-init-sparql/^1.0.0/config/sets/join.json#myRdfJoinMultiActor',
+  'bus': https___linkedsoftwaredependencies_org_bundles_npm__comunica_bus_rdf_join_Bus_RdfJoin
 });
 const https___linkedsoftwaredependencies_org_bundles_npm__comunica_actor_init_sparql__1_0_0_config_sets_rdf_dereference_json_myRdfDereferencer = new (__webpack_require__(/*! @comunica/actor-rdf-dereference-http-parse */ "./node_modules/@comunica/actor-rdf-dereference-http-parse/index.js").ActorRdfDereferenceHttpParse)({
   'mediatorHttp': https___linkedsoftwaredependencies_org_bundles_npm__comunica_actor_init_sparql__1_0_0_config_sets_http_json_mediatorHttp,
@@ -1513,9 +1512,15 @@ const https___linkedsoftwaredependencies_org_bundles_npm__comunica_actor_init_sp
   'name': 'https://linkedsoftwaredependencies.org/bundles/npm/@comunica/actor-init-sparql/^1.0.0/config/sets/rdf-dereference.json#myRdfDereferencer',
   'bus': https___linkedsoftwaredependencies_org_bundles_npm__comunica_bus_rdf_dereference_Bus_RdfDereference
 });
+const https___linkedsoftwaredependencies_org_bundles_npm__comunica_actor_init_sparql__1_0_0_config_sets_rdf_parsers_json_myRdfParserHtmlScript = new (__webpack_require__(/*! @comunica/actor-rdf-parse-html-script */ "./node_modules/@comunica/actor-rdf-parse-html-script/index.js").ActorRdfParseHtmlScript)({
+  'mediatorRdfParseMediatypes': https___linkedsoftwaredependencies_org_bundles_npm__comunica_actor_init_sparql__1_0_0_config_sets_rdf_parsers_json_mediatorRdfParseMediatypes,
+  'mediatorRdfParseHandle': https___linkedsoftwaredependencies_org_bundles_npm__comunica_actor_init_sparql__1_0_0_config_sets_rdf_parsers_json_mediatorRdfParseHandle,
+  'name': 'https://linkedsoftwaredependencies.org/bundles/npm/@comunica/actor-init-sparql/^1.0.0/config/sets/rdf-parsers.json#myRdfParserHtmlScript',
+  'bus': https___linkedsoftwaredependencies_org_bundles_npm__comunica_bus_rdf_parse_html_Bus_RdfParseHtml
+});
 const https___linkedsoftwaredependencies_org_bundles_npm__comunica_actor_init_sparql__1_0_0_config_sets_sparql_serializers_json_myRdfSparqlSerializer = new (__webpack_require__(/*! @comunica/actor-sparql-serialize-rdf */ "./node_modules/@comunica/actor-sparql-serialize-rdf/index.js").ActorSparqlSerializeRdf)({
   'mediatorRdfSerialize': https___linkedsoftwaredependencies_org_bundles_npm__comunica_actor_init_sparql__1_0_0_config_sets_sparql_serializers_json_mediatorRdfSerialize,
-  'mediatorMediaTypeCombiner': __b0bnode311,
+  'mediatorMediaTypeCombiner': __b0bnode315,
   'name': 'https://linkedsoftwaredependencies.org/bundles/npm/@comunica/actor-init-sparql/^1.0.0/config/sets/sparql-serializers.json#myRdfSparqlSerializer',
   'bus': https___linkedsoftwaredependencies_org_bundles_npm__comunica_bus_sparql_serialize_Bus_SparqlSerialize
 });
@@ -1565,7 +1570,7 @@ const urn_comunica_sparqlinit = new (__webpack_require__(/*! ./index.js */ "./no
   'mediatorQueryOperation': https___linkedsoftwaredependencies_org_bundles_npm__comunica_actor_init_sparql__1_0_0_config_sets_sparql_queryoperators_json_mediatorQueryOperation,
   'mediatorSparqlParse': https___linkedsoftwaredependencies_org_bundles_npm__comunica_actor_init_sparql__1_0_0_config_sets_sparql_init_json_mediatorSparqlParse,
   'mediatorSparqlSerialize': https___linkedsoftwaredependencies_org_bundles_npm__comunica_actor_init_sparql__1_0_0_config_sets_sparql_init_json_mediatorSparqlSerialize,
-  'mediatorSparqlSerializeMediaTypeCombiner': __b0bnode305,
+  'mediatorSparqlSerializeMediaTypeCombiner': __b0bnode309,
   'mediatorContextPreprocess': https___linkedsoftwaredependencies_org_bundles_npm__comunica_actor_init_sparql__1_0_0_config_sets_sparql_init_json_mediatorContextPreprocess,
   'mediatorHttpInvalidate': https___linkedsoftwaredependencies_org_bundles_npm__comunica_actor_init_sparql__1_0_0_config_sets_sparql_init_json_mediatorHttpInvalidate,
   'logger': __b15bnode129,
@@ -1730,10 +1735,12 @@ const https___linkedsoftwaredependencies_org_bundles_npm__comunica_actor_init_sp
 const urn_comunica_my = ({
   'busInit': https___linkedsoftwaredependencies_org_bundles_npm__comunica_bus_init_Bus_Init,
   'actors': [
-    https___linkedsoftwaredependencies_org_bundles_npm__comunica_actor_init_sparql__1_0_0_config_sets_http_memento_json_myHttpFetcher,
     https___linkedsoftwaredependencies_org_bundles_npm__comunica_actor_init_sparql__1_0_0_config_sets_http_json_myHttpProxy,
     https___linkedsoftwaredependencies_org_bundles_npm__comunica_actor_init_sparql__1_0_0_config_sets_http_json_myHttpFetcher,
+    https___linkedsoftwaredependencies_org_bundles_npm__comunica_actor_init_sparql__1_0_0_config_sets_http_memento_json_myHttpFetcher,
+    https___linkedsoftwaredependencies_org_bundles_npm__comunica_actor_init_sparql__1_0_0_config_sets_join_json_myRdfJoinMultiActor,
     https___linkedsoftwaredependencies_org_bundles_npm__comunica_actor_init_sparql__1_0_0_config_sets_join_json_myRdfJoinActor,
+    https___linkedsoftwaredependencies_org_bundles_npm__comunica_actor_init_sparql__1_0_0_config_sets_rdf_dereference_json_myRdfDereferencer,
     https___linkedsoftwaredependencies_org_bundles_npm__comunica_actor_init_sparql__1_0_0_config_sets_rdf_parsers_json_myRdfParserN3,
     https___linkedsoftwaredependencies_org_bundles_npm__comunica_actor_init_sparql__1_0_0_config_sets_rdf_parsers_json_myRdfParserJsonLd,
     https___linkedsoftwaredependencies_org_bundles_npm__comunica_actor_init_sparql__1_0_0_config_sets_rdf_parsers_json_myRdfParserRdfXml,
@@ -1741,7 +1748,6 @@ const urn_comunica_my = ({
     https___linkedsoftwaredependencies_org_bundles_npm__comunica_actor_init_sparql__1_0_0_config_sets_rdf_parsers_json_myRdfParserHtml,
     https___linkedsoftwaredependencies_org_bundles_npm__comunica_actor_init_sparql__1_0_0_config_sets_rdf_parsers_json_myRdfParserHtmlRdfa,
     https___linkedsoftwaredependencies_org_bundles_npm__comunica_actor_init_sparql__1_0_0_config_sets_rdf_parsers_json_myRdfParserHtmlScript,
-    https___linkedsoftwaredependencies_org_bundles_npm__comunica_actor_init_sparql__1_0_0_config_sets_rdf_dereference_json_myRdfDereferencer,
     https___linkedsoftwaredependencies_org_bundles_npm__comunica_actor_init_sparql__1_0_0_config_sets_rdf_serializers_json_myRdfSerializerN3,
     https___linkedsoftwaredependencies_org_bundles_npm__comunica_actor_init_sparql__1_0_0_config_sets_rdf_serializers_json_myRdfSerializeJsonLd,
     https___linkedsoftwaredependencies_org_bundles_npm__comunica_actor_init_sparql__1_0_0_config_sets_resolve_federated_json_myFederatedQuadPatternResolver,
@@ -2357,7 +2363,7 @@ class ActorQueryOperationBgpLeftDeepSmallest extends bus_query_operation_1.Actor
                 bindingsOut[termPosition] = term;
             }
             return materializedTerm;
-        }), { type: 'pattern' });
+        }), { type: 'pattern', context: pattern.context });
         return { pattern: patternOut, bindings: bindingsOut };
     }
     /**
@@ -4768,6 +4774,10 @@ class ActorQueryOperationQuadpattern extends bus_query_operation_1.ActorQueryOpe
         return true;
     }
     async runOperation(pattern, context) {
+        // Apply the (optional) pattern-specific context
+        if (pattern.context) {
+            context = context ? context.merge(pattern.context) : pattern.context;
+        }
         // Resolve the quad pattern
         const result = await this.mediatorResolveQuadPattern.mediate({ pattern, context });
         // Collect all variables from the pattern
@@ -5333,8 +5343,8 @@ class ActorRdfDereferenceHttpParseBase extends bus_rdf_dereference_1.ActorRdfDer
         super(args);
     }
     async test(action) {
-        if (!action.url.startsWith("http:") && !action.url.startsWith("https:")) {
-            throw new Error('This actor can only handle URLs that start with \'http\' or \'https\'.');
+        if (!/^https?:/.test(action.url)) {
+            throw new Error(`Cannot retrieve ${action.url} because it is not an HTTP(S) URL.`);
         }
         return true;
     }
@@ -5425,10 +5435,10 @@ ActorRdfDereferenceHttpParseBase.REGEX_MEDIATYPE = /^[^ ;]*/;
 
 /***/ }),
 
-/***/ "./node_modules/@comunica/actor-rdf-join-nestedloop/index.js":
-/*!*******************************************************************!*\
-  !*** ./node_modules/@comunica/actor-rdf-join-nestedloop/index.js ***!
-  \*******************************************************************/
+/***/ "./node_modules/@comunica/actor-rdf-join-multi-smallest/index.js":
+/*!***********************************************************************!*\
+  !*** ./node_modules/@comunica/actor-rdf-join-multi-smallest/index.js ***!
+  \***********************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -5438,15 +5448,90 @@ function __export(m) {
     for (var p in m) if (!exports.hasOwnProperty(p)) exports[p] = m[p];
 }
 Object.defineProperty(exports, "__esModule", { value: true });
-__export(__webpack_require__(/*! ./lib/ActorRdfJoinNestedLoop */ "./node_modules/@comunica/actor-rdf-join-nestedloop/lib/ActorRdfJoinNestedLoop.js"));
+__export(__webpack_require__(/*! ./lib/ActorRdfJoinMultiSmallest */ "./node_modules/@comunica/actor-rdf-join-multi-smallest/lib/ActorRdfJoinMultiSmallest.js"));
 //# sourceMappingURL=index.js.map
 
 /***/ }),
 
-/***/ "./node_modules/@comunica/actor-rdf-join-nestedloop/lib/ActorRdfJoinNestedLoop.js":
-/*!****************************************************************************************!*\
-  !*** ./node_modules/@comunica/actor-rdf-join-nestedloop/lib/ActorRdfJoinNestedLoop.js ***!
-  \****************************************************************************************/
+/***/ "./node_modules/@comunica/actor-rdf-join-multi-smallest/lib/ActorRdfJoinMultiSmallest.js":
+/*!***********************************************************************************************!*\
+  !*** ./node_modules/@comunica/actor-rdf-join-multi-smallest/lib/ActorRdfJoinMultiSmallest.js ***!
+  \***********************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+Object.defineProperty(exports, "__esModule", { value: true });
+const bus_rdf_join_1 = __webpack_require__(/*! @comunica/bus-rdf-join */ "./node_modules/@comunica/bus-rdf-join/index.js");
+/**
+ * A Multi Smallest RDF Join Actor.
+ * It accepts 3 or more streams, joins the smallest two, and joins the result with the remaining streams.
+ */
+class ActorRdfJoinMultiSmallest extends bus_rdf_join_1.ActorRdfJoin {
+    constructor(args) {
+        super(args, 3, true);
+    }
+    static getSmallestPatternId(totalItems) {
+        let smallestId = -1;
+        let smallestCount = Infinity;
+        for (let i = 0; i < totalItems.length; i++) {
+            const count = totalItems[i];
+            if (count <= smallestCount) {
+                smallestCount = count;
+                smallestId = i;
+            }
+        }
+        return smallestId;
+    }
+    async getOutput(action) {
+        const entries = action.entries.slice();
+        // Determine the two smallest streams by estimated count
+        const entriesTotalItems = (await Promise.all(action.entries.map((entry) => entry.metadata())))
+            .map((metadata) => 'totalItems' in metadata ? metadata.totalItems : Infinity);
+        const smallestIndex1 = ActorRdfJoinMultiSmallest.getSmallestPatternId(entriesTotalItems);
+        const smallestItem1 = entries.splice(smallestIndex1, 1)[0];
+        const smallestCount1 = entriesTotalItems.splice(smallestIndex1, 1);
+        const smallestIndex2 = ActorRdfJoinMultiSmallest.getSmallestPatternId(entriesTotalItems);
+        const smallestItem2 = entries.splice(smallestIndex2, 1)[0];
+        const smallestCount2 = entriesTotalItems.splice(smallestIndex2, 1);
+        // Join the two selected streams, and then join the result with the remaining streams
+        const firstEntry = await this.mediatorJoin.mediate({ entries: [smallestItem1, smallestItem2] });
+        entries.push(firstEntry);
+        return await this.mediatorJoin.mediate({ entries });
+    }
+    async getIterations(action) {
+        return (await Promise.all(action.entries.map((entry) => entry.metadata())))
+            .reduce((acc, value) => acc * value.totalItems, 1);
+    }
+}
+exports.ActorRdfJoinMultiSmallest = ActorRdfJoinMultiSmallest;
+//# sourceMappingURL=ActorRdfJoinMultiSmallest.js.map
+
+/***/ }),
+
+/***/ "./node_modules/@comunica/actor-rdf-join-symmetrichash/index.js":
+/*!**********************************************************************!*\
+  !*** ./node_modules/@comunica/actor-rdf-join-symmetrichash/index.js ***!
+  \**********************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+function __export(m) {
+    for (var p in m) if (!exports.hasOwnProperty(p)) exports[p] = m[p];
+}
+Object.defineProperty(exports, "__esModule", { value: true });
+__export(__webpack_require__(/*! ./lib/ActorRdfJoinSymmetricHash */ "./node_modules/@comunica/actor-rdf-join-symmetrichash/lib/ActorRdfJoinSymmetricHash.js"));
+//# sourceMappingURL=index.js.map
+
+/***/ }),
+
+/***/ "./node_modules/@comunica/actor-rdf-join-symmetrichash/lib/ActorRdfJoinSymmetricHash.js":
+/*!**********************************************************************************************!*\
+  !*** ./node_modules/@comunica/actor-rdf-join-symmetrichash/lib/ActorRdfJoinSymmetricHash.js ***!
+  \**********************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -5456,22 +5541,33 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const bus_rdf_join_1 = __webpack_require__(/*! @comunica/bus-rdf-join */ "./node_modules/@comunica/bus-rdf-join/index.js");
 const asyncjoin_1 = __webpack_require__(/*! asyncjoin */ "./node_modules/asyncjoin/index.js");
 /**
- * A comunica NestedLoop RDF Join Actor.
+ * A comunica Hash RDF Join Actor.
  */
-class ActorRdfJoinNestedLoop extends bus_rdf_join_1.ActorRdfJoin {
+class ActorRdfJoinSymmetricHash extends bus_rdf_join_1.ActorRdfJoin {
     constructor(args) {
         super(args, 2);
     }
+    /**
+     * Creates a hash of the given bindings by concatenating the results of the given variables.
+     * This function will not sort the variables and expects them to be in the same order for every call.
+     * @param {Bindings} bindings
+     * @param {string[]} variables
+     * @returns {string}
+     */
+    static hash(bindings, variables) {
+        return variables.map((v) => bindings.get(v)).join('');
+    }
     async getOutput(action) {
-        const join = new asyncjoin_1.NestedLoopJoin(action.entries[0].bindingsStream, action.entries[1].bindingsStream, bus_rdf_join_1.ActorRdfJoin.join);
+        const variables = bus_rdf_join_1.ActorRdfJoin.overlappingVariables(action);
+        const join = new asyncjoin_1.SymmetricHashJoin(action.entries[0].bindingsStream, action.entries[1].bindingsStream, (entry) => ActorRdfJoinSymmetricHash.hash(entry, variables), bus_rdf_join_1.ActorRdfJoin.join);
         return { type: 'bindings', bindingsStream: join, variables: bus_rdf_join_1.ActorRdfJoin.joinVariables(action) };
     }
     async getIterations(action) {
-        return (await action.entries[0].metadata()).totalItems * (await action.entries[1].metadata()).totalItems;
+        return (await action.entries[0].metadata()).totalItems + (await action.entries[1].metadata()).totalItems;
     }
 }
-exports.ActorRdfJoinNestedLoop = ActorRdfJoinNestedLoop;
-//# sourceMappingURL=ActorRdfJoinNestedLoop.js.map
+exports.ActorRdfJoinSymmetricHash = ActorRdfJoinSymmetricHash;
+//# sourceMappingURL=ActorRdfJoinSymmetricHash.js.map
 
 /***/ }),
 
@@ -7313,8 +7409,10 @@ class FederatedQuadSource {
                 }
             }
         };
+        // TODO: A solution without cloning would be preferred here.
+        //       See discussion at https://github.com/comunica/comunica/issues/553
         const sourcesIt = this.sources.iterator();
-        const it = new asynciterator_union_1.RoundRobinUnionIterator(sourcesIt.map((source) => {
+        const proxyIt = sourcesIt.map((source) => {
             remainingSources++;
             sourcesCount++;
             // If we can predict that the given source will have no bindings for the given pattern,
@@ -7351,10 +7449,11 @@ class FederatedQuadSource {
                 }
                 return output.data;
             });
-        }));
+        });
+        const it = new asynciterator_union_1.RoundRobinUnionIterator(proxyIt.clone());
         it.on('newListener', (eventName) => {
             if (eventName === 'metadata') {
-                setImmediate(() => it._fillBuffer());
+                setImmediate(() => proxyIt.clone().each((proxy) => proxy.loadSource()));
             }
         });
         // If we have 0 sources, immediately emit metadata
@@ -8738,7 +8837,8 @@ class ActorSparqlSerializeTree extends bus_sparql_serialize_1.ActorSparqlSeriali
             .then((result) => {
             data.push(JSON.stringify(result, null, '  '));
             data.push(null);
-        });
+        })
+            .catch((error) => data.emit('error', error));
         return { data };
     }
 }
@@ -8889,7 +8989,7 @@ class ActorHttp extends core_1.Actor {
      * @returns {NodeJS.ReadableStream}
      */
     static toNodeReadable(body) {
-        return __webpack_require__(/*! is-stream */ "./node_modules/@comunica/bus-http/node_modules/is-stream/index.js")(body) ? body : __webpack_require__(/*! node-web-streams */ "./node_modules/node-web-streams/index.js").toNodeReadable(body);
+        return __webpack_require__(/*! is-stream */ "./node_modules/@comunica/bus-http/node_modules/is-stream/index.js")(body) ? body : __webpack_require__(/*! web-streams-node */ "./node_modules/web-streams-node/index.js").toNodeReadable(body);
     }
 }
 exports.ActorHttp = ActorHttp;
@@ -9496,9 +9596,10 @@ const asynciterator_1 = __webpack_require__(/*! asynciterator */ "./node_modules
  * @see IActorQueryOperationOutput
  */
 class ActorRdfJoin extends core_1.Actor {
-    constructor(args, maxEntries) {
+    constructor(args, limitEntries, limitEntriesMin) {
         super(args);
-        this.maxEntries = maxEntries;
+        this.limitEntries = limitEntries;
+        this.limitEntriesMin = limitEntriesMin;
     }
     /**
      * Returns an array containing all the variable names that occur in all bindings streams.
@@ -9559,9 +9660,11 @@ class ActorRdfJoin extends core_1.Actor {
         if (action.entries.length <= 1) {
             return { iterations: 0 };
         }
-        if (this.maxEntries && action.entries.length > this.maxEntries) {
-            throw new Error(this.name + ' supports ' + this.maxEntries
-                + ' sources at most. The input contained ' + action.entries.length + '.');
+        if (this.limitEntries && (this.limitEntriesMin
+            ? action.entries.length < this.limitEntries : action.entries.length > this.limitEntries)) {
+            throw new Error(this.name + ' requires ' + this.limitEntries
+                + ' sources at ' + (this.limitEntriesMin ? 'least' : 'most')
+                + '. The input contained ' + action.entries.length + '.');
         }
         for (const entry of action.entries) {
             if (entry.type !== 'bindings') {
@@ -12299,6 +12402,10 @@ class RoundRobinUnionIterator extends asynciterator_1.BufferedIterator {
         this.sources = [];
         this.sourceIterator = Array.isArray(sources) ? new asynciterator_1.ArrayIterator(sources) : sources;
         this.sourceIterator.on('error', (error) => this.emit('error', error));
+        this.sourceIterator.on('end', () => {
+            this.sourcedEnded = true;
+            this._checkClose();
+        });
     }
     _read(count, done) {
         if (!this.sourcedEnded) {
@@ -12314,9 +12421,6 @@ class RoundRobinUnionIterator extends asynciterator_1.BufferedIterator {
                 source.on('readable', () => this._fillBuffer());
                 source.on('end', () => this._fillBuffer());
                 this.sources.push(source);
-            }
-            if (this.sourceIterator.ended) {
-                this.sourcedEnded = true;
             }
         }
         let item = null;
@@ -12340,10 +12444,13 @@ class RoundRobinUnionIterator extends asynciterator_1.BufferedIterator {
             this._push(item);
         }
         // Otherwise close
+        this._checkClose();
+        done();
+    }
+    _checkClose() {
         if (!this.sources.length && this.sourcedEnded) {
             this.close();
         }
-        done();
     }
 }
 exports.RoundRobinUnionIterator = RoundRobinUnionIterator;
@@ -23551,21 +23658,15 @@ __export(__webpack_require__(/*! ./lib/SparqlEndpointFetcher */ "./node_modules/
 
 "use strict";
 /* WEBPACK VAR INJECTION */(function(setImmediate) {
-var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
-    return new (P || (P = Promise))(function (resolve, reject) {
-        function fulfilled(value) { try { step(generator.next(value)); } catch (e) { reject(e); } }
-        function rejected(value) { try { step(generator["throw"](value)); } catch (e) { reject(e); } }
-        function step(result) { result.done ? resolve(result.value) : new P(function (resolve) { resolve(result.value); }).then(fulfilled, rejected); }
-        step((generator = generator.apply(thisArg, _arguments || [])).next());
-    });
-};
 Object.defineProperty(exports, "__esModule", { value: true });
 __webpack_require__(/*! isomorphic-fetch */ "./node_modules/isomorphic-fetch/fetch-npm-browserify.js");
 const sparqljs_1 = __webpack_require__(/*! sparqljs */ "./node_modules/sparqljs/sparql.js");
 const sparqljson_parse_1 = __webpack_require__(/*! sparqljson-parse */ "./node_modules/sparqljson-parse/index.js");
 const sparqlxml_parse_1 = __webpack_require__(/*! sparqlxml-parse */ "./node_modules/sparqlxml-parse/index.js");
-// tslint:disable-next-line:no-var-requires
+// tslint:disable:no-var-requires
 const n3 = __webpack_require__(/*! n3 */ "./node_modules/n3/src/index.js");
+const isStream = __webpack_require__(/*! is-stream */ "./node_modules/fetch-sparql-endpoint/node_modules/is-stream/index.js");
+const toNodeReadable = __webpack_require__(/*! web-streams-node */ "./node_modules/web-streams-node/index.js").toNodeReadable;
 /**
  * A SparqlEndpointFetcher can send queries to SPARQL endpoints,
  * and retrieve and parse the results.
@@ -23607,16 +23708,14 @@ class SparqlEndpointFetcher {
      * @param {string} query    A SPARQL query string.
      * @return {Promise<NodeJS.ReadableStream>} A stream of {@link IBindings}.
      */
-    fetchBindings(endpoint, query) {
-        return __awaiter(this, void 0, void 0, function* () {
-            const [contentType, responseStream] = yield this
-                .fetchRawStream(endpoint, query, SparqlEndpointFetcher.CONTENTTYPE_SPARQL);
-            const parser = this.sparqlParsers[contentType];
-            if (!parser) {
-                throw new Error('Unknown SPARQL results content type: ' + contentType);
-            }
-            return parser.parseResultsStream(responseStream);
-        });
+    async fetchBindings(endpoint, query) {
+        const [contentType, responseStream] = await this
+            .fetchRawStream(endpoint, query, SparqlEndpointFetcher.CONTENTTYPE_SPARQL);
+        const parser = this.sparqlParsers[contentType];
+        if (!parser) {
+            throw new Error('Unknown SPARQL results content type: ' + contentType);
+        }
+        return parser.parseResultsStream(responseStream);
     }
     /**
      * Send an ASK query to the given endpoint URL and return a promise resolving to the boolean answer.
@@ -23624,16 +23723,14 @@ class SparqlEndpointFetcher {
      * @param {string} query    A SPARQL query string.
      * @return {Promise<boolean>} A boolean resolving to the answer.
      */
-    fetchAsk(endpoint, query) {
-        return __awaiter(this, void 0, void 0, function* () {
-            const [contentType, responseStream] = yield this
-                .fetchRawStream(endpoint, query, SparqlEndpointFetcher.CONTENTTYPE_SPARQL);
-            const parser = this.sparqlParsers[contentType];
-            if (!parser) {
-                throw new Error('Unknown SPARQL results content type: ' + contentType);
-            }
-            return parser.parseBooleanStream(responseStream);
-        });
+    async fetchAsk(endpoint, query) {
+        const [contentType, responseStream] = await this
+            .fetchRawStream(endpoint, query, SparqlEndpointFetcher.CONTENTTYPE_SPARQL);
+        const parser = this.sparqlParsers[contentType];
+        if (!parser) {
+            throw new Error('Unknown SPARQL results content type: ' + contentType);
+        }
+        return parser.parseBooleanStream(responseStream);
     }
     /**
      * Send a CONSTRUCT/DESCRIBE query to the given endpoint URL and return the resulting triple stream.
@@ -23641,11 +23738,9 @@ class SparqlEndpointFetcher {
      * @param {string} query    A SPARQL query string.
      * @return {Promise<Stream>} A stream of triples.
      */
-    fetchTriples(endpoint, query) {
-        return __awaiter(this, void 0, void 0, function* () {
-            const rawStream = (yield this.fetchRawStream(endpoint, query, SparqlEndpointFetcher.CONTENTTYPE_TURTLE))[1];
-            return rawStream.pipe(new n3.StreamParser({ format: SparqlEndpointFetcher.CONTENTTYPE_TURTLE }));
-        });
+    async fetchTriples(endpoint, query) {
+        const rawStream = (await this.fetchRawStream(endpoint, query, SparqlEndpointFetcher.CONTENTTYPE_TURTLE))[1];
+        return rawStream.pipe(new n3.StreamParser({ format: SparqlEndpointFetcher.CONTENTTYPE_TURTLE }));
     }
     /**
      * Send a query to the given endpoint URL and return the resulting stream.
@@ -23657,28 +23752,26 @@ class SparqlEndpointFetcher {
      * @param {string} acceptHeader The HTTP accept to use.
      * @return {Promise<[string, NodeJS.ReadableStream]>} The content type and SPARQL endpoint response stream.
      */
-    fetchRawStream(endpoint, query, acceptHeader) {
-        return __awaiter(this, void 0, void 0, function* () {
-            const url = endpoint + '?query=' + encodeURIComponent(query);
-            // Initiate request
-            const headers = new Headers();
-            headers.append('Accept', acceptHeader);
-            const httpResponse = yield this.fetchCb(url, { headers });
-            // Wrap WhatWG readable stream into a Node.js readable stream
-            // If the body already is a Node.js stream (in the case of node-fetch), don't do explicit conversion.
-            const responseStream = __webpack_require__(/*! is-stream */ "./node_modules/fetch-sparql-endpoint/node_modules/is-stream/index.js")(httpResponse.body)
-                ? httpResponse.body : __webpack_require__(/*! node-web-streams */ "./node_modules/node-web-streams/index.js").toNodeReadable(httpResponse.body);
-            // Determine the content type and emit it to the stream
-            let contentType = httpResponse.headers.get('Content-Type') || '';
-            if (contentType.indexOf(';') > 0) {
-                contentType = contentType.substr(0, contentType.indexOf(';'));
-            }
-            // Emit an error if the server returned an invalid response
-            if (!httpResponse.ok) {
-                setImmediate(() => responseStream.emit('error', new Error('Invalid SPARQL endpoint (' + endpoint + ') response: ' + httpResponse.statusText)));
-            }
-            return [contentType, responseStream];
-        });
+    async fetchRawStream(endpoint, query, acceptHeader) {
+        const url = endpoint + '?query=' + encodeURIComponent(query);
+        // Initiate request
+        const headers = new Headers();
+        headers.append('Accept', acceptHeader);
+        const httpResponse = await this.fetchCb(url, { headers });
+        // Wrap WhatWG readable stream into a Node.js readable stream
+        // If the body already is a Node.js stream (in the case of node-fetch), don't do explicit conversion.
+        const responseStream = isStream(httpResponse.body)
+            ? httpResponse.body : toNodeReadable(httpResponse.body);
+        // Determine the content type and emit it to the stream
+        let contentType = httpResponse.headers.get('Content-Type') || '';
+        if (contentType.indexOf(';') > 0) {
+            contentType = contentType.substr(0, contentType.indexOf(';'));
+        }
+        // Emit an error if the server returned an invalid response
+        if (!httpResponse.ok) {
+            setImmediate(() => responseStream.emit('error', new Error('Invalid SPARQL endpoint (' + endpoint + ') response: ' + httpResponse.statusText)));
+        }
+        return [contentType, responseStream];
     }
 }
 SparqlEndpointFetcher.CONTENTTYPE_SPARQL_JSON = 'application/sparql-results+json';
@@ -34468,15 +34561,12 @@ module.exports = Parser;
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-const __b15bnode110 = new (__webpack_require__(/*! @comunica/logger-void */ "./node_modules/@comunica/logger-void/index.js").LoggerVoid)({});
+const __b15bnode111 = new (__webpack_require__(/*! @comunica/logger-void */ "./node_modules/@comunica/logger-void/index.js").LoggerVoid)({});
 const https___linkedsoftwaredependencies_org_bundles_npm__comunica_bus_init_Bus_Init = new (__webpack_require__(/*! @comunica/core */ "./node_modules/@comunica/core/index.js").Bus)({
   'name': 'https://linkedsoftwaredependencies.org/bundles/npm/@comunica/bus-init/Bus/Init'
 });
 const https___linkedsoftwaredependencies_org_bundles_npm__comunica_bus_http_Bus_Http = new (__webpack_require__(/*! @comunica/core */ "./node_modules/@comunica/core/index.js").Bus)({
   'name': 'https://linkedsoftwaredependencies.org/bundles/npm/@comunica/bus-http/Bus/Http'
-});
-const https___linkedsoftwaredependencies_org_bundles_npm__comunica_bus_rdf_join_Bus_RdfJoin = new (__webpack_require__(/*! @comunica/core */ "./node_modules/@comunica/core/index.js").Bus)({
-  'name': 'https://linkedsoftwaredependencies.org/bundles/npm/@comunica/bus-rdf-join/Bus/RdfJoin'
 });
 const https___linkedsoftwaredependencies_org_bundles_npm__comunica_bus_rdf_parse_Bus_RdfParse = new (__webpack_require__(/*! @comunica/core */ "./node_modules/@comunica/core/index.js").Bus)({
   'name': 'https://linkedsoftwaredependencies.org/bundles/npm/@comunica/bus-rdf-parse/Bus/RdfParse'
@@ -34484,26 +34574,20 @@ const https___linkedsoftwaredependencies_org_bundles_npm__comunica_bus_rdf_parse
 const https___linkedsoftwaredependencies_org_bundles_npm__comunica_bus_rdf_dereference_Bus_RdfDereference = new (__webpack_require__(/*! @comunica/core */ "./node_modules/@comunica/core/index.js").Bus)({
   'name': 'https://linkedsoftwaredependencies.org/bundles/npm/@comunica/bus-rdf-dereference/Bus/RdfDereference'
 });
-const https___linkedsoftwaredependencies_org_bundles_npm__comunica_bus_rdf_parse_html_Bus_RdfParseHtml = new (__webpack_require__(/*! @comunica/core */ "./node_modules/@comunica/core/index.js").Bus)({
-  'name': 'https://linkedsoftwaredependencies.org/bundles/npm/@comunica/bus-rdf-parse-html/Bus/RdfParseHtml'
+const https___linkedsoftwaredependencies_org_bundles_npm__comunica_bus_rdf_join_Bus_RdfJoin = new (__webpack_require__(/*! @comunica/core */ "./node_modules/@comunica/core/index.js").Bus)({
+  'name': 'https://linkedsoftwaredependencies.org/bundles/npm/@comunica/bus-rdf-join/Bus/RdfJoin'
 });
 const https___linkedsoftwaredependencies_org_bundles_npm__comunica_bus_rdf_resolve_quad_pattern_Bus_RdfResolveQuadPattern = new (__webpack_require__(/*! @comunica/core */ "./node_modules/@comunica/core/index.js").Bus)({
   'name': 'https://linkedsoftwaredependencies.org/bundles/npm/@comunica/bus-rdf-resolve-quad-pattern/Bus/RdfResolveQuadPattern'
 });
-const https___linkedsoftwaredependencies_org_bundles_npm__comunica_bus_rdf_metadata_Bus_RdfMetadata = new (__webpack_require__(/*! @comunica/core */ "./node_modules/@comunica/core/index.js").Bus)({
-  'name': 'https://linkedsoftwaredependencies.org/bundles/npm/@comunica/bus-rdf-metadata/Bus/RdfMetadata'
-});
-const https___linkedsoftwaredependencies_org_bundles_npm__comunica_bus_rdf_metadata_extract_Bus_RdfMetadataExtract = new (__webpack_require__(/*! @comunica/core */ "./node_modules/@comunica/core/index.js").Bus)({
-  'name': 'https://linkedsoftwaredependencies.org/bundles/npm/@comunica/bus-rdf-metadata-extract/Bus/RdfMetadataExtract'
+const https___linkedsoftwaredependencies_org_bundles_npm__comunica_bus_rdf_parse_html_Bus_RdfParseHtml = new (__webpack_require__(/*! @comunica/core */ "./node_modules/@comunica/core/index.js").Bus)({
+  'name': 'https://linkedsoftwaredependencies.org/bundles/npm/@comunica/bus-rdf-parse-html/Bus/RdfParseHtml'
 });
 const https___linkedsoftwaredependencies_org_bundles_npm__comunica_bus_rdf_resolve_hypermedia_Bus_RdfResolveHypermedia = new (__webpack_require__(/*! @comunica/core */ "./node_modules/@comunica/core/index.js").Bus)({
   'name': 'https://linkedsoftwaredependencies.org/bundles/npm/@comunica/bus-rdf-resolve-hypermedia/Bus/RdfResolveHypermedia'
 });
-const https___linkedsoftwaredependencies_org_bundles_npm__comunica_bus_rdf_resolve_hypermedia_links_Bus_RdfResolveHypermediaLinks = new (__webpack_require__(/*! @comunica/core */ "./node_modules/@comunica/core/index.js").Bus)({
-  'name': 'https://linkedsoftwaredependencies.org/bundles/npm/@comunica/bus-rdf-resolve-hypermedia-links/Bus/RdfResolveHypermediaLinks'
-});
-const https___linkedsoftwaredependencies_org_bundles_npm__comunica_bus_http_invalidate_Bus_HttpInvalidate = new (__webpack_require__(/*! @comunica/core */ "./node_modules/@comunica/core/index.js").Bus)({
-  'name': 'https://linkedsoftwaredependencies.org/bundles/npm/@comunica/bus-http-invalidate/Bus/HttpInvalidate'
+const https___linkedsoftwaredependencies_org_bundles_npm__comunica_bus_rdf_metadata_extract_Bus_RdfMetadataExtract = new (__webpack_require__(/*! @comunica/core */ "./node_modules/@comunica/core/index.js").Bus)({
+  'name': 'https://linkedsoftwaredependencies.org/bundles/npm/@comunica/bus-rdf-metadata-extract/Bus/RdfMetadataExtract'
 });
 const https___linkedsoftwaredependencies_org_bundles_npm__comunica_bus_optimize_query_operation_Bus_OptimizeQueryOperation = new (__webpack_require__(/*! @comunica/core */ "./node_modules/@comunica/core/index.js").Bus)({
   'name': 'https://linkedsoftwaredependencies.org/bundles/npm/@comunica/bus-optimize-query-operation/Bus/OptimizeQueryOperation'
@@ -34516,6 +34600,15 @@ const https___linkedsoftwaredependencies_org_bundles_npm__comunica_bus_sparql_se
 });
 const https___linkedsoftwaredependencies_org_bundles_npm__comunica_bus_context_preprocess_Bus_ContextPreprocess = new (__webpack_require__(/*! @comunica/core */ "./node_modules/@comunica/core/index.js").Bus)({
   'name': 'https://linkedsoftwaredependencies.org/bundles/npm/@comunica/bus-context-preprocess/Bus/ContextPreprocess'
+});
+const https___linkedsoftwaredependencies_org_bundles_npm__comunica_bus_http_invalidate_Bus_HttpInvalidate = new (__webpack_require__(/*! @comunica/core */ "./node_modules/@comunica/core/index.js").Bus)({
+  'name': 'https://linkedsoftwaredependencies.org/bundles/npm/@comunica/bus-http-invalidate/Bus/HttpInvalidate'
+});
+const https___linkedsoftwaredependencies_org_bundles_npm__comunica_bus_rdf_metadata_Bus_RdfMetadata = new (__webpack_require__(/*! @comunica/core */ "./node_modules/@comunica/core/index.js").Bus)({
+  'name': 'https://linkedsoftwaredependencies.org/bundles/npm/@comunica/bus-rdf-metadata/Bus/RdfMetadata'
+});
+const https___linkedsoftwaredependencies_org_bundles_npm__comunica_bus_rdf_resolve_hypermedia_links_Bus_RdfResolveHypermediaLinks = new (__webpack_require__(/*! @comunica/core */ "./node_modules/@comunica/core/index.js").Bus)({
+  'name': 'https://linkedsoftwaredependencies.org/bundles/npm/@comunica/bus-rdf-resolve-hypermedia-links/Bus/RdfResolveHypermediaLinks'
 });
 const https___linkedsoftwaredependencies_org_bundles_npm__comunica_bus_query_operation_Bus_QueryOperation = new (__webpack_require__(/*! @comunica/core */ "./node_modules/@comunica/core/index.js").BusIndexed)({
   'actorIdentifierFields': [
@@ -34537,14 +34630,6 @@ const https___linkedsoftwaredependencies_org_bundles_npm__comunica_actor_init_sp
   'ignoreErrors': true,
   'name': 'https://linkedsoftwaredependencies.org/bundles/npm/@comunica/actor-init-sparql/^1.0.0/config/sets/http.json#mediatorHttp',
   'bus': https___linkedsoftwaredependencies_org_bundles_npm__comunica_bus_http_Bus_Http
-});
-const https___linkedsoftwaredependencies_org_bundles_npm__comunica_actor_init_sparql__1_0_0_config_sets_join_json_myRdfJoinActor = new (__webpack_require__(/*! @comunica/actor-rdf-join-nestedloop */ "./node_modules/@comunica/actor-rdf-join-nestedloop/index.js").ActorRdfJoinNestedLoop)({
-  'name': 'https://linkedsoftwaredependencies.org/bundles/npm/@comunica/actor-init-sparql/^1.0.0/config/sets/join.json#myRdfJoinActor',
-  'bus': https___linkedsoftwaredependencies_org_bundles_npm__comunica_bus_rdf_join_Bus_RdfJoin
-});
-const https___linkedsoftwaredependencies_org_bundles_npm__comunica_actor_init_sparql__1_0_0_config_sets_sparql_queryoperators_json_mediatorRdfJoin = new (__webpack_require__(/*! @comunica/mediator-race */ "./node_modules/@comunica/mediator-race/index.js").MediatorRace)({
-  'name': 'https://linkedsoftwaredependencies.org/bundles/npm/@comunica/actor-init-sparql/^1.0.0/config/sets/sparql-queryoperators.json#mediatorRdfJoin',
-  'bus': https___linkedsoftwaredependencies_org_bundles_npm__comunica_bus_rdf_join_Bus_RdfJoin
 });
 const https___linkedsoftwaredependencies_org_bundles_npm__comunica_actor_init_sparql__1_0_0_config_sets_rdf_dereference_json_mediatorRdfParseMediatypes = new (__webpack_require__(/*! @comunica/mediator-combine-union */ "./node_modules/@comunica/mediator-combine-union/index.js").MediatorCombineUnion)({
   'field': 'mediaTypes',
@@ -34598,6 +34683,22 @@ const https___linkedsoftwaredependencies_org_bundles_npm__comunica_actor_init_sp
   'name': 'https://linkedsoftwaredependencies.org/bundles/npm/@comunica/actor-init-sparql/^1.0.0/config/sets/resolve-hypermedia.json#mediatorRdfDereference',
   'bus': https___linkedsoftwaredependencies_org_bundles_npm__comunica_bus_rdf_dereference_Bus_RdfDereference
 });
+const https___linkedsoftwaredependencies_org_bundles_npm__comunica_actor_init_sparql__1_0_0_config_sets_sparql_queryoperators_json_mediatorRdfJoin = new (__webpack_require__(/*! @comunica/mediator-race */ "./node_modules/@comunica/mediator-race/index.js").MediatorRace)({
+  'name': 'https://linkedsoftwaredependencies.org/bundles/npm/@comunica/actor-init-sparql/^1.0.0/config/sets/sparql-queryoperators.json#mediatorRdfJoin',
+  'bus': https___linkedsoftwaredependencies_org_bundles_npm__comunica_bus_rdf_join_Bus_RdfJoin
+});
+const https___linkedsoftwaredependencies_org_bundles_npm__comunica_actor_init_sparql__1_0_0_config_sets_join_json_myRdfJoinActor = new (__webpack_require__(/*! @comunica/actor-rdf-join-symmetrichash */ "./node_modules/@comunica/actor-rdf-join-symmetrichash/index.js").ActorRdfJoinSymmetricHash)({
+  'name': 'https://linkedsoftwaredependencies.org/bundles/npm/@comunica/actor-init-sparql/^1.0.0/config/sets/join.json#myRdfJoinActor',
+  'bus': https___linkedsoftwaredependencies_org_bundles_npm__comunica_bus_rdf_join_Bus_RdfJoin
+});
+const https___linkedsoftwaredependencies_org_bundles_npm__comunica_actor_init_sparql__1_0_0_config_sets_sparql_queryoperators_json_mediatorResolveQuadPattern = new (__webpack_require__(/*! @comunica/mediator-race */ "./node_modules/@comunica/mediator-race/index.js").MediatorRace)({
+  'name': 'https://linkedsoftwaredependencies.org/bundles/npm/@comunica/actor-init-sparql/^1.0.0/config/sets/sparql-queryoperators.json#mediatorResolveQuadPattern',
+  'bus': https___linkedsoftwaredependencies_org_bundles_npm__comunica_bus_rdf_resolve_quad_pattern_Bus_RdfResolveQuadPattern
+});
+const config_sets_resolve_file_json_myRdfRdfJsSourceQuadPatternResolver = new (__webpack_require__(/*! @comunica/actor-rdf-resolve-quad-pattern-rdfjs-source */ "./node_modules/@comunica/actor-rdf-resolve-quad-pattern-rdfjs-source/index.js").ActorRdfResolveQuadPatternRdfJsSource)({
+  'name': 'config-sets:resolve-file.json#myRdfRdfJsSourceQuadPatternResolver',
+  'bus': https___linkedsoftwaredependencies_org_bundles_npm__comunica_bus_rdf_resolve_quad_pattern_Bus_RdfResolveQuadPattern
+});
 const https___linkedsoftwaredependencies_org_bundles_npm__comunica_actor_init_sparql__1_0_0_config_sets_rdf_parsers_json_myRdfParserHtml = new (__webpack_require__(/*! @comunica/actor-rdf-parse-html */ "./node_modules/@comunica/actor-rdf-parse-html/index.js").ActorRdfParseHtml)({
   'busRdfParseHtml': https___linkedsoftwaredependencies_org_bundles_npm__comunica_bus_rdf_parse_html_Bus_RdfParseHtml,
   'mediaTypes': {
@@ -34612,27 +34713,20 @@ const https___linkedsoftwaredependencies_org_bundles_npm__comunica_actor_init_sp
   'name': 'https://linkedsoftwaredependencies.org/bundles/npm/@comunica/actor-init-sparql/^1.0.0/config/sets/rdf-parsers.json#myRdfParserHtmlRdfa',
   'bus': https___linkedsoftwaredependencies_org_bundles_npm__comunica_bus_rdf_parse_html_Bus_RdfParseHtml
 });
-const https___linkedsoftwaredependencies_org_bundles_npm__comunica_actor_init_sparql__1_0_0_config_sets_sparql_queryoperators_json_mediatorResolveQuadPattern = new (__webpack_require__(/*! @comunica/mediator-race */ "./node_modules/@comunica/mediator-race/index.js").MediatorRace)({
-  'name': 'https://linkedsoftwaredependencies.org/bundles/npm/@comunica/actor-init-sparql/^1.0.0/config/sets/sparql-queryoperators.json#mediatorResolveQuadPattern',
-  'bus': https___linkedsoftwaredependencies_org_bundles_npm__comunica_bus_rdf_resolve_quad_pattern_Bus_RdfResolveQuadPattern
+const https___linkedsoftwaredependencies_org_bundles_npm__comunica_actor_init_sparql__1_0_0_config_sets_resolve_hypermedia_json_myHypermediaNoneResolver = new (__webpack_require__(/*! @comunica/actor-rdf-resolve-hypermedia-none */ "./node_modules/@comunica/actor-rdf-resolve-hypermedia-none/index.js").ActorRdfResolveHypermediaNone)({
+  'name': 'https://linkedsoftwaredependencies.org/bundles/npm/@comunica/actor-init-sparql/^1.0.0/config/sets/resolve-hypermedia.json#myHypermediaNoneResolver',
+  'bus': https___linkedsoftwaredependencies_org_bundles_npm__comunica_bus_rdf_resolve_hypermedia_Bus_RdfResolveHypermedia
 });
-const config_sets_resolve_file_json_myRdfRdfJsSourceQuadPatternResolver = new (__webpack_require__(/*! @comunica/actor-rdf-resolve-quad-pattern-rdfjs-source */ "./node_modules/@comunica/actor-rdf-resolve-quad-pattern-rdfjs-source/index.js").ActorRdfResolveQuadPatternRdfJsSource)({
-  'name': 'config-sets:resolve-file.json#myRdfRdfJsSourceQuadPatternResolver',
-  'bus': https___linkedsoftwaredependencies_org_bundles_npm__comunica_bus_rdf_resolve_quad_pattern_Bus_RdfResolveQuadPattern
+const https___linkedsoftwaredependencies_org_bundles_npm__comunica_actor_init_sparql__1_0_0_config_sets_resolve_hypermedia_json_mediatorRdfResolveHypermedia = new (__webpack_require__(/*! @comunica/mediator-number */ "./node_modules/@comunica/mediator-number/index.js").MediatorNumber)({
+  'field': 'filterFactor',
+  'type': 'https://linkedsoftwaredependencies.org/bundles/npm/@comunica/mediator-number/Mediator/Number/type/TypeMax',
+  'ignoreErrors': true,
+  'name': 'https://linkedsoftwaredependencies.org/bundles/npm/@comunica/actor-init-sparql/^1.0.0/config/sets/resolve-hypermedia.json#mediatorRdfResolveHypermedia',
+  'bus': https___linkedsoftwaredependencies_org_bundles_npm__comunica_bus_rdf_resolve_hypermedia_Bus_RdfResolveHypermedia
 });
-const https___linkedsoftwaredependencies_org_bundles_npm__comunica_actor_init_sparql__1_0_0_config_sets_resolve_hypermedia_json_mediatorMetadata = new (__webpack_require__(/*! @comunica/mediator-race */ "./node_modules/@comunica/mediator-race/index.js").MediatorRace)({
-  'name': 'https://linkedsoftwaredependencies.org/bundles/npm/@comunica/actor-init-sparql/^1.0.0/config/sets/resolve-hypermedia.json#mediatorMetadata',
-  'bus': https___linkedsoftwaredependencies_org_bundles_npm__comunica_bus_rdf_metadata_Bus_RdfMetadata
-});
-const https___linkedsoftwaredependencies_org_bundles_npm__comunica_actor_init_sparql__1_0_0_config_sets_resolve_hypermedia_json_myRdfMetadataPrimaryTopic = new (__webpack_require__(/*! @comunica/actor-rdf-metadata-primary-topic */ "./node_modules/@comunica/actor-rdf-metadata-primary-topic/index.js").ActorRdfMetadataPrimaryTopic)({
-  'metadataToData': false,
-  'dataToMetadataOnInvalidMetadataGraph': true,
-  'name': 'https://linkedsoftwaredependencies.org/bundles/npm/@comunica/actor-init-sparql/^1.0.0/config/sets/resolve-hypermedia.json#myRdfMetadataPrimaryTopic',
-  'bus': https___linkedsoftwaredependencies_org_bundles_npm__comunica_bus_rdf_metadata_Bus_RdfMetadata
-});
-const https___linkedsoftwaredependencies_org_bundles_npm__comunica_actor_init_sparql__1_0_0_config_sets_resolve_hypermedia_json_myRdfMetadataAll = new (__webpack_require__(/*! @comunica/actor-rdf-metadata-all */ "./node_modules/@comunica/actor-rdf-metadata-all/index.js").ActorRdfMetadataAll)({
-  'name': 'https://linkedsoftwaredependencies.org/bundles/npm/@comunica/actor-init-sparql/^1.0.0/config/sets/resolve-hypermedia.json#myRdfMetadataAll',
-  'bus': https___linkedsoftwaredependencies_org_bundles_npm__comunica_bus_rdf_metadata_Bus_RdfMetadata
+const https___linkedsoftwaredependencies_org_bundles_npm__comunica_actor_init_sparql__1_0_0_config_sets_resolve_sparql_json_myRdfMetadataExtractSparqlService = new (__webpack_require__(/*! @comunica/actor-rdf-metadata-extract-sparql-service */ "./node_modules/@comunica/actor-rdf-metadata-extract-sparql-service/index.js").ActorRdfMetadataExtractSparqlService)({
+  'name': 'https://linkedsoftwaredependencies.org/bundles/npm/@comunica/actor-init-sparql/^1.0.0/config/sets/resolve-sparql.json#myRdfMetadataExtractSparqlService',
+  'bus': https___linkedsoftwaredependencies_org_bundles_npm__comunica_bus_rdf_metadata_extract_Bus_RdfMetadataExtract
 });
 const https___linkedsoftwaredependencies_org_bundles_npm__comunica_actor_init_sparql__1_0_0_config_sets_resolve_hypermedia_json_mediatorMetadataExtract = new (__webpack_require__(/*! @comunica/mediator-combine-union */ "./node_modules/@comunica/mediator-combine-union/index.js").MediatorCombineUnion)({
   'field': 'metadata',
@@ -34650,37 +34744,6 @@ const https___linkedsoftwaredependencies_org_bundles_npm__comunica_actor_init_sp
   ],
   'name': 'https://linkedsoftwaredependencies.org/bundles/npm/@comunica/actor-init-sparql/^1.0.0/config/sets/resolve-hypermedia.json#myRdfMetadataExtractHydraCount',
   'bus': https___linkedsoftwaredependencies_org_bundles_npm__comunica_bus_rdf_metadata_extract_Bus_RdfMetadataExtract
-});
-const https___linkedsoftwaredependencies_org_bundles_npm__comunica_actor_init_sparql__1_0_0_config_sets_resolve_sparql_json_myRdfMetadataExtractSparqlService = new (__webpack_require__(/*! @comunica/actor-rdf-metadata-extract-sparql-service */ "./node_modules/@comunica/actor-rdf-metadata-extract-sparql-service/index.js").ActorRdfMetadataExtractSparqlService)({
-  'name': 'https://linkedsoftwaredependencies.org/bundles/npm/@comunica/actor-init-sparql/^1.0.0/config/sets/resolve-sparql.json#myRdfMetadataExtractSparqlService',
-  'bus': https___linkedsoftwaredependencies_org_bundles_npm__comunica_bus_rdf_metadata_extract_Bus_RdfMetadataExtract
-});
-const https___linkedsoftwaredependencies_org_bundles_npm__comunica_actor_init_sparql__1_0_0_config_sets_resolve_hypermedia_json_myHypermediaNoneResolver = new (__webpack_require__(/*! @comunica/actor-rdf-resolve-hypermedia-none */ "./node_modules/@comunica/actor-rdf-resolve-hypermedia-none/index.js").ActorRdfResolveHypermediaNone)({
-  'name': 'https://linkedsoftwaredependencies.org/bundles/npm/@comunica/actor-init-sparql/^1.0.0/config/sets/resolve-hypermedia.json#myHypermediaNoneResolver',
-  'bus': https___linkedsoftwaredependencies_org_bundles_npm__comunica_bus_rdf_resolve_hypermedia_Bus_RdfResolveHypermedia
-});
-const https___linkedsoftwaredependencies_org_bundles_npm__comunica_actor_init_sparql__1_0_0_config_sets_resolve_hypermedia_json_mediatorRdfResolveHypermedia = new (__webpack_require__(/*! @comunica/mediator-number */ "./node_modules/@comunica/mediator-number/index.js").MediatorNumber)({
-  'field': 'filterFactor',
-  'type': 'https://linkedsoftwaredependencies.org/bundles/npm/@comunica/mediator-number/Mediator/Number/type/TypeMax',
-  'ignoreErrors': true,
-  'name': 'https://linkedsoftwaredependencies.org/bundles/npm/@comunica/actor-init-sparql/^1.0.0/config/sets/resolve-hypermedia.json#mediatorRdfResolveHypermedia',
-  'bus': https___linkedsoftwaredependencies_org_bundles_npm__comunica_bus_rdf_resolve_hypermedia_Bus_RdfResolveHypermedia
-});
-const https___linkedsoftwaredependencies_org_bundles_npm__comunica_actor_init_sparql__1_0_0_config_sets_resolve_hypermedia_json_mediatorRdfResolveHypermediaLinks = new (__webpack_require__(/*! @comunica/mediator-race */ "./node_modules/@comunica/mediator-race/index.js").MediatorRace)({
-  'name': 'https://linkedsoftwaredependencies.org/bundles/npm/@comunica/actor-init-sparql/^1.0.0/config/sets/resolve-hypermedia.json#mediatorRdfResolveHypermediaLinks',
-  'bus': https___linkedsoftwaredependencies_org_bundles_npm__comunica_bus_rdf_resolve_hypermedia_links_Bus_RdfResolveHypermediaLinks
-});
-const https___linkedsoftwaredependencies_org_bundles_npm__comunica_actor_init_sparql__1_0_0_config_sets_resolve_hypermedia_json_myHypermediaLinksNext = new (__webpack_require__(/*! @comunica/actor-rdf-resolve-hypermedia-links-next */ "./node_modules/@comunica/actor-rdf-resolve-hypermedia-links-next/index.js").ActorRdfResolveHypermediaLinksNext)({
-  'name': 'https://linkedsoftwaredependencies.org/bundles/npm/@comunica/actor-init-sparql/^1.0.0/config/sets/resolve-hypermedia.json#myHypermediaLinksNext',
-  'bus': https___linkedsoftwaredependencies_org_bundles_npm__comunica_bus_rdf_resolve_hypermedia_links_Bus_RdfResolveHypermediaLinks
-});
-const https___linkedsoftwaredependencies_org_bundles_npm__comunica_actor_rdf_resolve_quad_pattern_hypermedia_Actor_RdfResolveQuadPattern_Hypermedia_httpInvalidator_default = new (__webpack_require__(/*! @comunica/bus-http-invalidate */ "./node_modules/@comunica/bus-http-invalidate/index.js").ActorHttpInvalidateListenable)({
-  'name': 'https://linkedsoftwaredependencies.org/bundles/npm/@comunica/actor-rdf-resolve-quad-pattern-hypermedia/Actor/RdfResolveQuadPattern/Hypermedia/httpInvalidator#default',
-  'bus': https___linkedsoftwaredependencies_org_bundles_npm__comunica_bus_http_invalidate_Bus_HttpInvalidate
-});
-const https___linkedsoftwaredependencies_org_bundles_npm__comunica_actor_init_sparql__1_0_0_config_sets_sparql_init_json_mediatorHttpInvalidate = new (__webpack_require__(/*! @comunica/mediator-all */ "./node_modules/@comunica/mediator-all/index.js").MediatorAll)({
-  'name': 'https://linkedsoftwaredependencies.org/bundles/npm/@comunica/actor-init-sparql/^1.0.0/config/sets/sparql-init.json#mediatorHttpInvalidate',
-  'bus': https___linkedsoftwaredependencies_org_bundles_npm__comunica_bus_http_invalidate_Bus_HttpInvalidate
 });
 const https___linkedsoftwaredependencies_org_bundles_npm__comunica_actor_init_sparql__1_0_0_config_sets_sparql_init_json_mediatorOptimizeQueryOperation = new (__webpack_require__(/*! @comunica/mediator-combine-pipeline */ "./node_modules/@comunica/mediator-combine-pipeline/index.js").MediatorCombinePipeline)({
   'name': 'https://linkedsoftwaredependencies.org/bundles/npm/@comunica/actor-init-sparql/^1.0.0/config/sets/sparql-init.json#mediatorOptimizeQueryOperation',
@@ -34718,14 +34781,44 @@ const https___linkedsoftwaredependencies_org_bundles_npm__comunica_actor_init_sp
   'name': 'https://linkedsoftwaredependencies.org/bundles/npm/@comunica/actor-init-sparql/^1.0.0/config/sets/sparql-init.json#mediatorSparqlSerialize',
   'bus': https___linkedsoftwaredependencies_org_bundles_npm__comunica_bus_sparql_serialize_Bus_SparqlSerialize
 });
-const __b0bnode246 = new (__webpack_require__(/*! @comunica/mediator-combine-union */ "./node_modules/@comunica/mediator-combine-union/index.js").MediatorCombineUnion)({
+const __b0bnode248 = new (__webpack_require__(/*! @comunica/mediator-combine-union */ "./node_modules/@comunica/mediator-combine-union/index.js").MediatorCombineUnion)({
   'field': 'mediaTypes',
-  'name': '_:b0bnode246',
+  'name': '_:b0bnode248',
   'bus': https___linkedsoftwaredependencies_org_bundles_npm__comunica_bus_sparql_serialize_Bus_SparqlSerialize
 });
 const https___linkedsoftwaredependencies_org_bundles_npm__comunica_actor_init_sparql__1_0_0_config_sets_sparql_init_json_mediatorContextPreprocess = new (__webpack_require__(/*! @comunica/mediator-combine-pipeline */ "./node_modules/@comunica/mediator-combine-pipeline/index.js").MediatorCombinePipeline)({
   'name': 'https://linkedsoftwaredependencies.org/bundles/npm/@comunica/actor-init-sparql/^1.0.0/config/sets/sparql-init.json#mediatorContextPreprocess',
   'bus': https___linkedsoftwaredependencies_org_bundles_npm__comunica_bus_context_preprocess_Bus_ContextPreprocess
+});
+const https___linkedsoftwaredependencies_org_bundles_npm__comunica_actor_init_sparql__1_0_0_config_sets_sparql_init_json_mediatorHttpInvalidate = new (__webpack_require__(/*! @comunica/mediator-all */ "./node_modules/@comunica/mediator-all/index.js").MediatorAll)({
+  'name': 'https://linkedsoftwaredependencies.org/bundles/npm/@comunica/actor-init-sparql/^1.0.0/config/sets/sparql-init.json#mediatorHttpInvalidate',
+  'bus': https___linkedsoftwaredependencies_org_bundles_npm__comunica_bus_http_invalidate_Bus_HttpInvalidate
+});
+const https___linkedsoftwaredependencies_org_bundles_npm__comunica_actor_rdf_resolve_quad_pattern_hypermedia_Actor_RdfResolveQuadPattern_Hypermedia_httpInvalidator_default = new (__webpack_require__(/*! @comunica/bus-http-invalidate */ "./node_modules/@comunica/bus-http-invalidate/index.js").ActorHttpInvalidateListenable)({
+  'name': 'https://linkedsoftwaredependencies.org/bundles/npm/@comunica/actor-rdf-resolve-quad-pattern-hypermedia/Actor/RdfResolveQuadPattern/Hypermedia/httpInvalidator#default',
+  'bus': https___linkedsoftwaredependencies_org_bundles_npm__comunica_bus_http_invalidate_Bus_HttpInvalidate
+});
+const https___linkedsoftwaredependencies_org_bundles_npm__comunica_actor_init_sparql__1_0_0_config_sets_resolve_hypermedia_json_mediatorMetadata = new (__webpack_require__(/*! @comunica/mediator-race */ "./node_modules/@comunica/mediator-race/index.js").MediatorRace)({
+  'name': 'https://linkedsoftwaredependencies.org/bundles/npm/@comunica/actor-init-sparql/^1.0.0/config/sets/resolve-hypermedia.json#mediatorMetadata',
+  'bus': https___linkedsoftwaredependencies_org_bundles_npm__comunica_bus_rdf_metadata_Bus_RdfMetadata
+});
+const https___linkedsoftwaredependencies_org_bundles_npm__comunica_actor_init_sparql__1_0_0_config_sets_resolve_hypermedia_json_myRdfMetadataPrimaryTopic = new (__webpack_require__(/*! @comunica/actor-rdf-metadata-primary-topic */ "./node_modules/@comunica/actor-rdf-metadata-primary-topic/index.js").ActorRdfMetadataPrimaryTopic)({
+  'metadataToData': false,
+  'dataToMetadataOnInvalidMetadataGraph': true,
+  'name': 'https://linkedsoftwaredependencies.org/bundles/npm/@comunica/actor-init-sparql/^1.0.0/config/sets/resolve-hypermedia.json#myRdfMetadataPrimaryTopic',
+  'bus': https___linkedsoftwaredependencies_org_bundles_npm__comunica_bus_rdf_metadata_Bus_RdfMetadata
+});
+const https___linkedsoftwaredependencies_org_bundles_npm__comunica_actor_init_sparql__1_0_0_config_sets_resolve_hypermedia_json_myRdfMetadataAll = new (__webpack_require__(/*! @comunica/actor-rdf-metadata-all */ "./node_modules/@comunica/actor-rdf-metadata-all/index.js").ActorRdfMetadataAll)({
+  'name': 'https://linkedsoftwaredependencies.org/bundles/npm/@comunica/actor-init-sparql/^1.0.0/config/sets/resolve-hypermedia.json#myRdfMetadataAll',
+  'bus': https___linkedsoftwaredependencies_org_bundles_npm__comunica_bus_rdf_metadata_Bus_RdfMetadata
+});
+const https___linkedsoftwaredependencies_org_bundles_npm__comunica_actor_init_sparql__1_0_0_config_sets_resolve_hypermedia_json_mediatorRdfResolveHypermediaLinks = new (__webpack_require__(/*! @comunica/mediator-race */ "./node_modules/@comunica/mediator-race/index.js").MediatorRace)({
+  'name': 'https://linkedsoftwaredependencies.org/bundles/npm/@comunica/actor-init-sparql/^1.0.0/config/sets/resolve-hypermedia.json#mediatorRdfResolveHypermediaLinks',
+  'bus': https___linkedsoftwaredependencies_org_bundles_npm__comunica_bus_rdf_resolve_hypermedia_links_Bus_RdfResolveHypermediaLinks
+});
+const https___linkedsoftwaredependencies_org_bundles_npm__comunica_actor_init_sparql__1_0_0_config_sets_resolve_hypermedia_json_myHypermediaLinksNext = new (__webpack_require__(/*! @comunica/actor-rdf-resolve-hypermedia-links-next */ "./node_modules/@comunica/actor-rdf-resolve-hypermedia-links-next/index.js").ActorRdfResolveHypermediaLinksNext)({
+  'name': 'https://linkedsoftwaredependencies.org/bundles/npm/@comunica/actor-init-sparql/^1.0.0/config/sets/resolve-hypermedia.json#myHypermediaLinksNext',
+  'bus': https___linkedsoftwaredependencies_org_bundles_npm__comunica_bus_rdf_resolve_hypermedia_links_Bus_RdfResolveHypermediaLinks
 });
 const https___linkedsoftwaredependencies_org_bundles_npm__comunica_actor_init_sparql__1_0_0_config_sets_sparql_queryoperators_json_mediatorQueryOperation = new (__webpack_require__(/*! @comunica/mediator-number */ "./node_modules/@comunica/mediator-number/index.js").MediatorNumber)({
   'field': 'httpRequests',
@@ -34799,6 +34892,11 @@ const https___linkedsoftwaredependencies_org_bundles_npm__comunica_actor_init_sp
   'name': 'https://linkedsoftwaredependencies.org/bundles/npm/@comunica/actor-init-sparql/^1.0.0/config/sets/rdf-parsers.json#myRdfParserHtmlScript',
   'bus': https___linkedsoftwaredependencies_org_bundles_npm__comunica_bus_rdf_parse_html_Bus_RdfParseHtml
 });
+const https___linkedsoftwaredependencies_org_bundles_npm__comunica_actor_init_sparql__1_0_0_config_sets_join_json_myRdfJoinMultiActor = new (__webpack_require__(/*! @comunica/actor-rdf-join-multi-smallest */ "./node_modules/@comunica/actor-rdf-join-multi-smallest/index.js").ActorRdfJoinMultiSmallest)({
+  'mediatorJoin': https___linkedsoftwaredependencies_org_bundles_npm__comunica_actor_init_sparql__1_0_0_config_sets_sparql_queryoperators_json_mediatorRdfJoin,
+  'name': 'https://linkedsoftwaredependencies.org/bundles/npm/@comunica/actor-init-sparql/^1.0.0/config/sets/join.json#myRdfJoinMultiActor',
+  'bus': https___linkedsoftwaredependencies_org_bundles_npm__comunica_bus_rdf_join_Bus_RdfJoin
+});
 const https___linkedsoftwaredependencies_org_bundles_npm__comunica_actor_init_sparql__1_0_0_config_sets_resolve_federated_json_myFederatedQuadPatternResolver = new (__webpack_require__(/*! @comunica/actor-rdf-resolve-quad-pattern-federated */ "./node_modules/@comunica/actor-rdf-resolve-quad-pattern-federated/index.js").ActorRdfResolveQuadPatternFederated)({
   'mediatorResolveQuadPattern': https___linkedsoftwaredependencies_org_bundles_npm__comunica_actor_init_sparql__1_0_0_config_sets_sparql_queryoperators_json_mediatorResolveQuadPattern,
   'skipEmptyPatterns': false,
@@ -34837,10 +34935,10 @@ const urn_comunica_sparqlinit = new (__webpack_require__(/*! @comunica/actor-ini
   'mediatorQueryOperation': https___linkedsoftwaredependencies_org_bundles_npm__comunica_actor_init_sparql__1_0_0_config_sets_sparql_queryoperators_json_mediatorQueryOperation,
   'mediatorSparqlParse': https___linkedsoftwaredependencies_org_bundles_npm__comunica_actor_init_sparql__1_0_0_config_sets_sparql_init_json_mediatorSparqlParse,
   'mediatorSparqlSerialize': https___linkedsoftwaredependencies_org_bundles_npm__comunica_actor_init_sparql__1_0_0_config_sets_sparql_init_json_mediatorSparqlSerialize,
-  'mediatorSparqlSerializeMediaTypeCombiner': __b0bnode246,
+  'mediatorSparqlSerializeMediaTypeCombiner': __b0bnode248,
   'mediatorContextPreprocess': https___linkedsoftwaredependencies_org_bundles_npm__comunica_actor_init_sparql__1_0_0_config_sets_sparql_init_json_mediatorContextPreprocess,
   'mediatorHttpInvalidate': https___linkedsoftwaredependencies_org_bundles_npm__comunica_actor_init_sparql__1_0_0_config_sets_sparql_init_json_mediatorHttpInvalidate,
-  'logger': __b15bnode110,
+  'logger': __b15bnode111,
   'contextKeyShortcuts': {
     'source': '@comunica/bus-rdf-resolve-quad-pattern:source',
     'sources': '@comunica/bus-rdf-resolve-quad-pattern:sources',
@@ -35003,8 +35101,10 @@ const urn_comunica_my = ({
   'busInit': https___linkedsoftwaredependencies_org_bundles_npm__comunica_bus_init_Bus_Init,
   'actors': [
     https___linkedsoftwaredependencies_org_bundles_npm__comunica_actor_init_sparql__1_0_0_config_sets_http_json_myHttpFetcher,
-    https___linkedsoftwaredependencies_org_bundles_npm__comunica_actor_init_sparql__1_0_0_config_sets_join_json_myRdfJoinActor,
     https___linkedsoftwaredependencies_org_bundles_npm__comunica_actor_init_sparql__1_0_0_config_sets_rdf_dereference_json_myRdfDereferencer,
+    https___linkedsoftwaredependencies_org_bundles_npm__comunica_actor_init_sparql__1_0_0_config_sets_join_json_myRdfJoinMultiActor,
+    https___linkedsoftwaredependencies_org_bundles_npm__comunica_actor_init_sparql__1_0_0_config_sets_join_json_myRdfJoinActor,
+    https___linkedsoftwaredependencies_org_bundles_npm__comunica_actor_init_sparql__1_0_0_config_sets_resolve_federated_json_myFederatedQuadPatternResolver,
     https___linkedsoftwaredependencies_org_bundles_npm__comunica_actor_init_sparql__1_0_0_config_sets_rdf_parsers_json_myRdfParserN3,
     https___linkedsoftwaredependencies_org_bundles_npm__comunica_actor_init_sparql__1_0_0_config_sets_rdf_parsers_json_myRdfParserJsonLd,
     https___linkedsoftwaredependencies_org_bundles_npm__comunica_actor_init_sparql__1_0_0_config_sets_rdf_parsers_json_myRdfParserRdfXml,
@@ -35012,7 +35112,12 @@ const urn_comunica_my = ({
     https___linkedsoftwaredependencies_org_bundles_npm__comunica_actor_init_sparql__1_0_0_config_sets_rdf_parsers_json_myRdfParserHtml,
     https___linkedsoftwaredependencies_org_bundles_npm__comunica_actor_init_sparql__1_0_0_config_sets_rdf_parsers_json_myRdfParserHtmlRdfa,
     https___linkedsoftwaredependencies_org_bundles_npm__comunica_actor_init_sparql__1_0_0_config_sets_rdf_parsers_json_myRdfParserHtmlScript,
-    https___linkedsoftwaredependencies_org_bundles_npm__comunica_actor_init_sparql__1_0_0_config_sets_resolve_federated_json_myFederatedQuadPatternResolver,
+    config_sets_resolve_file_json_myRdfRdfJsSourceQuadPatternResolver,
+    https___linkedsoftwaredependencies_org_bundles_npm__comunica_actor_init_sparql__1_0_0_config_sets_resolve_sparql_json_mySparqlQuadPatternResolver,
+    https___linkedsoftwaredependencies_org_bundles_npm__comunica_actor_init_sparql__1_0_0_config_sets_resolve_sparql_json_myRdfMetadataExtractSparqlService,
+    https___linkedsoftwaredependencies_org_bundles_npm__comunica_actor_init_sparql__1_0_0_config_sets_resolve_sparql_json_mySparqlEndpointResolver,
+    urn_comunica_sparqlinit,
+    https___linkedsoftwaredependencies_org_bundles_npm__comunica_actor_init_sparql__1_0_0_config_sets_sparql_optimize_json_myJoinBgpOptimizer,
     https___linkedsoftwaredependencies_org_bundles_npm__comunica_actor_init_sparql__1_0_0_config_sets_resolve_hypermedia_json_myHypermediaQpfResolver,
     https___linkedsoftwaredependencies_org_bundles_npm__comunica_actor_init_sparql__1_0_0_config_sets_resolve_hypermedia_json_myHypermediaNoneResolver,
     https___linkedsoftwaredependencies_org_bundles_npm__comunica_actor_init_sparql__1_0_0_config_sets_resolve_hypermedia_json_myQuadPatternHypermediaResolver,
@@ -35021,12 +35126,6 @@ const urn_comunica_my = ({
     https___linkedsoftwaredependencies_org_bundles_npm__comunica_actor_init_sparql__1_0_0_config_sets_resolve_hypermedia_json_myRdfMetadataAll,
     https___linkedsoftwaredependencies_org_bundles_npm__comunica_actor_init_sparql__1_0_0_config_sets_resolve_hypermedia_json_myRdfMetadataExtractHydraControls,
     https___linkedsoftwaredependencies_org_bundles_npm__comunica_actor_init_sparql__1_0_0_config_sets_resolve_hypermedia_json_myRdfMetadataExtractHydraCount,
-    config_sets_resolve_file_json_myRdfRdfJsSourceQuadPatternResolver,
-    https___linkedsoftwaredependencies_org_bundles_npm__comunica_actor_init_sparql__1_0_0_config_sets_resolve_sparql_json_mySparqlQuadPatternResolver,
-    https___linkedsoftwaredependencies_org_bundles_npm__comunica_actor_init_sparql__1_0_0_config_sets_resolve_sparql_json_myRdfMetadataExtractSparqlService,
-    https___linkedsoftwaredependencies_org_bundles_npm__comunica_actor_init_sparql__1_0_0_config_sets_resolve_sparql_json_mySparqlEndpointResolver,
-    urn_comunica_sparqlinit,
-    https___linkedsoftwaredependencies_org_bundles_npm__comunica_actor_init_sparql__1_0_0_config_sets_sparql_optimize_json_myJoinBgpOptimizer,
     https___linkedsoftwaredependencies_org_bundles_npm__comunica_actor_init_sparql__1_0_0_config_sets_sparql_parsers_json_mySparqlParser,
     https___linkedsoftwaredependencies_org_bundles_npm__comunica_actor_init_sparql__1_0_0_config_sets_sparql_queryoperators_json_myAskQueryOperator,
     https___linkedsoftwaredependencies_org_bundles_npm__comunica_actor_init_sparql__1_0_0_config_sets_sparql_queryoperators_json_myServiceQueryOperator,
@@ -47974,16 +48073,14 @@ function literal(value, languageOrDataType) {
   if (typeof languageOrDataType === 'string')
     return new Literal('"' + value + '"@' + languageOrDataType.toLowerCase());
 
-  // Create a datatyped literal
-  var datatype = languageOrDataType && languageOrDataType.value || '';
-  if (!datatype) {
-    switch (typeof value) {
+  // Automatically determine datatype for booleans and numbers
+  let datatype = languageOrDataType ? languageOrDataType.value : '';
+  if (datatype === '') {
     // Convert a boolean
-    case 'boolean':
+    if (typeof value === 'boolean')
       datatype = xsd.boolean;
-      break;
     // Convert an integer or double
-    case 'number':
+    else if (typeof value === 'number') {
       if (Number.isFinite(value))
         datatype = Number.isInteger(value) ? xsd.integer : xsd.double;
       else {
@@ -47991,13 +48088,13 @@ function literal(value, languageOrDataType) {
         if (!Number.isNaN(value))
           value = value > 0 ? 'INF' : '-INF';
       }
-      break;
-    // No datatype, so convert a plain string
-    default:
-      return new Literal('"' + value + '"');
     }
   }
-  return new Literal('"' + value + '"^^' + datatype);
+
+  // Create a datatyped literal
+  return (datatype === '' || datatype === xsd.string) ?
+    new Literal('"' + value + '"') :
+    new Literal('"' + value + '"^^' + datatype);
 }
 
 // ### Creates a variable
@@ -48050,8 +48147,7 @@ var illegalIriChars = /[\x00-\x20<>\\"\{\}\|\^\`]/;
 var lineModeRegExps = {
   _iri: true,
   _unescapedIri: true,
-  _unescapedQuote: true,
-  _singleQuote: true,
+  _simpleQuotedString: true,
   _langcode: true,
   _blank: true,
   _newline: true,
@@ -48068,12 +48164,8 @@ class N3Lexer {
     // It's slightly faster to have these as properties than as in-scope variables
     this._iri = /^<((?:[^ <>{}\\]|\\[uU])+)>[ \t]*/; // IRI with escape sequences; needs sanity check after unescaping
     this._unescapedIri = /^<([^\x00-\x20<>\\"\{\}\|\^\`]*)>[ \t]*/; // IRI without escape sequences; no unescaping
-    this._unescapedQuote = /^"([^"\\\r\n]+)"/; // non-empty string without escape sequences
-    this._unescapedApos =  /^'([^'\\\r\n]+)'/;
-    this._singleQuote = /^"((?:[^"\\\r\n]|\\.)*)"(?=[^"])/;
-    this._singleApos =  /^'((?:[^'\\\r\n]|\\.)*)'(?=[^'])/;
-    this._tripleQuote = /^"""([^"\\]*(?:(?:\\.|"(?!""))[^"\\]*)*)"""/;
-    this._tripleApos =  /^'''([^'\\]*(?:(?:\\.|'(?!''))[^'\\]*)*)'''/;
+    this._simpleQuotedString = /^"([^"\\\r\n]*)"(?=[^"])/; // string without escape sequences
+    this._simpleApostropheString = /^'([^'\\\r\n]*)'(?=[^'])/;
     this._langcode = /^@([a-z]+(?:-[a-z0-9]+)*)(?=[^a-z0-9\-])/i;
     this._prefix = /^((?:[A-Za-z\xc0-\xd6\xd8-\xf6\xf8-\u02ff\u0370-\u037d\u037f-\u1fff\u200c\u200d\u2070-\u218f\u2c00-\u2fef\u3001-\ud7ff\uf900-\ufdcf\ufdf0-\ufffd]|[\ud800-\udb7f][\udc00-\udfff])(?:\.?[\-0-9A-Z_a-z\xb7\xc0-\xd6\xd8-\xf6\xf8-\u037d\u037f-\u1fff\u200c\u200d\u203f\u2040\u2070-\u218f\u2c00-\u2fef\u3001-\ud7ff\uf900-\ufdcf\ufdf0-\ufffd]|[\ud800-\udb7f][\udc00-\udfff])*)?:(?=[#\s<])/;
     this._prefixed = /^((?:[A-Za-z\xc0-\xd6\xd8-\xf6\xf8-\u02ff\u0370-\u037d\u037f-\u1fff\u200c\u200d\u2070-\u218f\u2c00-\u2fef\u3001-\ud7ff\uf900-\ufdcf\ufdf0-\ufffd]|[\ud800-\udb7f][\udc00-\udfff])(?:\.?[\-0-9A-Z_a-z\xb7\xc0-\xd6\xd8-\xf6\xf8-\u037d\u037f-\u1fff\u200c\u200d\u203f\u2040\u2070-\u218f\u2c00-\u2fef\u3001-\ud7ff\uf900-\ufdcf\ufdf0-\ufffd]|[\ud800-\udb7f][\udc00-\udfff])*)?:((?:(?:[0-:A-Z_a-z\xc0-\xd6\xd8-\xf6\xf8-\u02ff\u0370-\u037d\u037f-\u1fff\u200c\u200d\u2070-\u218f\u2c00-\u2fef\u3001-\ud7ff\uf900-\ufdcf\ufdf0-\ufffd]|[\ud800-\udb7f][\udc00-\udfff]|%[0-9a-fA-F]{2}|\\[!#-\/;=?\-@_~])(?:(?:[\.\-0-:A-Z_a-z\xb7\xc0-\xd6\xd8-\xf6\xf8-\u037d\u037f-\u1fff\u200c\u200d\u203f\u2040\u2070-\u218f\u2c00-\u2fef\u3001-\ud7ff\uf900-\ufdcf\ufdf0-\ufffd]|[\ud800-\udb7f][\udc00-\udfff]|%[0-9a-fA-F]{2}|\\[!#-\/;=?\-@_~])*(?:[\-0-:A-Z_a-z\xb7\xc0-\xd6\xd8-\xf6\xf8-\u037d\u037f-\u1fff\u200c\u200d\u203f\u2040\u2070-\u218f\u2c00-\u2fef\u3001-\ud7ff\uf900-\ufdcf\ufdf0-\ufffd]|[\ud800-\udb7f][\udc00-\udfff]|%[0-9a-fA-F]{2}|\\[!#-\/;=?\-@_~]))?)?)(?:[ \t]+|(?=\.?[,;!\^\s#()\[\]\{\}"'<]))/;
@@ -48105,6 +48197,8 @@ class N3Lexer {
     }
     // Don't output comment tokens by default
     this._comments = !!options.comments;
+    // Cache the last tested closing position of long literals
+    this._literalClosingPos = 0;
   }
 
   // ## Private methods
@@ -48125,7 +48219,7 @@ class N3Lexer {
         this._line++;
       }
       // Skip whitespace on current line
-      if (whiteSpaceMatch = this._whitespace.exec(input))
+      if (!whiteSpaceMatch && (whiteSpaceMatch = this._whitespace.exec(input)))
         input = input.substr(whiteSpaceMatch[0].length, input.length);
 
       // Stop for now if we're at the end
@@ -48194,48 +48288,36 @@ class N3Lexer {
 
       case '"':
         // Try to find a literal without escape sequences
-        if (match = this._unescapedQuote.exec(input))
+        if (match = this._simpleQuotedString.exec(input))
           value = match[1];
-        // Before attempting more complex string patterns, try to detect a closing quote
-        else if (input.indexOf('"', 1) > 0) {
-          // Try to find any other literal wrapped in a pair of quotes
-          if (match = this._singleQuote.exec(input))
-            value = this._unescape(match[1]);
-          // Try to find a literal wrapped in three pairs of quotes
-          else if (match = this._tripleQuote.exec(input)) {
-            value = match[1];
-            // Advance line counter
-            this._line += value.split(/\r\n|\r|\n/).length - 1;
-            value = this._unescape(value);
-          }
+        // Try to find a literal wrapped in three pairs of quotes
+        else {
+          ({ value, matchLength } = this._parseLiteral(input));
           if (value === null)
             return reportSyntaxError(this);
         }
-        if (match !== null)
+        if (match !== null || matchLength !== 0) {
           type = 'literal';
+          this._literalClosingPos = 0;
+        }
         break;
 
       case "'":
-        // Try to find a literal without escape sequences
-        if (match = this._unescapedApos.exec(input))
-          value = match[1];
-        // Before attempting more complex string patterns, try to detect a closing apostrophe
-        else if (input.indexOf("'", 1) > 0) {
-          // Try to find any other literal wrapped in a pair of apostrophes
-          if (match = this._singleApos.exec(input))
-            value = this._unescape(match[1]);
-          // Try to find a literal wrapped in three pairs of apostrophes
-          else if (match = this._tripleApos.exec(input)) {
+        if (!this._lineMode) {
+          // Try to find a literal without escape sequences
+          if (match = this._simpleApostropheString.exec(input))
             value = match[1];
-            // Advance line counter
-            this._line += value.split(/\r\n|\r|\n/).length - 1;
-            value = this._unescape(value);
+          // Try to find a literal wrapped in three pairs of quotes
+          else {
+            ({ value, matchLength } = this._parseLiteral(input));
+            if (value === null)
+              return reportSyntaxError(this);
           }
-          if (value === null)
-            return reportSyntaxError(this);
+          if (match !== null || matchLength !== 0) {
+            type = 'literal';
+            this._literalClosingPos = 0;
+          }
         }
-        if (match !== null)
-          type = 'literal';
         break;
 
       case '?':
@@ -48421,6 +48503,43 @@ class N3Lexer {
     catch (error) { return null; }
   }
 
+  // ### `_parseLiteral` parses a literal into an unescaped value
+  _parseLiteral(input) {
+    // Ensure we have enough lookahead to identify triple-quoted strings
+    if (input.length >= 3) {
+      // Identify the opening quote(s)
+      const opening = input.match(/^(?:"""|"|'''|'|)/)[0];
+      const openingLength = opening.length;
+
+      // Find the next candidate closing quotes
+      let closingPos = Math.max(this._literalClosingPos, openingLength);
+      while ((closingPos = input.indexOf(opening, closingPos)) > 0) {
+        // Count backslashes right before the closing quotes
+        let backslashCount = 0;
+        while (input[closingPos - backslashCount - 1] === '\\')
+          backslashCount++;
+
+        // An even number of backslashes (in particular 0)
+        // means these are actual, non-escaped closing quotes
+        if (backslashCount % 2 === 0) {
+          // Extract and unescape the value
+          const raw = input.substring(openingLength, closingPos);
+          const lines = raw.split(/\r\n|\r|\n/).length - 1;
+          const matchLength = closingPos + openingLength;
+          // Only triple-quoted strings can be multi-line
+          if (openingLength === 1 && lines !== 0 ||
+              openingLength === 3 && this._lineMode)
+            break;
+          this._line += lines;
+          return { value: this._unescape(raw), matchLength };
+        }
+        closingPos++;
+      }
+      this._literalClosingPos = input.length - openingLength + 1;
+    }
+    return { value: '', matchLength: 0 };
+  }
+
   // ### `_syntaxError` creates a syntax error for the given issue
   _syntaxError(issue) {
     this._input = null;
@@ -48538,7 +48657,7 @@ class N3Parser {
     this._supportsQuads = !(isTurtle || isTriG || isNTriples || isN3);
     // Disable relative IRIs in N-Triples or N-Quads mode
     if (isLineMode)
-      this._resolveRelativeIRI = function (iri) { return ''; };
+      this._resolveRelativeIRI = function (iri) { return null; };
     this._blankNodePrefix = typeof options.blankNodePrefix !== 'string' ? '' :
                               options.blankNodePrefix.replace(/^(?!_:)/, '_:');
     this._lexer = options.lexer || new _N3Lexer__WEBPACK_IMPORTED_MODULE_0__["default"]({ lineMode: isLineMode, n3: isN3 });
@@ -48663,7 +48782,7 @@ class N3Parser {
     case 'IRI':
     case 'typeIRI':
       var iri = this._resolveIRI(token.value);
-      if (iri === '')
+      if (iri === null)
         return this._error('Invalid IRI', token);
       value = this._namedNode(iri);
       break;
@@ -49337,7 +49456,7 @@ class N3Parser {
     // Resolve all other IRIs at the base IRI's path
     default:
       // Relative IRIs cannot contain a colon in the first path segment
-      return (/^[^/:]*:/.test(iri)) ? '' : this._removeDotSegments(this._basePath + iri);
+      return (/^[^/:]*:/.test(iri)) ? null : this._removeDotSegments(this._basePath + iri);
     }
   }
 
@@ -51398,168 +51517,6 @@ __webpack_require__.r(__webpack_exports__);
 }(this));
 
 /* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./../../../webpack/buildin/module.js */ "./node_modules/webpack/buildin/module.js")(module), __webpack_require__(/*! ./../../../webpack/buildin/global.js */ "./node_modules/webpack/buildin/global.js")))
-
-/***/ }),
-
-/***/ "./node_modules/node-web-streams/index.js":
-/*!************************************************!*\
-  !*** ./node_modules/node-web-streams/index.js ***!
-  \************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-/* WEBPACK VAR INJECTION */(function(Buffer) {
-const nodeStream = __webpack_require__(/*! stream */ "./node_modules/readable-stream/readable-browser.js");
-const isNodeStream = __webpack_require__(/*! is-stream */ "./node_modules/is-stream/index.js");
-const conversions = __webpack_require__(/*! ./lib/conversions */ "./node_modules/node-web-streams/lib/conversions.js");
-
-module.exports = __webpack_require__(/*! web-streams-polyfill */ "web-streams-polyfill");
-
-/**
- * Convert Web streams to Node streams. Until WritableStream / TransformStream
- * is finalized, only ReadableStream is supported.
- *
- * @param {ReadableStream} stream, a web stream.
- * @return {stream.Readable}, a Node Readable stream.
- */
-module.exports.toNodeReadable = function(stream) {
-    if (stream instanceof module.exports.ReadableStream
-        || stream && typeof stream.getReader === 'function') {
-        return conversions.readable.webToNode(stream);
-    } else {
-        throw new TypeError("Expected a ReadableStream.");
-    }
-};
-
-/**
- * Convert Node Readable streams, an Array, Buffer or String to a Web
- * ReadableStream.
- *
- * @param {Readable|Array|Buffer|String} stream, a Node Readable stream,
- * Array, Buffer or String.
- * @return {ReadableStream}, a web ReadableStream.
- */
-module.exports.toWebReadableStream = function(stream) {
-    if (isNodeStream(stream) && stream.readable) {
-        return conversions.readable.nodeToWeb(stream);
-    } else if (Array.isArray(stream)) {
-        return conversions.readable.arrayToWeb(stream);
-    } else if (Buffer.isBuffer(stream) || typeof stream === 'string') {
-        return conversions.readable.arrayToWeb([stream]);
-    } else {
-        throw new TypeError("Expected a Node streams.Readable, an Array, Buffer or String.");
-    }
-};
-
-/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./../buffer/index.js */ "./node_modules/buffer/index.js").Buffer))
-
-/***/ }),
-
-/***/ "./node_modules/node-web-streams/lib/conversions.js":
-/*!**********************************************************!*\
-  !*** ./node_modules/node-web-streams/lib/conversions.js ***!
-  \**********************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-const Readable = __webpack_require__(/*! stream */ "./node_modules/readable-stream/readable-browser.js").Readable;
-const ReadableStream = __webpack_require__(/*! web-streams-polyfill */ "web-streams-polyfill").ReadableStream;
-
-/**
- * Web / node stream conversion functions
- */
-
-function readableNodeToWeb(nodeStream) {
-    return new ReadableStream({
-        start(controller) {
-            nodeStream.pause();
-            nodeStream.on('data', chunk => {
-                controller.enqueue(chunk);
-                nodeStream.pause();
-            });
-            nodeStream.on('end', () => controller.close());
-            nodeStream.on('error', (e) => controller.error(e));
-        },
-        pull(controller) {
-            nodeStream.resume();
-        },
-        cancel(reason) {
-            nodeStream.pause();
-        }
-    });
-}
-
-/**
- * ReadableStream wrapping an array.
- *
- * @param {Array} arr, the array to wrap into a stream.
- * @return {ReadableStream}
- */
-function arrayToWeb(arr) {
-    return new ReadableStream({
-        start(controller) {
-            for (var i = 0; i < arr.length; i++) {
-                controller.enqueue(arr[i]);
-            }
-            controller.close();
-        }
-    });
-}
-
-
-class NodeReadable extends Readable {
-    constructor(webStream, options) {
-        super(options);
-        this._webStream = webStream;
-        this._reader = webStream.getReader();
-        this._reading = false;
-    }
-
-    _read(size) {
-        if (this._reading) {
-            return;
-        }
-        this._reading = true;
-        const doRead = () => {
-            this._reader.read()
-                .then(res => {
-                    if (res.done) {
-                        this.push(null);
-                        return;
-                    }
-                    if (this.push(res.value)) {
-                        return doRead(size);
-                    } else {
-                        this._reading = false;
-                    }
-                });
-        };
-        doRead();
-    }
-}
-
-function readableWebToNode(webStream) {
-    return new NodeReadable(webStream);
-}
-
-module.exports = {
-    readable: {
-        nodeToWeb: readableNodeToWeb,
-        arrayToWeb: arrayToWeb,
-        webToNode: readableWebToNode,
-    },
-};
-
-// Simple round-trip test.
-// let nodeReader = require('fs').createReadStream('/tmp/test.txt');
-// let webReader = readableNodeToWeb(nodeReader);
-// let roundTrippedReader = readableWebToNode(webReader);
-// roundTrippedReader.pipe(process.stdout);
-
 
 /***/ }),
 
@@ -54867,6 +54824,75 @@ var ParseType;
     ParseType[ParseType["PROPERTY"] = 1] = "PROPERTY";
 })(ParseType = exports.ParseType || (exports.ParseType = {}));
 //# sourceMappingURL=RdfXmlParser.js.map
+
+/***/ }),
+
+/***/ "./node_modules/readable-stream-node-to-web/index.js":
+/*!***********************************************************!*\
+  !*** ./node_modules/readable-stream-node-to-web/index.js ***!
+  \***********************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+
+/* global ReadableStream */
+
+module.exports = nodeToWeb
+module.exports.WEBSTREAM_SUPPORT = typeof ReadableStream !== 'undefined'
+
+function nodeToWeb (nodeStream) {
+  // Assumes the nodeStream has not ended/closed
+  if (!module.exports.WEBSTREAM_SUPPORT) throw new Error('No web ReadableStream support')
+
+  var destroyed = false
+  var listeners = {}
+
+  function start (controller) {
+    listeners['data'] = onData
+    listeners['end'] = onData
+    listeners['end'] = onDestroy
+    listeners['close'] = onDestroy
+    listeners['error'] = onDestroy
+    for (var name in listeners) nodeStream.on(name, listeners[name])
+
+    nodeStream.pause()
+
+    function onData (chunk) {
+      if (destroyed) return
+      controller.enqueue(chunk)
+      nodeStream.pause()
+    }
+
+    function onDestroy (err) {
+      if (destroyed) return
+      destroyed = true
+
+      for (var name in listeners) nodeStream.removeListener(name, listeners[name])
+
+      if (err) controller.error(err)
+      else controller.close()
+    }
+  }
+
+  function pull () {
+    if (destroyed) return
+    nodeStream.resume()
+  }
+
+  function cancel () {
+    destroyed = true
+
+    for (var name in listeners) nodeStream.removeListener(name, listeners[name])
+
+    nodeStream.push(null)
+    nodeStream.pause()
+    if (nodeStream.destroy) nodeStream.destroy()
+    else if (nodeStream.close) nodeStream.close()
+  }
+
+  return new ReadableStream({start: start, pull: pull, cancel: cancel})
+}
+
 
 /***/ }),
 
@@ -67105,8 +67131,7 @@ Generator.prototype.toQuery = function (q) {
     query += this.group(q.template, true) + this._newline;
 
   if (q.from)
-    query += mapJoin(q.from.default || [], '', function (g) { return 'FROM ' + this.toEntity(g) + this._newline; }, this) +
-             mapJoin(q.from.named || [], '', function (g) { return 'FROM NAMED ' + this.toEntity(g) + this._newline; }, this);
+    query += this.graphs('FROM ', q.from.default) + this.graphs('FROM NAMED ', q.from.named);
   if (q.where)
     query += 'WHERE ' + this.group(q.where, true) + this._newline;
 
@@ -67205,6 +67230,11 @@ Generator.prototype.encodeTriples = function (triples) {
 Generator.prototype.graph = function (graph) {
   return 'GRAPH ' + this.toEntity(graph.name) + ' ' + this.group(graph);
 };
+
+Generator.prototype.graphs = function (keyword, graphs) {
+  return !graphs || graphs.length === 0 ? '' :
+    mapJoin(graphs, '', function (g) { return keyword + this.toEntity(g) + this._newline; }, this)
+}
 
 Generator.prototype.group = function (group, inline) {
   group = inline !== true ? this.array(group.patterns || group.triples)
@@ -67398,6 +67428,8 @@ Generator.prototype.toUpdate = function (update) {
     return (update.graph ? 'WITH ' + this.toEntity(update.graph) + this._newline : '') +
            (update.delete.length ? 'DELETE ' + this.group(update.delete, true) + this._newline : '') +
            (update.insert.length ? 'INSERT ' + this.group(update.insert, true) + this._newline : '') +
+           (update.using ? this.graphs('USING ', update.using.default) : '') +
+           (update.using ? this.graphs('USING NAMED ', update.using.named) : '') +
            'WHERE ' + this.group(update.where, true);
   case 'add':
   case 'copy':
@@ -67712,10 +67744,10 @@ case 54:
 this.$ = { updateType: 'deletewhere', delete: $$[$0] };
 break;
 case 55:
-this.$ = extend({ updateType: 'insertdelete' }, $$[$0-5], { insert: $$[$0-4] || [] }, { delete: $$[$0-3] || [] }, groupDatasets($$[$0-2]), { where: $$[$0].patterns });
+this.$ = extend({ updateType: 'insertdelete' }, $$[$0-5], { insert: $$[$0-4] || [] }, { delete: $$[$0-3] || [] }, groupDatasets($$[$0-2], 'using'), { where: $$[$0].patterns });
 break;
 case 56:
-this.$ = extend({ updateType: 'insertdelete' }, $$[$0-5], { delete: $$[$0-4] || [] }, { insert: $$[$0-3] || [] }, groupDatasets($$[$0-2]), { where: $$[$0].patterns });
+this.$ = extend({ updateType: 'insertdelete' }, $$[$0-5], { delete: $$[$0-4] || [] }, { insert: $$[$0-3] || [] }, groupDatasets($$[$0-2], 'using'), { where: $$[$0].patterns });
 break;
 case 57: case 58: case 61: case 148: case 171:
 this.$ = $$[$0];
@@ -68274,11 +68306,14 @@ parse: function parse(input) {
   }
 
   // Group datasets by default and named
-  function groupDatasets(fromClauses) {
-    var defaults = [], named = [], l = fromClauses.length, fromClause;
+  function groupDatasets(fromClauses, groupName) {
+    var defaults = [], named = [], l = fromClauses.length, fromClause, group = {};
+    if (!l)
+      return null;
     for (var i = 0; i < l && (fromClause = fromClauses[i]); i++)
       (fromClause.named ? named : defaults).push(fromClause.iri);
-    return l ? { from: { default: defaults, named: named } } : null;
+    group[groupName || 'from'] = { default: defaults, named: named };
+    return group;
   }
 
   // Converts the number to a string
@@ -74420,6 +74455,256 @@ module.exports = v4;
 
 /***/ }),
 
+/***/ "./node_modules/web-streams-node/index.js":
+/*!************************************************!*\
+  !*** ./node_modules/web-streams-node/index.js ***!
+  \************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+/* WEBPACK VAR INJECTION */(function(Buffer) {
+const nodeStream = __webpack_require__(/*! stream */ "./node_modules/readable-stream/readable-browser.js");
+const isNodeStream = __webpack_require__(/*! is-stream */ "./node_modules/is-stream/index.js");
+const conversions = __webpack_require__(/*! ./lib/conversions */ "./node_modules/web-streams-node/lib/conversions.js");
+
+module.exports = __webpack_require__(/*! web-streams-ponyfill */ "./node_modules/web-streams-ponyfill/dist/polyfill-ie11.min.js");
+
+/**
+ * Convert Web streams to Node streams. Until WritableStream / TransformStream
+ * is finalized, only ReadableStream is supported.
+ *
+ * @param {ReadableStream} stream, a web stream.
+ * @return {stream.Readable}, a Node Readable stream.
+ */
+module.exports.toNodeReadable = function(stream) {
+    if (stream instanceof module.exports.ReadableStream
+        || stream && typeof stream.getReader === 'function') {
+        return conversions.readable.webToNode(stream);
+    } else {
+        throw new TypeError("Expected a ReadableStream.");
+    }
+};
+
+/**
+ * Convert Node Readable streams, an Array, Buffer or String to a Web
+ * ReadableStream.
+ *
+ * @param {Readable|Array|Buffer|String} stream, a Node Readable stream,
+ * Array, Buffer or String.
+ * @return {ReadableStream}, a web ReadableStream.
+ */
+module.exports.toWebReadableStream = function(stream) {
+    if (isNodeStream(stream) && stream.readable) {
+        return conversions.readable.nodeToWeb(stream);
+    } else if (Array.isArray(stream)) {
+        return conversions.readable.arrayToWeb(stream);
+    } else if (Buffer.isBuffer(stream) || typeof stream === 'string') {
+        return conversions.readable.arrayToWeb([stream]);
+    } else {
+        throw new TypeError("Expected a Node streams.Readable, an Array, Buffer or String.");
+    }
+};
+
+/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./../buffer/index.js */ "./node_modules/buffer/index.js").Buffer))
+
+/***/ }),
+
+/***/ "./node_modules/web-streams-node/lib/conversions.js":
+/*!**********************************************************!*\
+  !*** ./node_modules/web-streams-node/lib/conversions.js ***!
+  \**********************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+/* WEBPACK VAR INJECTION */(function(global) {
+
+const Readable = __webpack_require__(/*! stream */ "./node_modules/readable-stream/readable-browser.js").Readable;
+const ReadableStream = __webpack_require__(/*! web-streams-ponyfill */ "./node_modules/web-streams-ponyfill/dist/polyfill-ie11.min.js").ReadableStream;
+
+/**
+ * Web / node stream conversion functions
+ */
+global.ReadableStream = global.ReadableStream || ReadableStream;
+// TODO: The module 'readable-stream-node-to-web' expects `ReadableStream` in globals
+const readableNodeToWeb = __webpack_require__(/*! readable-stream-node-to-web */ "./node_modules/readable-stream-node-to-web/index.js");
+
+/**
+ * ReadableStream wrapping an array.
+ *
+ * @param {Array} arr, the array to wrap into a stream.
+ * @return {ReadableStream}
+ */
+function arrayToWeb(arr) {
+    return new ReadableStream({
+        start(controller) {
+            for (var i = 0; i < arr.length; i++) {
+                controller.enqueue(arr[i]);
+            }
+            controller.close();
+        }
+    });
+}
+
+
+class NodeReadable extends Readable {
+    constructor(webStream, options) {
+        super(options);
+        this._webStream = webStream;
+        this._reader = webStream.getReader();
+        this._reading = false;
+    }
+
+    _read(size) {
+        if (this._reading) {
+            return;
+        }
+        this._reading = true;
+        const doRead = () => {
+            this._reader.read()
+                .then(res => {
+                    if (this._doneReading) {
+                        this._reading = false;
+                        this._reader.releaseLock();
+                        this._doneReading();
+                    }
+                    if (res.done) {
+                        this.push(null);
+                        this._reading = false;
+                        this._reader.releaseLock();
+                        return;
+                    }
+                    if (this.push(res.value)) {
+                        return doRead(size);
+                    } else {
+                        this._reading = false;
+                        this._reader.releaseLock();
+                    }
+                });
+        };
+        doRead();
+    }
+    
+    _destroy(err, callback) {
+        if (this._reading) {
+            const promise = new Promise(resolve => {
+                this._doneReading = resolve;
+            });
+            promise.then(() => this._handleDestroy(err, callback));
+        } else {
+            this._handleDestroy(err, callback);
+        }
+    }
+        
+    _handleDestroy(err, callback) {
+        this._webStream.cancel();
+        super._destroy(err, callback);
+    }
+}
+
+function readableWebToNode(webStream) {
+    return new NodeReadable(webStream);
+}
+
+module.exports = {
+    readable: {
+        nodeToWeb: readableNodeToWeb,
+        arrayToWeb: arrayToWeb,
+        webToNode: readableWebToNode,
+    },
+};
+
+/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./../../webpack/buildin/global.js */ "./node_modules/webpack/buildin/global.js")))
+
+/***/ }),
+
+/***/ "./node_modules/web-streams-ponyfill/dist/polyfill-ie11.min.js":
+/*!*********************************************************************!*\
+  !*** ./node_modules/web-streams-ponyfill/dist/polyfill-ie11.min.js ***!
+  \*********************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+/* WEBPACK VAR INJECTION */(function(global) {var require;var require;(function(f){if(true){module.exports=f()}else { var g; }})(function(){var define,module,exports;return (function e(t,n,r){function s(o,u){if(!n[o]){if(!t[o]){var a=typeof require=="function"&&require;if(!u&&a)return require(o,!0);if(i)return i(o,!0);var f=new Error("Cannot find module '"+o+"'");throw f.code="MODULE_NOT_FOUND",f}var l=n[o]={exports:{}};t[o][0].call(l.exports,function(e){var n=t[o][1][e];return s(n?n:e)},l,l.exports,e,t,n,r)}return n[o].exports}var i=typeof require=="function"&&require;for(var o=0;o<r.length;o++)s(r[o]);return s})({1:[function(_dereq_,module,exports){
+"use strict";Object.defineProperty(exports,"__esModule",{value:!0});var _require=_dereq_("./spec/reference-implementation/lib/readable-stream"),ReadableStream=_require.ReadableStream,_require2=_dereq_("./spec/reference-implementation/lib/writable-stream"),WritableStream=_require2.WritableStream,ByteLengthQueuingStrategy=_dereq_("./spec/reference-implementation/lib/byte-length-queuing-strategy"),CountQueuingStrategy=_dereq_("./spec/reference-implementation/lib/count-queuing-strategy"),_require3=_dereq_("./spec/reference-implementation/lib/transform-stream"),TransformStream=_require3.TransformStream;exports.ByteLengthQueuingStrategy=ByteLengthQueuingStrategy,exports.CountQueuingStrategy=CountQueuingStrategy,exports.ReadableStream=ReadableStream,exports.WritableStream=WritableStream,exports.TransformStream=TransformStream;var interfaces={ReadableStream:ReadableStream,WritableStream:WritableStream,ByteLengthQueuingStrategy:ByteLengthQueuingStrategy,CountQueuingStrategy:CountQueuingStrategy,TransformStream:TransformStream};exports.default=interfaces;
+
+},{"./spec/reference-implementation/lib/byte-length-queuing-strategy":8,"./spec/reference-implementation/lib/count-queuing-strategy":9,"./spec/reference-implementation/lib/readable-stream":12,"./spec/reference-implementation/lib/transform-stream":13,"./spec/reference-implementation/lib/writable-stream":15}],2:[function(_dereq_,module,exports){
+(function (global){
+"use strict";function compare(t,e){if(t===e)return 0;for(var r=t.length,n=e.length,i=0,a=Math.min(r,n);i<a;++i)if(t[i]!==e[i]){r=t[i],n=e[i];break}return r<n?-1:n<r?1:0}function isBuffer(t){return global.Buffer&&"function"==typeof global.Buffer.isBuffer?global.Buffer.isBuffer(t):!(null==t||!t._isBuffer)}function pToString(t){return Object.prototype.toString.call(t)}function isView(t){return!isBuffer(t)&&("function"==typeof global.ArrayBuffer&&("function"==typeof ArrayBuffer.isView?ArrayBuffer.isView(t):!!t&&(t instanceof DataView||!!(t.buffer&&t.buffer instanceof ArrayBuffer))))}function getName(t){if(util.isFunction(t)){if(functionsHaveNames)return t.name;var e=t.toString().match(regex);return e&&e[1]}}function truncate(t,e){return"string"==typeof t?t.length<e?t:t.slice(0,e):t}function inspect(t){if(functionsHaveNames||!util.isFunction(t))return util.inspect(t);var e=getName(t);return"[Function"+(e?": "+e:"")+"]"}function getMessage(t){return truncate(inspect(t.actual),128)+" "+t.operator+" "+truncate(inspect(t.expected),128)}function fail(t,e,r,n,i){throw new assert.AssertionError({message:r,actual:t,expected:e,operator:n,stackStartFunction:i})}function ok(t,e){t||fail(t,!0,e,"==",assert.ok)}function _deepEqual(t,e,r,n){if(t===e)return!0;if(isBuffer(t)&&isBuffer(e))return 0===compare(t,e);if(util.isDate(t)&&util.isDate(e))return t.getTime()===e.getTime();if(util.isRegExp(t)&&util.isRegExp(e))return t.source===e.source&&t.global===e.global&&t.multiline===e.multiline&&t.lastIndex===e.lastIndex&&t.ignoreCase===e.ignoreCase;if(null!==t&&"object"==typeof t||null!==e&&"object"==typeof e){if(isView(t)&&isView(e)&&pToString(t)===pToString(e)&&!(t instanceof Float32Array||t instanceof Float64Array))return 0===compare(new Uint8Array(t.buffer),new Uint8Array(e.buffer));if(isBuffer(t)!==isBuffer(e))return!1;var i=(n=n||{actual:[],expected:[]}).actual.indexOf(t);return-1!==i&&i===n.expected.indexOf(e)||(n.actual.push(t),n.expected.push(e),objEquiv(t,e,r,n))}return r?t===e:t==e}function isArguments(t){return"[object Arguments]"==Object.prototype.toString.call(t)}function objEquiv(t,e,r,n){if(null===t||void 0===t||null===e||void 0===e)return!1;if(util.isPrimitive(t)||util.isPrimitive(e))return t===e;if(r&&Object.getPrototypeOf(t)!==Object.getPrototypeOf(e))return!1;var i=isArguments(t),a=isArguments(e);if(i&&!a||!i&&a)return!1;if(i)return t=pSlice.call(t),e=pSlice.call(e),_deepEqual(t,e,r);var o,s,u=objectKeys(t),f=objectKeys(e);if(u.length!==f.length)return!1;for(u.sort(),f.sort(),s=u.length-1;s>=0;s--)if(u[s]!==f[s])return!1;for(s=u.length-1;s>=0;s--)if(o=u[s],!_deepEqual(t[o],e[o],r,n))return!1;return!0}function notDeepStrictEqual(t,e,r){_deepEqual(t,e,!0)&&fail(t,e,r,"notDeepStrictEqual",notDeepStrictEqual)}function expectedException(t,e){if(!t||!e)return!1;if("[object RegExp]"==Object.prototype.toString.call(e))return e.test(t);try{if(t instanceof e)return!0}catch(t){}return!Error.isPrototypeOf(e)&&!0===e.call({},t)}function _tryBlock(t){var e;try{t()}catch(t){e=t}return e}function _throws(t,e,r,n){var i;if("function"!=typeof e)throw new TypeError('"block" argument must be a function');"string"==typeof r&&(n=r,r=null),i=_tryBlock(e),n=(r&&r.name?" ("+r.name+").":".")+(n?" "+n:"."),t&&!i&&fail(i,r,"Missing expected exception"+n);var a="string"==typeof n,o=!t&&util.isError(i),s=!t&&i&&!r;if((o&&a&&expectedException(i,r)||s)&&fail(i,r,"Got unwanted exception"+n),t&&i&&r&&!expectedException(i,r)||!t&&i)throw i}var util=_dereq_("util/"),hasOwn=Object.prototype.hasOwnProperty,pSlice=Array.prototype.slice,functionsHaveNames="foo"===function foo(){}.name,assert=module.exports=ok,regex=/\s*function\s+([^\(\s]*)\s*/;assert.AssertionError=function AssertionError(t){this.name="AssertionError",this.actual=t.actual,this.expected=t.expected,this.operator=t.operator,t.message?(this.message=t.message,this.generatedMessage=!1):(this.message=getMessage(this),this.generatedMessage=!0);var e=t.stackStartFunction||fail;if(Error.captureStackTrace)Error.captureStackTrace(this,e);else{var r=new Error;if(r.stack){var n=r.stack,i=getName(e),a=n.indexOf("\n"+i);if(a>=0){var o=n.indexOf("\n",a+1);n=n.substring(o+1)}this.stack=n}}},util.inherits(assert.AssertionError,Error),assert.fail=fail,assert.ok=ok,assert.equal=function equal(t,e,r){t!=e&&fail(t,e,r,"==",assert.equal)},assert.notEqual=function notEqual(t,e,r){t==e&&fail(t,e,r,"!=",assert.notEqual)},assert.deepEqual=function deepEqual(t,e,r){_deepEqual(t,e,!1)||fail(t,e,r,"deepEqual",assert.deepEqual)},assert.deepStrictEqual=function deepStrictEqual(t,e,r){_deepEqual(t,e,!0)||fail(t,e,r,"deepStrictEqual",assert.deepStrictEqual)},assert.notDeepEqual=function notDeepEqual(t,e,r){_deepEqual(t,e,!1)&&fail(t,e,r,"notDeepEqual",assert.notDeepEqual)},assert.notDeepStrictEqual=notDeepStrictEqual,assert.strictEqual=function strictEqual(t,e,r){t!==e&&fail(t,e,r,"===",assert.strictEqual)},assert.notStrictEqual=function notStrictEqual(t,e,r){t===e&&fail(t,e,r,"!==",assert.notStrictEqual)},assert.throws=function(t,e,r){_throws(!0,t,e,r)},assert.doesNotThrow=function(t,e,r){_throws(!1,t,e,r)},assert.ifError=function(t){if(t)throw t};var objectKeys=Object.keys||function(t){var e=[];for(var r in t)hasOwn.call(t,r)&&e.push(r);return e};
+
+}).call(this,typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
+
+},{"util/":7}],3:[function(_dereq_,module,exports){
+
+},{}],4:[function(_dereq_,module,exports){
+function defaultSetTimout(){throw new Error("setTimeout has not been defined")}function defaultClearTimeout(){throw new Error("clearTimeout has not been defined")}function runTimeout(e){if(cachedSetTimeout===setTimeout)return setTimeout(e,0);if((cachedSetTimeout===defaultSetTimout||!cachedSetTimeout)&&setTimeout)return cachedSetTimeout=setTimeout,setTimeout(e,0);try{return cachedSetTimeout(e,0)}catch(t){try{return cachedSetTimeout.call(null,e,0)}catch(t){return cachedSetTimeout.call(this,e,0)}}}function runClearTimeout(e){if(cachedClearTimeout===clearTimeout)return clearTimeout(e);if((cachedClearTimeout===defaultClearTimeout||!cachedClearTimeout)&&clearTimeout)return cachedClearTimeout=clearTimeout,clearTimeout(e);try{return cachedClearTimeout(e)}catch(t){try{return cachedClearTimeout.call(null,e)}catch(t){return cachedClearTimeout.call(this,e)}}}function cleanUpNextTick(){draining&&currentQueue&&(draining=!1,currentQueue.length?queue=currentQueue.concat(queue):queueIndex=-1,queue.length&&drainQueue())}function drainQueue(){if(!draining){var e=runTimeout(cleanUpNextTick);draining=!0;for(var t=queue.length;t;){for(currentQueue=queue,queue=[];++queueIndex<t;)currentQueue&&currentQueue[queueIndex].run();queueIndex=-1,t=queue.length}currentQueue=null,draining=!1,runClearTimeout(e)}}function Item(e,t){this.fun=e,this.array=t}function noop(){}var cachedSetTimeout,cachedClearTimeout,process=module.exports={};!function(){try{cachedSetTimeout="function"==typeof setTimeout?setTimeout:defaultSetTimout}catch(e){cachedSetTimeout=defaultSetTimout}try{cachedClearTimeout="function"==typeof clearTimeout?clearTimeout:defaultClearTimeout}catch(e){cachedClearTimeout=defaultClearTimeout}}();var currentQueue,queue=[],draining=!1,queueIndex=-1;process.nextTick=function(e){var t=new Array(arguments.length-1);if(arguments.length>1)for(var r=1;r<arguments.length;r++)t[r-1]=arguments[r];queue.push(new Item(e,t)),1!==queue.length||draining||runTimeout(drainQueue)},Item.prototype.run=function(){this.fun.apply(null,this.array)},process.title="browser",process.browser=!0,process.env={},process.argv=[],process.version="",process.versions={},process.on=noop,process.addListener=noop,process.once=noop,process.off=noop,process.removeListener=noop,process.removeAllListeners=noop,process.emit=noop,process.prependListener=noop,process.prependOnceListener=noop,process.listeners=function(e){return[]},process.binding=function(e){throw new Error("process.binding is not supported")},process.cwd=function(){return"/"},process.chdir=function(e){throw new Error("process.chdir is not supported")},process.umask=function(){return 0};
+
+},{}],5:[function(_dereq_,module,exports){
+"function"==typeof Object.create?module.exports=function inherits(t,e){t.super_=e,t.prototype=Object.create(e.prototype,{constructor:{value:t,enumerable:!1,writable:!0,configurable:!0}})}:module.exports=function inherits(t,e){t.super_=e;var o=function(){};o.prototype=e.prototype,t.prototype=new o,t.prototype.constructor=t};
+
+},{}],6:[function(_dereq_,module,exports){
+module.exports=function isBuffer(o){return o&&"object"==typeof o&&"function"==typeof o.copy&&"function"==typeof o.fill&&"function"==typeof o.readUInt8};
+
+},{}],7:[function(_dereq_,module,exports){
+(function (process,global){
+function inspect(e,r){var t={seen:[],stylize:stylizeNoColor};return arguments.length>=3&&(t.depth=arguments[2]),arguments.length>=4&&(t.colors=arguments[3]),isBoolean(r)?t.showHidden=r:r&&exports._extend(t,r),isUndefined(t.showHidden)&&(t.showHidden=!1),isUndefined(t.depth)&&(t.depth=2),isUndefined(t.colors)&&(t.colors=!1),isUndefined(t.customInspect)&&(t.customInspect=!0),t.colors&&(t.stylize=stylizeWithColor),formatValue(t,e,t.depth)}function stylizeWithColor(e,r){var t=inspect.styles[r];return t?"["+inspect.colors[t][0]+"m"+e+"["+inspect.colors[t][1]+"m":e}function stylizeNoColor(e,r){return e}function arrayToHash(e){var r={};return e.forEach(function(e,t){r[e]=!0}),r}function formatValue(e,r,t){if(e.customInspect&&r&&isFunction(r.inspect)&&r.inspect!==exports.inspect&&(!r.constructor||r.constructor.prototype!==r)){var n=r.inspect(t,e);return isString(n)||(n=formatValue(e,n,t)),n}var i=formatPrimitive(e,r);if(i)return i;var o=Object.keys(r),s=arrayToHash(o);if(e.showHidden&&(o=Object.getOwnPropertyNames(r)),isError(r)&&(o.indexOf("message")>=0||o.indexOf("description")>=0))return formatError(r);if(0===o.length){if(isFunction(r)){var u=r.name?": "+r.name:"";return e.stylize("[Function"+u+"]","special")}if(isRegExp(r))return e.stylize(RegExp.prototype.toString.call(r),"regexp");if(isDate(r))return e.stylize(Date.prototype.toString.call(r),"date");if(isError(r))return formatError(r)}var c="",a=!1,l=["{","}"];if(isArray(r)&&(a=!0,l=["[","]"]),isFunction(r)&&(c=" [Function"+(r.name?": "+r.name:"")+"]"),isRegExp(r)&&(c=" "+RegExp.prototype.toString.call(r)),isDate(r)&&(c=" "+Date.prototype.toUTCString.call(r)),isError(r)&&(c=" "+formatError(r)),0===o.length&&(!a||0==r.length))return l[0]+c+l[1];if(t<0)return isRegExp(r)?e.stylize(RegExp.prototype.toString.call(r),"regexp"):e.stylize("[Object]","special");e.seen.push(r);var p;return p=a?formatArray(e,r,t,s,o):o.map(function(n){return formatProperty(e,r,t,s,n,a)}),e.seen.pop(),reduceToSingleString(p,c,l)}function formatPrimitive(e,r){if(isUndefined(r))return e.stylize("undefined","undefined");if(isString(r)){var t="'"+JSON.stringify(r).replace(/^"|"$/g,"").replace(/'/g,"\\'").replace(/\\"/g,'"')+"'";return e.stylize(t,"string")}return isNumber(r)?e.stylize(""+r,"number"):isBoolean(r)?e.stylize(""+r,"boolean"):isNull(r)?e.stylize("null","null"):void 0}function formatError(e){return"["+Error.prototype.toString.call(e)+"]"}function formatArray(e,r,t,n,i){for(var o=[],s=0,u=r.length;s<u;++s)hasOwnProperty(r,String(s))?o.push(formatProperty(e,r,t,n,String(s),!0)):o.push("");return i.forEach(function(i){i.match(/^\d+$/)||o.push(formatProperty(e,r,t,n,i,!0))}),o}function formatProperty(e,r,t,n,i,o){var s,u,c;if((c=Object.getOwnPropertyDescriptor(r,i)||{value:r[i]}).get?u=c.set?e.stylize("[Getter/Setter]","special"):e.stylize("[Getter]","special"):c.set&&(u=e.stylize("[Setter]","special")),hasOwnProperty(n,i)||(s="["+i+"]"),u||(e.seen.indexOf(c.value)<0?(u=isNull(t)?formatValue(e,c.value,null):formatValue(e,c.value,t-1)).indexOf("\n")>-1&&(u=o?u.split("\n").map(function(e){return"  "+e}).join("\n").substr(2):"\n"+u.split("\n").map(function(e){return"   "+e}).join("\n")):u=e.stylize("[Circular]","special")),isUndefined(s)){if(o&&i.match(/^\d+$/))return u;(s=JSON.stringify(""+i)).match(/^"([a-zA-Z_][a-zA-Z_0-9]*)"$/)?(s=s.substr(1,s.length-2),s=e.stylize(s,"name")):(s=s.replace(/'/g,"\\'").replace(/\\"/g,'"').replace(/(^"|"$)/g,"'"),s=e.stylize(s,"string"))}return s+": "+u}function reduceToSingleString(e,r,t){var n=0;return e.reduce(function(e,r){return n++,r.indexOf("\n")>=0&&n++,e+r.replace(/\u001b\[\d\d?m/g,"").length+1},0)>60?t[0]+(""===r?"":r+"\n ")+" "+e.join(",\n  ")+" "+t[1]:t[0]+r+" "+e.join(", ")+" "+t[1]}function isArray(e){return Array.isArray(e)}function isBoolean(e){return"boolean"==typeof e}function isNull(e){return null===e}function isNullOrUndefined(e){return null==e}function isNumber(e){return"number"==typeof e}function isString(e){return"string"==typeof e}function isSymbol(e){return"symbol"==typeof e}function isUndefined(e){return void 0===e}function isRegExp(e){return isObject(e)&&"[object RegExp]"===objectToString(e)}function isObject(e){return"object"==typeof e&&null!==e}function isDate(e){return isObject(e)&&"[object Date]"===objectToString(e)}function isError(e){return isObject(e)&&("[object Error]"===objectToString(e)||e instanceof Error)}function isFunction(e){return"function"==typeof e}function isPrimitive(e){return null===e||"boolean"==typeof e||"number"==typeof e||"string"==typeof e||"symbol"==typeof e||void 0===e}function objectToString(e){return Object.prototype.toString.call(e)}function pad(e){return e<10?"0"+e.toString(10):e.toString(10)}function timestamp(){var e=new Date,r=[pad(e.getHours()),pad(e.getMinutes()),pad(e.getSeconds())].join(":");return[e.getDate(),months[e.getMonth()],r].join(" ")}function hasOwnProperty(e,r){return Object.prototype.hasOwnProperty.call(e,r)}var formatRegExp=/%[sdj%]/g;exports.format=function(e){if(!isString(e)){for(var r=[],t=0;t<arguments.length;t++)r.push(inspect(arguments[t]));return r.join(" ")}for(var t=1,n=arguments,i=n.length,o=String(e).replace(formatRegExp,function(e){if("%%"===e)return"%";if(t>=i)return e;switch(e){case"%s":return String(n[t++]);case"%d":return Number(n[t++]);case"%j":try{return JSON.stringify(n[t++])}catch(e){return"[Circular]"}default:return e}}),s=n[t];t<i;s=n[++t])isNull(s)||!isObject(s)?o+=" "+s:o+=" "+inspect(s);return o},exports.deprecate=function(e,r){if(isUndefined(global.process))return function(){return exports.deprecate(e,r).apply(this,arguments)};if(!0===process.noDeprecation)return e;var t=!1;return function deprecated(){if(!t){if(process.throwDeprecation)throw new Error(r);process.traceDeprecation?console.trace(r):console.error(r),t=!0}return e.apply(this,arguments)}};var debugEnviron,debugs={};exports.debuglog=function(e){if(isUndefined(debugEnviron)&&(debugEnviron=process.env.NODE_DEBUG||""),e=e.toUpperCase(),!debugs[e])if(new RegExp("\\b"+e+"\\b","i").test(debugEnviron)){var r=process.pid;debugs[e]=function(){var t=exports.format.apply(exports,arguments);console.error("%s %d: %s",e,r,t)}}else debugs[e]=function(){};return debugs[e]},exports.inspect=inspect,inspect.colors={bold:[1,22],italic:[3,23],underline:[4,24],inverse:[7,27],white:[37,39],grey:[90,39],black:[30,39],blue:[34,39],cyan:[36,39],green:[32,39],magenta:[35,39],red:[31,39],yellow:[33,39]},inspect.styles={special:"cyan",number:"yellow",boolean:"yellow",undefined:"grey",null:"bold",string:"green",date:"magenta",regexp:"red"},exports.isArray=isArray,exports.isBoolean=isBoolean,exports.isNull=isNull,exports.isNullOrUndefined=isNullOrUndefined,exports.isNumber=isNumber,exports.isString=isString,exports.isSymbol=isSymbol,exports.isUndefined=isUndefined,exports.isRegExp=isRegExp,exports.isObject=isObject,exports.isDate=isDate,exports.isError=isError,exports.isFunction=isFunction,exports.isPrimitive=isPrimitive,exports.isBuffer=_dereq_("./support/isBuffer");var months=["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"];exports.log=function(){console.log("%s - %s",timestamp(),exports.format.apply(exports,arguments))},exports.inherits=_dereq_("inherits"),exports._extend=function(e,r){if(!r||!isObject(r))return e;for(var t=Object.keys(r),n=t.length;n--;)e[t[n]]=r[t[n]];return e};
+
+}).call(this,_dereq_('_process'),typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
+
+},{"./support/isBuffer":6,"_process":4,"inherits":5}],8:[function(_dereq_,module,exports){
+"use strict";function _classCallCheck(e,t){if(!(e instanceof t))throw new TypeError("Cannot call a class as a function")}var _createClass=function(){function defineProperties(e,t){for(var r=0;r<t.length;r++){var n=t[r];n.enumerable=n.enumerable||!1,n.configurable=!0,"value"in n&&(n.writable=!0),Object.defineProperty(e,n.key,n)}}return function(e,t,r){return t&&defineProperties(e.prototype,t),r&&defineProperties(e,r),e}}(),_require=_dereq_("./helpers.js"),createDataProperty=_require.createDataProperty;module.exports=function(){function ByteLengthQueuingStrategy(e){var t=e.highWaterMark;_classCallCheck(this,ByteLengthQueuingStrategy),createDataProperty(this,"highWaterMark",t)}return _createClass(ByteLengthQueuingStrategy,[{key:"size",value:function size(e){return e.byteLength}}]),ByteLengthQueuingStrategy}();
+
+},{"./helpers.js":10}],9:[function(_dereq_,module,exports){
+"use strict";function _classCallCheck(e,r){if(!(e instanceof r))throw new TypeError("Cannot call a class as a function")}var _createClass=function(){function defineProperties(e,r){for(var t=0;t<r.length;t++){var a=r[t];a.enumerable=a.enumerable||!1,a.configurable=!0,"value"in a&&(a.writable=!0),Object.defineProperty(e,a.key,a)}}return function(e,r,t){return r&&defineProperties(e.prototype,r),t&&defineProperties(e,t),e}}(),_require=_dereq_("./helpers.js"),createDataProperty=_require.createDataProperty;module.exports=function(){function CountQueuingStrategy(e){var r=e.highWaterMark;_classCallCheck(this,CountQueuingStrategy),createDataProperty(this,"highWaterMark",r)}return _createClass(CountQueuingStrategy,[{key:"size",value:function size(){return 1}}]),CountQueuingStrategy}();
+
+},{"./helpers.js":10}],10:[function(_dereq_,module,exports){
+"use strict";function IsPropertyKey(e){return"string"==typeof e||"symbol"===(void 0===e?"undefined":_typeof(e))}function Call(e,r,t){if("function"!=typeof e)throw new TypeError("Argument is not a function");return Function.prototype.apply.call(e,r,t)}function PromiseCall(e,r,t){try{return Promise.resolve(Call(e,r,t))}catch(e){return Promise.reject(e)}}var _typeof="function"==typeof Symbol&&"symbol"==typeof Symbol.iterator?function(e){return typeof e}:function(e){return e&&"function"==typeof Symbol&&e.constructor===Symbol&&e!==Symbol.prototype?"symbol":typeof e},assert=_dereq_("better-assert"),isFakeDetached=Symbol('is "detached" for our purposes');exports.typeIsObject=function(e){return"object"===(void 0===e?"undefined":_typeof(e))&&null!==e||"function"==typeof e},exports.createDataProperty=function(e,r,t){Object.defineProperty(e,r,{value:t,writable:!0,enumerable:!0,configurable:!0})},exports.createArrayFromList=function(e){return e.slice()},exports.ArrayBufferCopy=function(e,r,t,n,o){new Uint8Array(e).set(new Uint8Array(t,n,o),r)},exports.CreateIterResultObject=function(e,r){var t={};return Object.defineProperty(t,"value",{value:e,enumerable:!0,writable:!0,configurable:!0}),Object.defineProperty(t,"done",{value:r,enumerable:!0,writable:!0,configurable:!0}),t},exports.IsFiniteNonNegativeNumber=function(e){return!1!==exports.IsNonNegativeNumber(e)&&e!==1/0},exports.IsNonNegativeNumber=function(e){return"number"==typeof e&&(!Number.isNaN(e)&&!(e<0))},exports.Call=Call,exports.CreateAlgorithmFromUnderlyingMethod=function(e,r,t,n){var o=e[r];if(void 0!==o){if("function"!=typeof o)throw new TypeError(o+" is not a method");switch(t){case 0:return function(){return PromiseCall(o,e,n)};case 1:return function(r){var t=[r].concat(n);return PromiseCall(o,e,t)}}}return function(){return Promise.resolve()}},exports.InvokeOrNoop=function(e,r,t){var n=e[r];if(void 0!==n)return Call(n,e,t)},exports.PromiseCall=PromiseCall,exports.TransferArrayBuffer=function(e){var r=e.slice();return Object.defineProperty(e,"byteLength",{get:function get(){return 0}}),e[isFakeDetached]=!0,r},exports.IsDetachedBuffer=function(e){return isFakeDetached in e},exports.ValidateAndNormalizeHighWaterMark=function(e){if(e=Number(e),Number.isNaN(e)||e<0)throw new RangeError("highWaterMark property of a queuing strategy must be non-negative and non-NaN");return e},exports.MakeSizeAlgorithmFromSizeFunction=function(e){if(void 0===e)return function(){return 1};if("function"!=typeof e)throw new TypeError("size property of a queuing strategy must be a function");return function(r){return e(r)}};
+
+},{"better-assert":16}],11:[function(_dereq_,module,exports){
+"use strict";var assert=_dereq_("better-assert"),_require=_dereq_("./helpers.js"),IsFiniteNonNegativeNumber=_require.IsFiniteNonNegativeNumber;exports.DequeueValue=function(e){var u=e._queue.shift();return e._queueTotalSize-=u.size,e._queueTotalSize<0&&(e._queueTotalSize=0),u.value},exports.EnqueueValueWithSize=function(e,u,t){if(t=Number(t),!IsFiniteNonNegativeNumber(t))throw new RangeError("Size must be a finite, non-NaN, non-negative number.");e._queue.push({value:u,size:t}),e._queueTotalSize+=t},exports.PeekQueueValue=function(e){return e._queue[0].value},exports.ResetQueue=function(e){e._queue=[],e._queueTotalSize=0};
+
+},{"./helpers.js":10,"better-assert":16}],12:[function(_dereq_,module,exports){
+"use strict";function _classCallCheck(e,r){if(!(e instanceof r))throw new TypeError("Cannot call a class as a function")}function AcquireReadableStreamBYOBReader(e){return new ReadableStreamBYOBReader(e)}function AcquireReadableStreamDefaultReader(e){return new ReadableStreamDefaultReader(e)}function CreateReadableStream(e,r,t){var a=arguments.length>3&&void 0!==arguments[3]?arguments[3]:1,l=arguments.length>4&&void 0!==arguments[4]?arguments[4]:function(){return 1},o=Object.create(ReadableStream.prototype);return InitializeReadableStream(o),SetUpReadableStreamDefaultController(o,Object.create(ReadableStreamDefaultController.prototype),e,r,t,a,l),o}function CreateReadableByteStream(e,r,t){var a=arguments.length>3&&void 0!==arguments[3]?arguments[3]:0,l=arguments.length>4&&void 0!==arguments[4]?arguments[4]:void 0,o=Object.create(ReadableStream.prototype);return InitializeReadableStream(o),SetUpReadableByteStreamController(o,Object.create(ReadableByteStreamController.prototype),e,r,t,a,l),o}function InitializeReadableStream(e){e._state="readable",e._reader=void 0,e._storedError=void 0,e._disturbed=!1}function IsReadableStream(e){return!!typeIsObject(e)&&!!Object.prototype.hasOwnProperty.call(e,"_readableStreamController")}function IsReadableStreamDisturbed(e){return e._disturbed}function IsReadableStreamLocked(e){return void 0!==e._reader}function ReadableStreamTee(e,r){function pullAlgorithm(){return ReadableStreamDefaultReaderRead(t).then(function(e){var r=e.value;if(!0===e.done&&!1===a&&(!1===l&&ReadableStreamDefaultControllerClose(d._readableStreamController),!1===o&&ReadableStreamDefaultControllerClose(s._readableStreamController),a=!0),!0!==a){var t=r,n=r;!1===l&&ReadableStreamDefaultControllerEnqueue(d._readableStreamController,t),!1===o&&ReadableStreamDefaultControllerEnqueue(s._readableStreamController,n)}})}function startAlgorithm(){}var t=AcquireReadableStreamDefaultReader(e),a=!1,l=!1,o=!1,n=void 0,i=void 0,d=void 0,s=void 0,u=void 0,c=new Promise(function(e){u=e});return d=CreateReadableStream(startAlgorithm,pullAlgorithm,function cancel1Algorithm(r){if(l=!0,n=r,!0===o){var t=createArrayFromList([n,i]),a=ReadableStreamCancel(e,t);u(a)}return c}),s=CreateReadableStream(startAlgorithm,pullAlgorithm,function cancel2Algorithm(r){if(o=!0,i=r,!0===l){var t=createArrayFromList([n,i]),a=ReadableStreamCancel(e,t);u(a)}return c}),t._closedPromise.catch(function(e){!0!==a&&(ReadableStreamDefaultControllerErrorIfNeeded(d._readableStreamController,e),ReadableStreamDefaultControllerErrorIfNeeded(s._readableStreamController,e),a=!0)}),[d,s]}function ReadableStreamAddReadIntoRequest(e){return new Promise(function(r,t){var a={_resolve:r,_reject:t};e._reader._readIntoRequests.push(a)})}function ReadableStreamAddReadRequest(e){return new Promise(function(r,t){var a={_resolve:r,_reject:t};e._reader._readRequests.push(a)})}function ReadableStreamCancel(e,r){return e._disturbed=!0,"closed"===e._state?Promise.resolve(void 0):"errored"===e._state?Promise.reject(e._storedError):(ReadableStreamClose(e),e._readableStreamController[CancelSteps](r).then(function(){}))}function ReadableStreamClose(e){e._state="closed";var r=e._reader;if(void 0!==r){if(!0===IsReadableStreamDefaultReader(r)){var t=!0,a=!1,l=void 0;try{for(var o,n=r._readRequests[Symbol.iterator]();!(t=(o=n.next()).done);t=!0)(0,o.value._resolve)(CreateIterResultObject(void 0,!0))}catch(e){a=!0,l=e}finally{try{!t&&n.return&&n.return()}finally{if(a)throw l}}r._readRequests=[]}defaultReaderClosedPromiseResolve(r)}}function ReadableStreamError(e,r){e._state="errored",e._storedError=r;var t=e._reader;if(void 0!==t){if(!0===IsReadableStreamDefaultReader(t)){var a=!0,l=!1,o=void 0;try{for(var n,i=t._readRequests[Symbol.iterator]();!(a=(n=i.next()).done);a=!0)n.value._reject(r)}catch(e){l=!0,o=e}finally{try{!a&&i.return&&i.return()}finally{if(l)throw o}}t._readRequests=[]}else{var d=!0,s=!1,u=void 0;try{for(var c,b=t._readIntoRequests[Symbol.iterator]();!(d=(c=b.next()).done);d=!0)c.value._reject(r)}catch(e){s=!0,u=e}finally{try{!d&&b.return&&b.return()}finally{if(s)throw u}}t._readIntoRequests=[]}defaultReaderClosedPromiseReject(t,r),t._closedPromise.catch(function(){})}}function ReadableStreamFulfillReadIntoRequest(e,r,t){e._reader._readIntoRequests.shift()._resolve(CreateIterResultObject(r,t))}function ReadableStreamFulfillReadRequest(e,r,t){e._reader._readRequests.shift()._resolve(CreateIterResultObject(r,t))}function ReadableStreamGetNumReadIntoRequests(e){return e._reader._readIntoRequests.length}function ReadableStreamGetNumReadRequests(e){return e._reader._readRequests.length}function ReadableStreamHasBYOBReader(e){var r=e._reader;return void 0!==r&&!1!==IsReadableStreamBYOBReader(r)}function ReadableStreamHasDefaultReader(e){var r=e._reader;return void 0!==r&&!1!==IsReadableStreamDefaultReader(r)}function IsReadableStreamBYOBReader(e){return!!typeIsObject(e)&&!!Object.prototype.hasOwnProperty.call(e,"_readIntoRequests")}function IsReadableStreamDefaultReader(e){return!!typeIsObject(e)&&!!Object.prototype.hasOwnProperty.call(e,"_readRequests")}function ReadableStreamReaderGenericInitialize(e,r){e._ownerReadableStream=r,r._reader=e,"readable"===r._state?defaultReaderClosedPromiseInitialize(e):"closed"===r._state?defaultReaderClosedPromiseInitializeAsResolved(e):(defaultReaderClosedPromiseInitializeAsRejected(e,r._storedError),e._closedPromise.catch(function(){}))}function ReadableStreamReaderGenericCancel(e,r){return ReadableStreamCancel(e._ownerReadableStream,r)}function ReadableStreamReaderGenericRelease(e){"readable"===e._ownerReadableStream._state?defaultReaderClosedPromiseReject(e,new TypeError("Reader was released and can no longer be used to monitor the stream's closedness")):defaultReaderClosedPromiseResetToRejected(e,new TypeError("Reader was released and can no longer be used to monitor the stream's closedness")),e._closedPromise.catch(function(){}),e._ownerReadableStream._reader=void 0,e._ownerReadableStream=void 0}function ReadableStreamBYOBReaderRead(e,r){var t=e._ownerReadableStream;return t._disturbed=!0,"errored"===t._state?Promise.reject(t._storedError):ReadableByteStreamControllerPullInto(t._readableStreamController,r)}function ReadableStreamDefaultReaderRead(e){var r=e._ownerReadableStream;return r._disturbed=!0,"closed"===r._state?Promise.resolve(CreateIterResultObject(void 0,!0)):"errored"===r._state?Promise.reject(r._storedError):r._readableStreamController[PullSteps]()}function IsReadableStreamDefaultController(e){return!!typeIsObject(e)&&!!Object.prototype.hasOwnProperty.call(e,"_controlledReadableStream")}function ReadableStreamDefaultControllerCallPullIfNeeded(e){!1!==ReadableStreamDefaultControllerShouldCallPull(e)&&(!0!==e._pulling?(e._pulling=!0,e._pullAlgorithm().then(function(){if(e._pulling=!1,!0===e._pullAgain)return e._pullAgain=!1,ReadableStreamDefaultControllerCallPullIfNeeded(e)},function(r){ReadableStreamDefaultControllerErrorIfNeeded(e,r)}).catch(rethrowAssertionErrorRejection)):e._pullAgain=!0)}function ReadableStreamDefaultControllerShouldCallPull(e){var r=e._controlledReadableStream;return!1!==ReadableStreamDefaultControllerCanCloseOrEnqueue(e)&&(!1!==e._started&&(!0===IsReadableStreamLocked(r)&&ReadableStreamGetNumReadRequests(r)>0||ReadableStreamDefaultControllerGetDesiredSize(e)>0))}function ReadableStreamDefaultControllerClose(e){var r=e._controlledReadableStream;e._closeRequested=!0,0===e._queue.length&&ReadableStreamClose(r)}function ReadableStreamDefaultControllerEnqueue(e,r){var t=e._controlledReadableStream;if(!0===IsReadableStreamLocked(t)&&ReadableStreamGetNumReadRequests(t)>0)ReadableStreamFulfillReadRequest(t,r,!1);else{var a=void 0;try{a=e._strategySizeAlgorithm(r)}catch(r){throw ReadableStreamDefaultControllerErrorIfNeeded(e,r),r}try{EnqueueValueWithSize(e,r,a)}catch(r){throw ReadableStreamDefaultControllerErrorIfNeeded(e,r),r}}ReadableStreamDefaultControllerCallPullIfNeeded(e)}function ReadableStreamDefaultControllerError(e,r){var t=e._controlledReadableStream;ResetQueue(e),ReadableStreamError(t,r)}function ReadableStreamDefaultControllerErrorIfNeeded(e,r){"readable"===e._controlledReadableStream._state&&ReadableStreamDefaultControllerError(e,r)}function ReadableStreamDefaultControllerGetDesiredSize(e){var r=e._controlledReadableStream._state;return"errored"===r?null:"closed"===r?0:e._strategyHWM-e._queueTotalSize}function ReadableStreamDefaultControllerHasBackpressure(e){return!0!==ReadableStreamDefaultControllerShouldCallPull(e)}function ReadableStreamDefaultControllerCanCloseOrEnqueue(e){var r=e._controlledReadableStream._state;return!1===e._closeRequested&&"readable"===r}function SetUpReadableStreamDefaultController(e,r,t,a,l,o,n){r._controlledReadableStream=e,r._queue=void 0,r._queueTotalSize=void 0,ResetQueue(r),r._started=!1,r._closeRequested=!1,r._pullAgain=!1,r._pulling=!1,r._strategySizeAlgorithm=n,r._strategyHWM=o,r._pullAlgorithm=a,r._cancelAlgorithm=l,e._readableStreamController=r;var i=t();Promise.resolve(i).then(function(){r._started=!0,ReadableStreamDefaultControllerCallPullIfNeeded(r)},function(e){ReadableStreamDefaultControllerErrorIfNeeded(r,e)}).catch(rethrowAssertionErrorRejection)}function SetUpReadableStreamDefaultControllerFromUnderlyingSource(e,r,t,a){var l=Object.create(ReadableStreamDefaultController.prototype),o=CreateAlgorithmFromUnderlyingMethod(r,"pull",0,[l]),n=CreateAlgorithmFromUnderlyingMethod(r,"cancel",1,[]);SetUpReadableStreamDefaultController(e,l,function startAlgorithm(){return InvokeOrNoop(r,"start",[l])},o,n,t,a)}function IsReadableByteStreamController(e){return!!typeIsObject(e)&&!!Object.prototype.hasOwnProperty.call(e,"_controlledReadableByteStream")}function IsReadableStreamBYOBRequest(e){return!!typeIsObject(e)&&!!Object.prototype.hasOwnProperty.call(e,"_associatedReadableByteStreamController")}function ReadableByteStreamControllerCallPullIfNeeded(e){!1!==ReadableByteStreamControllerShouldCallPull(e)&&(!0!==e._pulling?(e._pulling=!0,e._pullAlgorithm().then(function(){e._pulling=!1,!0===e._pullAgain&&(e._pullAgain=!1,ReadableByteStreamControllerCallPullIfNeeded(e))},function(r){"readable"===e._controlledReadableByteStream._state&&ReadableByteStreamControllerError(e,r)}).catch(rethrowAssertionErrorRejection)):e._pullAgain=!0)}function ReadableByteStreamControllerClearPendingPullIntos(e){ReadableByteStreamControllerInvalidateBYOBRequest(e),e._pendingPullIntos=[]}function ReadableByteStreamControllerCommitPullIntoDescriptor(e,r){var t=!1;"closed"===e._state&&(t=!0);var a=ReadableByteStreamControllerConvertPullIntoDescriptor(r);"default"===r.readerType?ReadableStreamFulfillReadRequest(e,a,t):ReadableStreamFulfillReadIntoRequest(e,a,t)}function ReadableByteStreamControllerConvertPullIntoDescriptor(e){var r=e.bytesFilled,t=e.elementSize;return new e.ctor(e.buffer,e.byteOffset,r/t)}function ReadableByteStreamControllerEnqueueChunkToQueue(e,r,t,a){e._queue.push({buffer:r,byteOffset:t,byteLength:a}),e._queueTotalSize+=a}function ReadableByteStreamControllerFillPullIntoDescriptorFromQueue(e,r){var t=r.elementSize,a=r.bytesFilled-r.bytesFilled%t,l=Math.min(e._queueTotalSize,r.byteLength-r.bytesFilled),o=r.bytesFilled+l,n=o-o%t,i=l,d=!1;n>a&&(i=n-r.bytesFilled,d=!0);for(var s=e._queue;i>0;){var u=s[0],c=Math.min(i,u.byteLength),b=r.byteOffset+r.bytesFilled;ArrayBufferCopy(r.buffer,b,u.buffer,u.byteOffset,c),u.byteLength===c?s.shift():(u.byteOffset+=c,u.byteLength-=c),e._queueTotalSize-=c,ReadableByteStreamControllerFillHeadPullIntoDescriptor(e,c,r),i-=c}return d}function ReadableByteStreamControllerFillHeadPullIntoDescriptor(e,r,t){ReadableByteStreamControllerInvalidateBYOBRequest(e),t.bytesFilled+=r}function ReadableByteStreamControllerHandleQueueDrain(e){0===e._queueTotalSize&&!0===e._closeRequested?ReadableStreamClose(e._controlledReadableByteStream):ReadableByteStreamControllerCallPullIfNeeded(e)}function ReadableByteStreamControllerInvalidateBYOBRequest(e){void 0!==e._byobRequest&&(e._byobRequest._associatedReadableByteStreamController=void 0,e._byobRequest._view=void 0,e._byobRequest=void 0)}function ReadableByteStreamControllerProcessPullIntoDescriptorsUsingQueue(e){for(;e._pendingPullIntos.length>0;){if(0===e._queueTotalSize)return;var r=e._pendingPullIntos[0];!0===ReadableByteStreamControllerFillPullIntoDescriptorFromQueue(e,r)&&(ReadableByteStreamControllerShiftPendingPullInto(e),ReadableByteStreamControllerCommitPullIntoDescriptor(e._controlledReadableByteStream,r))}}function ReadableByteStreamControllerPullInto(e,r){var t=e._controlledReadableByteStream,a=1;r.constructor!==DataView&&(a=r.constructor.BYTES_PER_ELEMENT);var l=r.constructor,o={buffer:TransferArrayBuffer(r.buffer),byteOffset:r.byteOffset,byteLength:r.byteLength,bytesFilled:0,elementSize:a,ctor:l,readerType:"byob"};if(e._pendingPullIntos.length>0)return e._pendingPullIntos.push(o),ReadableStreamAddReadIntoRequest(t);if("closed"===t._state){var n=new r.constructor(o.buffer,o.byteOffset,0);return Promise.resolve(CreateIterResultObject(n,!0))}if(e._queueTotalSize>0){if(!0===ReadableByteStreamControllerFillPullIntoDescriptorFromQueue(e,o)){var i=ReadableByteStreamControllerConvertPullIntoDescriptor(o);return ReadableByteStreamControllerHandleQueueDrain(e),Promise.resolve(CreateIterResultObject(i,!1))}if(!0===e._closeRequested){var d=new TypeError("Insufficient bytes to fill elements in the given buffer");return ReadableByteStreamControllerError(e,d),Promise.reject(d)}}e._pendingPullIntos.push(o);var s=ReadableStreamAddReadIntoRequest(t);return ReadableByteStreamControllerCallPullIfNeeded(e),s}function ReadableByteStreamControllerRespondInClosedState(e,r){r.buffer=TransferArrayBuffer(r.buffer);var t=e._controlledReadableByteStream;if(!0===ReadableStreamHasBYOBReader(t))for(;ReadableStreamGetNumReadIntoRequests(t)>0;)ReadableByteStreamControllerCommitPullIntoDescriptor(t,ReadableByteStreamControllerShiftPendingPullInto(e))}function ReadableByteStreamControllerRespondInReadableState(e,r,t){if(t.bytesFilled+r>t.byteLength)throw new RangeError("bytesWritten out of range");if(ReadableByteStreamControllerFillHeadPullIntoDescriptor(e,r,t),!(t.bytesFilled<t.elementSize)){ReadableByteStreamControllerShiftPendingPullInto(e);var a=t.bytesFilled%t.elementSize;if(a>0){var l=t.byteOffset+t.bytesFilled,o=t.buffer.slice(l-a,l);ReadableByteStreamControllerEnqueueChunkToQueue(e,o,0,o.byteLength)}t.buffer=TransferArrayBuffer(t.buffer),t.bytesFilled-=a,ReadableByteStreamControllerCommitPullIntoDescriptor(e._controlledReadableByteStream,t),ReadableByteStreamControllerProcessPullIntoDescriptorsUsingQueue(e)}}function ReadableByteStreamControllerRespondInternal(e,r){var t=e._pendingPullIntos[0];if("closed"===e._controlledReadableByteStream._state){if(0!==r)throw new TypeError("bytesWritten must be 0 when calling respond() on a closed stream");ReadableByteStreamControllerRespondInClosedState(e,t)}else ReadableByteStreamControllerRespondInReadableState(e,r,t)}function ReadableByteStreamControllerShiftPendingPullInto(e){var r=e._pendingPullIntos.shift();return ReadableByteStreamControllerInvalidateBYOBRequest(e),r}function ReadableByteStreamControllerShouldCallPull(e){var r=e._controlledReadableByteStream;return"readable"===r._state&&(!0!==e._closeRequested&&(!1!==e._started&&(!0===ReadableStreamHasDefaultReader(r)&&ReadableStreamGetNumReadRequests(r)>0||(!0===ReadableStreamHasBYOBReader(r)&&ReadableStreamGetNumReadIntoRequests(r)>0||ReadableByteStreamControllerGetDesiredSize(e)>0))))}function ReadableByteStreamControllerClose(e){var r=e._controlledReadableByteStream;if(e._queueTotalSize>0)e._closeRequested=!0;else{if(e._pendingPullIntos.length>0&&e._pendingPullIntos[0].bytesFilled>0){var t=new TypeError("Insufficient bytes to fill elements in the given buffer");throw ReadableByteStreamControllerError(e,t),t}ReadableStreamClose(r)}}function ReadableByteStreamControllerEnqueue(e,r){var t=e._controlledReadableByteStream,a=r.buffer,l=r.byteOffset,o=r.byteLength,n=TransferArrayBuffer(a);!0===ReadableStreamHasDefaultReader(t)?0===ReadableStreamGetNumReadRequests(t)?ReadableByteStreamControllerEnqueueChunkToQueue(e,n,l,o):ReadableStreamFulfillReadRequest(t,new Uint8Array(n,l,o),!1):!0===ReadableStreamHasBYOBReader(t)?(ReadableByteStreamControllerEnqueueChunkToQueue(e,n,l,o),ReadableByteStreamControllerProcessPullIntoDescriptorsUsingQueue(e)):ReadableByteStreamControllerEnqueueChunkToQueue(e,n,l,o)}function ReadableByteStreamControllerError(e,r){var t=e._controlledReadableByteStream;ReadableByteStreamControllerClearPendingPullIntos(e),ResetQueue(e),ReadableStreamError(t,r)}function ReadableByteStreamControllerGetDesiredSize(e){var r=e._controlledReadableByteStream._state;return"errored"===r?null:"closed"===r?0:e._strategyHWM-e._queueTotalSize}function ReadableByteStreamControllerRespond(e,r){if(r=Number(r),!1===IsFiniteNonNegativeNumber(r))throw new RangeError("bytesWritten must be a finite");ReadableByteStreamControllerRespondInternal(e,r)}function ReadableByteStreamControllerRespondWithNewView(e,r){var t=e._pendingPullIntos[0];if(t.byteOffset+t.bytesFilled!==r.byteOffset)throw new RangeError("The region specified by view does not match byobRequest");if(t.byteLength!==r.byteLength)throw new RangeError("The buffer of view has different capacity than byobRequest");t.buffer=r.buffer,ReadableByteStreamControllerRespondInternal(e,r.byteLength)}function SetUpReadableByteStreamController(e,r,t,a,l,o,n){r._controlledReadableByteStream=e,r._pullAgain=!1,r._pulling=!1,ReadableByteStreamControllerClearPendingPullIntos(r),r._queue=r._queueTotalSize=void 0,ResetQueue(r),r._closeRequested=!1,r._started=!1,r._strategyHWM=ValidateAndNormalizeHighWaterMark(o),r._pullAlgorithm=a,r._cancelAlgorithm=l,r._autoAllocateChunkSize=n,r._pendingPullIntos=[],e._readableStreamController=r;var i=t();Promise.resolve(i).then(function(){r._started=!0,ReadableByteStreamControllerCallPullIfNeeded(r)},function(t){"readable"===e._state&&ReadableByteStreamControllerError(r,t)}).catch(rethrowAssertionErrorRejection)}function SetUpReadableByteStreamControllerFromUnderlyingSource(e,r,t){var a=Object.create(ReadableByteStreamController.prototype),l=CreateAlgorithmFromUnderlyingMethod(r,"pull",0,[a]),o=CreateAlgorithmFromUnderlyingMethod(r,"cancel",1,[]),n=r.autoAllocateChunkSize;if(void 0!==n&&(!1===Number.isInteger(n)||n<=0))throw new RangeError("autoAllocateChunkSize must be a positive integer");SetUpReadableByteStreamController(e,a,function startAlgorithm(){return InvokeOrNoop(r,"start",[a])},l,o,t,n)}function SetUpReadableStreamBYOBRequest(e,r,t){e._associatedReadableByteStreamController=r,e._view=t}function streamBrandCheckException(e){return new TypeError("ReadableStream.prototype."+e+" can only be used on a ReadableStream")}function readerLockException(e){return new TypeError("Cannot "+e+" a stream using a released reader")}function defaultReaderBrandCheckException(e){return new TypeError("ReadableStreamDefaultReader.prototype."+e+" can only be used on a ReadableStreamDefaultReader")}function defaultReaderClosedPromiseInitialize(e){e._closedPromise=new Promise(function(r,t){e._closedPromise_resolve=r,e._closedPromise_reject=t})}function defaultReaderClosedPromiseInitializeAsRejected(e,r){e._closedPromise=Promise.reject(r),e._closedPromise_resolve=void 0,e._closedPromise_reject=void 0}function defaultReaderClosedPromiseInitializeAsResolved(e){e._closedPromise=Promise.resolve(void 0),e._closedPromise_resolve=void 0,e._closedPromise_reject=void 0}function defaultReaderClosedPromiseReject(e,r){e._closedPromise_reject(r),e._closedPromise_resolve=void 0,e._closedPromise_reject=void 0}function defaultReaderClosedPromiseResetToRejected(e,r){e._closedPromise=Promise.reject(r)}function defaultReaderClosedPromiseResolve(e){e._closedPromise_resolve(void 0),e._closedPromise_resolve=void 0,e._closedPromise_reject=void 0}function byobReaderBrandCheckException(e){return new TypeError("ReadableStreamBYOBReader.prototype."+e+" can only be used on a ReadableStreamBYOBReader")}function defaultControllerBrandCheckException(e){return new TypeError("ReadableStreamDefaultController.prototype."+e+" can only be used on a ReadableStreamDefaultController")}function byobRequestBrandCheckException(e){return new TypeError("ReadableStreamBYOBRequest.prototype."+e+" can only be used on a ReadableStreamBYOBRequest")}function byteStreamControllerBrandCheckException(e){return new TypeError("ReadableByteStreamController.prototype."+e+" can only be used on a ReadableByteStreamController")}function ifIsObjectAndHasAPromiseIsHandledInternalSlotSetPromiseIsHandledToTrue(e){try{Promise.prototype.then.call(e,void 0,function(){})}catch(e){}}var _createClass=function(){function defineProperties(e,r){for(var t=0;t<r.length;t++){var a=r[t];a.enumerable=a.enumerable||!1,a.configurable=!0,"value"in a&&(a.writable=!0),Object.defineProperty(e,a.key,a)}}return function(e,r,t){return r&&defineProperties(e.prototype,r),t&&defineProperties(e,t),e}}(),assert=_dereq_("better-assert"),_require=_dereq_("./helpers.js"),ArrayBufferCopy=_require.ArrayBufferCopy,CreateAlgorithmFromUnderlyingMethod=_require.CreateAlgorithmFromUnderlyingMethod,CreateIterResultObject=_require.CreateIterResultObject,IsFiniteNonNegativeNumber=_require.IsFiniteNonNegativeNumber,InvokeOrNoop=_require.InvokeOrNoop,IsDetachedBuffer=_require.IsDetachedBuffer,TransferArrayBuffer=_require.TransferArrayBuffer,ValidateAndNormalizeHighWaterMark=_require.ValidateAndNormalizeHighWaterMark,IsNonNegativeNumber=_require.IsNonNegativeNumber,MakeSizeAlgorithmFromSizeFunction=_require.MakeSizeAlgorithmFromSizeFunction,createArrayFromList=_require.createArrayFromList,typeIsObject=_require.typeIsObject,_require2=_dereq_("./utils.js"),rethrowAssertionErrorRejection=_require2.rethrowAssertionErrorRejection,_require3=_dereq_("./queue-with-sizes.js"),DequeueValue=_require3.DequeueValue,EnqueueValueWithSize=_require3.EnqueueValueWithSize,ResetQueue=_require3.ResetQueue,_require4=_dereq_("./writable-stream.js"),AcquireWritableStreamDefaultWriter=_require4.AcquireWritableStreamDefaultWriter,IsWritableStream=_require4.IsWritableStream,IsWritableStreamLocked=_require4.IsWritableStreamLocked,WritableStreamAbort=_require4.WritableStreamAbort,WritableStreamDefaultWriterCloseWithErrorPropagation=_require4.WritableStreamDefaultWriterCloseWithErrorPropagation,WritableStreamDefaultWriterRelease=_require4.WritableStreamDefaultWriterRelease,WritableStreamDefaultWriterWrite=_require4.WritableStreamDefaultWriterWrite,WritableStreamCloseQueuedOrInFlight=_require4.WritableStreamCloseQueuedOrInFlight,CancelSteps=Symbol("[[CancelSteps]]"),PullSteps=Symbol("[[PullSteps]]"),ReadableStream=function(){function ReadableStream(){var e=arguments.length>0&&void 0!==arguments[0]?arguments[0]:{},r=arguments.length>1&&void 0!==arguments[1]?arguments[1]:{},t=r.size,a=r.highWaterMark;_classCallCheck(this,ReadableStream),InitializeReadableStream(this);var l=e.type;if("bytes"===String(l)){if(void 0===a&&(a=0),a=ValidateAndNormalizeHighWaterMark(a),void 0!==t)throw new RangeError("The strategy for a byte stream cannot have a size function");SetUpReadableByteStreamControllerFromUnderlyingSource(this,e,a)}else{if(void 0!==l)throw new RangeError("Invalid type is specified");void 0===a&&(a=1),SetUpReadableStreamDefaultControllerFromUnderlyingSource(this,e,a=ValidateAndNormalizeHighWaterMark(a),MakeSizeAlgorithmFromSizeFunction(t))}}return _createClass(ReadableStream,[{key:"cancel",value:function cancel(e){return!1===IsReadableStream(this)?Promise.reject(streamBrandCheckException("cancel")):!0===IsReadableStreamLocked(this)?Promise.reject(new TypeError("Cannot cancel a stream that already has a reader")):ReadableStreamCancel(this,e)}},{key:"getReader",value:function getReader(){var e=(arguments.length>0&&void 0!==arguments[0]?arguments[0]:{}).mode;if(!1===IsReadableStream(this))throw streamBrandCheckException("getReader");if(void 0===e)return AcquireReadableStreamDefaultReader(this);if("byob"===(e=String(e)))return AcquireReadableStreamBYOBReader(this);throw new RangeError("Invalid mode is specified")}},{key:"pipeThrough",value:function pipeThrough(e,r){var t=e.writable,a=e.readable;if(void 0===t||void 0===a)throw new TypeError("readable and writable arguments must be defined");return ifIsObjectAndHasAPromiseIsHandledInternalSlotSetPromiseIsHandledToTrue(this.pipeTo(t,r)),a}},{key:"pipeTo",value:function pipeTo(e){var r=this,t=arguments.length>1&&void 0!==arguments[1]?arguments[1]:{},a=t.preventClose,l=t.preventAbort,o=t.preventCancel;if(!1===IsReadableStream(this))return Promise.reject(streamBrandCheckException("pipeTo"));if(!1===IsWritableStream(e))return Promise.reject(new TypeError("ReadableStream.prototype.pipeTo's first argument must be a WritableStream"));if(a=Boolean(a),l=Boolean(l),o=Boolean(o),!0===IsReadableStreamLocked(this))return Promise.reject(new TypeError("ReadableStream.prototype.pipeTo cannot be used on a locked ReadableStream"));if(!0===IsWritableStreamLocked(e))return Promise.reject(new TypeError("ReadableStream.prototype.pipeTo cannot be used on a locked WritableStream"));var n=AcquireReadableStreamDefaultReader(this),i=AcquireWritableStreamDefaultWriter(e),d=!1,s=Promise.resolve();return new Promise(function(t,u){function pipeLoop(){return!0===d?Promise.resolve():i._readyPromise.then(function(){return ReadableStreamDefaultReaderRead(n).then(function(e){var r=e.value;!0!==e.done&&(s=WritableStreamDefaultWriterWrite(i,r).catch(function(){}))})}).then(pipeLoop)}function waitForWritesToFinish(){var e=s;return s.then(function(){return e!==s?waitForWritesToFinish():void 0})}function isOrBecomesErrored(e,r,t){"errored"===e._state?t(e._storedError):r.catch(t).catch(rethrowAssertionErrorRejection)}function shutdownWithAction(r,t,a){function doTheRest(){r().then(function(){return finalize(t,a)},function(e){return finalize(!0,e)}).catch(rethrowAssertionErrorRejection)}!0!==d&&(d=!0,"writable"===e._state&&!1===WritableStreamCloseQueuedOrInFlight(e)?waitForWritesToFinish().then(doTheRest):doTheRest())}function shutdown(r,t){!0!==d&&(d=!0,"writable"===e._state&&!1===WritableStreamCloseQueuedOrInFlight(e)?waitForWritesToFinish().then(function(){return finalize(r,t)}).catch(rethrowAssertionErrorRejection):finalize(r,t))}function finalize(e,r){WritableStreamDefaultWriterRelease(i),ReadableStreamReaderGenericRelease(n),e?u(r):t(void 0)}if(isOrBecomesErrored(r,n._closedPromise,function(r){!1===l?shutdownWithAction(function(){return WritableStreamAbort(e,r)},!0,r):shutdown(!0,r)}),isOrBecomesErrored(e,i._closedPromise,function(e){!1===o?shutdownWithAction(function(){return ReadableStreamCancel(r,e)},!0,e):shutdown(!0,e)}),function isOrBecomesClosed(e,r,t){"closed"===e._state?t():r.then(t).catch(rethrowAssertionErrorRejection)}(r,n._closedPromise,function(){!1===a?shutdownWithAction(function(){return WritableStreamDefaultWriterCloseWithErrorPropagation(i)}):shutdown()}),!0===WritableStreamCloseQueuedOrInFlight(e)||"closed"===e._state){var c=new TypeError("the destination writable stream closed before all data could be piped to it");!1===o?shutdownWithAction(function(){return ReadableStreamCancel(r,c)},!0,c):shutdown(!0,c)}pipeLoop().catch(function(e){s=Promise.resolve(),rethrowAssertionErrorRejection(e)})})}},{key:"tee",value:function tee(){if(!1===IsReadableStream(this))throw streamBrandCheckException("tee");var e=ReadableStreamTee(this,!1);return createArrayFromList(e)}},{key:"locked",get:function get(){if(!1===IsReadableStream(this))throw streamBrandCheckException("locked");return IsReadableStreamLocked(this)}}]),ReadableStream}();module.exports={CreateReadableByteStream:CreateReadableByteStream,CreateReadableStream:CreateReadableStream,ReadableStream:ReadableStream,IsReadableStreamDisturbed:IsReadableStreamDisturbed,ReadableStreamDefaultControllerClose:ReadableStreamDefaultControllerClose,ReadableStreamDefaultControllerEnqueue:ReadableStreamDefaultControllerEnqueue,ReadableStreamDefaultControllerError:ReadableStreamDefaultControllerError,ReadableStreamDefaultControllerGetDesiredSize:ReadableStreamDefaultControllerGetDesiredSize,ReadableStreamDefaultControllerHasBackpressure:ReadableStreamDefaultControllerHasBackpressure,ReadableStreamDefaultControllerCanCloseOrEnqueue:ReadableStreamDefaultControllerCanCloseOrEnqueue};var ReadableStreamDefaultReader=function(){function ReadableStreamDefaultReader(e){if(_classCallCheck(this,ReadableStreamDefaultReader),!1===IsReadableStream(e))throw new TypeError("ReadableStreamDefaultReader can only be constructed with a ReadableStream instance");if(!0===IsReadableStreamLocked(e))throw new TypeError("This stream has already been locked for exclusive reading by another reader");ReadableStreamReaderGenericInitialize(this,e),this._readRequests=[]}return _createClass(ReadableStreamDefaultReader,[{key:"cancel",value:function cancel(e){return!1===IsReadableStreamDefaultReader(this)?Promise.reject(defaultReaderBrandCheckException("cancel")):void 0===this._ownerReadableStream?Promise.reject(readerLockException("cancel")):ReadableStreamReaderGenericCancel(this,e)}},{key:"read",value:function read(){return!1===IsReadableStreamDefaultReader(this)?Promise.reject(defaultReaderBrandCheckException("read")):void 0===this._ownerReadableStream?Promise.reject(readerLockException("read from")):ReadableStreamDefaultReaderRead(this)}},{key:"releaseLock",value:function releaseLock(){if(!1===IsReadableStreamDefaultReader(this))throw defaultReaderBrandCheckException("releaseLock");if(void 0!==this._ownerReadableStream){if(this._readRequests.length>0)throw new TypeError("Tried to release a reader lock when that reader has pending read() calls un-settled");ReadableStreamReaderGenericRelease(this)}}},{key:"closed",get:function get(){return!1===IsReadableStreamDefaultReader(this)?Promise.reject(defaultReaderBrandCheckException("closed")):this._closedPromise}}]),ReadableStreamDefaultReader}(),ReadableStreamBYOBReader=function(){function ReadableStreamBYOBReader(e){if(_classCallCheck(this,ReadableStreamBYOBReader),!IsReadableStream(e))throw new TypeError("ReadableStreamBYOBReader can only be constructed with a ReadableStream instance given a byte source");if(!1===IsReadableByteStreamController(e._readableStreamController))throw new TypeError("Cannot construct a ReadableStreamBYOBReader for a stream not constructed with a byte source");if(IsReadableStreamLocked(e))throw new TypeError("This stream has already been locked for exclusive reading by another reader");ReadableStreamReaderGenericInitialize(this,e),this._readIntoRequests=[]}return _createClass(ReadableStreamBYOBReader,[{key:"cancel",value:function cancel(e){return IsReadableStreamBYOBReader(this)?void 0===this._ownerReadableStream?Promise.reject(readerLockException("cancel")):ReadableStreamReaderGenericCancel(this,e):Promise.reject(byobReaderBrandCheckException("cancel"))}},{key:"read",value:function read(e){return IsReadableStreamBYOBReader(this)?void 0===this._ownerReadableStream?Promise.reject(readerLockException("read from")):ArrayBuffer.isView(e)?!0===IsDetachedBuffer(e.buffer)?Promise.reject(new TypeError("Cannot read into a view onto a detached ArrayBuffer")):0===e.byteLength?Promise.reject(new TypeError("view must have non-zero byteLength")):ReadableStreamBYOBReaderRead(this,e):Promise.reject(new TypeError("view must be an array buffer view")):Promise.reject(byobReaderBrandCheckException("read"))}},{key:"releaseLock",value:function releaseLock(){if(!IsReadableStreamBYOBReader(this))throw byobReaderBrandCheckException("releaseLock");if(void 0!==this._ownerReadableStream){if(this._readIntoRequests.length>0)throw new TypeError("Tried to release a reader lock when that reader has pending read() calls un-settled");ReadableStreamReaderGenericRelease(this)}}},{key:"closed",get:function get(){return IsReadableStreamBYOBReader(this)?this._closedPromise:Promise.reject(byobReaderBrandCheckException("closed"))}}]),ReadableStreamBYOBReader}(),ReadableStreamDefaultController=function(){function ReadableStreamDefaultController(){throw _classCallCheck(this,ReadableStreamDefaultController),new TypeError}return _createClass(ReadableStreamDefaultController,[{key:"close",value:function close(){if(!1===IsReadableStreamDefaultController(this))throw defaultControllerBrandCheckException("close");if(!1===ReadableStreamDefaultControllerCanCloseOrEnqueue(this))throw new TypeError("The stream is not in a state that permits close");ReadableStreamDefaultControllerClose(this)}},{key:"enqueue",value:function enqueue(e){if(!1===IsReadableStreamDefaultController(this))throw defaultControllerBrandCheckException("enqueue");if(!1===ReadableStreamDefaultControllerCanCloseOrEnqueue(this))throw new TypeError("The stream is not in a state that permits enqueue");return ReadableStreamDefaultControllerEnqueue(this,e)}},{key:"error",value:function error(e){if(!1===IsReadableStreamDefaultController(this))throw defaultControllerBrandCheckException("error");var r=this._controlledReadableStream;if("readable"!==r._state)throw new TypeError("The stream is "+r._state+" and so cannot be errored");ReadableStreamDefaultControllerError(this,e)}},{key:CancelSteps,value:function value(e){return ResetQueue(this),this._cancelAlgorithm(e)}},{key:PullSteps,value:function value(){var e=this._controlledReadableStream;if(this._queue.length>0){var r=DequeueValue(this);return!0===this._closeRequested&&0===this._queue.length?ReadableStreamClose(e):ReadableStreamDefaultControllerCallPullIfNeeded(this),Promise.resolve(CreateIterResultObject(r,!1))}var t=ReadableStreamAddReadRequest(e);return ReadableStreamDefaultControllerCallPullIfNeeded(this),t}},{key:"desiredSize",get:function get(){if(!1===IsReadableStreamDefaultController(this))throw defaultControllerBrandCheckException("desiredSize");return ReadableStreamDefaultControllerGetDesiredSize(this)}}]),ReadableStreamDefaultController}(),ReadableStreamBYOBRequest=function(){function ReadableStreamBYOBRequest(){throw _classCallCheck(this,ReadableStreamBYOBRequest),new TypeError("ReadableStreamBYOBRequest cannot be used directly")}return _createClass(ReadableStreamBYOBRequest,[{key:"respond",value:function respond(e){if(!1===IsReadableStreamBYOBRequest(this))throw byobRequestBrandCheckException("respond");if(void 0===this._associatedReadableByteStreamController)throw new TypeError("This BYOB request has been invalidated");if(!0===IsDetachedBuffer(this._view.buffer))throw new TypeError("The BYOB request's buffer has been detached and so cannot be used as a response");ReadableByteStreamControllerRespond(this._associatedReadableByteStreamController,e)}},{key:"respondWithNewView",value:function respondWithNewView(e){if(!1===IsReadableStreamBYOBRequest(this))throw byobRequestBrandCheckException("respond");if(void 0===this._associatedReadableByteStreamController)throw new TypeError("This BYOB request has been invalidated");if(!ArrayBuffer.isView(e))throw new TypeError("You can only respond with array buffer views");if(!0===IsDetachedBuffer(e.buffer))throw new TypeError("The supplied view's buffer has been detached and so cannot be used as a response");ReadableByteStreamControllerRespondWithNewView(this._associatedReadableByteStreamController,e)}},{key:"view",get:function get(){if(!1===IsReadableStreamBYOBRequest(this))throw byobRequestBrandCheckException("view");return this._view}}]),ReadableStreamBYOBRequest}(),ReadableByteStreamController=function(){function ReadableByteStreamController(){throw _classCallCheck(this,ReadableByteStreamController),new TypeError("ReadableByteStreamController constructor cannot be used directly")}return _createClass(ReadableByteStreamController,[{key:"close",value:function close(){if(!1===IsReadableByteStreamController(this))throw byteStreamControllerBrandCheckException("close");if(!0===this._closeRequested)throw new TypeError("The stream has already been closed; do not close it again!");var e=this._controlledReadableByteStream._state;if("readable"!==e)throw new TypeError("The stream (in "+e+" state) is not in the readable state and cannot be closed");ReadableByteStreamControllerClose(this)}},{key:"enqueue",value:function enqueue(e){if(!1===IsReadableByteStreamController(this))throw byteStreamControllerBrandCheckException("enqueue");if(!0===this._closeRequested)throw new TypeError("stream is closed or draining");var r=this._controlledReadableByteStream._state;if("readable"!==r)throw new TypeError("The stream (in "+r+" state) is not in the readable state and cannot be enqueued to");if(!ArrayBuffer.isView(e))throw new TypeError("You can only enqueue array buffer views when using a ReadableByteStreamController");if(!0===IsDetachedBuffer(e.buffer))throw new TypeError("Cannot enqueue a view onto a detached ArrayBuffer");ReadableByteStreamControllerEnqueue(this,e)}},{key:"error",value:function error(e){if(!1===IsReadableByteStreamController(this))throw byteStreamControllerBrandCheckException("error");var r=this._controlledReadableByteStream;if("readable"!==r._state)throw new TypeError("The stream is "+r._state+" and so cannot be errored");ReadableByteStreamControllerError(this,e)}},{key:CancelSteps,value:function value(e){return this._pendingPullIntos.length>0&&(this._pendingPullIntos[0].bytesFilled=0),ResetQueue(this),this._cancelAlgorithm(e)}},{key:PullSteps,value:function value(){var e=this._controlledReadableByteStream;if(this._queueTotalSize>0){var r=this._queue.shift();this._queueTotalSize-=r.byteLength,ReadableByteStreamControllerHandleQueueDrain(this);var t=void 0;try{t=new Uint8Array(r.buffer,r.byteOffset,r.byteLength)}catch(e){return Promise.reject(e)}return Promise.resolve(CreateIterResultObject(t,!1))}var a=this._autoAllocateChunkSize;if(void 0!==a){var l=void 0;try{l=new ArrayBuffer(a)}catch(e){return Promise.reject(e)}var o={buffer:l,byteOffset:0,byteLength:a,bytesFilled:0,elementSize:1,ctor:Uint8Array,readerType:"default"};this._pendingPullIntos.push(o)}var n=ReadableStreamAddReadRequest(e);return ReadableByteStreamControllerCallPullIfNeeded(this),n}},{key:"byobRequest",get:function get(){if(!1===IsReadableByteStreamController(this))throw byteStreamControllerBrandCheckException("byobRequest");if(void 0===this._byobRequest&&this._pendingPullIntos.length>0){var e=this._pendingPullIntos[0],r=new Uint8Array(e.buffer,e.byteOffset+e.bytesFilled,e.byteLength-e.bytesFilled),t=Object.create(ReadableStreamBYOBRequest.prototype);SetUpReadableStreamBYOBRequest(t,this,r),this._byobRequest=t}return this._byobRequest}},{key:"desiredSize",get:function get(){if(!1===IsReadableByteStreamController(this))throw byteStreamControllerBrandCheckException("desiredSize");return ReadableByteStreamControllerGetDesiredSize(this)}}]),ReadableByteStreamController}();
+
+},{"./helpers.js":10,"./queue-with-sizes.js":11,"./utils.js":14,"./writable-stream.js":15,"better-assert":16}],13:[function(_dereq_,module,exports){
+"use strict";function _classCallCheck(r,e){if(!(r instanceof e))throw new TypeError("Cannot call a class as a function")}function CreateTransformStream(r,e,t){var a=arguments.length>3&&void 0!==arguments[3]?arguments[3]:1,o=arguments.length>4&&void 0!==arguments[4]?arguments[4]:function(){return 1},n=arguments.length>5&&void 0!==arguments[5]?arguments[5]:0,l=arguments.length>6&&void 0!==arguments[6]?arguments[6]:function(){return 1},i=Object.create(TransformStream.prototype),m=void 0;InitializeTransformStream(i,new Promise(function(r){m=r}),a,o,n,l),SetUpTransformStreamDefaultController(i,Object.create(TransformStreamDefaultController.prototype),e,t);var s=r();return m(s),i}function InitializeTransformStream(r,e,t,a,o,n){function startAlgorithm(){return e}r._writable=CreateWritableStream(startAlgorithm,function writeAlgorithm(e){return TransformStreamDefaultSinkWriteAlgorithm(r,e)},function closeAlgorithm(){return TransformStreamDefaultSinkCloseAlgorithm(r)},function abortAlgorithm(){return TransformStreamDefaultSinkAbortAlgorithm(r)},t,a),r._readable=CreateReadableStream(startAlgorithm,function pullAlgorithm(){return TransformStreamDefaultSourcePullAlgorithm(r)},function cancelAlgorithm(e){return TransformStreamErrorWritableAndUnblockWrite(r,e),Promise.resolve()},o,n),r._backpressure=void 0,r._backpressureChangePromise=void 0,r._backpressureChangePromise_resolve=void 0,TransformStreamSetBackpressure(r,!0),r._transformStreamController=void 0}function IsTransformStream(r){return!!typeIsObject(r)&&!!Object.prototype.hasOwnProperty.call(r,"_transformStreamController")}function TransformStreamError(r,e){verbose("TransformStreamError()"),"readable"===r._readable._state&&ReadableStreamDefaultControllerError(r._readable._readableStreamController,e),TransformStreamErrorWritableAndUnblockWrite(r,e)}function TransformStreamErrorWritableAndUnblockWrite(r,e){WritableStreamDefaultControllerErrorIfNeeded(r._writable._writableStreamController,e),!0===r._backpressure&&TransformStreamSetBackpressure(r,!1)}function TransformStreamSetBackpressure(r,e){verbose("TransformStreamSetBackpressure() [backpressure = "+e+"]"),void 0!==r._backpressureChangePromise&&r._backpressureChangePromise_resolve(),r._backpressureChangePromise=new Promise(function(e){r._backpressureChangePromise_resolve=e}),r._backpressure=e}function IsTransformStreamDefaultController(r){return!!typeIsObject(r)&&!!Object.prototype.hasOwnProperty.call(r,"_controlledTransformStream")}function SetUpTransformStreamDefaultController(r,e,t,a){e._controlledTransformStream=r,r._transformStreamController=e,e._transformAlgorithm=t,e._flushAlgorithm=a}function SetUpTransformStreamDefaultControllerFromTransformer(r,e){var t=Object.create(TransformStreamDefaultController.prototype),a=function transformAlgorithm(r){try{return TransformStreamDefaultControllerEnqueue(t,r),Promise.resolve()}catch(r){return Promise.reject(r)}},o=e.transform;if(void 0!==o){if("function"!=typeof o)throw new TypeError("transform is not a method");a=function transformAlgorithm(a){return PromiseCall(o,e,[a,t]).catch(function(e){throw TransformStreamError(r,e),e})}}var n=CreateAlgorithmFromUnderlyingMethod(e,"flush",0,[t]);SetUpTransformStreamDefaultController(r,t,a,n)}function TransformStreamDefaultControllerEnqueue(r,e){verbose("TransformStreamDefaultControllerEnqueue()");var t=r._controlledTransformStream,a=t._readable._readableStreamController;if(!1===ReadableStreamDefaultControllerCanCloseOrEnqueue(a))throw new TypeError("Readable side is not in a state that permits enqueue");try{ReadableStreamDefaultControllerEnqueue(a,e)}catch(r){throw TransformStreamErrorWritableAndUnblockWrite(t,r),t._readable._storedError}ReadableStreamDefaultControllerHasBackpressure(a)!==t._backpressure&&TransformStreamSetBackpressure(t,!0)}function TransformStreamDefaultControllerError(r,e){TransformStreamError(r._controlledTransformStream,e)}function TransformStreamDefaultControllerTerminate(r){verbose("TransformStreamDefaultControllerTerminate()");var e=r._controlledTransformStream,t=e._readable._readableStreamController;!0===ReadableStreamDefaultControllerCanCloseOrEnqueue(t)&&ReadableStreamDefaultControllerClose(t),TransformStreamErrorWritableAndUnblockWrite(e,new TypeError("TransformStream terminated"))}function TransformStreamDefaultSinkWriteAlgorithm(r,e){verbose("TransformStreamDefaultSinkWriteAlgorithm()");var t=r._transformStreamController;return!0===r._backpressure?r._backpressureChangePromise.then(function(){var a=r._writable;if("erroring"===a._state)throw a._storedError;return t._transformAlgorithm(e)}):t._transformAlgorithm(e)}function TransformStreamDefaultSinkAbortAlgorithm(r){return TransformStreamError(r,new TypeError("Writable side aborted")),Promise.resolve()}function TransformStreamDefaultSinkCloseAlgorithm(r){verbose("TransformStreamDefaultSinkCloseAlgorithm()");var e=r._readable;return r._transformStreamController._flushAlgorithm().then(function(){if("errored"===e._state)throw e._storedError;var r=e._readableStreamController;!0===ReadableStreamDefaultControllerCanCloseOrEnqueue(r)&&ReadableStreamDefaultControllerClose(r)}).catch(function(t){throw TransformStreamError(r,t),e._storedError})}function TransformStreamDefaultSourcePullAlgorithm(r){return verbose("TransformStreamDefaultSourcePullAlgorithm()"),TransformStreamSetBackpressure(r,!1),r._backpressureChangePromise}function defaultControllerBrandCheckException(r){return new TypeError("TransformStreamDefaultController.prototype."+r+" can only be used on a TransformStreamDefaultController")}function streamBrandCheckException(r){return new TypeError("TransformStream.prototype."+r+" can only be used on a TransformStream")}var _createClass=function(){function defineProperties(r,e){for(var t=0;t<e.length;t++){var a=e[t];a.enumerable=a.enumerable||!1,a.configurable=!0,"value"in a&&(a.writable=!0),Object.defineProperty(r,a.key,a)}}return function(r,e,t){return e&&defineProperties(r.prototype,e),t&&defineProperties(r,t),r}}(),assert=_dereq_("better-assert"),verbose=_dereq_("debug")("streams:transform-stream:verbose"),_require=_dereq_("./helpers.js"),InvokeOrNoop=_require.InvokeOrNoop,CreateAlgorithmFromUnderlyingMethod=_require.CreateAlgorithmFromUnderlyingMethod,PromiseCall=_require.PromiseCall,typeIsObject=_require.typeIsObject,ValidateAndNormalizeHighWaterMark=_require.ValidateAndNormalizeHighWaterMark,IsNonNegativeNumber=_require.IsNonNegativeNumber,MakeSizeAlgorithmFromSizeFunction=_require.MakeSizeAlgorithmFromSizeFunction,_require2=_dereq_("./readable-stream.js"),CreateReadableStream=_require2.CreateReadableStream,ReadableStreamDefaultControllerClose=_require2.ReadableStreamDefaultControllerClose,ReadableStreamDefaultControllerEnqueue=_require2.ReadableStreamDefaultControllerEnqueue,ReadableStreamDefaultControllerError=_require2.ReadableStreamDefaultControllerError,ReadableStreamDefaultControllerGetDesiredSize=_require2.ReadableStreamDefaultControllerGetDesiredSize,ReadableStreamDefaultControllerHasBackpressure=_require2.ReadableStreamDefaultControllerHasBackpressure,ReadableStreamDefaultControllerCanCloseOrEnqueue=_require2.ReadableStreamDefaultControllerCanCloseOrEnqueue,_require3=_dereq_("./writable-stream.js"),CreateWritableStream=_require3.CreateWritableStream,WritableStreamDefaultControllerErrorIfNeeded=_require3.WritableStreamDefaultControllerErrorIfNeeded,TransformStream=function(){function TransformStream(){var r=arguments.length>0&&void 0!==arguments[0]?arguments[0]:{},e=arguments.length>1&&void 0!==arguments[1]?arguments[1]:{},t=arguments.length>2&&void 0!==arguments[2]?arguments[2]:{};if(_classCallCheck(this,TransformStream),void 0!==r.readableType)throw new RangeError("Invalid readable type specified");if(void 0!==r.writableType)throw new RangeError("Invalid writable type specified");var a=e.size,o=MakeSizeAlgorithmFromSizeFunction(a),n=e.highWaterMark;void 0===n&&(n=1),n=ValidateAndNormalizeHighWaterMark(n);var l=t.size,i=MakeSizeAlgorithmFromSizeFunction(l),m=t.highWaterMark;void 0===m&&(m=0),m=ValidateAndNormalizeHighWaterMark(m);var s=void 0;InitializeTransformStream(this,new Promise(function(r){s=r}),n,o,m,i),SetUpTransformStreamDefaultControllerFromTransformer(this,r);var u=InvokeOrNoop(r,"start",[this._transformStreamController]);s(u)}return _createClass(TransformStream,[{key:"readable",get:function get(){if(!1===IsTransformStream(this))throw streamBrandCheckException("readable");return this._readable}},{key:"writable",get:function get(){if(!1===IsTransformStream(this))throw streamBrandCheckException("writable");return this._writable}}]),TransformStream}(),TransformStreamDefaultController=function(){function TransformStreamDefaultController(){throw _classCallCheck(this,TransformStreamDefaultController),new TypeError("TransformStreamDefaultController instances cannot be created directly")}return _createClass(TransformStreamDefaultController,[{key:"enqueue",value:function enqueue(r){if(!1===IsTransformStreamDefaultController(this))throw defaultControllerBrandCheckException("enqueue");TransformStreamDefaultControllerEnqueue(this,r)}},{key:"error",value:function error(r){if(!1===IsTransformStreamDefaultController(this))throw defaultControllerBrandCheckException("error");TransformStreamDefaultControllerError(this,r)}},{key:"terminate",value:function terminate(){if(!1===IsTransformStreamDefaultController(this))throw defaultControllerBrandCheckException("terminate");TransformStreamDefaultControllerTerminate(this)}},{key:"desiredSize",get:function get(){if(!1===IsTransformStreamDefaultController(this))throw defaultControllerBrandCheckException("desiredSize");var r=this._controlledTransformStream._readable._readableStreamController;return ReadableStreamDefaultControllerGetDesiredSize(r)}}]),TransformStreamDefaultController}();module.exports={CreateTransformStream:CreateTransformStream,TransformStream:TransformStream};
+
+},{"./helpers.js":10,"./readable-stream.js":12,"./writable-stream.js":15,"better-assert":16,"debug":18}],14:[function(_dereq_,module,exports){
+"use strict";var assert=_dereq_("better-assert");exports.rethrowAssertionErrorRejection=function(r){r&&r.constructor===assert.AssertionError&&setTimeout(function(){throw r},0)};
+
+},{"better-assert":16}],15:[function(_dereq_,module,exports){
+"use strict";function _classCallCheck(e,r){if(!(e instanceof r))throw new TypeError("Cannot call a class as a function")}function AcquireWritableStreamDefaultWriter(e){return new WritableStreamDefaultWriter(e)}function CreateWritableStream(e,r,t,i){var a=arguments.length>4&&void 0!==arguments[4]?arguments[4]:1,o=arguments.length>5&&void 0!==arguments[5]?arguments[5]:function(){return 1},l=Object.create(WritableStream.prototype);return InitializeWritableStream(l),SetUpWritableStreamDefaultController(l,Object.create(WritableStreamDefaultController.prototype),e,r,t,i,a,o),l}function InitializeWritableStream(e){e._state="writable",e._storedError=void 0,e._writer=void 0,e._writableStreamController=void 0,e._writeRequests=[],e._inFlightWriteRequest=void 0,e._closeRequest=void 0,e._inFlightCloseRequest=void 0,e._pendingAbortRequest=void 0,e._backpressure=!1}function IsWritableStream(e){return!!typeIsObject(e)&&!!Object.prototype.hasOwnProperty.call(e,"_writableStreamController")}function IsWritableStreamLocked(e){return void 0!==e._writer}function WritableStreamAbort(e,r){var t=e._state;if("closed"===t)return Promise.resolve(void 0);if("errored"===t)return Promise.reject(e._storedError);var i=new TypeError("Requested to abort");if(void 0!==e._pendingAbortRequest)return Promise.reject(i);var a=!1;"erroring"===t&&(a=!0,r=void 0);var o=new Promise(function(t,i){e._pendingAbortRequest={_resolve:t,_reject:i,_reason:r,_wasAlreadyErroring:a}});return!1===a&&WritableStreamStartErroring(e,i),o}function WritableStreamAddWriteRequest(e){return new Promise(function(r,t){var i={_resolve:r,_reject:t};e._writeRequests.push(i)})}function WritableStreamDealWithRejection(e,r){verbose("WritableStreamDealWithRejection(stream, %o)",r),"writable"!==e._state?WritableStreamFinishErroring(e):WritableStreamStartErroring(e,r)}function WritableStreamStartErroring(e,r){verbose("WritableStreamStartErroring(stream, %o)",r);var t=e._writableStreamController;e._state="erroring",e._storedError=r;var i=e._writer;void 0!==i&&WritableStreamDefaultWriterEnsureReadyPromiseRejected(i,r),!1===WritableStreamHasOperationMarkedInFlight(e)&&!0===t._started&&WritableStreamFinishErroring(e)}function WritableStreamFinishErroring(e){verbose("WritableStreamFinishErroring()"),e._state="errored",e._writableStreamController[ErrorSteps]();var r=e._storedError,t=!0,i=!1,a=void 0;try{for(var o,l=e._writeRequests[Symbol.iterator]();!(t=(o=l.next()).done);t=!0)o.value._reject(r)}catch(e){i=!0,a=e}finally{try{!t&&l.return&&l.return()}finally{if(i)throw a}}if(e._writeRequests=[],void 0!==e._pendingAbortRequest){var s=e._pendingAbortRequest;if(e._pendingAbortRequest=void 0,!0===s._wasAlreadyErroring)return s._reject(r),void WritableStreamRejectCloseAndClosedPromiseIfNeeded(e);e._writableStreamController[AbortSteps](s._reason).then(function(){s._resolve(),WritableStreamRejectCloseAndClosedPromiseIfNeeded(e)},function(r){s._reject(r),WritableStreamRejectCloseAndClosedPromiseIfNeeded(e)})}else WritableStreamRejectCloseAndClosedPromiseIfNeeded(e)}function WritableStreamFinishInFlightWrite(e){e._inFlightWriteRequest._resolve(void 0),e._inFlightWriteRequest=void 0}function WritableStreamFinishInFlightWriteWithError(e,r){e._inFlightWriteRequest._reject(r),e._inFlightWriteRequest=void 0,WritableStreamDealWithRejection(e,r)}function WritableStreamFinishInFlightClose(e){e._inFlightCloseRequest._resolve(void 0),e._inFlightCloseRequest=void 0,"erroring"===e._state&&(e._storedError=void 0,void 0!==e._pendingAbortRequest&&(e._pendingAbortRequest._resolve(),e._pendingAbortRequest=void 0)),e._state="closed";var r=e._writer;void 0!==r&&defaultWriterClosedPromiseResolve(r)}function WritableStreamFinishInFlightCloseWithError(e,r){e._inFlightCloseRequest._reject(r),e._inFlightCloseRequest=void 0,void 0!==e._pendingAbortRequest&&(e._pendingAbortRequest._reject(r),e._pendingAbortRequest=void 0),WritableStreamDealWithRejection(e,r)}function WritableStreamCloseQueuedOrInFlight(e){return void 0!==e._closeRequest||void 0!==e._inFlightCloseRequest}function WritableStreamHasOperationMarkedInFlight(e){return void 0===e._inFlightWriteRequest&&void 0===e._inFlightCloseRequest?(verbose("WritableStreamHasOperationMarkedInFlight() is false"),!1):(verbose("WritableStreamHasOperationMarkedInFlight() is true"),!0)}function WritableStreamMarkCloseRequestInFlight(e){e._inFlightCloseRequest=e._closeRequest,e._closeRequest=void 0}function WritableStreamMarkFirstWriteRequestInFlight(e){e._inFlightWriteRequest=e._writeRequests.shift()}function WritableStreamRejectCloseAndClosedPromiseIfNeeded(e){verbose("WritableStreamRejectCloseAndClosedPromiseIfNeeded()"),void 0!==e._closeRequest&&(e._closeRequest._reject(e._storedError),e._closeRequest=void 0);var r=e._writer;void 0!==r&&(defaultWriterClosedPromiseReject(r,e._storedError),r._closedPromise.catch(function(){}))}function WritableStreamUpdateBackpressure(e,r){var t=e._writer;void 0!==t&&r!==e._backpressure&&(!0===r?defaultWriterReadyPromiseReset(t):defaultWriterReadyPromiseResolve(t)),e._backpressure=r}function IsWritableStreamDefaultWriter(e){return!!typeIsObject(e)&&!!Object.prototype.hasOwnProperty.call(e,"_ownerWritableStream")}function WritableStreamDefaultWriterAbort(e,r){return WritableStreamAbort(e._ownerWritableStream,r)}function WritableStreamDefaultWriterClose(e){var r=e._ownerWritableStream,t=r._state;if("closed"===t||"errored"===t)return Promise.reject(new TypeError("The stream (in "+t+" state) is not in the writable state and cannot be closed"));var i=new Promise(function(e,t){var i={_resolve:e,_reject:t};r._closeRequest=i});return!0===r._backpressure&&"writable"===t&&defaultWriterReadyPromiseResolve(e),WritableStreamDefaultControllerClose(r._writableStreamController),i}function WritableStreamDefaultWriterCloseWithErrorPropagation(e){var r=e._ownerWritableStream,t=r._state;return!0===WritableStreamCloseQueuedOrInFlight(r)||"closed"===t?Promise.resolve():"errored"===t?Promise.reject(r._storedError):WritableStreamDefaultWriterClose(e)}function WritableStreamDefaultWriterEnsureClosedPromiseRejected(e,r){"pending"===e._closedPromiseState?defaultWriterClosedPromiseReject(e,r):defaultWriterClosedPromiseResetToRejected(e,r),e._closedPromise.catch(function(){})}function WritableStreamDefaultWriterEnsureReadyPromiseRejected(e,r){verbose("WritableStreamDefaultWriterEnsureReadyPromiseRejected(writer, %o)",r),"pending"===e._readyPromiseState?defaultWriterReadyPromiseReject(e,r):defaultWriterReadyPromiseResetToRejected(e,r),e._readyPromise.catch(function(){})}function WritableStreamDefaultWriterGetDesiredSize(e){var r=e._ownerWritableStream,t=r._state;return"errored"===t||"erroring"===t?null:"closed"===t?0:WritableStreamDefaultControllerGetDesiredSize(r._writableStreamController)}function WritableStreamDefaultWriterRelease(e){var r=e._ownerWritableStream,t=new TypeError("Writer was released and can no longer be used to monitor the stream's closedness");WritableStreamDefaultWriterEnsureReadyPromiseRejected(e,t),WritableStreamDefaultWriterEnsureClosedPromiseRejected(e,t),r._writer=void 0,e._ownerWritableStream=void 0}function WritableStreamDefaultWriterWrite(e,r){var t=e._ownerWritableStream,i=t._writableStreamController,a=WritableStreamDefaultControllerGetChunkSize(i,r);if(t!==e._ownerWritableStream)return Promise.reject(defaultWriterLockException("write to"));var o=t._state;if("errored"===o)return Promise.reject(t._storedError);if(!0===WritableStreamCloseQueuedOrInFlight(t)||"closed"===o)return Promise.reject(new TypeError("The stream is closing or closed and cannot be written to"));if("erroring"===o)return Promise.reject(t._storedError);var l=WritableStreamAddWriteRequest(t);return WritableStreamDefaultControllerWrite(i,r,a),l}function IsWritableStreamDefaultController(e){return!!typeIsObject(e)&&!!Object.prototype.hasOwnProperty.call(e,"_controlledWritableStream")}function SetUpWritableStreamDefaultController(e,r,t,i,a,o,l,s){r._controlledWritableStream=e,e._writableStreamController=r,r._queue=void 0,r._queueTotalSize=void 0,ResetQueue(r),r._started=!1,r._strategySizeAlgorithm=s,r._strategyHWM=l,r._writeAlgorithm=i,r._closeAlgorithm=a,r._abortAlgorithm=o;var n=WritableStreamDefaultControllerGetBackpressure(r);WritableStreamUpdateBackpressure(e,n);var u=t();Promise.resolve(u).then(function(){r._started=!0,WritableStreamDefaultControllerAdvanceQueueIfNeeded(r)},function(t){r._started=!0,WritableStreamDealWithRejection(e,t)}).catch(rethrowAssertionErrorRejection)}function SetUpWritableStreamDefaultControllerFromUnderlyingSink(e,r,t,i){var a=Object.create(WritableStreamDefaultController.prototype),o=CreateAlgorithmFromUnderlyingMethod(r,"write",1,[a]),l=CreateAlgorithmFromUnderlyingMethod(r,"close",0,[]),s=CreateAlgorithmFromUnderlyingMethod(r,"abort",1,[]);SetUpWritableStreamDefaultController(e,a,function startAlgorithm(){return InvokeOrNoop(r,"start",[a])},o,l,s,t,i)}function WritableStreamDefaultControllerClose(e){EnqueueValueWithSize(e,"close",0),WritableStreamDefaultControllerAdvanceQueueIfNeeded(e)}function WritableStreamDefaultControllerGetChunkSize(e,r){try{return e._strategySizeAlgorithm(r)}catch(r){return WritableStreamDefaultControllerErrorIfNeeded(e,r),1}}function WritableStreamDefaultControllerGetDesiredSize(e){return e._strategyHWM-e._queueTotalSize}function WritableStreamDefaultControllerWrite(e,r,t){var i={chunk:r};try{EnqueueValueWithSize(e,i,t)}catch(r){return void WritableStreamDefaultControllerErrorIfNeeded(e,r)}var a=e._controlledWritableStream;!1===WritableStreamCloseQueuedOrInFlight(a)&&"writable"===a._state&&WritableStreamUpdateBackpressure(a,WritableStreamDefaultControllerGetBackpressure(e)),WritableStreamDefaultControllerAdvanceQueueIfNeeded(e)}function WritableStreamDefaultControllerAdvanceQueueIfNeeded(e){verbose("WritableStreamDefaultControllerAdvanceQueueIfNeeded()");var r=e._controlledWritableStream;if(!1!==e._started&&void 0===r._inFlightWriteRequest){var t=r._state;if("closed"!==t&&"errored"!==t)if("erroring"!==t){if(0!==e._queue.length){var i=PeekQueueValue(e);"close"===i?WritableStreamDefaultControllerProcessClose(e):WritableStreamDefaultControllerProcessWrite(e,i.chunk)}}else WritableStreamFinishErroring(r)}}function WritableStreamDefaultControllerErrorIfNeeded(e,r){"writable"===e._controlledWritableStream._state&&WritableStreamDefaultControllerError(e,r)}function WritableStreamDefaultControllerProcessClose(e){var r=e._controlledWritableStream;WritableStreamMarkCloseRequestInFlight(r),DequeueValue(e),e._closeAlgorithm().then(function(){WritableStreamFinishInFlightClose(r)},function(e){WritableStreamFinishInFlightCloseWithError(r,e)}).catch(rethrowAssertionErrorRejection)}function WritableStreamDefaultControllerProcessWrite(e,r){var t=e._controlledWritableStream;WritableStreamMarkFirstWriteRequestInFlight(t),e._writeAlgorithm(r).then(function(){WritableStreamFinishInFlightWrite(t);var r=t._state;if(DequeueValue(e),!1===WritableStreamCloseQueuedOrInFlight(t)&&"writable"===r){var i=WritableStreamDefaultControllerGetBackpressure(e);WritableStreamUpdateBackpressure(t,i)}WritableStreamDefaultControllerAdvanceQueueIfNeeded(e)},function(e){WritableStreamFinishInFlightWriteWithError(t,e)}).catch(rethrowAssertionErrorRejection)}function WritableStreamDefaultControllerGetBackpressure(e){return WritableStreamDefaultControllerGetDesiredSize(e)<=0}function WritableStreamDefaultControllerError(e,r){WritableStreamStartErroring(e._controlledWritableStream,r)}function streamBrandCheckException(e){return new TypeError("WritableStream.prototype."+e+" can only be used on a WritableStream")}function defaultWriterBrandCheckException(e){return new TypeError("WritableStreamDefaultWriter.prototype."+e+" can only be used on a WritableStreamDefaultWriter")}function defaultWriterLockException(e){return new TypeError("Cannot "+e+" a stream using a released writer")}function defaultWriterClosedPromiseInitialize(e){e._closedPromise=new Promise(function(r,t){e._closedPromise_resolve=r,e._closedPromise_reject=t,e._closedPromiseState="pending"})}function defaultWriterClosedPromiseInitializeAsRejected(e,r){e._closedPromise=Promise.reject(r),e._closedPromise_resolve=void 0,e._closedPromise_reject=void 0,e._closedPromiseState="rejected"}function defaultWriterClosedPromiseInitializeAsResolved(e){e._closedPromise=Promise.resolve(void 0),e._closedPromise_resolve=void 0,e._closedPromise_reject=void 0,e._closedPromiseState="resolved"}function defaultWriterClosedPromiseReject(e,r){e._closedPromise_reject(r),e._closedPromise_resolve=void 0,e._closedPromise_reject=void 0,e._closedPromiseState="rejected"}function defaultWriterClosedPromiseResetToRejected(e,r){e._closedPromise=Promise.reject(r),e._closedPromiseState="rejected"}function defaultWriterClosedPromiseResolve(e){e._closedPromise_resolve(void 0),e._closedPromise_resolve=void 0,e._closedPromise_reject=void 0,e._closedPromiseState="resolved"}function defaultWriterReadyPromiseInitialize(e){verbose("defaultWriterReadyPromiseInitialize()"),e._readyPromise=new Promise(function(r,t){e._readyPromise_resolve=r,e._readyPromise_reject=t}),e._readyPromiseState="pending"}function defaultWriterReadyPromiseInitializeAsRejected(e,r){verbose("defaultWriterReadyPromiseInitializeAsRejected(writer, %o)",r),e._readyPromise=Promise.reject(r),e._readyPromise_resolve=void 0,e._readyPromise_reject=void 0,e._readyPromiseState="rejected"}function defaultWriterReadyPromiseInitializeAsResolved(e){verbose("defaultWriterReadyPromiseInitializeAsResolved()"),e._readyPromise=Promise.resolve(void 0),e._readyPromise_resolve=void 0,e._readyPromise_reject=void 0,e._readyPromiseState="fulfilled"}function defaultWriterReadyPromiseReject(e,r){verbose("defaultWriterReadyPromiseReject(writer, %o)",r),e._readyPromise_reject(r),e._readyPromise_resolve=void 0,e._readyPromise_reject=void 0,e._readyPromiseState="rejected"}function defaultWriterReadyPromiseReset(e){verbose("defaultWriterReadyPromiseReset()"),e._readyPromise=new Promise(function(r,t){e._readyPromise_resolve=r,e._readyPromise_reject=t}),e._readyPromiseState="pending"}function defaultWriterReadyPromiseResetToRejected(e,r){verbose("defaultWriterReadyPromiseResetToRejected(writer, %o)",r),e._readyPromise=Promise.reject(r),e._readyPromiseState="rejected"}function defaultWriterReadyPromiseResolve(e){verbose("defaultWriterReadyPromiseResolve()"),e._readyPromise_resolve(void 0),e._readyPromise_resolve=void 0,e._readyPromise_reject=void 0,e._readyPromiseState="fulfilled"}var _createClass=function(){function defineProperties(e,r){for(var t=0;t<r.length;t++){var i=r[t];i.enumerable=i.enumerable||!1,i.configurable=!0,"value"in i&&(i.writable=!0),Object.defineProperty(e,i.key,i)}}return function(e,r,t){return r&&defineProperties(e.prototype,r),t&&defineProperties(e,t),e}}(),assert=_dereq_("better-assert"),verbose=_dereq_("debug")("streams:writable-stream:verbose"),_require=_dereq_("./helpers.js"),CreateAlgorithmFromUnderlyingMethod=_require.CreateAlgorithmFromUnderlyingMethod,InvokeOrNoop=_require.InvokeOrNoop,ValidateAndNormalizeHighWaterMark=_require.ValidateAndNormalizeHighWaterMark,IsNonNegativeNumber=_require.IsNonNegativeNumber,MakeSizeAlgorithmFromSizeFunction=_require.MakeSizeAlgorithmFromSizeFunction,typeIsObject=_require.typeIsObject,_require2=_dereq_("./utils.js"),rethrowAssertionErrorRejection=_require2.rethrowAssertionErrorRejection,_require3=_dereq_("./queue-with-sizes.js"),DequeueValue=_require3.DequeueValue,EnqueueValueWithSize=_require3.EnqueueValueWithSize,PeekQueueValue=_require3.PeekQueueValue,ResetQueue=_require3.ResetQueue,AbortSteps=Symbol("[[AbortSteps]]"),ErrorSteps=Symbol("[[ErrorSteps]]"),WritableStream=function(){function WritableStream(){var e=arguments.length>0&&void 0!==arguments[0]?arguments[0]:{},r=arguments.length>1&&void 0!==arguments[1]?arguments[1]:{},t=r.size,i=r.highWaterMark,a=void 0===i?1:i;if(_classCallCheck(this,WritableStream),InitializeWritableStream(this),void 0!==e.type)throw new RangeError("Invalid type is specified");var o=MakeSizeAlgorithmFromSizeFunction(t);SetUpWritableStreamDefaultControllerFromUnderlyingSink(this,e,a=ValidateAndNormalizeHighWaterMark(a),o)}return _createClass(WritableStream,[{key:"abort",value:function abort(e){return!1===IsWritableStream(this)?Promise.reject(streamBrandCheckException("abort")):!0===IsWritableStreamLocked(this)?Promise.reject(new TypeError("Cannot abort a stream that already has a writer")):WritableStreamAbort(this,e)}},{key:"getWriter",value:function getWriter(){if(!1===IsWritableStream(this))throw streamBrandCheckException("getWriter");return AcquireWritableStreamDefaultWriter(this)}},{key:"locked",get:function get(){if(!1===IsWritableStream(this))throw streamBrandCheckException("locked");return IsWritableStreamLocked(this)}}]),WritableStream}();module.exports={AcquireWritableStreamDefaultWriter:AcquireWritableStreamDefaultWriter,CreateWritableStream:CreateWritableStream,IsWritableStream:IsWritableStream,IsWritableStreamLocked:IsWritableStreamLocked,WritableStream:WritableStream,WritableStreamAbort:WritableStreamAbort,WritableStreamDefaultControllerErrorIfNeeded:WritableStreamDefaultControllerErrorIfNeeded,WritableStreamDefaultWriterCloseWithErrorPropagation:WritableStreamDefaultWriterCloseWithErrorPropagation,WritableStreamDefaultWriterRelease:WritableStreamDefaultWriterRelease,WritableStreamDefaultWriterWrite:WritableStreamDefaultWriterWrite,WritableStreamCloseQueuedOrInFlight:WritableStreamCloseQueuedOrInFlight};var WritableStreamDefaultWriter=function(){function WritableStreamDefaultWriter(e){if(_classCallCheck(this,WritableStreamDefaultWriter),!1===IsWritableStream(e))throw new TypeError("WritableStreamDefaultWriter can only be constructed with a WritableStream instance");if(!0===IsWritableStreamLocked(e))throw new TypeError("This stream has already been locked for exclusive writing by another writer");this._ownerWritableStream=e,e._writer=this;var r=e._state;if("writable"===r)!1===WritableStreamCloseQueuedOrInFlight(e)&&!0===e._backpressure?defaultWriterReadyPromiseInitialize(this):defaultWriterReadyPromiseInitializeAsResolved(this),defaultWriterClosedPromiseInitialize(this);else if("erroring"===r)defaultWriterReadyPromiseInitializeAsRejected(this,e._storedError),this._readyPromise.catch(function(){}),defaultWriterClosedPromiseInitialize(this);else if("closed"===r)defaultWriterReadyPromiseInitializeAsResolved(this),defaultWriterClosedPromiseInitializeAsResolved(this);else{var t=e._storedError;defaultWriterReadyPromiseInitializeAsRejected(this,t),this._readyPromise.catch(function(){}),defaultWriterClosedPromiseInitializeAsRejected(this,t),this._closedPromise.catch(function(){})}}return _createClass(WritableStreamDefaultWriter,[{key:"abort",value:function abort(e){return!1===IsWritableStreamDefaultWriter(this)?Promise.reject(defaultWriterBrandCheckException("abort")):void 0===this._ownerWritableStream?Promise.reject(defaultWriterLockException("abort")):WritableStreamDefaultWriterAbort(this,e)}},{key:"close",value:function close(){if(!1===IsWritableStreamDefaultWriter(this))return Promise.reject(defaultWriterBrandCheckException("close"));var e=this._ownerWritableStream;return void 0===e?Promise.reject(defaultWriterLockException("close")):!0===WritableStreamCloseQueuedOrInFlight(e)?Promise.reject(new TypeError("cannot close an already-closing stream")):WritableStreamDefaultWriterClose(this)}},{key:"releaseLock",value:function releaseLock(){if(!1===IsWritableStreamDefaultWriter(this))throw defaultWriterBrandCheckException("releaseLock");void 0!==this._ownerWritableStream&&WritableStreamDefaultWriterRelease(this)}},{key:"write",value:function write(e){return!1===IsWritableStreamDefaultWriter(this)?Promise.reject(defaultWriterBrandCheckException("write")):void 0===this._ownerWritableStream?Promise.reject(defaultWriterLockException("write to")):WritableStreamDefaultWriterWrite(this,e)}},{key:"closed",get:function get(){return!1===IsWritableStreamDefaultWriter(this)?Promise.reject(defaultWriterBrandCheckException("closed")):this._closedPromise}},{key:"desiredSize",get:function get(){if(!1===IsWritableStreamDefaultWriter(this))throw defaultWriterBrandCheckException("desiredSize");if(void 0===this._ownerWritableStream)throw defaultWriterLockException("desiredSize");return WritableStreamDefaultWriterGetDesiredSize(this)}},{key:"ready",get:function get(){return!1===IsWritableStreamDefaultWriter(this)?Promise.reject(defaultWriterBrandCheckException("ready")):this._readyPromise}}]),WritableStreamDefaultWriter}(),WritableStreamDefaultController=function(){function WritableStreamDefaultController(){throw _classCallCheck(this,WritableStreamDefaultController),new TypeError("WritableStreamDefaultController cannot be constructed explicitly")}return _createClass(WritableStreamDefaultController,[{key:"error",value:function error(e){if(!1===IsWritableStreamDefaultController(this))throw new TypeError("WritableStreamDefaultController.prototype.error can only be used on a WritableStreamDefaultController");"writable"===this._controlledWritableStream._state&&WritableStreamDefaultControllerError(this,e)}},{key:AbortSteps,value:function value(e){return this._abortAlgorithm(e)}},{key:ErrorSteps,value:function value(){ResetQueue(this)}}]),WritableStreamDefaultController}();
+
+},{"./helpers.js":10,"./queue-with-sizes.js":11,"./utils.js":14,"better-assert":16,"debug":18}],16:[function(_dereq_,module,exports){
+(function (process){
+function assert(e){if(!e){var r=callsite(),s=r[1],t=s.getFileName(),i=s.getLineNumber(),n=(n=fs.readFileSync(t,"utf8")).split("\n")[i-1].match(/assert\((.*)\)/)[1];throw new AssertionError({message:n,stackStartFunction:r[0].getFunction()})}}var AssertionError=_dereq_("assert").AssertionError,callsite=_dereq_("callsite"),fs=_dereq_("fs");module.exports=process.env.NO_ASSERT?function(){}:assert;
+
+}).call(this,_dereq_('_process'))
+
+},{"_process":4,"assert":2,"callsite":17,"fs":3}],17:[function(_dereq_,module,exports){
+module.exports=function(){var r=Error.prepareStackTrace;Error.prepareStackTrace=function(r,e){return e};var e=new Error;Error.captureStackTrace(e,arguments.callee);var a=e.stack;return Error.prepareStackTrace=r,a};
+
+},{}],18:[function(_dereq_,module,exports){
+(function (process){
+function useColors(){return!("undefined"==typeof window||!window.process||"renderer"!==window.process.type)||("undefined"==typeof navigator||!navigator.userAgent||!navigator.userAgent.toLowerCase().match(/(edge|trident)\/(\d+)/))&&("undefined"!=typeof document&&document.documentElement&&document.documentElement.style&&document.documentElement.style.WebkitAppearance||"undefined"!=typeof window&&window.console&&(window.console.firebug||window.console.exception&&window.console.table)||"undefined"!=typeof navigator&&navigator.userAgent&&navigator.userAgent.toLowerCase().match(/firefox\/(\d+)/)&&parseInt(RegExp.$1,10)>=31||"undefined"!=typeof navigator&&navigator.userAgent&&navigator.userAgent.toLowerCase().match(/applewebkit\/(\d+)/))}function formatArgs(e){var o=this.useColors;if(e[0]=(o?"%c":"")+this.namespace+(o?" %c":" ")+e[0]+(o?"%c ":" ")+"+"+exports.humanize(this.diff),o){var C="color: "+this.color;e.splice(1,0,C,"color: inherit");var t=0,r=0;e[0].replace(/%[a-zA-Z%]/g,function(e){"%%"!==e&&(t++,"%c"===e&&(r=t))}),e.splice(r,0,C)}}function log(){return"object"==typeof console&&console.log&&Function.prototype.apply.call(console.log,console,arguments)}function save(e){try{null==e?exports.storage.removeItem("debug"):exports.storage.debug=e}catch(e){}}function load(){var e;try{e=exports.storage.debug}catch(e){}return!e&&"undefined"!=typeof process&&"env"in process&&(e=process.env.DEBUG),e}function localstorage(){try{return window.localStorage}catch(e){}}exports=module.exports=_dereq_("./debug"),exports.log=log,exports.formatArgs=formatArgs,exports.save=save,exports.load=load,exports.useColors=useColors,exports.storage="undefined"!=typeof chrome&&void 0!==chrome.storage?chrome.storage.local:localstorage(),exports.colors=["#0000CC","#0000FF","#0033CC","#0033FF","#0066CC","#0066FF","#0099CC","#0099FF","#00CC00","#00CC33","#00CC66","#00CC99","#00CCCC","#00CCFF","#3300CC","#3300FF","#3333CC","#3333FF","#3366CC","#3366FF","#3399CC","#3399FF","#33CC00","#33CC33","#33CC66","#33CC99","#33CCCC","#33CCFF","#6600CC","#6600FF","#6633CC","#6633FF","#66CC00","#66CC33","#9900CC","#9900FF","#9933CC","#9933FF","#99CC00","#99CC33","#CC0000","#CC0033","#CC0066","#CC0099","#CC00CC","#CC00FF","#CC3300","#CC3333","#CC3366","#CC3399","#CC33CC","#CC33FF","#CC6600","#CC6633","#CC9900","#CC9933","#CCCC00","#CCCC33","#FF0000","#FF0033","#FF0066","#FF0099","#FF00CC","#FF00FF","#FF3300","#FF3333","#FF3366","#FF3399","#FF33CC","#FF33FF","#FF6600","#FF6633","#FF9900","#FF9933","#FFCC00","#FFCC33"],exports.formatters.j=function(e){try{return JSON.stringify(e)}catch(e){return"[UnexpectedJSONParseError]: "+e.message}},exports.enable(load());
+
+}).call(this,_dereq_('_process'))
+
+},{"./debug":19,"_process":4}],19:[function(_dereq_,module,exports){
+function selectColor(e){var r,t=0;for(r in e)t=(t<<5)-t+e.charCodeAt(r),t|=0;return exports.colors[Math.abs(t)%exports.colors.length]}function createDebug(e){function debug(){if(debug.enabled){var e=debug,t=+new Date,s=t-(r||t);e.diff=s,e.prev=r,e.curr=t,r=t;for(var o=new Array(arguments.length),n=0;n<o.length;n++)o[n]=arguments[n];o[0]=exports.coerce(o[0]),"string"!=typeof o[0]&&o.unshift("%O");var a=0;o[0]=o[0].replace(/%([a-zA-Z%])/g,function(r,t){if("%%"===r)return r;a++;var s=exports.formatters[t];if("function"==typeof s){var n=o[a];r=s.call(e,n),o.splice(a,1),a--}return r}),exports.formatArgs.call(e,o),(debug.log||exports.log||console.log.bind(console)).apply(e,o)}}var r;return debug.namespace=e,debug.enabled=exports.enabled(e),debug.useColors=exports.useColors(),debug.color=selectColor(e),debug.destroy=destroy,"function"==typeof exports.init&&exports.init(debug),exports.instances.push(debug),debug}function destroy(){var e=exports.instances.indexOf(this);return-1!==e&&(exports.instances.splice(e,1),!0)}function enable(e){exports.save(e),exports.names=[],exports.skips=[];var r,t=("string"==typeof e?e:"").split(/[\s,]+/),s=t.length;for(r=0;r<s;r++)t[r]&&("-"===(e=t[r].replace(/\*/g,".*?"))[0]?exports.skips.push(new RegExp("^"+e.substr(1)+"$")):exports.names.push(new RegExp("^"+e+"$")));for(r=0;r<exports.instances.length;r++){var o=exports.instances[r];o.enabled=exports.enabled(o.namespace)}}function disable(){exports.enable("")}function enabled(e){if("*"===e[e.length-1])return!0;var r,t;for(r=0,t=exports.skips.length;r<t;r++)if(exports.skips[r].test(e))return!1;for(r=0,t=exports.names.length;r<t;r++)if(exports.names[r].test(e))return!0;return!1}function coerce(e){return e instanceof Error?e.stack||e.message:e}exports=module.exports=createDebug.debug=createDebug.default=createDebug,exports.coerce=coerce,exports.disable=disable,exports.enable=enable,exports.enabled=enabled,exports.humanize=_dereq_("ms"),exports.instances=[],exports.names=[],exports.skips=[],exports.formatters={};
+
+},{"ms":20}],20:[function(_dereq_,module,exports){
+function parse(e){if(!((e=String(e)).length>100)){var r=/^((?:\d+)?\.?\d+) *(milliseconds?|msecs?|ms|seconds?|secs?|s|minutes?|mins?|m|hours?|hrs?|h|days?|d|years?|yrs?|y)?$/i.exec(e);if(r){var a=parseFloat(r[1]);switch((r[2]||"ms").toLowerCase()){case"years":case"year":case"yrs":case"yr":case"y":return a*y;case"days":case"day":case"d":return a*d;case"hours":case"hour":case"hrs":case"hr":case"h":return a*h;case"minutes":case"minute":case"mins":case"min":case"m":return a*m;case"seconds":case"second":case"secs":case"sec":case"s":return a*s;case"milliseconds":case"millisecond":case"msecs":case"msec":case"ms":return a;default:return}}}}function fmtShort(e){return e>=d?Math.round(e/d)+"d":e>=h?Math.round(e/h)+"h":e>=m?Math.round(e/m)+"m":e>=s?Math.round(e/s)+"s":e+"ms"}function fmtLong(e){return plural(e,d,"day")||plural(e,h,"hour")||plural(e,m,"minute")||plural(e,s,"second")||e+" ms"}function plural(s,e,r){if(!(s<e))return s<1.5*e?Math.floor(s/e)+" "+r:Math.ceil(s/e)+" "+r+"s"}var s=1e3,m=60*s,h=60*m,d=24*h,y=365.25*d;module.exports=function(s,e){e=e||{};var r=typeof s;if("string"===r&&s.length>0)return parse(s);if("number"===r&&!1===isNaN(s))return e.long?fmtLong(s):fmtShort(s);throw new Error("val is not a non-empty string or a valid number. val="+JSON.stringify(s))};
+
+},{}]},{},[1])(1)
+});
+//# sourceMappingURL=polyfill-ie11.min.js.map
+
+/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./../../webpack/buildin/global.js */ "./node_modules/webpack/buildin/global.js")))
+
+/***/ }),
+
 /***/ "./node_modules/webpack/buildin/global.js":
 /*!***********************************!*\
   !*** (webpack)/buildin/global.js ***!
@@ -76573,17 +76858,6 @@ module.exports = null;
 /***/ (function(module, exports) {
 
 module.exports = solid["auth"];
-
-/***/ }),
-
-/***/ "web-streams-polyfill":
-/*!*************************!*\
-  !*** external "window" ***!
-  \*************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-module.exports = window;
 
 /***/ })
 
