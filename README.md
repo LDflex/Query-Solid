@@ -176,7 +176,7 @@ The following strings will all resolve:
 - `'user.firstName'`
 - `'["https://example.org/"].label'`
 - `'[https://example.org/].label'`
-- `https://example.org/`
+- `'https://example.org/'`
 
 ## License
 ©2018–present [Ruben Verborgh](https://ruben.verborgh.org/),
