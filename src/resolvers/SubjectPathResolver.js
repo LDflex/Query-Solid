@@ -1,6 +1,4 @@
 import { namedNode } from '@rdfjs/data-model';
-import ComunicaEngine from 'ldflex-comunica';
-import SolidUpdateEngine from '../SolidUpdateEngine';
 
 /**
  * LDflex property resolver that returns a new path
@@ -24,13 +22,13 @@ export default class SubjectPathResolver {
     return typeof property === 'string';
   }
 
-  resolve(property) {
-    return this._createSubjectPath(namedNode(property));
+  resolve(property, { settings }) {
+    return this._createSubjectPath(namedNode(property), settings);
   }
 
-  _createSubjectPath(subject) {
+  _createSubjectPath(subject, { createQueryEngine }) {
     const source = this._source || Promise.resolve(subject).catch(() => null);
-    const queryEngine = new SolidUpdateEngine(source, new ComunicaEngine(source));
+    const queryEngine = createQueryEngine(source);
     return this._paths.create({ queryEngine }, { subject });
   }
 }

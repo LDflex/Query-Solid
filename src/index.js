@@ -63,7 +63,8 @@ export default rootPath = new PathFactory({
     user: new UserPathHandler(subjectPathFactory),
 
     // Clears the cache for the given document (or everything, if undefined)
-    clearCache: ({ settings }) => doc => settings.queryEngine.clearCache(doc),
+    clearCache: ({ settings }) => doc =>
+      settings.createQueryEngine().clearCache(doc),
 
     // Expose the JSON-LD context
     context: contextResolver,
@@ -73,6 +74,7 @@ export default rootPath = new PathFactory({
     // `data[url]` starts a path with the property as subject
     new SubjectPathResolver(subjectPathFactory),
   ],
-  // Global query engine (currently only used for clearing the cache)
-  queryEngine: new SolidUpdateEngine(null, new ComunicaEngine()),
+  // Constructor for the query engine
+  createQueryEngine: source =>
+    new SolidUpdateEngine(source, new ComunicaEngine(source)),
 }).create();
