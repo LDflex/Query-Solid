@@ -8,8 +8,8 @@
     "type": "git",
     "url": "https://github.com/solid/query-ldflex/"
   },
-  "main": "lib/exports/index.js",
-  "module": "module/exports/index.js",
+  "main": "lib/exports/comunica.js",
+  "module": "module/exports/comunica.js",
   "sideEffects": false,
   "files": [
     "src",

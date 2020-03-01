@@ -1,4 +1,4 @@
-import data from '../../src/exports';
+import data from '../../src/exports/comunica';
 import auth from 'solid-auth-client';
 import SolidUpdateEngine from '../../src/SolidUpdateEngine';
 import FindActivityHandler from '../../src/handlers/FindActivityHandler';
@@ -16,7 +16,7 @@ DeleteActivityHandler.prototype.handle = jest.fn(() => jest.fn());
 
 describe('The @solid/ldflex module', () => {
   it('is an ES6 module with a default export', () => {
-    expect(require('../../src/exports').default).toBe(data);
+    expect(require('../../src/exports/comunica').default).toBe(data);
   });
 
   test('its default export does not identify as an ES6 module', () => {
