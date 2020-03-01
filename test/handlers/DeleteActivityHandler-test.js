@@ -1,4 +1,4 @@
-import DeleteActivityHandler from '../src/DeleteActivityHandler';
+import DeleteActivityHandler from '../../src/handlers/DeleteActivityHandler';
 import { namedNode, literal } from '@rdfjs/data-model';
 
 describe('a DeleteActivityHandler instance', () => {

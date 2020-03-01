@@ -1,5 +1,5 @@
 import { namedNode } from '@rdfjs/data-model';
-import ComunicaUpdateEngine from './ComunicaUpdateEngine';
+import ComunicaUpdateEngine from '../ComunicaUpdateEngine';
 
 /**
  * LDflex property resolver that returns a new path

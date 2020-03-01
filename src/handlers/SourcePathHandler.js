@@ -1,5 +1,5 @@
 import { PathFactory, defaultHandlers } from 'ldflex';
-import SubjectPathResolver from './SubjectPathResolver';
+import SubjectPathResolver from '../resolvers/SubjectPathResolver';
 
 export default class SourcePathHandler {
   constructor(pathFactory) {

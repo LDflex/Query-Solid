@@ -1,14 +1,14 @@
 import { PathFactory, defaultHandlers } from 'ldflex';
 import context from '@solid/context';
-import ContextResolver from './ContextResolver';
-import SolidDeleteFunctionHandler from './SolidDeleteFunctionHandler';
-import FindActivityHandler from './FindActivityHandler';
-import CreateActivityHandler from './CreateActivityHandler';
-import DeleteActivityHandler from './DeleteActivityHandler';
-import SourcePathHandler from './SourcePathHandler';
-import UserPathHandler from './UserPathHandler';
-import SubjectPathResolver from './SubjectPathResolver';
 import ComunicaUpdateEngine from './ComunicaUpdateEngine';
+import SolidDeleteFunctionHandler from './handlers/SolidDeleteFunctionHandler';
+import FindActivityHandler from './handlers/FindActivityHandler';
+import CreateActivityHandler from './handlers/CreateActivityHandler';
+import DeleteActivityHandler from './handlers/DeleteActivityHandler';
+import SourcePathHandler from './handlers/SourcePathHandler';
+import UserPathHandler from './handlers/UserPathHandler';
+import ContextResolver from './resolvers/ContextResolver';
+import SubjectPathResolver from './resolvers/SubjectPathResolver';
 
 const { as } = context['@context'];
 const contextResolver = new ContextResolver(context);

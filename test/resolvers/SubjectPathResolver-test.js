@@ -1,9 +1,9 @@
 import { PathFactory } from 'ldflex';
-import SubjectPathResolver from '../src/SubjectPathResolver';
-import ComunicaUpdateEngine from '../src/ComunicaUpdateEngine';
+import SubjectPathResolver from '../../src/resolvers/SubjectPathResolver';
+import ComunicaUpdateEngine from '../../src/ComunicaUpdateEngine';
 
 jest.mock('ldflex');
-jest.mock('../src/ComunicaUpdateEngine');
+jest.mock('../../src/ComunicaUpdateEngine');
 
 describe('a SubjectPathResolver', () => {
   const source = {};

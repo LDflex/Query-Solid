@@ -1,4 +1,4 @@
-import ActivityHandler from '../src/ActivityHandler';
+import ActivityHandler from '../../src/handlers/ActivityHandler';
 
 const loggedOutPath = {
   root: {

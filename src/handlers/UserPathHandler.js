@@ -1,4 +1,4 @@
-import SubjectPathResolver from './SubjectPathResolver';
+import SubjectPathResolver from '../resolvers/SubjectPathResolver';
 import auth from 'solid-auth-client';
 import { namedNode } from '@rdfjs/data-model';
 

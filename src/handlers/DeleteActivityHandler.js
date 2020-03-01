@@ -1,6 +1,6 @@
 import ActivityHandler from './ActivityHandler';
 import queryTemplate from './activity-triples.sparql';
-import { replaceVariables, termToString } from './util';
+import { replaceVariables, termToString } from '../util';
 
 const components = ['?subject', '?predicate', '?object'];
 

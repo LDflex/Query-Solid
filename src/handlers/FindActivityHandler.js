@@ -1,6 +1,6 @@
 import ActivityHandler from './ActivityHandler';
 import queryTemplate from './activity.sparql';
-import { replaceVariables } from './util';
+import { replaceVariables } from '../util';
 
 /**
  * Handler that finds an activity in the user's data pod

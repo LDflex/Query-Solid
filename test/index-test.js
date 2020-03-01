@@ -1,9 +1,9 @@
 import data from '../src';
 import auth from 'solid-auth-client';
 import ComunicaUpdateEngine from '../src/ComunicaUpdateEngine';
-import FindActivityHandler from '../src/FindActivityHandler';
-import CreateActivityHandler from '../src/CreateActivityHandler';
-import DeleteActivityHandler from '../src/DeleteActivityHandler';
+import FindActivityHandler from '../src/handlers/FindActivityHandler';
+import CreateActivityHandler from '../src/handlers/CreateActivityHandler';
+import DeleteActivityHandler from '../src/handlers/DeleteActivityHandler';
 import { namedNode } from '@rdfjs/data-model';
 
 jest.mock('../src/ComunicaUpdateEngine');

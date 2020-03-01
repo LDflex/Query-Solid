@@ -1,5 +1,5 @@
 import { namedNode, literal, blankNode } from '@rdfjs/data-model';
-import SolidDeleteFunctionHandler from '../src/SolidDeleteFunctionHandler';
+import SolidDeleteFunctionHandler from '../../src/handlers/SolidDeleteFunctionHandler';
 
 describe('a SolidDeleteFunctionHandler instance', () => {
   let handler;
