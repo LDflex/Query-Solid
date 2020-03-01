@@ -1,6 +1,7 @@
 import { PathFactory, defaultHandlers } from 'ldflex';
 import context from '@solid/context';
-import ComunicaUpdateEngine from './ComunicaUpdateEngine';
+import ComunicaEngine from 'ldflex-comunica';
+import SolidUpdateEngine from './SolidUpdateEngine';
 import SolidDeleteFunctionHandler from './handlers/SolidDeleteFunctionHandler';
 import FindActivityHandler from './handlers/FindActivityHandler';
 import CreateActivityHandler from './handlers/CreateActivityHandler';
@@ -73,5 +74,5 @@ export default rootPath = new PathFactory({
     new SubjectPathResolver(subjectPathFactory),
   ],
   // Global query engine (currently only used for clearing the cache)
-  queryEngine: new ComunicaUpdateEngine(),
+  queryEngine: new SolidUpdateEngine(null, new ComunicaEngine()),
 }).create();

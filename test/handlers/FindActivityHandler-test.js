@@ -1,11 +1,11 @@
 import FindActivityHandler from '../../src/handlers/FindActivityHandler';
-import { createBindings } from '../../src/util';
+import { asList } from '../../src/util';
 import { namedNode } from '@rdfjs/data-model';
 
 describe('a FindActivityHandler instance', () => {
   const queryEngine = {
     execute: jest.fn(async function*() {
-      yield createBindings(namedNode('http://ex.org/likes/#1'));
+      yield asList(namedNode('http://ex.org/likes/#1'));
     }),
   };
   let handler;

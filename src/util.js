@@ -8,8 +8,8 @@ export function replaceVariables(template, terms) {
   return template;
 }
 
-// Imitate Comunica's response for bindings as a Immutable.js object.
-export function createBindings(...items) {
+// Transforms the arguments into an Immutable.js-style list
+export function asList(...items) {
   return {
     size: items.length,
     values: () => ({
