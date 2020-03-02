@@ -7,12 +7,14 @@ through [LDflex](https://github.com/RubenVerborgh/LDflex) expressions
 [![Coverage Status](https://coveralls.io/repos/github/solid/query-ldflex/badge.svg?branch=master)](https://coveralls.io/github/solid/query-ldflex?branch=master)
 [![Dependency Status](https://david-dm.org/solid/query-ldflex.svg)](https://david-dm.org/solid/query-ldflex)
 
-This library brings the [LDflex](https://github.com/RubenVerborgh/LDflex) language
-to Solid by:
+This library is a _configuration_ of
+the [LDflex](https://github.com/RubenVerborgh/LDflex) language
+for the Solid ecosystem.
+It configures LDflex with:
 
-1. setting a [JSON-LD context for Solid](https://github.com/solid/context)
-2. binding a query engine ([Comunica](https://github.com/RubenVerborgh/LDflex-Comunica))
-3. exposing useful [data paths](#data-paths)
+1. a [JSON-LD context for Solid](https://github.com/solid/context)
+2. a Solid-authenticated query engine ([Comunica](https://github.com/RubenVerborgh/LDflex-Comunica) or [rdflib.js](https://github.com/LDflex/LDflex-rdflib/))
+3. useful [data paths](#data-paths) for Solid
 
 LDflex expressions occur for example
 on [Solid React components](https://github.com/solid/react-components),
@@ -97,7 +99,7 @@ npm install @solid/query-ldflex
 ```
 
 ## Usage
-### With Node.js
+### Within Node.js environments
 ```javascript
 const { default: data } = require('@solid/query-ldflex');
 
@@ -119,6 +121,19 @@ async function showProfile(person) {
 
 ```
 
+If, instead of the Comunica query engine,
+you want to use the rdflib.js query engine,
+you can
+
+```javascript
+const { default: data } = require('@solid/query-ldflex/lib/exports/rdflib');
+```
+
+When creating browser builds,
+it can be easier to simply tell webpack
+to replace `@ldflex/comunica` by `@ldflex/rdflib`.
+
+
 ### In the browser
 ```html
 <script src="solid-auth-client.bundle.js"></script>
@@ -131,6 +146,15 @@ document.addEventListener('DOMContentLoaded', async () => {
   alert(`Welcome, ${await user.firstName}!`);
 });
 
+```
+
+To replace Comunica by rdflib.js,
+opt for
+
+```html
+<script src="solid-auth-client.bundle.js"></script>
+<script src="rdflib.min.js"></script>
+<script src="solid-query-ldflex.rdflib.js"></script>
 ```
 
 ### Adding a custom JSON-LD context
