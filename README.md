@@ -3,7 +3,7 @@ Simple access to data in [Solid](https://solidproject.org/) pods
 through [LDflex](https://github.com/RubenVerborgh/LDflex) expressions
 
 [![npm version](https://img.shields.io/npm/v/@solid/query-ldflex.svg)](https://www.npmjs.com/package/@solid/query-ldflex)
-[![Build Status](https://travis-ci.org/solid/query-ldflex.svg?branch=master)](https://travis-ci.org/solid/query-ldflex)
+[![Build Status](https://travis-ci.com/solid/query-ldflex.svg?branch=master)](https://travis-ci.com/solid/query-ldflex)
 [![Coverage Status](https://coveralls.io/repos/github/solid/query-ldflex/badge.svg?branch=master)](https://coveralls.io/github/solid/query-ldflex?branch=master)
 [![Dependency Status](https://david-dm.org/solid/query-ldflex.svg)](https://david-dm.org/solid/query-ldflex)
 
