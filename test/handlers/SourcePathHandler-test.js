@@ -9,12 +9,12 @@ const path = {};
 PathFactory.prototype.create.mockReturnValue(path);
 
 describe('a SourcePathHandler', () => {
-  const factory = {}, source = {};
+  const factory = {}, source = {}, settings = { x: 1 };
   let handler, subjectResolverFn;
 
   beforeEach(() => {
     handler = new SourcePathHandler(factory);
-    subjectResolverFn = handler.handle();
+    subjectResolverFn = handler.handle({ settings });
   });
 
   it('returns a function', () => {
@@ -33,6 +33,7 @@ describe('a SourcePathHandler', () => {
       expect(resolvers).toHaveLength(1);
       expect(resolvers[0]).toBeInstanceOf(SubjectPathResolver);
       expect(PathFactory.mock.instances[0].create).toHaveBeenCalledTimes(1);
+      expect(PathFactory.mock.instances[0].create).toHaveBeenCalledWith(settings, {});
       expect(result).toBe(path);
     });
 
