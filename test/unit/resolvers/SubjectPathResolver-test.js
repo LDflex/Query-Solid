@@ -1,5 +1,5 @@
 import { PathFactory } from 'ldflex';
-import SubjectPathResolver from '../../src/resolvers/SubjectPathResolver';
+import SubjectPathResolver from '../../../src/resolvers/SubjectPathResolver';
 
 jest.mock('ldflex');
 

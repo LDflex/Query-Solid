@@ -1,5 +1,5 @@
-import FindActivityHandler from '../../src/handlers/FindActivityHandler';
-import { asList } from '../../src/util';
+import FindActivityHandler from '../../../src/handlers/FindActivityHandler';
+import { asList } from '../../../src/util';
 import { namedNode } from '@rdfjs/data-model';
 
 describe('a FindActivityHandler instance', () => {

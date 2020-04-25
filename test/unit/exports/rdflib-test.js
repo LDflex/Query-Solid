@@ -1,9 +1,9 @@
-import data from '../../src/exports/rdflib';
+import data from '../../../src/exports/rdflib';
 jest.mock('@ldflex/rdflib');
 
 describe('The rdflib module', () => {
   it('is an ES6 module with a default export', () => {
-    expect(require('../../src/exports/rdflib').default).toBe(data);
+    expect(require('../../../src/exports/rdflib').default).toBe(data);
   });
 
   test('its default export does not identify as an ES6 module', () => {

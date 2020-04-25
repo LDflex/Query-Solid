@@ -1,4 +1,4 @@
-import CreateActivityHandler from '../../src/handlers/CreateActivityHandler';
+import CreateActivityHandler from '../../../src/handlers/CreateActivityHandler';
 import uuid from 'uuid/v4';
 
 Date.prototype.toISOString = () => '2019-01-01T20:00:00.000Z';

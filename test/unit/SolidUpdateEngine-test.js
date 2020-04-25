@@ -1,4 +1,4 @@
-import SolidUpdateEngine from '../src/SolidUpdateEngine';
+import SolidUpdateEngine from '../../src/SolidUpdateEngine';
 import auth from 'solid-auth-client';
 
 const mockEngine = {

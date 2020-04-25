@@ -1,12 +1,12 @@
-import data from '../../src/exports/comunica';
+import data from '../../../src/exports/comunica';
 import auth from 'solid-auth-client';
-import SolidUpdateEngine from '../../src/SolidUpdateEngine';
-import FindActivityHandler from '../../src/handlers/FindActivityHandler';
-import CreateActivityHandler from '../../src/handlers/CreateActivityHandler';
-import DeleteActivityHandler from '../../src/handlers/DeleteActivityHandler';
+import SolidUpdateEngine from '../../../src/SolidUpdateEngine';
+import FindActivityHandler from '../../../src/handlers/FindActivityHandler';
+import CreateActivityHandler from '../../../src/handlers/CreateActivityHandler';
+import DeleteActivityHandler from '../../../src/handlers/DeleteActivityHandler';
 import { namedNode } from '@rdfjs/data-model';
 
-jest.mock('../../src/SolidUpdateEngine');
+jest.mock('../../../src/SolidUpdateEngine');
 async function* noResults() { /* empty */ }
 SolidUpdateEngine.prototype.execute = jest.fn(noResults);
 
@@ -16,7 +16,7 @@ DeleteActivityHandler.prototype.handle = jest.fn(() => jest.fn());
 
 describe('The @solid/ldflex module', () => {
   it('is an ES6 module with a default export', () => {
-    expect(require('../../src/exports/comunica').default).toBe(data);
+    expect(require('../../../src/exports/comunica').default).toBe(data);
   });
 
   test('its default export does not identify as an ES6 module', () => {

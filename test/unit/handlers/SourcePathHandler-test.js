@@ -1,9 +1,9 @@
-import SourcePathHandler from '../../src/handlers/SourcePathHandler';
+import SourcePathHandler from '../../../src/handlers/SourcePathHandler';
 import { PathFactory } from 'ldflex';
-import SubjectPathResolver from '../../src/resolvers/SubjectPathResolver';
+import SubjectPathResolver from '../../../src/resolvers/SubjectPathResolver';
 
 jest.mock('ldflex');
-jest.mock('../../src/resolvers/SubjectPathResolver');
+jest.mock('../../../src/resolvers/SubjectPathResolver');
 
 const path = {};
 PathFactory.prototype.create.mockReturnValue(path);
