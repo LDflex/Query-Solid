@@ -35,6 +35,9 @@
     "@babel/plugin-proposal-class-properties": "^7.8.3",
     "@babel/preset-env": "^7.8.6",
     "@ldflex/rdflib": "^1.0.0",
+    "@pollyjs/adapter-node-http": "^4.1.0",
+    "@pollyjs/core": "^4.1.0",
+    "@pollyjs/persister-fs": "^4.1.0",
     "babel-eslint": "^10.1.0",
     "babel-loader": "^8.0.6",
     "babel-plugin-inline-import": "^3.0.0",
@@ -44,6 +47,7 @@
     "husky": "^4.2.3",
     "jest": "^25.1.0",
     "readable-stream": "^3.6.0",
+    "setup-polly-jest": "^0.7.0",
     "webpack": "^4.41.6",
     "webpack-cli": "^3.3.11",
     "webpack-dev-server": "^3.10.3"
