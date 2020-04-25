@@ -16,4 +16,13 @@ describe('System test: blank nodes', () => {
     expect(names).toContain('Bob');
     expect(names).toContain('Carol');
   });
+
+  test('Alice\'s friends with two expressions', async () => {
+    const names = [];
+    for await (const friend of data[alice].friends)
+      names.push(`${await friend.name}`);
+    expect(names).toHaveLength(2);
+    expect(names).toContain('Bob');
+    expect(names).toContain('Carol');
+  });
 });
