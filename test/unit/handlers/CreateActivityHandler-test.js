@@ -1,5 +1,5 @@
 import CreateActivityHandler from '../../../src/handlers/CreateActivityHandler';
-import uuid from 'uuid/v4';
+import { v4 as uuidv4 } from 'uuid';
 
 Date.prototype.toISOString = () => '2019-01-01T20:00:00.000Z';
 
@@ -29,7 +29,7 @@ describe('a CreateActivityHandler instance', () => {
       };
 
       // perform the activity
-      uuid.reset();
+      uuidv4.reset();
       const createActivity = handler.handle({ settings: { queryEngine } }, path);
       const iterator = createActivity();
       results = [];
@@ -86,7 +86,7 @@ INSERT {
       };
 
       // perform the activity
-      uuid.reset();
+      uuidv4.reset();
       const createActivity = handler.handle({ settings: { queryEngine } }, path);
       const iterator = createActivity('https://www.w3.org/ns/activitystreams#Follow');
       results = [];

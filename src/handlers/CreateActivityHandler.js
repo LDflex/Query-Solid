@@ -2,7 +2,7 @@ import ActivityHandler from './ActivityHandler';
 import activityTemplate from './activity.ttl';
 import { replaceVariables } from '../util';
 import { namedNode, literal } from '@rdfjs/data-model';
-import uuid from 'uuid/v4';
+import { v4 as uuidv4 } from 'uuid';
 import context from '@solid/context';
 
 const { xsd } = context['@context'];
@@ -17,7 +17,7 @@ const { xsd } = context['@context'];
 export default class CreateActivityHandler extends ActivityHandler {
   // Creates an activity for insertion in the given document
   async* createResults(activity, document) {
-    const id = namedNode(new URL(`#${uuid()}`, document).href);
+    const id = namedNode(new URL(`#${uuidv4()}`, document).href);
     const published = literal(new Date().toISOString(), `${xsd}dateTime`);
     activity = { id, published, ...activity };
 
