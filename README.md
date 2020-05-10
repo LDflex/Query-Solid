@@ -121,9 +121,10 @@ async function showProfile(person) {
 
 ```
 
-If, instead of the Comunica query engine,
+If, instead of Comunica,
 you want to use the rdflib.js query engine,
-you can
+install `@ldflex/rdflib` as a dependency of your project
+and use
 
 ```javascript
 const { default: data } = require('@solid/query-ldflex/lib/exports/rdflib');
