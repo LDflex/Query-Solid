@@ -143,7 +143,7 @@ describe('The @solid/ldflex module', () => {
   describe('the user path', () => {
     describe('when not logged in', () => {
       it('throws an error', async () => {
-        await expect(data.user.firstName).rejects
+        await expect(() => data.user.firstName).rejects
           .toThrow('Cannot resolve user path: no user logged in');
       });
     });

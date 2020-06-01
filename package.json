@@ -22,10 +22,10 @@
     ".babelrc"
   ],
   "dependencies": {
-    "@ldflex/comunica": "^3.3.0",
+    "@ldflex/comunica": "^3.4.0",
     "@rdfjs/data-model": "^1.1.2",
     "@solid/context": "^1.1.0",
-    "ldflex": "^2.8.0",
+    "ldflex": "^2.9.0",
     "solid-auth-client": "^2.4.1",
     "uuid": "^7.0.1"
   },

@@ -55,6 +55,7 @@ export default class SolidUpdateEngine {
     };
     return {
       next,
+      return: noop, throw: noop, // required by the interface
       [Symbol.asyncIterator]() { return this; },
     };
   }
@@ -99,3 +100,5 @@ export default class SolidUpdateEngine {
     return this._engine.clearCache(document);
   }
 }
+
+function noop() { /* empty */ }

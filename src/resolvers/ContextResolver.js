@@ -20,7 +20,8 @@ export default class ContextResolver extends JSONLDResolver {
     });
     // Resolve to the expanded context
     Object.defineProperty(exposedContext, 'then', {
-      value: (resolve, reject) => this._context.then(resolve, reject),
+      value: (resolve, reject) => this._context
+        .then(ctx => ctx.contextRaw).then(resolve, reject),
     });
   }
 
