@@ -1,5 +1,6 @@
 import { PathFactory, defaultHandlers } from 'ldflex';
 import context from '@solid/context';
+import PutHandler from './handlers/PutHandler';
 import SolidDeleteFunctionHandler from './handlers/SolidDeleteFunctionHandler';
 import FindActivityHandler from './handlers/FindActivityHandler';
 import CreateActivityHandler from './handlers/CreateActivityHandler';
@@ -15,6 +16,9 @@ const contextResolver = new ContextResolver(context);
 // Handlers for subject paths
 const subjectHandlers = {
   ...defaultHandlers,
+
+  // HTTP PUT handler
+  put: new PutHandler(),
 
   // Custom delete handler to match node-solid-server behavior
   delete: new SolidDeleteFunctionHandler(),
