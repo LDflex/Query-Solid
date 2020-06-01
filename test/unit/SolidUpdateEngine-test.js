@@ -22,6 +22,12 @@ describe('a SolidUpdateEngine instance', () => {
     expect(mockEngine.execute).toHaveBeenCalledWith('a', 'b');
   });
 
+  it('adds all required methods to the returned iterator', async () => {
+    const results = engine.executeUpdate('a', 'b');
+    expect(results.return()).toBe(undefined);
+    expect(results.throw()).toBe(undefined);
+  });
+
   it('passes clearCache calls', async () => {
     const result = {};
     mockEngine.clearCache.mockReturnValueOnce(result);
