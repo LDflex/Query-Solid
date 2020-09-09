@@ -22,7 +22,7 @@
     ".babelrc"
   ],
   "dependencies": {
-    "@ldflex/comunica": "^3.4.0",
+    "@ldflex/comunica": "^3.4.2",
     "@rdfjs/data-model": "^1.1.2",
     "@solid/context": "^1.1.0",
     "ldflex": "^2.11.1",
@@ -48,6 +48,7 @@
     "jest": "^25.1.0",
     "readable-stream": "^3.6.0",
     "setup-polly-jest": "^0.7.0",
+    "solid-auth-cli": "^1.0.15",
     "webpack": "^4.41.6",
     "webpack-cli": "^3.3.11",
     "webpack-dev-server": "^3.10.3"
