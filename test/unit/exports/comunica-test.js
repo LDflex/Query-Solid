@@ -1,14 +1,14 @@
 import data from '../../../src/exports/comunica';
 import auth from 'solid-auth-client';
-import SolidUpdateEngine from '../../../src/SolidUpdateEngine';
 import FindActivityHandler from '../../../src/handlers/FindActivityHandler';
 import CreateActivityHandler from '../../../src/handlers/CreateActivityHandler';
 import DeleteActivityHandler from '../../../src/handlers/DeleteActivityHandler';
 import { namedNode } from '@rdfjs/data-model';
+import ComunicaEngine from '@ldflex/comunica';
 
-jest.mock('../../../src/SolidUpdateEngine');
+jest.mock('@ldflex/comunica');
 async function* noResults() { /* empty */ }
-SolidUpdateEngine.prototype.execute = jest.fn(noResults);
+ComunicaEngine.prototype.execute = jest.fn(noResults);
 
 FindActivityHandler.prototype.handle = jest.fn(() => jest.fn());
 CreateActivityHandler.prototype.handle = jest.fn(() => jest.fn());
@@ -50,7 +50,7 @@ describe('The @solid/ldflex module', () => {
 
     it('executes the query', async () => {
       await data[url].firstName;
-      const { constructor, execute } = SolidUpdateEngine.prototype;
+      const { constructor, execute } = ComunicaEngine.prototype;
       expect(constructor).toHaveBeenCalledTimes(1);
       const args = constructor.mock.calls[0];
       await expect(args[0]).resolves.toEqual(namedNode(url));
@@ -156,7 +156,7 @@ describe('The @solid/ldflex module', () => {
       });
 
       it('executes the query', async () => {
-        const { constructor, execute } = SolidUpdateEngine.prototype;
+        const { constructor, execute } = ComunicaEngine.prototype;
         expect(constructor).toHaveBeenCalledTimes(1);
         await expect(constructor.mock.calls[0][0]).resolves.toEqual(namedNode(webId));
         expect(execute).toHaveBeenCalledTimes(1);
@@ -181,8 +181,8 @@ describe('The @solid/ldflex module', () => {
     it('returns a function to clear the cache', () => {
       const document = {};
       data.clearCache(document);
-      expect(SolidUpdateEngine.prototype.clearCache).toHaveBeenCalledTimes(1);
-      expect(SolidUpdateEngine.prototype.clearCache).toHaveBeenCalledWith(document);
+      expect(ComunicaEngine.prototype.clearCache).toHaveBeenCalledTimes(1);
+      expect(ComunicaEngine.prototype.clearCache).toHaveBeenCalledWith(document);
     });
   });
 });

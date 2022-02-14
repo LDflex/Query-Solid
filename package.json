@@ -22,7 +22,7 @@
     ".babelrc"
   ],
   "dependencies": {
-    "@ldflex/comunica": "^3.4.2",
+    "@ldflex/comunica": "^4.2.0",
     "@rdfjs/data-model": "^1.1.2",
     "@solid/context": "^1.1.0",
     "ldflex": "^2.11.1",
@@ -64,6 +64,7 @@
     "build:module": "babel src --env-name module --delete-dir-on-start --out-dir module",
     "jest": "jest",
     "lint": "eslint src test demo webpack",
+    "lint:fix": "eslint src test demo webpack --fix",
     "precommit": "npm test",
     "prepublishOnly": "npm ci && npm run build",
     "start": "npm run start:demo",
