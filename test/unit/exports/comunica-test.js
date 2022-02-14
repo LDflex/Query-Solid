@@ -1,16 +1,13 @@
 import data from '../../../src/exports/comunica';
 import auth from 'solid-auth-client';
-import SolidUpdateEngine from '../../../src/SolidUpdateEngine';
 import FindActivityHandler from '../../../src/handlers/FindActivityHandler';
 import CreateActivityHandler from '../../../src/handlers/CreateActivityHandler';
 import DeleteActivityHandler from '../../../src/handlers/DeleteActivityHandler';
 import { namedNode } from '@rdfjs/data-model';
 import ComunicaEngine from '@ldflex/comunica';
 
-jest.mock('../../../src/SolidUpdateEngine');
 jest.mock('@ldflex/comunica');
 async function* noResults() { /* empty */ }
-SolidUpdateEngine.prototype.execute = jest.fn(noResults);
 ComunicaEngine.prototype.execute = jest.fn(noResults);
 
 FindActivityHandler.prototype.handle = jest.fn(() => jest.fn());
